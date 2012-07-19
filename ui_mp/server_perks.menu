@@ -1,0 +1,75 @@
+#include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+//#define STYLE_PC	1
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+
+{
+	menuDef 
+	{
+		name			"settings_quick_dm"
+		fullScreen		1
+		rect			0 0 640 480
+		focusColor		COLOR_FOCUSED
+		//soundloop		""
+		onOpen
+		{
+			
+		}
+		onClose
+		{
+			
+		}
+		onESC 
+		{ 
+			close self;
+		}
+    #include "ui/blurredbg.inc"
+    #define 	BACK_ENABLE		0
+		#include "ui_mp/navcontrols.inc"
+    
+    CHOICE_MENU_TITLE("@OW_SERVER_PERKS" )
+    
+    //#undef DEF_GAMETYPE
+    //#define DEF_GAMETYPE ""
+    #include "ui_mp/server_perks_generic.inc"
+    /*
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_dm"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_war"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_dom"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_sab"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_koth"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_sd"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_gg"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_ss"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_oitc"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_gr"
+    #include "ui_mp/server_perks_generic.inc"
+    #undef DEF_GAMETYPE
+    #define DEF_GAMETYPE "_ctf"
+    #include "ui_mp/server_perks_generic.inc"
+		*/
+    
+		CHOICE_BACK( "@MENU_BACK", close self )
+    //CHOICE_DVARSTRINGLIST( 1, "Configure to gametype:", ct_serverCfgGametype, { "ALL" ""; "DM" "_dm"; "TDM" "_war"; "DOM" "_dom"; "SAB" "_sab"; "HQ" "_koth"; "SD" "_sd"; "GG" "_gg"; "SS" "_ss"; "OITC" "_oitc"; "GR" "_gr"; "CTF" "_ctf"; }, ; )
+	}
+}

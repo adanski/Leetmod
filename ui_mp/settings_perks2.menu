@@ -1,0 +1,160 @@
+#include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+
+#define CHOICE_X_START			0
+#define CHOICE_Y_START			34
+	
+#define CHOICE_SEP_1			7
+#define CHOICE_SEP_2			11
+
+#define CHOICE_GROUP			"settings_perks"
+
+#define STYLE_PC	1
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+
+{
+	menuDef 
+	{
+		name			"settings_perks"
+		fullscreen		1	
+		rect			0 0 640 480
+		soundloop 		"music_mainmenu_mp"
+		focuscolor		COLOR_FOCUSED
+		style			1
+		border			0
+		onEsc  			{ close self; }
+		onOpen 
+		{ 
+			
+		}
+		onClose
+		{
+			
+		}
+		
+		#include "ui/blurredbg.inc"
+		#define 	BACK_ENABLE		0
+		#include "ui_mp/navcontrols.inc"
+		CHOICE_MENU_TITLE( "@MENU_GAME_TYPE_SETTINGS" )
+		
+		
+  itemDef 
+	{
+		name			reset_to_default
+		text			"@MENU_RESET_TO_DEFAULT"
+		type			1
+		style			WINDOW_STYLE_FILLED
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		rect			140 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+		textfont		UI_FONT_NORMAL
+		textalign		ITEM_ALIGN_LEFT
+		textscale		TEXTSIZE_SMALL
+		textaligny		18
+		visible			when( 1 );
+		mouseEnter		{ play "mouse_over"; }
+		action 
+		{
+			play "mouse_click";
+			open reset_gamesettings
+		}
+  }
+      
+    CHOICE_SECTION_TITLE( 1, GAMETYPE_OPTIONS )
+    
+    CHOICE_DVARYESNO( 1, "@PERKS_C4_X_2", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 2, "@PERKS_SPECIAL_GRENADES_X_3", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 3, "@PERKS_RPG7_X_2", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 4, "@PERKS_CLAYMORE_X_2", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 5, "@PERKS_FRAG_X_3", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 6, "@PERKS_BANDOLIER", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 7, "@PERKS_BOMB_SQUAD", specialty_detectexplosive, ; )
+        
+    CHOICE_DVARYESNO( 8, "@PERKS_STOPPING_POWER", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 9, "@PERKS_JUGGERNAUT", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 10, "@PERKS_SLEIGHT_OF_HAND", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 11, "@PERKS_DOUBLE_TAP", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 12, "@PERKS_OVERKILL", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 13, "@PERKS_UAV_JAMMER", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 14, "@PERKS_SONIC_BOOM", specialty_detectexplosive, ; )
+    
+    CHOICE_DVARYESNO( 15, "@PERKS_EXTREME_CONDITIONING", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 16, "@PERKS_STEADY_AIM", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 17, "@PERKS_LAST_STAND", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 18, "@PERKS_MARTYRDOM", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 19, "@PERKS_DEEP_IMPACT", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 20, "@PERKS_IRON_LUNGS", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 21, "@PERKS_DEAD_SILENCE", specialty_detectexplosive, ; )
+    CHOICE_DVARYESNO( 22, "@PERKS_EAVESDROP", specialty_detectexplosive, ; )
+    
+    
+    // server settings =========================================
+		//CHOICE_DVARLIST_VIS( 		1, "@MENU_GAME_TYPE", "", ITEM_TYPE_MULTI, ownerdraw UI_NETGAMETYPE textaligny 20, ;, 1 )
+		//CHOICE_DVAREDIT_VIS( 		2, "@MENU_SERVER_NAME", "sv_hostname", 20, 20, ;, 1 )
+		//CHOICE_DVARFLOATLIST( 		3, "@MENU_DEDICATED", "ui_dedicated", { "@MENU_NO" 0 "@MENU_LAN" 1 }, ; )
+		//CHOICE_DVARYESNO( 			4, "@MENU_PURE", "sv_pure", ; )
+		//CHOICE_DVAREDIT_NUMERIC( 	4, "@MENU_MAXIMUM_PLAYERS", "sv_maxclients", 3, ; )
+		//CHOICE_DVAREDIT_NUMERIC( 	5, "@MENU_MINIMUM_PING", "sv_minping", 4, ; )
+				
+		//CHOICE_SEPARATOR( CHOICE_SEP_1 )
+				
+		//CHOICE_DVARFLOATLIST( 	8, "@MENU_FRIENDLY_FIRE", "scr_friendlyfire", { "@MENU_OFF" 0 "@MENU_ON" 1 "@MENU_REFLECT" 2 "@MENU_SHARED" 3 }, ; )	
+		//CHOICE_DVARYESNO( 			8, "@MENU_VOICECHATCOLON", "sv_voice", ; )
+		//CHOICE_DVARYESNO( 		9, "@MENU_FORCE_RESPAWNING", "scr_forcerespawn", ; )
+		//CHOICE_DVARYESNO( 		10, "@MENU_KILLCAM", "scr_killcam", ; )
+		//CHOICE_DVARYESNO( 			9, "@MENU_AUTOBALANCE_TEAMS", "scr_teambalance", ; )
+		//CHOICE_DVARYESNO( 			10, "@MENU_ALLOW_VOTING", "g_allowvote", ; )
+		//CHOICE_DVARYESNO( 		11, "@MENU_ALLOW_ENEMY_SPECTATING", "scr_spectateenemy", ; ) //CHOICE_DVARYESNO( 16, "@MENU_ALLOW_FREE_SPECTATING", "scr_spectatefree", ; )
+		//CHOICE_DVARYESNO( 			11, "@MPUI_PUNKBUSTERWITHCOLONANDTWOSPACES", "sv_punkbuster", ; )		
+		//CHOICE_SEPARATOR( CHOICE_SEP_2 )
+		
+		//CHOICE_BUTTON( 			12, "@MENU_GAME_TYPE_SETTINGS", LOCAL_RULES_ACTION )
+		//CHOICE_BUTTON(			13, "@MENU_RESET_TO_DEFAULT", open reset_gamesettings; )
+			
+		// map selection ===========================================
+		
+		itemDef {
+			name			back
+			text			"@MENU_BACK"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			forecolor		TEXTBUTTON_COLOR
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			-250 -26 40 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			1
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+				close self;
+			}	
+		}
+
+		itemDef 
+		{
+			name			accept
+			text			"@MENU_SAVE"
+			type			ITEM_TYPE_BUTTON
+			textfont		UI_FONT_NORMAL
+			style			WINDOW_STYLE_FILLED	
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			220 -26 40 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textalignx		0
+			textaligny		18
+			forecolor		TEXTBUTTON_COLOR
+			visible			1
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+				close self;
+			}	
+		}
+	}
+}
