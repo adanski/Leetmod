@@ -1,0 +1,76 @@
+#include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+#define 	OPTIONS_STYLE			1
+#define 	CHOICE_SEP_1			23
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+
+{
+	menuDef 
+	{
+		name			"options_multi"
+		fullScreen		0
+		rect			0 0 640 480
+		focusColor		COLOR_FOCUSED
+		soundloop		""
+		onOpen
+		{
+			exec "setfromdvar ui_name name";
+			//exec "setfromdvar ui_xfire xfire";
+			
+			close options_look;
+			close options_move;
+			close options_shoot;
+			close options_graphics;
+			close options_sound;
+			close options_game;
+			close options_view;
+			close options_defaults;
+			close options_driverinfo;
+			close options_credits;
+			close options_graphics_defaults;
+			close options_graphics_texture;
+			close options_control_defaults;
+
+			setLocalVarBool ui_hideBack 1;
+		}
+		onClose
+		{
+			setLocalVarBool ui_hideBack 0;
+			exec "setfromdvar name ui_name";
+			//exec "setfromdvar xfire ui_xfire";
+		}
+		onESC 
+		{ 
+			close self;		
+		}
+
+		#include "ui_mp/leftside_options.inc"
+		
+		CHOICE_SECTION_TITLE( 21, "@MENU_MULTIPLAYER_OPTIONS" )
+		
+		CHOICE_DVARYESNO( 22, "@MPUI_PUNKBUSTER", cl_punkbuster, ; )
+		//CHOICE_DVARYESNO( 23, "@MENU_ALLOW_DOWNLOAD", cl_allowdownload, ; )
+		//CHOICE_DVARYESNO( 24, "@MENU_DRAW_HUD", hud_enable, ; )
+		//CHOICE_DVAREDIT( 24, "@MENU_PLAYER_NAME", ui_name, ; )
+		CHOICE_DVAREDIT_VIS( 23, "@MENU_PLAYER_NAME", ui_name, 15, 15, ;, 1 )
+		//CHOICE_DVAREDIT_VIS( 25, "@OW_MENU_XFIRE", ui_xfire, 15, 15, ;, 1 )
+		CHOICE_SEPARATOR( CHOICE_SEP_1 )
+		CHOICE_BUTTON( 24, "@MENU_ENTER_KEY_CODE", open cdkey_menu; )
+		
+		CHOICE_SECTION_TITLE( 25, "@OW_MENU_PERFORMANCE_SETTINGS" )
+		CHOICE_DVARYESNO( 26, "@OW_OBJECT_PHYSICS", dynEnt_active, ; )
+		CHOICE_DVARYESNO( 27, "@OW_DRAW_DECALS", r_drawdecals, ; )
+		CHOICE_DVARYESNO( 28, "@OW_DRAW_SUN", r_drawsun, ; )
+		CHOICE_DVARYESNO( 29, "@OW_NORMAL_MAPPING", r_normal, ; )
+		CHOICE_DVARYESNO( 30, "@OW_EXPLOSION_DISTORT", r_distortion, ; )
+		CHOICE_DVARYESNO( 31, "@OW_EJECT_BRASS", cg_brass, ; )
+		
+		CHOICE_SECTION_TITLE( 32, "@OW_MENU_NETWORK_SETTINGS" )
+		CHOICE_DVARFLOATLIST( 33, "@OW_DUP_PACKETS", cl_packetdup, { "0" 0 "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 }, ; )
+		
+		//CHOICE_BACK( "@MENU_BACK", close self )
+
+		CHOICE_KEYBINDHELP
+	}
+}

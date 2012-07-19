@@ -1,0 +1,210 @@
+#include "ui/menudef.h"
+
+{
+	menuDef 
+	{
+		name	"auconfirm"
+		fullscreen 0
+		rect 204 160 235 175
+		focusColor COLOR_FOCUSED
+		style 1
+		border 1
+		popup
+		
+		onESC
+		{
+			close auconfirm
+		}
+		
+		itemDef 
+		{
+			//name acwindow
+			group grpControlbutton
+			rect 0 2 235 175
+			style WINDOW_STYLE_FILLED
+			border 1
+			bordercolor .5 .5 .5 .5
+			forecolor 1 1 1 1
+			backcolor 0 0 0 .85
+			visible 1
+			decoration
+		}
+
+		itemDef 
+		{
+			//name acwindow2
+			group grpControlbutton
+			rect 2 4 231 20	
+			style WINDOW_STYLE_FILLED
+			border 1
+			bordercolor .1 .1 .1 .2
+			forecolor 1 1 1 1
+			backcolor .4 .6 .85 .3
+			visible 1
+			decoration
+		}
+		
+		
+		itemDef 
+		{
+			text "@OW_ABOUT_TITLE" 
+			style 0
+			textscale .25 
+			textstyle 3
+			rect 116 20 110 20
+			textalign ITEM_ALIGN_CENTER
+			textalignx -55
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+
+		// Current version display
+		itemDef 
+		{
+			text "@OW_ABOUT_ITEM_DEVS" 
+			style 0
+			textscale .25 
+			textstyle 3
+			rect 30 40 110 20
+			textalign ITEM_ALIGN_LEFT
+			textalignx 0
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+		itemDef 
+		{
+			text "@OW_ABOUT_ITEM_MANAGERS" 
+			style 0
+			textscale .25 
+			textstyle 3
+			rect 30 55 110 20
+			textalign ITEM_ALIGN_LEFT
+			textalignx 0
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+		
+		// Update version display
+		itemDef 
+		{
+			text "@OW_ABOUT_ITEM_OW" 
+			style 0
+			textscale .25 
+			textstyle 3
+			rect 30 70 110 20
+			textalign ITEM_ALIGN_LEFT
+			textalignx 0
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+		itemDef 
+		{
+			text "@OW_ABOUT_ITEM_BOTS"
+			style 0
+			textscale .25 
+			textstyle 3
+			rect 30 85 110 20
+			textalign ITEM_ALIGN_LEFT
+			textalignx 0
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+		itemDef 
+		{
+			text "@OW_ABOUT_ITEM_VERSION"
+			style 0
+			textscale .25 
+			textstyle 3
+			rect 30 100 110 20
+			textalign ITEM_ALIGN_LEFT
+			textalignx 0
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+		itemDef 
+		{
+			text "@OW_ABOUT_ITEM_EMAIL"
+			style 0
+			textscale .25 
+			textstyle 3
+			rect 30 115 110 20
+			textalign ITEM_ALIGN_LEFT
+			textalignx 0
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+		itemDef 
+		{
+			text "@OW_ABOUT_ITEM_THANKS"
+			style 0
+			textscale .25 
+			textstyle 3
+			rect 30 130 110 20
+			textalign ITEM_ALIGN_LEFT
+			textalignx 0
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+		itemDef 
+		{
+			text "@OW_VISIT_SITE"
+			style 0
+			textscale .25 
+			textstyle 3
+			rect 30 145 110 20
+			textalign ITEM_ALIGN_LEFT
+			textalignx 0
+			textaligny 0
+			textfont UI_FONT_NORMAL
+			decoration
+			forecolor 1 1 1 1
+			visible 1
+		}
+    
+		itemDef 
+		{
+			text "@MENU_OK"
+			type 1
+			textscale .3
+			style		WINDOW_STYLE_FILLED
+			textstyle	ITEM_TEXTSTYLE_SHADOWED
+			rect 93 155 50 20
+			textalign ITEM_ALIGN_CENTER
+			textaligny 15
+			textfont UI_FONT_NORMAL
+			forecolor .9 .9 .95 1
+//			backcolor .3 0.5 0.2 .55
+			visible 1
+			mouseEnter 
+			{ 
+				play "mouse_over";
+			} 
+			action { play "mouse_click"; close auconfirm } 		
+		}
+    
+	}
+}

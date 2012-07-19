@@ -1,0 +1,114 @@
+#include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+#define OPTIONS_STYLE			1
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+
+#define ASH1 "set con_outputWindowColor 0.1 0.2 1 0.2";
+#define ASH2 "set con_outputSliderColor 0.2 0.7 0 0.6";
+#define ASH3 "set con_inputBoxColor 0.4 0.5 0.8 1";
+#define ASH4 "set con_inputHintBoxColor 0.4 0.6 0.8 1";
+#define ASH5 "con_hidechannel *; con_showchannel client";
+		
+#define AHH1 "set con_outputWindowColor 0.35 0.35 0.3 0.75";
+#define AHH2 "set con_outputSliderColor 0.15 0.15 0.1 0.6";
+#define AHH3 "set con_inputBoxColor 0.25 0.25 0.2 1";
+#define AHH4 "set con_inputHintBoxColor 0.4 0.4 0.35 1";
+#define AHH5 "con_hidechannel *; con_showchannel dontfilter error gamenotify boldgame subtitle obituary logfile_only console_only gfx sound files devgui profile ui client server system playerweap ai anim physics fx leaderboards parserscript script";
+
+{
+	menuDef 
+	{
+		name 			muteplayer
+		fullScreen 		0				
+		rect 			0 0 640 480				// Size and position of the menu
+		focusColor 		COLOR_FOCUSED			// Menu focus color for text and items
+		blurWorld		7.0
+		onEsc
+		{
+			close self;
+		}
+		PREPROC_SHADER_DRAW( -120 0 880 480, 0 0, "white", 0 0 0 0.75, 0, 1, 0 0 0 0 )
+
+		#undef BACK_OPEN
+		#define BACK_OPEN exec "wait";
+		#include "ui_mp/navcontrols.inc"
+		CHOICE_MENU_TITLE( "@OW_PLAYERS_STATS_VOICE" )
+
+		CHOICE_BUTTON( 3, "@MP_PLAYER_TOGGLE_MUTE", uiScript mutePlayer; )
+		CHOICE_DVARYESNO( 17, "@MPUI_ENABLE_VOICE_CHAT", cl_voice, ; )
+		CHOICE_BUTTON_VIS( 18, "@OW_CONSOLE_HISTORY_ABREV_ON", exec AHH1;exec AHH2;exec AHH3;exec AHH4;exec AHH5;setdvar ct_conChatHistOnly 0;, when( dvarbool( ct_conChatHistOnly ) ); )
+		CHOICE_BUTTON_VIS( 18, "@OW_CONSOLE_HISTORY_ABREV_OFF", exec ASH1;exec ASH2;exec ASH3;exec ASH4;exec ASH5;setdvar monkeytoy 0;setdvar ct_conChatHistOnly 1;, when( !dvarbool( ct_conChatHistOnly ) ); )
+		//CHOICE_BUTTON_VIS( 17, "@MPUI_ENABLE_VOICE_CHAT", setdvar cl_voice "1";, when( !dvarbool( cl_voice ) ) )
+		//CHOICE_BUTTON_VIS( 17, "@MPUI_DISABLE_VOICE_CHAT", setdvar cl_voice "0";, when( dvarbool( cl_voice ) ) )
+		//CHOICE_BUTTON( 14, "@MPUI_ENABLE_VOICE_CHAT", close self; setdvar cl_voice "1"; )
+		//CHOICE_BUTTON( 14, "@MPUI_DISABLE_VOICE_CHAT", close self; setdvar cl_voice "0"; )
+    execkeyint 13 { play "mouse_click"; uiScript mutePlayer; }
+    execkeyint 32 { play "mouse_click"; uiScript mutePlayer; }
+    execkey "q" { close self; }
+    execkey "b" { close self; }
+    execkey "v" { play "mouse_click"; exec "toggle cl_voice"; }
+    execkey "a" { play "mouse_click"; scriptMenuResponse "prevpl"; }
+    execkey "d" { play "mouse_click"; scriptMenuResponse "rightpl"; }
+
+		itemDef 
+		{
+			name			playermutelist
+			visible			1
+			rect			20 80 220 300 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			style			WINDOW_STYLE_FILLED
+			type			ITEM_TYPE_LISTBOX
+			textscale		CHOICE_TEXTSIZE
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			elementtype		LISTBOX_TEXT
+			elementwidth	120
+			elementheight	24
+			textalignx 		6
+			textaligny 		0
+			border			1
+			forecolor 		CHOICE_TEXTCOLOR
+			backcolor 		0 0 0 0
+			bordersize		1
+			bordercolor		1 1 1 0.15
+			outlinecolor	1 1 1 0.2
+			feeder			FEEDER_MUTELIST
+			columns			2 	2  62 	10
+							  	64 172  25
+			doubleclick
+			{
+				play "mouse_click";
+				uiScript mutePlayer;
+			}
+			mouseEnter 		{ setitemcolor maplist bordercolor 1 1 1 0.55 }
+			mouseExit 		{ setitemcolor maplist bordercolor 1 1 1 0.15 }
+		}
+    // ====================== player stats =========================
+    #include "ui_mp/player_info.inc"
+    
+    itemDef {
+      name 		"prevpl"
+      type			1
+      style			WINDOW_STYLE_SHADER
+      rect			2 -4 16 16 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
+      origin			ORIGIN_PLAYERSTATS
+      background		"ui_arrow_left"
+      forecolor		COLOR_FOCUSED
+      visible			when( dvarInt( ui_showEndOfGame ) == 0 )
+      mouseEnter { play "mouse_over"; } 
+      action { play "mouse_click"; scriptMenuResponse "prevpl"; }	
+    }
+
+    itemDef {
+      name 		"nextpl"
+      type			1
+      style			WINDOW_STYLE_SHADER
+      rect			20 -4 16 16 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
+      origin			ORIGIN_PLAYERSTATS
+      background		"ui_arrow_right"
+      forecolor		COLOR_FOCUSED
+      visible			when( dvarInt( ui_showEndOfGame ) == 0 )
+      mouseEnter { play "mouse_over"; } 
+      action { play "mouse_click"; scriptMenuResponse "nextpl"; }	
+    }
+	}
+}
