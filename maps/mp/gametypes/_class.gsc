@@ -788,22 +788,8 @@ giveLoadout( team, class )
 
 		primaryTokens = strtok( primaryWeapon, "_" );
 		self.pers["primaryWeapon"] = primaryTokens[0];
-    
-    //PeZBOT
-  	if(isDefined(self.bIsDog) && self.bIsDog)
-  	{
-  	  println("setting dog model");
-      self setModel("german_sheperd_dog");
-	    self setViewmodel("viewhands_desert_opfor");
-	    self.voice = "arab";
-  	}
-  	else
-  	{
-  		self maps\mp\gametypes\_teams::playerModelForWeapon( self.pers["primaryWeapon"] );
-    }
-    //PeZBOT/
-    
-    //self maps\mp\gametypes\_teams::playerModelForWeapon( self.pers["primaryWeapon"] );
+
+		self maps\mp\gametypes\_teams::playerModelForWeapon( self.pers["primaryWeapon"] );
 
 		self GiveWeapon( weapon, self.custom_class[class_num]["camo_num"] );
 		self.camo_num = self.custom_class[class_num]["camo_num"];
@@ -881,10 +867,7 @@ giveLoadout( team, class )
 		assertex( isdefined( self.specialty ) && self.specialty.size > 0, "Default class: " + class + " is missing specialties " );
 
 		// re-registering perks to code since perks are cleared after respawn in case if players switch classes
-		//PeZBot
-    if(!isdefined(self.pers["isbot"])) self register_perks();
-    //PeZBot/
-    //self register_perks();
+		self register_perks();
 
 		// weapon override for round based gametypes
 		// TODO: if they switched to a sidearm, we shouldn't give them that as their primary!
@@ -908,20 +891,7 @@ giveLoadout( team, class )
 		if ( self.pers["primaryWeapon"] == "m14" )
 			self.pers["primaryWeapon"] = "m21";
 
-    //PeZBOT
-  	if(isDefined(self.bIsDog) && self.bIsDog)
-  	{
-  	  println("setting dog model");
-      self setModel("german_sheperd_dog");
-	    self setViewmodel("viewhands_desert_opfor");
-	    self.voice = "arab";
-  	}
-  	else
-  	{
-  		self maps\mp\gametypes\_teams::playerModelForWeapon( self.pers["primaryWeapon"] );	
-    }
-    //PeZBOT/
-    //self maps\mp\gametypes\_teams::playerModelForWeapon( self.pers["primaryWeapon"] );
+		self maps\mp\gametypes\_teams::playerModelForWeapon( self.pers["primaryWeapon"] );
 
 		self GiveWeapon( weapon );
 		if( self cac_hasSpecialty( "specialty_extraammo" ) )
