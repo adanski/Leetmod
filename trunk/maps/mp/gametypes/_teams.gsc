@@ -576,7 +576,6 @@ setPlayerModels()
 			iprintln( "WARNING: game[\"allies\"] == "+game["allies"]+", expected \"marines\"." );
 			game["allies"] = "marines";
 		}
-    setdvar("scr_modeltype", "desert");
 		
 		mptype\mptype_ally_cqb::precache();
 		mptype\mptype_ally_sniper::precache();
@@ -604,7 +603,6 @@ setPlayerModels()
 			iprintln( "WARNING: game[\"allies\"] == "+game["allies"]+", expected \"sas\"." );
 			game["allies"] = "sas";
 		}
-    setdvar("scr_modeltype", "urban");
 		
 		mptype\mptype_ally_urban_sniper::precache();
 		mptype\mptype_ally_urban_support::precache();
@@ -632,7 +630,6 @@ setPlayerModels()
 			iprintln( "WARNING: game[\"allies\"] == "+game["allies"]+", expected \"marines\"." );
 			game["allies"] = "marines";
 		}
-    setdvar("scr_modeltype", "woodland");
 		
 		mptype\mptype_ally_woodland_assault::precache();
 		mptype\mptype_ally_woodland_recon::precache();
@@ -661,7 +658,6 @@ setPlayerModels()
 			iprintln( "WARNING: game[\"axis\"] == "+game["axis"]+", expected \"opfor\" or \"arab\".");
 			game["axis"] = "opfor";
 		}
-    setdvar("scr_modeltype", "desert");
 		
 		mptype\mptype_axis_cqb::precache();
 		mptype\mptype_axis_sniper::precache();
@@ -691,7 +687,6 @@ setPlayerModels()
 			iprintln( "WARNING: game[\"axis\"] == "+game["axis"]+", expected \"russian\".");
 			game["axis"] = "russian";
 		}
-    setdvar("scr_modeltype", "urban");
 		
 		mptype\mptype_axis_urban_sniper::precache();
 		mptype\mptype_axis_urban_support::precache();
@@ -719,7 +714,6 @@ setPlayerModels()
 			iprintln( "WARNING: game[\"axis\"] == "+game["axis"]+", expected \"russian\".");
 			game["axis"] = "russian";
 		}
-    setdvar("scr_modeltype", "woodland");
 		
 		mptype\mptype_axis_woodland_rifleman::precache();
 		mptype\mptype_axis_woodland_cqb::precache();

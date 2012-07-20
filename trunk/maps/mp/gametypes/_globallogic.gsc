@@ -946,12 +946,6 @@ spawnPlayer()
 		// We're in the victory screen, but before intermission
 		self freezePlayerForRoundEnd();
 	}
-  //PeZBOT
-  self svr\PeZBOT::DeinitTargetables();
-  self svr\PeZBOT::InitTargetables();
-  if (getdvar("svr_pezbots_mode") == "dev")
-    self thread svr\PeZBOT::Developer();
-  //PeZBOT/
 }
 
 hidePerksAfterTime( delay )
@@ -1801,10 +1795,6 @@ endGame( winner, endReasonText )
 	}
 	
 	openwarfare\_advancedmvs::mapVoting_Intermission();
-  
-  svr\PeZBOT::KickAllAlliesBots();
-  svr\PeZBOT::KickAllAxisBots();
-  svr\pezbot::endmap();
 	
 	players = level.players;
 	for ( index = 0; index < players.size; index++ )
@@ -3334,24 +3324,6 @@ startGame()
 	} else {
 		openwarfare\_strategyperiod::start();
 	}
-  
-  //PEZBOT
-	if(getdvar("svr_pezbots_botKickCount") != "" && getDvarInt("svr_pezbots_botKickCount") > 0)
-	{
-		setDvar("svr_pezbots", getDvarInt("svr_pezbots_botKickCount"));
-		setDvar("svr_pezbots_botKickCount", 0);
-	}
-	if(getdvar("svr_pezbots_botKickCount_allies") != "" && getDvarInt("svr_pezbots_botKickCount_allies") > 0)
-	{
-		setDvar("svr_pezbots_allies", getDvarInt("svr_pezbots_botKickCount_allies"));
-		setDvar("svr_pezbots_botKickCount_allies", 0);
-	}
-	if(getdvar("svr_pezbots_botKickCount_axis") != "" && getDvarInt("svr_pezbots_botKickCount_axis") > 0)
-	{
-		setDvar("svr_pezbots_axis", getDvarInt("svr_pezbots_botKickCount_axis"));
-		setDvar("svr_pezbots_botKickCount_axis", 0);
-	}
-	//PEZBOT/
 
 	prematchPeriod();
 	level notify("prematch_over");
@@ -3932,10 +3904,6 @@ Callback_StartGameType()
 	level.prematchPeriodEnd = 0;
 
 	level.intermission = false;
-  
-  //PeZBot
-	svr\PeZBOT::precache();
-  //PeZBot/
 	
 	maps\mp\gametypes\_scoreboard::init();
 
@@ -4374,11 +4342,7 @@ Callback_StartGameType()
 	thread maps\mp\gametypes\_dev::init();
 	#/
 
-	//PeZBot
-  thread svr\PeZBot::init();
-  //PeZBot/
-  
-  thread startGame();
+	thread startGame();
 	level thread updateGameTypeDvars();
 }
 
@@ -4653,11 +4617,7 @@ Callback_PlayerConnect()
 
 	if ( level.teambased )
 		self updateScores();
-  
-  //PeZBOT
-  self svr\PeZBOT::Connected();
-  //PeZBOT/
-  
+
 	// When joining a game in progress, if the game is at the post game state (scoreboard) the connecting player should spawn into intermission
 	if ( game["state"] == "postgame" )
 	{
@@ -4871,10 +4831,6 @@ kickWait( waittime )
 
 Callback_PlayerDisconnect()
 {
-  //PeZBOT
-  self svr\PeZBOT::Disconnected();
-  //PeZBOT
-  
 	self removePlayerOnDisconnect();
 
 	if ( !level.gameEnded )
@@ -5479,14 +5435,7 @@ Callback_PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDi
 	if ( game["state"] == "postgame" )
 		return;
 
-  //PeZBOT
-	if(isDefined(self.bIsBot) && self.bIsBot == true)
-		if( attacker.classname == "script_vehicle" && isDefined( attacker.owner ) )
-      self.murderer = attacker.owner;
-    else
-      self.murderer = attacker;
-	//PeZBOT/
-  
+
 	prof_begin( "PlayerKilled pre constants" );
 
 	deathTimeOffset = 0;
@@ -5915,12 +5864,7 @@ Callback_PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDi
 	self.leaving_team = undefined;
 
 	self thread [[level.onPlayerKilled]](eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration);
-  
-  //PEZBOT detach weapon attachment
-  if(isdefined(self.bIsBot) && self.bIsBot)
-    self detach(getWeaponModel(self.actualWeapon), "TAG_WEAPON_RIGHT", true);
-  //PEZBOT/
-  
+
 	if ( sWeapon == "frag_grenade_short_mp" || sWeapon == "none" )
 		doKillcam = false;
 
@@ -5993,11 +5937,6 @@ Callback_PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDi
 	}
 
 	prof_end( "PlayerKilled post constants" );
-  
-  //PeZBOT
-  if(isDefined(self.bIsBot) && self.bIsBot)
-    self svr\PeZBOT::BotReset();
-  //PeZBOT/
 
 	if ( game["state"] != "playing" )
 	{
