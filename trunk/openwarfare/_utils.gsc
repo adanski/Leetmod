@@ -16,7 +16,10 @@
 // Function to get extended dvar values
 getdvarx( dvarName, dvarType, dvarDefault, minValue, maxValue )
 {
-	// Check variables from lowest to highest priority
+	if ( getdvar( dvarName + "__override" ) != "" )
+		return getdvard( dvarName, dvarType, dvarDefault, minValue, maxValue );
+  
+  // Check variables from lowest to highest priority
 
 	if ( !isDefined( level.gametype ) ) {
 		level.script = toLower( getDvar( "mapname" ) );
