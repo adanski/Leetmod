@@ -251,7 +251,7 @@ REFERENCE           3_FRAG_GRENADES
 LANG_ENGLISH        "Extra frag grenade(s)."
 
 REFERENCE           3_SPECIAL_GRENADES_NO
-LANG_ENGLISH        "2 special grenades. No smoke."
+LANG_ENGLISH        "More special grenades. No smoke."
 
 REFERENCE           REMOTE_DETONATION_EXPLOSIVE
 LANG_ENGLISH        "Remote detonation explosive."
@@ -467,7 +467,7 @@ REFERENCE           LUNLOCK_LV19
 LANG_ENGLISH        "Unlocked at Master Sergeant (Lv19)."
 
 REFERENCE           SMOKE_SELECTION_WARNING
-LANG_ENGLISH        "Option not available when Special Grenades x2 is selected in Perk 1."
+LANG_ENGLISH        "Option not available when Special Grenades + is selected in Perk 1."
 
 REFERENCE           UNLOCKED_AT_LV16
 LANG_ENGLISH        "Unlocked at Gunnery Sergeant (Lv16)."

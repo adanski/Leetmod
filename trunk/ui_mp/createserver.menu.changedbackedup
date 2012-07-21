@@ -63,9 +63,9 @@
 		CHOICE_DVAREDIT_VIS( 		2, "@MENU_SERVER_NAME", "sv_hostname", 20, 20, ;, 1 )
 		CHOICE_DVARFLOATLIST( 		3, "@MENU_DEDICATED", "ui_dedicated", { "@MENU_NO" 0 "@MENU_LAN" 1 }, ; )
 		//CHOICE_DVARYESNO( 			4, "@MENU_PURE", "sv_pure", ; )
-		CHOICE_DVAREDIT_NUMERIC( 	4, "@MENU_MAXIMUM_PLAYERS", "sv_maxclients", 3, ; )
-		CHOICE_DVAREDIT_NUMERIC( 	5, "@MENU_MINIMUM_PING", "sv_minping", 4, ; )
-		CHOICE_DVAREDIT_NUMERIC( 	6, "@MENU_MAXIMUM_PING", "sv_maxping", 4, ; )		//CHOICE_DVAREDIT_NUMERIC( 8, "@MENU_MAXIMUM_RATE", "sv_maxrate", 8, ; )
+		//CHOICE_DVAREDIT_NUMERIC( 	4, "@MENU_MAXIMUM_PLAYERS", "sv_maxclients", 3, ; )
+		//CHOICE_DVAREDIT_NUMERIC( 	5, "@MENU_MINIMUM_PING", "sv_minping", 4, ; )
+		//CHOICE_DVAREDIT_NUMERIC( 	6, "@MENU_MAXIMUM_PING", "sv_maxping", 4, ; )		//CHOICE_DVAREDIT_NUMERIC( 8, "@MENU_MAXIMUM_RATE", "sv_maxrate", 8, ; )
 		CHOICE_DVAREDIT_VIS( 		7, "@MENU_PASSWORD1", "g_password", 12, 12, ;, 1 )	//CHOICE_DVARYESNO( 10, "@MENU_FRIENDLY_INDICATORS", "scr_drawfriend", ; )
 				
 		CHOICE_SEPARATOR( CHOICE_SEP_1 )

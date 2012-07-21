@@ -47,12 +47,6 @@
 			
 			uiScript CreateFavorite;
 			
-			uiScript getCDKey;
-			exec "setfromdvar hsh1 cdkey1"
-			exec "setfromdvar hsh2 cdkey2"
-			exec "setfromdvar hsh3 cdkey3"
-			exec "setfromdvar hsh4 cdkey4"
-			exec "setfromdvar hsh5 cdkey5"
 			execondvarintvalue r_normal 0 "set r_normal 1; set r_normal 0";
 			
 			setfocus "auto_assign";

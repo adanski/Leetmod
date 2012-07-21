@@ -108,6 +108,7 @@
 			decoration
 		}
 */
+/*
 		itemDef
 		{
 			
@@ -144,6 +145,7 @@
 			visible 		1
 			decoration
 		}
+*/
 
 		//#include "ui/safearea.menu"
 	}

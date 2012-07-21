@@ -184,8 +184,8 @@ goto BUILD_OPENWARFARE_IWD
 
 :WEAPONS_FIXES_NOGUNSWAY
 xcopy weapons\fixes+nogunsway weapons\mp /SYI > NUL
-REM FIXED - NEW PEZBOT WEAP (disabled while code is not merged)
-REM xcopy weapons\PeZBotweapons weapons\mp /SYI > NUL
+REM FIXED - NEW PEZBOT WEAP
+xcopy weapons\PeZBotweapons weapons\mp /SYI > NUL
 goto BUILD_OPENWARFARE_IWD
 
 :WEAPONS_FIXES_NOGUNSWAY_SNIPER
@@ -250,8 +250,7 @@ xcopy xmodelsurfs ..\..\raw\xmodelsurfs /SYI > NUL
 
 echo    Copying OpenWarfare source code...
 xcopy openwarfare ..\..\raw\openwarfare /SYI > NUL
-REM Copy PezBot code (disabled at the moment since this copy doesn't have the merged code)
-REM xcopy svr ..\..\raw\svr /SYI > NUL
+xcopy svr ..\..\raw\svr /SYI > NUL
 copy /Y mod.csv ..\..\zone_source > NUL
 copy /Y mod_ignore.csv ..\..\zone_source\%LTARGET%\assetlist > NUL
 cd ..\..\bin > NUL
