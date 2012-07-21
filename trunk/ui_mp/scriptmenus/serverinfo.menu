@@ -40,11 +40,11 @@
       setdvar cl_punkbuster "1";
 			setdvar cl_allowDownload "1";
 			setdvar cl_wwwDownload "1";
-      
+      /*
       scriptMenuRespondOnDvarIntValue compassObjectiveScreen 1 "common_menu_com";
       scriptMenuRespondOnDvarIntValue player_breath_snd_src 1 "common_menu_com";
       scriptMenuRespondOnDvarIntValue snd_enableSrc 1 "common_menu_com";
-
+      */
       exec "setfromdvar ui_hud_hardcore_show_compass ct_hud_hardcore_show_compass";
 			exec "setfromdvar ui_hud_show_inventory ct_hud_show_inventory";
       exec "setfromdvar ui_hud_show_scores ct_hud_show_scores";
