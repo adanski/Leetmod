@@ -161,7 +161,7 @@
 		#define CLEARUIHINT	exec "set ui_hint_text @MP_NULL"
 
 		//CHOICE_BUTTON_VIS( 1, "@MENU_AUTO_UPDATE", open auconfirm;, 1 )
-		CHOICE_BUTTON_VIS( 1, "@OW_ENTER_SERVER", CONNECT_LM_PT, when( !localvarBool( ui_hideBack ) ) )
+		//CHOICE_BUTTON_VIS( 1, "@OW_ENTER_SERVER", CONNECT_LM_PT, when( !localvarBool( ui_hideBack ) ) )
 		//CHOICE_BUTTON_VIS( 2, "@MENU_JOIN_GAME", open join_game_popup;, when( !localvarBool( ui_hideBack ) ) )
 		CHOICE_BUTTON_VIS( 2, "@MENU_JOIN_GAME", open pc_join_unranked;, when( !localvarBool( ui_hideBack ) ) )
 		CHOICE_BUTTON_VIS( 3, "@MENU_START_NEW_SERVER", close self; open createserver;, when( !localvarBool( ui_hideBack ) ) )
