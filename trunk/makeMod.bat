@@ -1,7 +1,9 @@
 REM //******************************************************************************
 REM // Call of Duty 4: Modern Warfare
 REM //******************************************************************************
-REM // Mod      : The OpenWarfare Project... An Open Source Mod for COD4:MW!
+REM // Mod      : Leetmod... cod4 patch 1.8 mod
+REM // Website  : http://www.Leetmod.pt.am
+REM // Based On : The OpenWarfare Project... An Open Source Mod for COD4:MW!
 REM // Website  : http://openwarfaremod.com/
 REM //******************************************************************************
 
@@ -12,17 +14,17 @@ color %color%
 
 :START
 cls
-echo.
-echo.  _____                  _    _             __
-echo. ^|  _  ^|                ^| ^|  ^| ^|           / _^|
-echo. ^| ^| ^| ^|_ __   ___ _ __ ^| ^|  ^| ^| __ _ _ __^| ^|_ __ _ _ __ ___
-echo. ^| ^| ^| ^| '_ \ / _ \ '_ \^| ^|/\^| ^|/ _` ^| '__^|  _/ _` ^| '__/ _ \
-echo. \ \_/ / ^|_) ^|  __/ ^| ^| \  /\  / (_^| ^| ^|  ^| ^|^| (_^| ^| ^| ^|  __/
-echo.  \___/^| .__/ \___^|_^| ^|_^|\/  \/ \__,_^|_^|  ^|_^| \__,_^|_^|  \___^|
-echo.       ^| ^|               We don't make the game you play.
-echo.       ^|_^|                 We make the game you play BETTER.
-echo.
-echo.            Website: http://openwarfaremod.com/
+REM echo.
+REM echo.  _____                  _    _             __
+REM echo. ^|  _  ^|                ^| ^|  ^| ^|           / _^|
+REM echo. ^| ^| ^| ^|_ __   ___ _ __ ^| ^|  ^| ^| __ _ _ __^| ^|_ __ _ _ __ ___
+REM echo. ^| ^| ^| ^| '_ \ / _ \ '_ \^| ^|/\^| ^|/ _` ^| '__^|  _/ _` ^| '__/ _ \
+REM echo. \ \_/ / ^|_) ^|  __/ ^| ^| \  /\  / (_^| ^| ^|  ^| ^|^| (_^| ^| ^| ^|  __/
+REM echo.  \___/^| .__/ \___^|_^| ^|_^|\/  \/ \__,_^|_^|  ^|_^| \__,_^|_^|  \___^|
+REM echo.       ^| ^|               We don't make the game you play.
+REM echo.       ^|_^|                 We make the game you play BETTER.
+REM echo.
+REM echo.            Website: http://openwarfaremod.com/
 
 :MAKEOPTIONS
 echo _________________________________________________________________
