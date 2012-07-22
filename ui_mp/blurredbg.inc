@@ -1,4 +1,4 @@
-#undef FOG_SCROLL_TIME
+#undef  FOG_SCROLL_TIME
 #define FOG_SCROLL_TIME 60000 //30000
 
 itemDef
