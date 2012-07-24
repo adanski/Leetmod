@@ -1974,6 +1974,9 @@ LANG_ENGLISH "Health of the objective (time)"
 REFERENCE SD_OBJ_TAKE_DAMAGE_HEALTH
 LANG_ENGLISH "Health of the objective (HP)"
 
+REFERENCE SD_HQ_TEAM_DEAD_SPECTATE_3RD_P
+LANG_ENGLISH "When own team is dead, spectate enemies in 3rd p."
+
 //******************************************************************************
 // ui_mp/server_gametype_ss.menu
 //******************************************************************************
@@ -1981,6 +1984,7 @@ LANG_ENGLISH "Health of the objective (HP)"
 REFERENCE SS_SWITCH_TIME
 LANG_ENGLISH "Time between switching weapons"
 
-
+REFERENCE SS_SHOTGUN_3RD_P
+LANG_ENGLISH "Whenever a shotgun is drawn, play in 3rd p."
 
 ENDMARKER

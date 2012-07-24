@@ -44,7 +44,6 @@
 			uiScript stopRefresh;
 			setdvar ui_showEndOfGame "0";
       
-			setdvar cl_punkbuster "1";
 			setdvar cl_allowDownload "1";
 			setdvar cl_wwwDownload "1";
       setdvar ui_browserMod "-1";
