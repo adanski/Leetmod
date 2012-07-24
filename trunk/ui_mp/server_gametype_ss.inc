@@ -13,3 +13,5 @@ CHOICE_DVARFLOATLIST_VIS( 8, "@OW_GG_SS_EXPLOSIVE_SPECIAL", scr_ss_explosives_sp
 CHOICE_DVARSTRINGLIST_VIS( 9, "@OW_PERK_SLOT1", scr_ss_specialty_slot1, { "None" specialty_null "@PERKS_STOPPING_POWER" specialty_bulletdamage "@PERKS_JUGGERNAUT" specialty_armorvest "@PERKS_SLEIGHT_OF_HAND" specialty_fastreload "@PERKS_DOUBLE_TAP" specialty_rof "@PERKS_UAV_JAMMER" specialty_gpsjammer "@PERKS_SONIC_BOOM" specialty_explosivedamage }, ;, when(G_GAMETYPE_SS) )
 
 CHOICE_DVARSTRINGLIST_VIS( 10, "@OW_PERK_SLOT2", scr_ss_specialty_slot2, { "None" specialty_null "@PERKS_EXTREME_CONDITIONING" specialty_longersprint "@PERKS_STEADY_AIM" perk_allow_specialty_bulletaccuracy "@PERKS_LAST_STAND" perk_allow_specialty_pistoldeath "@PERKS_MARTYRDOM" perk_allow_specialty_grenadepulldeath "@PERKS_DEEP_IMPACT" perk_allow_specialty_bulletpenetration "@PERKS_IRON_LUNGS" perk_allow_specialty_holdbreath "@PERKS_DEAD_SILENCE" perk_allow_specialty_quieter }, ;, when(G_GAMETYPE_SS) )
+
+CHOICE_DVARYESNO_VIS( 30, "@OW_SS_SHOTGUN_3RD_P", scr_ss_shotguns_tp, ;, when(G_GAMETYPE_SS) )

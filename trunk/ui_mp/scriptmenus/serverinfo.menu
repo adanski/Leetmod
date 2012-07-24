@@ -24,9 +24,6 @@
 		{
       uiScript CreateFavorite;
       
-      setdvar cl_punkbuster "1";
-			setdvar cl_allowDownload "1";
-			setdvar cl_wwwDownload "1";
       /*
       scriptMenuRespondOnDvarIntValue compassObjectiveScreen 1 "common_menu_com";
       scriptMenuRespondOnDvarIntValue player_breath_snd_src 1 "common_menu_com";

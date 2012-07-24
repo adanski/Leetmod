@@ -36,3 +36,5 @@ CHOICE_DVAREDIT_NUMERIC_VIS( 27, "@OW_SD_OBJ_TAKE_DAMAGE_HEALTH", scr_sd_objecti
 
 CHOICE_DVARYESNO_VIS( 28, "@OW_SHOW_BRIEFCASE_MODEL", scr_sd_show_briefcase, ;, when(G_GAMETYPE_SD) )
 CHOICE_DVARYESNO_VIS( 29, "@OW_SHOW_SCOREBOARD_BOMBER", scr_sd_scoreboard_bomb_carrier, ;, when(G_GAMETYPE_SD) )
+
+CHOICE_DVARYESNO_VIS( 30, "@OW_SD_HQ_TEAM_DEAD_SPECTATE_3RD_P", scr_sd_teamdeadspectate_tp, ;, when(G_GAMETYPE_SD) )
