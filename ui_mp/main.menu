@@ -19,7 +19,7 @@
 #include "ui/choices_setup_common.menu"
 //#include "ui_mp/stats_info.inc"
 
-#define CONNECT_LM_PT exec "connect 213.63.224.77:28973"
+//#define CONNECT_LM_PT exec "connect 213.63.224.77:28973"
 
 {
 	assetGlobalDef
@@ -85,9 +85,9 @@
 		onESC
 		{
 		}
-    execkeyint 13 { play "mouse_click"; CONNECT_LM_PT; }
-    execkeyint 32 { play "mouse_click"; CONNECT_LM_PT; }
-    execkey "p" { play "mouse_click"; CONNECT_LM_PT; }
+    //execkeyint 13 { play "mouse_click"; CONNECT_LM_PT; }
+    //execkeyint 32 { play "mouse_click"; CONNECT_LM_PT; }
+    //execkey "p" { play "mouse_click"; CONNECT_LM_PT; }
     execkey "s" { play "mouse_click"; setdvar ui_playerProfileAlreadyChosen 0; open player_profile; }
     execkey "r" { play "mouse_click"; open menu_challenges; }
     execkey "c" { play "mouse_click"; open main_controls; }
