@@ -22,7 +22,8 @@
 		}
     onOpen
 		{
-      uiScript CreateFavorite;
+      //automatic favorite creation (disabled)
+      //uiScript CreateFavorite;
       
       /*
       scriptMenuRespondOnDvarIntValue compassObjectiveScreen 1 "common_menu_com";
@@ -40,7 +41,7 @@
       uiScript openMenuOnDvar ct_displayedserverinfo 1 team_marinesopfor;
       setdvar ct_displayedserverinfo "1";
     }
-    execkey "q" { open popup_endgame; }
+    execkey "q" { open popup_leavegame; }
     execkey "b" { close self; }
     execkeyint 13 { play "mouse_click"; close self; open "team_marinesopfor"; }
     execkeyint 32 { play "mouse_click"; close self; open "team_marinesopfor"; }
@@ -117,7 +118,7 @@
 			type			1
 			style			WINDOW_STYLE_FILLED
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			rect			0 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			rect			-12 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
 			textfont		UI_FONT_NORMAL
 			textalign		ITEM_ALIGN_LEFT
 			textscale		TEXTSIZE_SMALL
@@ -149,7 +150,7 @@
 			action 
 			{
 				play "mouse_click";
-        open popup_endgame;
+        open popup_leavegame;
 			}	
 		}
 

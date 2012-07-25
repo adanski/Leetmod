@@ -11,7 +11,7 @@
 
 #define STYLE_PC	1
 #include "ui_mp/menustyle.inc"
-#include "ui/choices_setup_common.menu"
+#include "ui_mp/choices_setup_common_vis_fix.menu"
 
 {
 	// Server Creation //
@@ -51,19 +51,17 @@
 			close createserver_maps;
 			close createserver_buttons;
 			close createserver_serversettings;*/
-			
-			open main_text;
 		}
 		
 		#include "ui/blurredbg.inc"
 		#define 	BACK_ENABLE		0
 		#include "ui_mp/navcontrols.inc"
-		CHOICE_MENU_TITLE( "@MENU_START_NEW_SERVER" )
+		CHOICE_MENU_TITLE( "@OW_MENU_SERVER_CONFIGURATION" )
 		
 		// server settings =========================================
 		//CHOICE_DVARLIST_VIS( 1, "@MENU_GAME_TYPE", "", ITEM_TYPE_MULTI, ownerdraw UI_NETGAMETYPE textaligny 20, ;, 1 )
     CHOICE_DVARLIST_VIS( 1, "ROTATION", "", ITEM_TYPE_MULTI, ownerdraw UI_NETGAMETYPE textaligny 20, ;, 1 )
-		CHOICE_DVAREDIT_VIS( 2, "@MENU_SERVER_NAME", "sv_hostname", 64, 30, ;, 1 )
+		CHOICE_DVAREDIT_VIS( 2, "@MENU_SERVER_NAME", "sv_hostname", 64, 25, ;, 1 )
 		CHOICE_DVARFLOATLIST( 3, "@MENU_DEDICATED", "ui_dedicated", { "@MENU_NO" 0 "@MENU_LAN" 1 }, ; )
 		//CHOICE_DVARYESNO( 4, "@MENU_PURE", "sv_pure", ; )
 		CHOICE_DVAREDIT_NUMERIC( 4, "@MENU_MAXIMUM_PLAYERS", "sv_maxclients", 3, ; )
@@ -84,7 +82,7 @@
 		
 		//CHOICE_SEPARATOR( CHOICE_SEP_2 )
 		
-    CHOICE_DVAREDIT_VIS( 10, "Map rotation", "sv_mapRotation", 1000, 30, ;, 1 )
+    CHOICE_DVAREDIT_VIS( 10, "Map rotation", "sv_mapRotation", 1000, 25, ;, 1 )
     
     CHOICE_BUTTON( 12, "@OW_SERVER_PERKS", open settings_quick_dm; )
 		CHOICE_BUTTON( 13, "@OW_SERVER_WEAPONS", open settings_quick_war; )
@@ -100,13 +98,17 @@
 				uiScript openMenuOnDvar "ui_netGametypeName" dom "settings_quick_dom";\
 				uiScript openMenuOnDvar "ui_netGametypeName" dm "settings_quick_dm";\
 				uiScript openMenuOnDvar "ui_netGametypeName" ctf "settings_quick_ctf";
-			
+		
+    execkey "f" { exec "fast_restart"; }
+    execkey "m" { exec "map_restart"; }
+    execkey "r" { exec "map_rotate"; }
+    
 		// map selection ===========================================
 		
 		itemDef 
 		{
 			name			maplist
-			rect			-260 180 200 250 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP //404 271 192 130
+			rect			-220 34 200 380 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP //404 271 192 130
 			type			ITEM_TYPE_LISTBOX
 			style			WINDOW_STYLE_FILLED
 			elementwidth 	120
@@ -125,23 +127,52 @@
 			border			1
 			bordersize		1
 			bordercolor		1 1 1 0.15
-			visible			1
+			visible			when( dvarbool( sv_running ) )
 			columns			1 2 190 25
 			mouseEnter 		{ play "mouse_over"; setitemcolor maplist bordercolor 1 1 1 0.55 }
 			mouseExit 		{ setitemcolor maplist bordercolor 1 1 1 0.15 }
 			doubleclick		{ play "mouse_click"; uiScript StartServer; }
-		}		
+		}
+    
+    		itemDef 
+		{
+			name			maplist
+			rect			-220 160 200 250 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP //404 271 192 130
+			type			ITEM_TYPE_LISTBOX
+			style			WINDOW_STYLE_FILLED
+			elementwidth 	120
+			elementheight 	22
+			origin			0 0
+			textfont		UI_FONT_NORMAL
+			textscale		CHOICE_TEXTSIZE
+			elementtype		LISTBOX_TEXT
+			feeder			FEEDER_ALLMAPS
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textalignx 		6
+			textaligny 		0
+			outlinecolor	1 1 1 0.2
+			forecolor 		CHOICE_TEXTCOLOR
+			backcolor 		0 0 0 0
+			border			1
+			bordersize		1
+			bordercolor		1 1 1 0.15
+			visible			when( !dvarbool( sv_running ) )
+			columns			1 2 190 25
+			mouseEnter 		{ play "mouse_over"; setitemcolor maplist bordercolor 1 1 1 0.55 }
+			mouseExit 		{ setitemcolor maplist bordercolor 1 1 1 0.15 }
+			doubleclick		{ play "mouse_click"; uiScript StartServer; }
+		}
 
 		itemDef 
 		{
 			name			mappreview
 			style			0
 			ownerdraw		UI_MAPPREVIEW
-			rect			-260 40 200 135 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			rect			-220 20 200 135 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
 			border			0
 			bordercolor		.5 .5 .5 .5
 			origin			0 0
-			visible			1
+			visible			when( !dvarbool( sv_running ) )
 			decoration
 		}
 		
@@ -166,6 +197,75 @@
 				play "mouse_click";
 				close self;
 			}	
+		}
+    
+    itemDef
+		{
+			name			fastrestart
+			text			"@OW_MENU_FAST_RESTART"
+			type			1
+			style			WINDOW_STYLE_FILLED
+      forecolor		TEXTBUTTON_COLOR
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			when( dvarbool( sv_running ) )
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+        close self;
+        exec "fast_restart";
+			}	
+		}
+    
+    itemDef
+		{
+			name			maprestart
+			text			"@OW_MENU_MAP_RESTART"
+			type			1
+			style			WINDOW_STYLE_FILLED
+      forecolor		TEXTBUTTON_COLOR
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			-24 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			when( dvarbool( sv_running ) )
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+        close self;
+        exec "map_restart";
+			}
+		}
+    
+    itemDef
+		{
+			name			maprotate
+			text			"@OW_MENU_MAP_ROTATE"
+			type			1
+			style			WINDOW_STYLE_FILLED
+      forecolor		TEXTBUTTON_COLOR
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			105 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			1
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+        close self;
+        exec "map_rotate";
+			}
 		}
 
 		itemDef 
@@ -212,4 +312,23 @@
 		CHOICE_BUTTON( 2, "@MENU_YES", exec "exec lm.cfg"; close self )
 		CHOICE_BUTTON( 3, "@MENU_NO", close self )
 	}
+  
+  #include "ui_mp/scriptmenus/server_perks.inc"
+  #include "ui_mp/scriptmenus/server_weapons.inc"
+  
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT			20
+  
+  #undef CHOICE_X_SPACING
+  #define CHOICE_X_SPACING 350
+  
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		200
+  
+  #include "ui_mp/scriptmenus/server_gametypes1.inc"
+  #include "ui_mp/scriptmenus/server_gametypes2.inc"
+  #include "ui_mp/scriptmenus/server_gametypes3.inc"
+  #include "ui_mp/scriptmenus/server_gametypes4.inc"
+  #include "ui_mp/scriptmenus/server_gametypes5.inc"
+  #include "ui_mp/scriptmenus/server_gametypes6.inc"
 }

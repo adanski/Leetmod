@@ -95,12 +95,15 @@ init()
 	level.console = (level.xenon || level.ps3);
 	
 	// If the server is not running in the standard directory then we declare an unranked match
-	/*if ( !isSubStr( toLower(getDvar("sv_referencedFFNames")), "mods/openwarfare/mod" ) ) {
+	/*if ( !isSubStr( toLower(getDvar("sv_referencedFFNames")), "mods/leetmod/mod" ) ) {
 		level.scr_server_rank_type = 1;
 		level.rankedMatch = false;
 	}*/
-
-	//precacheMenu("popup_addfavorite");
+  
+  //commented because:
+  // 1. it doesn't need a menu
+  // 2. max number of precached menus is 32
+  //precacheMenu("popup_addfavorite");
 
 	level.otherTeam["allies"] = "axis";
 	level.otherTeam["axis"] = "allies";

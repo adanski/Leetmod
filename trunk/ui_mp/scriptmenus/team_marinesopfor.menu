@@ -144,19 +144,75 @@
     }
     execkey "o" { play "mouse_click"; close self; open main_options; execnow "set ui_allow_graphic_change 0"; }
     execkey "p" { play "mouse_click"; open muteplayer; close self; }
-    execkey "q" { play "mouse_click"; open popup_endgame; }
+    execkey "q" { play "mouse_click"; open popup_leavegame; }
     execkey "t"
     {
       scriptMenuRespondOnDvarStringValue ui_team marines "axis";
       scriptMenuRespondOnDvarStringValue ui_team opfor "allies";
     }
     
-    #ifdef PC
-			#undef  CHOICE_X_START
-			#define CHOICE_X_START	50
-      #undef  CHOICE_Y_START
-      #define CHOICE_Y_START	246
-     #endif
-		CHOICE_BUTTON_VIS( 9, "@MPUI_LEAVE_GAME", open popup_endgame, when( team( name ) == "TEAM_SPECTATOR" ) )
+    execkey "s" { play "mouse_click"; open createserver; }
+    
+    itemDef 
+		{
+			name			createserverbutton
+			text			"@OW_MENU_SERVER_CONFIGURATION"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			-60 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			when( dvarbool( sv_running ) )
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+        open createserver;
+			}	
+		}
+    
+    itemDef
+		{
+			name			leaveSV
+			text			"@OW_MENU_INTEL_ENDGAME"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			200 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			when( dvarbool( sv_running ) && team( name ) == "TEAM_SPECTATOR" )
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+        open popup_leavegame;
+			}	
+		}
+    itemDef 
+		{
+			name			leaveCL
+			text			"@OW_MENU_INTEL_LEAVE"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			216 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			when( !dvarbool( sv_running ) && team( name ) == "TEAM_SPECTATOR" )
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+        open popup_leavegame;
+			}	
+		}
 	}
 }
