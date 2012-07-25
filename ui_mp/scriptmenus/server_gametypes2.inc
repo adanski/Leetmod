@@ -5,7 +5,7 @@
 menuDef 
 {
   name			"settings_quick_koth"
-  fullScreen		1
+  fullscreen		0
   rect			0 0 640 480
   focusColor		COLOR_FOCUSED
   //soundloop		""
@@ -57,4 +57,25 @@ menuDef
   
   #include "ui_mp/server_gametype_sab.inc"
   #include "ui_mp/server_gametype_koth.inc"
+  
+  itemDef {
+    name			back
+    text			"@MENU_BACK"
+    type			1
+    style			WINDOW_STYLE_FILLED
+    forecolor		TEXTBUTTON_COLOR
+    textstyle		ITEM_TEXTSTYLE_SHADOWED
+    rect			-250 -26 40 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+    textfont		UI_FONT_NORMAL
+    textalign		ITEM_ALIGN_LEFT
+    textscale		TEXTSIZE_SMALL
+    textaligny		18
+    visible			1
+    mouseEnter		{ play "mouse_over"; }
+    action 
+    {
+      play "mouse_click";
+      close self;
+    }	
+  }
 }
