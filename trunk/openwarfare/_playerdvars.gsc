@@ -18,6 +18,8 @@ init()
 	level.scr_dynent_bulletForce = getdvarx( "scr_dynent_bulletForce", "int", 1000, 0, 1000000 );
 	level.scr_dynent_explodeForce = getdvarx( "scr_dynent_explodeForce", "int", 12500, 0, 1000000 );
 	level.scr_cl_maxpackets = getdvarx( "scr_cl_maxpackets", "int", 30, 0, 100 );
+  
+  level.scr_cg_footsteps = getdvarx( "scr_cg_footsteps", "int", 1, 0, 1 );
 	
 	level.scr_bob_prone_fix = getdvarx( "scr_bob_prone_fix", "int", 0, 0, 1 );
 	level.scr_leg_yaw_tolerance = getdvarx( "scr_leg_yaw_tolerance", "int", 20, 0, 180 );
@@ -155,8 +157,11 @@ init()
 	forceClientDvar( "dynent_explodeForce", level.scr_dynent_explodeForce );
 	forceClientDvar( "ragdoll_explode_force", level.scr_ragdoll_explode_force );
 	forceClientDvar( "ragdoll_explode_upbias", level.scr_ragdoll_explode_upbias );
-	if( level.scr_cl_maxpackets )
+	
+  if( level.scr_cl_maxpackets )
     forceClientDvar( "cl_maxpackets", level.scr_cl_maxpackets );
+  
+  forceClientDvar( "cg_footsteps", level.scr_cg_footsteps );
 						 
 	// Set bob variables
 	if ( level.scr_bob_effect_enable == 0 ) {

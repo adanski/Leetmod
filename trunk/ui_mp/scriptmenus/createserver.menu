@@ -62,7 +62,7 @@
 		//CHOICE_DVARLIST_VIS( 1, "@MENU_GAME_TYPE", "", ITEM_TYPE_MULTI, ownerdraw UI_NETGAMETYPE textaligny 20, ;, 1 )
     CHOICE_DVARLIST_VIS( 1, "ROTATION", "", ITEM_TYPE_MULTI, ownerdraw UI_NETGAMETYPE textaligny 20, ;, 1 )
 		CHOICE_DVAREDIT_VIS( 2, "@MENU_SERVER_NAME", "sv_hostname", 64, 25, ;, 1 )
-		CHOICE_DVARFLOATLIST( 3, "@MENU_DEDICATED", "ui_dedicated", { "@MENU_NO" 0 "@MENU_LAN" 1 }, ; )
+		CHOICE_DVARFLOATLIST( 3, "@MENU_DEDICATED", "ui_dedicated", { "@MENU_NO" 0 "@MENU_LAN" 1 "@MENU_INTERNET" 2 }, ; )
 		//CHOICE_DVARYESNO( 4, "@MENU_PURE", "sv_pure", ; )
 		CHOICE_DVAREDIT_NUMERIC( 4, "@MENU_MAXIMUM_PLAYERS", "sv_maxclients", 3, ; )
 		CHOICE_DVAREDIT_NUMERIC( 5, "@MENU_MINIMUM_PING", "sv_minping", 4, ; )

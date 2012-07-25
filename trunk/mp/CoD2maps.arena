@@ -2,7 +2,6 @@
 	map		"mp_convoy"
 	longname	"MPUI_CONVOY"
 	gametype	"ass bel ch ctf dm dom ftag gr gg koth lms lts oitc re sab sd ss war tgr vg"
-	
 }
 
 {
@@ -126,10 +125,21 @@
 }
 
 {
+	map		"mp_ctan"
+	longname	"OW_MAPS_CTAN"
+	gametype	"ass bel ch ctf dm dom ftag gr gg koth lms lts oitc re sab sd ss war tgr vg"
+}
+
+{
 	map		"mp_fav"
 	longname	"OW_MAPS_FAV"
 	gametype	"ass bel ch ctf dm dom ftag gr gg koth lms lts oitc re sab sd ss war tgr vg"
-	
+}
+
+{
+	map		"mp_inv"
+	longname	"OW_MAPS_INV"
+	gametype	"ass bel ch ctf dm dom ftag gr gg koth lms lts oitc re sab sd ss war tgr vg"
 }
 
 {
@@ -166,7 +176,6 @@
 	map		"mp_garena"
 	longname	"OW_MAPS_GARENA"
 	gametype	"ass bel ch ctf dm dom ftag gr gg koth lms lts oitc re sab sd ss war tgr vg"
-	
 }
 
 {
