@@ -228,7 +228,9 @@ material,icon_vip
 material,jammed
 material,lb_healthbar
 material,loadingmap
+material,loadscreen_mp_ctan
 material,loadscreen_mp_fav
+material,loadscreen_mp_inv
 material,loadscreen_mp_garena
 material,loadscreen_mp_modern_rust
 material,loadscreen_mp_mw2_term
