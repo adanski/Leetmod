@@ -18,9 +18,9 @@
 	menuDef 
 	{
 		name			"createserver"
-		fullscreen		1	
+		fullscreen		0
 		rect			0 0 640 480
-		soundloop 		"music_mainmenu_mp"
+		//soundloop 		"music_mainmenu_mp"
 		focuscolor		COLOR_FOCUSED
 		style			1
 		border			0

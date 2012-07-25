@@ -3,7 +3,7 @@
 menuDef 
 {
   name			"settings_quick_war"
-  fullScreen		1
+  fullScreen		0
   rect			0 0 640 480
   focusColor		COLOR_FOCUSED
   //soundloop		""
