@@ -10,7 +10,7 @@ init()
 	game["menu_class"] = "class";
 	game["menu_changeclass"] = "changeclass";
 	game["menu_changeclass_offline"] = "changeclass_offline";
-	
+  
 	if ( !level.console )
 	{
 		game["menu_callvote"] = "callvote";
@@ -71,6 +71,12 @@ init()
 	precacheMenu(game["menu_changeclass"]);
 	precacheMenu(game["menu_initteam_axis"]);
 	precacheMenu(game["menu_changeclass_offline"]);
+  
+  
+  if ( getDvar("dedicated") == "listen server" ) {
+    precacheMenu("createserver");
+  }
+  
 	precacheString( &"MP_HOST_ENDED_GAME" );
 	precacheString( &"MP_HOST_ENDGAME_RESPONSE" );
   

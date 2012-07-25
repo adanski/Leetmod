@@ -26,21 +26,6 @@
 {
 	menuDef
 	{
-		CENTER_POPUP_SETUP( popup_endgame, 4, ;, 1 )
-    execkey "q" { play "mouse_click"; close self; exec "disconnect"; }
-    execkey "w" { play "mouse_click"; close self; exec "quit"; }
-    execkey "y" { play "mouse_click"; close self; exec "disconnect"; }
-    execkey "n" { play "mouse_click"; close self; }
-    execkey "b" { play "mouse_click"; close self; }
-    execkeyint 13 { play "mouse_click"; close self; exec "disconnect"; }
-    execkeyint 32 { play "mouse_click"; close self; exec "disconnect"; }
-
-		CHOICE_POPMENU_TITLE( "@MENU_ARE_YOU_SURE_QUIT" )
-		CHOICE_BUTTON( 3, "@MENU_YES", close self; exec "disconnect"; )
-		CHOICE_BUTTON( 4, "@MENU_NO", close self )
-	}
-	menuDef
-	{
 		CENTER_POPUP_SETUP( popup_leavegame, 4, ;, 1 )
     execkey "q" { play "mouse_click"; close self; exec "disconnect"; }
     execkey "w" { play "mouse_click"; close self; exec "quit"; }

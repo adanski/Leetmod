@@ -20,7 +20,7 @@
 		blurWorld		7.0
 		onEsc
 		{
-			open popup_endgame;
+			open popup_leavegame;
 		}
 		// background overlay
 		itemDef

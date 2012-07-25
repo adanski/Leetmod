@@ -141,7 +141,7 @@
 		#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER	
 
 		// Adding the current server to the favorites is now working as of version 0.0.2.
-		//CHOICE_BUTTON_VIS( 1, "@OW_FAVORITE_ADD",  uiScript CreateFavorite; open popup_addfavorite;, when( dvarstring( ui_favoriteAddress ) != "" ) )
+		CHOICE_BUTTON_VIS( 1, "@OW_FAVORITE_ADD",  uiScript CreateFavorite;, when( dvarstring( ui_favoriteAddress ) != "" ) )
 		//CHOICE_DBUTTON_VIS( 1, "@OW_FAVORITE_ADD", when( dvarstring( ui_favoriteAddress ) == "" ) )
 
 		CHOICE_BUTTON_VIS( 2, "@OW_SERVER_INFORMATION",  close self; execNow "set ct_displayedserverinfo 0"; open serverinfo;, when( dvarbool( ui_server_info ) ) )
@@ -173,6 +173,8 @@
     CHOICE_SEPARATOR( CHOICE_SEP_3 )
 		CHOICE_BUTTON( 9, "@OW_PLAYERS_MENU_ITEM", open muteplayer; close self; )
     
+    //CHOICE_BUTTON_VIS( 10, "@OW_MENU_SERVER_CONFIGURATION", open createserver;, when( dvarbool( sv_running ) ) )
+    
     execkey "1" { play "mouse_click"; scriptMenuResponse "changeclass_keyboard"; }
     execkey "2" { play "mouse_click"; close self; scriptMenuResponse "ow_cac_editor"; }
     execkey "3" { play "mouse_click"; scriptMenuResponse "changeteam"; }
@@ -192,25 +194,71 @@
     execkey "o" { play "mouse_click"; close self; open main_options; execnow "set ui_allow_graphic_change 0"; }
     execkey "p" { play "mouse_click"; open muteplayer; close self; }
     
-    execkey "q" { play "mouse_click"; open popup_endgame; }
-
-		#ifdef PC
-			#undef  CHOICE_X_START
-			#define CHOICE_X_START	50
-      #undef  CHOICE_Y_START
-      #define CHOICE_Y_START	202
-    #endif
-    CHOICE_BUTTON_BG( 10, 1 )
-		CHOICE_HIGHLIGHT( 10, 1 )
-		CHOICE_BUTTON_VIS_NOHI( 10, "@MENU_LEAVE_GAME", open popup_endgame, when( dvarbool( sv_running ) ) )
-		CHOICE_BUTTON_VIS_NOHI( 10, "@MENU_LEAVE_GAME", open popup_leavegame, when( !dvarbool( sv_running ) ) )
+    execkey "q" { play "mouse_click"; open popup_leavegame; }
     
-    #ifdef PC
-			#undef  CHOICE_X_START
-			#define CHOICE_X_START	-320
-      #undef  CHOICE_Y_START
-      #define CHOICE_Y_START	175
-    #endif
+    execkey "s" { play "mouse_click"; open createserver; }
+  
+    itemDef 
+		{
+			name			createserverbutton
+			text			"@OW_MENU_SERVER_CONFIGURATION"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			-60 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			when( dvarbool( sv_running ) )
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+        open createserver;
+			}	
+		}
+    
+    itemDef 
+		{
+			name			leaveSV
+			text			"@OW_MENU_INTEL_ENDGAME"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			200 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			when( dvarbool( sv_running ) )
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+        open popup_leavegame;
+			}	
+		}
+    itemDef 
+		{
+			name			leaveCL
+			text			"@OW_MENU_INTEL_LEAVE"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			216 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textalign		ITEM_ALIGN_LEFT
+			textscale		TEXTSIZE_SMALL
+			textaligny		18
+			visible			when( !dvarbool( sv_running ) )
+			mouseEnter		{ play "mouse_over"; }
+			action 
+			{
+				play "mouse_click";
+        open popup_leavegame;
+			}	
+		}
 
 		//#include "ui/safearea.menu"
 	}

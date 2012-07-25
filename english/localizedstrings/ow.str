@@ -1381,31 +1381,31 @@ REFERENCE ONE_LIFE_UAV_ON
 LANG_ENGLISH "One Life! UAV Activated Permanently"
 
 REFERENCE	AACP_YOU_TARGETED
-LANG_ENGLISH "^1Foste marcado para seres exterminado!"
+LANG_ENGLISH "^1You have been marked for extermination!"
 
 REFERENCE	AACP_PLAYER_TARGETED
-LANG_ENGLISH "^1O jogador ^7&&1^1 foi marcado para ser exterminado!"
+LANG_ENGLISH "^1Player ^7&&1^1 has been marked to kill!"
 
 //******************************************************************************
 // openwarfare/_reservedslots.gsc
 //******************************************************************************
 REFERENCE RESERVEDSLOTS_DISCONNECTED
-LANG_ENGLISH "Jogador ^3&&1^7 foi desconectado para dar lugar a quem tem slot reservada."
+LANG_ENGLISH "Player ^3&&1^7 was disconnected to make room for server members."
 
 REFERENCE RESERVEDSLOTS_MAKEROOM_DISCONNECT
-LANG_ENGLISH "^3Vais ser desconectado para dares lugar a slot reservada.\nReserva já a tua em ^5www.Leetmod.pt.am"
+LANG_ENGLISH "^3You are being disconnected to make room for server members."
 
 REFERENCE RESERVEDSLOTS_MAKEROOM_REDIRECT
-LANG_ENGLISH "^3Vais ser redireccionado para dares lugar a slot reservada.\nReserva já a tua em ^5www.Leetmod.pt.am"
+LANG_ENGLISH "^3You are being redirected to make room for server members."
 
 REFERENCE RESERVEDSLOTS_REDIRECTED
-LANG_ENGLISH "Jogador ^3&&1^7 redireccionado para ^2&&2^7 para dar lugar a quem tem slot reservada (press ^3[{openScriptMenu modkeybind redirect}]^7 to follow)."
+LANG_ENGLISH "Player ^3&&1^7 redirected to ^2&&2^7 to make room for server members (press ^3[{openScriptMenu modkeybind redirect}]^7 to follow)."
 
 REFERENCE RESERVEDSLOTS_MANUAL_REDIRECT
-LANG_ENGLISH "Jogador  ^3&&1^7 redireccionou-se para ^2&&2^7 (press ^3[{openscriptmenu modkeybind redirect}]^7 to follow)."
+LANG_ENGLISH "Player ^3&&1^7 manually redirected to ^2&&2^7 (press ^3[{openscriptmenu modkeybind redirect}]^7 to follow)."
 
 REFERENCE RESERVEDSLOTS_TRYAGAIN
-LANG_ENGLISH "^2Por favor, liga-te novamente dentro de alguns minutos..."
+LANG_ENGLISH "^3Please try connecting again in a few minutes..."
 
 //******************************************************************************
 // ui_mp/options_game_pc.menu
@@ -1603,6 +1603,9 @@ LANG_ENGLISH "^2Play"
 REFERENCE MENU_INTEL_LEAVE
 LANG_ENGLISH "Leave"
 
+REFERENCE MENU_INTEL_ENDGAME
+LANG_ENGLISH "End game"
+
 REFERENCE ABOUT_TITLE
 LANG_ENGLISH "Call of Duty 4 Leetmod"
 
@@ -1674,7 +1677,7 @@ LANG_ENGLISH "Last Stand must have pistol ammo"
 //******************************************************************************
 
 REFERENCE TIMELIMIT
-LANG_ENGLISH "Time limit"
+LANG_ENGLISH "Time limit (min)"
 
 REFERENCE SCORELIMIT
 LANG_ENGLISH "Score limit"
@@ -1692,7 +1695,7 @@ REFERENCE WAVE_RESPAWN_DELAY
 LANG_ENGLISH "Wave respawn time"
 
 REFERENCE NUMBER_OF_LIVES
-LANG_ENGLISH "Number of lives (0=infinite)"
+LANG_ENGLISH "Number of lives"
 
 REFERENCE TEAM_BALANCE_EOR
 LANG_ENGLISH "Balance teams only at end of round"
@@ -1986,5 +1989,20 @@ LANG_ENGLISH "Time between switching weapons"
 
 REFERENCE SS_SHOTGUN_3RD_P
 LANG_ENGLISH "Whenever a shotgun is drawn, play in 3rd p."
+
+
+
+
+REFERENCE MENU_SERVER_CONFIGURATION
+LANG_ENGLISH "Server Configuration"
+
+REFERENCE MENU_FAST_RESTART
+LANG_ENGLISH "Fast Restart"
+
+REFERENCE MENU_MAP_RESTART
+LANG_ENGLISH "Map Restart"
+
+REFERENCE MENU_MAP_ROTATE
+LANG_ENGLISH "Map Rotate"
 
 ENDMARKER
