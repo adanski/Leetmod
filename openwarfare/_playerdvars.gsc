@@ -317,6 +317,11 @@ onPlayerSpawned()
 		self.owGUID = true;
 		self iprintln( &"OW_PLAYER_GUID", self getGuid() );
 	}
+  
+    
+  // Just in case something went wrong in _killcam.gsc
+  // We restore this variable again
+  self setClientDvar("waypointOffscreenPointerDistance", 30);
 }
 
 

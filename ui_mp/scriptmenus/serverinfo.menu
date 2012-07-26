@@ -22,9 +22,6 @@
 		}
     onOpen
 		{
-      //automatic favorite creation (disabled)
-      //uiScript CreateFavorite;
-      
       /*
       scriptMenuRespondOnDvarIntValue compassObjectiveScreen 1 "common_menu_com";
       scriptMenuRespondOnDvarIntValue player_breath_snd_src 1 "common_menu_com";
