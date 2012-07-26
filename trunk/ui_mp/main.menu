@@ -48,6 +48,9 @@
 			setdvar cl_wwwDownload "1";
       setdvar ui_browserMod "-1";
       
+      // in case the player disconnects during a killcam in SD
+      setdvar waypointOffscreenPointerDistance 30;
+      
       setdvar ui_version_show 0;
 		}
 		onClose

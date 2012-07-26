@@ -199,6 +199,11 @@ init()
   //### NEW ### TWEAK FILTERS /
   */
   
+  // these ones come from _class.gsc
+  // forceClientDvar("ct_noperk1", level.clientHidePerk1Panel);
+  // forceClientDvar("ct_noperk2", level.clientHidePerk2Panel);
+  // forceClientDvar("ct_noperk3", level.clientHidePerk3Panel);
+  
 	completeForceClientDvarsArray();
 	
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
@@ -215,12 +220,10 @@ onPlayerConnected()
 	// Check if this player is a marshal or a clan member
 	if ( level.scr_scoreboard_marshal_guids != "" && isSubstr( level.scr_scoreboard_marshal_guids, ""+self getGUID() ) ) {
 		self thread showSpecialScoreboardIcon( "hud_status_marshal", true );
-		
 	} else if ( level.scr_scoreboard_clan_tags.size > 0 && self isPlayerClanMember( level.scr_scoreboard_clan_tags ) ) {
 		// Check if we need to control players using clan tags
 		if ( level.scoreboardClanGUIDs.size == 0 || isDefined( level.scoreboardClanGUIDs[ ""+self getGUID() ] ) ) {
 			self thread showSpecialScoreboardIcon( "hud_status_clan", ( level.scr_livebroadcast_guids != "" && isSubstr( level.scr_livebroadcast_guids, ""+self getGUID() ) ) );
-			
 		} else {
 			// Close any menu that the player might have on screen
 			self closeMenu();
@@ -235,15 +238,24 @@ onPlayerConnected()
 			logPrint( "ICT;K;" + self.name + ";" + self getGUID() + "\n" );
 			kick( self getEntityNumber() );			
 		}
-
 	} else if ( level.scoreboardClanGUIDs.size != 0 && isDefined( level.scoreboardClanGUIDs[ ""+self getGUID() ] ) ) {
 			self thread showSpecialScoreboardIcon( "hud_status_clan", ( level.scr_livebroadcast_guids != "" && isSubstr( level.scr_livebroadcast_guids, ""+self getGUID() ) ) );
 	}
-  
+  /*
   if( self getStat( 261 ) ) {
     iprintln("^5Advanced ^2Detect: ^7"+self.name+" ^1cheated ^7here");
     kick( self getEntityNumber() );
   }
+  */
+  
+  // these ones come from _class.gsc
+  self setClientDvar("ct_noperk1", level.clientHidePerk1Panel);
+  self setClientDvar("ct_noperk2", level.clientHidePerk2Panel);
+  self setClientDvar("ct_noperk3", level.clientHidePerk3Panel);
+  
+  // Just in case something went wrong in _killcam.gsc
+  // We restore this variable again
+  self setClientDvar("waypointOffscreenPointerDistance", 30);
 }
 
 
