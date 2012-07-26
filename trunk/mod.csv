@@ -185,8 +185,8 @@ fx,greed/ui_pickup_red
 
 material,allies_custom_logo
 material,axis_custom_logo
-#material,bandaging
-#material,bleeding
+material,bandaging
+material,bleeding
 material,camping
 material,clanlogo
 material,compass_waypoint_extraction_zone

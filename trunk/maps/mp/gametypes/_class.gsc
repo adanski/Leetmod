@@ -6,7 +6,15 @@
 init()
 {
 	// Load some OpenWarfare variables
-	level.specialty_fraggrenade_ammo_count = getdvarx( "specialty_fraggrenade_ammo_count", "int", 2, 1, 3 );
+  level.weap_allow_frag_grenade = getdvarx( "weap_allow_frag_grenade", "int", 1, 0, 1 );
+	level.weap_allow_concussion_grenade = getdvarx( "weap_allow_concussion_grenade", "int", 1, 0, 1 );
+	level.weap_allow_flash_grenade = getdvarx( "weap_allow_flash_grenade", "int", 1, 0, 1 );
+  
+  level.scr_c4_ammo_count = getdvarx( "scr_c4_ammo_count", "int", 2, 1, 2 );
+  level.scr_claymore_ammo_count = getdvarx( "scr_claymore_ammo_count", "int", 2, 1, 2 );
+  level.scr_rpg_ammo_count = getdvarx( "scr_rpg_ammo_count", "int", 2, 1, 3 );
+  
+  level.specialty_fraggrenade_ammo_count = getdvarx( "specialty_fraggrenade_ammo_count", "int", 2, 1, 3 );
 	level.specialty_specialgrenade_ammo_count = getdvarx( "specialty_specialgrenade_ammo_count", "int", 2, 1, 3 );
 
 	level.classMap["assault_mp"] = "CLASS_ASSAULT";
@@ -141,24 +149,82 @@ load_default_loadout_raw( class_dataTable, team, class, stat_num )
 	else
 		level.classSidearm[team][class] = tablelookup( class_dataTable, 1, stat_num + 3, 4 ) + "_mp";
 
-	// give frag and special grenades
-	level.classGrenades[class]["primary"]["type"] = tablelookup( class_dataTable, 1, stat_num, 4 ) + "_mp";
-	level.classGrenades[class]["primary"]["count"] = int( tablelookup( class_dataTable, 1, stat_num, 6 ) );	//### CUSTOM ### fixes grenades problem
-	
-	level.classGrenades[class]["secondary"]["type"] = tablelookup( class_dataTable, 1, stat_num + 8, 4 ) + "_mp";
-	level.classGrenades[class]["secondary"]["count"] = int( tablelookup( class_dataTable, 1, stat_num + 8, 6 ) ); //### CUSTOM ### fixes grenades problem
-
 	// give default class perks
 	level.default_perk[class] = [];
 	level.default_perk[class][0] = tablelookup( class_dataTable, 1, stat_num + 5, 4 );
 	level.default_perk[class][1] = tablelookup( class_dataTable, 1, stat_num + 6, 4 );
 	level.default_perk[class][2] = tablelookup( class_dataTable, 1, stat_num + 7, 4 );
+  
+  //specialty something to index
+  specialty1 = int( tableLookup( "mp/statsTable.csv", 6, level.default_perk[class][0], 1 ) );
+  specialty2 = int( tableLookup( "mp/statsTable.csv", 6, level.default_perk[class][1], 1 ) );
+  specialty3 = int( tableLookup( "mp/statsTable.csv", 6, level.default_perk[class][2], 1 ) );
+  
+  specialty1 = validatePerk(specialty1, 0);
+  specialty2 = validatePerk(specialty2, 1);
+  specialty3 = validatePerk(specialty3, 2);
+  
+  //reverse: index to specialty something
+  level.default_perk[class][0] = tableLookup( "mp/statsTable.csv", 1, specialty1, 6 );
+  level.default_perk[class][1] = tableLookup( "mp/statsTable.csv", 1, specialty2, 6 );
+  level.default_perk[class][2] = tableLookup( "mp/statsTable.csv", 1, specialty3, 6 );
+  
+  
+  level.classGrenades[class]["primary"]["type"] = tablelookup( class_dataTable, 1, stat_num, 4 ) + "_mp";
+  level.classGrenades[class]["primary"]["count"] = level.weap_allow_frag_grenade;
+  
+  level.classGrenades[class]["secondary"]["type"] = tablelookup( class_dataTable, 1, stat_num + 8, 4 ) + "_mp";
+  // in case it's a smoke grenade
+  level.classGrenades[class]["secondary"]["count"] = 1;
+  
+  switch( level.classGrenades[class]["secondary"]["type"] )
+  {
+    case "concussion_grenade":
+      level.classGrenades[class]["secondary"]["count"] = level.weap_allow_concussion_grenade;
+      break;
+    case "flash_grenade":
+      level.classGrenades[class]["secondary"]["count"] = level.weap_allow_flash_grenade;
+      break;
+  }
+  
+  switch ( level.default_perk[class][0] )
+  {
+    case "specialty_fraggrenade":
+      level.classGrenades[class]["primary"]["count"] += level.specialty_fraggrenade_ammo_count;
+      break;
+    case "specialty_specialgrenade":
+      level.classGrenades[class]["secondary"]["count"] += level.specialty_specialgrenade_ammo_count;
+      break;
+  }
+
+	// give frag and special grenades
+	// level.classGrenades[class]["primary"]["type"] = tablelookup( class_dataTable, 1, stat_num, 4 ) + "_mp";
+	// level.classGrenades[class]["primary"]["count"] = int( tablelookup( class_dataTable, 1, stat_num, 6 ) );	//### CUSTOM ### fixes grenades problem
+	
+	// level.classGrenades[class]["secondary"]["type"] = tablelookup( class_dataTable, 1, stat_num + 8, 4 ) + "_mp";
+	// level.classGrenades[class]["secondary"]["count"] = int( tablelookup( class_dataTable, 1, stat_num + 8, 6 ) ); //### CUSTOM ### fixes grenades problem
 
 	// give all inventory
 	inventory_ref = tablelookup( class_dataTable, 1, stat_num + 5, 4 );
 	if( isdefined( inventory_ref ) && tablelookup( "mp/statsTable.csv", 6, inventory_ref, 2 ) == "inventory" )
 	{
-		inventory_count = int( tablelookup( "mp/statsTable.csv", 6, inventory_ref, 5 ) );
+		// new logic defined below overrites this one
+    // (new logic gets the values from dvars instead of .csv file)
+    inventory_count = int( tablelookup( "mp/statsTable.csv", 6, inventory_ref, 5 ) );
+    
+    switch ( inventory_ref )
+    {
+      case "specialty_weapon_c4":
+        inventory_count = level.scr_c4_ammo_count;
+        break;
+      case "specialty_weapon_claymore":
+        inventory_count = level.scr_claymore_ammo_count;
+        break;
+      case "specialty_weapon_rpg":
+        inventory_count = level.scr_rpg_ammo_count;
+        break;
+    }
+    
 		inventory_item_ref = tablelookup( "mp/statsTable.csv", 6, inventory_ref, 4 );
 		assertex( isdefined( inventory_count ) && inventory_count != 0 && isdefined( inventory_item_ref ) && inventory_item_ref != "" , "Inventory in statsTable.csv not specified correctly" );
 
@@ -657,8 +723,23 @@ get_specialtydata( class_num, specialty )
 	{
 		// inventory distribution to action slot 3 - unique per class
 		assertex( isdefined( cac_count ) && isdefined( cac_weaponref ), "Missing "+specialty+"'s reference or count data" );
-		self.custom_class[class_num]["inventory"] = cac_weaponref;		// loads inventory into action slot 3
-		self.custom_class[class_num]["inventory_count"] = cac_count;	// loads ammo count
+    
+    self.custom_class[class_num]["inventory"] = cac_weaponref;		// loads inventory into action slot 3
+		// fix will go bellow, it rewrites this value
+    self.custom_class[class_num]["inventory_count"] = cac_count;	// loads ammo count
+    
+    switch( cac_reference )
+    {
+      case "specialty_weapon_c4":
+      self.custom_class[class_num]["inventory_count"] = level.scr_c4_ammo_count;
+      break;
+      case "specialty_weapon_claymore":
+      self.custom_class[class_num]["inventory_count"] = level.scr_claymore_ammo_count;
+      break;
+      case "specialty_weapon_rpg":
+      self.custom_class[class_num]["inventory_count"] = level.scr_rpg_ammo_count;
+      break;
+    }
 	}
 	else if( cac_group == "specialty" )
 	{

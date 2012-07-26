@@ -961,7 +961,8 @@ addPerk1()
 {
 	//Add perk1 ( perk_stat )
 	//Make sure the perks are allowed before adding them to the list
-	if ( level.perk_allow_c4_mp )
+	self addCACPerk1( 190 );
+  if ( level.perk_allow_c4_mp )
 		self addCACPerk1( 184 ); //C4
 	if ( level.perk_allow_specialty_specialgrenade )	
 		self addCACPerk1( 176 ); //3x Special
@@ -981,6 +982,7 @@ addPerk2()
 {
 	//Add perk2 ( perk_stat )
 	//Make sure the perks are allowed before adding them to the list
+  self addCACPerk2( 190 );
 	if ( level.perk_allow_specialty_bulletdamage )
 		self addCACPerk2( 160 ); //Stopping Power
 	if ( level.perk_allow_specialty_armorvest )	
@@ -1001,6 +1003,7 @@ addPerk3()
 {
 	//Add perk3 ( perk_stat )
 	//Make sure the perks are allowed before adding them to the list
+  self addCACPerk3( 190 );
 	if ( level.perk_allow_specialty_longersprint )
 		self addCACPerk3( 154 ); //Extreme Conditioning
 	if ( level.perk_allow_specialty_bulletaccuracy )

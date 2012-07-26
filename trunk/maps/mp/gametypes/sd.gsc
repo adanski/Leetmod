@@ -407,6 +407,9 @@ checkAllowSpectating()
 
 sd_endGame( winningTeam, endReasonText )
 {
+  //## added wait, check if it fixes the problem with weird score count
+	wait ( 0.05 );
+  
 	if ( isdefined( winningTeam ) )
 		[[level._setTeamScore]]( winningTeam, [[level._getTeamScore]]( winningTeam ) + 1 );
 
