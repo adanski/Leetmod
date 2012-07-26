@@ -120,7 +120,11 @@ killcam(
 	else
 		self.psoffsettime = 100;
 
-	// ignore spectate permissions
+	// if gametype is SD, we don't want to show the enemy the location of the bomb
+  if( level.gametype == "sd" )
+    self setClientDvar("waypointOffscreenPointerDistance", 16384);
+  
+  // ignore spectate permissions
 	self allowSpectateTeam("allies", true);
 	self allowSpectateTeam("axis", true);
 	self allowSpectateTeam("freelook", true);
@@ -267,6 +271,9 @@ endKillcam()
 		self hidePerk( 2 );
 	}
 	self.killcam = undefined;
+  
+  // Restore HUD element positions
+  self setClientDvar("waypointOffscreenPointerDistance", 30);
 	
 	self thread maps\mp\gametypes\_spectating::setSpectatePermissions();
 }

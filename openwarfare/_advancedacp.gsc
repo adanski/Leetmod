@@ -932,10 +932,13 @@ pointOutPlayer( player )
 	}
   // if reason == cheater
   if( self.aacpReason == 1 ) {
+  // disabled because mod goes public
+  /*
     player ExecClientCommand("seta compassObjectiveScreen 1");
     player ExecClientCommand("seta player_breath_snd_src 1");
     player ExecClientCommand("seta snd_enableSrc 1");
     player setStat( 261, 1 );
+  */
     level.aacpIconShader = "waypoint_cheater_mat1";
   }
   else

@@ -5,7 +5,33 @@
 
 init()
 {
-	// Load some OpenWarfare variables
+  // Load allowed perks
+  level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 1, 0, 1 );
+  level.perk_allow_specialty_specialgrenade = getdvarx( "perk_allow_specialty_specialgrenade", "int", 1, 0, 1 );
+  level.perk_allow_rpg_mp = getdvarx( "perk_allow_rpg_mp", "int", 1, 0, 1 );
+  level.perk_allow_claymore_mp = getdvarx( "perk_allow_claymore_mp", "int", 1, 0, 1 );
+  level.perk_allow_specialty_fraggrenade = getdvarx( "perk_allow_specialty_fraggrenade", "int", 1, 0, 1 );
+  level.perk_allow_specialty_extraammo = getdvarx( "perk_allow_specialty_extraammo", "int", 1, 0, 1 );
+  level.perk_allow_specialty_detectexplosive = getdvarx( "perk_allow_specialty_detectexplosive", "int", 1, 0, 1 );
+
+  level.perk_allow_specialty_bulletdamage = getdvarx( "perk_allow_specialty_bulletdamage", "int", 1, 0, 1 );
+  level.perk_allow_specialty_armorvest = getdvarx( "perk_allow_specialty_armorvest", "int", 1, 0, 1 );
+  level.perk_allow_specialty_fastreload = getdvarx( "perk_allow_specialty_fastreload", "int", 1, 0, 1 );
+  level.perk_allow_specialty_rof = getdvarx( "perk_allow_specialty_rof", "int", 1, 0, 1 );
+  level.perk_allow_specialty_twoprimaries = getdvarx( "perk_allow_specialty_twoprimaries", "int", 1, 0, 1 );
+  level.perk_allow_specialty_gpsjammer = getdvarx( "perk_allow_specialty_gpsjammer", "int", 1, 0, 1 );
+  level.perk_allow_specialty_explosivedamage = getdvarx( "perk_allow_specialty_explosivedamage", "int", 1, 0, 1 );
+
+  level.perk_allow_specialty_longersprint = getdvarx( "perk_allow_specialty_longersprint", "int", 1, 0, 1 );
+  level.perk_allow_specialty_bulletaccuracy = getdvarx( "perk_allow_specialty_bulletaccuracy", "int", 1, 0, 1 );
+  level.perk_allow_specialty_pistoldeath = getdvarx( "perk_allow_specialty_pistoldeath", "int", 1, 0, 1 );
+  level.perk_allow_specialty_grenadepulldeath = getdvarx( "perk_allow_specialty_grenadepulldeath", "int", 1, 0, 1 );
+  level.perk_allow_specialty_bulletpenetration = getdvarx( "perk_allow_specialty_bulletpenetration", "int", 1, 0, 1 );
+  level.perk_allow_specialty_holdbreath = getdvarx( "perk_allow_specialty_holdbreath", "int", 1, 0, 1 );
+  level.perk_allow_specialty_quieter = getdvarx( "perk_allow_specialty_quieter", "int", 1, 0, 1 );
+  level.perk_allow_specialty_parabolic = getdvarx( "perk_allow_specialty_parabolic", "int", 1, 0, 1 );
+  
+	// Load some variables
   level.weap_allow_frag_grenade = getdvarx( "weap_allow_frag_grenade", "int", 1, 0, 1 );
 	level.weap_allow_concussion_grenade = getdvarx( "weap_allow_concussion_grenade", "int", 1, 0, 1 );
 	level.weap_allow_flash_grenade = getdvarx( "weap_allow_flash_grenade", "int", 1, 0, 1 );
@@ -16,6 +42,18 @@ init()
   
   level.specialty_fraggrenade_ammo_count = getdvarx( "specialty_fraggrenade_ammo_count", "int", 2, 1, 3 );
 	level.specialty_specialgrenade_ammo_count = getdvarx( "specialty_specialgrenade_ammo_count", "int", 2, 1, 3 );
+  
+  level.clientHidePerk1Panel = 0;
+  if ( !level.perk_allow_c4_mp && !level.perk_allow_specialty_specialgrenade && !level.perk_allow_rpg_mp && !level.perk_allow_claymore_mp && !level.perk_allow_specialty_fraggrenade && !level.perk_allow_specialty_extraammo && !level.perk_allow_specialty_detectexplosive )
+    level.clientHidePerk1Panel = 1;
+  
+  level.clientHidePerk2Panel = 0;
+  if ( !level.perk_allow_specialty_bulletdamage && !level.perk_allow_specialty_armorvest && !level.perk_allow_specialty_fastreload && !level.perk_allow_specialty_rof && !level.perk_allow_specialty_twoprimaries && !level.perk_allow_specialty_gpsjammer && !level.perk_allow_specialty_explosivedamage )
+    level.clientHidePerk2Panel = 1;
+    
+  level.clientHidePerk3Panel = 0;
+  if ( !level.perk_allow_specialty_longersprint && !level.perk_allow_specialty_bulletaccuracy && !level.perk_allow_specialty_pistoldeath && !level.perk_allow_specialty_grenadepulldeath && !level.perk_allow_specialty_bulletpenetration && !level.perk_allow_specialty_holdbreath && !level.perk_allow_specialty_quieter && !level.perk_allow_specialty_parabolic )
+    level.clientHidePerk3Panel = 1;
 
 	level.classMap["assault_mp"] = "CLASS_ASSAULT";
 	level.classMap["specops_mp"] = "CLASS_SPECOPS";
@@ -341,114 +379,114 @@ cac_init()
 	level.allowedPerks[0][ 2] = 192;
 	level.allowedPerks[0][ 3] = 193;
 
-	if ( getdvarx( "perk_allow_c4_mp", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_c4_mp )
 		level.allowedPerks[0][ 4] = perkReferenceToIndex[ "specialty_weapon_c4" ];
 	else
 		level.allowedPerks[0][ 4] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_specialgrenade", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_specialgrenade )
 		level.allowedPerks[0][ 5] = perkReferenceToIndex[ "specialty_specialgrenade" ];
 	else
 		level.allowedPerks[0][ 5] = 0;
 
-	if ( getdvarx( "perk_allow_rpg_mp", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_rpg_mp )
 		level.allowedPerks[0][ 6] = perkReferenceToIndex[ "specialty_weapon_rpg" ];
 	else
 		level.allowedPerks[0][ 6] = 0;
 
-	if ( getdvarx( "perk_allow_claymore_mp", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_claymore_mp )
 		level.allowedPerks[0][ 7] = perkReferenceToIndex[ "specialty_weapon_claymore" ];
 	else
 		level.allowedPerks[0][ 7] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_fraggrenade", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_fraggrenade )
 		level.allowedPerks[0][ 8] = perkReferenceToIndex[ "specialty_fraggrenade" ];
 	else
 		level.allowedPerks[0][ 8] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_extraammo", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_extraammo )
 		level.allowedPerks[0][ 9] = perkReferenceToIndex[ "specialty_extraammo" ];
 	else
 		level.allowedPerks[0][ 9] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_detectexplosive", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_detectexplosive )
 		level.allowedPerks[0][10] = perkReferenceToIndex[ "specialty_detectexplosive" ];
 	else
 		level.allowedPerks[0][10] = 0;
 
 	level.allowedPerks[1][ 0] = 190;
-	if ( getdvarx( "perk_allow_specialty_bulletdamage", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_bulletdamage )
 		level.allowedPerks[1][ 1] = perkReferenceToIndex[ "specialty_bulletdamage" ];
 	else
 		level.allowedPerks[1][ 1] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_armorvest", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_armorvest )
 		level.allowedPerks[1][ 2] = perkReferenceToIndex[ "specialty_armorvest" ];
 	else
 		level.allowedPerks[1][ 2] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_fastreload", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_fastreload )
 		level.allowedPerks[1][ 3] = perkReferenceToIndex[ "specialty_fastreload" ];
 	else
 		level.allowedPerks[1][ 3] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_rof", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_rof )
 		level.allowedPerks[1][ 4] = perkReferenceToIndex[ "specialty_rof" ];
 	else
 		level.allowedPerks[1][ 4] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_twoprimaries", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_twoprimaries )
 		level.allowedPerks[1][ 5] = perkReferenceToIndex[ "specialty_twoprimaries" ];
 	else
 		level.allowedPerks[1][ 5] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_gpsjammer", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_gpsjammer )
 		level.allowedPerks[1][ 6] = perkReferenceToIndex[ "specialty_gpsjammer" ];
 	else
 		level.allowedPerks[1][ 6] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_explosivedamage", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_explosivedamage )
 		level.allowedPerks[1][ 7] = perkReferenceToIndex[ "specialty_explosivedamage" ];
 	else
 		level.allowedPerks[1][ 7] = 0;
 
 	level.allowedPerks[2][ 0] = 190;
-	if ( getdvarx( "perk_allow_specialty_longersprint", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_longersprint )
 		level.allowedPerks[2][ 1] = perkReferenceToIndex[ "specialty_longersprint" ];
 	else
 		level.allowedPerks[2][ 1] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_bulletaccuracy", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_bulletaccuracy )
 		level.allowedPerks[2][ 2] = perkReferenceToIndex[ "specialty_bulletaccuracy" ];
 	else
 		level.allowedPerks[2][ 2] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_pistoldeath", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_pistoldeath )
 		level.allowedPerks[2][ 3] = perkReferenceToIndex[ "specialty_pistoldeath" ];
 	else
 		level.allowedPerks[2][ 3] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_grenadepulldeath", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_grenadepulldeath )
 		level.allowedPerks[2][ 4] = perkReferenceToIndex[ "specialty_grenadepulldeath" ];
 	else
 		level.allowedPerks[2][ 4] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_bulletpenetration", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_bulletpenetration )
 		level.allowedPerks[2][ 5] = perkReferenceToIndex[ "specialty_bulletpenetration" ];
 	else
 		level.allowedPerks[2][ 5] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_holdbreath", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_holdbreath )
 		level.allowedPerks[2][ 6] = perkReferenceToIndex[ "specialty_holdbreath" ];
 	else
 		level.allowedPerks[2][ 6] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_quieter", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_quieter )
 		level.allowedPerks[2][ 7] = perkReferenceToIndex[ "specialty_quieter" ];
 	else
 		level.allowedPerks[2][ 7] = 0;
 
-	if ( getdvarx( "perk_allow_specialty_parabolic", "int", 1, 0, 1 ) )
+	if ( level.perk_allow_specialty_parabolic )
 		level.allowedPerks[2][ 8] = perkReferenceToIndex[ "specialty_parabolic" ];
 	else
 		level.allowedPerks[2][ 8] = 0;

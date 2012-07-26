@@ -475,7 +475,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
-			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 )
+			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 && !dvarBool(ct_noperk1) )
 		    mouseEnter { play "mouse_over"; } 
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk1Prev"; }	
 		}
@@ -488,7 +488,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_DISABLED
-			visible			when ( dvarInt( ow_cac_stat_perk1 ) == 193 )
+			visible			when ( dvarInt( ow_cac_stat_perk1 ) == 193 && !dvarBool(ct_noperk1) )
 		}
 		//CHOICE_CAC_BUTTON( 7, "@MPUI_PERK_1", 1 )
 		//CHOICE_BUTTON_BG_RAW( 7, "gradient_fadein", 0.5 0.15 0 0.5, when( dvarInt( ow_cac_stat_perk1 ) == 190 ); )
@@ -501,7 +501,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
-			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 )
+			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 && !dvarBool(ct_noperk1) )
 		    mouseEnter { play "mouse_over"; } 
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk1Next"; }	
 		}
@@ -514,7 +514,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_right"
 			forecolor		COLOR_DISABLED
-			visible			when ( dvarInt( ow_cac_stat_perk1 ) == 193 )	
+			visible			when ( dvarInt( ow_cac_stat_perk1 ) == 193 && !dvarBool(ct_noperk1) )	
 		}
 		
 		//Perk 2
@@ -527,7 +527,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
-			visible			1
+			visible			when(  !dvarBool(ct_noperk2) )
 		    mouseEnter { play "mouse_over"; } 
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk2Prev"; }	
 		}
@@ -541,7 +541,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
-			visible			1
+			visible			when(  !dvarBool(ct_noperk2) )
 		    mouseEnter { play "mouse_over"; } 
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk2Next"; }	
 		}
@@ -556,7 +556,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
-			visible			1
+			visible			when(  !dvarBool(ct_noperk3) )
 		    mouseEnter { play "mouse_over"; } 
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk3Prev"; }	
 		}
@@ -570,7 +570,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
-			visible			1
+			visible			when(  !dvarBool(ct_noperk3) )
 		    mouseEnter { play "mouse_over"; } 
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk3Next"; }	
 		}

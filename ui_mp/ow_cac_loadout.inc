@@ -275,3 +275,26 @@
 	
 	PREPROC_SHADER_DRAW_ALIGNED( -6 (PERK_Y_OFFSET-5+(PERK_Y_SPACING*3)) 32 32 LOADOUT_ALIGN, ORIGIN_LOADOUT, "weapon_fraggrenade", 1 1 1 1, 0, 1, 1 1 1 1 visible when( tablelookup( "mp/statstable.csv", 1, dvarInt(ow_cac_stat_perk1), 4 ) != "specialty_specialgrenade" && tablelookup( "mp/statstable.csv", 1, dvarInt(ow_cac_stat_perk1), 4 ) != "specialty_fraggrenade" ) ) 
 	PREPROC_SHADER_DRAW_ALIGNED( 8 (PERK_Y_OFFSET-5+(PERK_Y_SPACING*3)) 32 32 LOADOUT_ALIGN, ORIGIN_LOADOUT, "weapon_smokegrenade", 1 1 1 1, 0, 1, 1 1 1 1 visible when( tablelookup( "mp/statstable.csv", 1, dvarInt(ow_cac_stat_perk1), 4 ) != "specialty_specialgrenade" && tablelookup( "mp/statstable.csv", 1, dvarInt(ow_cac_stat_perk1), 4 ) != "specialty_fraggrenade" ) )  
+
+	
+  #define EOG_BASE_COLOR			0.25 0.25 0.27 1
+	#define EOG_BORDER_SIZE			0
+	#define EOG_BORDER_COLOR		0.35 0.35 0.37 1
+	#define EOG_BORDER				WINDOW_BORDER_RAISED
+	#define EOG_BG_COLOR			0.1 0.1 0.12 0.85
+	#define EOG_SHINE_COLOR			0.9 0.9 0.9 0.45  
+
+  // Cover perk1 section when disabled
+  PREPROC_SHADER_DRAW_ALIGNED( -4 (PERK_Y_OFFSET-6) (LOADOUT_WIDTH+9) (PERK_Y_SPACING+5) LOADOUT_ALIGN, ORIGIN_LOADOUT, "white", EOG_BASE_COLOR, EOG_BORDER, EOG_BORDER_SIZE, 0 0 0 0 visible when( dvarbool(ct_noperk1) ) )
+	PREPROC_SHADER_DRAW_ALIGNED( -4 (PERK_Y_OFFSET-6) (LOADOUT_WIDTH+9) (PERK_Y_SPACING+5) LOADOUT_ALIGN, ORIGIN_LOADOUT, "white", EOG_BG_COLOR, EOG_BORDER, EOG_BORDER_SIZE, EOG_BORDER_COLOR visible when( dvarbool(ct_noperk1) ) )
+	PREPROC_SHADER_DRAW_ALIGNED( -4 (PERK_Y_OFFSET-6) (LOADOUT_WIDTH+9) (PERK_Y_SPACING+5) LOADOUT_ALIGN, ORIGIN_LOADOUT, "line_horizontal", EOG_SHINE_COLOR, EOG_BORDER, EOG_BORDER_SIZE, 0 0 0 0 visible when( dvarbool(ct_noperk1) ) )
+  
+  // Cover perk2 section when disabled
+  PREPROC_SHADER_DRAW_ALIGNED( -4 (PERK_Y_OFFSET-6+PERK_Y_SPACING+5) (LOADOUT_WIDTH+9) PERK_Y_SPACING LOADOUT_ALIGN, ORIGIN_LOADOUT, "white", EOG_BASE_COLOR, EOG_BORDER, EOG_BORDER_SIZE, 0 0 0 0 visible when( dvarbool(ct_noperk2) ) )
+	PREPROC_SHADER_DRAW_ALIGNED( -4 (PERK_Y_OFFSET-6+PERK_Y_SPACING+5) (LOADOUT_WIDTH+9) PERK_Y_SPACING LOADOUT_ALIGN, ORIGIN_LOADOUT, "white", EOG_BG_COLOR, EOG_BORDER, EOG_BORDER_SIZE, EOG_BORDER_COLOR visible when( dvarbool(ct_noperk2) ) )
+	PREPROC_SHADER_DRAW_ALIGNED( -4 (PERK_Y_OFFSET-6+PERK_Y_SPACING+5) (LOADOUT_WIDTH+9) PERK_Y_SPACING LOADOUT_ALIGN, ORIGIN_LOADOUT, "line_horizontal", EOG_SHINE_COLOR, EOG_BORDER, EOG_BORDER_SIZE, 0 0 0 0 visible when( dvarbool(ct_noperk2) ) )
+  
+  // Cover perk3 section when disabled
+  PREPROC_SHADER_DRAW_ALIGNED( -4 (PERK_Y_OFFSET-6+PERK_Y_SPACING+5+PERK_Y_SPACING) (LOADOUT_WIDTH+9) PERK_Y_SPACING LOADOUT_ALIGN, ORIGIN_LOADOUT, "white", EOG_BASE_COLOR, EOG_BORDER, EOG_BORDER_SIZE, 0 0 0 0 visible when( dvarbool(ct_noperk3) ) )
+	PREPROC_SHADER_DRAW_ALIGNED( -4 (PERK_Y_OFFSET-6+PERK_Y_SPACING+5+PERK_Y_SPACING) (LOADOUT_WIDTH+9) PERK_Y_SPACING LOADOUT_ALIGN, ORIGIN_LOADOUT, "white", EOG_BG_COLOR, EOG_BORDER, EOG_BORDER_SIZE, EOG_BORDER_COLOR visible when( dvarbool(ct_noperk3) ) )
+	PREPROC_SHADER_DRAW_ALIGNED( -4 (PERK_Y_OFFSET-6+PERK_Y_SPACING+5+PERK_Y_SPACING) (LOADOUT_WIDTH+9) PERK_Y_SPACING LOADOUT_ALIGN, ORIGIN_LOADOUT, "line_horizontal", EOG_SHINE_COLOR, EOG_BORDER, EOG_BORDER_SIZE, 0 0 0 0 visible when( dvarbool(ct_noperk3) ) )
