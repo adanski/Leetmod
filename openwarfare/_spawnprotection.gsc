@@ -12,9 +12,9 @@ init()
 		return;
 
 	// Get the module's dvars
-	level.scr_spawn_protection_time = getdvarx( "scr_spawn_protection_time", "float", 4, 0.5, 60 );
+	level.scr_spawn_protection_time = getdvarx( "scr_spawn_protection_time", "float", 2, 0.5, 60 );
 	level.scr_spawn_protection_invisible = getdvarx( "scr_spawn_protection_invisible", "int", 0, 0, 1 );
-	level.scr_spawn_protection_maxdistance = getdvarx( "scr_spawn_protection_maxdistance", "int", 0, 0, 5000 );
+	level.scr_spawn_protection_maxdistance = getdvarx( "scr_spawn_protection_maxdistance", "int", 175, 0, 5000 );
 	level.scr_spawn_protection_punishment_time = getdvarx( "scr_spawn_protection_punishment_time", "float", 0, 0, 15 );
 
 	// Precache the shield icon that will be use to indicate player protection

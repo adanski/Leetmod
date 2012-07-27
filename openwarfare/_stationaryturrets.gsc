@@ -4,7 +4,7 @@
 init()
 {
 	// Get the main module's dvar
-	level.scr_allow_stationary_turrets = getdvarx( "scr_allow_stationary_turrets", "int", 1, 0, 1 );
+	level.scr_allow_stationary_turrets = getdvarx( "scr_allow_stationary_turrets", "int", 0, 0, 1 );
 
 	// If stationary turrets are enabled then there's nothing else to do here
 	if ( level.scr_allow_stationary_turrets == 0 ) {

@@ -4,8 +4,8 @@
 init()
 {
 	// Get the main module's dvar
-	level.scr_realtime_stats_enable = getdvarx( "scr_realtime_stats_enable", "int", 0, 0, 1 );
-	level.scr_endofgame_stats_enable = getdvarx( "scr_endofgame_stats_enable", "int", 0, 0, 1 );
+	level.scr_realtime_stats_enable = getdvarx( "scr_realtime_stats_enable", "int", 1, 0, 1 );
+	level.scr_endofgame_stats_enable = getdvarx( "scr_endofgame_stats_enable", "int", 1, 0, 1 );
 
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 

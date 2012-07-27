@@ -10,8 +10,8 @@ init()
 		level.scr_server_load_on_startup = "low";
 	}
 	
-	level.scr_server_load_low = getdvard( "scr_server_load_low", "int", 6, 0, 64 );
-	level.scr_server_load_medium = getdvard( "scr_server_load_medium", "int", 12, level.scr_server_load_low, 64 );
+	level.scr_server_load_low = getdvard( "scr_server_load_low", "int", 5, 0, 64 );
+	level.scr_server_load_medium = getdvard( "scr_server_load_medium", "int", 11, level.scr_server_load_low, 64 );
 
 	// If both variables are set to "0" we don't do anything else
 	if ( level.scr_server_load_low == 0 && level.scr_server_load_medium == 0 )

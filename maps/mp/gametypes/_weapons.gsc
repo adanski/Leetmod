@@ -14,7 +14,7 @@ init()
 	level.scr_claymore_friendly_fire = getdvarx( "scr_claymore_friendly_fire", "int", 0, 0, 2 );
 	level.scr_claymore_arm_time = getdvarx( "scr_claymore_arm_time", "float", 0, 0, 10 ) * 1000;
 	level.scr_claymore_check_plant_distance = getdvarx( "scr_claymore_check_plant_distance", "int", 0, 0, 1 );
-  level.scr_claymore_add_kills_max_time = getdvarx( "scr_claymore_add_kills_max_time", "int", 1000, 0, 1000 ) * 1000;
+  level.scr_claymore_add_kills_max_time = getdvarx( "scr_claymore_add_kills_max_time", "int", 3, 0, 1000 ) * 1000;
 
 	level.scr_show_c4_blink_effect = getdvarx( "scr_show_c4_blink_effect", "int", 1, 0, 1 );
 

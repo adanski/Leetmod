@@ -13,10 +13,10 @@ init()
 		return;
 		
 	// Load the rest of the module's variables
-	level.scr_dcs_dawn_length = getdvarx( "scr_dcs_dawn_length", "float", 0, 0, 1440 ) * 60000;
-	level.scr_dcs_day_length = getdvarx( "scr_dcs_day_length", "float", 0, 0, 1440 ) * 60000;
-	level.scr_dcs_dusk_length = getdvarx( "scr_dcs_dusk_length", "float", 0, 0, 1440 ) * 60000;
-	level.scr_dcs_night_length = getdvarx( "scr_dcs_night_length", "float", 0, 0, 1440 ) * 60000;
+	level.scr_dcs_dawn_length = getdvarx( "scr_dcs_dawn_length", "float", 2, 0, 1440 ) * 60000;
+	level.scr_dcs_day_length = getdvarx( "scr_dcs_day_length", "float", 4, 0, 1440 ) * 60000;
+	level.scr_dcs_dusk_length = getdvarx( "scr_dcs_dusk_length", "float", 2, 0, 1440 ) * 60000;
+	level.scr_dcs_night_length = getdvarx( "scr_dcs_night_length", "float", 4, 0, 1440 ) * 60000;
 	
 	level.scr_dcs_first_cycle = getdvarx( "scr_dcs_first_cycle", "int", 1, -1, 3 );
 	// Check if we should randomize the starting cycle
@@ -26,7 +26,7 @@ init()
 	
 	level.scr_dcs_sounds_enable = getdvarx( "scr_dcs_sounds_enable", "int", 1, 0, 1 );
 	
-	level.scr_dcs_reset_cycle = getdvarx( "scr_dcs_reset_cycle", "int", 0, 0, 2 );
+	level.scr_dcs_reset_cycle = getdvarx( "scr_dcs_reset_cycle", "int", 1, 0, 2 );
 
 	// If this is the first time we run this module with this map check if we need to reset the day cycle
 	if ( !isDefined( game["_dcs_daycycle"] ) && level.scr_dcs_reset_cycle != 0 ) {

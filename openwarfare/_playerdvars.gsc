@@ -9,24 +9,27 @@ init()
 	level.scr_hud_show_enemy_names = getdvarx( "scr_hud_show_enemy_names", "int", 1, 0, 1 );
 	level.scr_hud_show_friendly_names = getdvarx( "scr_hud_show_friendly_names", "int", 1, 0, 1 );
 	level.scr_hud_show_friendly_names_distance = getdvarx( "scr_hud_show_friendly_names_distance", "int", 10000, 50, 10000 );
-	level.scr_enable_auto_melee = getdvarx( "scr_enable_auto_melee", "int", 1, 0, 1 );
-
+	level.scr_enable_auto_melee = getdvarx( "scr_enable_auto_melee", "int", 128, 0, 255 );
+  
+  if( level.scr_enable_auto_melee == 1 )
+    level.scr_enable_auto_melee = 128;
+    
 	level.scr_game_forceuav = getdvarx( "scr_game_forceuav", "int", 0, 0, 1 );
 	
-	level.scr_ragdoll_explode_force = getdvarx( "scr_ragdoll_explode_force", "int", 18000, 0, 60000 );
-	level.scr_ragdoll_explode_upbias = getdvarx( "scr_ragdoll_explode_upbias", "float", 0.8, 0, 2 );
-	level.scr_dynent_bulletForce = getdvarx( "scr_dynent_bulletForce", "int", 1000, 0, 1000000 );
-	level.scr_dynent_explodeForce = getdvarx( "scr_dynent_explodeForce", "int", 12500, 0, 1000000 );
+	level.scr_ragdoll_explode_force = getdvarx( "scr_ragdoll_explode_force", "int", 60000, 0, 60000 );
+	level.scr_ragdoll_explode_upbias = getdvarx( "scr_ragdoll_explode_upbias", "float", 2, 0, 2 );
+	level.scr_dynent_bulletForce = getdvarx( "scr_dynent_bulletForce", "int", 2500, 0, 1000000 );
+	level.scr_dynent_explodeForce = getdvarx( "scr_dynent_explodeForce", "int", 50000, 0, 1000000 );
 	level.scr_cl_maxpackets = getdvarx( "scr_cl_maxpackets", "int", 30, 0, 100 );
   
   level.scr_cg_footsteps = getdvarx( "scr_cg_footsteps", "int", 1, 0, 1 );
 	
-	level.scr_bob_prone_fix = getdvarx( "scr_bob_prone_fix", "int", 0, 0, 1 );
-	level.scr_leg_yaw_tolerance = getdvarx( "scr_leg_yaw_tolerance", "int", 20, 0, 180 );
-	level.scr_swing_speed = getdvarx( "scr_swing_speed", "float", 0.2, 0, 1 );
+	level.scr_bob_prone_fix = getdvarx( "scr_bob_prone_fix", "int", 1, 0, 1 );
+	level.scr_leg_yaw_tolerance = getdvarx( "scr_leg_yaw_tolerance", "int", 60, 0, 180 );
+	level.scr_swing_speed = getdvarx( "scr_swing_speed", "float", 0.4, 0, 1 );
 	
-	level.scr_hudDamageIconHeight = getdvarx( "scr_hudDamageIconHeight", "int", 64, 0, 512 );
-	level.scr_hudDamageIconWidth = getdvarx( "scr_hudDamageIconWidth", "int", 128, 0, 512 );
+	level.scr_hudDamageIconHeight = getdvarx( "scr_hudDamageIconHeight", "int", 20, 0, 512 );
+	level.scr_hudDamageIconWidth = getdvarx( "scr_hudDamageIconWidth", "int", 70, 0, 512 );
 	
 	level.scr_show_fog = getdvarx( "scr_show_fog", "int", 1, 0, 1 );
 	level.scr_hud_compass_objectives = getdvarx( "scr_hud_compass_objectives", "int", 0, 0, 1 );
@@ -64,9 +67,6 @@ init()
 	
 	if ( level.scr_hud_show_grenade_indicator == 1 )
 		level.scr_hud_show_grenade_indicator = 250;
-
-	if( level.scr_enable_auto_melee == 1 )
-		level.scr_enable_auto_melee = 128;
 
 	// Get the GUIDs for super admins	
 	level.scr_scoreboard_marshal_guids = getdvard( "scr_scoreboard_marshal_guids", "string", level.scr_server_overall_admin_guids );

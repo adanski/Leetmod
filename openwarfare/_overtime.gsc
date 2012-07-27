@@ -14,7 +14,7 @@ init()
 	// Load the rest of the module's variables
 	level.scr_overtime_playerrespawndelay = getdvarx( "scr_overtime_playerrespawndelay", "float", -1, 0, 600 );
 	level.scr_overtime_incrementalspawndelay = getdvarx( "scr_overtime_incrementalspawndelay", "float", 0, 0, 10 );
-	level.scr_overtime_suddendeath = getdvarx( "scr_overtime_suddendeath", "int", 1, 0, 1 );
+	level.scr_overtime_suddendeath = getdvarx( "scr_overtime_suddendeath", "int", 0, 0, 1 );
 	
 	// Check if we need to monitor the game score
 	if ( isDefined( game["_overtime"] ) && level.scr_overtime_suddendeath == 1 ) {
@@ -25,7 +25,7 @@ init()
 
 registerTimeLimitDvar()
 {
-	level.timelimit = getdvarx( "scr_overtime_timelimit", "int", 0, 0, 1440 );
+	level.timelimit = getdvarx( "scr_overtime_timelimit", "int", 2, 0, 1440 );
 	setDvar( "ui_timelimit", level.timelimit );
 	level notify ( "update_timelimit" );
 }

@@ -14,7 +14,7 @@ init()
 		return;
 
 	// Get the module's dvars
-	level.scr_explosives_disarm_time = getdvarx( "scr_explosives_disarm_time", "float", 5, 0.5, 30.0 );
+	level.scr_explosives_disarm_time = getdvarx( "scr_explosives_disarm_time", "float", 2, 0.5, 30.0 );
 
 	precacheString( &"OW_EXPLOSIVE_DISARMING" );
 	precacheString( &"OW_EXPLOSIVE_RETRIEVING" );

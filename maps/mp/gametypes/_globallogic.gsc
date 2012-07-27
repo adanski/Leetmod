@@ -2611,7 +2611,9 @@ menuAxis()
 
 menuSpectator()
 {
-	self closeMenus();
+  // Idle player could be creating a class or in some menu, we don't want to force close it
+  if( isDefined(self.idleSwitched) && self.idleSwitched )
+    self closeMenus();
 
 	if(self.pers["team"] != "spectator")
 	{

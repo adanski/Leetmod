@@ -11,7 +11,7 @@ init()
 		return;
 
 	// Get the module's dvars
-	level.scr_rotateifempty_time = getdvarx( "scr_rotateifempty_time", "int", 600, 60, 3600 );
+	level.scr_rotateifempty_time = getdvarx( "scr_rotateifempty_time", "int", 300, 60, 3600 );
 	level.scr_rotateifempty_grace_period = getdvarx( "scr_rotateifempty_grace_period", "int", 15, 0, 60 );
 	
 	level thread monitorMap();

@@ -16,8 +16,8 @@ init()
 	// Get the module's dvars
 	level.scr_anti_camping_show = getdvarx( "scr_anti_camping_show", "int", 0, 0, 2 );
 	level.scr_anti_camping_message = getdvarx( "scr_anti_camping_message", "string", "" );
-	level.scr_anti_camping_time = getdvarx( "scr_anti_camping_time", "float", 60, 10, 300 );
-	level.scr_anti_camping_distance = getdvarx( "scr_anti_camping_distance", "int", 100, 50, 500 );
+	level.scr_anti_camping_time = getdvarx( "scr_anti_camping_time", "float", 25, 5, 300 );
+	level.scr_anti_camping_distance = getdvarx( "scr_anti_camping_distance", "int", 300, 50, 500 );
 
 	// Precache shader
 	precacheShader( "camping" );
