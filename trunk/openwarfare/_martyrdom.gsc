@@ -4,7 +4,7 @@
 init()
 {
 	// Get the main module's dvar
-	level.specialty_grenadepulldeath_check_frags = getdvarx( "specialty_grenadepulldeath_check_frags", "int", 0, 0, 1 );
+	level.specialty_grenadepulldeath_check_frags = getdvarx( "specialty_grenadepulldeath_check_frags", "int", 1, 0, 1 );
 
 	// Check if we need to run this process
 	if ( level.specialty_grenadepulldeath_check_frags == 0 )

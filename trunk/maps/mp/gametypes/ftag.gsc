@@ -70,6 +70,8 @@ main()
 	setDvar( "scr_healthsystem_show_healthbar_ftag", "1" );
 	setDvar( "scr_player_forcerespawn_ftag", "1" );
 	setDvar( "scr_allow_stationary_turrets_ftag", "0" );
+  // to fix bug: when revived, timer doesn't reset so player will be without weapon and with a camping alert
+  setDvar( "scr_anti_camping_enable_ftag", "0" );
 		
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();

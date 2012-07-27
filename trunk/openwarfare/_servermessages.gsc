@@ -16,7 +16,7 @@ init()
 	// Get the module's dvars
 	level.sv_server_messages_delay = getdvarx( "sv_server_messages_delay", "float", 15, 1, 120 );
 	level.sv_server_messages_linebreak = getdvarx( "sv_server_messages_linebreak", "string", "|" );
-	level.sv_server_message_deadonly = getdvarx( "sv_server_message_deadonly", "int", 0, 0, 1 );
+	level.sv_server_message_deadonly = getdvarx( "sv_server_message_deadonly", "int", 1, 0, 1 );
 
 	level thread addNewEvent( "onPlayerConnected", ::displayServerMessages );
 

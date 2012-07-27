@@ -4,11 +4,11 @@ init()
 {
 
 	// Get the module's dvar
-	level.teamBalance = getdvarx( "scr_teambalance", "int", 0, 0, 2 );
+	level.teamBalance = getdvarx( "scr_teambalance", "int", 1, 0, 2 );
 	level.teamBalanceEndOfRound = getdvarx( "scr_" + level.gameType + "_teamBalanceEndOfRound", "int", ( level.gameType == "sd" ), 0, 1 );
 	level.scr_teambalance_show_message = getdvarx( "scr_teambalance_show_message", "int", 1, 0, 1 );
-	level.scr_teambalance_check_interval = getdvarx( "scr_teambalance_check_interval", "float", 59.0, 1.0, 120.0 );
-	level.scr_teambalance_delay = getdvarx( "scr_teambalance_delay", "int", 15, 0, 30 );
+	level.scr_teambalance_check_interval = getdvarx( "scr_teambalance_check_interval", "float", 20.0, 1.0, 120.0 );
+	level.scr_teambalance_delay = getdvarx( "scr_teambalance_delay", "int", 10, 0, 30 );
 
 	level.scr_teambalance_protected_clan_tags = getdvarx( "scr_teambalance_protected_clan_tags", "string", "" );
 	level.scr_teambalance_protected_clan_tags = strtok( level.scr_teambalance_protected_clan_tags, " " );

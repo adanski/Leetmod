@@ -1,6 +1,7 @@
 init()
 {
 	// Initialize the arrays to hold the gametype names and stock map names
+  // (This is for AdvancedACP)
 	initGametypesAndMaps();
 
 	// Do not thread these initializations

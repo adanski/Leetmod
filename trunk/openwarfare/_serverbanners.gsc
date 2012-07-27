@@ -14,8 +14,8 @@ init()
 		return;
 
 	// Get the module's dvars
-	level.sv_server_banners_delay = getdvarx( "sv_server_banners_delay", "int", 10, 1, 600 );
-	level.sv_server_banners_time = getdvarx( "sv_server_banners_time", "int", 0, 0, 600 );
+	level.sv_server_banners_delay = getdvarx( "sv_server_banners_delay", "int", 45, 1, 600 );
+	level.sv_server_banners_time = getdvarx( "sv_server_banners_time", "int", 8, 0, 600 );
 
 	addNewEvent( "onPlayerConnected", ::displayServerBanners );
 }

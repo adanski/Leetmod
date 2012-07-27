@@ -28,8 +28,8 @@ init()
 	level.mapVoteThirdPlace = " (0)";
 
 	// Load the rest of the modules's variables
-	level.scr_amvs_gametype_time = getdvard( "scr_amvs_gametype_time", "float", 15, 5, 45 );
-	level.scr_amvs_map_time = getdvard( "scr_amvs_map_time", "float", 15, 5, 45 );
+	level.scr_amvs_gametype_time = getdvard( "scr_amvs_gametype_time", "float", 10, 5, 45 );
+	level.scr_amvs_map_time = getdvard( "scr_amvs_map_time", "float", 10, 5, 45 );
 	level.scr_amvs_winner_time = getdvard( "scr_amvs_winner_time", "float", 5, 5, 45 );
 	level.scr_amvs_can_repeat_map = getdvard( "scr_amvs_can_repeat_map", "int", 0, 0, 1 );
 	

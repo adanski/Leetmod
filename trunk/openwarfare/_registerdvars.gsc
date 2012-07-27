@@ -28,11 +28,11 @@ init()
 	
 	setDvar("timescale", 1);
   
-	setDvar( "scr_game_allowkillcam", getdvarx( "scr_game_allow_killcam", "int", 0, 0, 1 ) );
+	setDvar( "scr_game_allowkillcam", getdvarx( "scr_game_allow_killcam", "int", 1, 0, 1 ) );
 
-	level.scr_game_playerwaittime = getdvarx( "scr_game_playerwaittime", "int", 15, 1, 120 );
-	level.scr_game_matchstarttime = getdvarx( "scr_game_matchstarttime", "int", 15, 0, 120 );
-	level.scr_intermission_time = getdvarx( "scr_intermission_time", "int", 15, 0, 120 );
+	level.scr_game_playerwaittime = getdvarx( "scr_game_playerwaittime", "int", 5, 1, 120 );
+	level.scr_game_matchstarttime = getdvarx( "scr_game_matchstarttime", "int", 3, 0, 120 );
+	level.scr_intermission_time = getdvarx( "scr_intermission_time", "int", 40, 0, 120 );
 
 	level.scr_allow_thirdperson = getdvarx( "scr_allow_thirdperson", "int", 0, 0, 1 );
 	level.scr_allow_thirdperson_guids = getdvarx( "scr_allow_thirdperson_guids", "string", "" );
@@ -65,7 +65,7 @@ init()
 		level.scr_fallDamageMaxHeight = getdvarx( "scr_fallDamageMaxHeight", "int", 300, 50, 999 );
 	}
   
-  level.scr_ragdoll_at_kill = getdvarx( "scr_ragdoll_at_kill", "int", 0, 0, 1 );
+  level.scr_ragdoll_at_kill = getdvarx( "scr_ragdoll_at_kill", "int", 1, 0, 1 );
 
 	// Health regen method and related dvars
 	level.scr_healthregen_method = getdvarx( "scr_healthregen_method", "int", 1, 0, 2 );
@@ -142,7 +142,7 @@ init()
 	level.scr_play_headshot_impact_sound = getdvarx( "scr_play_headshot_impact_sound", "int", 1, 0, 1 );
 
 	// Last stand tweaks
-	level.specialty_pistoldeath_check_pistol = getdvarx( "specialty_pistoldeath_check_pistol", "int", 0, 0, 1 );
+	level.specialty_pistoldeath_check_pistol = getdvarx( "specialty_pistoldeath_check_pistol", "int", 1, 0, 1 );
 
 	level.scr_switch_teams_at_halftime = getdvarx( "scr_switch_teams_at_halftime", "int", 0, 0, 1 );
 
@@ -177,16 +177,16 @@ init()
 	// Control bullet penetration
 	level.scr_bullet_penetration_enabled = getdvarx( "scr_bullet_penetration_enabled", "int", 1, 0, 1 );
 	
-	level.scr_enable_slash_melee = getdvarx( "scr_enable_slash_melee", "int", 1, 0, 1 );
+	level.scr_enable_slash_melee = getdvarx( "scr_enable_slash_melee", "int", 64, 0, 1000 );
 	
 	if( level.scr_enable_slash_melee == 1 )
 		level.scr_enable_slash_melee = 64;
 	
 	setDvar( "player_meleeRange", level.scr_enable_slash_melee );
-	setDvar( "player_meleeChargeFriction", getdvarx( "scr_meleeChargeFriction", "int", 1200, 1, 5000 ) );
+	setDvar( "player_meleeChargeFriction", getdvarx( "scr_meleeChargeFriction", "int", 5000, 1, 5000 ) );
 	
-	level.scr_roundwinningkillcam = getdvarx( "scr_roundwinningkillcam", "int", 0, 0, 1 );
-	level.scr_musiconintermission = getdvarx( "scr_musiconintermission", "int", 0, 0, 1 );
+	level.scr_roundwinningkillcam = getdvarx( "scr_roundwinningkillcam", "int", 1, 0, 1 );
+	level.scr_musiconintermission = getdvarx( "scr_musiconintermission", "int", 1, 0, 1 );
 		
 	level.scr_player_lean_fix = getdvarx( "scr_player_lean_fix", "int", 0, 0, 1 );
 	
@@ -222,9 +222,6 @@ onPrematchStart()
 	setDvar( "g_gravity", getdvarx( "scr_g_gravity", "int", 800, 0, 1000 ) );
 	setDvar( "jump_height", level.scr_jump_height );
 	setDvar( "jump_slowdownEnable", level.scr_jump_slowdown_enable );
-	
-	//setDvar( "player_meleeRange", level.scr_enable_slash_melee );
-	//setDvar( "player_meleeChargeFriction", getdvarx( "scr_meleeChargeFriction", "int", 1200, 1, 5000 ) );
 
 	// If special effects are disable make sure we disable ambient sound (for custom maps)
 	if ( level.scr_map_special_fx_bgsound == 0 ) {

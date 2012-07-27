@@ -31,8 +31,8 @@ init()
 	level.scr_hardpoint_airstrike_streak = getdvarx( "scr_hardpoint_airstrike_streak", "int", 5, 1, 50 );
 	level.scr_airstrike_hardpoint_interval = getdvarx( "scr_airstrike_hardpoint_interval", "float", 0, 0, 600 );
 	level.scr_announce_enemy_airstrike_inbound = getdvarx( "scr_announce_enemy_airstrike_inbound", "int", 1, 0, 1 );
-	level.scr_airstrike_kills_toward_streak = getdvarx( "scr_airstrike_kills_toward_streak", "int", 1, 0, 1 );
-	level.scr_airstrike_add_kills = getdvarx( "scr_airstrike_add_kills", "int", 1, 0, 1 );
+	level.scr_airstrike_kills_toward_streak = getdvarx( "scr_airstrike_kills_toward_streak", "int", 0, 0, 1 );
+	level.scr_airstrike_add_kills = getdvarx( "scr_airstrike_add_kills", "int", 0, 0, 1 );
 	level.scr_airstrike_delay = getdvarx( "scr_airstrike_delay", "int", 0, 0, 30 );
 
 	// Helicopter related dvars
@@ -40,8 +40,8 @@ init()
 	level.scr_hardpoint_helicopter_streak = getdvarx( "scr_hardpoint_helicopter_streak", "int", 7, 1, 50 );
 	level.scr_heli_hardpoint_interval = getdvarx( "scr_heli_hardpoint_interval", "float", 0, 0, 600 );
 	level.scr_announce_enemy_heli_inbound = getdvarx( "scr_announce_enemy_heli_inbound", "int", 1, 0, 1 );
-	level.scr_helicopter_kills_toward_streak = getdvarx( "scr_helicopter_kills_toward_streak", "int", 1, 0, 1 );
-	level.scr_helicopter_add_kills = getdvarx( "scr_helicopter_add_kills", "int", 1, 0, 1 );
+	level.scr_helicopter_kills_toward_streak = getdvarx( "scr_helicopter_kills_toward_streak", "int", 0, 0, 1 );
+	level.scr_helicopter_add_kills = getdvarx( "scr_helicopter_add_kills", "int", 0, 0, 1 );
 	level.scr_helicopter_delay = getdvarx( "scr_helicopter_delay", "int", 0, 0, 30 );
 
 	precacheItem( "radar_mp" );

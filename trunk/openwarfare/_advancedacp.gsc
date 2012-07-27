@@ -122,7 +122,7 @@ init()
 	level.scr_aacp_ban_player_access_code = toLower( getdvard( "scr_aacp_ban_player_access_code", "string", "admin" ) );
 	
 	// Auxiliary variables
-	level.scr_aacp_shock_time = getdvarx( "scr_aacp_shock_time", "float", 1, 10, 20 );
+	level.scr_aacp_shock_time = getdvarx( "scr_aacp_shock_time", "float", 5, 1, 20 );
 	level.scr_aacp_shock_disables_weapons = getdvarx( "scr_aacp_shock_disables_weapons", "int", 0, 0, 1 );
 	level.scr_aacp_max_warnings = getdvarx( "scr_aacp_max_warnings", "int", 0, 0, 5 );
 	level.scr_aacp_sws_show_welcome_screen = getdvarx( "scr_aacp_sws_show_welcome_screen", "int", 0, 0, 1 );

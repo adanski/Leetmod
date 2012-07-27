@@ -105,6 +105,9 @@ main()
 	level.scr_sd_defenders_show_both = getdvarx( "scr_sd_defenders_show_both", "int", 0, 0, 1 );
 	
 	level.scr_sd_teamdeadspectate_tp = getdvarx( "scr_sd_teamdeadspectate_tp", "int", 0, 0, 1 );
+  
+  // Player switching team fix for not having to wait for next round to respawn
+  setDvar( "scr_sd_playerrespawndelay", "1" );
 
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 1, 1, 1 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 5, 0, 500 );
