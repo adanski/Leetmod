@@ -2,7 +2,7 @@
 
 menuDef 
 {
-  name			"settings_quick_war"
+  name			"settings_quick_war_@MPUI_RULES_SCORE_LIMIT"
   fullScreen		0
   rect			0 0 640 480
   focusColor		COLOR_FOCUSED

@@ -6,7 +6,7 @@ init()
 	// Get the module's dvar
 
 	// These variables apply to any game mod
-	level.scr_hud_show_enemy_names = getdvarx( "scr_hud_show_enemy_names", "int", 1, 0, 1 );
+	level.scr_hud_show_enemy_names = getdvarx( "scr_hud_show_enemy_names", "int", 0, 0, 1 );
 	level.scr_hud_show_friendly_names = getdvarx( "scr_hud_show_friendly_names", "int", 1, 0, 1 );
 	level.scr_hud_show_friendly_names_distance = getdvarx( "scr_hud_show_friendly_names_distance", "int", 10000, 50, 10000 );
 	level.scr_enable_auto_melee = getdvarx( "scr_enable_auto_melee", "int", 128, 0, 255 );

@@ -1,10 +1,10 @@
 #include "ui_mp/menustyle_forcascadeinclude.inc"
 
-#define ROTATEMENUGAMETYPES4 uiScript closeMenuOnDvar settings_config_gametype p settings_quick_sd; uiScript closeMenuOnDvar settings_config_gametype n settings_quick_sd; uiScript openMenuOnDvar settings_config_gametype p settings_quick_sab; uiScript openMenuOnDvar settings_config_gametype n settings_quick_ctf;
+#define ROTATEMENUGAMETYPES4 uiScript closeMenuOnDvar settings_config_gametype p settings_quick_ctf; uiScript closeMenuOnDvar settings_config_gametype n settings_quick_ctf; uiScript openMenuOnDvar settings_config_gametype p settings_quick_dom; uiScript openMenuOnDvar settings_config_gametype n settings_quick_sab;
 
 menuDef 
 {
-  name			"settings_quick_sd"
+  name			"settings_quick_ctf"
   fullscreen		0
   rect			0 0 640 480
   focusColor		COLOR_FOCUSED

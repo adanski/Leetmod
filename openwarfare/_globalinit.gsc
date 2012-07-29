@@ -23,7 +23,7 @@ init()
 	thread openwarfare\_clanvsall::init();
 	//thread openwarfare\_damageeffect::init();
 	thread openwarfare\_daycyclesystem::init();
-	//thread openwarfare\_disarmexplosives::init();
+	thread openwarfare\_disarmexplosives::init();
 	thread openwarfare\_dogtags::init();
 	thread openwarfare\_dvarmonitor::init();
 	//thread openwarfare\_dynamicattachments::init();		

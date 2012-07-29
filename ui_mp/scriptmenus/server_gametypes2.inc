@@ -1,6 +1,6 @@
 #include "ui_mp/menustyle_forcascadeinclude.inc"
 
-#define ROTATEMENUGAMETYPES2 uiScript closeMenuOnDvar settings_config_gametype p settings_quick_koth; uiScript closeMenuOnDvar settings_config_gametype n settings_quick_koth; uiScript openMenuOnDvar settings_config_gametype p settings_quick_dom; uiScript openMenuOnDvar settings_config_gametype n settings_quick_sab;
+#define ROTATEMENUGAMETYPES2 uiScript closeMenuOnDvar settings_config_gametype p settings_quick_koth; uiScript closeMenuOnDvar settings_config_gametype n settings_quick_koth; uiScript openMenuOnDvar settings_config_gametype p settings_quick_war; uiScript openMenuOnDvar settings_config_gametype n settings_quick_dom;
 
 menuDef 
 {

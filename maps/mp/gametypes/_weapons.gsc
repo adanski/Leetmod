@@ -1013,7 +1013,7 @@ claymoreDetonation()
 
 	wait level.claymoreDetectionGracePeriod;
   
-    if( (openwarfare\_timer::getTimePassed() - self.planttime) <= level.scr_claymore_add_kills_max_time )
+    if( level.scr_claymore_add_kills_max_time == 0 || ( (openwarfare\_timer::getTimePassed() - self.planttime) <= level.scr_claymore_add_kills_max_time ) )
       self.owner.claymoreAddKill = 1;
     else
       self.owner.claymoreAddKill = 0;

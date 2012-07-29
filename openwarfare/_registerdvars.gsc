@@ -50,10 +50,10 @@ init()
 	level.scr_show_player_status = getdvarx( "scr_show_player_status", "int", 1, 0, 1 );
 
 	// Progress bars adjustment
-	level.scr_adjust_progress_bars = getdvarx( "scr_adjust_progress_bars", "int", 0, 0, 2 );
+	level.scr_adjust_progress_bars = getdvarx( "scr_adjust_progress_bars", "int", 1, 0, 2 );
 
 	// Hiticon dvars
-	level.scr_enable_hiticon = getdvarx( "scr_enable_hiticon", "int", 1, 0, 2 );
+	level.scr_enable_hiticon = getdvarx( "scr_enable_hiticon", "int", 2, 0, 2 );
 	level.scr_enable_bodyarmor_feedback = getdvarx( "scr_enable_bodyarmor_feedback", "int", 1, 0, 1 );
 
 	// Fall damage based on oldschool or normal game

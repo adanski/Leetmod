@@ -71,7 +71,7 @@ main()
 	setDvar( "scr_custom_teams_enable_hns", "0" );
 	setDvar( "scr_dogtags_enable_hns", "0" );
 	setDvar( "scr_drawfriend_hns", "1" );
-	setDvar( "scr_enable_spawn_protection_hns", "0" );
+	setDvar( "scr_spawn_protection_enable_hns", "0" );
 	setDvar( "scr_game_forceuav_hns", "0" );
 	setDvar( "scr_game_hardpoints_hns", "0" );
 	setDvar( "scr_hns_playerrespawndelay", "-1" );

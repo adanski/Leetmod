@@ -4,9 +4,6 @@
 #define CHOICE_X_START			-64
 #define CHOICE_Y_START			34
 	
-#define CHOICE_SEP_1			7
-#define CHOICE_SEP_2			11
-
 #define CHOICE_GROUP			"createserver"
 
 #define STYLE_PC	1
@@ -30,27 +27,9 @@
 			uiScript loadArenas;
       
       execOnDvarIntValue ct_serverCustomCfg 0 "exec lm.cfg";
-      
-      //#fix: scheduled to remove:
-      //setdvar sv_minping "0";
-      //setdvar sv_maxping "0";
-      //setdvar sv_maxclients "32";
-			
-      //open createserver_buttons;
-			//open createserver_maps;	
-			//open createserver_serversettings;
 		}
 		onClose
 		{
-			/*close settings_dm;
-			close settings_tdm;
-			close settings_sd;
-			close settings_hq;
-			close settings_hqt;
-			close settings_ctf;
-			close createserver_maps;
-			close createserver_buttons;
-			close createserver_serversettings;*/
 		}
 		
 		#include "ui/blurredbg.inc"
@@ -69,24 +48,29 @@
 		CHOICE_DVAREDIT_NUMERIC( 6, "@MENU_MAXIMUM_PING", "sv_maxping", 4, ; )		//CHOICE_DVAREDIT_NUMERIC( 8, "@MENU_MAXIMUM_RATE", "sv_maxrate", 8, ; )
 		CHOICE_DVAREDIT_VIS( 7, "@MENU_PASSWORD1", "g_password", 12, 12, ;, 1 )	//CHOICE_DVARYESNO( 10, "@MENU_FRIENDLY_INDICATORS", "scr_drawfriend", ; )
 				
-		CHOICE_SEPARATOR( CHOICE_SEP_1 )
+		//CHOICE_SEPARATOR( CHOICE_SEP_1 )
 				
 		//CHOICE_DVARFLOATLIST( 8, "@MENU_FRIENDLY_FIRE", "scr_friendlyfire", { "@MENU_OFF" 0 "@MENU_ON" 1 "@MENU_REFLECT" 2 "@MENU_SHARED" 3 }, ; )
 		//CHOICE_DVARYESNO( 8, "@MENU_VOICECHATCOLON", "sv_voice", ; )
 		//CHOICE_DVARYESNO( 9, "@MENU_FORCE_RESPAWNING", "scr_forcerespawn", ; )
 		//CHOICE_DVARYESNO( 10, "@MENU_KILLCAM", "scr_killcam", ; )
-		CHOICE_DVARYESNO( 9, "@MENU_AUTOBALANCE_TEAMS", "scr_teambalance", ; )
+		CHOICE_DVARYESNO( 8, "@MENU_AUTOBALANCE_TEAMS", "scr_teambalance", ; )
 		//CHOICE_DVARYESNO( 10, "@MENU_ALLOW_VOTING", "g_allowvote", ; )
 		//CHOICE_DVARYESNO( 11, "@MENU_ALLOW_ENEMY_SPECTATING", "scr_spectateenemy", ; ) //CHOICE_DVARYESNO( 16, "@MENU_ALLOW_FREE_SPECTATING", "scr_spectatefree", ; )
 		//CHOICE_DVARYESNO( 11, "@MPUI_PUNKBUSTERWITHCOLONANDTWOSPACES", "sv_punkbuster", ; )		
 		
 		//CHOICE_SEPARATOR( CHOICE_SEP_2 )
 		
-    CHOICE_DVAREDIT_VIS( 10, "Map rotation", "sv_mapRotation", 1000, 25, ;, 1 )
+    CHOICE_DVAREDIT_VIS( 9, "Map rotation", "sv_mapRotation", 1000, 25, ;, 1 )
     
-    CHOICE_BUTTON( 12, "@OW_SERVER_PERKS", open settings_quick_dm; )
-		CHOICE_BUTTON( 13, "@OW_SERVER_WEAPONS", open settings_quick_war; )
-    CHOICE_BUTTON( 14, "@OW_SERVER_GAMETYPE", exec "set settings_config_gametype war"; open settings_quick_dom; )
+    CHOICE_BUTTON( 10, "@OW_SERVER_PERKS", open "settings_quick_war_@MPUI_RULES_TIME_LIMIT"; )
+		CHOICE_BUTTON( 11, "@OW_SERVER_WEAPONS", open "settings_quick_war_@MPUI_RULES_SCORE_LIMIT"; )
+    CHOICE_BUTTON( 12, "@OW_SERVER_HARDPOINTS", open "settings_quick_war_@MPUI_RULES_SPECTATING"; )
+    CHOICE_BUTTON( 13, "@OW_SERVER_HEALTHSYSTEM", open "settings_quick_war_@MPUI_RULES_FRIENDLY_FIRE"; )
+    CHOICE_BUTTON( 14, "@OW_SERVER_FAIRNESS", open "settings_quick_koth_@MPUI_RULES_TIME_LIMIT"; )
+    CHOICE_BUTTON( 15, "@OW_SERVER_MAPDESIGN", open "settings_quick_koth_@MPUI_RULES_SCORE_LIMIT"; )
+    
+    CHOICE_BUTTON( 17, "@OW_SERVER_GAMETYPE", exec "set settings_config_gametype war"; open settings_quick_war; )
 		//CHOICE_BUTTON( 12, "@MENU_GAME_TYPE_SETTINGS", open settings_quick_dm; )
 		//CHOICE_BUTTON( 13, "@MENU_RESET_TO_DEFAULT", open reset_gamesettings; )
     
@@ -315,6 +299,10 @@
   
   #include "ui_mp/scriptmenus/server_perks.inc"
   #include "ui_mp/scriptmenus/server_weapons.inc"
+  #include "ui_mp/scriptmenus/server_hardpoints.inc"
+  #include "ui_mp/scriptmenus/server_healthsystem.inc"
+  #include "ui_mp/scriptmenus/server_fairness.inc"
+  #include "ui_mp/scriptmenus/server_mapdesign.inc"
   
   #undef CHOICE_Y_COUNT
   #define CHOICE_Y_COUNT			20

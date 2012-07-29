@@ -280,7 +280,7 @@ rawfile,openwarfare/_clanvsall.gsc
 rawfile,openwarfare/_cyclefpslag.gsc
 #rawfile,openwarfare/_damageeffect.gsc
 rawfile,openwarfare/_daycyclesystem.gsc
-#rawfile,openwarfare/_disarmexplosives.gsc
+rawfile,openwarfare/_disarmexplosives.gsc
 rawfile,openwarfare/_dogtags.gsc
 rawfile,openwarfare/_dvarmonitor.gsc
 #rawfile,openwarfare/_dynamicattachments.gsc
