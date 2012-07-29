@@ -555,8 +555,8 @@ onMenuResponse()
 				break;
 
 			case "spectator":
-				//self closeMenu();
-				//self closeInGameMenu();
+				self closeMenu();
+				self closeInGameMenu();
 				self [[level.spectator]]();
 				break;
 			}
