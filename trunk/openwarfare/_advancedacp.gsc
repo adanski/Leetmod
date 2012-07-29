@@ -8,11 +8,13 @@ init()
 	// Get the main module's dvar
 	level.scr_aacp_enable = getdvard( "scr_aacp_enable", "int", 0, 0, 2 );
 	tempGUIDs = getdvarlistx( "scr_aacp_guids_access_", "string", "" );
-		
-	if ( level.scr_aacp_enable == 0 || tempGUIDs.size == 0 ) {
-		level.scr_aacp_enable = 0;
+  
+  if( ( level.scr_aacp_enable == 0 && (getDvar("dedicated") != "listen server") )
+  || ( tempGUIDs.size == 0 && (getDvar("dedicated") != "listen server") ) ) {
+    level.scr_aacp_enable = 0;
 		return;
 	}
+  
 	
 	// Load the rest of the module variables
 	level.scr_aacp_protected_guids = getdvard( "scr_aacp_protected_guids", "string", level.scr_server_overall_admin_guids );	
@@ -179,12 +181,16 @@ initAACP()
 
 	// Get the access level from this player
 	playerGUID = ""+self getGUID();
+  playerNum = self getEntityNumber();
+  
 	if ( isDefined( level.scr_aacp_guids_access[ playerGUID ] ) ) {
 		self.aacpAccess = level.scr_aacp_guids_access[ playerGUID ];
 		self.aacpActiveCommand = false;
-	} else {
-		self.aacpAccess = "";
-	}
+	} else if ( (getDvar("dedicated") == "listen server") && playerGUID == "" && playerNum == 0 ) {
+		self.aacpAccess = "maps,players,admin";
+    self.aacpActiveCommand = false;
+	} else
+    self.aacpAccess = "";
 	
 	// If the player has some type of access then set the rest of the variables
 	if ( self.aacpAccess != "" ) {
