@@ -29,6 +29,8 @@ onMenuResponse()
 			switch( response )
 			{
 				case "specviewmode":
+          // Checking if the client GUID is a subString of the allowed GUIDs can be dangerous
+          // (imagine if the player can set his GUID to just one character)
 					if ( ( level.scr_allow_thirdperson == 1 || isSubStr( level.scr_allow_thirdperson_guids, self getGuid() ) ) && !isAlive( self ) ) {
 						self maps\mp\gametypes\_globallogic::setThirdPerson( !self.spectatingThirdPerson );
 					}

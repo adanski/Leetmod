@@ -26,6 +26,7 @@ init()
 	level.scr_mrcs_auto_generate = getdvard( "scr_mrcs_auto_generate", "int", 0, 0, 1  );
 
 	// Make sure this is not a listen server
+  // ## Why? What is the limitation?
 	if ( getDvar("dedicated") == "listen server" )
 		return;
 		
