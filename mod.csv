@@ -347,6 +347,7 @@ rawfile,openwarfare/_weaponrangemodifier.gsc
 rawfile,openwarfare/_welcomerulesinfo.gsc
 
 menufile,ui_mp/auto_update.menu
+# Where is this file? Commented
 #menufile,ui_mp/cac_assault.menu
 menufile,ui_mp/challenges.menu
 menufile,ui_mp/connect.menu
@@ -355,8 +356,8 @@ menufile,ui_mp/hud.menu
 menufile,ui_mp/main.menu
 #menufile,ui_mp/mods.menu
 menufile,ui_mp/options_game_pc.menu
+#menufile,ui_mp/options_graphics_pc.menu
 menufile,ui_mp/options_multi.menu
-#menufile,ui_mp/pc_joinchoosegamemode.menu
 menufile,ui_mp/scriptmenus/advancedacp.menu
 #menufile,ui_mp/scriptmenus/advancedmvs.menu
 #menufile,ui_mp/scriptmenus/callvote.menu
@@ -373,7 +374,6 @@ menufile,ui_mp/scriptmenus/endofgame.menu
 menufile,ui_mp/scriptmenus/eog_statistics.menu
 menufile,ui_mp/scriptmenus/muteplayer.menu
 menufile,ui_mp/scriptmenus/ow_cac_editor.menu
-#menufile,ui_mp/scriptmenus/popup_addfavorite.menu
 menufile,ui_mp/scriptmenus/popup_eog.menu
 menufile,ui_mp/scriptmenus/popup_leavegame.menu
 menufile,ui_mp/scriptmenus/scoreboard.menu

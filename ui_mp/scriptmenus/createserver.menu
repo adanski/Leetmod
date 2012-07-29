@@ -69,6 +69,7 @@
     CHOICE_BUTTON( 13, "@OW_SERVER_HEALTHSYSTEM", open "settings_quick_war_@MPUI_RULES_FRIENDLY_FIRE"; )
     CHOICE_BUTTON( 14, "@OW_SERVER_FAIRNESS", open "settings_quick_koth_@MPUI_RULES_TIME_LIMIT"; )
     CHOICE_BUTTON( 15, "@OW_SERVER_MAPDESIGN", open "settings_quick_koth_@MPUI_RULES_SCORE_LIMIT"; )
+    CHOICE_BUTTON( 16, "@OW_SERVER_SCORES", open "settings_quick_koth_@MPUI_RULES_SPECTATING"; )
     
     CHOICE_BUTTON( 17, "@OW_SERVER_GAMETYPE", exec "set settings_config_gametype war"; open settings_quick_war; )
 		//CHOICE_BUTTON( 12, "@MENU_GAME_TYPE_SETTINGS", open settings_quick_dm; )
@@ -303,6 +304,7 @@
   #include "ui_mp/scriptmenus/server_healthsystem.inc"
   #include "ui_mp/scriptmenus/server_fairness.inc"
   #include "ui_mp/scriptmenus/server_mapdesign.inc"
+  #include "ui_mp/scriptmenus/server_scores.inc"
   
   #undef CHOICE_Y_COUNT
   #define CHOICE_Y_COUNT			20

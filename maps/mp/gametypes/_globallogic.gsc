@@ -1084,7 +1084,12 @@ in_spawnSpectator( origin, angles )
 
 	[[level.onSpawnSpectator]]( origin, angles );
 
-	if ( level.gametype == "hns" || level.scr_allow_thirdperson == 1 || isSubStr( level.scr_allow_thirdperson_guids, self getGuid() ) ) {
+	// Before: Host player in listen server spectates in 3rd p. by default
+  // After: Host player can't spectate in 3rd p.
+  // ## Todo: Change the way the 3rd p. is handled and don't force it by default, use 1st p. and then let players choose 3rd p. if they want
+  playerGUID_aux = ""+self getGuid();
+  
+  if ( level.gametype == "hns" || level.scr_allow_thirdperson == 1 || ( playerGUID_aux != "" && isSubStr( level.scr_allow_thirdperson_guids, playerGUID_aux ) ) ) {
 		self thread spectatorThirdPersonness();
 	}
 
