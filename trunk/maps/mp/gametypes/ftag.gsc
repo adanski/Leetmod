@@ -502,7 +502,7 @@ monitorTemperature()
 //			self thread openwarfare\_disarmexplosives::onPlayerSpawned();
 //		if ( level.specialty_grenadepulldeath_check_frags == 1 )
 //			self thread openwarfare\_martyrdom::onPlayerSpawned();
-		if ( level.scr_enable_spawn_protection == 1 )
+		if ( level.scr_spawn_protection_enable == 1 )
 			self thread openwarfare\_spawnprotection::onPlayerSpawned();
 		
 		// Check if we should respawn the player in another place

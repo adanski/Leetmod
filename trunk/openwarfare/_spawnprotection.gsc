@@ -4,11 +4,11 @@
 init()
 {
 	// Get the main module's dvar
-	level.scr_enable_spawn_protection = getdvarx( "scr_enable_spawn_protection", "int", 0, 0, 1 );
+	level.scr_spawn_protection_enable = getdvarx( "scr_spawn_protection_enable", "int", 0, 0, 1 );
 	level.scr_spawn_protection_hiticon = getdvarx( "scr_spawn_protection_hiticon", "int", 1, 0, 1 );
 
 	// If spawn protection is not enabled then there's nothing else to do here
-	if ( level.scr_enable_spawn_protection == 0 )
+	if ( level.scr_spawn_protection_enable == 0 )
 		return;
 
 	// Get the module's dvars

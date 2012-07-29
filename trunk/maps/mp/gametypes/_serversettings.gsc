@@ -2,10 +2,10 @@ init()
 {
 	level.hostname = getdvar("sv_hostname");
 	if(level.hostname == "")
-		level.hostname = "^7CoD4:MW ^3OpenWarfare";
+		level.hostname = "^7CoD4:MW ^3Leetmod";
 	setdvar("sv_hostname", level.hostname);
 	setdvar("ui_hostname", level.hostname);
-	makedvarserverinfo("ui_hostname", "^7CoD4:MW ^3OpenWarfare");
+	makedvarserverinfo("ui_hostname", "^7CoD4:MW ^3Leetmod");
 
 	level.motd = getdvar("scr_motd");
 	if(level.motd == "")

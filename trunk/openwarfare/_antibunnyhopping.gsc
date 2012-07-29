@@ -4,10 +4,10 @@
 init()
 {
 	// Get the main module's dvar
-	level.scr_enable_anti_bunny_hopping = getdvarx( "scr_enable_anti_bunny_hopping", "int", 0, 0, 4 );
-	level.scr_enable_anti_dolphin_dive = getdvarx( "scr_enable_anti_dolphin_dive", "int", 0, 0, 1 );
+	level.scr_anti_bunny_hopping_enable = getdvarx( "scr_anti_bunny_hopping_enable", "int", 0, 0, 4 );
+	level.scr_anti_dolphin_dive_enable = getdvarx( "scr_anti_dolphin_dive_enable", "int", 0, 0, 1 );
 	
-	if ( level.scr_enable_anti_bunny_hopping == 0 && level.scr_enable_anti_dolphin_dive == 0 )
+	if ( level.scr_anti_bunny_hopping_enable == 0 && level.scr_anti_dolphin_dive_enable == 0 )
 		return;
 	
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
@@ -20,10 +20,10 @@ onPlayerConnected()
 
 onPlayerSpawned()
 {
-	if ( level.scr_enable_anti_bunny_hopping != 0 )
+	if ( level.scr_anti_bunny_hopping_enable != 0 )
 		self thread antiBunnyHopping();
 	
-	if ( level.scr_enable_anti_dolphin_dive != 0 )
+	if ( level.scr_anti_dolphin_dive_enable != 0 )
 		self thread antiDolphinDive();
 }
 
@@ -76,8 +76,8 @@ antiBunnyHopping()
 						self.jumping = true;
 						heightTracker = 0;
 
-						if ( ( level.scr_enable_anti_bunny_hopping == 1 || level.scr_enable_anti_bunny_hopping == 3 || ( gettime() - self.lastGrounding ) < 1000 ) && self getCurrentWeapon() != "c4_mp" && self getCurrentWeapon() != "claymore_mp" ) {
-							if ( level.scr_enable_anti_bunny_hopping == 3 || level.scr_enable_anti_bunny_hopping == 4 ) {
+						if ( ( level.scr_anti_bunny_hopping_enable == 1 || level.scr_anti_bunny_hopping_enable == 3 || ( gettime() - self.lastGrounding ) < 1000 ) && self getCurrentWeapon() != "c4_mp" && self getCurrentWeapon() != "claymore_mp" ) {
+							if ( level.scr_anti_bunny_hopping_enable == 3 || level.scr_anti_bunny_hopping_enable == 4 ) {
 								self thread shiftPlayerView( 5 );
 							} else {
 								self thread maps\mp\gametypes\_gameobjects::_disableWeapon();

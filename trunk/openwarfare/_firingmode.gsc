@@ -167,7 +167,7 @@ showFireModeShader( shaderImage )
 	}		
 	self.hud_fire_mode = newClientHudElem( self );
 	self.hud_fire_mode.x = 0;
-	if ( level.scr_enable_spawn_protection != 0 && self.spawn_protected ) {
+	if ( level.scr_spawn_protection_enable != 0 && self.spawn_protected ) {
 		self.hud_fire_mode.y = 110;
 	} else {
 		self.hud_fire_mode.y = 142;

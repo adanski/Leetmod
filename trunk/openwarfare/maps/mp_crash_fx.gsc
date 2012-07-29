@@ -3,7 +3,7 @@ main()
 	// Check if we should load the effects or not
 	if ( level.scr_map_special_fx_enable == 0 )
 		return;
-		
+    
 	// Load the effects
 	level._effect["firelp_med_pm"] = loadfx ("fire/firelp_med_pm_nodistort");	
 	level._effect["firelp_small_pm"] = loadfx ("fire/firelp_small_pm");

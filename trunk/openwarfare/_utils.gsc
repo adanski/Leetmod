@@ -3,8 +3,9 @@
 // Function to get extended dvar values
 getdvarx( dvarName, dvarType, dvarDefault, minValue, maxValue )
 {
-	if ( getdvar( dvarName + "__override" ) != "" )
-		return getdvard( dvarName, dvarType, dvarDefault, minValue, maxValue );
+  // commented while another strategy is being worked on
+	//if ( getdvar( dvarName + "__override" ) != "" )
+	//	return getdvard( dvarName, dvarType, dvarDefault, minValue, maxValue );
   
   // Check variables from lowest to highest priority
 
