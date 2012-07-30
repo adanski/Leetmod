@@ -14,6 +14,7 @@ init()
 		return;
 
 	level.scr_realtime_stats_default_on = getdvarx( "scr_realtime_stats_default_on", "int", 0, 0, 1 );
+	level.scr_realtime_stats_remove_sniping_time = getdvarx( "scr_realtime_stats_remove_sniping_time", "int", 1, 0, 1 );
 	
 	level.scr_realtime_stats_unit = getdvarx( "scr_realtime_stats_unit", "string", "meters" );
 	if ( level.scr_realtime_stats_unit != "meters" && level.scr_realtime_stats_unit != "yards" ) {
@@ -131,16 +132,28 @@ onGameEnded()
 			
 			if( isDefined( player.pers["stats"]["misc"]["secsalive"] ) ) {
         if( !gotOneGood ) {
-          player checkMinStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeedw" );
-        }
-        else if( isDefined( player.pers["stats"]["misc"]["secsalive"] ) && player.pers["stats"]["misc"]["secsalive"] > 60 ) {
-            gotOneGood = 1;
+          if( level.scr_realtime_stats_remove_sniping_time )
+            player checkMinStatItem( player.pers["stats"]["misc"]["avgspeednosniper"], "avgspeedw" );
+          else
             player checkMinStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeedw" );
+        } // if bellow implies gotOneGood == true
+        else if( (!level.scr_realtime_stats_remove_sniping_time && player.pers["stats"]["misc"]["secsalive"] > 60)
+                || (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60 ) {
+            // I think this can be commented since if we get here, gotOneGood is already true
+            gotOneGood = 1;
+            if( level.scr_realtime_stats_remove_sniping_time )
+              player checkMinStatItem( player.pers["stats"]["misc"]["avgspeednosniper"], "avgspeedw" );
+            else
+              player checkMinStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeedw" );
         }
-        if( !gotOneGood && isDefined( player.pers["stats"]["misc"]["secsalive"] ) && player.pers["stats"]["misc"]["secsalive"] > 60 ) {
+        if( !gotOneGood && (!level.scr_realtime_stats_remove_sniping_time && player.pers["stats"]["misc"]["secsalive"] > 60)
+                || (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60 ) ) {
           gotOneGood = 1;
           level.eogBest["avgspeedw"]["name"] = player.name;
-          level.eogBest["avgspeedw"]["value"] = player.pers["stats"]["misc"]["avgspeed"];
+          if( level.scr_realtime_stats_remove_sniping_time )
+            level.eogBest["avgspeedw"]["value"] = player.pers["stats"]["misc"]["avgspeednosniper"];
+          else
+            level.eogBest["avgspeedw"]["value"] = player.pers["stats"]["misc"]["avgspeed"];
         }
       }
 		}
@@ -349,8 +362,11 @@ onPlayerConnected()
 		// Misc
 		self.pers["stats"]["misc"] = [];
 		self.pers["stats"]["misc"]["distance"] = 0;
+		self.pers["stats"]["misc"]["distancesniper"] = 0;
 		self.pers["stats"]["misc"]["avgspeed"] = 0;
+		self.pers["stats"]["misc"]["avgspeednosniper"] = 0;
 		self.pers["stats"]["misc"]["secsalive"] = 1;
+		self.pers["stats"]["misc"]["secsalivesniper"] = 1;
 	}	
 }
 
@@ -368,10 +384,14 @@ onPlayerSpawned()
 	}
   
   if( !isDefined(self.pers["stats"]["misc"]["secsalive"]) )
-    self.pers["stats"]["misc"]["secsalive"] = 1;
+    self.pers["stats"]["misc"]["secsalive"] = 1;  
+
+  if( !isDefined(self.pers["stats"]["misc"]["secsalivesniper"]) )
+    self.pers["stats"]["misc"]["secsalivesniper"] = 1;
 	
 	oldPosition = self.origin;
 	oldValue = self.pers["stats"]["misc"]["distance"];
+  oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
 	updateLoop = 0;
   travelledDistance = 0;
 	
@@ -388,7 +408,10 @@ onPlayerSpawned()
 			if ( chunkDistance > 0 ) {
 				oldPosition = self.origin;
 				self.pers["stats"]["misc"]["distance"] += chunkDistance;
+        if( maps\mp\gametypes\_weapons::isSniper( self getCurrentWeapon() ) )
+          self.pers["stats"]["misc"]["distancesniper"] += chunkDistance;
 				self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100) / 100;
+				self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100) / 100;
 			}			
 		}
 		
@@ -397,7 +420,11 @@ onPlayerSpawned()
 		if ( updateLoop == 10 ) {
 			updateLoop = 0;
 			self.pers["stats"]["misc"]["secsalive"]++;
+      if( maps\mp\gametypes\_weapons::isSniper( self getCurrentWeapon() ) )
+        self.pers["stats"]["misc"]["secsalivesniper"]++;
+      
       oldValue = self.pers["stats"]["misc"]["distance"];
+      oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
       if ( level.scr_realtime_stats_unit == "meters" ) {
         travelledDistance = int( oldValue * 0.0254 * 10 ) / 10;
       } else {
@@ -406,16 +433,19 @@ onPlayerSpawned()
       self setClientDvar( "ps_dt", travelledDistance + mUnit );
 			self setClientDvar( "ps_as", int( (travelledDistance/self.pers["stats"]["misc"]["secsalive"])*100) / 100 + mPSUnit );
       self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100) / 100;
+      self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100) / 100;
 		}
 	}
 	// Update one more time once the player dies
   oldValue = self.pers["stats"]["misc"]["distance"];
+  oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
   if ( level.scr_realtime_stats_unit == "meters" ) {
     travelledDistance = int( oldValue * 0.0254 * 10 ) / 10;
   } else {
     travelledDistance = int( oldValue * 0.0278 * 10 ) / 10;
   }
   self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100) / 100;
+  self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100) / 100;
   self setClientDvar( "ps_dt", travelledDistance + mUnit );
   self setClientDvar( "ps_as", int( (travelledDistance/self.pers["stats"]["misc"]["secsalive"])*100) / 100 + mPSUnit );
 }
