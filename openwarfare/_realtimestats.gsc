@@ -140,7 +140,7 @@ onGameEnded()
         else if( (!level.scr_realtime_stats_remove_sniping_time && player.pers["stats"]["misc"]["secsalive"] > 60)
                 || (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60 ) {
             // I think this can be commented since if we get here, gotOneGood is already true
-            gotOneGood = 1;
+            //gotOneGood = 1;
             if( level.scr_realtime_stats_remove_sniping_time )
               player checkMinStatItem( player.pers["stats"]["misc"]["avgspeednosniper"], "avgspeedw" );
             else
