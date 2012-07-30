@@ -89,7 +89,10 @@ main()
 {
 	if(getdvar("mapname") == "mp_background")
 		return;
-
+  
+  // Force some dvars
+  setDvar( "scr_show_lives_enable_sd", "0" );
+  
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();

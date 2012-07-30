@@ -25,7 +25,6 @@ main()
 	switch( level.vg_gametype )
 	{
 		case "dm":
-		case "lms":
 		case "gg":
 		case "ss":
 		case "oitc":
@@ -389,7 +388,6 @@ initGuide()
 	{
 		case "dm":
 		case "gg":
-		case "lms":
 		case "ss":
 		case "oitc":
 			level.itemList[0] = createSpawnAssets( "dm_spawn", undefined, "spawns", &"OW_MOVER_CAT_NEUTRAL" );
@@ -397,7 +395,6 @@ initGuide()
 		
 		case "war":
 		case "ftag":
-		case "lts":
 		case "koth":
 		case "bel":
 		case "hns":

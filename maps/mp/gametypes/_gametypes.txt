@@ -2,14 +2,12 @@ ass
 bel
 ch
 ctf
-dm
 dom
+dm
 ftag
 gr
 gg
 koth
-lms
-lts
 oitc
 re
 sab

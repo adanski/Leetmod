@@ -106,9 +106,9 @@
 		CHOICE_BUTTON_VIS_NOHI( 2, "@" + dvarString( g_TeamName_Axis ), play "mouse_click"; scriptMenuResponse "axis";, when( (team( name ) == "TEAM_ALLIES" || (team(name) == "TEAM_FREE" && TEAM_IS_MARINES)) && dvarint(ui_force_autoassign) == 0 && dvarint(ui_force_allies) == 0 ); )
 		CHOICE_DBUTTON_VIS_NOHI( 2, "@" + dvarString( g_TeamName_Axis ), when( ( team( name ) == "TEAM_ALLIES" || team(name) == "TEAM_FREE" ) && ( dvarint(ui_force_autoassign) == 1 || dvarint(ui_force_allies) == 1 ) ); )
 
-		CHOICE_BUTTON_FOCUS_VIS_NOHI_EX( 3, "@MPUI_AUTOASSIGN", play "mouse_click"; scriptMenuResponse "autoassign";, ;, ;, when( ( gametype() != "bel" && team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 );, name "auto_assign"; )
-    CHOICE_BUTTON_BG( 3, when( ( gametype() != "bel" && team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 ); )
-    CHOICE_HIGHLIGHT( 3, when( ( gametype() != "bel" && team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 ); )
+		CHOICE_BUTTON_FOCUS_VIS_NOHI_EX( 3, "@MPUI_AUTOASSIGN", play "mouse_click"; scriptMenuResponse "autoassign";, ;, ;, when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 );, name "auto_assign"; )
+    CHOICE_BUTTON_BG( 3, when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 ); )
+    CHOICE_HIGHLIGHT( 3, when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 ); )
 		CHOICE_DBUTTON_VIS_NOHI( 3, "@MPUI_AUTOASSIGN", when( ( ( team( name ) == "TEAM_ALLIES" || team( name ) == "TEAM_AXIS" ) && gametype() == "bel" ) || dvarint(ui_force_allies) == 1 || dvarint(ui_force_axis) == 1 ); )
 		CHOICE_SEPARATOR_VIS( CHOICE_SEP_1, when( !localvarBool( ui_hideBack ) && team( name ) == "TEAM_SPECTATOR" && CLASS_MODE ) )
 

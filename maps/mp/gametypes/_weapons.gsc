@@ -238,6 +238,34 @@ isSniper( weapon )
 	return false;
 }
 
+isSniperUsingPistol()
+{
+  currWeap = self GetCurrentWeapon();
+  
+  if( !isPistol(currWeap) )
+    return 0;
+  
+  weaponsList = self GetWeaponsListPrimaries();
+  for( idx = 0; idx < weaponsList.size; idx++ ) {
+		weapon = weaponsList[idx];
+    if( isSniper(weapon) )
+      return 1;
+  }
+  
+  return 0;
+}
+
+isSniping()
+{
+  currWeap = self GetCurrentWeapon();
+  
+  if( isSniper(currWeap) || self isSniperUsingPistol() )
+    return 1;
+  
+  return 0;
+}
+
+
 hasScope( weapon )
 {
 	if ( isSubStr( weapon, "_acog_" ) )

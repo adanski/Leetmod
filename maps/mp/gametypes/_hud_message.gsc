@@ -584,7 +584,7 @@ outcomeNotify( winner, endReasonText )
 
 	players = level.placement["all"];
 	
-	specialDisplay = ( level.gametype == "gg" || level.gametype == "lms" || level.gametype == "oitc" );
+	specialDisplay = ( level.gametype == "gg" || level.gametype == "oitc" || (level.gametype == "dm" && level.scr_dm_lms_enable) );
 	
 	outcomeTitle = createFontString( font, titleSize );
 	outcomeTitle setPoint( "TOP", undefined, 0, spacing );

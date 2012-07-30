@@ -320,7 +320,7 @@ getNextMapInRotation()
 	// The next element is the map name
 	mapName = mapRotation[ mapIdx + 1 ];
 
-	// Now go back and search for the prior gametype keyboard
+	// Now go back and search for the prior gametype keyword
 	mapIdx--;
 	while ( mapIdx >= 0 && mapRotation[ mapIdx ] != "gametype" ) {
 		mapIdx--;
