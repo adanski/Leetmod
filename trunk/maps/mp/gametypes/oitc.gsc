@@ -52,6 +52,8 @@ main()
 	// Force some server variables
 	setDvar( "scr_player_forcerespawn_oitc", "1" );
 	setDvar( "scr_show_lives_enable_oitc", "1" );
+  // If spectating in OITC isn't Free by default, dead players can't watch the action anymore
+  setDvar( "scr_game_spectatetype_oitc", "2" );
 	
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();

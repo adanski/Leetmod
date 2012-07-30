@@ -39,7 +39,10 @@ init()
 	level.scr_barrel_damage_enable = getdvarx( "scr_barrel_damage_enable", "int", 1, 0, 1 );
 	level.scr_vehicle_damage_enable = getdvarx( "scr_vehicle_damage_enable", "int", 1, 0, 1 );
 		
-	level.scr_fire_tracer_chance = getdvarx( "scr_fire_tracer_chance", "float", 0.2, 0, 1 );
+	level.scr_fire_tracer_chance_firstp = getdvarx( "scr_fire_tracer_chance_firstp", "float", 1, 0, 1 );
+	level.scr_fire_tracer_chance_others = getdvarx( "scr_fire_tracer_chance_others", "float", 1, 0, 1 );
+  
+  level.scr_fire_tracer_length = getdvarx( "scr_fire_tracer_length", "float", 64, 0, 9999 );
 
 	// These variables apply only to non-hardcore
 	level.scr_hud_show_redcrosshairs = getdvarx( "scr_hud_show_redcrosshairs", "int", 1, 0, 1 );
@@ -110,8 +113,11 @@ init()
 	forceClientDvar( "sv_disableClientConsole", level.sv_disableClientConsole );
 	forceClientDvar( "cg_scoreboardpinggraph", 1 );
 	forceClientDvar( "cg_hudStanceHintPrints", 0 );
-	forceClientDvar( "cg_firstPersonTracerChance", level.scr_fire_tracer_chance );
-	forceClientDvar( "cg_tracerchance", level.scr_fire_tracer_chance );
+	
+  forceClientDvar( "cg_firstPersonTracerChance", level.scr_fire_tracer_chance_firstp );
+	forceClientDvar( "cg_tracerchance", level.scr_fire_tracer_chance_others );
+	forceClientDvar( "cg_tracerlength", level.scr_fire_tracer_length );
+  
 	forceClientDvar( "ui_healthoverlay", 1 );
 	forceClientDvar( "ui_ranked_game", ( level.rankedMatch ) );
 	

@@ -76,6 +76,9 @@ menuDef
   CHOICE_DVAREDIT_NUMERIC( 25, "@OW_HEALTHSYSTEM_HEALTHPACKS_HEALTH", scr_healthsystem_healthpacks_health, 3, ; )
   CHOICE_DVARYESNO( 26, "@OW_HEALTHSYSTEM_HEALTHPACKS_RANDOM_HEALTH", scr_healthsystem_healthpacks_random_health, ; )
   
+  CHOICE_DVARYESNO( 27, "@OW_BARREL_DAMAGE_ENABLE", scr_barrel_damage_enable, ; )
+  CHOICE_DVARYESNO( 28, "@OW_VEHICLE_DAMAGE_ENABLE", scr_vehicle_damage_enable, ; )
+  
   itemDef {
     name			back
     text			"@MENU_BACK"

@@ -3,7 +3,16 @@
 init()
 {
    // Load the module's dvars
-   level.scr_game_spectatetype = getdvarx( "scr_game_spectatetype", "int", 0, 0, 2 );
+   level.scr_game_spectatetype = getdvarx( "scr_game_spectatetype", "int", 1, 0, 2 );
+   switch ( level.gametype ) {
+    case "dm":
+    case "gg":
+    case "gr":
+    case "ss":
+      level.scr_game_spectatetype = getdvarx( "scr_game_spectatetype", "int", 0, 0, 2 );
+    break;
+  }
+    
    level.scr_game_spectatetype_spectators = getdvarx( "scr_game_spectatetype_spectators", "int", 0, 0, 2 );
    level.scr_game_spectators_guids = getdvarx( "scr_game_spectators_guids", "string", "" );
 
