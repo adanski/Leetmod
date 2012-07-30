@@ -75,7 +75,8 @@ menuDef
   CHOICE_DVARYESNO( 25, "@OW_HELICOPTER_KILLS_TOWARD_STREAK", scr_helicopter_kills_toward_streak, ; )
   CHOICE_DVAREDIT_NUMERIC( 26, "@OW_HELICOPTER_DELAY", scr_helicopter_delay, 2, ; )
   CHOICE_DVAREDIT_NUMERIC( 27, "@OW_HELI_MAXHEALTH", scr_heli_maxhealth, 4, ; )
-  CHOICE_DVAREDIT( 28, "@OW_HELI_TARGET_RECOGNITION", scr_heli_target_recognition, ; )
+  //CHOICE_DVAREDIT( 28, "@OW_HELI_TARGET_RECOGNITION", scr_heli_target_recognition, ; )
+  CHOICE_DVARSLIDER( 28, "@OW_HELI_TARGET_RECOGNITION", scr_heli_target_recognition, 0.95, 0, 1, ; )
   
   itemDef {
     name			back
