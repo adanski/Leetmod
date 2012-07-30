@@ -539,13 +539,15 @@ onMenuResponse()
 			case "allies":
 				//self closeMenu();
 				//self closeInGameMenu();
-				self [[level.allies]]();
+        if( level.gametype != "bel" )
+          self [[level.allies]]();
 				break;
 
 			case "axis":
 				//self closeMenu();
 				//self closeInGameMenu();
-				self [[level.axis]]();
+        if( level.gametype != "bel" )
+          self [[level.axis]]();
 				break;
 
 			case "autoassign":

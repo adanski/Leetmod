@@ -102,8 +102,6 @@ initGametypesAndMaps()
 	level.supportedGametypes["gg"] = "Gun Game";
 	level.supportedGametypes["koth"] = "Headquarters";
 //	level.supportedGametypes["hns"] = "Hide And Seek";	
-	level.supportedGametypes["lms"] = "Last Man Standing";
-	level.supportedGametypes["lts"] = "Last Team Standing";
 	level.supportedGametypes["oitc"] = "One In The Chamber";
 	level.supportedGametypes["re"] = "Retrieval";
 	level.supportedGametypes["sab"] = "Sabotage";

@@ -52,11 +52,20 @@ main()
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
-
-	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
-	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
-	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 30, 0, 1440 );
+  
+  level.scr_dm_lms_enable = getdvarx( "scr_dm_lms_enable", "int", 0, 0, 1 );
+  
+	if( !level.scr_dm_lms_enable) {
+    maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
+    maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
+    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 5000 );
+    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 30, 0, 1440 );
+  } else {
+    maps\mp\gametypes\_globallogic::registerNumLivesDvar( "dm_lms", 1, 1, 10 );
+    maps\mp\gametypes\_globallogic::registerRoundLimitDvar( "dm_lms", 0, 0, 500 );
+    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( "dm_lms", 3, 0, 50 );
+    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( "dm_lms", 0, 0, 1440 );
+  }
 
 
 	level.teamBased = false;
@@ -64,7 +73,10 @@ main()
 	level.onStartGameType = ::onStartGameType;
 	level.onSpawnPlayer = ::onSpawnPlayer;
 
-	game["dialog"]["gametype"] = gameTypeDialog( "freeforall" );
+	if( !level.scr_dm_lms_enable )
+    game["dialog"]["gametype"] = gameTypeDialog( "freeforall" );
+  else
+    game["dialog"]["gametype"] = gameTypeDialog( "lastman" );
 }
 
 
@@ -72,21 +84,42 @@ onStartGameType()
 {
 	setClientNameMode("auto_change");
 
-	maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OBJECTIVES_DM" );
-	maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OBJECTIVES_DM" );
+	if( !level.scr_dm_lms_enable ) {
+    maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OBJECTIVES_DM" );
+    maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OBJECTIVES_DM" );
+  } else {
+    maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OW_OBJECTIVES_LMS" );
+    maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OW_OBJECTIVES_LMS" );
+  }
 
 	if ( level.splitscreen )
 	{
-		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_DM" );
-		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_DM" );
+    if( !level.scr_dm_lms_enable ) {
+      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_DM" );
+      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_DM" );
+    } else {
+      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_LMS" );
+      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_LMS" );
+    }
 	}
 	else
 	{
-		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_DM_SCORE" );
-		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_DM_SCORE" );
+    if( !level.scr_dm_lms_enable ) {
+      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_DM_SCORE" );
+      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_DM_SCORE" );
+    } else {
+      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_LMS_SCORE" );
+      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_LMS_SCORE" );
+    }
 	}
-	maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OBJECTIVES_DM_HINT" );
-	maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OBJECTIVES_DM_HINT" );
+  
+  if( !level.scr_dm_lms_enable ) {
+    maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OBJECTIVES_DM_HINT" );
+    maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OBJECTIVES_DM_HINT" );
+  } else {
+    maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OW_OBJECTIVES_LMS_HINT" );
+    maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OW_OBJECTIVES_LMS_HINT" );
+  }
 
 	level.spawnMins = ( 0, 0, 0 );
 	level.spawnMaxs = ( 0, 0, 0 );
@@ -102,11 +135,19 @@ onStartGameType()
 	level.QuickMessageToAll = true;
 
 	// elimination style
-	if ( level.roundLimit != 1 && level.numLives )
+  if ( !level.scr_dm_lms_enable && level.roundLimit != 1 && level.numLives )
 	{
 		level.overridePlayerScore = true;
 		level.displayRoundEndText = true;
 		level.onEndGame = ::onEndGame;
+	}
+  
+  // last man standing
+	if ( level.scr_dm_lms_enable || (level.roundLimit != 1 && level.numLives) )
+	{
+		level.overridePlayerScore = true;
+		level.displayRoundEndText = true;
+    level.onOneLeftEvent = ::onOneLeftEvent;
 	}
 }
 
@@ -119,9 +160,25 @@ onSpawnPlayer()
 	self spawn( spawnPoint.origin, spawnPoint.angles );
 }
 
-
 onEndGame( winningPlayer )
 {
 	if ( isDefined( winningPlayer ) )
 		[[level._setPlayerScore]]( winningPlayer, winningPlayer [[level._getPlayerScore]]() + 1 );	
+}
+
+// copied from lms.gsc, is the only new piece of logic
+onOneLeftEvent( team )
+{
+	winner = getLastAlivePlayer();
+
+	if ( isDefined( winner ) )
+		logString( "last one alive, win: " + winner.name );
+	else
+		logString( "last one alive, win: unknown" );
+
+	if ( isDefined( winner ) ) {
+		[[level._setPlayerScore]]( winner, [[level._getPlayerScore]]( winner ) + 1 );
+	}
+	
+	thread maps\mp\gametypes\_globallogic::endGame( winner, &"MP_ENEMIES_ELIMINATED" );		
 }

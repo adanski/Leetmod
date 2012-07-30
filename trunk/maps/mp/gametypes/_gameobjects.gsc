@@ -65,7 +65,6 @@ main(allowed)
 		case "bel":
 		case "ftag":
 		case "koth":
-		case "lts":	
 		case "hns":	
 		case "tgr":	
 			spawnsNeeded = "tdm;sab";
@@ -73,7 +72,6 @@ main(allowed)
 			
 		case "gg":
 		case "gr":
-		case "lms":
 		case "oitc":
 		case "ss":
 			spawnsNeeded = "dm";

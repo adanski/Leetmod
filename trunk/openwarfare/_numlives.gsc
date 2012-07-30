@@ -5,7 +5,7 @@
 init()
 {
 	// Get the main module's dvar
-	level.scr_show_lives_enable = getdvarx( "scr_show_lives_enable", "int", 0, 0, 1 );
+	level.scr_show_lives_enable = getdvarx( "scr_show_lives_enable", "int", 1, 0, 1 );
 
 	// If showing number of lives remaining is disabled there's nothing else to do here
 	if ( level.scr_show_lives_enable == 0 || !level.numLives )

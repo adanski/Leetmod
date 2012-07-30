@@ -88,7 +88,6 @@ getConfigurationCount()
 	{
 		case "dm":
 		case "gg":
-		case "lms":
 		case "ss":
 		case "oitc":
 					dvarList[dvarList.size] = level.mapname + "_move_" + level.vm_gametype + "_spawns";
@@ -96,7 +95,6 @@ getConfigurationCount()
 		case "dom":
 		case "ftag":
 		case "koth":
-		case "lts":
 		case "war":
 		case "bel":
 		case "hns":
@@ -176,14 +174,12 @@ moveThePieces()
 	{
 		case "dm":
 		case "gg":
-		case "lms":
 		case "ss":
 		case "oitc":
 					moveSpawns( "mp_dm_spawn", level.mapname + "_move_" + level.vm_gametype + "_spawns_" + game["mover_config_current"] );
 			break;
 		case "ftag":
 		case "koth":
-		case "lts":
 		case "war":
 		case "bel":
 		case "hns":

@@ -82,7 +82,7 @@ monitorPlayerCamping()
 			if ( distanceMoved < level.scr_anti_camping_distance ) {
 				// Check if this player is using a sniper rifle
 				if ( level.scr_anti_camping_enable == 1 ||
-					 ( level.scr_anti_camping_enable == 2 && !maps\mp\gametypes\_weapons::isSniper( self getCurrentWeapon() ) ) ) {
+					 ( level.scr_anti_camping_enable == 2 && !self maps\mp\gametypes\_weapons::isSniping() ) ) {
 					self.isCamping = true;
 	
 					// Disable the player weapons and show an icon to the player indicating anti-camping

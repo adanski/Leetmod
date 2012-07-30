@@ -10,7 +10,6 @@ init()
 		case "dom":
 		case "koth":
 		case "gg":
-		case "lms":
 		case "oitc":
 		case "ss":
 			vKill = 5;

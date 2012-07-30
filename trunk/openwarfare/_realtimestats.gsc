@@ -147,7 +147,7 @@ onGameEnded()
               player checkMinStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeedw" );
         }
         if( !gotOneGood && (!level.scr_realtime_stats_remove_sniping_time && player.pers["stats"]["misc"]["secsalive"] > 60)
-                || (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60 ) ) {
+                || (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60 ) {
           gotOneGood = 1;
           level.eogBest["avgspeedw"]["name"] = player.name;
           if( level.scr_realtime_stats_remove_sniping_time )
@@ -408,7 +408,7 @@ onPlayerSpawned()
 			if ( chunkDistance > 0 ) {
 				oldPosition = self.origin;
 				self.pers["stats"]["misc"]["distance"] += chunkDistance;
-        if( maps\mp\gametypes\_weapons::isSniper( self getCurrentWeapon() ) )
+        if( self maps\mp\gametypes\_weapons::isSniping() )
           self.pers["stats"]["misc"]["distancesniper"] += chunkDistance;
 				self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100) / 100;
 				self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100) / 100;
@@ -420,7 +420,7 @@ onPlayerSpawned()
 		if ( updateLoop == 10 ) {
 			updateLoop = 0;
 			self.pers["stats"]["misc"]["secsalive"]++;
-      if( maps\mp\gametypes\_weapons::isSniper( self getCurrentWeapon() ) )
+      if( self maps\mp\gametypes\_weapons::isSniping() )
         self.pers["stats"]["misc"]["secsalivesniper"]++;
       
       oldValue = self.pers["stats"]["misc"]["distance"];

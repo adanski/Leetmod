@@ -157,10 +157,6 @@ rawfile,maps/mp/gametypes/gr.txt
 #rawfile,maps/mp/gametypes/hns.gsc
 #rawfile,maps/mp/gametypes/hns.txt
 rawfile,maps/mp/gametypes/koth.gsc
-rawfile,maps/mp/gametypes/lms.gsc
-rawfile,maps/mp/gametypes/lms.txt
-rawfile,maps/mp/gametypes/lts.gsc
-rawfile,maps/mp/gametypes/lts.txt
 rawfile,maps/mp/gametypes/oitc.gsc
 rawfile,maps/mp/gametypes/oitc.txt
 rawfile,maps/mp/gametypes/re.gsc
