@@ -19,7 +19,7 @@
 #include "ui/choices_setup_common.menu"
 //#include "ui_mp/stats_info.inc"
 
-//#define CONNECT_LM_PT exec "connect 213.63.224.77:28973"
+//#define CONNECT_LM_PT exec "connect 127.0.0.1:28960"
 
 {
 	assetGlobalDef

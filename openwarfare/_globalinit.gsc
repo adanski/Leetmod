@@ -39,7 +39,7 @@ init()
 	//thread openwarfare\_killingspree::init();
 	//thread openwarfare\_limitexplosives::init();
 	thread openwarfare\_livebroadcast::init();
-	//thread openwarfare\_martyrdom::init();
+	thread openwarfare\_martyrdom::init();
 	thread openwarfare\_numlives::init();
 	thread openwarfare\_objoptions::init();
 	thread openwarfare\_overtime::init();
@@ -58,9 +58,6 @@ init()
 	thread openwarfare\_scorebot::init();
 	thread openwarfare\_scoresystem::init();
 	thread openwarfare\_serverbanners::init();
-	
-	//thread openwarfare\_serverload::init();
-	
 	thread openwarfare\_servermessages::init();
 	//thread openwarfare\_sniperzoom::init();
 	thread openwarfare\_spawnprotection::init();

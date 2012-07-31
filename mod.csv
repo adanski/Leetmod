@@ -250,11 +250,6 @@ material,weapon_knife
 
 rawfile,mp/CoD2maps.arena
 stringtable,mp/attributesTable.csv
-stringtable,mp/challengetable_tier2.csv
-stringtable,mp/challengetable_tier6.csv
-stringtable,mp/challengetable_tier8.csv
-stringtable,mp/challengetable_tier9.csv
-stringtable,mp/challengetable_tier10.csv
 stringtable,mp/classtable.csv
 #stringtable,mp/propsTable.csv
 stringtable,mp/rankIconTable.csv
@@ -295,7 +290,7 @@ rawfile,openwarfare/_keybinds.gsc
 #rawfile,openwarfare/_limitexplosives.gsc
 rawfile,openwarfare/_livebroadcast.gsc
 rawfile,openwarfare/_maprotationcs.gsc
-#rawfile,openwarfare/_martyrdom.gsc
+rawfile,openwarfare/_martyrdom.gsc
 rawfile,openwarfare/_numlives.gsc
 rawfile,openwarfare/_objoptions.gsc
 rawfile,openwarfare/_overtime.gsc

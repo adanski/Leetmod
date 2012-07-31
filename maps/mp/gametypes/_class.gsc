@@ -561,10 +561,9 @@ cac_getdata()
 
 		m16WeaponIndex = 25;
 		assert( level.tbl_weaponIDs[m16WeaponIndex]["reference"] == "m16" );
-    //### FIX : remove MGs & P90
+    //## if a client manages to pick a disabled weapon by some weird way, we make sure to change it to another that is allowed
 		if ( primary_num < 0 || !isDefined( level.tbl_weaponIDs[ primary_num ] ) || !isWeaponEnabled(primary_num) )
 		{
-      //mp5 index because when SAW is blocked, ow cac editor displays mp5
 			primary_num = numFirstEnabledWeapon();
 			primary_attachment_flag = 0;
 		}
@@ -1449,50 +1448,53 @@ isWeaponEnabled(weaponNum)
 
 numFirstEnabledWeapon()
 {
-  if( level.weap_allow_assault_m16 )
-    return 25;
+  // first return weapons that are available from the start (lvl 1)
   if( level.weap_allow_assault_ak47 )
     return 20;
-  if( level.weap_allow_assault_m4 )
-    return 26;
-  if( level.weap_allow_assault_g3 )
-    return 23;
-  if( level.weap_allow_assault_g36c )
-      return 24;
-  if( level.weap_allow_assault_m14 )
-      return 21;
-  if( level.weap_allow_assault_mp44 )
-      return 22;
+  if( level.weap_allow_assault_m16 )
+    return 25;
   if( level.weap_allow_specops_mp5 )
       return 10;
   if( level.weap_allow_specops_skorpion )
       return 11;
-  if( level.weap_allow_specops_uzi )
-      return 12;
-  if( level.weap_allow_specops_ak74u )
-      return 13;
-  if( level.weap_allow_specops_p90 )
-      return 14;
-  if( level.weap_allow_heavygunner_saw )
-      return 81;
-  if( level.weap_allow_heavygunner_rpd )
-      return 80;
-  if( level.weap_allow_heavygunner_m60e4 )
-      return 82;
   if( level.weap_allow_demolitions_winchester1200 )
       return 71;
-  if( level.weap_allow_demolitions_m1014 )
-      return 70;
   if( level.weap_allow_sniper_m40a3 )
       return 61;
+  if( level.weap_allow_heavygunner_rpd )
+      return 80;
+  if( level.weap_allow_heavygunner_saw )
+      return 81;
+      
+  // then return the others, order is the level it is unlocked on (ascendent)
   if( level.weap_allow_sniper_m21 )
       return 65;
+  if( level.weap_allow_assault_m4 )
+    return 26;
+  if( level.weap_allow_specops_uzi )
+      return 12;
+  if( level.weap_allow_heavygunner_m60e4 )
+      return 82;
   if( level.weap_allow_sniper_dragunov )
       return 60;
+  if( level.weap_allow_assault_g3 )
+    return 23;
+  if( level.weap_allow_specops_ak74u )
+      return 13;
+  if( level.weap_allow_demolitions_m1014 )
+      return 70;
   if( level.weap_allow_sniper_remington700 )
       return 64;
+  if( level.weap_allow_assault_g36c )
+      return 24;
+  if( level.weap_allow_specops_p90 )
+      return 14;
+  if( level.weap_allow_assault_m14 )
+      return 21;
   if( level.weap_allow_sniper_barrett )
       return 62;
+  if( level.weap_allow_assault_mp44 )
+      return 22;
   
   return -1;
 }

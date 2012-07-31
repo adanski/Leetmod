@@ -73,7 +73,8 @@
 		//CHOICE_BIND( 29, "@OW_ZOOM_OUT", "openScriptMenu modkeybind zoomout", ; )
 		//CHOICE_BIND( 30, "@OW_BINOCULARS", "+actionslot 2", ; )
 		//CHOICE_BIND( 31, "@OW_ATTACH_DETACH", "openScriptMenu modkeybind attachdetach", ; )
-		//CHOICE_BIND( 32, "@OW_FIRING_MODE", "openScriptMenu modkeybind firingmode", ; )
+		// commented because of xmodels limitation (respective code is also disabled)
+    //CHOICE_BIND( 32, "@OW_FIRING_MODE", "openScriptMenu modkeybind firingmode", ; )
 		//CHOICE_BIND( 33, "@OW_UNJAM_WEAPON", "openScriptMenu modkeybind unjam", ; )
 
 	
@@ -90,7 +91,7 @@
 		//CHOICE_BIND( 37, "@OW_REDIRECT", "openScriptMenu modkeybind redirect", ; )
 		//CHOICE_BIND( 38, "@OW_TIMEOUT_CALL", "openScriptMenu modkeybind calltimeout", ; )
 		CHOICE_BIND( 37, "@OW_CYCLE_FPSLAG", "openScriptMenu modkeybind cyclefpslag", ; )
-		//CHOICE_BIND( 40, "@OW_AACP_MENU", "openScriptMenu modkeybind advancedacp", ; )	
+		CHOICE_BIND( 40, "@OW_AACP_MENU", "openScriptMenu modkeybind advancedacp", ; )	
 
 		CHOICE_KEYBINDHELP
 	}

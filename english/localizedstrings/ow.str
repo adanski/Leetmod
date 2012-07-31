@@ -689,7 +689,7 @@ LANG_ENGLISH "^7The server admin has switched you to the other team."
 //******************************************************************************
 
 REFERENCE CAP_OPEN 
-LANG_ENGLISH "Hit the ^3[USE] ^7key to open the\n^3Customize-A-Player Interface" 
+LANG_ENGLISH "Hit the ^3[USE] ^7key to open the\n^3Customize-A-Player Interface"
 
 REFERENCE CAP_CYCLE_AND_CLOSE
 LANG_ENGLISH "Hit the ^3[USE] ^7key to cycle through the models\nHit the ^3[MELEE] ^7key to exit the interface"
@@ -1636,41 +1636,29 @@ LANG_ENGLISH "Perks"
 REFERENCE SERVER_WEAPONS
 LANG_ENGLISH "Weapons"
 
+REFERENCE SERVER_HARDPOINTS
+LANG_ENGLISH "Killstreaks"
+
+REFERENCE SERVER_HEALTHSYSTEM
+LANG_ENGLISH "Health System"
+
+REFERENCE SERVER_FAIRNESS
+LANG_ENGLISH "Fairness"
+
+REFERENCE SERVER_MAPDESIGN
+LANG_ENGLISH "Map Design"
+
+REFERENCE SERVER_SCORES
+LANG_ENGLISH "Scores"
+
+REFERENCE SERVER_SPECTATE
+LANG_ENGLISH "Spectators"
+
 REFERENCE SERVER_GAMETYPE
 LANG_ENGLISH "Gametype"
 
 REFERENCE LAUNCH_WITHOUT_MODS
 LANG_ENGLISH "Launch without mods"
-
-REFERENCE AMMOCOUNT_C4
-LANG_ENGLISH "C4 ammo count"
-
-REFERENCE AMMOCOUNT_CLAYMORE
-LANG_ENGLISH "Claymore ammo count"
-
-REFERENCE AMMOCOUNT_RPG
-LANG_ENGLISH "RPG ammo count"
-
-REFERENCE AMMOCOUNT_FRAG
-LANG_ENGLISH "Frag grenade ammo count"
-
-REFERENCE AMMOCOUNT_SPECIAL
-LANG_ENGLISH "Special grenade ammo count"
-
-REFERENCE ARMOR_VEST_VALUE
-LANG_ENGLISH "Juggernaut reduce damage to (%)"
-
-REFERENCE BULLET_DAMAGE_VALUE
-LANG_ENGLISH "Stopping power increase damage by (%)"
-
-REFERENCE EXPLOSIVE_DAMAGE_VALUE
-LANG_ENGLISH "Sonic Boom increase explosion by (%)"
-
-REFERENCE CHECK_FRAGS
-LANG_ENGLISH "Martyrdom must have frags"
-
-REFERENCE CHECK_PISTOL
-LANG_ENGLISH "Last Stand must have pistol ammo"
 
 //******************************************************************************
 // ui_mp/server_gametype_<generic>.menu
@@ -1737,7 +1725,7 @@ REFERENCE SHOW_BOMB_CARRIER
 LANG_ENGLISH "Show Kill sign"
 
 REFERENCE SHOW_BOMB_CARRIER_TIME
-LANG_ENGLISH "Seconds to (--check)
+LANG_ENGLISH "Seconds to (--check)"
 
 REFERENCE SHOW_BOMB_CARRIER_DISTANCE
 LANG_ENGLISH " (--check)"
@@ -2041,5 +2029,481 @@ LANG_ENGLISH "Shipment 2"
 
 REFERENCE MAPS_SHIPMENT3
 LANG_ENGLISH "Shipment 3"
+
+
+//******************************************************************************
+// ui_mp/server_perks.inc
+//******************************************************************************
+
+REFERENCE SCR_C4_AMMO_COUNT
+LANG_ENGLISH "C4: Ammo to give"
+
+REFERENCE SCR_CLAYMORE_AMMO_COUNT
+LANG_ENGLISH "Claymore: Ammo to give"
+
+REFERENCE SCR_RPG_AMMO_COUNT
+LANG_ENGLISH "RPG: Ammo to give"
+
+REFERENCE SPECIALTY_FRAGGRENADE_AMMO_COUNT
+LANG_ENGLISH "Frags +: Extra frags to give"
+
+REFERENCE SPECIALTY_SPECIALGRENADE_AMMO_COUNT
+LANG_ENGLISH "Specials +: Extra specials to give"
+
+REFERENCE ARMOR_VEST_VALUE
+LANG_ENGLISH "Juggernaut: Reduce damage to (%)"
+
+REFERENCE BULLET_DAMAGE_VALUE
+LANG_ENGLISH "Stopping power: Increase damage by (%)"
+
+REFERENCE EXPLOSIVE_DAMAGE_VALUE
+LANG_ENGLISH "Sonic Boom: Increase explosion by (%)"
+
+REFERENCE SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS
+LANG_ENGLISH "Martyrdom: Must have frags"
+
+REFERENCE SPECIALTY_PISTOLDEATH_CHECK_PISTOL
+LANG_ENGLISH "Last Stand: Must have pistol ammo"
+
+REFERENCE SCR_CLAYMORE_ADD_KILLS_MAX_TIME
+LANG_ENGLISH "Clay: Max time after plant to count a death to player kills"
+
+
+//******************************************************************************
+// ui_mp/server_fairness.inc
+//******************************************************************************
+
+REFERENCE SCR_FORCE_AUTOASSIGN
+LANG_ENGLISH "Force Auto-Assign"
+
+REFERENCE SCR_FORCE_AUTOASSIGN_CLAN_TAGS
+LANG_ENGLISH "Clan tags excempt from Auto-Assign"
+
+REFERENCE SCR_SWITCH_TEAMS_AT_HALFTIME
+LANG_ENGLISH "Switch teams at halftime"
+
+REFERENCE SCR_TEAMBALANCE
+LANG_ENGLISH "Balance teams automatically"
+
+REFERENCE SCR_TEAMBALANCE_SHOW_MESSAGE
+LANG_ENGLISH "Show team balance message"
+
+REFERENCE SCR_TEAMBALANCE_CHECK_INTERVAL
+LANG_ENGLISH "Team balance check interval"
+
+REFERENCE SCR_TEAMBALANCE_DELAY
+LANG_ENGLISH "Time after the message to balance teams"
+
+REFERENCE SCR_TEAMBALANCE_PROTECTED_CLAN_TAGS
+LANG_ENGLISH "Clan tags excempt from team balance"
+
+REFERENCE SCR_TEAM_FFTYPE
+LANG_ENGLISH "Friendly-fire"
+
+REFERENCE SCR_TEAM_TEAMKILLPOINTLOSS
+LANG_ENGLISH "Team-killer point loss"
+
+REFERENCE SCR_TEAM_TEAMKILLSPAWNDELAY
+LANG_ENGLISH "Team-killer respawn delay"
+
+REFERENCE SCR_GAME_DEATHPOINTLOSS
+LANG_ENGLISH "Death has point loss"
+
+REFERENCE SCR_GAME_SUICIDEPOINTLOSS
+LANG_ENGLISH "Suicide has point loss"
+
+REFERENCE SCR_PLAYER_SUICIDESPAWNDELAY
+LANG_ENGLISH "Suicide player respawn delay"
+
+REFERENCE SCR_TK_LIMIT
+LANG_ENGLISH "Team-kill monitor limit"
+
+REFERENCE SCR_TK_EXPLOSIVE_COUNTASONE
+LANG_ENGLISH "Multiple TK with explosive counts as one"
+
+REFERENCE SCR_TK_PUNISHMENT
+LANG_ENGLISH "Team-kill punishment"
+
+REFERENCE SCR_TK_PUNISHMENT_TIME
+LANG_ENGLISH "Team-kill punishment time"
+
+REFERENCE SCR_SPAWN_PROTECTION_ENABLE
+LANG_ENGLISH "Spawn Protection"
+
+REFERENCE SCR_SPAWN_PROTECTION_TIME
+LANG_ENGLISH "Spawn protection time"
+
+REFERENCE SCR_SPAWN_PROTECTION_INVISIBLE
+LANG_ENGLISH "Be invisible during protection time"
+
+REFERENCE SCR_SPAWN_PROTECTION_HITICON
+LANG_ENGLISH "Warning icon when attacking protected player"
+
+REFERENCE SCR_SPAWN_PROTECTION_MAXDISTANCE
+LANG_ENGLISH "Max distance to travel while spawn protected"
+
+REFERENCE SCR_SPAWN_PROTECTION_PUNISHMENT_TIME
+LANG_ENGLISH "Punish spawn-killer attacker during (0=disable)"
+
+REFERENCE SCR_ANTI_CAMPING_ENABLE
+LANG_ENGLISH "Anti-Camping"
+
+REFERENCE SCR_ANTI_CAMPING_SHOW
+LANG_ENGLISH "Warn the player when he is camping with"
+
+REFERENCE SCR_ANTI_CAMPING_MESSAGE
+LANG_ENGLISH "Custom camping message"
+
+REFERENCE SCR_ANTI_CAMPING_TIME
+LANG_ENGLISH "Time the player has to move the set distance"
+
+REFERENCE SCR_ANTI_CAMPING_DISTANCE
+LANG_ENGLISH "Distance to travel in the set time"
+
+REFERENCE SCR_ANTI_BUNNY_HOPPING_ENABLE
+LANG_ENGLISH "Anti-Bunny Hopping "jump and fire"
+
+REFERENCE SCR_ANTI_DOLPHIN_DIVE_ENABLE
+LANG_ENGLISH "Anti-Dolphin Dive (prone and fire)"
+
+REFERENCE SCR_IDLE_SWITCH_SPECTATOR
+LANG_ENGLISH "Player idle time before being switched to spect."
+
+REFERENCE SCR_IDLE_SPECTATOR_TIMEOUT
+LANG_ENGLISH "Next idle time before said player is kicked"
+
+REFERENCE SCR_IDLE_SHOW_WARNING
+LANG_ENGLISH "Show warning 10 seconds before the actions"
+
+REFERENCE SCR_IDLE_PROTECTED_TAGS
+LANG_ENGLISH "Clan tags excempt from Idle Monitor"
+
+REFERENCE SCR_IDLE_PROTECTED_GUIDS
+LANG_ENGLISH "GUIDs excempt from Idle Monitor"
+
+
+//******************************************************************************
+// ui_mp/server_hardpoints.inc
+//******************************************************************************
+
+REFERENCE SCR_GAME_HARDPOINTS
+LANG_ENGLISH "Killstreaks"
+
+REFERENCE SCR_HARDPOINT_SHOW_REMINDER
+LANG_ENGLISH "Remind player if he has an unused killstreak"
+
+REFERENCE SCR_REMOVE_HARDPOINT_ON_DEATH
+LANG_ENGLISH "When player dies remove his unused killstreaks"
+
+REFERENCE SCR_GAME_HARDPOINTS_CYCLE
+LANG_ENGLISH "Cycle killstreaks (continue regaining them)"
+
+REFERENCE SCR_GAME_HARDPOINTS_MODE
+LANG_ENGLISH "Killstreaks earning mode"
+
+REFERENCE SCR_ANNOUNCE_KILLSTREAK
+LANG_ENGLISH "Announce KS earned to other players (message)"
+
+REFERENCE SCR_HARDPOINT_ALLOW_UAV
+LANG_ENGLISH "Allow UAV"
+
+REFERENCE SCR_GAME_FORCEUAV
+LANG_ENGLISH "Force UAV always"
+
+REFERENCE SCR_HARDPOINT_UAV_STREAK
+LANG_ENGLISH "Number of kills to get UAV"
+
+REFERENCE SCR_UAV_VIEW_TIME
+LANG_ENGLISH "UAV time active (viewing time)"
+
+REFERENCE SCR_ANNOUNCE_ENEMY_UAV_ONLINE
+LANG_ENGLISH "Announce UAV activation to enemies"
+
+REFERENCE SCR_UAV_SHOW_HARDPOINTS
+LANG_ENGLISH "UAV show objects (eg. airstrikes or objectives)"
+
+REFERENCE SCR_HARDPOINT_ALLOW_AIRSTRIKE
+LANG_ENGLISH "Allow Airstrike"
+
+REFERENCE SCR_HARDPOINT_AIRSTRIKE_STREAK
+LANG_ENGLISH "Number of kills to get Airstrike"
+
+REFERENCE SCR_AIRSTRIKE_HARDPOINT_INTERVAL
+LANG_ENGLISH "Interval between consecutive team airstrikes"
+
+REFERENCE SCR_ANNOUNCE_ENEMY_AIRSTRIKE_INBOUND
+LANG_ENGLISH "Announce air strike to enemies"
+
+REFERENCE SCR_AIRSTRIKE_ADD_KILLS
+LANG_ENGLISH "Airstrike kills count towards player kills"
+
+REFERENCE SCR_AIRSTRIKE_KILLS_TOWARD_STREAK
+LANG_ENGLISH "Airstrike kills count towards killstreaks"
+
+REFERENCE SCR_AIRSTRIKE_DELAY
+LANG_ENGLISH "Delay airstrike activation on round start"
+
+REFERENCE SCR_HARDPOINT_ALLOW_HELICOPTER
+LANG_ENGLISH "Allow Helicopter"
+
+REFERENCE SCR_HARDPOINT_HELICOPTER_STREAK
+LANG_ENGLISH "Number of kills to get Helicopter"
+
+REFERENCE SCR_HELI_HARDPOINT_INTERVAL
+LANG_ENGLISH "Interval between consecutive team helicopters"
+
+REFERENCE SCR_ANNOUNCE_ENEMY_HELI_INBOUND
+LANG_ENGLISH "Announce helicopter inbound to enemies"
+
+REFERENCE SCR_HELICOPTER_ADD_KILLS
+LANG_ENGLISH "Helicopter kills count towards player kills"
+
+REFERENCE SCR_HELICOPTER_KILLS_TOWARD_STREAK
+LANG_ENGLISH "Helicopter kills count towards killstreaks"
+
+REFERENCE SCR_HELICOPTER_DELAY
+LANG_ENGLISH "Delay helicopter call on round start"
+
+REFERENCE SCR_HELI_MAXHEALTH
+LANG_ENGLISH "Helicopter max health"
+
+REFERENCE SCR_HELI_TARGET_RECOGNITION
+LANG_ENGLISH "Minimum body % shown before heli engages"
+LANG_ENGLISH "Body % helicopter has to see before engaging"
+
+
+//******************************************************************************
+// ui_mp/server_healthsystem.inc
+//******************************************************************************
+
+REFERENCE SCR_PLAYER_MAXHEALTH
+LANG_ENGLISH "Player Max Health"
+
+REFERENCE SCR_HEALTHREGEN_METHOD
+LANG_ENGLISH "Health regeneration method"
+
+REFERENCE SCR_PLAYER_HEALTHREGENTIME
+LANG_ENGLISH "Health regeneration time"
+
+REFERENCE SCR_SCR_HEALTH_PAIN_SOUND
+LANG_ENGLISH "Play a pain sound when damage is taken (chance)"
+
+REFERENCE SCR_HEALTH_DEATH_SOUND
+LANG_ENGLISH "Play a sound whenever the player dies"
+
+REFERENCE SCR_HEALTH_HURT_SOUND
+LANG_ENGLISH "Plays breathing sounds when health isn't full"
+
+REFERENCE SCR_HEALTHSYSTEM_SHOW_HEALTHBAR
+LANG_ENGLISH "Show health bar"
+
+REFERENCE SCR_HEALTHSYSTEM_BLEEDING_ENABLE
+LANG_ENGLISH "Enable bleeding from damage (rate)"
+
+REFERENCE SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE
+LANG_ENGLISH "Needed % of health loss before bleeding begins"
+
+REFERENCE SCR_HEALTHSYSTEM_BLEEDING_ICON
+LANG_ENGLISH "Show icon when bleeding"
+
+REFERENCE SCR_HEALTHSYSTEM_BANDAGE_START
+LANG_ENGLISH "Player starting bandage number"
+
+REFERENCE SCR_HEALTHSYSTEM_BANDAGE_MAX
+LANG_ENGLISH "Player max bandages"
+
+REFERENCE SCR_HEALTHSYSTEM_BANDAGE_SELF
+LANG_ENGLISH "Player can bandage himself (when bleeding)"
+
+REFERENCE SCR_HEALTHSYSTEM_BANDAGE_TIME
+LANG_ENGLISH "Time a player takes to fully bandage"
+
+REFERENCE SCR_HEALTHSYSTEM_MEDIC_ENABLE
+LANG_ENGLISH "Enable medic role"
+
+REFERENCE SCR_HEALTHSYSTEM_MEDIC_BANDAGING
+LANG_ENGLISH "Bandage teammate (when bleeding)"
+
+REFERENCE SCR_HEALTHSYSTEM_MEDIC_HEALING
+LANG_ENGLISH "Heal teammate (when health isn't full)"
+
+REFERENCE SCR_HEALTHSYSTEM_MEDIC_HEALING_SELF
+LANG_ENGLISH "Heal himself (when health isn't full)"
+
+REFERENCE SCR_HEALTHSYSTEM_MEDIC_HEALING_HEALTH
+LANG_ENGLISH "Health a bandage gives to a player on full heal"
+
+REFERENCE SCR_HEALTHSYSTEM_MEDIC_HEALING_TIME
+LANG_ENGLISH "Time a full heal takes"
+
+REFERENCE SCR_HEALTHSYSTEM_MEDIC_TAKE_BANDAGE
+LANG_ENGLISH "Can use a teammate bandage to heal him"
+
+REFERENCE SCR_HEALTHSYSTEM_HEALING_ICON
+LANG_ENGLISH "Show icon when bandaging/healing"
+
+REFERENCE SCR_HEALTHSYSTEM_HEALTHPACKS_ENABLE
+LANG_ENGLISH "Health Packs"
+
+REFERENCE SCR_HEALTHSYSTEM_HEALTHPACKS_TIMEOUT
+LANG_ENGLISH "Time before dropped health pack removal"
+
+REFERENCE SCR_HEALTHSYSTEM_HEALTHPACKS_HEALTH
+LANG_ENGLISH "Health given by a picked health pack"
+
+REFERENCE SCR_HEALTHSYSTEM_HEALTHPACKS_RANDOM_HEALTH
+LANG_ENGLISH "Health pack random health to add to player"
+
+REFERENCE SCR_BARREL_DAMAGE_ENABLE
+LANG_ENGLISH "Exploding barrel damage players"
+
+REFERENCE SCR_VEHICLE_DAMAGE_ENABLE
+LANG_ENGLISH "Exploding vehicle damage players"
+
+
+//******************************************************************************
+// ui_mp/server_scores.inc
+//******************************************************************************
+
+REFERENCE SCR_ENABLE_SCORESYSTEM
+LANG_ENGLISH "Override default scores"
+
+REFERENCE SCR_SCORE_TK_AFFECTS_TEAMSCORE
+LANG_ENGLISH "Team-kills affect team scores (=/> player's)"
+
+REFERENCE SCR_SCORE_STANDARD_KILL
+LANG_ENGLISH "Standart kill"
+
+REFERENCE SCR_SCORE_HEADSHOT_KILL
+LANG_ENGLISH "Headshot kill"
+
+REFERENCE SCR_SCORE_MELEE_KILL
+LANG_ENGLISH "Melee kill"
+
+REFERENCE SCR_SCORE_GRENADE_KILL
+LANG_ENGLISH "Grenade kill"
+
+REFERENCE SCR_SCORE_C4_KILL
+LANG_ENGLISH "C4 kill"
+
+REFERENCE SCR_SCORE_CLAYMORE_KILL
+LANG_ENGLISH "Claymore kill"
+
+REFERENCE SCR_SCORE_RPG_KILL
+LANG_ENGLISH "RPG kill"
+
+REFERENCE SCR_SCORE_GRENADE_LAUNCHER_KILL
+LANG_ENGLISH "Grenade Launcher kill"
+
+REFERENCE SCR_SCORE_AIRSTRIKE_KILL
+LANG_ENGLISH "Airstrike kill"
+
+REFERENCE SCR_SCORE_HELICOPTER_KILL
+LANG_ENGLISH "Helicopter kill"
+
+REFERENCE SCR_SCORE_VEHICLE_EXPLOSION_KILL
+LANG_ENGLISH "Vehicle explosion kill"
+
+REFERENCE SCR_SCORE_BARREL_EXPLOSION_KILL
+LANG_ENGLISH "Barrel explosion kill"
+
+REFERENCE SCR_SCORE_ASSIST_KILL
+LANG_ENGLISH "Assist a kill"
+
+REFERENCE SCR_SCORE_ASSIST_25_KILL
+LANG_ENGLISH "Assist 25 kills"
+
+REFERENCE SCR_SCORE_ASSIST_50_KILL
+LANG_ENGLISH "Assist 50 kills"
+
+REFERENCE SCR_SCORE_ASSIST_75_KILL
+LANG_ENGLISH "Assist 75 kills"
+
+REFERENCE SCR_SCORE_PLAYER_DEATH
+LANG_ENGLISH "Player dies"
+
+REFERENCE SCR_SCORE_PLAYER_SUICIDE
+LANG_ENGLISH "Player commits suicide"
+
+REFERENCE SCR_SCR_SCORE_PLAYER_TEAMKILL
+LANG_ENGLISH "Player commits team-kill"
+
+REFERENCE SCR_SCORE_HARDPOINT_USED
+LANG_ENGLISH "Use a killstreak"
+
+REFERENCE SCR_SCORE_SHOT_DOWN_HELICOPTER
+LANG_ENGLISH "Shoot down an helicopter"
+
+REFERENCE SCR_SCORE_CAPTURE_OBJECTIVE
+LANG_ENGLISH "Capture objective"
+
+REFERENCE SCR_SCORE_TAKE_OBJECTIVE
+LANG_ENGLISH "Take objective"
+
+REFERENCE SCR_SCORE_RETURN_OBJECTIVE
+LANG_ENGLISH "Return objective"
+
+REFERENCE SCR_SCORE_DEFEND_OBJECTIVE
+LANG_ENGLISH "Defend objective"
+
+REFERENCE SCR_SCORE_HOLDING_OBJECTIVE
+LANG_ENGLISH "Hold objective"
+
+REFERENCE SCR_SCORE_KILL_OBJECTIVE_CARRIER
+LANG_ENGLISH "Kill objective carrier"
+
+REFERENCE SCR_SCORE_ASSAULT_OBJECTIVE
+LANG_ENGLISH "Assault objective"
+
+REFERENCE SCR_SCORE_PLANT_BOMB
+LANG_ENGLISH "Plant bomb"
+
+REFERENCE SCR_SCORE_DEFUSE_BOMB
+LANG_ENGLISH "Defuse bomb"
+
+
+//******************************************************************************
+// ui_mp/server_mapdesign.inc
+//******************************************************************************
+
+REFERENCE SCR_MAP_SPECIAL_FX_ENABLE
+LANG_ENGLISH "Special effects (sounds, fire, smoke...), all maps"
+
+REFERENCE SCR_MAP_SPECIAL_FX_RAIN
+LANG_ENGLISH "Rain drops and sound (Wet Work and Downpour)"
+
+REFERENCE SCR_MAP_SPECIAL_FX_PARTICLES
+LANG_ENGLISH "Dust particles and air (semi-fog)"
+
+REFERENCE SCR_MAP_SPECIAL_FX_BGSOUND
+LANG_ENGLISH "Map background sounds"
+
+REFERENCE SCR_SHOW_FOG
+LANG_ENGLISH "Show fog (Warning: forces r_fog on clients)"
+
+REFERENCE SCR_DCS_ENABLED
+LANG_ENGLISH "Day Cycle System"
+
+REFERENCE SCR_DCS_DAY_LENGTH
+LANG_ENGLISH "Day length"
+
+REFERENCE SCR_DCS_DUSK_LENGTH
+LANG_ENGLISH "Dusk length"
+
+REFERENCE SCR_DCS_NIGHT_LENGTH
+LANG_ENGLISH "Night length"
+
+REFERENCE SCR_DCS_DAWN_LENGTH
+LANG_ENGLISH "Dawn length"
+
+REFERENCE SCR_DCS_FIRST_CYCLE
+LANG_ENGLISH "Starting phase of the cycle"
+
+REFERENCE SCR_DCS_SOUNDS_ENABLE
+LANG_ENGLISH "Special phase sounds"
+
+REFERENCE SCR_DCS_RESET_CYCLE
+LANG_ENGLISH "Reset cycle"
+
 
 ENDMARKER
