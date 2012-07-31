@@ -410,8 +410,8 @@ onPlayerSpawned()
 				self.pers["stats"]["misc"]["distance"] += chunkDistance;
         if( self maps\mp\gametypes\_weapons::isSniping() )
           self.pers["stats"]["misc"]["distancesniper"] += chunkDistance;
-				self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100) / 100;
-				self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100) / 100;
+				self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100 ) / 100;
+				self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100 ) / 100;
 			}			
 		}
 		
@@ -432,8 +432,8 @@ onPlayerSpawned()
       }
       self setClientDvar( "ps_dt", travelledDistance + mUnit );
 			self setClientDvar( "ps_as", int( (travelledDistance/self.pers["stats"]["misc"]["secsalive"])*100) / 100 + mPSUnit );
-      self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100) / 100;
-      self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100) / 100;
+      self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100 ) / 100;
+      self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100 ) / 100;
 		}
 	}
 	// Update one more time once the player dies
@@ -444,8 +444,8 @@ onPlayerSpawned()
   } else {
     travelledDistance = int( oldValue * 0.0278 * 10 ) / 10;
   }
-  self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100) / 100;
-  self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100) / 100;
+  self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/self.pers["stats"]["misc"]["secsalive"])*100 ) / 100;
+  self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]))*100 ) / 100;
   self setClientDvar( "ps_dt", travelledDistance + mUnit );
   self setClientDvar( "ps_as", int( (travelledDistance/self.pers["stats"]["misc"]["secsalive"])*100) / 100 + mPSUnit );
 }

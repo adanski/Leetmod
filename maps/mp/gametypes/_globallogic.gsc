@@ -4977,7 +4977,7 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 	}
 
 	// Check if we need to modify the damage done
-	if ( level.scr_wdm_enabled == 1 ) {
+	if ( level.scr_wdm_enabled || level.scr_wdm_autoadjust_bolt_action ) {
 		if ( isDefined( sWeaponHack ) ) {
 			iDamage = openwarfare\_weapondamagemodifier::wdmDamage( iDamage, sWeaponHack, sHitLoc, sMeansOfDeath );
 		} else {

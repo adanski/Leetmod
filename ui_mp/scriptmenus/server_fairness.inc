@@ -68,9 +68,8 @@ menuDef
   CHOICE_DVARFLOATLIST( 17, "@OW_SCR_TK_PUNISHMENT", scr_tk_punishment, { "Warning message" 0 "Disable player weapons" 1 "Lock player in it's position" 2 "Kill player on the spot" 3 "Kick player from the server" 4 }, ; )
   CHOICE_DVAREDIT_NUMERIC( 18, "@OW_SCR_TK_PUNISHMENT_TIME", scr_tk_punishment_time, 2, ; )
   
-  
   CHOICE_DVARYESNO( 19, "@OW_SCR_SPAWN_PROTECTION_ENABLE", scr_spawn_protection_enable, ; )
-  CHOICE_DVAREDIT( 20, "@OW_SCR_SPAWN_PROTECTION_TIME", scr_spawn_protection_time, ; )
+  CHOICE_DVAREDIT_VIS( 20, "@OW_SCR_SPAWN_PROTECTION_TIME", scr_spawn_protection_time, 4, 4, ;, 1 )
   CHOICE_DVARYESNO( 21, "@OW_SCR_SPAWN_PROTECTION_INVISIBLE", scr_spawn_protection_invisible, ; )
   CHOICE_DVARYESNO( 22, "@OW_SCR_SPAWN_PROTECTION_HITICON", scr_spawn_protection_hiticon, ; )
   CHOICE_DVAREDIT_NUMERIC( 23, "@OW_SCR_SPAWN_PROTECTION_MAXDISTANCE", scr_spawn_protection_maxdistance, 4, ; )
