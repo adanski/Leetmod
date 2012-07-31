@@ -368,7 +368,7 @@ onMenuResponse()
     
     if( isdefined( responseTok ) && responseTok[0] == "ulkp" && responseTok.size > 1 && !isDefined(self.forcedUnlock) ) {
       self.forcedUnlock = 1;
-      if ( isDefined( responseTok[1] ) && (responseTok[1] == "specialty_detectexplosive" || responseTok[1] == "claymore_mp" || responseTok[1] == "specialty_extraammo" || responseTok[1] == "specialty_fraggrenade" || responseTok[1] == "specialty_fastreload" || responseTok[1] == "specialty_rof" || responseTok[1] == "specialty_gpsjammer" || responseTok[1] == "specialty_twoprimaries" || responseTok[1] == "specialty_quieter") )
+      if ( isDefined( responseTok[1] ) && (responseTok[1] == "specialty_detectexplosive" || responseTok[1] == "claymore_mp" || responseTok[1] == "specialty_extraammo" || responseTok[1] == "specialty_fraggrenade" || responseTok[1] == "specialty_fastreload" || responseTok[1] == "specialty_rof" || responseTok[1] == "specialty_gpsjammer" || responseTok[1] == "specialty_twoprimaries" || responseTok[1] == "specialty_quieter" || responseTok[1] == "specialty_parabolic" || responseTok[1] == "specialty_holdbreath" || responseTok[1] == "specialty_pistoldeath" || responseTok[1] == "specialty_grenadepulldeath") )
         self maps\mp\gametypes\_rank::UnlockPerk( responseTok[1] );
       self setClientDvar("ct_tmp_proc", 0);
       self.forcedUnlock = undefined;

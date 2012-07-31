@@ -137,8 +137,10 @@ init()
 		scr_score_defrost = vKill;
 
 		// Game actions scores
-		scr_score_hardpoint_used = 0;	//### CUSTOM ### changed from 10 to 0
-		scr_score_shot_down_helicopter = 0;
+    // custom: changed to 2
+    scr_score_hardpoint_used = 2;
+    // custom: changed to 25
+		scr_score_shot_down_helicopter = 25;
 	
 		switch ( level.gametype ) {
 			case "ch":

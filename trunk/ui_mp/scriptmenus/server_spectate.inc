@@ -2,7 +2,7 @@
 
 menuDef 
 {
-  name			"settings_quick_koth_@MPUI_RULES_SCORE_LIMIT"
+  name			"settings_quick_koth_@MPUI_RULES_FRIENDLY_FIRE"
   fullScreen		0
   rect			0 0 640 480
   focusColor		COLOR_FOCUSED
@@ -22,7 +22,7 @@ menuDef
   #include "ui/blurredbg.inc"
   #include "ui_mp/navcontrols.inc"
   
-  CHOICE_MENU_TITLE("@OW_SERVER_MAPDESIGN" )
+  CHOICE_MENU_TITLE("@OW_SERVER_SPECTATE" )
   
   #undef TEXTSIZE_BUTTON_PC
   #define TEXTSIZE_BUTTON_PC	0.33
@@ -45,20 +45,18 @@ menuDef
   #undef CHOICE_Y_COUNT
   #define CHOICE_Y_COUNT			20
 
-  CHOICE_DVARYESNO( 1, "@OW_SCR_MAP_SPECIAL_FX_ENABLE", scr_map_special_fx_enable, ; )
-  CHOICE_DVARYESNO( 2, "@OW_SCR_MAP_SPECIAL_FX_RAIN", scr_map_special_fx_rain, ; )
-  CHOICE_DVARYESNO( 3, "@OW_SCR_MAP_SPECIAL_FX_PARTICLES", scr_map_special_fx_particles, ; )
-  CHOICE_DVARYESNO( 4, "@OW_SCR_MAP_SPECIAL_FX_BGSOUND", scr_map_special_fx_bgsound, ; )
-  CHOICE_DVARYESNO( 5, "@OW_SCR_SHOW_FOG", scr_show_fog, ; )
   
-  CHOICE_DVARYESNO( 6, "@OW_SCR_DCS_ENABLED", scr_dcs_enabled, ; )
-  CHOICE_DVAREDIT_NUMERIC( 7, "@OW_SCR_DCS_DAY_LENGTH", scr_dcs_day_length, 4, ; )
-  CHOICE_DVAREDIT_NUMERIC( 8, "@OW_SCR_DCS_DUSK_LENGTH", scr_dcs_dusk_length, 4, ; )
-  CHOICE_DVAREDIT_NUMERIC( 9, "@OW_SCR_DCS_NIGHT_LENGTH", scr_dcs_night_length, 4, ; )
-  CHOICE_DVAREDIT_NUMERIC( 10, "@OW_SCR_DCS_DAWN_LENGTH", scr_dcs_dawn_length, 4, ; )
-  CHOICE_DVARFLOATLIST( 11, "@OW_SCR_DCS_FIRST_CYCLE", scr_dcs_first_cycle, { "Random" -1 "Dawn" 0 "Day" 1 "Dusk" 2 "Night" 3 }, ; )
-  CHOICE_DVARYESNO( 12, "@OW_SCR_DCS_SOUNDS_ENABLE", scr_dcs_sounds_enable, ; )
-  CHOICE_DVARFLOATLIST( 13, "@OW_SCR_DCS_RESET_CYCLE", scr_dcs_reset_cycle, { "Disabled" 0 "Enabled (Resets on new map)" 1 "Enabled (Resets on new round)" 2}, ; )
+  CHOICE_DVARFLOATLIST( 1, "@OW_SCR_GAME_SPECTATETYPE", scr_game_spectatetype, { "Disabled" 0 "Team/Player only" 1 "Free" 2 }, ; )
+  CHOICE_DVARFLOATLIST( 2, "@OW_SCR_GAME_SPECTATETYPE_SPECTATORS", scr_game_spectatetype_spectators, { "Disabled" 0 "Team/Player only" 1 "Free" 2 }, ; )
+  CHOICE_DVAREDIT( 3, "@OW_SCR_GAME_SPECTATORS_GUIDS", scr_game_spectators_guids, ; )
+  CHOICE_DVARYESNO( 4, "@OW_SCR_ALLOW_THIRDPERSON", scr_allow_thirdperson, ; )
+  CHOICE_DVAREDIT( 5, "@OW_SCR_ALLOW_THIRDPERSON_GUIDS", scr_allow_thirdperson_guids, ; )
+  
+  CHOICE_DVAREDIT_NUMERIC( 6, "@OW_SCR_IDLE_SWITCH_SPECTATOR", scr_idle_switch_spectator, 3, ; )
+  CHOICE_DVAREDIT_NUMERIC( 7, "@OW_SCR_IDLE_SPECTATOR_TIMEOUT", scr_idle_spectator_timeout, 3, ; )
+  CHOICE_DVARYESNO( 8, "@OW_SCR_IDLE_SHOW_WARNING", scr_idle_show_warning, ; )
+  CHOICE_DVAREDIT( 9, "@OW_SCR_IDLE_PROTECTED_TAGS", scr_idle_protected_tags, ; )
+  CHOICE_DVAREDIT( 10, "@OW_SCR_IDLE_PROTECTED_GUIDS", scr_idle_protected_guids, ; )
   
   itemDef {
     name			back

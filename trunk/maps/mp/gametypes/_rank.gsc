@@ -624,9 +624,13 @@ forceUnlockAllWeapons()
     wait (0.1);
     self forceUnlockWeapon( "mp44" );
     wait (0.1);
+    self forceUnlockWeapon( "m60e4" );
+    wait (0.1);
     self forceUnlockWeapon( "uzi" );
     wait (0.1);
     self forceUnlockWeapon( "ak74u" );
+    wait (0.1);
+    self forceUnlockWeapon( "p90" );
     wait (0.1);
     self forceUnlockWeapon( "m1014" );
     wait (0.1);
@@ -675,6 +679,10 @@ forceUnlockWeapon( weapon )
         self unlockWeapon( weapon );
         self unlockChallenge("ch_expert_mp44_1");
       break;
+      case "m60e4":
+        self unlockWeapon( weapon );
+        self unlockChallenge("ch_marksman_m60e4_1;ch_expert_m60e4_1");
+      break;
       case "uzi":
         self unlockWeapon( weapon );
         self unlockChallenge("ch_marksman_uzi_1;ch_expert_uzi_1");
@@ -682,6 +690,10 @@ forceUnlockWeapon( weapon )
       case "ak74u":
         self unlockWeapon( weapon );
         self unlockChallenge("ch_marksman_ak74u_1;ch_expert_ak74u_1");
+      break;
+      case "p90":
+        self unlockWeapon( weapon );
+        self unlockChallenge("ch_marksman_p90_1;ch_expert_p90_1");
       break;
       case "m1014":
         self unlockWeapon( weapon );
@@ -730,6 +742,14 @@ forceUnlockAllPerks()
     wait (0.2);
     self UnlockPerk( "specialty_quieter" );
     wait (0.2);
+    self UnlockPerk( "specialty_parabolic" );
+    wait (0.2);
+    self UnlockPerk( "specialty_holdbreath" );
+    wait (0.2);
+    self UnlockPerk( "specialty_pistoldeath" );
+    wait (0.2);
+    self UnlockPerk( "specialty_grenadepulldeath" );
+    wait (0.2);
     
     self setClientDvar("ct_tmp_proc", 0);
     self.forcedUnlock = undefined;
@@ -752,34 +772,46 @@ forceUnlockAllAttach()
   attachmentList[8] = "mp5:reflex";
 	attachmentList[9] = "skorpion:reflex";
   attachmentList[10] = "uzi:reflex";
-  attachmentList[11] = "winchester1200:reflex";
-  attachmentList[12] = "ak47:silencer";
-  attachmentList[13] = "ak74u:silencer";
-	attachmentList[14] = "g3:silencer";
-  attachmentList[15] = "g36c:silencer";
-  attachmentList[16] = "m14:silencer";
-  attachmentList[17] = "m16:silencer";
-  attachmentList[18] = "m4:silencer";
-  attachmentList[19] = "mp5:silencer";
-	attachmentList[20] = "skorpion:silencer";
-  attachmentList[21] = "uzi:silencer";
-  attachmentList[22] = "ak47:acog";
-  attachmentList[23] = "ak74u:acog";
-  attachmentList[24] = "barrett:acog";
-	attachmentList[25] = "dragunov:acog";
-  attachmentList[26] = "g3:acog";
-  attachmentList[27] = "g36c:acog";
-  attachmentList[28] = "m14:acog";
-  attachmentList[29] = "m16:acog";
-  attachmentList[30] = "m21:acog";
-	attachmentList[31] = "m4:acog";
-  attachmentList[32] = "m40a3:acog";
-  attachmentList[33] = "mp5:acog";
-  attachmentList[34] = "remington700:acog";
-	attachmentList[35] = "skorpion:acog";
-  attachmentList[36] = "uzi:acog";
-	attachmentList[37] = "m1014:grip";
-  attachmentList[38] = "winchester1200:grip";
+  attachmentList[11] = "p90:reflex";
+  attachmentList[12] = "rpd:reflex";
+  attachmentList[13] = "saw:reflex";
+  attachmentList[14] = "m60e4:reflex";
+  attachmentList[15] = "winchester1200:reflex";
+  attachmentList[16] = "ak47:silencer";
+  attachmentList[17] = "ak74u:silencer";
+	attachmentList[18] = "g3:silencer";
+  attachmentList[19] = "g36c:silencer";
+  attachmentList[20] = "m14:silencer";
+  attachmentList[21] = "m16:silencer";
+  attachmentList[22] = "m4:silencer";
+  attachmentList[23] = "mp5:silencer";
+	attachmentList[24] = "skorpion:silencer";
+  attachmentList[25] = "uzi:silencer";
+  attachmentList[26] = "p90:silencer";
+  attachmentList[27] = "ak47:acog";
+  attachmentList[28] = "ak74u:acog";
+  attachmentList[29] = "barrett:acog";
+	attachmentList[30] = "dragunov:acog";
+  attachmentList[31] = "g3:acog";
+  attachmentList[32] = "g36c:acog";
+  attachmentList[33] = "m14:acog";
+  attachmentList[34] = "m16:acog";
+  attachmentList[35] = "m21:acog";
+	attachmentList[36] = "m4:acog";
+  attachmentList[37] = "m40a3:acog";
+  attachmentList[38] = "mp5:acog";
+  attachmentList[39] = "remington700:acog";
+	attachmentList[40] = "skorpion:acog";
+  attachmentList[41] = "uzi:acog";
+  attachmentList[42] = "p90:acog";
+  attachmentList[43] = "rpd:acog";
+  attachmentList[44] = "saw:acog";
+  attachmentList[45] = "m60e4:acog";
+  attachmentList[46] = "rpd:grip";
+  attachmentList[47] = "saw:grip";
+  attachmentList[48] = "m60e4:grip";
+	attachmentList[49] = "m1014:grip";
+  attachmentList[50] = "winchester1200:grip";
   
 	attachix = 0;
 	
@@ -1049,10 +1081,13 @@ unlockAttachmentSingularSpecial( refString )
   if( baseWeapon == "mp44")
     return;
   
-  if( (baseWeapon == "m16" || baseWeapon == "m4" || baseWeapon == "ak47" || baseWeapon == "m14" || baseWeapon == "g3" || baseWeapon == "g36c" ) && addon == "grip" )
+  if( (baseWeapon == "m16" || baseWeapon == "m4" || baseWeapon == "ak47" || baseWeapon == "m14" || baseWeapon == "g3" || baseWeapon == "g36c") && addon == "grip" )
     return;
     
-  if( (baseWeapon == "mp5" || baseWeapon == "skorpion" || baseWeapon == "uzi" || baseWeapon == "ak74u" ) && addon == "grip" )
+  if( (baseWeapon == "mp5" || baseWeapon == "skorpion" || baseWeapon == "uzi" || baseWeapon == "ak74u" || baseWeapon == "p90") && addon == "grip" )
+    return;
+    
+  if( (baseWeapon == "rpd" || baseWeapon == "saw" || baseWeapon == "m60e4") && addon == "silencer" )
     return;
     
   if( (baseWeapon == "m1014" || baseWeapon == "winchester1200" ) && (addon == "silencer" || addon == "acog" ) )

@@ -79,21 +79,21 @@ menuDef
   #undef CHOICE_Y_COUNT
   #define CHOICE_Y_COUNT 20
 
-  CHOICE_DVAREDIT_NUMERIC( 25, "@OW_AMMOCOUNT_C4", scr_c4_ammo_countscr_c4_ammo_count, 2, ; )
-  CHOICE_DVAREDIT_NUMERIC( 26, "@OW_AMMOCOUNT_CLAYMORE", scr_claymore_ammo_count, 2, ; )
-  CHOICE_DVAREDIT_NUMERIC( 27, "@OW_AMMOCOUNT_RPG", scr_rpg_ammo_count, 2, ; )
+  CHOICE_DVAREDIT_NUMERIC( 25, "@OW_SCR_C4_AMMO_COUNT", scr_c4_ammo_countscr_c4_ammo_count, 2, ; )
+  CHOICE_DVAREDIT_NUMERIC( 26, "@OW_SCR_CLAYMORE_AMMO_COUNT", scr_claymore_ammo_count, 2, ; )
+  CHOICE_DVAREDIT_NUMERIC( 27, "@OW_SCR_RPG_AMMO_COUNT", scr_rpg_ammo_count, 2, ; )
 
-  CHOICE_DVAREDIT_NUMERIC( 28, "@OW_AMMOCOUNT_FRAG", specialty_fraggrenade_ammo_count, 2, ; )
-  CHOICE_DVAREDIT_NUMERIC( 29, "@OW_AMMOCOUNT_SPECIAL", specialty_specialgrenade_ammo_count, 2, ; )
+  CHOICE_DVAREDIT_NUMERIC( 28, "@OW_SPECIALTY_FRAGGRENADE_AMMO_COUNT", specialty_fraggrenade_ammo_count, 2, ; )
+  CHOICE_DVAREDIT_NUMERIC( 29, "@OW_SPECIALTY_SPECIALGRENADE_AMMO_COUNT", specialty_specialgrenade_ammo_count, 2, ; )
 
   CHOICE_DVAREDIT_NUMERIC( 30, "@OW_ARMOR_VEST_VALUE", perk_armorvest, 3, ; )
   CHOICE_DVAREDIT_NUMERIC( 31, "@OW_BULLET_DAMAGE_VALUE", perk_bulletdamage, 3, ;)
   CHOICE_DVAREDIT_NUMERIC( 32, "@OW_EXPLOSIVE_DAMAGE_VALUE", perk_explosivedamage, 3, ; )
 
-  CHOICE_DVARYESNO( 33, "@OW_CHECK_FRAGS", specialty_grenadepulldeath_check_frags, ; )
-  CHOICE_DVARYESNO( 34, "@OW_CHECK_PISTOL", specialty_pistoldeath_check_pistol, ; )
+  CHOICE_DVARYESNO( 33, "@OW_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS", specialty_grenadepulldeath_check_frags, ; )
+  CHOICE_DVARYESNO( 34, "@OW_SPECIALTY_PISTOLDEATH_CHECK_PISTOL", specialty_pistoldeath_check_pistol, ; )
   
-  CHOICE_DVAREDIT_NUMERIC( 35, "@OW_MENU_KILLS_CLAYMORE_MAX_TIME", scr_claymore_add_kills_max_time, 2, ; )
+  CHOICE_DVAREDIT_NUMERIC( 35, "@OW_SCR_CLAYMORE_ADD_KILLS_MAX_TIME", scr_claymore_add_kills_max_time, 2, ; )
   
   itemDef {
     name			back

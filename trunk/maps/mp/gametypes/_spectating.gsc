@@ -13,7 +13,7 @@ init()
     break;
   }
     
-   level.scr_game_spectatetype_spectators = getdvarx( "scr_game_spectatetype_spectators", "int", 0, 0, 2 );
+   level.scr_game_spectatetype_spectators = getdvarx( "scr_game_spectatetype_spectators", "int", 2, 0, 2 );
    level.scr_game_spectators_guids = getdvarx( "scr_game_spectators_guids", "string", "" );
 
    level.spectateOverride["allies"] = spawnstruct();
