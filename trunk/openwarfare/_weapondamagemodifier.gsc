@@ -5,6 +5,7 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_wdm_enabled = getdvarx( "scr_wdm_enabled", "int", 0, 0, 1 );
+  level.scr_wdm_autoadjust_bolt_action = getdvarx( "scr_wdm_autoadjust_bolt_action", "int", 0, 0, 1 );
 
 	// If weapon damage modifier is disabled then there's nothing else to do here
 	if ( level.scr_wdm_enabled == 0 )
@@ -23,13 +24,29 @@ wdmDamage( iDamage, sWeapon, sHitLoc, sMeansOfDeath )
 
 	// Make sure it was not a knife kill or a headshot
 	if ( sMeansOfDeath != "MOD_MELEE" && !maps\mp\gametypes\_globallogic::isHeadShot( sWeapon, sHitLoc, sMeansOfDeath ) ) {
-		// Check if we support wdm for this weapon
-		if ( isDefined( level.wdm[ sWeapon ] ) ) {
-			damageModifier = getdvarx( level.wdm[ sWeapon ], "float", 100.0, 0.0, 200.0 ) / 100;
-		} else {
-			// Just for testing. Remove this line on release version!
-			//self iprintln( "No damage defined for " + sWeapon );
-		}
+    if( !level.scr_wdm_autoadjust_bolt_action ) {
+      // Check if we support wdm for this weapon
+      if ( level.scr_wdm_enabled && isDefined( level.wdm[ sWeapon ] ) ) {
+        damageModifier = getdvarx( level.wdm[ sWeapon ], "float", 100.0, 0.0, 200.0 ) / 100;
+      } else {
+        // Just for testing. Remove this line on release version!
+        //self iprintln( "No damage defined for " + sWeapon );
+      }
+    } else {
+      // Auto adjust bolt and pump actions
+      switch( sWeapon ) {
+        //case "winchester1200_grip_mp":
+        //case "winchester1200_mp":
+        //case "winchester1200_reflex_mp":
+        case "m40a3_acog_mp":
+        case "m40a3_mp":
+        case "remington700_acog_mp":
+        case "remington700_mp":
+        if( level.scr_player_maxhealth > 30 )
+        damageModifier = level.scr_player_maxhealth/30.0;
+        break;
+      }
+    }
 	}
 
 	return int( iDamage * damageModifier );

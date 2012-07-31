@@ -504,7 +504,7 @@
 
 #define CHOICE_BUTTON_VIS( itemIndex, textArg, actionArg, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
-		CHOICE_HIGHLIGHT( itemIndex, 1 ) \
+		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_BUTTON_VIS_NOHI( itemIndex, textArg, actionArg, visArg )
 		
 #define CHOICE_BUTTON_VIS_ADV( itemIndex, textArg, actionArg, visArg, vis ) \
@@ -523,7 +523,7 @@
 
 #define CHOICE_BUTTON_FOCUS_VIS( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
-		CHOICE_HIGHLIGHT( itemIndex, 1 ) \
+		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_BUTTON_FOCUS_VIS_NOHI( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg )
 		
 #define CHOICE_BUTTON_FOCUS_VIS_ADV( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg, vis ) \
@@ -540,13 +540,13 @@
 		CHOICE_BUTTON_FOCUS_VIS_NOHI_EX( itemIndex, textArg, actionArg, ;, ;, 1, extraArgs )
 
 #define CHOICE_BUTTON_EX_ADV( itemIndex, textArg, actionArg, extraArgs, visArg ) \
-		CHOICE_BUTTON_BG( itemIndex, 1 ) \
-		CHOICE_HIGHLIGHT( itemIndex, 1 ) \
+		CHOICE_BUTTON_BG( itemIndex, visArg ) \
+		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_BUTTON_FOCUS_VIS_NOHI_EX( itemIndex, textArg, actionArg, ;, ;, visArg, extraArgs )
 		
 #define CHOICE_BUTTON_FOCUS_VIS_EX( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg, extraArgs ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
-		CHOICE_HIGHLIGHT( itemIndex, 1 ) \
+		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_BUTTON_FOCUS_VIS_NOHI_EX( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg, extraArgs )
 		
 #define CHOICE_BUTTON_FOCUS_VIS_EX_ADV( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg, extraArgs, vis ) \
@@ -630,7 +630,7 @@
 		CHOICE_DVARLIST_FOCUS_VIS( itemIndex, textArg, dvarArg, listTypeArg, listArg, actionArg, ;, ;, visArg )
 
 #define CHOICE_DVARLIST_FOCUS_VIS( itemIndex, textArg, dvarArg, listTypeArg, listArg, actionArg, onFocusArg, leaveFocusArg, visArg ) \
-		CHOICE_HIGHLIGHT( itemIndex, 1 ) \
+		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_CAPTION_VIS( itemIndex, textArg, visArg ) \
 		itemDef \
@@ -710,7 +710,7 @@
 
 #define CHOICE_DVAREDIT_NUMERIC_VIS( itemIndex, textArg, dvarArg, max_chars, actionArg, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
-		CHOICE_HIGHLIGHT( itemIndex, 1 ) \
+		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_CAPTION_VIS( itemIndex, textArg, visArg ) \
 		itemDef \
 		{ \
@@ -735,7 +735,7 @@
 
 #define CHOICE_DVAREDIT_VIS( itemIndex, textArg, dvarArg, max_chars, max_paintchars, actionArg, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
-		CHOICE_HIGHLIGHT( itemIndex, 1 ) \
+		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_CAPTION_VIS( itemIndex, textArg, visArg ) \
 		itemDef \
 		{ \
@@ -762,8 +762,8 @@
 		CHOICE_DVARSLIDER_VIS_EX( itemIndex, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, ;, 1 )
 
 #define CHOICE_DVARSLIDER_VIS_EX( itemIndex, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, extraArg, visArg ) \
-		CHOICE_BUTTON_BG( itemIndex, 1 ) \
-		CHOICE_HIGHLIGHT( itemIndex, 1 ) \
+		CHOICE_BUTTON_BG( itemIndex, visArg ) \
+		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_CAPTION( itemIndex, textArg ) \
 		itemDef \
 		{ \
@@ -787,7 +787,7 @@
 
 #define CHOICE_DVARYESNO_VIS( itemIndex, textArg, dvarArg, actionArg, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
-		CHOICE_HIGHLIGHT( itemIndex, 1 ) \
+		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_CAPTION_VIS( itemIndex, textArg, visArg ) \
 		itemDef \
 		{ \

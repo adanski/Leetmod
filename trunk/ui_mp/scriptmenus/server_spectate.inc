@@ -52,11 +52,14 @@ menuDef
   CHOICE_DVARYESNO( 4, "@OW_SCR_ALLOW_THIRDPERSON", scr_allow_thirdperson, ; )
   CHOICE_DVAREDIT( 5, "@OW_SCR_ALLOW_THIRDPERSON_GUIDS", scr_allow_thirdperson_guids, ; )
   
-  CHOICE_DVAREDIT_NUMERIC( 6, "@OW_SCR_IDLE_SWITCH_SPECTATOR", scr_idle_switch_spectator, 3, ; )
-  CHOICE_DVAREDIT_NUMERIC( 7, "@OW_SCR_IDLE_SPECTATOR_TIMEOUT", scr_idle_spectator_timeout, 3, ; )
-  CHOICE_DVARYESNO( 8, "@OW_SCR_IDLE_SHOW_WARNING", scr_idle_show_warning, ; )
-  CHOICE_DVAREDIT( 9, "@OW_SCR_IDLE_PROTECTED_TAGS", scr_idle_protected_tags, ; )
-  CHOICE_DVAREDIT( 10, "@OW_SCR_IDLE_PROTECTED_GUIDS", scr_idle_protected_guids, ; )
+  CHOICE_DVARYESNO( 6, "@OW_SCR_LIVEBROADCAST_ENABLE", scr_livebroadcast_enable, ; )
+  CHOICE_DVAREDIT( 7, "@OW_SCR_LIVEBROADCAST_GUIDS", scr_livebroadcast_guids, ; )
+  
+  CHOICE_DVAREDIT_NUMERIC( 8, "@OW_SCR_IDLE_SWITCH_SPECTATOR", scr_idle_switch_spectator, 3, ; )
+  CHOICE_DVAREDIT_NUMERIC( 9, "@OW_SCR_IDLE_SPECTATOR_TIMEOUT", scr_idle_spectator_timeout, 3, ; )
+  CHOICE_DVARYESNO( 10, "@OW_SCR_IDLE_SHOW_WARNING", scr_idle_show_warning, ; )
+  CHOICE_DVAREDIT( 11, "@OW_SCR_IDLE_PROTECTED_TAGS", scr_idle_protected_tags, ; )
+  CHOICE_DVAREDIT( 12, "@OW_SCR_IDLE_PROTECTED_GUIDS", scr_idle_protected_guids, ; )
   
   itemDef {
     name			back

@@ -1502,7 +1502,7 @@ REFERENCE MENU_RESET_NEW_OPTIONS
 LANG_ENGLISH "Rewrite new options defaults"
 
 REFERENCE ENTER_SERVER
-LANG_ENGLISH "Connect to ^2Leetmod PT"
+LANG_ENGLISH "Connect to ^2Leetmod Servers"
 
 REFERENCE VISIT_SITE
 LANG_ENGLISH "^5www.Leetmod.pt.am"

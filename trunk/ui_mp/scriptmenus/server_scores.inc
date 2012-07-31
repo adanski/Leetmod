@@ -67,9 +67,9 @@ menuDef
   CHOICE_DVAREDIT_NUMERIC( 17, "@OW_SCR_SCORE_ASSIST_50_KILL", scr_score_assist_50_kill, 2, ; )
   CHOICE_DVAREDIT_NUMERIC( 18, "@OW_SCR_SCORE_ASSIST_75_KILL", scr_score_assist_75_kill, 2, ; )
   
-  CHOICE_DVAREDIT( 19, "@OW_SCR_SCORE_PLAYER_DEATH", scr_score_player_death, ; )
-  CHOICE_DVAREDIT( 20, "@OW_SCR_SCORE_PLAYER_SUICIDE", scr_score_player_suicide, ; )
-  CHOICE_DVAREDIT( 21, "@OW_SCR_SCR_SCORE_PLAYER_TEAMKILL", scr_score_player_teamkill, ; )
+  CHOICE_DVAREDIT_VIS( 19, "@OW_SCR_SCORE_PLAYER_DEATH", scr_score_player_death, 3, 3, ;, 1 )
+  CHOICE_DVAREDIT_VIS( 20, "@OW_SCR_SCORE_PLAYER_SUICIDE", scr_score_player_suicide, 3, 3, ;, 1 )
+  CHOICE_DVAREDIT_VIS( 21, "@OW_SCR_SCR_SCORE_PLAYER_TEAMKILL", scr_score_player_teamkill, 3, 3, ;, 1 )
   
   CHOICE_DVAREDIT_NUMERIC( 22, "@OW_SCR_SCORE_HARDPOINT_USED", scr_score_hardpoint_used, 2, ; )
   CHOICE_DVAREDIT_NUMERIC( 23, "@OW_SCR_SCORE_SHOT_DOWN_HELICOPTER", scr_score_shot_down_helicopter, 2, ; )
