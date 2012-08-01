@@ -212,7 +212,13 @@ load_default_loadout_raw( class_dataTable, team, class, stat_num )
   level.default_perk[class][2] = tableLookup( "mp/statsTable.csv", 1, specialty3, 6 );
   
   
-  level.classGrenades[class]["primary"]["type"] = tablelookup( class_dataTable, 1, stat_num, 4 ) + "_mp";
+  //##Temporary fix for now, this will be loaded from a .cfg file too, like all the other tableLookups
+  //level.classGrenades[class]["primary"]["type"] = tablelookup( class_dataTable, 1, stat_num, 4 ) + "_mp";
+  if( level.scr_grenade_allow_cooking )
+    level.classGrenades[class]["primary"]["type"] = "frag_grenade_mp";
+  else
+    level.classGrenades[class]["primary"]["type"] = "frag_grenade_nocook_mp";
+    
   level.classGrenades[class]["primary"]["count"] = level.weap_allow_frag_grenade;
   
   level.classGrenades[class]["secondary"]["type"] = tablelookup( class_dataTable, 1, stat_num + 8, 4 ) + "_mp";

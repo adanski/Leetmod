@@ -3682,8 +3682,29 @@ TimeUntilSpawn( includeTeamkillDelay )
 			respawnDelay = result;
 		else if ( isDefined( game["_overtime"] ) )
 			respawnDelay = self openwarfare\_overtime::respawnDelay();
-		else
-			respawnDelay = getdvarx( "scr_" + level.gameType + "_playerrespawndelay", "float", 10, -1, 300 );
+		else {
+      respawnDelay = getdvarx( "scr_" + level.gameType + "_playerrespawndelay", "float", 2, -1, 300 );
+      switch( level.gametype) {
+        case "ch":
+        case "ctf":
+        case "sab":
+          respawnDelay = getdvarx( "scr_" + level.gameType + "_playerrespawndelay", "float", 4, -1, 300 );
+        break;
+        case "gr":
+          respawnDelay = getdvarx( "scr_" + level.gameType + "_playerrespawndelay", "float", 3, -1, 300 );
+        break;
+        case "gg":
+          respawnDelay = getdvarx( "scr_" + level.gameType + "_playerrespawndelay", "float", 1, -1, 300 );
+        break;
+        case "oitc":
+          respawnDelay = getdvarx( "scr_" + level.gameType + "_playerrespawndelay", "float", 5, -1, 300 );
+        break;
+        case "ss":
+        case "tgr":
+          respawnDelay = getdvarx( "scr_" + level.gameType + "_playerrespawndelay", "float", 3.5, -1, 300 );
+        break;
+      }
+    }
 
 		if ( level.hardcoreMode && !isDefined( result ) && !respawnDelay )
 			respawnDelay = 10.0;

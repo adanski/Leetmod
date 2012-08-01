@@ -174,7 +174,8 @@
       rect			-4 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
       origin			ORIGIN_PLAYERSTATS
       background		"ui_arrow_left"
-      forecolor		0.409 0.801 0.999 1
+      //forecolor		0.409 0.801 0.999 1
+      forecolor		0.97 0.81 0.42 1
       visible			when( dvarInt( ui_showEndOfGame ) == 0 )
       mouseEnter { play "mouse_over"; } 
       action { play "mouse_click"; scriptMenuResponse "prevpl"; setdvar ct_displayingSelf 0; }	
@@ -187,7 +188,7 @@
       rect			26 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
       origin			ORIGIN_PLAYERSTATS
       background		"ui_arrow_right"
-      forecolor		0.409 0.801 0.999 1
+      forecolor		0.97 0.81 0.42 1
       visible			when( dvarInt( ui_showEndOfGame ) == 0 )
       mouseEnter { play "mouse_over"; } 
       action { play "mouse_click"; scriptMenuResponse "nextpl"; setdvar ct_displayingSelf 0; }	
