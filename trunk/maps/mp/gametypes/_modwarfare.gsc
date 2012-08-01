@@ -119,7 +119,10 @@ init()
 	//**************************************************************************
 	// Primary and Special Grenades
 	//**************************************************************************
-	initWeaponData( "frag_grenade", "all", "all" );
+	if( level.scr_grenade_allow_cooking )
+    initWeaponData( "frag_grenade", "all", "all" );
+  else
+    initWeaponData( "frag_grenade_nocook", "all", "all" );
 	initWeaponData( "concussion_grenade", "all", "all" );
 	initWeaponData( "flash_grenade", "all", "all" );
 	initWeaponData( "smoke_grenade", "all", "all" );
@@ -158,11 +161,20 @@ init()
 	initPerkData( "specialty_parabolic" );
 	
 	// Classes
-	initClassData( "assault", "m16;m16;ak47", "gl", "camo_none", "beretta;beretta;deserteagle", "none", "specialty_null", "specialty_bulletdamage", "specialty_longersprint", "frag_grenade", 1, "concussion_grenade", 1 );
-	initClassData( "specops", "mp5;mp5;p90", "none", "camo_none", "usp;usp;deserteagle", "silencer", "c4_mp", "specialty_explosivedamage", "specialty_bulletaccuracy", "frag_grenade", 1, "flash_grenade", 1 );
-	initClassData( "heavygunner", "saw;saw;rpd", "none", "camo_none", "usp;usp;deserteagle", "none", "specialty_specialgrenade", "specialty_armorvest", "specialty_bulletpenetration", "frag_grenade", 1, "concussion_grenade", 1 );
-	initClassData( "demolitions", "winchester1200;m1014;winchester1200", "none", "camo_none", "beretta;beretta;deserteagle", "none", "rpg_mp", "specialty_explosivedamage", "specialty_longersprint", "frag_grenade", 1, "smoke_grenade", 1 );
-	initClassData( "sniper", "m40a3;m40a3;dragunov", "none", "camo_none", "beretta;beretta;deserteagle", "silencer", "specialty_specialgrenade", "specialty_bulletdamage", "specialty_bulletpenetration", "frag_grenade", 1, "flash_grenade", 1 );
+	if( level.scr_grenade_allow_cooking ) {
+    initClassData( "assault", "m16;m16;ak47", "gl", "camo_none", "beretta;beretta;deserteagle", "none", "specialty_null", "specialty_bulletdamage", "specialty_longersprint", "frag_grenade", 1, "concussion_grenade", 1 );
+    initClassData( "specops", "mp5;mp5;p90", "none", "camo_none", "usp;usp;deserteagle", "silencer", "c4_mp", "specialty_explosivedamage", "specialty_bulletaccuracy", "frag_grenade", 1, "flash_grenade", 1 );
+    initClassData( "heavygunner", "saw;saw;rpd", "none", "camo_none", "usp;usp;deserteagle", "none", "specialty_specialgrenade", "specialty_armorvest", "specialty_bulletpenetration", "frag_grenade", 1, "concussion_grenade", 1 );
+    initClassData( "demolitions", "winchester1200;m1014;winchester1200", "none", "camo_none", "beretta;beretta;deserteagle", "none", "rpg_mp", "specialty_explosivedamage", "specialty_longersprint", "frag_grenade", 1, "smoke_grenade", 1 );
+    initClassData( "sniper", "m40a3;m40a3;dragunov", "none", "camo_none", "beretta;beretta;deserteagle", "silencer", "specialty_specialgrenade", "specialty_bulletdamage", "specialty_bulletpenetration", "frag_grenade", 1, "flash_grenade", 1 );
+  }
+  else {
+    initClassData( "assault", "m16;m16;ak47", "gl", "camo_none", "beretta;beretta;deserteagle", "none", "specialty_null", "specialty_bulletdamage", "specialty_longersprint", "frag_grenade_nocook", 1, "concussion_grenade", 1 );
+    initClassData( "specops", "mp5;mp5;p90", "none", "camo_none", "usp;usp;deserteagle", "silencer", "c4_mp", "specialty_explosivedamage", "specialty_bulletaccuracy", "frag_grenade_nocook", 1, "flash_grenade", 1 );
+    initClassData( "heavygunner", "saw;saw;rpd", "none", "camo_none", "usp;usp;deserteagle", "none", "specialty_specialgrenade", "specialty_armorvest", "specialty_bulletpenetration", "frag_grenade_nocook", 1, "concussion_grenade", 1 );
+    initClassData( "demolitions", "winchester1200;m1014;winchester1200", "none", "camo_none", "beretta;beretta;deserteagle", "none", "rpg_mp", "specialty_explosivedamage", "specialty_longersprint", "frag_grenade_nocook", 1, "smoke_grenade", 1 );
+    initClassData( "sniper", "m40a3;m40a3;dragunov", "none", "camo_none", "beretta;beretta;deserteagle", "silencer", "specialty_specialgrenade", "specialty_bulletdamage", "specialty_bulletpenetration", "frag_grenade_nocook", 1, "flash_grenade", 1 );
+  }
 
 	level thread onPlayerConnect();
 	//level thread openwarfare\unrankedbots::init();

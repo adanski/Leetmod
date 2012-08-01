@@ -293,6 +293,7 @@ giveNadesAfterDelay( nadeType, nadeCount, nadePrimary )
 	switch ( nadeType )
 	{
 		case "frag_grenade_mp":
+    case "frag_grenade_nocook_mp":
 			timeToUse = level.scr_delay_frag_grenades * 1000;
 			break;
 		case "smoke_grenade_mp":

@@ -119,7 +119,9 @@ init()
 	// Show only the compass (North, South, West, East)
 	level.scr_hud_hardcore_show_compass = getdvarx( "scr_hardcore_show_compass", "int", 0, 0, 1 );
 
-	level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 1, 0, 1 );
+	level.scr_grenade_allow_cooking = getdvarx( "scr_grenade_allow_cooking", "int", 1, 0, 1 );
+  
+  level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 1, 0, 1 );
 	level.perk_allow_rpg_mp = getdvarx( "perk_allow_rpg_mp", "int", 1, 0, 1 );
 	level.perk_allow_claymore_mp = getdvarx( "perk_allow_claymore_mp", "int", 1, 0, 1 );
 
@@ -188,7 +190,7 @@ init()
 	level.scr_roundwinningkillcam = getdvarx( "scr_roundwinningkillcam", "int", 1, 0, 1 );
 	level.scr_musiconintermission = getdvarx( "scr_musiconintermission", "int", 1, 0, 1 );
 		
-	level.scr_player_lean_fix = getdvarx( "scr_player_lean_fix", "int", 0, 0, 1 );
+	level.scr_player_lean_fix = getdvarx( "scr_player_lean_fix", "int", 1, 0, 1 );
 	
 	if( level.scr_player_lean_fix ) {
 		setdvar( "player_lean_rotate_left", 1.4 );

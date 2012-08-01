@@ -80,7 +80,11 @@ init()
 
 	level.defaultClass = "CLASS_ASSAULT";
 
-	level.weapons["frag"] = "frag_grenade_mp";
+	if( level.scr_grenade_allow_cooking )
+    level.weapons["frag"] = "frag_grenade_mp";
+  else
+    level.weapons["frag"] = "frag_grenade_nocook_mp";
+    
 	level.weapons["smoke"] = "smoke_grenade_mp";
 	level.weapons["flash"] = "flash_grenade_mp";
 	level.weapons["concussion"] = "concussion_grenade_mp";

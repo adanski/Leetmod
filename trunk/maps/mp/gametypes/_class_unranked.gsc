@@ -33,7 +33,11 @@ init()
 	level.classMap["custom4"] = "CLASS_CUSTOM4";
 	level.classMap["custom5"] = "CLASS_CUSTOM5";
 
-	level.weapons["frag"] = "frag_grenade_mp";
+	if( level.scr_grenade_allow_cooking )
+    level.weapons["frag"] = "frag_grenade_mp";
+  else
+    level.weapons["frag"] = "frag_grenade_nocook_mp";
+    
 	level.weapons["smoke"] = "smoke_grenade_mp";
 	level.weapons["flash"] = "flash_grenade_mp";
 	level.weapons["concussion"] = "concussion_grenade_mp";
@@ -257,9 +261,17 @@ giveLoadout( team, class )
 
 		// Give grenades after a dvar specified delay
 		if ( isdefined ( grenadeCount ) && grenadeCount ) {
-			self.primarynade = "frag_grenade_mp";
-			self.primarynadecount = grenadeCount;
-			self thread giveNadesAfterDelay( "frag_grenade_mp", grenadeCount, true );
+			if( level.scr_grenade_allow_cooking )
+        self.primarynade = "frag_grenade_mp";
+      else
+        self.primarynade = "frag_grenade_nocook_mp";
+			
+      self.primarynadecount = grenadeCount;
+			
+      if( level.scr_grenade_allow_cooking )
+        self thread giveNadesAfterDelay( "frag_grenade_mp", grenadeCount, true );
+      else
+        self thread giveNadesAfterDelay( "frag_grenade_nocook_mp", grenadeCount, true );
 		}
 	}
 

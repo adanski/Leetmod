@@ -31,6 +31,7 @@
 		onClose
 		{
 			execondvarintvalue ct_conChatHistOnly 1 "clear";
+      setdvar tmp_firstserverconf 0;
 		}
 		
 		// load progress bar background

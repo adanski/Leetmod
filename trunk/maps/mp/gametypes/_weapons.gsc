@@ -240,15 +240,13 @@ isSniper( weapon )
 
 isSniperUsingPistol()
 {
-  currWeap = self GetCurrentWeapon();
-  
-  if( !isPistol(currWeap) )
+  if( !isPistol(self GetCurrentWeapon()) )
     return 0;
   
   weaponsList = self GetWeaponsListPrimaries();
+  
   for( idx = 0; idx < weaponsList.size; idx++ ) {
-		weapon = weaponsList[idx];
-    if( isSniper(weapon) )
+    if( isSniper(weaponsList[idx]) )
       return 1;
   }
   
@@ -482,7 +480,7 @@ watchGrenadePickup( grenadeType )
 		self waittill( "trigger", player );
 
 		// Check if need to activate martyrdom for this player again
-		if ( grenadeType == "frag_grenade_mp" && isDefined( player.hasMartyrdom ) && player.hasMartyrdom && !player.hasFragsForMartyrdom ) {
+		if ( (grenadeType == "frag_grenade_mp" || grenadeType == "frag_grenade_nocook_mp") && isDefined( player.hasMartyrdom ) && player.hasMartyrdom && !player.hasFragsForMartyrdom ) {
 			player.hasFragsForMartyrdom = true;
 			player setPerk( "specialty_grenadepulldeath" );
 		}
@@ -513,7 +511,10 @@ dropOffhand()
 		return;
 		
 	if ( level.scr_frag_grenades_allowdrop ) {
-		grenadeTypes[grenadeTypes.size] = "frag_grenade_mp";
+		if( level.scr_grenade_allow_cooking )
+      grenadeTypes[grenadeTypes.size] = "frag_grenade_mp";
+    else
+      grenadeTypes[grenadeTypes.size] = "frag_grenade_nocook_mp";
 	}
 	if ( level.scr_concussion_grenades_allowdrop ) {
 		grenadeTypes[grenadeTypes.size] = "concussion_grenade_mp";
@@ -565,8 +566,11 @@ getWeaponBasedSmokeGrenadeCount(weapon)
 
 getFragGrenadeCount()
 {
-	grenadetype = "frag_grenade_mp";
-
+	if( level.scr_grenade_allow_cooking )
+    grenadetype = "frag_grenade_mp";
+  else
+    grenadetype = "frag_grenade_nocook_mp";
+    
 	count = self getammocount(grenadetype);
 	return count;
 }
@@ -815,7 +819,7 @@ beginGrenadeTracking()
 	if ( (getTime() - startTime > 1000) )
 		grenade.isCooked = true;
 
-	if ( weaponName == "frag_grenade_mp" )
+	if ( weaponName == "frag_grenade_mp" || weaponName == "frag_grenade_nocook_mp" )
 	{
 		grenade thread maps\mp\gametypes\_shellshock::grenade_earthQuake();
 		grenade.originalOwner = self;

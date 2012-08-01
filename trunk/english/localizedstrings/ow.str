@@ -2143,7 +2143,7 @@ REFERENCE SCR_SPAWN_PROTECTION_MAXDISTANCE
 LANG_ENGLISH "Max distance to travel while spawn protected"
 
 REFERENCE SCR_SPAWN_PROTECTION_PUNISHMENT_TIME
-LANG_ENGLISH "Punish spawn-killer attacker during (0=disable)"
+LANG_ENGLISH "Punish spawn-attacker during (0=disable)"
 
 REFERENCE SCR_ANTI_CAMPING_ENABLE
 LANG_ENGLISH "Anti-Camping"

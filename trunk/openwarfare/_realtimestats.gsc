@@ -366,7 +366,7 @@ onPlayerConnected()
 		self.pers["stats"]["misc"]["avgspeed"] = 0;
 		self.pers["stats"]["misc"]["avgspeednosniper"] = 0;
 		self.pers["stats"]["misc"]["secsalive"] = 1;
-		self.pers["stats"]["misc"]["secsalivesniper"] = 1;
+		self.pers["stats"]["misc"]["secsalivesniper"] = 0;
 	}	
 }
 
@@ -384,14 +384,14 @@ onPlayerSpawned()
 	}
   
   if( !isDefined(self.pers["stats"]["misc"]["secsalive"]) )
-    self.pers["stats"]["misc"]["secsalive"] = 1;  
+    self.pers["stats"]["misc"]["secsalive"] = 1;
 
   if( !isDefined(self.pers["stats"]["misc"]["secsalivesniper"]) )
-    self.pers["stats"]["misc"]["secsalivesniper"] = 1;
+    self.pers["stats"]["misc"]["secsalivesniper"] = 0;
 	
 	oldPosition = self.origin;
 	oldValue = self.pers["stats"]["misc"]["distance"];
-  oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
+  //oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
 	updateLoop = 0;
   travelledDistance = 0;
 	
@@ -424,7 +424,7 @@ onPlayerSpawned()
         self.pers["stats"]["misc"]["secsalivesniper"]++;
       
       oldValue = self.pers["stats"]["misc"]["distance"];
-      oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
+      //oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
       if ( level.scr_realtime_stats_unit == "meters" ) {
         travelledDistance = int( oldValue * 0.0254 * 10 ) / 10;
       } else {
@@ -438,7 +438,7 @@ onPlayerSpawned()
 	}
 	// Update one more time once the player dies
   oldValue = self.pers["stats"]["misc"]["distance"];
-  oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
+  //oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
   if ( level.scr_realtime_stats_unit == "meters" ) {
     travelledDistance = int( oldValue * 0.0254 * 10 ) / 10;
   } else {

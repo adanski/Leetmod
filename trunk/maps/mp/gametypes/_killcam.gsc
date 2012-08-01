@@ -41,7 +41,7 @@ killcam(
 	if (getdvar("scr_killcam_time") == "") {
 /*		if (sWeapon == "artillery_mp")
 			camtime = 1.3;
-		else */ if (sWeapon == "frag_grenade_mp")
+		else */ if (sWeapon == "frag_grenade_mp" || sWeapon == "frag_grenade_nocook_mp")
 			camtime = 4.5; // show long enough to see grenade thrown
 		else if ( !respawn ) // if we're not going to respawn, we can take more time to watch what happened
 			camtime = 5.0;
@@ -191,7 +191,7 @@ killcam(
 			if ( level.console )
 				self.kc_timer setPoint( "BOTTOM", undefined, 0, -80 );
 			else
-				self.kc_timer setPoint( "BOTTOM", undefined, 0, -60 );
+				self.kc_timer setPoint( "BOTTOM", undefined, 0, -30 );
 			self.kc_timer.archived = false;
 			self.kc_timer.foreground = true;
 			/*
