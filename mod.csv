@@ -258,7 +258,7 @@ stringtable,mp/statsTable.csv
 
 rawfile,openwarfare/_advancedacp.gsc
 rawfile,openwarfare/_advancedmvs.gsc
-rawfile,openwarfare/_antibunnyhopping.gsc
+#rawfile,openwarfare/_antibunnyhopping.gsc
 rawfile,openwarfare/_anticamping.gsc
 rawfile,openwarfare/_bigbrotherbot.gsc
 #rawfile,openwarfare/_binoculars.gsc
@@ -276,9 +276,9 @@ rawfile,openwarfare/_dogtags.gsc
 rawfile,openwarfare/_dvarmonitor.gsc
 #rawfile,openwarfare/_dynamicattachments.gsc
 rawfile,openwarfare/_eventmanager.gsc
-rawfile,openwarfare/_extendedobituaries.gsc
+#rawfile,openwarfare/_extendedobituaries.gsc
 #rawfile,openwarfare/_firingmode.gsc
-rawfile,openwarfare/_fitnesscs.gsc
+#rawfile,openwarfare/_fitnesscs.gsc
 rawfile,openwarfare/_globalchat.gsc
 rawfile,openwarfare/_globalinit.gsc
 #rawfile,openwarfare/_guidcs.gsc
@@ -334,7 +334,7 @@ rawfile,openwarfare/_weapondamagemodifier.gsc
 #rawfile,openwarfare/_weaponjam.gsc
 rawfile,openwarfare/_weaponlocationmodifier.gsc
 rawfile,openwarfare/_weaponrangemodifier.gsc
-rawfile,openwarfare/_weaponweightmodifier.gsc
+#rawfile,openwarfare/_weaponweightmodifier.gsc
 rawfile,openwarfare/_welcomerulesinfo.gsc
 
 menufile,ui_mp/auto_update.menu
