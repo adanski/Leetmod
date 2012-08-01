@@ -233,6 +233,7 @@ loadWWM()
 
 	// Grenades
 	level.wwm[ "frag_grenade_mp" ] = "scr_wwm_frag_grenade";
+  level.wwm[ "frag_grenade_nocook_mp" ] = "scr_wwm_frag_grenade";
 	level.wwm[ "flash_grenade_mp" ] = "scr_wwm_flash_grenade";
 	level.wwm[ "smoke_grenade_mp" ] = "scr_wwm_smoke_grenade";
 	level.wwm[ "concussion_grenade_mp" ] = "scr_wwm_concussion_grenade";

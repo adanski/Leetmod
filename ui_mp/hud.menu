@@ -2530,7 +2530,7 @@
 	menuDef
 	{
 		name			"CenterObituary"
-		rect			0 150 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+		rect			0 180 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 		fullScreen		0
 		visible			when ( dvarstring( "g_gametype" ) != "vg" && dvarint( ui_hud_show_center_obituary ) == 1 );
 

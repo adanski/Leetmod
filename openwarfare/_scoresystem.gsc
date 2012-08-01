@@ -280,7 +280,7 @@ getPointsForKill( pMeansOfDeath, pWeapon, pAttacker)
 		scoreInfo["type"] = "melee";
 
 	// Grenade kill		
-	} else if ( issubstr( pMeansOfDeath, "MOD_GRENADE" ) && ( pWeapon == "frag_grenade_mp" || pWeapon == "frag_grenade_short_mp" ) ) {
+	} else if ( issubstr( pMeansOfDeath, "MOD_GRENADE" ) && ( pWeapon == "frag_grenade_mp" || pWeapon == "frag_grenade_nocook_mp" || pWeapon == "frag_grenade_short_mp" ) ) {
 		scoreInfo["score"] = maps\mp\gametypes\_rank::getScoreInfoValue( "grenade" );
 		scoreInfo["type"] = "grenade";
 		

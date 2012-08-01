@@ -11,7 +11,7 @@ init()
 
 	thread openwarfare\_advancedacp::init();
 	thread openwarfare\_advancedmvs::init();
-	//thread openwarfare\_antibunnyhopping::init();
+	thread openwarfare\_antibunnyhopping::init();
 	thread openwarfare\_anticamping::init();
 	thread openwarfare\_bigbrotherbot::init();
 	//thread openwarfare\_binoculars::init();
@@ -27,9 +27,9 @@ init()
 	thread openwarfare\_dogtags::init();
 	thread openwarfare\_dvarmonitor::init();
 	//thread openwarfare\_dynamicattachments::init();		
-	//thread openwarfare\_extendedobituaries::init();
+	thread openwarfare\_extendedobituaries::init();
 	//thread openwarfare\_firingmode::init();	
-	//thread openwarfare\_fitnesscs::init();	
+	thread openwarfare\_fitnesscs::init();	
 	thread openwarfare\_globalchat::init();
 	//thread openwarfare\_guidcs::init();
 	thread openwarfare\_healthsystem::init();
@@ -75,7 +75,7 @@ init()
 	//thread openwarfare\_weaponjam::init();
 	thread openwarfare\_weaponlocationmodifier::init();
 	thread openwarfare\_weaponrangemodifier::init();
-	//thread openwarfare\_weaponweightmodifier::init();
+	thread openwarfare\_weaponweightmodifier::init();
 	thread openwarfare\_welcomerulesinfo::init();
 }
 

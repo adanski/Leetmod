@@ -103,7 +103,7 @@ x,x,x,x,x,x,x,x,x,x,x
 101,3101,weapon_grenade,WEAPON_FLASH_GRENADE,flash_grenade,1,weapon_flashbang,PERKS_DEVICE_THAT_BLINDS_AND,,,
 102,3102,weapon_grenade,WEAPON_SMOKE_GRENADE,smoke_grenade,1,weapon_smokegrenade,PERKS_DEVICE_THAT_CREATES_A,,,PERKS_SMOKE_SELECTION_WARNING
 103,3103,weapon_grenade,WEAPON_STUN_GRENADE,concussion_grenade,1,weapon_concgrenade,PERKS_DEVICE_THAT_DISORIENTS,,,
-104,3104,weapon_grenade,,,,,,,,
+104,3104,weapon_grenade,WEAPON_FRAGGRENADE,frag_grenade_nocook,1,weapon_fraggrenade,PERKS_ANTIPERSONNEL_DEVICE,,,
 105,3105,weapon_grenade,,,,,,,,
 106,3106,weapon_grenade,,,,,,,,
 107,3107,weapon_grenade,,,,,,,,

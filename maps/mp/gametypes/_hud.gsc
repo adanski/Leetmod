@@ -115,10 +115,10 @@ init()
 			level.secondaryProgressBarTextY = 169;
 			break;
 		case 1:
-			level.primaryProgressBarY = 183; // from center
-			level.primaryProgressBarTextY = 169;
-			level.secondaryProgressBarY = -169; // from center
-			level.secondaryProgressBarTextY = -180;
+			level.primaryProgressBarY = 203; // from center
+			level.primaryProgressBarTextY = 189;
+			level.secondaryProgressBarY = -149; // from center
+			level.secondaryProgressBarTextY = -160;
 			break;
 		case 2:
 			level.primaryProgressBarY = -169; // from center

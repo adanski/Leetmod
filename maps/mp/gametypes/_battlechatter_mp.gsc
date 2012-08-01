@@ -119,7 +119,7 @@ grenadeTracking()
 	{
 		self waittill ( "grenade_fire", grenade, weaponName );
 		
-		if ( weaponName == "frag_grenade_mp" && shouldPlayBattlechatter( level.scr_battlechatter_frag_out_probability ) )
+		if ( (weaponName == "frag_grenade_mp" || weaponName == "frag_grenade_nocook_mp") && shouldPlayBattlechatter( level.scr_battlechatter_frag_out_probability ) )
 			level thread sayLocalSound( self, "frag_out" );
 			
 		else if ( weaponName == "flash_grenade_mp" && shouldPlayBattlechatter( level.scr_battlechatter_flash_out_probability ) )

@@ -21,12 +21,12 @@ wdmDamage( iDamage, sWeapon, sHitLoc, sMeansOfDeath )
 {
 	// By default we won't change the iDamage value
 	damageModifier = 1.0;
-
+  
 	// Make sure it was not a knife kill or a headshot
 	if ( sMeansOfDeath != "MOD_MELEE" && !maps\mp\gametypes\_globallogic::isHeadShot( sWeapon, sHitLoc, sMeansOfDeath ) ) {
     if( !level.scr_wdm_autoadjust_bolt_action ) {
       // Check if we support wdm for this weapon
-      if ( level.scr_wdm_enabled && isDefined( level.wdm[ sWeapon ] ) ) {
+      if ( isDefined( level.wdm[ sWeapon ] ) ) {
         damageModifier = getdvarx( level.wdm[ sWeapon ], "float", 100.0, 0.0, 200.0 ) / 100;
       } else {
         // Just for testing. Remove this line on release version!
@@ -42,13 +42,12 @@ wdmDamage( iDamage, sWeapon, sHitLoc, sMeansOfDeath )
         case "m40a3_mp":
         case "remington700_acog_mp":
         case "remington700_mp":
-        if( level.scr_player_maxhealth > 30 )
-        damageModifier = level.scr_player_maxhealth/30.0;
+          if( level.maxhealth > 30 )
+            damageModifier = level.maxhealth/30.0;
         break;
       }
     }
 	}
-
 	return int( iDamage * damageModifier );
 }
 
@@ -197,6 +196,7 @@ loadWDM()
 
 	// Frag grenades
 	level.wdm[ "frag_grenade_mp" ] = "scr_wdm_frag_grenades";
+  level.wdm[ "frag_grenade_nocook_mp" ] = "scr_wdm_frag_grenades";
 	level.wdm[ "frag_grenade_short_mp" ] = "scr_wdm_frag_grenades";  // This one is the one used in Martyrdom
 
 	// Explosives
