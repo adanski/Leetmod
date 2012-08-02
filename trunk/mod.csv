@@ -389,8 +389,8 @@ sound,misc,,all_mp
 
 xmodel,body_complete_mp_zakhaev
 xmodel,com_office_book_red_flat
-#xmodel,health_obj
-#xmodel,hp_medium
+xmodel,health_obj
+xmodel,hp_medium
 xmodel,iceberg
 xmodel,icebergred
 

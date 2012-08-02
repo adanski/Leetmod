@@ -893,7 +893,8 @@ updateRankAnnounceHUD( powerrank )
 		notifyData.notifyText = newRankName;
 	}
 
-	thread maps\mp\gametypes\_hud_message::notifyMessage( notifyData );
+	if( level.scr_show_ingame_ranking_challenges )
+    thread maps\mp\gametypes\_hud_message::notifyMessage( notifyData );
 
 	if ( subRank > 1 )
 		return;
@@ -1397,7 +1398,9 @@ updateRankScoreHUD( amount, powerrank )
 
 		self.hud_rankscroreupdate setValue(self.rankUpdateTotal);
 		self.hud_rankscroreupdate.alpha = 0.85;
-		self.hud_rankscroreupdate thread maps\mp\gametypes\_hud::fontPulse( self );
+		
+    if( level.scr_show_ingame_ranking_challenges )
+      self.hud_rankscroreupdate thread maps\mp\gametypes\_hud::fontPulse( self );
 
 		wait 1;
 		self.hud_rankscroreupdate fadeOverTime( 0.75 );
