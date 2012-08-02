@@ -118,6 +118,8 @@ init()
 
 	// Show only the compass (North, South, West, East)
 	level.scr_hud_hardcore_show_compass = getdvarx( "scr_hardcore_show_compass", "int", 0, 0, 1 );
+  
+  level.scr_show_ingame_ranking_challenges = getdvarx( "scr_show_ingame_ranking_challenges", "int", 1, 0, 1);
 
 	level.scr_grenade_allow_cooking = getdvarx( "scr_grenade_allow_cooking", "int", 1, 0, 1 );
   

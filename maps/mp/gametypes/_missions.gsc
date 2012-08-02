@@ -9,7 +9,7 @@ init()
 		return;
 	
 	level.missionCallbacks = [];
-
+  
 	precacheString(&"MP_CHALLENGE_COMPLETED");
 
 	registerMissionCallback( "playerKilled", ::ch_kills );	
@@ -231,7 +231,8 @@ challengeNotify( challengeName, challengeDesc )
 //	notifyData.notifyText2 = challengeDesc;
 	notifyData.sound = "mp_challenge_complete";
 	
-	self maps\mp\gametypes\_hud_message::notifyMessage( notifyData );
+	if( level.scr_show_ingame_ranking_challenges )
+    self maps\mp\gametypes\_hud_message::notifyMessage( notifyData );
 }
 
 
