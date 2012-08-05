@@ -512,6 +512,7 @@
 		LOCAL_WEAPON_ITEM( suffix, 2, "@WEAPON_SKORPION", STAT_SMG_SKORPION, REF_SKORPION, "ui_primary_highlighted", 3011 )\
 		LOCAL_WEAPON_ITEM( suffix, 3, "@WEAPON_UZI", STAT_SMG_UZI, REF_UZI, "ui_primary_highlighted", 3012 )\
 		LOCAL_WEAPON_ITEM( suffix, 4, "@WEAPON_AK74U", STAT_SMG_AK74U, REF_AK74U, "ui_primary_highlighted", 3013 )\
+		LOCAL_WEAPON_ITEM( suffix, 5, "@WEAPON_P90", STAT_SMG_P90, REF_P90, "ui_primary_highlighted", 3014 )\
 	}\
 	menuDef	{\
 		IMPROVED_POPUP_SETUP_ONOPEN( CAC_PREFIX"popup_cac_shotgun"suffix, 7, (CHOICE_X( pos )-2), (CHOICE_Y( pos )+20+y_offset), ;, execnow "set "UI_FOCUSFIRST" "REF_WINCHESTER1200"; set ui_inside_popup shotgun";, 0 )\
