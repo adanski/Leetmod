@@ -73,6 +73,8 @@ init()
   level.attach_allow_grip = getdvarx( "attach_allow_grip", "int", 1, 0, 1 );
   level.attach_allow_assault_gl = getdvarx( "attach_allow_assault_gl", "int", 1, 0, 1 );
   
+  level.attach_allow_pistol_silencer = getdvarx( "attach_allow_pistol_silencer", "int", 1, 0, 1 );
+  
   level.scr_c4_ammo_count = getdvarx( "scr_c4_ammo_count", "int", 2, 1, 2 );
   level.scr_claymore_ammo_count = getdvarx( "scr_claymore_ammo_count", "int", 2, 1, 2 );
   level.scr_rpg_ammo_count = getdvarx( "scr_rpg_ammo_count", "int", 2, 1, 3 );
@@ -234,17 +236,20 @@ load_default_loadout_raw( class_dataTable, team, class, stat_num )
 {
 	// give primary weapon and attachment
 	primary_attachment = tablelookup( class_dataTable, 1, stat_num + 2, 4 );
-	if( primary_attachment != "" && primary_attachment != "none" )
-		level.classWeapons[team][class][0] = tablelookup( class_dataTable, 1, stat_num + 1, 4 ) + "_" + primary_attachment + "_mp";
-	else
-		level.classWeapons[team][class][0] = tablelookup( class_dataTable, 1, stat_num + 1, 4 ) + "_mp";
+	if( primary_attachment == "" || primary_attachment == "none" ||
+      (primary_attachment == "acog" && !level.attach_allow_acog) || (primary_attachment == "reflex" && !level.attach_allow_reflex) ||
+      (primary_attachment == "silencer" && !level.attach_allow_silencer) || (primary_attachment == "grip" && !level.attach_allow_grip) ||
+      (primary_attachment == "gl" && !level.attach_allow_assault_gl) )
+    level.classWeapons[team][class][0] = tablelookup( class_dataTable, 1, stat_num + 1, 4 ) + "_mp";
+  else
+    level.classWeapons[team][class][0] = tablelookup( class_dataTable, 1, stat_num + 1, 4 ) + "_" + primary_attachment + "_mp";
 
 	// give secondary weapon and attachment
 	secondary_attachment = tablelookup( class_dataTable, 1, stat_num + 4, 4 );
-	if( secondary_attachment != "" && secondary_attachment != "none" )
-		level.classSidearm[team][class] = tablelookup( class_dataTable, 1, stat_num + 3, 4 ) + "_" + secondary_attachment + "_mp";
-	else
+  	if( secondary_attachment == "" || secondary_attachment == "none" || (secondary_attachment == "silencer" && !level.attach_allow_pistol_silencer) )
 		level.classSidearm[team][class] = tablelookup( class_dataTable, 1, stat_num + 3, 4 ) + "_mp";
+	else
+		level.classSidearm[team][class] = tablelookup( class_dataTable, 1, stat_num + 3, 4 ) + "_" + secondary_attachment + "_mp";
 
 	// give default class perks
 	level.default_perk[class] = [];
@@ -354,17 +359,20 @@ load_default_loadout_cfg( team, class )
 
 	// give primary weapon and attachment
 	primary_attachment = level.class_primary_attachment[abbrClass];
-	if( primary_attachment != "" && primary_attachment != "none" )
-		level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_" + primary_attachment + "_mp";
-	else
-		level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_mp";
+  if( primary_attachment == "" || primary_attachment == "none" ||
+      (primary_attachment == "acog" && !level.attach_allow_acog) || (primary_attachment == "reflex" && !level.attach_allow_reflex) ||
+      (primary_attachment == "silencer" && !level.attach_allow_silencer) || (primary_attachment == "grip" && !level.attach_allow_grip) ||
+      (primary_attachment == "gl" && !level.attach_allow_assault_gl) )
+    level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_mp";
+  else
+    level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_" + primary_attachment + "_mp";
 
 	// give secondary weapon and attachment
 	secondary_attachment = level.class_secondary_attachment[abbrClass];
-	if( secondary_attachment != "" && secondary_attachment != "none" )
-		level.classSidearm[team][class] = level.class_secondary[abbrClass][team] + "_" + secondary_attachment + "_mp";
-	else
+	if( secondary_attachment == "" || secondary_attachment == "none" || (secondary_attachment == "silencer" && !level.attach_allow_pistol_silencer) )
 		level.classSidearm[team][class] = level.class_secondary[abbrClass][team] + "_mp";
+	else
+		level.classSidearm[team][class] = level.class_secondary[abbrClass][team] + "_" + secondary_attachment + "_mp";
 
 	// give default class perks
 	level.default_perk[class] = [];

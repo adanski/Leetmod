@@ -108,13 +108,13 @@ init()
 
 		level.weaponlist[level.weaponlist.size] = level.weaponIDs[i];
 	}
-
+  
 	// based on weaponList array, precache weapons in list
-	for ( index = 0; index < level.weaponList.size; index++ )
+	for ( index2 = 0; index2 < level.weaponList.size; index2++ )
 	{
 		resetTimeout();
-		precacheItem( level.weaponList[index] );
-		println( "Precached weapon: " + level.weaponList[index] );
+		precacheItem( level.weaponList[index2] );
+		println( "Precached weapon: " + level.weaponList[index2] );
 	}
 
 	precacheItem( "frag_grenade_short_mp" );
