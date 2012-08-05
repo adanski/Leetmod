@@ -5,69 +5,6 @@ init()
 {
 	game["menu_ow_cac_editor"] = "ow_cac_editor";
 	precacheMenu( game["menu_ow_cac_editor"] );
-	
-  //CONFIGURABLE WEAPONS
-  level.weap_allow_assault_m16 = getdvarx( "weap_allow_assault_m16", "int", 1, 0, 1 );
-  level.weap_allow_assault_ak47 = getdvarx( "weap_allow_assault_ak47", "int", 1, 0, 1 );
-  level.weap_allow_assault_m4 = getdvarx( "weap_allow_assault_m4", "int", 1, 0, 1 );
-  level.weap_allow_assault_g3 = getdvarx( "weap_allow_assault_g3", "int", 1, 0, 1 );
-  level.weap_allow_assault_g36c = getdvarx( "weap_allow_assault_g36c", "int", 1, 0, 1 );
-  level.weap_allow_assault_m14 = getdvarx( "weap_allow_assault_m14", "int", 1, 0, 1 );
-  level.weap_allow_assault_mp44 = getdvarx( "weap_allow_assault_mp44", "int", 1, 0, 1 );
-  level.weap_allow_specops_mp5 = getdvarx( "weap_allow_specops_mp5", "int", 1, 0, 1 );
-  level.weap_allow_specops_skorpion = getdvarx( "weap_allow_specops_skorpion", "int", 1, 0, 1 );
-  level.weap_allow_specops_uzi = getdvarx( "weap_allow_specops_uzi", "int", 1, 0, 1 );
-  level.weap_allow_specops_ak74u = getdvarx( "weap_allow_specops_ak74u", "int", 1, 0, 1 );
-  level.weap_allow_specops_p90 = getdvarx( "weap_allow_specops_p90", "int", 1, 0, 1 );
-  level.weap_allow_heavygunner_saw = getdvarx( "weap_allow_heavygunner_saw", "int", 1, 0, 1 );
-  level.weap_allow_heavygunner_rpd = getdvarx( "weap_allow_heavygunner_rpd", "int", 1, 0, 1 );
-  level.weap_allow_heavygunner_m60e4 = getdvarx( "weap_allow_heavygunner_m60e4", "int", 1, 0, 1 );
-  level.weap_allow_demolitions_winchester1200 = getdvarx( "weap_allow_demolitions_winchester1200", "int", 1, 0, 1 );
-  level.weap_allow_demolitions_m1014 = getdvarx( "weap_allow_demolitions_m1014", "int", 1, 0, 1 );
-  level.weap_allow_sniper_m40a3 = getdvarx( "weap_allow_sniper_m40a3", "int", 1, 0, 1 );
-  level.weap_allow_sniper_m21 = getdvarx( "weap_allow_sniper_m21", "int", 1, 0, 1 );
-  level.weap_allow_sniper_dragunov = getdvarx( "weap_allow_sniper_dragunov", "int", 1, 0, 1 );
-  level.weap_allow_sniper_remington700 = getdvarx( "weap_allow_sniper_remington700", "int", 1, 0, 1 );
-  level.weap_allow_sniper_barrett = getdvarx( "weap_allow_sniper_barrett", "int", 1, 0, 1 );
-
-  level.attach_allow_silencer = getdvarx( "attach_allow_silencer", "int", 1, 0, 1 );
-  level.attach_allow_reflex = getdvarx( "attach_allow_reflex", "int", 1, 0, 1 );
-  level.attach_allow_acog = getdvarx( "attach_allow_acog", "int", 1, 0, 1 );
-  level.attach_allow_grip = getdvarx( "attach_allow_grip", "int", 1, 0, 1 );
-  level.attach_allow_assault_gl = getdvarx( "attach_allow_assault_gl", "int", 1, 0, 1 );
-
-  level.weap_allow_beretta = getdvarx( "weap_allow_beretta", "int", 1, 0, 1 );
-  level.weap_allow_usp = getdvarx( "weap_allow_usp", "int", 1, 0, 1 );
-  level.weap_allow_colt45 = getdvarx( "weap_allow_colt45", "int", 1, 0, 1 );
-  level.weap_allow_deserteagle = getdvarx( "weap_allow_deserteagle", "int", 1, 0, 1 );
-  level.weap_allow_deserteaglegold = getdvarx( "weap_allow_deserteaglegold", "int", 1, 0, 1 );
-  
-  //CONFIGURABLE PERKS
-  level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 1, 0, 1 );
-  level.perk_allow_specialty_specialgrenade = getdvarx( "perk_allow_specialty_specialgrenade", "int", 1, 0, 1 );
-  level.perk_allow_rpg_mp = getdvarx( "perk_allow_rpg_mp", "int", 1, 0, 1 );
-  level.perk_allow_claymore_mp = getdvarx( "perk_allow_claymore_mp", "int", 1, 0, 1 );
-  level.perk_allow_specialty_fraggrenade = getdvarx( "perk_allow_specialty_fraggrenade", "int", 1, 0, 1 );
-  level.perk_allow_specialty_extraammo = getdvarx( "perk_allow_specialty_extraammo", "int", 1, 0, 1 );
-  level.perk_allow_specialty_detectexplosive = getdvarx( "perk_allow_specialty_detectexplosive", "int", 1, 0, 1 );
-
-  level.perk_allow_specialty_bulletdamage = getdvarx( "perk_allow_specialty_bulletdamage", "int", 1, 0, 1 );
-  level.perk_allow_specialty_armorvest = getdvarx( "perk_allow_specialty_armorvest", "int", 1, 0, 1 );
-  level.perk_allow_specialty_fastreload = getdvarx( "perk_allow_specialty_fastreload", "int", 1, 0, 1 );
-  level.perk_allow_specialty_rof = getdvarx( "perk_allow_specialty_rof", "int", 1, 0, 1 );
-  level.perk_allow_specialty_twoprimaries = getdvarx( "perk_allow_specialty_twoprimaries", "int", 1, 0, 1 );
-  level.perk_allow_specialty_gpsjammer = getdvarx( "perk_allow_specialty_gpsjammer", "int", 1, 0, 1 );
-  level.perk_allow_specialty_explosivedamage = getdvarx( "perk_allow_specialty_explosivedamage", "int", 1, 0, 1 );
-
-  level.perk_allow_specialty_longersprint = getdvarx( "perk_allow_specialty_longersprint", "int", 1, 0, 1 );
-  level.perk_allow_specialty_bulletaccuracy = getdvarx( "perk_allow_specialty_bulletaccuracy", "int", 1, 0, 1 );
-  level.perk_allow_specialty_pistoldeath = getdvarx( "perk_allow_specialty_pistoldeath", "int", 1, 0, 1 );
-  level.perk_allow_specialty_grenadepulldeath = getdvarx( "perk_allow_specialty_grenadepulldeath", "int", 1, 0, 1 );
-  level.perk_allow_specialty_bulletpenetration = getdvarx( "perk_allow_specialty_bulletpenetration", "int", 1, 0, 1 );
-  level.perk_allow_specialty_holdbreath = getdvarx( "perk_allow_specialty_holdbreath", "int", 1, 0, 1 );
-  level.perk_allow_specialty_quieter = getdvarx( "perk_allow_specialty_quieter", "int", 1, 0, 1 );
-  level.perk_allow_specialty_parabolic = getdvarx( "perk_allow_specialty_parabolic", "int", 1, 0, 1 );
-  
   
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }

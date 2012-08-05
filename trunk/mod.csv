@@ -1,7 +1,6 @@
 ignore,mod_ignore
 
 localize,ow
-localize,class
 localize,cgame
 localize,perks
 #localize,props
@@ -250,7 +249,6 @@ material,weapon_knife
 
 rawfile,mp/CoD2maps.arena
 stringtable,mp/attributesTable.csv
-stringtable,mp/classtable.csv
 #stringtable,mp/propsTable.csv
 stringtable,mp/rankIconTable.csv
 stringtable,mp/rankTable.csv

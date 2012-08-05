@@ -31,10 +31,47 @@ init()
   level.perk_allow_specialty_quieter = getdvarx( "perk_allow_specialty_quieter", "int", 1, 0, 1 );
   level.perk_allow_specialty_parabolic = getdvarx( "perk_allow_specialty_parabolic", "int", 1, 0, 1 );
   
-	// Load some variables
+  // Load allowed weapons
+  level.weap_allow_assault_m16 = getdvarx( "weap_allow_assault_m16", "int", 1, 0, 1 );
+  level.weap_allow_assault_ak47 = getdvarx( "weap_allow_assault_ak47", "int", 1, 0, 1 );
+  level.weap_allow_assault_m4 = getdvarx( "weap_allow_assault_m4", "int", 1, 0, 1 );
+  level.weap_allow_assault_g3 = getdvarx( "weap_allow_assault_g3", "int", 1, 0, 1 );
+  level.weap_allow_assault_g36c = getdvarx( "weap_allow_assault_g36c", "int", 1, 0, 1 );
+  level.weap_allow_assault_m14 = getdvarx( "weap_allow_assault_m14", "int", 1, 0, 1 );
+  level.weap_allow_assault_mp44 = getdvarx( "weap_allow_assault_mp44", "int", 1, 0, 1 );
+  level.weap_allow_specops_mp5 = getdvarx( "weap_allow_specops_mp5", "int", 1, 0, 1 );
+  level.weap_allow_specops_skorpion = getdvarx( "weap_allow_specops_skorpion", "int", 1, 0, 1 );
+  level.weap_allow_specops_uzi = getdvarx( "weap_allow_specops_uzi", "int", 1, 0, 1 );
+  level.weap_allow_specops_ak74u = getdvarx( "weap_allow_specops_ak74u", "int", 1, 0, 1 );
+  level.weap_allow_specops_p90 = getdvarx( "weap_allow_specops_p90", "int", 1, 0, 1 );
+  level.weap_allow_heavygunner_saw = getdvarx( "weap_allow_heavygunner_saw", "int", 1, 0, 1 );
+  level.weap_allow_heavygunner_rpd = getdvarx( "weap_allow_heavygunner_rpd", "int", 1, 0, 1 );
+  level.weap_allow_heavygunner_m60e4 = getdvarx( "weap_allow_heavygunner_m60e4", "int", 1, 0, 1 );
+  level.weap_allow_demolitions_winchester1200 = getdvarx( "weap_allow_demolitions_winchester1200", "int", 1, 0, 1 );
+  level.weap_allow_demolitions_m1014 = getdvarx( "weap_allow_demolitions_m1014", "int", 1, 0, 1 );
+  level.weap_allow_sniper_m40a3 = getdvarx( "weap_allow_sniper_m40a3", "int", 1, 0, 1 );
+  level.weap_allow_sniper_m21 = getdvarx( "weap_allow_sniper_m21", "int", 1, 0, 1 );
+  level.weap_allow_sniper_dragunov = getdvarx( "weap_allow_sniper_dragunov", "int", 1, 0, 1 );
+  level.weap_allow_sniper_remington700 = getdvarx( "weap_allow_sniper_remington700", "int", 1, 0, 1 );
+  level.weap_allow_sniper_barrett = getdvarx( "weap_allow_sniper_barrett", "int", 1, 0, 1 );
+
+  level.weap_allow_beretta = getdvarx( "weap_allow_beretta", "int", 1, 0, 1 );
+  level.weap_allow_usp = getdvarx( "weap_allow_usp", "int", 1, 0, 1 );
+  level.weap_allow_colt45 = getdvarx( "weap_allow_colt45", "int", 1, 0, 1 );
+  level.weap_allow_deserteagle = getdvarx( "weap_allow_deserteagle", "int", 1, 0, 1 );
+  level.weap_allow_deserteaglegold = getdvarx( "weap_allow_deserteaglegold", "int", 1, 0, 1 );
+  
+	// Load allowed grenade types
   level.weap_allow_frag_grenade = getdvarx( "weap_allow_frag_grenade", "int", 1, 0, 1 );
 	level.weap_allow_concussion_grenade = getdvarx( "weap_allow_concussion_grenade", "int", 1, 0, 1 );
 	level.weap_allow_flash_grenade = getdvarx( "weap_allow_flash_grenade", "int", 1, 0, 1 );
+  
+  // Load allowed attachments types
+  level.attach_allow_silencer = getdvarx( "attach_allow_silencer", "int", 1, 0, 1 );
+  level.attach_allow_reflex = getdvarx( "attach_allow_reflex", "int", 1, 0, 1 );
+  level.attach_allow_acog = getdvarx( "attach_allow_acog", "int", 1, 0, 1 );
+  level.attach_allow_grip = getdvarx( "attach_allow_grip", "int", 1, 0, 1 );
+  level.attach_allow_assault_gl = getdvarx( "attach_allow_assault_gl", "int", 1, 0, 1 );
   
   level.scr_c4_ammo_count = getdvarx( "scr_c4_ammo_count", "int", 2, 1, 2 );
   level.scr_claymore_ammo_count = getdvarx( "scr_claymore_ammo_count", "int", 2, 1, 2 );
@@ -94,6 +131,12 @@ init()
 
 	// initializes create a class settings
 	cac_init();
+  
+  readDefaultClasses("assault");
+  readDefaultClasses("specops");
+  readDefaultClasses("heavygunner");
+  readDefaultClasses("demolitions");
+  readDefaultClasses("sniper");
 
 	// default class weapon loadout for offline mode
 	// param( team, class, stat number, inventory string, inventory count )
@@ -113,11 +156,11 @@ init()
 
 	online_class_datatable = "mp/classTable.csv";
 
-	load_default_loadout( online_class_datatable, "both", "CLASS_ASSAULT", 200 );			// assault
-	load_default_loadout( online_class_datatable, "both", "CLASS_SPECOPS", 210 );			// spec ops
-	load_default_loadout( online_class_datatable, "both", "CLASS_HEAVYGUNNER", 220 );		// heavy gunner
-	load_default_loadout( online_class_datatable, "both", "CLASS_DEMOLITIONS", 230 );		// demolitions
-	load_default_loadout( online_class_datatable, "both", "CLASS_SNIPER", 240 );			// sniper
+	load_default_loadout_2( "both", "CLASS_ASSAULT");			// assault
+	load_default_loadout_2( "both", "CLASS_SPECOPS");			// spec ops
+	load_default_loadout_2( "both", "CLASS_HEAVYGUNNER");		// heavy gunner
+	load_default_loadout_2( "both", "CLASS_DEMOLITIONS");		// demolitions
+	load_default_loadout_2( "both", "CLASS_SNIPER" );			// sniper
 
 	// generating weapon type arrays which classifies the weapon as primary (back stow), pistol, or inventory (side pack stow)
 	// using mp/statstable.csv's weapon grouping data ( numbering 0 - 149 )
@@ -175,6 +218,18 @@ load_default_loadout( datatable, team, class, stat_num )
 		load_default_loadout_raw( datatable, team, class, stat_num );
 }
 
+load_default_loadout_2( team, class )
+{
+	if( team == "both" )
+	{
+		// do not thread, tablelookup is demanding
+		load_default_loadout_cfg( "allies", class );
+		load_default_loadout_cfg( "axis", class );
+	}
+	else
+		load_default_loadout_cfg( team, class );
+}
+
 load_default_loadout_raw( class_dataTable, team, class, stat_num )
 {
 	// give primary weapon and attachment
@@ -211,9 +266,6 @@ load_default_loadout_raw( class_dataTable, team, class, stat_num )
   level.default_perk[class][1] = tableLookup( "mp/statsTable.csv", 1, specialty2, 6 );
   level.default_perk[class][2] = tableLookup( "mp/statsTable.csv", 1, specialty3, 6 );
   
-  
-  //##Temporary fix for now, this will be loaded from a .cfg file too, like all the other tableLookups
-  //level.classGrenades[class]["primary"]["type"] = tablelookup( class_dataTable, 1, stat_num, 4 ) + "_mp";
   if( level.scr_grenade_allow_cooking )
     level.classGrenades[class]["primary"]["type"] = "frag_grenade_mp";
   else
@@ -245,15 +297,114 @@ load_default_loadout_raw( class_dataTable, team, class, stat_num )
       break;
   }
 
-	// give frag and special grenades
-	// level.classGrenades[class]["primary"]["type"] = tablelookup( class_dataTable, 1, stat_num, 4 ) + "_mp";
-	// level.classGrenades[class]["primary"]["count"] = int( tablelookup( class_dataTable, 1, stat_num, 6 ) );	//### CUSTOM ### fixes grenades problem
-	
-	// level.classGrenades[class]["secondary"]["type"] = tablelookup( class_dataTable, 1, stat_num + 8, 4 ) + "_mp";
-	// level.classGrenades[class]["secondary"]["count"] = int( tablelookup( class_dataTable, 1, stat_num + 8, 6 ) ); //### CUSTOM ### fixes grenades problem
-
 	// give all inventory
 	inventory_ref = tablelookup( class_dataTable, 1, stat_num + 5, 4 );
+	if( isdefined( inventory_ref ) && tablelookup( "mp/statsTable.csv", 6, inventory_ref, 2 ) == "inventory" )
+	{
+		// new logic defined below overrites this one
+    // (new logic gets the values from dvars instead of .csv file)
+    inventory_count = int( tablelookup( "mp/statsTable.csv", 6, inventory_ref, 5 ) );
+    
+    switch ( inventory_ref )
+    {
+      case "specialty_weapon_c4":
+        inventory_count = level.scr_c4_ammo_count;
+        break;
+      case "specialty_weapon_claymore":
+        inventory_count = level.scr_claymore_ammo_count;
+        break;
+      case "specialty_weapon_rpg":
+        inventory_count = level.scr_rpg_ammo_count;
+        break;
+    }
+    
+		inventory_item_ref = tablelookup( "mp/statsTable.csv", 6, inventory_ref, 4 );
+		assertex( isdefined( inventory_count ) && inventory_count != 0 && isdefined( inventory_item_ref ) && inventory_item_ref != "" , "Inventory in statsTable.csv not specified correctly" );
+
+		level.classItem[team][class]["type"] = inventory_item_ref;
+		level.classItem[team][class]["count"] = inventory_count;
+	}
+	else
+	{
+		level.classItem[team][class]["type"] = "";
+		level.classItem[team][class]["count"] = 0;
+	}
+	// give all inventory
+	//level.classItem[team][class]["type"] = inventory;
+	//level.classItem[team][class]["count"] = inv_count;
+}
+
+load_default_loadout_cfg( team, class )
+{
+  abbrClass = "assault";
+  switch(class) {
+    case "CLASS_SPECOPS":
+      abbrClass = "specops";
+    break;
+    case "CLASS_HEAVYGUNNER":
+      abbrClass = "heavygunner";
+    break;
+    case "CLASS_DEMOLITIONS":
+      abbrClass = "demolitions";
+    break;
+    case "CLASS_SNIPER":
+      abbrClass = "sniper";
+    break;
+  }
+
+	// give primary weapon and attachment
+	primary_attachment = level.class_primary_attachment[abbrClass];
+	if( primary_attachment != "" && primary_attachment != "none" )
+		level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_" + primary_attachment + "_mp";
+	else
+		level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_mp";
+
+	// give secondary weapon and attachment
+	secondary_attachment = level.class_secondary_attachment[abbrClass];
+	if( secondary_attachment != "" && secondary_attachment != "none" )
+		level.classSidearm[team][class] = level.class_secondary[abbrClass][team] + "_" + secondary_attachment + "_mp";
+	else
+		level.classSidearm[team][class] = level.class_secondary[abbrClass][team] + "_mp";
+
+	// give default class perks
+	level.default_perk[class] = [];
+	level.default_perk[class][0] = level.class_perk1[abbrClass];
+	level.default_perk[class][1] = level.class_perk2[abbrClass];
+	level.default_perk[class][2] = level.class_perk3[abbrClass];
+  
+  if( level.scr_grenade_allow_cooking )
+    level.classGrenades[class]["primary"]["type"] = "frag_grenade_mp";
+  else
+    level.classGrenades[class]["primary"]["type"] = "frag_grenade_nocook_mp";
+    
+  level.classGrenades[class]["primary"]["count"] = level.weap_allow_frag_grenade;
+  
+  level.classGrenades[class]["secondary"]["type"] = level.class_sgrenade[abbrClass]+"_mp";
+  // in case it's a smoke grenade
+  level.classGrenades[class]["secondary"]["count"] = 1;
+  
+  switch( level.classGrenades[class]["secondary"]["type"] )
+  {
+    case "concussion_grenade":
+      level.classGrenades[class]["secondary"]["count"] = level.weap_allow_concussion_grenade;
+      break;
+    case "flash_grenade":
+      level.classGrenades[class]["secondary"]["count"] = level.weap_allow_flash_grenade;
+      break;
+  }
+  
+  switch ( level.default_perk[class][0] )
+  {
+    case "specialty_fraggrenade":
+      level.classGrenades[class]["primary"]["count"] += level.specialty_fraggrenade_ammo_count;
+      break;
+    case "specialty_specialgrenade":
+      level.classGrenades[class]["secondary"]["count"] += level.specialty_specialgrenade_ammo_count;
+      break;
+  }
+
+	// give all inventory
+	inventory_ref = level.default_perk[class][0];
 	if( isdefined( inventory_ref ) && tablelookup( "mp/statsTable.csv", 6, inventory_ref, 2 ) == "inventory" )
 	{
 		// new logic defined below overrites this one
@@ -572,9 +723,9 @@ cac_getdata()
 		m16WeaponIndex = 25;
 		assert( level.tbl_weaponIDs[m16WeaponIndex]["reference"] == "m16" );
     //## if a client manages to pick a disabled weapon by some weird way, we make sure to change it to another that is allowed
-		if ( primary_num < 0 || !isDefined( level.tbl_weaponIDs[ primary_num ] ) || !isWeaponEnabled(primary_num) )
+		if ( primary_num < 0 || !isDefined( level.tbl_weaponIDs[ primary_num ] ) || !isPrimaryEnabled(primary_num) )
 		{
-			primary_num = numFirstEnabledWeapon();
+			primary_num = numFirstEnabledPrimary();
 			primary_attachment_flag = 0;
 		}
 		if ( secondary_num < 0 || !isDefined( level.tbl_weaponIDs[ secondary_num ] ) )
@@ -1406,7 +1557,116 @@ getPlayerCustomClass( primaryWeapon )
 	return playerClass;
 }
 
-isWeaponEnabled(weaponNum)
+readDefaultClasses(class)
+{
+  primaryDefault = "m16";
+  secondaryDefault = "beretta";
+  pAttachmentDefault = "none";
+  perk1Default = "specialty_specialgrenade";
+  perk2Default = "specialty_explosivedamage";
+  perk3Default = "specialty_quieter";
+  sgrenadeDefault = "concussion_grenade";
+  
+  switch(class) {
+    case "specops":
+      primaryDefault = "m4";
+      secondaryDefault = "usp";
+      pAttachmentDefault = "reflex";
+      perk1Default = "specialty_extraammo";
+      perk2Default = "specialty_rof";
+      perk3Default = "specialty_bulletpenetration";
+      sgrenadeDefault = "flash_grenade";
+    break;
+    case "heavygunner":
+      primaryDefault = "ak47";
+      secondaryDefault = "deserteagle";
+      perk1Default = "specialty_specialgrenade";
+      perk2Default = "specialty_gpsjammer";
+      perk3Default = "specialty_quieter";
+      sgrenadeDefault = "flash_grenade";
+    break;
+    case "demolitions":
+      primaryDefault = "mp5";
+      secondaryDefault = "deserteagle";
+      perk1Default = "specialty_weapon_c4";
+      perk2Default = "specialty_fastreload";
+      perk3Default = "specialty_longersprint";
+      sgrenadeDefault = "smoke_grenade";
+    break;
+    case "sniper":
+      primaryDefault = "m40a3";
+      secondaryDefault = "usp";
+      perk1Default = "specialty_weapon_claymore";
+      perk2Default = "specialty_bulletdamage";
+      perk3Default = "specialty_bulletpenetration";
+      sgrenadeDefault = "smoke_grenade";
+    break;
+  }
+
+  // set primary defaults based on team
+  tmp_class_primary[class] = getdvarx( "class_"+class+"_primary", "string", primaryDefault );
+  tmp_class_primary[class] = strTok( tmp_class_primary[class], ";" );
+  
+  level.class_primary[class] = [];
+  
+  if( isPrimaryEnabled( int( tableLookup( "mp/statsTable.csv", 4, tmp_class_primary[class][0], 0 ) ) ) )
+    level.class_primary[class]["none"] = tmp_class_primary[class][0];
+  else
+    level.class_primary[class]["none"] = ""+tableLookup( "mp/statsTable.csv", 0, numFirstEnabledPrimary(), 4 );
+  
+  if( isdefined( tmp_class_primary[class][1] ) && isPrimaryEnabled( int( tableLookup( "mp/statsTable.csv", 4, tmp_class_primary[class][1], 0 ) ) ) )
+    level.class_primary[class]["allies"] = tmp_class_primary[class][1];
+  else
+    level.class_primary[class]["allies"] = tmp_class_primary[class][0];
+    
+  if( isdefined( tmp_class_primary[class][2] ) && isPrimaryEnabled( int( tableLookup( "mp/statsTable.csv", 4, tmp_class_primary[class][2], 0 ) ) ) )
+    level.class_primary[class]["axis"] = tmp_class_primary[class][2];
+  else
+    level.class_primary[class]["axis"] = tmp_class_primary[class][0];
+  
+  // set secondary defaults based on team
+  tmp_class_secondary[class] = getdvarx( "class_"+class+"_secondary", "string", secondaryDefault );
+  tmp_class_secondary[class] = strTok( tmp_class_secondary[class], ";" );
+  
+  level.class_secondary[class] = [];
+  if( isSecondaryEnabled( int( tableLookup( "mp/statsTable.csv", 4, tmp_class_secondary[class][0], 0 ) ) ) )
+    level.class_secondary[class]["none"] = tmp_class_secondary[class][0];
+  else
+    level.class_secondary[class]["none"] = ""+tableLookup( "mp/statsTable.csv", 0, numFirstEnabledSecondary(), 4 );
+  
+  if( isdefined( tmp_class_secondary[class][1] ) && isSecondaryEnabled( int( tableLookup( "mp/statsTable.csv", 4, tmp_class_secondary[class][1], 0 ) ) )  )
+    level.class_secondary[class]["allies"] = tmp_class_secondary[class][1];
+  else
+    level.class_secondary[class]["allies"] = tmp_class_secondary[class][0];
+    
+  if( isdefined( tmp_class_secondary[class][2] ) && isSecondaryEnabled( int( tableLookup( "mp/statsTable.csv", 4, tmp_class_secondary[class][2], 0 ) ) ) )
+    level.class_secondary[class]["axis"] = tmp_class_secondary[class][2];
+  else
+    level.class_secondary[class]["axis"] = tmp_class_secondary[class][0];
+    
+  level.class_primary_attachment[class] = getdvarx( "class"+class+"primary_attachment", "string", pAttachmentDefault );
+  level.class_secondary_attachment[class] = getdvarx( "class_"+class+"_secondary_attachment", "string", "none" );
+  
+  // check if perks are enabled
+  perk1FromCfg = getdvarx( "class_"+class+"_perk1", "string", perk1Default );
+  perk2FromCfg = getdvarx( "class_"+class+"_perk2", "string", perk2Default );
+  perk3FromCfg = getdvarx( "class_"+class+"_perk3", "string", perk3Default );
+  
+  tmp_perk1Index = int( tableLookup( "mp/statsTable.csv", 6, perk1FromCfg, 0 ) );
+  tmp_perk2Index = int( tableLookup( "mp/statsTable.csv", 6, perk2FromCfg, 0 ) );
+  tmp_perk3Index = int( tableLookup( "mp/statsTable.csv", 6, perk3FromCfg, 0 ) );
+  
+  perk1FromCfg = ""+tableLookup( "mp/statsTable.csv", 0, validatePerk(tmp_perk1Index, 0), 6 );
+  perk2FromCfg = ""+tableLookup( "mp/statsTable.csv", 0, validatePerk(tmp_perk2Index, 1), 6 );
+  perk3FromCfg = ""+tableLookup( "mp/statsTable.csv", 0, validatePerk(tmp_perk3Index, 2), 6 );
+  
+  level.class_perk1[class] = perk1FromCfg;
+  level.class_perk2[class] = perk2FromCfg;
+  level.class_perk3[class] = perk3FromCfg;
+  level.class_sgrenade[class] = getdvarx( "class_"+class+"_sgrenade", "string", sgrenadeDefault );
+}
+
+isPrimaryEnabled(weaponNum)
 {
   if(weaponNum == 25 && level.weap_allow_assault_m16 )
     return true;
@@ -1456,7 +1716,7 @@ isWeaponEnabled(weaponNum)
   return false;
 }
 
-numFirstEnabledWeapon()
+numFirstEnabledPrimary()
 {
   // first return weapons that are available from the start (lvl 1)
   if( level.weap_allow_assault_ak47 )
@@ -1505,6 +1765,41 @@ numFirstEnabledWeapon()
       return 62;
   if( level.weap_allow_assault_mp44 )
       return 22;
+  
+  return -1;
+}
+
+isSecondaryEnabled(secondaryNum)
+{
+  if(secondaryNum == 0 && level.weap_allow_beretta )
+    return true;
+  if(secondaryNum == 1 && level.weap_allow_colt45 )
+    return true;
+  if(secondaryNum == 2 && level.weap_allow_usp )
+    return true;
+  if(secondaryNum == 3 && level.weap_allow_deserteagle )
+    return true;
+  if(secondaryNum == 4 && level.weap_allow_deserteaglegold )
+      return true;
+  
+  return false;
+}
+
+numFirstEnabledSecondary()
+{
+  // first return weapons that are available from the start (lvl 1)
+  if( level.weap_allow_beretta )
+    return 0;
+  if( level.weap_allow_usp )
+    return 2;
+      
+  // then return the others, order is the level it is unlocked on (ascendent)
+  if( level.weap_allow_colt45 )
+    return 1;
+  if( level.weap_allow_deserteagle )
+    return 3;
+  if( level.weap_allow_deserteaglegold )
+    return 4;
   
   return -1;
 }
