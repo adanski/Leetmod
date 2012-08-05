@@ -127,26 +127,26 @@
 		CHOICE_SECTION_TITLE_VIS( 1, "@MPUI_DEFAULT_CLASSES", when( CLASS_MODE ); )
 		CHOICE_SECTION_TITLE_VIS( 1, "@OW_NO_CLASS_MODE", when( CLASS_MODE == 0 ); )
 		
-		CHOICE_BUTTON_FOCUS_VIS( 2, "@CLASS_CLASS1", scriptMenuResponse "assault_mp,0"; close self, execnow "set ui_class_offset 200; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
-		CHOICE_BUTTON_FOCUS_VIS( 3, "@CLASS_CLASS2", scriptMenuResponse "specops_mp,0"; close self, execnow "set ui_class_offset 210; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
-		CHOICE_BUTTON_FOCUS_VIS( 4, "@CLASS_CLASS3", scriptMenuResponse "heavygunner_mp,0"; close self, execnow "set ui_class_offset 220; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )		
-		CHOICE_BUTTON_FOCUS_VIS( 5, "@CLASS_CLASS4", scriptMenuResponse "demolitions_mp,0"; close self, execnow "set ui_class_offset 230; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
-		CHOICE_BUTTON_FOCUS_VIS( 6, "@CLASS_CLASS5", scriptMenuResponse "sniper_mp,0"; close self, execnow "set ui_class_offset 240; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
+		CHOICE_BUTTON_FOCUS_VIS( 2, dvarString(tmp_class_name_200), scriptMenuResponse "assault_mp,0"; close self, execnow "set ui_class_offset 200; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
+		CHOICE_BUTTON_FOCUS_VIS( 3, dvarString(tmp_class_name_210), scriptMenuResponse "specops_mp,0"; close self, execnow "set ui_class_offset 210; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
+		CHOICE_BUTTON_FOCUS_VIS( 4, dvarString(tmp_class_name_220), scriptMenuResponse "heavygunner_mp,0"; close self, execnow "set ui_class_offset 220; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )		
+		CHOICE_BUTTON_FOCUS_VIS( 5, dvarString(tmp_class_name_230), scriptMenuResponse "demolitions_mp,0"; close self, execnow "set ui_class_offset 230; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
+		CHOICE_BUTTON_FOCUS_VIS( 6, dvarString(tmp_class_name_240), scriptMenuResponse "sniper_mp,0"; close self, execnow "set ui_class_offset 240; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
     execkey "q" { play "mouse_click"; scriptMenuResponse "assault_mp,0"; close self; }
     execkey "w" { play "mouse_click"; scriptMenuResponse "specops_mp,0"; close self; }
     execkey "e" { play "mouse_click"; scriptMenuResponse "heavygunner_mp,0"; close self; }
     execkey "r" { play "mouse_click"; scriptMenuResponse "demolitions_mp,0"; close self; }
     execkey "t" { play "mouse_click"; scriptMenuResponse "sniper_mp,0"; close self; }
 		
-		#define DATA_TABLE_PRIMARY				int(tablelookup( "mp/classTable.csv", 1, (dvarInt("ui_class_offset")+1), 5 ))
-		#define DATA_TABLE_PRIMARY_ATTACHMENT	int(tablelookup( "mp/classTable.csv", 1, (dvarInt("ui_class_offset")+2), 5 ))
-		#define DATA_TABLE_SECONDARY			int(tablelookup( "mp/classTable.csv", 1, (dvarInt("ui_class_offset")+3), 5 ))
-		#define DATA_TABLE_SECONDARY_ATTACHMENT	int(tablelookup( "mp/classTable.csv", 1, (dvarInt("ui_class_offset")+4), 5 ))
-		#define DATA_TABLE_SPECIALTY_EQUIPMENT	int(tablelookup( "mp/classTable.csv", 1, (dvarInt("ui_class_offset")+5), 5 ))
-		#define DATA_TABLE_SPECIALTY_WEAPON		int(tablelookup( "mp/classTable.csv", 1, (dvarInt("ui_class_offset")+6), 5 ))
-		#define DATA_TABLE_SPECIALTY_ABILITY	int(tablelookup( "mp/classTable.csv", 1, (dvarInt("ui_class_offset")+7), 5 ))
-		#define DATA_TABLE_SPECIAL_GRENADE		int(tablelookup( "mp/classTable.csv", 1, (dvarInt("ui_class_offset")+8), 5 ))
-		#define DATA_TABLE_CAMO					int(tablelookup( "mp/classTable.csv", 1, (dvarInt("ui_class_offset")+9), 5 ))
+		#define DATA_TABLE_PRIMARY				      int(tablelookup( "mp/statsTable.csv", 4, dvarString("tmp_class_prim_"+dvarString("ui_class_offset")), 0 ))
+		#define DATA_TABLE_PRIMARY_ATTACHMENT	  int(tablelookup( "mp/attachmentTable.csv", 4, dvarString("tmp_class_prim_att_"+dvarString("ui_class_offset")), 9 ))
+		#define DATA_TABLE_SECONDARY			      int(tablelookup( "mp/statsTable.csv", 4, dvarString("tmp_class_second_"+dvarString("ui_class_offset")), 0 ))
+		#define DATA_TABLE_SECONDARY_ATTACHMENT	int(tablelookup( "mp/attachmentTable.csv", 4, dvarString("tmp_class_second_att_"+dvarString("ui_class_offset")), 9 ))
+		#define DATA_TABLE_SPECIALTY_EQUIPMENT	int(tablelookup( "mp/statsTable.csv", 6, dvarString("tmp_class_perk1_"+dvarString("ui_class_offset")), 0 ))
+		#define DATA_TABLE_SPECIALTY_WEAPON		  int(tablelookup( "mp/statsTable.csv", 6, dvarString("tmp_class_perk2_"+dvarString("ui_class_offset")), 0 ))
+		#define DATA_TABLE_SPECIALTY_ABILITY	  int(tablelookup( "mp/statsTable.csv", 6, dvarString("tmp_class_perk3_"+dvarString("ui_class_offset")), 0 ))
+		#define DATA_TABLE_SPECIAL_GRENADE		  int(tablelookup( "mp/statsTable.csv", 4, dvarString("tmp_class_specialg_"+dvarString("ui_class_offset")), 0 ))
+		#define DATA_TABLE_CAMO		              int(0)
 
 		/* ==================================== custom classes ============================================= */
     

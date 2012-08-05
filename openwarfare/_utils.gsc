@@ -105,7 +105,7 @@ getDvarListx( prefix, type, defValue, minValue, maxValue )
 
 	while (true)
 	{
-		// We don't need any defailt value since they just won't be added to the list.
+		// We don't need any default value since they just won't be added to the list.
 		temp = getdvarx( prefix + (list.size + 1), type, defValue, minValue, maxValue );
 
 		if (isDefined( temp ) && temp != defValue )
