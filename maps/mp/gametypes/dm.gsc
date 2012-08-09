@@ -58,13 +58,13 @@ main()
 	if( !level.scr_dm_lms_enable) {
     maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
     maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
-    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 5000 );
-    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 30, 0, 1440 );
+    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 150, 0, 5000 );
+    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 8, 0, 1440 );
   } else {
     maps\mp\gametypes\_globallogic::registerNumLivesDvar( "dm_lms", 1, 1, 10 );
     maps\mp\gametypes\_globallogic::registerRoundLimitDvar( "dm_lms", 0, 0, 500 );
     maps\mp\gametypes\_globallogic::registerScoreLimitDvar( "dm_lms", 3, 0, 50 );
-    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( "dm_lms", 0, 0, 1440 );
+    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( "dm_lms", 4, 0, 1440 );
   }
 
 

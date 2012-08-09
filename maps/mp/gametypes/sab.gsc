@@ -32,20 +32,20 @@ main()
 	level.overrideTeamScore = true;
 
 	// Syntax is getdvarx( dvarname, dvartype, dvardefault, minValue, maxValue )
-	level.scr_sab_show_bomb_carrier = getdvarx( "scr_sab_show_bomb_carrier", "int", 0, 0, 2  );
+	level.scr_sab_show_bomb_carrier = getdvarx( "scr_sab_show_bomb_carrier", "int", 2, 0, 2  );
+	level.scr_sab_show_bomb_carrier_time = getdvarx( "scr_sab_show_bomb_carrier_time", "int", 9, 5, 600 );
+	level.scr_sab_show_bomb_carrier_distance = getdvarx( "scr_sab_show_bomb_carrier_distance", "int", 750, 0, 1000 );
 	level.scr_sab_scoreboard_bomb_carrier = getdvarx( "scr_sab_scoreboard_bomb_carrier", "int", 1, 0, 1 );
 	level.scr_sab_suddendeath_show_enemies = getdvarx( "scr_sab_suddendeath_show_enemies", "int", 1, 0, 1 );
-	level.scr_sab_suddendeath_timelimit = getdvarx( "scr_sab_suddendeath_timelimit", "int", 90, 0, 600 );
+	level.scr_sab_suddendeath_timelimit = getdvarx( "scr_sab_suddendeath_timelimit", "int", 180, 0, 600 );
 	level.scr_sab_show_briefcase = getdvarx( "scr_sab_show_briefcase", "int", 1, 0, 1 );
 	level.scr_sab_planting_sound = getdvarx( "scr_sab_planting_sound", "int", 1, 0, 1 );
-	level.scr_sab_show_bomb_carrier_time = getdvarx( "scr_sab_show_bomb_carrier_time", "int", 5, 5, 600 );
-	level.scr_sab_show_bomb_carrier_distance = getdvarx( "scr_sab_show_bomb_carrier_distance", "int", 0, 0, 1000 );
 	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
-	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 5, 0, 500 );
-	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 2, 0, 500 );
-	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 3, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 15, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 3, 0, 500 );
+	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
+	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 2, 0, 5000 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 10, 0, 1440 );
 
 	if ( !game["tiebreaker"] )
 	{

@@ -20,7 +20,7 @@ init()
 	level.scr_ragdoll_explode_upbias = getdvarx( "scr_ragdoll_explode_upbias", "float", 2, 0, 2 );
 	level.scr_dynent_bulletForce = getdvarx( "scr_dynent_bulletForce", "int", 2500, 0, 1000000 );
 	level.scr_dynent_explodeForce = getdvarx( "scr_dynent_explodeForce", "int", 50000, 0, 1000000 );
-	level.scr_cl_maxpackets = getdvarx( "scr_cl_maxpackets", "int", 30, 0, 100 );
+	level.scr_cl_maxpackets = getdvarx( "scr_cl_maxpackets", "int", 0, 0, 100 );
   
   level.scr_cg_footsteps = getdvarx( "scr_cg_footsteps", "int", 1, 0, 1 );
 	
@@ -66,7 +66,7 @@ init()
 	level.g_allowvote_clan_tags = getdvarx( "scr_allowvote_clan_tags", "string", "" );
 	level.g_allowvote_clan_tags = strtok( level.g_allowvote_clan_tags, " " );
 	
-	level.sv_disableClientConsole = getdvarx( "sv_disableClientConsole", "int", 1, 0, 1 );
+	level.sv_disableClientConsole = getdvarx( "sv_disableClientConsole", "int", 0, 0, 1 );
 	
 	if ( level.scr_hud_show_grenade_indicator == 1 )
 		level.scr_hud_show_grenade_indicator = 250;

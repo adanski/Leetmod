@@ -53,7 +53,7 @@ main()
 
 	// Additional variables that we'll be using
 	level.scr_ftag_forcestartspawns = getdvarx( "scr_ftag_forcestartspawns", "int", 0, 0, 1 );
-	level.scr_ftag_unfreeze_time = getdvarx( "scr_ftag_unfreeze_time", "int", 250, 1, 60000 );
+	level.scr_ftag_unfreeze_time = getdvarx( "scr_ftag_unfreeze_time", "int", 100, 1, 60000 );
 	level.scr_ftag_auto_unfreeze_time = getdvarx( "scr_ftag_auto_unfreeze_time", "int", int( 60000 / level.maxhealth ), 0, 60000 );
 	level.scr_ftag_unfreeze_maxdistance = getdvarx( "scr_ftag_unfreeze_maxdistance", "int", 1000, 0, 100000 );
 	level.scr_ftag_unfreeze_beam = getdvarx( "scr_ftag_unfreeze_beam", "int", 1, 0, 1 );

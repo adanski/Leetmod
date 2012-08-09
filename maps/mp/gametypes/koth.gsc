@@ -21,10 +21,10 @@ main()
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
 
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
-	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 2, 0, 500 );
+	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
-	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 25, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 350, 0, 5000 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 10, 0, 1440 );
 
 
 	level.teamBased = true;

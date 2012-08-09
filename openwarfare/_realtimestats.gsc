@@ -195,6 +195,14 @@ onGameEnded()
       if( isDefined(player.ct_mostKilledKC) )
         mostKilledKC = player.ct_mostKilledKC;
       
+/*      
+      player setClientDvars(
+        "tmp_hpts_uav", (level.scr_game_hardpoints && level.scr_hardpoint_allow_uav),
+        "tmp_hpts_air", (level.scr_game_hardpoints && level.scr_hardpoint_allow_airstrike),
+        "tmp_hpts_heli", (level.scr_game_hardpoints && level.scr_hardpoint_allow_helicopter)
+      );
+*/
+      
 			player setClientDvars(
 				"ps_n", player.name,
 				"gs_pg", 1,
@@ -202,8 +210,8 @@ onGameEnded()
 				"gs_a", level.eogBest["accuracy"]["value"],
 				"gs_kn", level.eogBest["kills"]["name"],
 				"gs_k", level.eogBest["kills"]["value"],
-				"gs_tn", level.eogBest["teamkills"]["name"],
-				"gs_t", level.eogBest["teamkills"]["value"],
+				//"gs_tn", level.eogBest["teamkills"]["name"],
+				//"gs_t", level.eogBest["teamkills"]["value"],
 				"gs_ksn", level.eogBest["killstreak"]["name"],
 				"gs_ks", level.eogBest["killstreak"]["value"],
 				"gs_ln", level.eogBest["longest"]["name"],

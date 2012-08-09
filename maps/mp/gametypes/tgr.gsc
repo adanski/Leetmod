@@ -67,7 +67,7 @@ main()
 	if ( !isdefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;		
 	
-	level.scr_tgr_dogtag_autoremoval_time = getdvarx( "scr_tgr_dogtag_autoremoval_time", "int", 40, 0, 300 );
+	level.scr_tgr_dogtag_autoremoval_time = getdvarx( "scr_tgr_dogtag_autoremoval_time", "int", 60, 0, 300 );
 	level.scr_tgr_minimap_mark_red_drops = getdvarx( "scr_tgr_minimap_mark_red_drops", "int", 1, 0, 1 );
 	level.scr_tgr_forcestartspawns = getdvarx( "scr_tgr_forcestartspawns", "int", 0, 0, 1 );
 	level.scr_tgr_base_dogtag_score = getdvarx( "scr_tgr_base_dogtag_score", "int", 10, 5, 50 );
@@ -83,10 +83,10 @@ main()
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
 
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 0 );
-	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 2, 0, 500 );
+	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
-	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 20, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 1000, 0, 5000 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 12, 0, 1440 );
 
 
 	level.teamBased = true;
