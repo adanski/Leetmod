@@ -149,7 +149,7 @@
 		CHOICE_MENU_TITLE( "@OW_CAC_TITLE" )
 
 		// ------------------ buttons ---------------------
-		//#define BACK_OPEN open "class";
+		#define BACK_OPEN ;
 		#define BACK_CLOSE "@MENU_CLOSE";
 		#include "ui_mp/navcontrols.inc"
 

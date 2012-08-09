@@ -51,28 +51,28 @@ main()
 	
 	level.scr_gg_kills_per_lvl = getdvarx( "scr_gg_kills_per_lvl", "int", 2, 1, 10 );
 	level.scr_gg_death_penalty = getdvarx( "scr_gg_death_penalty", "int", 5, 0, 10 );
-	level.scr_gg_knifed_penalty = getdvarx( "scr_gg_knifed_penalty", "int", 0, 0, 2 );
+	level.scr_gg_knifed_penalty = getdvarx( "scr_gg_knifed_penalty", "int", 2, 0, 2 );
 	
 	level.scr_gg_refill_on_kill = getdvarx( "scr_gg_refill_on_kill", "int", 1, 0, 1 );
-	level.scr_gg_knife_pro = getdvarx( "scr_gg_knife_pro", "int", 0, 0, 3 );	
+	level.scr_gg_knife_pro = getdvarx( "scr_gg_knife_pro", "int", 2, 0, 3 );
 	
-	level.scr_gg_auto_levelup = getdvarx( "scr_gg_auto_levelup", "int", 0, 0, 2 );	
-	level.scr_gg_auto_levelup_time = getdvarx( "scr_gg_auto_levelup_time", "float", 60, 30, 300 );	
+	level.scr_gg_auto_levelup = getdvarx( "scr_gg_auto_levelup", "int", 2, 0, 2 );	
+	level.scr_gg_auto_levelup_time = getdvarx( "scr_gg_auto_levelup_time", "float", 75, 30, 300 );	
 	
-	level.scr_gg_specialty_slot1 = getdvarx( "scr_gg_specialty_slot1", "string", "specialty_fastreload" );
+	level.scr_gg_specialty_slot1 = getdvarx( "scr_gg_specialty_slot1", "string", "specialty_null" );
 	if ( !issubstr( "specialty_null;specialty_bulletdamage;specialty_armorvest;specialty_fastreload;specialty_rof;specialty_gpsjammer;specialty_explosivedamage", level.scr_gg_specialty_slot1 ) ) {
-		level.scr_gg_specialty_slot1 = "specialty_fastreload";
+		level.scr_gg_specialty_slot1 = "specialty_null";
 	}
 
-	level.scr_gg_specialty_slot2 = getdvarx( "scr_gg_specialty_slot2", "string", "specialty_longersprint" );
+	level.scr_gg_specialty_slot2 = getdvarx( "scr_gg_specialty_slot2", "string", "specialty_null" );
 	if ( !issubstr( "specialty_null;specialty_longersprint;specialty_bulletaccuracy;specialty_bulletpenetration;specialty_holdbreath;specialty_quieter", level.scr_gg_specialty_slot2 ) ) {
-		level.scr_gg_specialty_slot2 = "specialty_longersprint";
+		level.scr_gg_specialty_slot2 = "specialty_null";
 	}
 
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 0 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 1, 1 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 0 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 0, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 16, 0, 1440 );
 
 	level.teamBased = false;
 

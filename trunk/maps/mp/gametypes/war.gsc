@@ -70,16 +70,16 @@ main()
 
 	if( !level.scr_war_lts_enable ) {
     maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
-    maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 2, 0, 500 );
+    maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
     maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
-    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 5000 );
-    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 20, 0, 1440 );
+    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 750, 0, 5000 );
+    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 12, 0, 1440 );
   } else {
   	maps\mp\gametypes\_globallogic::registerNumLivesDvar( "war_lts", 1, 1, 10 );
     maps\mp\gametypes\_globallogic::registerRoundLimitDvar( "war_lts", 5, 0, 500 );
     maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( "war_lts", 2, 0, 500 );
     maps\mp\gametypes\_globallogic::registerScoreLimitDvar( "war_lts", 3, 0, 5000 );
-    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( "war_lts", 0, 0, 1440 );
+    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( "war_lts", 5, 0, 1440 );
   }
 
 	level.teamBased = true;

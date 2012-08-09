@@ -63,13 +63,13 @@ main()
 	level.scr_oitc_handgun = toLower( getdvarx( "scr_oitc_handgun", "string", "beretta_mp;colt45_mp;usp_mp;deserteagle_mp" ) );
 	level.scr_oitc_handgun = strtok( level.scr_oitc_handgun, ";" );
 	
-	level.scr_oitc_timelimit_for_math = getdvarx( "scr_oitc_timelimit", "float", 5, 0, 1440 );
+	level.scr_oitc_timelimit_for_math = getdvarx( "scr_oitc_timelimit", "float", 1.75, 0, 1440 );
 	level.scr_oitc_suddendeath_show_enemies = getdvarx( "scr_oitc_suddendeath_show_enemies", "int", 1, 0, 1 );
-	level.scr_oitc_suddendeath_timelimit = getdvarx( "scr_oitc_suddendeath_timelimit", "int", 0, 0, 600 );	
+	level.scr_oitc_suddendeath_timelimit = getdvarx( "scr_oitc_suddendeath_timelimit", "int", 45, 0, 600 );	
 
-	level.scr_oitc_specialty_slot1 = getdvarx( "scr_oitc_specialty_slot1", "string", "specialty_fastreload" );
+	level.scr_oitc_specialty_slot1 = getdvarx( "scr_oitc_specialty_slot1", "string", "specialty_null" );
 	if ( !issubstr( "specialty_null;specialty_bulletdamage;specialty_fastreload;specialty_rof", level.scr_oitc_specialty_slot1 ) ) {
-		level.scr_oitc_specialty_slot1 = "specialty_fastreload";
+		level.scr_oitc_specialty_slot1 = "specialty_null";
 	}
 
 	level.scr_oitc_specialty_slot2 = getdvarx( "scr_oitc_specialty_slot2", "string", "specialty_longersprint" );
@@ -78,9 +78,9 @@ main()
 	}
 	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 3, 3, 3 );
-	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 0, 0, 500 );
+	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 10, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 3, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 5, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, level.scr_oitc_timelimit_for_math, 0, 1440 );
 
 	level.teamBased = false;
 

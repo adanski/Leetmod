@@ -62,6 +62,8 @@ echo    7. Spanish
 echo.
 echo    0. Back
 echo.
+REM OVERRIDE LANG TO COMPILE ALWAYS IN ENGLISH (THIS IS FOR NOT WASTING TIME AT COMPILATION)
+goto LANGEN
 set /p lang_chosen=:
 set lang_chosen=%lang_chosen:~0,1%
 REM if "%lang_chosen%"=="1" goto LANGCZ
@@ -173,6 +175,8 @@ REM 7za a -r -tzip z_leetmod.iwd rulesets\openwarfare\*.gsc > NUL
 REM 7za a -r -tzip z_leetmod.iwd rulesets\leagues.gsc > NUL
 REM echo    Adding empty mod.arena file...
 REM 7za a -r -tzip z_leetmod.iwd mod.arena > NUL
+REM echo    Adding fill menu support cfg files...
+REM 7za a -r -tzip z_leetmod.iwd menudvars\* > NUL
 echo  New z_leetmod.iwd file successfully built!
 del /f /q weapons\mp\* >NUL
 rmdir weapons\mp >NUL

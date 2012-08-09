@@ -126,8 +126,8 @@
 		CHOICE_BUTTON_VIS( 6, "@MENU_OPTIONS", close self; open main_options; execnow "set ui_allow_graphic_change 0";, when( team( name ) == "TEAM_SPECTATOR" ) )
 		CHOICE_BUTTON_VIS( 7, "@OW_PLAYERS_MENU_ITEM", open muteplayer; close self;, when( team( name ) == "TEAM_SPECTATOR" ); )
     
-    execkeyint 13 { play "mouse_click"; scriptMenuResponse "autoassign"; }
-    execkeyint 32 { play "mouse_click"; scriptMenuResponse "spectator"; }
+    execkeyint 13 { play "mouse_click"; scriptMenuResponse "spectator"; }
+    execkeyint 32 { play "mouse_click"; scriptMenuResponse "autoassign"; }
     execkey "1" { play "mouse_click"; scriptMenuResponse "allies"; }
     execkey "2" { play "mouse_click"; scriptMenuResponse "axis"; }
     execkey "3" { play "mouse_click"; scriptMenuResponse "autoassign"; }

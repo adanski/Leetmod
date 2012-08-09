@@ -57,14 +57,14 @@ main()
 	level.scr_ch_holdtime = getdvarx( "scr_ch_holdtime", "int", 100, 45, 300 );
 	level.scr_ch_neutraltime = getdvarx( "scr_ch_neutraltime", "int", 15, 5, 59 );
 	level.scr_ch_scoreboard_flag_carrier = getdvarx( "scr_ch_scoreboard_flag_carrier", "int", 1, 0, 1 );
-	level.scr_ch_show_flag_carrier = getdvarx( "scr_ch_show_flag_carrier", "int", 0, 0, 2  );
-	level.scr_ch_show_flag_carrier_time = getdvarx( "scr_ch_show_flag_carrier_time", "int", 5, 5, 600 );
+	level.scr_ch_show_flag_carrier = getdvarx( "scr_ch_show_flag_carrier", "int", 2, 0, 2  );
+	level.scr_ch_show_flag_carrier_time = getdvarx( "scr_ch_show_flag_carrier_time", "int", 7, 5, 600 );
 	level.scr_ch_show_flag_carrier_distance = getdvarx( "scr_ch_show_flag_carrier_distance", "int", 0, 0, 1000 );	
 	
 	level.scr_ch_ownerspawndelay = getdvarx( "scr_ch_ownerspawndelay", "int", 0, 0, 60 );	
 
 	level.scr_ch_suddendeath_show_enemies = getdvarx( "scr_ch_suddendeath_show_enemies", "int", 1, 0, 1 );
-	level.scr_ch_suddendeath_timelimit = getdvarx( "scr_ch_suddendeath_timelimit", "int", 90, 0, 600 );
+	level.scr_ch_suddendeath_timelimit = getdvarx( "scr_ch_suddendeath_timelimit", "int", 180, 0, 600 );
 	
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
@@ -72,10 +72,13 @@ main()
 
 	// Get the dvars we need for this gametype
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
-	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 5, 1, 500 );
-	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 2, 0, 500 );
-	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 3, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 20, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 3, 1, 500 );
+	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
+  if( scr_ch_chmode == 0 )
+    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 2, 0, 5000 );
+  else
+    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 275, 0, 5000 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 10, 0, 1440 );
 
 
 	level.teamBased = true;
