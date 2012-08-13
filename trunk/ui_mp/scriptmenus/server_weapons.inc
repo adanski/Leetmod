@@ -86,6 +86,4 @@ menuDef
   CHOICE_DVARYESNO( 23, "@WEAPON_BARRETT", weap_allow_sniper_barrett, SETA_WEAP_ALLOW_SNIPER_BARRETT; )
   
   
-  
-  CHOICE_DVARYESNO( 24, "Teste", weap_allow_sniper_barrett, ; )
 }
