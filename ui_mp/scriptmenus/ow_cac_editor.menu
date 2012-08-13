@@ -171,12 +171,13 @@
 			name 		"cacClassPrev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-44 -25 16 16 LOADOUT_ALIGN1
+			rect			-50 -25 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacClassPrev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacClassPrev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacClassPrev"; }	
 		}
 		CHOICE_CAC_BUTTON( 1, "@OW_CAC_CLASS", 1 )
@@ -192,7 +193,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacClassNext forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacClassNext forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacClassNext"; }	
 		}	
 
@@ -202,12 +204,13 @@
 			name 		"cacPrimaryPrev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 24 16 16 LOADOUT_ALIGN1
+			rect			-36 24 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPrimaryPrev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPrimaryPrev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPrimaryPrev"; }	
 		}
 		CHOICE_CAC_BUTTON( 3, "@OW_CAC_PRIMARY_WEAPON", 1 )
@@ -221,7 +224,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPrimaryNext forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPrimaryNext forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPrimaryNext"; }	
 		}	
 
@@ -231,12 +235,13 @@
 			name 		"cacPAttachmentPrev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 48 16 16 LOADOUT_ALIGN1
+			rect			-36 48 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_primary ) != 22 )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPAttachmentPrev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPAttachmentPrev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPAttachmentPrev"; }	
 		}
 		itemDef 
@@ -244,7 +249,7 @@
 			name 		"cacPAttachmentPrevDisabled"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 48 16 16 LOADOUT_ALIGN1
+			rect			-36 48 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_DISABLED
@@ -261,7 +266,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_primary ) != 22 )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPAttachmentNext forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPAttachmentNext forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPAttachmentNext"; }	
 		}
 		itemDef 
@@ -282,12 +288,13 @@
 			name 		"cacCamoPrev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 72 16 16 LOADOUT_ALIGN1
+			rect			-36 72 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacCamoPrev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacCamoPrev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacCamoPrev"; }	
 		}
 		CHOICE_CAC_BUTTON( 5, "@OW_CAC_CAMO", 1 )
@@ -301,7 +308,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacCamoNext forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacCamoNext forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacCamoNext"; }	
 		}
 
@@ -311,12 +319,13 @@
 			name 		"cacSecondaryPrev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (20+98) 16 16 LOADOUT_ALIGN1
+			rect			-36 (20+98) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk2 ) != 166 )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSecondaryPrev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSecondaryPrev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSecondaryPrev"; }	
 		}
 		CHOICE_CAC_BUTTON( 7, "@OW_CAC_SIDE_ARM1", when ( dvarInt( ow_cac_stat_perk2 ) != 166 ) )
@@ -330,7 +339,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk2 ) != 166 )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSecondaryNext forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSecondaryNext forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSecondaryNext"; }	
 		}			
 
@@ -340,12 +350,13 @@
 			name 		"cacSecondaryPrev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (20+98) 16 16 LOADOUT_ALIGN1
+			rect			-36 (20+98) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk2 ) == 166 )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSecondaryPrev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSecondaryPrev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSecondaryPrev"; }	
 		}
 		CHOICE_CAC_BUTTON( 7, "@OW_CAC_SECONDARY_WEAPON", when ( dvarInt( ow_cac_stat_perk2 ) == 166 ) )
@@ -359,7 +370,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk2 ) == 166 )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSecondaryNext forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSecondaryNext forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSecondaryNext"; }	
 		}
 		
@@ -369,12 +381,13 @@
 			name 		"cacSAttachmentPrev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (20+124) 16 16 LOADOUT_ALIGN1
+			rect			-36 (20+124) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk2 ) != 166 && ( dvarInt( ow_cac_stat_secondary ) != 3 || dvarInt( ow_cac_stat_secondary ) != 4 ) )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSAttachmentPrev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSAttachmentPrev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSAttachmentPrev"; }	
 		}
 		itemDef 
@@ -382,7 +395,7 @@
 			name 		"cacSAttachmentPrevDisabled"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (20+124) 16 16 LOADOUT_ALIGN1
+			rect			-36 (20+124) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_DISABLED
@@ -399,7 +412,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk2 ) != 166 && ( dvarInt( ow_cac_stat_secondary ) != 3 || dvarInt( ow_cac_stat_secondary ) != 4 ) )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSAttachmentNext forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSAttachmentNext forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSAttachmentNext"; }	
 		}
 		itemDef 
@@ -420,12 +434,13 @@
 			name 		"cacSAttachmentPrev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (20+124) 16 16 LOADOUT_ALIGN1
+			rect			-36 (20+124) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk2 ) == 166 && dvarInt( ow_cac_stat_secondary ) != 22 )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSAttachmentPrev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSAttachmentPrev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSAttachmentPrev"; }	
 		}
 		itemDef 
@@ -433,7 +448,7 @@
 			name 		"cacSAttachmentPrevDisabled"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (20+124) 16 16 LOADOUT_ALIGN1
+			rect			-36 (20+124) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_DISABLED
@@ -450,7 +465,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk2 ) == 166 && dvarInt( ow_cac_stat_secondary ) != 22 )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSAttachmentNext forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSAttachmentNext forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSAttachmentNext"; }	
 		}
 		itemDef 
@@ -471,12 +487,13 @@
 			name 		"cacPerk1Prev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (PERK_Y_OFFSET1+8) 16 16 LOADOUT_ALIGN1
+			rect			-36 (PERK_Y_OFFSET1+8) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 && !dvarBool(ct_noperk1) )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPerk1Prev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPerk1Prev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk1Prev"; }	
 		}
 		itemDef 
@@ -484,7 +501,7 @@
 			name 		"cacPerk1PrevDisabled"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (PERK_Y_OFFSET1+8) 16 16 LOADOUT_ALIGN1
+			rect			-36 (PERK_Y_OFFSET1+8) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_DISABLED
@@ -502,7 +519,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 && !dvarBool(ct_noperk1) )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPerk1Next forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPerk1Next forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk1Next"; }	
 		}
 		itemDef 
@@ -523,12 +541,13 @@
 			name 		"cacPerk2Prev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (PERK_Y_OFFSET1+PERK_Y_SPACING1+8) 16 16 LOADOUT_ALIGN1
+			rect			-36 (PERK_Y_OFFSET1+PERK_Y_SPACING1+8) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			when(  !dvarBool(ct_noperk2) )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPerk2Prev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPerk2Prev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk2Prev"; }	
 		}
 		//CHOICE_CAC_BUTTON( 8, "@MPUI_PERK_2", 1 )
@@ -542,7 +561,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			when(  !dvarBool(ct_noperk2) )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPerk2Next forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPerk2Next forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk2Next"; }	
 		}
 		
@@ -552,12 +572,13 @@
 			name 		"cacPerk3Prev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (PERK_Y_OFFSET1+(PERK_Y_SPACING1*2)+8) 16 16 LOADOUT_ALIGN1
+			rect			-36 (PERK_Y_OFFSET1+(PERK_Y_SPACING1*2)+8) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			when(  !dvarBool(ct_noperk3) )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPerk3Prev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPerk3Prev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk3Prev"; }	
 		}
 		//CHOICE_CAC_BUTTON( 9, "@MPUI_PERK_3", 1 )
@@ -571,7 +592,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			when(  !dvarBool(ct_noperk3) )
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacPerk3Next forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacPerk3Next forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacPerk3Next"; }	
 		}
 		
@@ -581,12 +603,13 @@
 			name 		"cacSGrenadePrev"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-30 (PERK_Y_OFFSET1+(PERK_Y_SPACING1*3)+2) 16 16 LOADOUT_ALIGN1
+			rect			-36 (PERK_Y_OFFSET1+(PERK_Y_SPACING1*3)+2) 16 16 LOADOUT_ALIGN1
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSGrenadePrev forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSGrenadePrev forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSGrenadePrev"; }	
 		}
 		//CHOICE_CAC_BUTTON( 10, "@MPUI_SPECIAL_GRENADE", 1 )
@@ -600,7 +623,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		    mouseEnter { play "mouse_over"; } 
+		    mouseEnter { play "mouse_over"; setitemcolor cacSGrenadeNext forecolor 0.409 0.801 0.999 1 }
+        mouseExit { setitemcolor cacSGrenadeNext forecolor COLOR_FOCUSED }
 		    action { play "mouse_click"; scriptMenuResponse "cacSGrenadeNext"; }	
 		}
     
@@ -676,7 +700,8 @@
 			backcolor		0.25 0.25 0.25 1
 			visible			when( dvarstring( ow_cac_class ) == "customclass1" )
 			mouseenter		{ show keyBindStatus; play "mouse_over"; }
-			mouseexit		{ hide keyBindStatus; setfocus ok_button; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+			action	{ play "oldschool_pickup"; }
 		}
 		itemDef 
 		{
@@ -702,7 +727,7 @@
 			backcolor		0.25 0.25 0.25 1
 			visible			when( dvarstring( ow_cac_class ) == "customclass2" )
 			mouseenter		{ show keyBindStatus; play "mouse_over"; }
-			mouseexit		{ hide keyBindStatus; setfocus ok_button; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
 		}
 		itemDef 
 		{
@@ -728,7 +753,7 @@
 			backcolor		0.25 0.25 0.25 1
 			visible			when( dvarstring( ow_cac_class ) == "customclass3" )
 			mouseenter		{ show keyBindStatus; play "mouse_over"; }
-			mouseexit		{ hide keyBindStatus; setfocus ok_button; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
 		}
 		itemDef 
 		{
@@ -754,7 +779,7 @@
 			backcolor		0.25 0.25 0.25 1
 			visible			when( dvarstring( ow_cac_class ) == "customclass4" )
 			mouseenter		{ show keyBindStatus; play "mouse_over"; }
-			mouseexit		{ hide keyBindStatus; setfocus ok_button; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
 		}
 		itemDef 
 		{
@@ -780,7 +805,7 @@
 			backcolor		0.25 0.25 0.25 1
 			visible			when( dvarstring( ow_cac_class ) == "customclass5" )
 			mouseenter		{ show keyBindStatus; play "mouse_over"; }
-			mouseexit		{ hide keyBindStatus; setfocus ok_button; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
 		}
 	}
   #undef CHOICE_SIZE_X

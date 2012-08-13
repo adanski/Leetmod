@@ -1,4 +1,6 @@
-#include "ui_mp/menustyle_forcascadeinclude.inc"
+#include "ui_mp/menustyle.inc"
+
+#include "ui_mp/scriptmenus/server_perks_setadvars.inc"
 
 menuDef 
 {
@@ -45,30 +47,30 @@ menuDef
   #undef CHOICE_Y_COUNT
   #define CHOICE_Y_COUNT			8
 
-  CHOICE_DVARYESNO( 1, "@PERKS_C4_X_2", perk_allow_c4_mp, ; )
-  CHOICE_DVARYESNO( 2, "@PERKS_SPECIAL_GRENADES_X_3", perk_allow_specialty_specialgrenade, ; )
-  CHOICE_DVARYESNO( 3, "@PERKS_RPG7_X_2", perk_allow_rpg_mp, ; )
-  CHOICE_DVARYESNO( 4, "@PERKS_CLAYMORE_X_2", perk_allow_claymore_mp, ; )
-  CHOICE_DVARYESNO( 5, "@PERKS_FRAG_X_3", perk_allow_specialty_fraggrenade, ; )
-  CHOICE_DVARYESNO( 6, "@PERKS_BANDOLIER", perk_allow_specialty_extraammo, ; )
-  CHOICE_DVARYESNO( 7, "@PERKS_BOMB_SQUAD", perk_allow_specialty_detectexplosive, ; )
+  CHOICE_DVARYESNO( 1, "@PERKS_C4_X_2", menu_perk_allow_c4_mp, SETA_PERK_ALLOW_C4_MP; )
+  CHOICE_DVARYESNO( 2, "@PERKS_SPECIAL_GRENADES_X_3", menu_perk_allow_specialty_specialgrenade, SETA_PERK_ALLOW_SPECIALTY_SPECIALGRENADE; )
+  CHOICE_DVARYESNO( 3, "@PERKS_RPG7_X_2", menu_perk_allow_rpg_mp, SETA_PERK_ALLOW_RPG_MP; )
+  CHOICE_DVARYESNO( 4, "@PERKS_CLAYMORE_X_2", menu_perk_allow_claymore_mp, SETA_PERK_ALLOW_CLAYMORE_MP; )
+  CHOICE_DVARYESNO( 5, "@PERKS_FRAG_X_3", menu_perk_allow_specialty_fraggrenade, SETA_PERK_ALLOW_SPECIALTY_FRAGGRENADE; )
+  CHOICE_DVARYESNO( 6, "@PERKS_BANDOLIER", menu_perk_allow_specialty_extraammo, SETA_PERK_ALLOW_SPECIALTY_EXTRAAMMO; )
+  CHOICE_DVARYESNO( 7, "@PERKS_BOMB_SQUAD", menu_perk_allow_specialty_detectexplosive, SETA_PERK_ALLOW_SPECIALTY_DETECTEXPLOSIVE; )
 
-  CHOICE_DVARYESNO( 9, "@PERKS_STOPPING_POWER", perk_allow_specialty_bulletdamage, ; )
-  CHOICE_DVARYESNO( 10, "@PERKS_JUGGERNAUT", perk_allow_specialty_armorvest, ; )
-  CHOICE_DVARYESNO( 11, "@PERKS_SLEIGHT_OF_HAND", perk_allow_specialty_fastreload, ; )
-  CHOICE_DVARYESNO( 12, "@PERKS_DOUBLE_TAP", perk_allow_specialty_rof, ; )
-  CHOICE_DVARYESNO( 13, "@PERKS_OVERKILL", perk_allow_specialty_twoprimaries, ; )
-  CHOICE_DVARYESNO( 14, "@PERKS_UAV_JAMMER", perk_allow_specialty_gpsjammer, ; )
-  CHOICE_DVARYESNO( 15, "@PERKS_SONIC_BOOM", perk_allow_specialty_explosivedamage, ; )
+  CHOICE_DVARYESNO( 9, "@PERKS_STOPPING_POWER", menu_perk_allow_specialty_bulletdamage, SETA_PERK_ALLOW_SPECIALTY_BULLETDAMAGE; )
+  CHOICE_DVARYESNO( 10, "@PERKS_JUGGERNAUT", menu_perk_allow_specialty_armorvest, SETA_PERK_ALLOW_SPECIALTY_ARMORVEST; )
+  CHOICE_DVARYESNO( 11, "@PERKS_SLEIGHT_OF_HAND", menu_perk_allow_specialty_fastreload, SETA_PERK_ALLOW_SPECIALTY_FASTRELOAD; )
+  CHOICE_DVARYESNO( 12, "@PERKS_DOUBLE_TAP", menu_perk_allow_specialty_rof, SETA_PERK_ALLOW_SPECIALTY_ROF; )
+  CHOICE_DVARYESNO( 13, "@PERKS_OVERKILL", menu_perk_allow_specialty_twoprimaries, SETA_PERK_ALLOW_SPECIALTY_TWOPRIMARIES; )
+  CHOICE_DVARYESNO( 14, "@PERKS_UAV_JAMMER", menu_perk_allow_specialty_gpsjammer, SETA_PERK_ALLOW_SPECIALTY_GPSJAMMER; )
+  CHOICE_DVARYESNO( 15, "@PERKS_SONIC_BOOM", menu_perk_allow_specialty_explosivedamage, SETA_PERK_ALLOW_SPECIALTY_EXPLOSIVEDAMAGE; )
 
-  CHOICE_DVARYESNO( 17, "@PERKS_EXTREME_CONDITIONING", perk_allow_specialty_longersprint, ; )
-  CHOICE_DVARYESNO( 18, "@PERKS_STEADY_AIM", perk_allow_specialty_bulletaccuracy, ; )
-  CHOICE_DVARYESNO( 19, "@PERKS_LAST_STAND", perk_allow_specialty_pistoldeath, ; )
-  CHOICE_DVARYESNO( 20, "@PERKS_MARTYRDOM", perk_allow_specialty_grenadepulldeath, ; )
-  CHOICE_DVARYESNO( 21, "@PERKS_DEEP_IMPACT", perk_allow_specialty_bulletpenetration, ; )
-  CHOICE_DVARYESNO( 22, "@PERKS_IRON_LUNGS", perk_allow_specialty_holdbreath, ; )
-  CHOICE_DVARYESNO( 23, "@PERKS_DEAD_SILENCE", perk_allow_specialty_quieter, ; )
-  CHOICE_DVARYESNO( 24, "@PERKS_EAVESDROP", perk_allow_specialty_parabolic, ; )
+  CHOICE_DVARYESNO( 17, "@PERKS_EXTREME_CONDITIONING", menu_perk_allow_specialty_longersprint, SETA_PERK_ALLOW_SPECIALTY_LONGERSPRINT; )
+  CHOICE_DVARYESNO( 18, "@PERKS_STEADY_AIM", menu_perk_allow_specialty_bulletaccuracy, SETA_PERK_ALLOW_SPECIALTY_BULLETACCURACY; )
+  CHOICE_DVARYESNO( 19, "@PERKS_LAST_STAND", menu_perk_allow_specialty_pistoldeath, SETA_PERK_ALLOW_SPECIALTY_PISTOLDEATH; )
+  CHOICE_DVARYESNO( 20, "@PERKS_MARTYRDOM", menu_perk_allow_specialty_grenadepulldeath, SETA_PERK_ALLOW_SPECIALTY_GRENADEPULLDEATH; )
+  CHOICE_DVARYESNO( 21, "@PERKS_DEEP_IMPACT", menu_perk_allow_specialty_bulletpenetration, SETA_PERK_ALLOW_SPECIALTY_BULLETPENETRATION; )
+  CHOICE_DVARYESNO( 22, "@PERKS_IRON_LUNGS", menu_perk_allow_specialty_holdbreath, SETA_PERK_ALLOW_SPECIALTY_HOLDBREATH; )
+  CHOICE_DVARYESNO( 23, "@PERKS_DEAD_SILENCE", menu_perk_allow_specialty_quieter, SETA_PERK_ALLOW_SPECIALTY_QUIETER; )
+  CHOICE_DVARYESNO( 24, "@PERKS_EAVESDROP", menu_perk_allow_specialty_parabolic, SETA_PERK_ALLOW_SPECIALTY_PARABOLIC; )
 
   #undef	CHOICE_X_START
   #define CHOICE_X_START			-150
@@ -79,41 +81,31 @@ menuDef
   #undef CHOICE_Y_COUNT
   #define CHOICE_Y_COUNT 20
 
-  CHOICE_DVAREDIT_NUMERIC( 25, "@OW_SCR_C4_AMMO_COUNT", scr_c4_ammo_countscr_c4_ammo_count, 2, ; )
-  CHOICE_DVAREDIT_NUMERIC( 26, "@OW_SCR_CLAYMORE_AMMO_COUNT", scr_claymore_ammo_count, 2, ; )
-  CHOICE_DVAREDIT_NUMERIC( 27, "@OW_SCR_RPG_AMMO_COUNT", scr_rpg_ammo_count, 2, ; )
+  CHOICE_DVAREDIT_NUMERIC( 25, "@OW_SCR_C4_AMMO_COUNT", menu_scr_c4_ammo_count, 2, SETA_SCR_C4_AMMO_COUNT; )
+  CHOICE_DVAREDIT_NUMERIC( 26, "@OW_SCR_CLAYMORE_AMMO_COUNT", menu_scr_claymore_ammo_count, 2, SETA_SCR_CLAYMORE_AMMO_COUNT; )
+  CHOICE_DVAREDIT_NUMERIC( 27, "@OW_SCR_RPG_AMMO_COUNT", menu_scr_rpg_ammo_count, 2, SETA_SCR_RPG_AMMO_COUNT; )
 
-  CHOICE_DVAREDIT_NUMERIC( 28, "@OW_SPECIALTY_FRAGGRENADE_AMMO_COUNT", specialty_fraggrenade_ammo_count, 2, ; )
-  CHOICE_DVAREDIT_NUMERIC( 29, "@OW_SPECIALTY_SPECIALGRENADE_AMMO_COUNT", specialty_specialgrenade_ammo_count, 2, ; )
+  CHOICE_DVAREDIT_NUMERIC( 28, "@OW_SPECIALTY_FRAGGRENADE_AMMO_COUNT", menu_specialty_fraggrenade_ammo_count, 2, SETA_SPECIALTY_FRAGGRENADE_AMMO_COUNT; )
+  CHOICE_DVAREDIT_NUMERIC( 29, "@OW_SPECIALTY_SPECIALGRENADE_AMMO_COUNT", menu_specialty_specialgrenade_ammo_count, 2, SETA_SPECIALTY_SPECIALGRENADE_AMMO_COUNT; )
 
-  CHOICE_DVAREDIT_NUMERIC( 30, "@OW_ARMOR_VEST_VALUE", perk_armorvest, 3, ; )
-  CHOICE_DVAREDIT_NUMERIC( 31, "@OW_BULLET_DAMAGE_VALUE", perk_bulletdamage, 3, ;)
-  CHOICE_DVAREDIT_NUMERIC( 32, "@OW_EXPLOSIVE_DAMAGE_VALUE", perk_explosivedamage, 3, ; )
-
-  CHOICE_DVARYESNO( 33, "@OW_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS", specialty_grenadepulldeath_check_frags, ; )
-  CHOICE_DVARYESNO( 34, "@OW_SPECIALTY_PISTOLDEATH_CHECK_PISTOL", specialty_pistoldeath_check_pistol, ; )
+  CHOICE_DVAREDIT_NUMERIC( 30, "@OW_ARMOR_VEST_VALUE", menu_perk_armorvest, 3, SETA_PERK_ARMORVEST; )
+  CHOICE_DVAREDIT_NUMERIC( 31, "@OW_BULLET_DAMAGE_VALUE", menu_perk_bulletdamage, 3, SETA_PERK_BULLETDAMAGE; )
+  CHOICE_DVAREDIT_NUMERIC( 32, "@OW_EXPLOSIVE_DAMAGE_VALUE", menu_perk_explosivedamage, 3, SETA_PERK_EXPLOSIVEDAMAGE; )
   
-  CHOICE_DVAREDIT_NUMERIC( 35, "@OW_SCR_CLAYMORE_ADD_KILLS_MAX_TIME", scr_claymore_add_kills_max_time, 2, ; )
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT 8
   
-  itemDef {
-    name			back
-    text			"@MENU_BACK"
-    type			1
-    style			WINDOW_STYLE_FILLED
-    forecolor		TEXTBUTTON_COLOR
-    textstyle		ITEM_TEXTSTYLE_SHADOWED
-    rect			-250 -26 40 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
-    textfont		UI_FONT_NORMAL
-    textalign		ITEM_ALIGN_LEFT
-    textscale		TEXTSIZE_SMALL
-    textaligny		18
-    visible			1
-    mouseEnter		{ play "mouse_over"; }
-    action 
-    {
-      play "mouse_click";
-      close self;
-    }	
-  }
+  CHOICE_DVARYESNO( 33, "@OW_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS", menu_specialty_grenadepulldeath_check_frags, SETA_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS; )
+  CHOICE_DVARYESNO( 34, "@OW_SPECIALTY_PISTOLDEATH_CHECK_PISTOL", menu_specialty_pistoldeath_check_pistol, SETA_SPECIALTY_PISTOLDEATH_CHECK_PISTOL; )
+  CHOICE_DVARYESNO( 35, "@OW_SCR_CLAYMORE_CHECK_PLANT_DISTANCE", menu_scr_claymore_check_plant_distance, SETA_SCR_CLAYMORE_CHECK_PLANT_DISTANCE; )
+  
+  CHOICE_DVAREDIT_NUMERIC( 36, "@OW_SCR_CLAYMORE_ADD_KILLS_MAX_TIME", menu_scr_claymore_add_kills_max_time, 2, SETA_SCR_CLAYMORE_ADD_KILLS_MAX_TIME; )
+  CHOICE_DVAREDIT_NUMERIC( 37, "@OW_SCR_CLAYMORE_ARM_TIME", menu_scr_claymore_arm_time, 2, SETA_SCR_CLAYMORE_ARM_TIME; )
+  CHOICE_DVARYESNO( 38, "@OW_SCR_EXPLOSIVES_ALLOW_DISARM", menu_scr_explosives_allow_disarm, SETA_SCR_EXPLOSIVES_ALLOW_DISARM; )
+  CHOICE_DVAREDIT_VIS( 39, "@OW_SCR_EXPLOSIVES_DISARM_TIME", menu_scr_explosives_disarm_time, 4, 4, SETA_SCR_EXPLOSIVES_DISARM_TIME, 1 )
+  CHOICE_DVARYESNO( 40, "@OW_SCR_CLAYMORE_SHOW_HEADICON", menu_scr_claymore_show_headicon, SETA_SCR_CLAYMORE_SHOW_HEADICON; )
+  CHOICE_DVARYESNO( 41, "@OW_SCR_CLAYMORE_SHOW_LASER_BEAMS", menu_scr_claymore_show_laser_beams, SETA_SCR_CLAYMORE_SHOW_LASER_BEAMS; )
+  CHOICE_DVARYESNO( 42, "@OW_SCR_SHOW_C4_BLINK_EFFECT", menu_scr_show_c4_blink_effect, SETA_SCR_SHOW_C4_BLINK_EFFECT; )
+
   //CHOICE_DVARSTRINGLIST( 1, "Configure to gametype:", ct_serverCfgGametype, { "ALL" ""; "DM" "_dm"; "TDM" "_war"; "DOM" "_dom"; "SAB" "_sab"; "HQ" "_koth"; "SD" "_sd"; "GG" "_gg"; "SS" "_ss"; "OITC" "_oitc"; "GR" "_gr"; "CTF" "_ctf"; }, ; )
 }

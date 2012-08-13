@@ -4956,6 +4956,11 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 		
 	if ( level.scr_bullet_penetration_enabled == 0 && iDFlags & level.iDFLAGS_PENETRATION )
 		return;
+    
+  if ( isDefined( eAttacker ) && isPlayer( eAttacker ) && level.scr_melee_enable == 0 && sMeansOfDeath == "MOD_MELEE" ) {
+		eAttacker thread maps\mp\gametypes\_hud_message::showMeleeDisabled();
+    return;
+  }
 
 	// Check if the player is spawn protected and there's an attacker (there's no attacker if the player falls)
 	if ( isDefined( eAttacker ) && isPlayer( eAttacker ) && ( ( isDefined( self.spawn_protected ) && self.spawn_protected ) || ( isDefined( self.cap_protected ) && self.cap_protected ) ) ) {

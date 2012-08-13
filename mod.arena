@@ -119,7 +119,7 @@
 }
 
 {
-	map		"mp_crash_snow"
+	map			"mp_crash_snow"
 	longname	"MPUI_CRASH_SNOW"
 	gametype	"ass bel ch ctf dm dom ftag gr gg koth oitc re sab sd ss war tgr vg"
 }

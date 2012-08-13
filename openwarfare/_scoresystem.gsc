@@ -94,7 +94,7 @@ init()
 		// Get the point loss modifiers
 		scr_game_deathpointloss = getdvarx("scr_game_deathpointloss", "int", 0, 0, 1);
 		scr_game_suicidepointloss = getdvarx("scr_game_suicidepointloss", "int", 0, 0, 1);
-		scr_team_teamkillpointloss = getdvarx("scr_team_teamkillpointloss", "int", 0, 0, 1);
+		scr_team_teamkillpointloss = getdvarx("scr_team_teamkillpointloss", "int", 1, 0, 1);
 
 		// This is the only var we need to load for global use
 		level.scr_score_tk_affects_teamscore = 0;
@@ -124,13 +124,13 @@ init()
 		scr_score_player_suicide = 0;
 		scr_score_player_teamkill = 0;
 		
-		if ( getdvarx("scr_game_deathpointloss", "int", 0, 0, 1 ) == 1 )
+		if ( scr_game_deathpointloss == 1 )
 			scr_score_player_death = vKill * -1;
 		
-		if ( getdvarx("scr_game_suicidepointloss", "int", 0, 0, 1 ) == 1)
+		if ( scr_game_suicidepointloss == 1)
 			scr_score_player_suicide = vKill * -1;
 		
-		if ( getdvarx("scr_team_teamkillpointloss", "int", 0, 0, 1 ) == 1)
+		if ( scr_team_teamkillpointloss == 1)
 			scr_score_player_teamkill = vKill * -1;
 
 		// Freezetag Scores

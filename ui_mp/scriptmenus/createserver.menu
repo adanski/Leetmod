@@ -25,17 +25,17 @@
 		onOpen 
 		{ 
 			uiScript loadArenas;
-      execondvarintvalue tmp_firstserverconf 1 "setfromdvar g_gametype tmp_currgametype";
-      execondvarintvalue tmp_firstserverconf 0 "setfromdvar tmp_currgametype g_gametype; set tmp_firstserverconf 1";
-      
-      execOnDvarIntValue ct_serverCustomCfg 0 "exec lm.cfg";
+			execondvarintvalue tmp_firstserverconf 1 "setfromdvar g_gametype tmp_currgametype";
+			execondvarintvalue tmp_firstserverconf 0 "setfromdvar tmp_currgametype g_gametype; set tmp_firstserverconf 1";
+
+			execOnDvarIntValue ct_serverCustomCfg 0 "exec lm.cfg";
 		}
 		onClose
 		{
 		}
 		
 		#include "ui/blurredbg.inc"
-		#define 	BACK_ENABLE		0
+		#define 	BACK_ENABLE		1
 		#include "ui_mp/navcontrols.inc"
 		CHOICE_MENU_TITLE( "@OW_MENU_SERVER_CONFIGURATION" )
 		
@@ -62,20 +62,20 @@
 		
 		//CHOICE_SEPARATOR( CHOICE_SEP_2 )
 		
-    CHOICE_DVAREDIT_VIS( 9, "Map rotation", "sv_mapRotation", 1000, 25, ;, 1 )
-    
-    CHOICE_BUTTON( 10, "@OW_SERVER_PERKS", open "settings_quick_war_@MPUI_RULES_TIME_LIMIT"; )
+		CHOICE_DVAREDIT_VIS( 9, "Map rotation", "sv_mapRotation", 1000, 25, ;, 1 )
+		
+		CHOICE_BUTTON( 10, "@OW_SERVER_PERKS", open "settings_quick_war_@MPUI_RULES_TIME_LIMIT"; )
 		CHOICE_BUTTON( 11, "@OW_SERVER_WEAPONS", open "settings_quick_war_@MPUI_RULES_SCORE_LIMIT"; )
-    CHOICE_BUTTON( 12, "@OW_SERVER_HARDPOINTS", open "settings_quick_war_@MPUI_RULES_SPECTATING"; )
-    CHOICE_BUTTON( 13, "@OW_SERVER_HEALTHSYSTEM", open "settings_quick_war_@MPUI_RULES_FRIENDLY_FIRE"; )
-    CHOICE_BUTTON( 14, "@OW_SERVER_FAIRNESS", open "settings_quick_koth_@MPUI_RULES_TIME_LIMIT"; )
-    CHOICE_BUTTON( 15, "@OW_SERVER_MAPDESIGN", open "settings_quick_koth_@MPUI_RULES_SCORE_LIMIT"; )
-    CHOICE_BUTTON( 16, "@OW_SERVER_SCORES", open "settings_quick_koth_@MPUI_RULES_SPECTATING"; )
-    CHOICE_BUTTON( 17, "@OW_SERVER_SPECTATE", open "settings_quick_koth_@MPUI_RULES_FRIENDLY_FIRE"; )
-    
-    CHOICE_BUTTON( 18, "@OW_SERVER_GAMETYPE", exec "set settings_config_gametype war"; open settings_quick_war; )
-		//CHOICE_BUTTON( 12, "@MENU_GAME_TYPE_SETTINGS", open settings_quick_dm; )
-		//CHOICE_BUTTON( 13, "@MENU_RESET_TO_DEFAULT", open reset_gamesettings; )
+		CHOICE_BUTTON( 12, "@OW_SERVER_HARDPOINTS", open "settings_quick_war_@MPUI_RULES_SPECTATING"; )
+		CHOICE_BUTTON( 13, "@OW_SERVER_HEALTHSYSTEM", open "settings_quick_war_@MPUI_RULES_FRIENDLY_FIRE"; )
+		CHOICE_BUTTON( 14, "@OW_SERVER_FAIRNESS", open "settings_quick_koth_@MPUI_RULES_TIME_LIMIT"; )
+		CHOICE_BUTTON( 15, "@OW_SERVER_MAPDESIGN", open "settings_quick_koth_@MPUI_RULES_SCORE_LIMIT"; )
+		CHOICE_BUTTON( 16, "@OW_SERVER_SCORES", open "settings_quick_koth_@MPUI_RULES_SPECTATING"; )
+		CHOICE_BUTTON( 17, "@OW_SERVER_SPECTATE", open "settings_quick_koth_@MPUI_RULES_FRIENDLY_FIRE"; )
+		
+		CHOICE_BUTTON( 18, "@OW_SERVER_GAMETYPE", exec "set settings_config_gametype ass"; open settings_quick_ctf; )
+			//CHOICE_BUTTON( 12, "@MENU_GAME_TYPE_SETTINGS", open settings_quick_dm; )
+			//CHOICE_BUTTON( 13, "@MENU_RESET_TO_DEFAULT", open reset_gamesettings; )
     
 		#define LOCAL_RULES_ACTION\
 				uiScript openMenuOnDvar "ui_netGametypeName" war "settings_quick_war";\
@@ -86,9 +86,9 @@
 				uiScript openMenuOnDvar "ui_netGametypeName" dm "settings_quick_dm";\
 				uiScript openMenuOnDvar "ui_netGametypeName" ctf "settings_quick_ctf";
 		
-    execkey "f" { exec "fast_restart"; }
-    execkey "m" { exec "map_restart"; }
-    execkey "r" { exec "map_rotate"; }
+		execkey "f" { exec "fast_restart"; }
+		execkey "m" { exec "map_restart"; }
+		execkey "r" { exec "map_rotate"; }
     
 		// map selection ===========================================
 		
@@ -121,7 +121,7 @@
 			doubleclick		{ play "mouse_click"; uiScript StartServer; }
 		}
     
-    		itemDef 
+		itemDef 
 		{
 			name			maplist
 			rect			-220 160 200 250 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP //404 271 192 130
@@ -147,7 +147,7 @@
 			columns			1 2 190 25
 			mouseEnter 		{ play "mouse_over"; setitemcolor maplist bordercolor 1 1 1 0.55 }
 			mouseExit 		{ setitemcolor maplist bordercolor 1 1 1 0.15 }
-			doubleclick		{ play "mouse_click"; uiScript StartServer; }
+			doubleClick		{ play "mouse_click"; uiScript StartServer; }
 		}
 
 		itemDef 
@@ -164,35 +164,14 @@
 		}
 		
 		// buttons =================================================
-
-		itemDef {
-			name			back
-			text			"@MENU_BACK"
-			type			1
-			style			WINDOW_STYLE_FILLED
-			forecolor		TEXTBUTTON_COLOR
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			rect			-250 -26 40 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
-			textfont		UI_FONT_NORMAL
-			textalign		ITEM_ALIGN_LEFT
-			textscale		TEXTSIZE_SMALL
-			textaligny		18
-			visible			1
-			mouseEnter		{ play "mouse_over"; }
-			action 
-			{
-				play "mouse_click";
-				close self;
-			}	
-		}
     
-    itemDef
+		itemDef
 		{
 			name			fastrestart
 			text			"@OW_MENU_FAST_RESTART"
 			type			1
 			style			WINDOW_STYLE_FILLED
-      forecolor		TEXTBUTTON_COLOR
+			forecolor		TEXTBUTTON_COLOR
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
 			textfont		UI_FONT_NORMAL
@@ -205,18 +184,18 @@
 			action 
 			{
 				play "mouse_click";
-        close self;
-        exec "fast_restart";
+				close self;
+				exec "fast_restart";
 			}	
 		}
     
-    itemDef
+		itemDef
 		{
 			name			maprestart
 			text			"@OW_MENU_MAP_RESTART"
 			type			1
 			style			WINDOW_STYLE_FILLED
-      forecolor		TEXTBUTTON_COLOR
+			forecolor		TEXTBUTTON_COLOR
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-24 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
 			textfont		UI_FONT_NORMAL
@@ -228,18 +207,18 @@
 			action 
 			{
 				play "mouse_click";
-        close self;
-        exec "map_restart";
+				close self;
+				exec "map_restart";
 			}
 		}
     
-    itemDef
+		itemDef
 		{
 			name			maprotate
 			text			"@OW_MENU_MAP_ROTATE"
 			type			1
 			style			WINDOW_STYLE_FILLED
-      forecolor		TEXTBUTTON_COLOR
+			forecolor		TEXTBUTTON_COLOR
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			105 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
 			textfont		UI_FONT_NORMAL
@@ -251,8 +230,8 @@
 			action 
 			{
 				play "mouse_click";
-        close self;
-        exec "map_rotate";
+				close self;
+				exec "map_rotate";
 			}
 		}
 
@@ -291,7 +270,7 @@
 	#define CHOICE_HORIZONTAL_ALIGN	HORIZONTAL_ALIGN_CENTER
 	#undef CHOICE_VERTICAL_ALIGN
 	#define CHOICE_VERTICAL_ALIGN	VERTICAL_ALIGN_CENTER
-	
+	/*
 	menuDef
 	{
 		CENTER_POPUP_SETUP( reset_gamesettings, 3, ;, 1 )
@@ -300,6 +279,9 @@
 		CHOICE_BUTTON( 2, "@MENU_YES", exec "exec lm.cfg"; close self )
 		CHOICE_BUTTON( 3, "@MENU_NO", close self )
 	}
+	*/
+  
+  #include "ui_mp/strip_buttons.inc"
   
   #include "ui_mp/scriptmenus/server_perks.inc"
   #include "ui_mp/scriptmenus/server_weapons.inc"
@@ -308,7 +290,7 @@
   #include "ui_mp/scriptmenus/server_fairness.inc"
   #include "ui_mp/scriptmenus/server_mapdesign.inc"
   #include "ui_mp/scriptmenus/server_scores.inc"
-  //#include "ui_mp/scriptmenus/server_spectate.inc"
+  #include "ui_mp/scriptmenus/server_spectate.inc"
   
   #undef CHOICE_Y_COUNT
   #define CHOICE_Y_COUNT			20
@@ -319,10 +301,9 @@
   #undef	CHOICE_SIZE_X
   #define CHOICE_SIZE_X		200
   
+  #define MENU_HIDETOPBAR
   #include "ui_mp/scriptmenus/server_gametypes1.inc"
   #include "ui_mp/scriptmenus/server_gametypes2.inc"
   #include "ui_mp/scriptmenus/server_gametypes3.inc"
   #include "ui_mp/scriptmenus/server_gametypes4.inc"
-  #include "ui_mp/scriptmenus/server_gametypes5.inc"
-  #include "ui_mp/scriptmenus/server_gametypes6.inc"
 }

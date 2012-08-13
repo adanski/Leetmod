@@ -121,7 +121,7 @@ killcam(
 		self.psoffsettime = 100;
 
 	// if gametype is SD, we don't want to show the enemy the location of the bomb
-  if( level.gametype == "sd" )
+  if( level.gametype == "sd" || level.gametype == "re" )
     self setClientDvar("waypointOffscreenPointerDistance", 16384);
   
   // ignore spectate permissions

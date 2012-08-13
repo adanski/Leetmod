@@ -29,6 +29,8 @@ scramble,3,misc/foley_scramble03.mp3,1,,music,,,,,auto2d,streamed,,,master,all_m
 player_connected,,misc/player_connected.mp3,1,1,max,,,,,announcer,streamed,,,master,all_mp,,,,,,radio,nowetlevel fulldrylevel,,,,,,,mp3
 player_disconnected,,misc/player_disconnected.mp3,1,1,max,,,,,announcer,streamed,,,master,all_mp,,,,,,radio,nowetlevel fulldrylevel,,,,,,,mp3
 
+menu_save_changes,,mp/mp_oldschool_pickup_01.wav,0.12,,interface,,,,,menu,,,,,menu,,,,,,,nowetlevel fulldrylevel,,
+
 ct_mainmenu_mp,,music/HGW_jeepride_defense_v4.mp3,1,,music,,,,,auto2d,streamed,,looping,master,all_mp,,,,,,music,nowetlevel fulldrylevel,,,,,,,mp3
 ct_vic_spec,,music/HGW_ambush_standoff.mp3,0.21,,music,,,,,music,streamed,,,,all_mp,,,,,,music,nowetlevel fulldrylevel,,,!PC
 ct_tie_bog_a,,music/HGW_BogA_Victory_v12.mp3,0.21,,music,,,,,music,streamed,,,,all_mp,,,,,,music,nowetlevel fulldrylevel,,,!PC

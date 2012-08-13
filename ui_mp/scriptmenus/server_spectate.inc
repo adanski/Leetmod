@@ -1,4 +1,4 @@
-#include "ui_mp/menustyle_forcascadeinclude.inc"
+#include "ui_mp/menustyle.inc"
 
 menuDef 
 {
@@ -61,25 +61,5 @@ menuDef
   CHOICE_DVAREDIT( 11, "@OW_SCR_IDLE_PROTECTED_TAGS", scr_idle_protected_tags, ; )
   CHOICE_DVAREDIT( 12, "@OW_SCR_IDLE_PROTECTED_GUIDS", scr_idle_protected_guids, ; )
   
-  itemDef {
-    name			back
-    text			"@MENU_BACK"
-    type			1
-    style			WINDOW_STYLE_FILLED
-    forecolor		TEXTBUTTON_COLOR
-    textstyle		ITEM_TEXTSTYLE_SHADOWED
-    rect			-250 -26 40 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
-    textfont		UI_FONT_NORMAL
-    textalign		ITEM_ALIGN_LEFT
-    textscale		TEXTSIZE_SMALL
-    textaligny		18
-    visible			1
-    mouseEnter		{ play "mouse_over"; }
-    action 
-    {
-      play "mouse_click";
-      close self;
-    }	
-  }
   //CHOICE_DVARSTRINGLIST( 1, "Configure to gametype:", ct_serverCfgGametype, { "ALL" ""; "DM" "_dm"; "TDM" "_war"; "DOM" "_dom"; "SAB" "_sab"; "HQ" "_koth"; "SD" "_sd"; "GG" "_gg"; "SS" "_ss"; "OITC" "_oitc"; "GR" "_gr"; "CTF" "_ctf"; }, ; )
 }

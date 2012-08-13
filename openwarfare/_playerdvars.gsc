@@ -9,10 +9,7 @@ init()
 	level.scr_hud_show_enemy_names = getdvarx( "scr_hud_show_enemy_names", "int", 0, 0, 1 );
 	level.scr_hud_show_friendly_names = getdvarx( "scr_hud_show_friendly_names", "int", 1, 0, 1 );
 	level.scr_hud_show_friendly_names_distance = getdvarx( "scr_hud_show_friendly_names_distance", "int", 10000, 50, 10000 );
-	level.scr_enable_auto_melee = getdvarx( "scr_enable_auto_melee", "int", 128, 0, 255 );
-  
-  if( level.scr_enable_auto_melee == 1 )
-    level.scr_enable_auto_melee = 128;
+	level.scr_melee_stab_range = getdvarx( "scr_melee_stab_range", "int", 128, 0, 255 );
     
 	level.scr_game_forceuav = getdvarx( "scr_game_forceuav", "int", 0, 0, 1 );
 	
@@ -119,7 +116,7 @@ init()
 	forceClientDvar( "cg_tracerlength", level.scr_fire_tracer_length );
   
 	forceClientDvar( "ui_healthoverlay", 1 );
-	forceClientDvar( "ui_ranked_game", ( level.rankedMatch ) );
+	forceClientDvar( "ui_ranked_game", level.rankedMatch );
 	
 	// If non-hardcore set the non-hardcore variables
 	if ( !level.hardcoreMode ) {
@@ -149,7 +146,8 @@ init()
 	forceClientDvar( "cg_drawCrosshairNames", level.scr_hud_show_enemy_names );
 	forceClientDvar( "cg_drawFriendlyNames", level.scr_hud_show_friendly_names );
 	forceClientDvar( "r_fog", level.scr_show_fog );
-	forceClientDvar( "aim_automelee_range", level.scr_enable_auto_melee );
+	
+  forceClientDvar( "aim_automelee_range", level.scr_melee_stab_range );
 	
 	forceClientDvar( "g_compassShowEnemies", level.scr_game_forceuav );
 	

@@ -42,8 +42,8 @@ init()
 	level.scr_player_forcerespawn = getdvarx( "scr_player_forcerespawn", "int", 1, 0, 1 );
 	
 	level.scr_forfeit_enable = getdvarx( "scr_forfeit_enable", "int", 1, 0, 1 );
-
-	// Used to disable the GL in ranked mode
+  
+  // Used to disable the GL in ranked mode
 	level.attach_allow_assault_gl =	getdvarx( "attach_allow_assault_gl", "int", 1, 0, 1 );
 
 	// Hide player status
@@ -101,11 +101,8 @@ init()
 
 	// Red blips when enemies fire non-silenced weapons
 	// Default depends on hardcore mode
-	if ( getDvarInt( "scr_hardcore" ) == 1 ) {
-		ui_minimap_show_enemies_firing  = getdvarx( "scr_minimap_show_enemies_firing", "int", 0, 0, 1 );
-	} else {
-		ui_minimap_show_enemies_firing  = getdvarx( "scr_minimap_show_enemies_firing", "int", 1, 0, 1 );
-	}
+  ui_minimap_show_enemies_firing  = getdvarx( "scr_minimap_show_enemies_firing", "int", (getDvarInt("scr_hardcore")==0), 0, 1);
+	
 	setdvar( "ui_minimap_show_enemies_firing", ui_minimap_show_enemies_firing );
 	makeDvarServerInfo( "ui_minimap_show_enemies_firing" );
 
@@ -181,12 +178,10 @@ init()
 	// Control bullet penetration
 	level.scr_bullet_penetration_enabled = getdvarx( "scr_bullet_penetration_enabled", "int", 1, 0, 1 );
 	
-	level.scr_enable_slash_melee = getdvarx( "scr_enable_slash_melee", "int", 64, 0, 1000 );
+  level.scr_melee_enable = getdvarx( "scr_melee_enable", "int", 1, 0, 1 );
+  level.scr_melee_range = getdvarx( "scr_melee_range", "int", 64, 0, 1000 );
 	
-	if( level.scr_enable_slash_melee == 1 )
-		level.scr_enable_slash_melee = 64;
-	
-	setDvar( "player_meleeRange", level.scr_enable_slash_melee );
+  setDvar( "player_meleeRange", level.scr_melee_range );
 	setDvar( "player_meleeChargeFriction", getdvarx( "scr_meleeChargeFriction", "int", 5000, 1, 5000 ) );
 	
 	level.scr_roundwinningkillcam = getdvarx( "scr_roundwinningkillcam", "int", 1, 0, 1 );

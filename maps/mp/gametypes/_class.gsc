@@ -158,11 +158,11 @@ init()
 
 	online_class_datatable = "mp/classTable.csv";
 
-	load_default_loadout_2( "both", "CLASS_ASSAULT");			// assault
-	load_default_loadout_2( "both", "CLASS_SPECOPS");			// spec ops
-	load_default_loadout_2( "both", "CLASS_HEAVYGUNNER");		// heavy gunner
-	load_default_loadout_2( "both", "CLASS_DEMOLITIONS");		// demolitions
-	load_default_loadout_2( "both", "CLASS_SNIPER" );			// sniper
+	load_default_loadout( "", "both", "CLASS_ASSAULT", 0 );			// assault
+	load_default_loadout( "", "both", "CLASS_SPECOPS", 0 );			// spec ops
+	load_default_loadout( "", "both", "CLASS_HEAVYGUNNER", 0 );		// heavy gunner
+	load_default_loadout( "", "both", "CLASS_DEMOLITIONS", 0 );		// demolitions
+	load_default_loadout( "", "both", "CLASS_SNIPER", 0 );			// sniper
 
 	// generating weapon type arrays which classifies the weapon as primary (back stow), pistol, or inventory (side pack stow)
 	// using mp/statstable.csv's weapon grouping data ( numbering 0 - 149 )
@@ -220,165 +220,88 @@ load_default_loadout( datatable, team, class, stat_num )
 		load_default_loadout_raw( datatable, team, class, stat_num );
 }
 
-load_default_loadout_2( team, class )
-{
-	if( team == "both" )
-	{
-		// do not thread, tablelookup is demanding
-		load_default_loadout_cfg( "allies", class );
-		load_default_loadout_cfg( "axis", class );
-	}
-	else
-		load_default_loadout_cfg( team, class );
-}
-
 load_default_loadout_raw( class_dataTable, team, class, stat_num )
 {
-	// give primary weapon and attachment
-	primary_attachment = tablelookup( class_dataTable, 1, stat_num + 2, 4 );
-	if( primary_attachment == "" || primary_attachment == "none" ||
-      (primary_attachment == "acog" && !level.attach_allow_acog) || (primary_attachment == "reflex" && !level.attach_allow_reflex) ||
-      (primary_attachment == "silencer" && !level.attach_allow_silencer) || (primary_attachment == "grip" && !level.attach_allow_grip) ||
-      (primary_attachment == "gl" && !level.attach_allow_assault_gl) )
-    level.classWeapons[team][class][0] = tablelookup( class_dataTable, 1, stat_num + 1, 4 ) + "_mp";
-  else
-    level.classWeapons[team][class][0] = tablelookup( class_dataTable, 1, stat_num + 1, 4 ) + "_" + primary_attachment + "_mp";
-
-	// give secondary weapon and attachment
-	secondary_attachment = tablelookup( class_dataTable, 1, stat_num + 4, 4 );
-  	if( secondary_attachment == "" || secondary_attachment == "none" || (secondary_attachment == "silencer" && !level.attach_allow_pistol_silencer) )
-		level.classSidearm[team][class] = tablelookup( class_dataTable, 1, stat_num + 3, 4 ) + "_mp";
-	else
-		level.classSidearm[team][class] = tablelookup( class_dataTable, 1, stat_num + 3, 4 ) + "_" + secondary_attachment + "_mp";
-
-	// give default class perks
-	level.default_perk[class] = [];
-	level.default_perk[class][0] = tablelookup( class_dataTable, 1, stat_num + 5, 4 );
-	level.default_perk[class][1] = tablelookup( class_dataTable, 1, stat_num + 6, 4 );
-	level.default_perk[class][2] = tablelookup( class_dataTable, 1, stat_num + 7, 4 );
-  
-  //specialty something to index
-  specialty1 = int( tableLookup( "mp/statsTable.csv", 6, level.default_perk[class][0], 1 ) );
-  specialty2 = int( tableLookup( "mp/statsTable.csv", 6, level.default_perk[class][1], 1 ) );
-  specialty3 = int( tableLookup( "mp/statsTable.csv", 6, level.default_perk[class][2], 1 ) );
-  
-  specialty1 = validatePerk(specialty1, 0);
-  specialty2 = validatePerk(specialty2, 1);
-  specialty3 = validatePerk(specialty3, 2);
-  
-  //reverse: index to specialty something
-  level.default_perk[class][0] = tableLookup( "mp/statsTable.csv", 1, specialty1, 6 );
-  level.default_perk[class][1] = tableLookup( "mp/statsTable.csv", 1, specialty2, 6 );
-  level.default_perk[class][2] = tableLookup( "mp/statsTable.csv", 1, specialty3, 6 );
-  
-  if( level.scr_grenade_allow_cooking )
-    level.classGrenades[class]["primary"]["type"] = "frag_grenade_mp";
-  else
-    level.classGrenades[class]["primary"]["type"] = "frag_grenade_nocook_mp";
-    
-  level.classGrenades[class]["primary"]["count"] = level.weap_allow_frag_grenade;
-  
-  level.classGrenades[class]["secondary"]["type"] = tablelookup( class_dataTable, 1, stat_num + 8, 4 ) + "_mp";
-  // in case it's a smoke grenade
-  level.classGrenades[class]["secondary"]["count"] = 1;
-  
-  switch( level.classGrenades[class]["secondary"]["type"] )
-  {
-    case "concussion_grenade":
-      level.classGrenades[class]["secondary"]["count"] = level.weap_allow_concussion_grenade;
-      break;
-    case "flash_grenade":
-      level.classGrenades[class]["secondary"]["count"] = level.weap_allow_flash_grenade;
-      break;
-  }
-  
-  switch ( level.default_perk[class][0] )
-  {
-    case "specialty_fraggrenade":
-      level.classGrenades[class]["primary"]["count"] += level.specialty_fraggrenade_ammo_count;
-      break;
-    case "specialty_specialgrenade":
-      level.classGrenades[class]["secondary"]["count"] += level.specialty_specialgrenade_ammo_count;
-      break;
-  }
-
-	// give all inventory
-	inventory_ref = tablelookup( class_dataTable, 1, stat_num + 5, 4 );
-	if( isdefined( inventory_ref ) && tablelookup( "mp/statsTable.csv", 6, inventory_ref, 2 ) == "inventory" )
-	{
-		// new logic defined below overrites this one
-    // (new logic gets the values from dvars instead of .csv file)
-    inventory_count = int( tablelookup( "mp/statsTable.csv", 6, inventory_ref, 5 ) );
-    
-    switch ( inventory_ref )
-    {
-      case "specialty_weapon_c4":
-        inventory_count = level.scr_c4_ammo_count;
-        break;
-      case "specialty_weapon_claymore":
-        inventory_count = level.scr_claymore_ammo_count;
-        break;
-      case "specialty_weapon_rpg":
-        inventory_count = level.scr_rpg_ammo_count;
-        break;
-    }
-    
-		inventory_item_ref = tablelookup( "mp/statsTable.csv", 6, inventory_ref, 4 );
-		assertex( isdefined( inventory_count ) && inventory_count != 0 && isdefined( inventory_item_ref ) && inventory_item_ref != "" , "Inventory in statsTable.csv not specified correctly" );
-
-		level.classItem[team][class]["type"] = inventory_item_ref;
-		level.classItem[team][class]["count"] = inventory_count;
-	}
-	else
-	{
-		level.classItem[team][class]["type"] = "";
-		level.classItem[team][class]["count"] = 0;
-	}
-	// give all inventory
-	//level.classItem[team][class]["type"] = inventory;
-	//level.classItem[team][class]["count"] = inv_count;
-}
-
-load_default_loadout_cfg( team, class )
-{
   abbrClass = "assault";
-  switch(class) {
-    case "CLASS_SPECOPS":
-      abbrClass = "specops";
-    break;
-    case "CLASS_HEAVYGUNNER":
-      abbrClass = "heavygunner";
-    break;
-    case "CLASS_DEMOLITIONS":
-      abbrClass = "demolitions";
-    break;
-    case "CLASS_SNIPER":
-      abbrClass = "sniper";
-    break;
+  if( class_dataTable == "" ) {
+    switch(class) {
+      case "CLASS_SPECOPS":
+        abbrClass = "specops";
+      break;
+      case "CLASS_HEAVYGUNNER":
+        abbrClass = "heavygunner";
+      break;
+      case "CLASS_DEMOLITIONS":
+        abbrClass = "demolitions";
+      break;
+      case "CLASS_SNIPER":
+        abbrClass = "sniper";
+      break;
+    }
   }
 
 	// give primary weapon and attachment
-	primary_attachment = level.class_primary_attachment[abbrClass];
+  if( class_dataTable == "" )
+    primary_attachment = level.class_primary_attachment[abbrClass];
+  else
+    primary_attachment = tablelookup( class_dataTable, 1, stat_num + 2, 4 );
   if( primary_attachment == "" || primary_attachment == "none" ||
       (primary_attachment == "acog" && !level.attach_allow_acog) || (primary_attachment == "reflex" && !level.attach_allow_reflex) ||
       (primary_attachment == "silencer" && !level.attach_allow_silencer) || (primary_attachment == "grip" && !level.attach_allow_grip) ||
       (primary_attachment == "gl" && !level.attach_allow_assault_gl) )
-    level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_mp";
+    if( class_dataTable == "" )
+      level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_mp";
+    else
+      level.classWeapons[team][class][0] = tablelookup( class_dataTable, 1, stat_num + 1, 4 ) + "_mp";
   else
-    level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_" + primary_attachment + "_mp";
+    if( class_dataTable == "" )
+      level.classWeapons[team][class][0] = level.class_primary[abbrClass][team] + "_" + primary_attachment + "_mp";
+    else
+      level.classWeapons[team][class][0] = tablelookup( class_dataTable, 1, stat_num + 1, 4 ) + "_" + primary_attachment + "_mp";
 
 	// give secondary weapon and attachment
-	secondary_attachment = level.class_secondary_attachment[abbrClass];
+  if( class_dataTable == "" )
+    secondary_attachment = level.class_secondary_attachment[abbrClass];
+  else
+    secondary_attachment = tablelookup( class_dataTable, 1, stat_num + 4, 4 );
 	if( secondary_attachment == "" || secondary_attachment == "none" || (secondary_attachment == "silencer" && !level.attach_allow_pistol_silencer) )
-		level.classSidearm[team][class] = level.class_secondary[abbrClass][team] + "_mp";
+    if( class_dataTable == "" )
+      level.classSidearm[team][class] = level.class_secondary[abbrClass][team] + "_mp";
+    else
+      level.classSidearm[team][class] = tablelookup( class_dataTable, 1, stat_num + 3, 4 ) + "_mp";
 	else
-		level.classSidearm[team][class] = level.class_secondary[abbrClass][team] + "_" + secondary_attachment + "_mp";
+    if( class_dataTable == "" )
+      level.classSidearm[team][class] = level.class_secondary[abbrClass][team] + "_" + secondary_attachment + "_mp";
+    else
+      level.classSidearm[team][class] = tablelookup( class_dataTable, 1, stat_num + 3, 4 ) + "_" + secondary_attachment + "_mp";
 
-	// give default class perks
-	level.default_perk[class] = [];
-	level.default_perk[class][0] = level.class_perk1[abbrClass];
-	level.default_perk[class][1] = level.class_perk2[abbrClass];
-	level.default_perk[class][2] = level.class_perk3[abbrClass];
+	if( class_dataTable == "" ) {
+    // give default class perks
+    level.default_perk[class] = [];
+    level.default_perk[class][0] = level.class_perk1[abbrClass];
+    level.default_perk[class][1] = level.class_perk2[abbrClass];
+    level.default_perk[class][2] = level.class_perk3[abbrClass];
+  } else {
+    // give default class perks
+    level.default_perk[class] = [];
+    level.default_perk[class][0] = tablelookup( class_dataTable, 1, stat_num + 5, 4 );
+    level.default_perk[class][1] = tablelookup( class_dataTable, 1, stat_num + 6, 4 );
+    level.default_perk[class][2] = tablelookup( class_dataTable, 1, stat_num + 7, 4 );
+
+    //specialty something to index
+    specialty1 = int( tableLookup( "mp/statsTable.csv", 6, level.default_perk[class][0], 1 ) );
+    specialty2 = int( tableLookup( "mp/statsTable.csv", 6, level.default_perk[class][1], 1 ) );
+    specialty3 = int( tableLookup( "mp/statsTable.csv", 6, level.default_perk[class][2], 1 ) );
+
+    specialty1 = validatePerk(specialty1, 0);
+    specialty2 = validatePerk(specialty2, 1);
+    specialty3 = validatePerk(specialty3, 2);
+
+    //reverse: index to specialty something
+    level.default_perk[class][0] = tableLookup( "mp/statsTable.csv", 1, specialty1, 6 );
+    level.default_perk[class][1] = tableLookup( "mp/statsTable.csv", 1, specialty2, 6 );
+    level.default_perk[class][2] = tableLookup( "mp/statsTable.csv", 1, specialty3, 6 );
+  }
   
   if( level.scr_grenade_allow_cooking )
     level.classGrenades[class]["primary"]["type"] = "frag_grenade_mp";
@@ -387,7 +310,10 @@ load_default_loadout_cfg( team, class )
     
   level.classGrenades[class]["primary"]["count"] = level.weap_allow_frag_grenade;
   
-  level.classGrenades[class]["secondary"]["type"] = level.class_sgrenade[abbrClass]+"_mp";
+  if( class_dataTable == "" )
+    level.classGrenades[class]["secondary"]["type"] = level.class_sgrenade[abbrClass]+"_mp";
+  else
+    level.classGrenades[class]["secondary"]["type"] = tablelookup( class_dataTable, 1, stat_num + 8, 4 ) + "_mp";
   // in case it's a smoke grenade
   level.classGrenades[class]["secondary"]["count"] = 1;
   
@@ -412,7 +338,10 @@ load_default_loadout_cfg( team, class )
   }
 
 	// give all inventory
-	inventory_ref = level.default_perk[class][0];
+  if( class_dataTable == "" )
+    inventory_ref = level.default_perk[class][0];
+  else
+    inventory_ref = tablelookup( class_dataTable, 1, stat_num + 5, 4 );
 	if( isdefined( inventory_ref ) && tablelookup( "mp/statsTable.csv", 6, inventory_ref, 2 ) == "inventory" )
 	{
 		// new logic defined below overrites this one

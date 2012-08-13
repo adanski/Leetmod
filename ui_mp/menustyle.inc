@@ -60,9 +60,14 @@
 		
 	#endif
 
+  #ifdef TITLE_X_OFFSET
 	#undef TITLE_X_OFFSET
+  #endif
   #define TITLE_X_OFFSET				-36
+  
+  #ifdef TITLE_Y_OFFSET
   #undef TITLE_Y_OFFSET
+  #endif
 	#define TITLE_Y_OFFSET				-36	
 	
 #endif

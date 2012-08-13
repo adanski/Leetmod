@@ -772,3 +772,21 @@ updateOutcome( firstTitle, secondTitle, thirdTitle )
 			thirdTitle.alpha = 0;
 	}	
 }
+
+showMeleeDisabled() {
+  if( !isDefined(self.showingMeleeTip) || !self.showingMeleeTip ) {
+    self.showingMeleeTip = true;
+    self.meleeDisabled = createFontString( "objective", 1.8 );
+    self.meleeDisabled setPoint( "CENTER", "CENTER", 0, 50 );
+    self.meleeDisabled.sort = 1001;
+    self.meleeDisabled.foreground = false;
+    self.meleeDisabled.hidewheninmenu = true;
+    self.meleeDisabled.archived = true;
+    self.meleeDisabled maps\mp\gametypes\_hud::fontPulseInit();
+    self.meleeDisabled setText( &"OW_MELEE_DISABLED" );
+    self.meleeDisabled thread maps\mp\gametypes\_hud::fontPulse( level );
+    wait (2.5);
+    self.meleeDisabled destroyElem();
+    self.showingMeleeTip = false;
+  }
+}
