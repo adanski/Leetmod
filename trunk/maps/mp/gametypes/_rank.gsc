@@ -812,6 +812,10 @@ forceUnlockAllAttach()
   attachmentList[48] = "m60e4:grip";
 	attachmentList[49] = "m1014:grip";
   attachmentList[50] = "winchester1200:grip";
+  attachmentList[51] = "m14:gl";
+  attachmentList[52] = "g3:gl";
+  attachmentList[53] = "g36c:gl";
+  attachmentList[54] = "m4:gl";
   
 	attachix = 0;
 	
@@ -1071,12 +1075,12 @@ unlockAttachmentSingular( refString )
 unlockAttachmentSingularSpecial( refString )
 {
 	Tok = strTok( refString, ":" );
-	assertex( Tok.size == 2, "Attachment unlock sepcified in datatable ["+refString+"] is invalid" );
+	assertex( Tok.size == 2, "Attachment unlock specified in datatable ["+refString+"] is invalid" );
 	
 	baseWeapon = Tok[0];
 	addon = Tok[1];
   
-  if(addon != "silencer" && addon != "reflex" && addon != "acog" && addon != "grip" )
+  if(addon != "silencer" && addon != "reflex" && addon != "acog" && addon != "grip" && addon != "gl" )
     return;
   
   if( baseWeapon == "mp44")
@@ -1085,16 +1089,16 @@ unlockAttachmentSingularSpecial( refString )
   if( (baseWeapon == "m16" || baseWeapon == "m4" || baseWeapon == "ak47" || baseWeapon == "m14" || baseWeapon == "g3" || baseWeapon == "g36c") && addon == "grip" )
     return;
     
-  if( (baseWeapon == "mp5" || baseWeapon == "skorpion" || baseWeapon == "uzi" || baseWeapon == "ak74u" || baseWeapon == "p90") && addon == "grip" )
+  if( (baseWeapon == "mp5" || baseWeapon == "skorpion" || baseWeapon == "uzi" || baseWeapon == "ak74u" || baseWeapon == "p90") && (addon == "grip" || addon == "gl") )
     return;
     
-  if( (baseWeapon == "rpd" || baseWeapon == "saw" || baseWeapon == "m60e4") && addon == "silencer" )
+  if( (baseWeapon == "rpd" || baseWeapon == "saw" || baseWeapon == "m60e4") && (addon == "silencer" || addon == "gl") )
     return;
     
-  if( (baseWeapon == "m1014" || baseWeapon == "winchester1200" ) && (addon == "silencer" || addon == "acog" ) )
+  if( (baseWeapon == "m1014" || baseWeapon == "winchester1200" ) && (addon == "silencer" || addon == "acog" || addon == "gl") )
     return;
     
-  if( (baseWeapon == "dragunov" || baseWeapon == "m40a3" || baseWeapon == "barrett" || baseWeapon == "remington700" || baseWeapon == "m21" ) && (addon == "silencer" || addon == "reflex" || addon == "grip") )
+  if( (baseWeapon == "dragunov" || baseWeapon == "m40a3" || baseWeapon == "barrett" || baseWeapon == "remington700" || baseWeapon == "m21" ) && (addon == "silencer" || addon == "reflex" || addon == "grip" || addon == "gl") )
     return;
   
 	weaponStat = int( tableLookup( "mp/statstable.csv", 4, baseWeapon, 1 ) );

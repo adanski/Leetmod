@@ -161,49 +161,38 @@
 				play "mouse_click";
 				uiScript mutePlayer;
 			}
-			mouseEnter 		{ setitemcolor maplist bordercolor 1 1 1 0.55 }
-			mouseExit 		{ setitemcolor maplist bordercolor 1 1 1 0.15 }
+			mouseEnter 		{ setitemcolor playermutelist bordercolor 1 1 1 0.55 }
+			mouseExit 		{ setitemcolor playermutelist bordercolor 1 1 1 0.15 }
 		}
     // ====================== player stats =========================
     #include "ui_mp/player_info.inc"
     
     itemDef {
-      //name 		"prevpl"
+      name 		iprevpl
       type			1
       style			WINDOW_STYLE_SHADER
-      rect			-4 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
+      rect			-9 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
       origin			ORIGIN_PLAYERSTATS
       background		"ui_arrow_left"
       //forecolor		0.409 0.801 0.999 1
       forecolor		0.97 0.81 0.42 1
       visible			when( dvarInt( ui_showEndOfGame ) == 0 )
-      mouseEnter { play "mouse_over"; } 
+      mouseEnter { play "mouse_over"; setitemcolor iprevpl forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor iprevpl forecolor 0.97 0.81 0.42 1 }
       action { play "mouse_click"; scriptMenuResponse "prevpl"; setdvar ct_displayingSelf 0; }	
-    }
-
-    itemDef {
-      //name 		"nextpl"
-      type			1
-      style			WINDOW_STYLE_SHADER
-      rect			26 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
-      origin			ORIGIN_PLAYERSTATS
-      background		"ui_arrow_right"
-      forecolor		0.97 0.81 0.42 1
-      visible			when( dvarInt( ui_showEndOfGame ) == 0 )
-      mouseEnter { play "mouse_over"; } 
-      action { play "mouse_click"; scriptMenuResponse "nextpl"; setdvar ct_displayingSelf 0; }	
     }
     
     itemDef {
-      //name 		"compare"
+      name 		comparestats
       type			1
       style			WINDOW_STYLE_SHADER
-      rect			6 -11 30 30 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
+      rect			11 -11 30 30 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
       origin			ORIGIN_PLAYERSTATS
       background		"objective_down"
-      forecolor		COLOR_FOCUSED
+      forecolor		1 1 1 1
       visible			when( dvarInt( ui_showEndOfGame ) == 0 )
-      mouseEnter { play "mouse_over"; } 
+      mouseEnter { play "mouse_over"; setitemcolor comparestats forecolor 0.9 0.6 0.4 1 }
+      mouseExit { setitemcolor comparestats forecolor 1 1 1 1 }
       action
       {
         play "mouse_click";
@@ -211,6 +200,20 @@
         execNowOnDvarIntValue ct_displayingSelf 1 "openScriptMenu muteplayer currpl";
         execNow "toggle ct_displayingSelf 0 1";
       }
+    }
+
+    itemDef {
+      name 		inextpl
+      type			1
+      style			WINDOW_STYLE_SHADER
+      rect			41 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
+      origin			ORIGIN_PLAYERSTATS
+      background		"ui_arrow_right"
+      forecolor		0.97 0.81 0.42 1
+      visible			when( dvarInt( ui_showEndOfGame ) == 0 )
+      mouseEnter { play "mouse_over"; setitemcolor inextpl forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor inextpl forecolor 0.97 0.81 0.42 1 }
+      action { play "mouse_click"; scriptMenuResponse "nextpl"; setdvar ct_displayingSelf 0; }	
     }
 	}
 }

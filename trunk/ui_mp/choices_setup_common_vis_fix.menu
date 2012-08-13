@@ -275,48 +275,48 @@
 #define CHOICE_BUTTON_BG( itemIndex, visArg ) CHOICE_BUTTON_BG_RAW( itemIndex, "gradient_fadein", BUTTON_BG_COLOR, visArg )
 
 #define CHOICE_BUTTON_BG_RAW( itemIndex, bgimage, foreColorArg, visArg ) \
-		itemDef \
-		{ \
-			style			WINDOW_STYLE_SHADER \
-			rect			CHOICE_ORIGIN( itemIndex ) (CHOICE_SIZE_X-(CHOICE_SIZE_Y/4)) CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
-			exp				material( bgimage ); \
-			forecolor		foreColorArg \
-			visible			visArg; \
-			decoration \
-		} \
-		itemDef \
-		{ \
-			style			WINDOW_STYLE_SHADER \
-			rect			(CHOICE_X( itemIndex )+(CHOICE_SIZE_X-(CHOICE_SIZE_Y/4))) CHOICE_Y( itemIndex ) (CHOICE_SIZE_Y/4) CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
-			background		HIGHLIGHT_SHADER_ART \
-			forecolor		foreColorArg \
-			visible			visArg; \
-			decoration \
-		} \		
-
+  itemDef \
+  { \
+    style			WINDOW_STYLE_SHADER \
+    rect			CHOICE_ORIGIN( itemIndex ) (CHOICE_SIZE_X-(CHOICE_SIZE_Y/4)) CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
+    exp				material( bgimage ); \
+    forecolor		foreColorArg \
+    visible			visArg; \
+    decoration \
+  } \
+  itemDef \
+  { \
+    style			WINDOW_STYLE_SHADER \
+    rect			(CHOICE_X( itemIndex )+(CHOICE_SIZE_X-(CHOICE_SIZE_Y/4))) CHOICE_Y( itemIndex ) (CHOICE_SIZE_Y/4) CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
+    background		HIGHLIGHT_SHADER_ART \
+    forecolor		foreColorArg \
+    visible			visArg; \
+    decoration \
+  }
+  
 #define CHOICE_HIGHLIGHT_CUSTOM( itemIndex, foreColorArg, borderColorArg, visArg ) \
-		itemDef \
-		{ \
-			style			WINDOW_STYLE_SHADER \
-			rect			CHOICE_ORIGIN( itemIndex ) (CHOICE_SIZE_X-(CHOICE_SIZE_Y/4)) CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
-			background		HIGHLIGHT_SHADER \
-			forecolor		foreColorArg \
-			border			HIGHLIGHT_BORDER \
-			bordersize		2 \
-			bordercolor		borderColorArg \
-			visible			when( localVarInt( ui_highlight ) == itemIndex && localVarString( ui_choicegroup ) == CHOICE_GROUP ); \
-			decoration \
-		} \
-		itemDef \
-		{ \
-			style			WINDOW_STYLE_SHADER \
-			rect			(CHOICE_X( itemIndex )+(CHOICE_SIZE_X-(CHOICE_SIZE_Y/4))) CHOICE_Y( itemIndex ) (CHOICE_SIZE_Y/4) CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
-			background		HIGHLIGHT_SHADER_ART \
-			forecolor		foreColorArg \
-			visible			when( localVarInt( ui_highlight ) == itemIndex && localVarString( ui_choicegroup ) == CHOICE_GROUP ); \
-			decoration \
-		} \	
-		CHOICE_ACCEPT_HINT( itemIndex, visArg )
+    itemDef \
+    { \
+      style			WINDOW_STYLE_SHADER \
+      rect			CHOICE_ORIGIN( itemIndex ) (CHOICE_SIZE_X-(CHOICE_SIZE_Y/4)) CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
+      background		HIGHLIGHT_SHADER \
+      forecolor		foreColorArg \
+      border			HIGHLIGHT_BORDER \
+      bordersize		2 \
+      bordercolor		borderColorArg \
+      visible			when( localVarInt( ui_highlight ) == itemIndex && localVarString( ui_choicegroup ) == CHOICE_GROUP ); \
+      decoration \
+    } \
+    itemDef \
+    { \
+      style			WINDOW_STYLE_SHADER \
+      rect			(CHOICE_X( itemIndex )+(CHOICE_SIZE_X-(CHOICE_SIZE_Y/4))) CHOICE_Y( itemIndex ) (CHOICE_SIZE_Y/4) CHOICE_SIZE_Y CHOICE_HORIZONTAL_ALIGN CHOICE_VERTICAL_ALIGN \
+      background		HIGHLIGHT_SHADER_ART \
+      forecolor		foreColorArg \
+      visible			when( localVarInt( ui_highlight ) == itemIndex && localVarString( ui_choicegroup ) == CHOICE_GROUP ); \
+      decoration \
+    } \	
+    CHOICE_ACCEPT_HINT( itemIndex, visArg )
 
 // used for custom highlights for itemDefs that are special and can not use itemIndex or complie with the strict alignment of this macro set
 #define CHOICE_HIGHLIGHT_CUSTOM_2( px, py, pw, ph, visArg ) \
@@ -425,6 +425,8 @@
 			textscale		TEXTSIZE_TITLE \
 			textstyle		CHOICE_TEXTSTYLE \
 			textalign		ITEM_ALIGN_TOP_LEFT \
+      textaligny		TITLE_Y_OFFSET \
+			textalignx		TITLE_X_OFFSET \
 			visible			when( visArg ) \
 			decoration \
 		}
@@ -705,10 +707,10 @@
 			decoration \
 		}
 
-#define CHOICE_DVAREDIT_NUMERIC( itemIndex, textArg, dvarArg, max_chars, actionArg ) \
-		CHOICE_DVAREDIT_NUMERIC_VIS( itemIndex, textArg, dvarArg, max_chars, actionArg, 1 )
-
-#define CHOICE_DVAREDIT_NUMERIC_VIS( itemIndex, textArg, dvarArg, max_chars, actionArg, visArg ) \
+#define CHOICE_DVAREDIT_NUMERIC( itemIndex, textArg, dvarArg, max_chars, onFocusArg ) \
+		CHOICE_DVAREDIT_NUMERIC_VIS( itemIndex, textArg, dvarArg, max_chars, onFocusArg, 1 )
+    
+#define CHOICE_DVAREDIT_NUMERIC_VIS( itemIndex, textArg, dvarArg, max_chars, onFocusArg, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_CAPTION_VIS( itemIndex, textArg, visArg ) \
@@ -726,7 +728,7 @@
 			forecolor		CHOICE_TEXTCOLOR \
 			visible			visArg \
 			maxChars		max_chars \
-			CHOICE_SCRIPTS_ACTION( itemIndex, actionArg ) \
+			CHOICE_SCRIPTS_ALL( itemIndex, ;, onFocusArg, ; ) \
 		}
 		
 		

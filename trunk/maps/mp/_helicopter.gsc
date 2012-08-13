@@ -165,33 +165,33 @@ heli_update_global_dvars()
 	for( ;; )
 	{
 		// heli_update_dvar( dvar, default ) returns value
-   	        level.heli_loopmax = heli_get_dvar_int( "scr_heli_loopmax", "1");			// how many times helicopter will circle the map before it leaves
-		level.heli_missile_rof = heli_get_dvar_int( "scr_heli_missile_rof", "5" );	// missile rate of fire, one every this many seconds per target, could fire two at the same time to different targets
-		level.heli_armor = heli_get_dvar_int( "scr_heli_armor", "500" );			// armor points, after this much damage is taken, helicopter is easily damaged, and health degrades
-		level.heli_rage_missile = heli_get_dvar( "scr_heli_rage_missile", "5" );	// higher the value, more frequent the missile assault
-		level.heli_maxhealth = heli_get_dvar_int( "scr_heli_maxhealth", "750" );	// max health of the helicopter
-		level.heli_missile_max = heli_get_dvar_int( "scr_heli_missile_max", "3" );	// max number of missiles helicopter can carry
-		level.heli_dest_wait = heli_get_dvar_int( "scr_heli_dest_wait", "2" );		// time helicopter waits (hovers) after reaching a destination
-		level.heli_debug = heli_get_dvar_int( "scr_heli_debug", "0" );				// debug mode, draws debugging info on screen
+		level.heli_loopmax = getdvarx( "scr_heli_loopmax", "int", 1, 0, 50);			// how many times helicopter will circle the map before it leaves
+		level.heli_missile_rof = getdvarx( "scr_heli_missile_rof", "int", 5, 0, 60 );	// missile rate of fire, one every this many seconds per target, could fire two at the same time to different targets
+		level.heli_armor = getdvarx( "scr_heli_armor", "int", 500, 0, 5000 );			// armor points, after this much damage is taken, helicopter is easily damaged, and health degrades
+		level.heli_rage_missile = getdvarx( "scr_heli_rage_missile", "float", 5, 1, 50 );	// higher the value, more frequent the missile assault
+		level.heli_maxhealth = getdvarx( "scr_heli_maxhealth", "int", 750, 0, 5000 );	// max health of the helicopter
+		level.heli_missile_max = getdvarx( "scr_heli_missile_max", "int", 3, 0, 50 );	// max number of missiles helicopter can carry
+		level.heli_dest_wait = getdvarx( "scr_heli_dest_wait", "int", 2, 0, 60 );		// time helicopter waits (hovers) after reaching a destination
+		level.heli_debug = getdvarx( "scr_heli_debug", "int", 0, 0, 1 );				// debug mode, draws debugging info on screen
 		
-		level.heli_targeting_delay = heli_get_dvar( "scr_heli_targeting_delay", "0.5" );	// targeting delay
-		level.heli_turretReloadTime = heli_get_dvar( "scr_heli_turretReloadTime", "1.5" );	// mini-gun reload time
-		level.heli_turretClipSize = heli_get_dvar_int( "scr_heli_turretClipSize", "40" );	// mini-gun clip size, rounds before reload
-		level.heli_visual_range = heli_get_dvar_int( "scr_heli_visual_range", "3500" );		// distance radius helicopter will acquire targets (see)
-		level.heli_health_degrade = heli_get_dvar_int( "scr_heli_health_degrade", "0" );	// health degradation after injured, health descrease per second for heavy injury, half for light injury
+		level.heli_targeting_delay = getdvarx( "scr_heli_targeting_delay", "float", 0.5, 0, 60 );	// targeting delay
+		level.heli_turretReloadTime = getdvarx( "scr_heli_turretReloadTime", "float", 1.5, 0, 60 );	// mini-gun reload time
+		level.heli_turretClipSize = getdvarx( "scr_heli_turretClipSize", "float", 40, 0, 500 );	// mini-gun clip size, rounds before reload
+		level.heli_visual_range = getdvarx( "scr_heli_visual_range", "int", 3500, 0, 50000 );		// distance radius helicopter will acquire targets (see)
+		level.heli_health_degrade = getdvarx( "scr_heli_health_degrade", "int", 0, 0, 1 );	// health degradation after injured, health descrease per second for heavy injury, half for light injury
 				
-		level.heli_target_spawnprotection = heli_get_dvar_int( "scr_heli_target_spawnprotection", "5" );// players are this many seconds safe from helicopter after spawn
-		level.heli_turret_engage_dist = heli_get_dvar_int( "scr_heli_turret_engage_dist", "1000" );		// engaging distance for turret
-		level.heli_missile_engage_dist = heli_get_dvar_int( "scr_heli_missile_engage_dist", "2000" );	// engaging distance for missiles
-		level.heli_missile_regen_time = heli_get_dvar( "scr_heli_missile_regen_time", "10" );			// gives one more missile to helicopter every interval - seconds
-		level.heli_turret_spinup_delay = heli_get_dvar( "scr_heli_turret_spinup_delay", "0.75" );			// seconds it takes for the helicopter mini-gun to spin up before shots fired
-		level.heli_target_recognition = heli_get_dvar( "scr_heli_target_recognition", "0.95" );			// percentage of the player's body the helicopter sees before it labels him as a target
-		level.heli_missile_friendlycare = heli_get_dvar_int( "scr_heli_missile_friendlycare", "256" );	// if friendly is within this distance of the target, do not shoot missile
-		level.heli_missile_target_cone = heli_get_dvar( "scr_heli_missile_target_cone", "0.3" );		// dot product of vector target to helicopter forward, 0.5 is in 90 range, bigger the number, smaller the cone
-		level.heli_armor_bulletdamage = heli_get_dvar( "scr_heli_armor_bulletdamage", "0.3" );			// damage multiplier to bullets onto helicopter's armor
+		level.heli_target_spawnprotection = getdvarx( "scr_heli_target_spawnprotection", "int", 5, 0, 60 );// players are this many seconds safe from helicopter after spawn
+		level.heli_turret_engage_dist = getdvarx( "scr_heli_turret_engage_dist", "int", 1000, 0, 50000 );		// engaging distance for turret
+		level.heli_missile_engage_dist = getdvarx( "scr_heli_missile_engage_dist", "int", 2000, 0, 50000 );	// engaging distance for missiles
+		level.heli_missile_regen_time = getdvarx( "scr_heli_missile_regen_time", "int", 10, 1, 60 );			// gives one more missile to helicopter every interval - seconds
+		level.heli_turret_spinup_delay = getdvarx( "scr_heli_turret_spinup_delay", "float", 0.75, 0, 60 );			// seconds it takes for the helicopter mini-gun to spin up before shots fired
+		level.heli_target_recognition = getdvarx( "scr_heli_target_recognition", "float", 0.95, 0, 1 );			// percentage of the player's body the helicopter sees before it labels him as a target
+		level.heli_missile_friendlycare = getdvarx( "scr_heli_missile_friendlycare", "int", 256, 0, 50000 );	// if friendly is within this distance of the target, do not shoot missile
+		level.heli_missile_target_cone = getdvarx( "scr_heli_missile_target_cone", "float", 0.3, 0, 1 );		// dot product of vector target to helicopter forward, 0.5 is in 90 range, bigger the number, smaller the cone
+		level.heli_armor_bulletdamage = getdvarx( "scr_heli_armor_bulletdamage", "float", 0.3, 0, 1 );			// damage multiplier to bullets onto helicopter's armor
 		
-		level.heli_attract_strength = heli_get_dvar( "scr_heli_attract_strength", "1000" );
-		level.heli_attract_range = heli_get_dvar( "scr_heli_attract_range", "4096" );		
+		level.heli_attract_strength = getdvarx( "scr_heli_attract_strength", "int", 1000, 1, 5000 );
+		level.heli_attract_range = getdvarx( "scr_heli_attract_range", "int", 4096, 1, 65536 );
 		
 		wait 1;
 	}
@@ -270,7 +270,7 @@ heli_think( owner, startnode, heli_team, requiredDeathCount )
 	
 	// helicopter loop threads
 	chopper thread heli_fly( startnode );	// fly heli to given node and continue on its path
-  chopper thread heli_damage_monitor();	// monitors damage
+	chopper thread heli_damage_monitor();	// monitors damage
 	chopper thread heli_health();			// display helicopter's health through smoke/fire
 	chopper thread attack_targets();		// enable attack
 	chopper thread heli_targeting();		// targeting logic

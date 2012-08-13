@@ -57,6 +57,12 @@ scriptMenuRespondOnDvarIntValue ow_cac_stat_primary 80 "ulka,rpd:grip";\
 scriptMenuRespondOnDvarIntValue ow_cac_stat_primary 81 "ulka,saw:grip";\
 scriptMenuRespondOnDvarIntValue ow_cac_stat_primary 82 "ulka,m60e4:grip";
 
+#define UNLOCK_ATTACHMENT_GL \
+scriptMenuRespondOnDvarIntValue ow_cac_stat_primary 21 "ulka,m14:gl";\
+scriptMenuRespondOnDvarIntValue ow_cac_stat_primary 23 "ulka,g3:gl";\
+scriptMenuRespondOnDvarIntValue ow_cac_stat_primary 24 "ulka,g36c:gl";\
+scriptMenuRespondOnDvarIntValue ow_cac_stat_primary 26 "ulka,m4:gl";
+
 menuDef
 {
   CENTER_POPUP_SETUP( "unlockattachments", 7, ;, 1 )
@@ -77,6 +83,7 @@ menuDef
   //CHOICE_DBUTTON_VIS( 3, "@WEAPON_ACOG", when( 0 ) )
   CHOICE_BUTTON_VIS( 4, "@WEAPON_GRIP", exec "set ct_tmp_proc 1"; UNLOCK_ATTACHMENT_G, when( dvarInt(ow_cac_stat_primary) == 70 || dvarInt(ow_cac_stat_primary) == 71 || dvarInt(ow_cac_stat_primary) == 80 || dvarInt(ow_cac_stat_primary) == 81 || dvarInt(ow_cac_stat_primary) == 82 ) )
   //CHOICE_DBUTTON_VIS( 4, "@WEAPON_GRIP", when( 0 ) )
+  CHOICE_BUTTON_VIS( 5, "@WEAPON_GRENADE_LAUNCHER", exec "set ct_tmp_proc 1"; UNLOCK_ATTACHMENT_GL, when( dvarInt(ow_cac_stat_primary) == 21 || dvarInt(ow_cac_stat_primary) == 23 || dvarInt(ow_cac_stat_primary) == 24 || dvarInt(ow_cac_stat_primary) == 26 ) )
   
   CHOICE_BUTTON_VIS( 6, "@OW_CAC_UNLOCK_ATTACH", exec "set ct_tmp_proc 1"; scriptMenuResponse "ulkalla", 1 )
   //CHOICE_DBUTTON_VIS( 6, "@OW_CAC_UNLOCK_ATTACH", when( 0 ) )

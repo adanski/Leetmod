@@ -3,10 +3,6 @@
 // Function to get extended dvar values
 getdvarx( dvarName, dvarType, dvarDefault, minValue, maxValue )
 {
-  // commented while another strategy is being worked on
-	//if ( getdvar( dvarName + "__override" ) != "" )
-	//	return getdvard( dvarName, dvarType, dvarDefault, minValue, maxValue );
-  
   // Check variables from lowest to highest priority
 
 	if ( !isDefined( level.gametype ) ) {
@@ -65,7 +61,7 @@ getdvard( dvarName, dvarType, dvarDefault, minValue, maxValue )
 	dvarValue = "";
 
 	// Assign the default value if the dvar is empty
-	if ( getdvar( dvarName ) == "" ) {
+	if ( getdvar( dvarName ) == "" || getdvar( dvarName ) == "_null" ) {
 		dvarValue = dvarDefault;
 	} else {
 		// If the dvar is not empty then bring the value

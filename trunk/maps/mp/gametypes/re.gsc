@@ -628,7 +628,10 @@ createObjective( team, trigger, visuals, name )
 	objective.allowWeapons = true;
 	objective.objPoints["allies"].archived = true;
 	objective.objPoints["axis"].archived = true;
-	objective.autoResetTime = level.scr_re_objective_autoresettime;
+	if( level.scr_re_objective_autoresettime == 0 )
+    objective.autoResetTime = undefined;
+  else
+    objective.autoResetTime = level.scr_re_objective_autoresettime;
 
 	// Make the objective visible to everyone
 	objective maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", "compass_waypoint_defend_" + name );
