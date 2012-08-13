@@ -365,7 +365,11 @@ createExtractionZone( attackerTeam, zoneTrigger )
 	trace = bulletTrace( traceStart, traceEnd, false, undefined );
 	upangles = vectorToAngles( trace["normal"] );
 	extractionZone.baseEffect = spawnFx( game[level.gameType]["extraction_base_effect"], trace["position"], anglesToForward( upangles ), anglesToRight( upangles ) );
-	triggerFx( extractionZone.baseEffect );
+	
+  // Slow process to create FX
+  wait( 0.08 );
+  
+  triggerFx( extractionZone.baseEffect );
 	
 	return extractionZone;
 }
