@@ -21,7 +21,7 @@ menuDef
   { 
     close self;
   }
-  #include "ui/blurredbg.inc"
+  #include "ui_mp/blurredbg.inc"
   #include "ui_mp/navcontrols.inc"
   
   CHOICE_MENU_TITLE("@OW_SERVER_SCORES" )

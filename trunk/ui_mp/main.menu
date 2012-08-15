@@ -26,42 +26,10 @@
 		fadeCycle		1						// how often fade happens in milliseconds
 		fadeAmount		0.1						// amount to adjust alpha per cycle
 	}
-	menuDef
-	{
-		name			"main"
-		fullScreen		1
-		rect			0 0 640 480
-		focusColor		COLOR_FOCUSED
-		//soundloop 		"music_mainmenu_mp"
-		onOpen
-		{
-			open main_text;
-			uiScript addPlayerProfiles;
-			uiScript openMenuOnDvar com_playerProfile "" player_profile;
-			uiScript openMenuOnDvarNot ui_playerProfileCount 1 player_profile;
-			uiScript stopRefresh;
-			setdvar ui_showEndOfGame "0";
-      
-			setdvar cl_allowDownload "1";
-			setdvar cl_wwwDownload "1";
-			setdvar ui_browserMod "-1";
-      
-			// in case the player disconnects during a killcam in SD
-			setdvar waypointOffscreenPointerDistance 30;
-      
-			setdvar ui_version_show 0;
-		}
-		onClose
-		{
-		}
-		onESC
-		{
-		}
-	}
 
 	menuDef
 	{
-		name			"main_text"
+    name			"main_text"
 		fullScreen		1
 		rect			0 0 640 480
 		focusColor		COLOR_FOCUSED
@@ -78,6 +46,16 @@
 			//exec "set customclass3 @CLASS_CLASS3";
 			//exec "set customclass4 @CLASS_CLASS4";
 			//exec "set customclass5 @CLASS_CLASS5";
+      
+			setdvar cl_allowDownload "1";
+			setdvar cl_wwwDownload "1";
+			setdvar ui_browserMod "-1";
+      
+			// in case the player disconnects during a killcam in SD
+			setdvar waypointOffscreenPointerDistance 30;
+      
+			setdvar ui_version_show 0;
+
 		}
 		onClose
 		{

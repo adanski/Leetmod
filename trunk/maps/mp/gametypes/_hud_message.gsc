@@ -786,7 +786,8 @@ showMeleeDisabled() {
     self.meleeDisabled setText( &"OW_MELEE_DISABLED" );
     self.meleeDisabled thread maps\mp\gametypes\_hud::fontPulse( level );
     wait (2.5);
-    self.meleeDisabled destroyElem();
+    if( isDefined(self.meleeDisabled) )
+      self.meleeDisabled destroyElem();
     self.showingMeleeTip = false;
   }
 }

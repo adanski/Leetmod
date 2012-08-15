@@ -177,7 +177,7 @@
 	
 		// ------------------  statics ------------------------
 		#ifndef PC_INGAME
-			#include "ui/blurredbg.inc"
+			#include "ui_mp/blurredbg.inc"
 		#else
 			// background overlay
 			itemDef
