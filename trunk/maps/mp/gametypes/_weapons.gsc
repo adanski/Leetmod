@@ -14,7 +14,10 @@ init()
 	level.scr_claymore_friendly_fire = getdvarx( "scr_claymore_friendly_fire", "int", 0, 0, 2 );
 	level.scr_claymore_arm_time = getdvarx( "scr_claymore_arm_time", "float", 0, 0, 10 ) * 1000;
 	level.scr_claymore_check_plant_distance = getdvarx( "scr_claymore_check_plant_distance", "int", 0, 0, 1 );
-  level.scr_claymore_add_kills_max_time = getdvarx( "scr_claymore_add_kills_max_time", "int", 3, 0, 10 ) * 1000;
+  level.scr_claymore_add_kill_only_if_directed = getdvarx( "scr_claymore_add_kill_only_if_directed", "int", 1, 0, 1 );
+  
+  // directed kill: if exploded in less than 3 seconds after planted, it's added to the player kills
+  level.scr_claymore_add_kills_max_time = 3*1000;
 
 	level.scr_show_c4_blink_effect = getdvarx( "scr_show_c4_blink_effect", "int", 1, 0, 1 );
 
@@ -1045,7 +1048,7 @@ claymoreDetonation()
 
 	wait level.claymoreDetectionGracePeriod;
   
-    if( level.scr_claymore_add_kills_max_time == 0 || ( (openwarfare\_timer::getTimePassed() - self.planttime) <= level.scr_claymore_add_kills_max_time ) )
+    if( level.scr_claymore_add_kill_only_if_directed == 0 || ( (openwarfare\_timer::getTimePassed() - self.planttime) <= level.scr_claymore_add_kills_max_time ) )
       self.owner.claymoreAddKill = 1;
     else
       self.owner.claymoreAddKill = 0;

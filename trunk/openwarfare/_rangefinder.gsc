@@ -4,7 +4,11 @@
 init()
 {
 	// Get the main module's dvar
-	level.scr_rangefinder_enable = getdvarx( "scr_rangefinder_enable", "int", 0, 0, 2 );
+	level.scr_rangefinder_enable = getdvarx( "scr_rangefinder_enable", "int", 0, 0, 1 );
+  
+  level.scr_rangefinder_unit = getdvarx( "scr_rangefinder_unit", "string", "", undefined, undefined );
+	if ( level.scr_rangefinder_unit != "meters" && level.scr_rangefinder_unit != "yards" ) {
+		level.scr_rangefinder_unit = level.scr_measurement_unit_system;
 
 	// If range finder is disabled there's nothing else to do here
 	if ( level.scr_rangefinder_enable == 0 )
@@ -40,10 +44,10 @@ onPlayerSpawned()
 	self.rangeFinder.y = 27;
 	
 	// Check which unit we should show
-	if ( level.scr_rangefinder_enable == 1 ) {
-		self.rangeFinder.label = &"OW_RANGEFINDER_YARDS";
-	} else {
+	if ( level.scr_rangefinder_unit == "meters" ) {
 		self.rangeFinder.label = &"OW_RANGEFINDER_METERS";
+	} else {
+		self.rangeFinder.label = &"OW_RANGEFINDER_YARDS";
 	}
 	
 	// Start monitoring the player
@@ -71,10 +75,10 @@ monitorCurrentWeapon()
 	updateRangeFinder = false;
 	
 	// Define which multiplier to use
-	if ( level.scr_rangefinder_enable == 1 ) {
-		distMultiplier = 0.0278;
-	} else {
+	if ( level.scr_rangefinder_unit == "meters" ) {
 		distMultiplier = 0.0254;
+	} else {
+		distMultiplier = 0.0278;
 	}
 
 	for (;;)

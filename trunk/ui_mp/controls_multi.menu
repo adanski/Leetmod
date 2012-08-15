@@ -86,11 +86,11 @@
 		
     CHOICE_BIND( 34, "@OW_DROP_OBJECT", "openScriptMenu modkeybind objectdrop", ; )
 		CHOICE_BIND( 35, "@OW_DROP_WEAPON", "openScriptMenu modkeybind weapondrop", ; )
-		//CHOICE_BIND( 36, "@OW_BANDAGE", "openScriptMenu modkeybind bandage", ; )	
-		CHOICE_BIND( 36, "@OW_STATS_TOGGLE", "openScriptMenu modkeybind togglestats", ; )	
+		CHOICE_BIND( 36, "@OW_BANDAGE", "openScriptMenu modkeybind bandage", ; )
+		CHOICE_BIND( 38, "@OW_STATS_TOGGLE", "openScriptMenu modkeybind togglestats", ; )	
 		//CHOICE_BIND( 37, "@OW_REDIRECT", "openScriptMenu modkeybind redirect", ; )
 		//CHOICE_BIND( 38, "@OW_TIMEOUT_CALL", "openScriptMenu modkeybind calltimeout", ; )
-		CHOICE_BIND( 37, "@OW_CYCLE_FPSLAG", "openScriptMenu modkeybind cyclefpslag", ; )
+		CHOICE_BIND( 39, "@OW_CYCLE_FPSLAG", "openScriptMenu modkeybind cyclefpslag", ; )
 		CHOICE_BIND( 40, "@OW_AACP_MENU", "openScriptMenu modkeybind advancedacp", ; )	
 
 		CHOICE_KEYBINDHELP

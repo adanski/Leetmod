@@ -16,9 +16,9 @@ init()
 	level.scr_realtime_stats_default_on = getdvarx( "scr_realtime_stats_default_on", "int", 0, 0, 1 );
 	level.scr_realtime_stats_remove_sniping_time = getdvarx( "scr_realtime_stats_remove_sniping_time", "int", 1, 0, 1 );
 	
-	level.scr_realtime_stats_unit = getdvarx( "scr_realtime_stats_unit", "string", "meters" );
+	level.scr_realtime_stats_unit = getdvarx( "scr_realtime_stats_unit", "string", "" );
 	if ( level.scr_realtime_stats_unit != "meters" && level.scr_realtime_stats_unit != "yards" ) {
-		level.scr_realtime_stats_unit = "meters";
+		level.scr_realtime_stats_unit = level.scr_measurement_unit_system;
 	}
 	
 	// Check if we should show the end of game statistics

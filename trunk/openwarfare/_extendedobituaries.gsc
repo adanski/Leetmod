@@ -13,9 +13,9 @@ init()
 		return;
 
 	// Get the rest of  module's dvars
-	level.scr_ext_obituaries_unit = getdvarx( "scr_ext_obituaries_unit", "string", "meters", undefined, undefined );
+	level.scr_ext_obituaries_unit = getdvarx( "scr_ext_obituaries_unit", "string", "", undefined, undefined );
 	if ( level.scr_ext_obituaries_unit != "meters" && level.scr_ext_obituaries_unit != "yards" && level.scr_ext_obituaries_unit != "both" ) {
-		level.scr_ext_obituaries_unit = "meters";
+		level.scr_ext_obituaries_unit = level.scr_measurement_unit_system;
 	}
 
 	precacheString( &"OW_EXTENDED_OBITUARY" );
