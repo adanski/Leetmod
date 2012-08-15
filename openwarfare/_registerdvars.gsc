@@ -2,8 +2,10 @@
 
 init()
 {
+  level.scr_measurement_unit_system = getdvarx( "scr_measurement_unit_system", "string", "meters" );
+  
 	// Overall admin GUIDs
-	level.scr_server_overall_admin_guids = getdvarx( "scr_server_overall_admin_guids", "string", "" );	
+	level.scr_server_overall_admin_guids = getdvarx( "scr_server_overall_admin_guids", "string", "" );
 
 	// Gametype objective variables
 	level.scr_gametype_objectives_sound = getdvarx( "scr_gametype_objectives_sound", "int", 1, 0, 1 );

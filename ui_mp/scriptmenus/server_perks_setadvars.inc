@@ -561,7 +561,25 @@
   execOnDvarStringValue menu_cfg_gt sd "seta perk_explosivedamage_sd _null" \
   execOnDvarStringValue menu_cfg_gt ss "seta perk_explosivedamage_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta perk_explosivedamage_tgr _null" \
-  execOnDvarStringValue menu_cfg_gt war "seta perk_explosivedamage_war _null"
+  execOnDvarStringValue menu_cfg_gt war "seta perk_explosivedamage_war _null"  
+
+#define SETA_SCR_CLAYMORE_FRIENDLY_FIRE \
+  execOnDvarStringValue menu_cfg_gt ass "seta scr_claymore_friendly_fire_ass _null" \
+  execOnDvarStringValue menu_cfg_gt bel "seta scr_claymore_friendly_fire_bel _null" \
+  execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_friendly_fire_ch _null" \
+  execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_friendly_fire_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_friendly_fire_dm _null" \
+  execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_friendly_fire_ftag _null" \
+  execOnDvarStringValue menu_cfg_gt gg "seta scr_claymore_friendly_fire_gg _null" \
+  execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_friendly_fire_gr _null" \
+  execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_friendly_fire_koth _null" \
+  execOnDvarStringValue menu_cfg_gt oitc "seta scr_claymore_friendly_fire_oitc _null" \
+  execOnDvarStringValue menu_cfg_gt re "seta scr_claymore_friendly_fire_re _null" \
+  execOnDvarStringValue menu_cfg_gt sab "seta scr_claymore_friendly_fire_sab _null" \
+  execOnDvarStringValue menu_cfg_gt sd "seta scr_claymore_friendly_fire_sd _null" \
+  execOnDvarStringValue menu_cfg_gt ss "seta scr_claymore_friendly_fire_ss _null" \
+  execOnDvarStringValue menu_cfg_gt tgr "seta scr_claymore_friendly_fire_tgr _null" \
+  execOnDvarStringValue menu_cfg_gt war "seta scr_claymore_friendly_fire_war _null"
   
 #define SETA_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS \
   execOnDvarStringValue menu_cfg_gt ass "seta specialty_grenadepulldeath_check_frags_ass _null" \
@@ -617,23 +635,23 @@
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_claymore_check_plant_distance_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_claymore_check_plant_distance_war _null"
   
-#define SETA_SCR_CLAYMORE_ADD_KILLS_MAX_TIME \
-  execOnDvarStringValue menu_cfg_gt ass "seta scr_claymore_add_kills_max_time_ass _null" \
-  execOnDvarStringValue menu_cfg_gt bel "seta scr_claymore_add_kills_max_time_bel _null" \
-  execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_add_kills_max_time_ch _null" \
-  execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_add_kills_max_time_ctf _null" \
-  execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_add_kills_max_time_dm _null" \
-  execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_add_kills_max_time_ftag _null" \
-  execOnDvarStringValue menu_cfg_gt gg "seta scr_claymore_add_kills_max_time_gg _null" \
-  execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_add_kills_max_time_gr _null" \
-  execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_add_kills_max_time_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_claymore_add_kills_max_time_oitc _null" \
-  execOnDvarStringValue menu_cfg_gt re "seta scr_claymore_add_kills_max_time_re _null" \
-  execOnDvarStringValue menu_cfg_gt sab "seta scr_claymore_add_kills_max_time_sab _null" \
-  execOnDvarStringValue menu_cfg_gt sd "seta scr_claymore_add_kills_max_time_sd _null" \
-  execOnDvarStringValue menu_cfg_gt ss "seta scr_claymore_add_kills_max_time_ss _null" \
-  execOnDvarStringValue menu_cfg_gt tgr "seta scr_claymore_add_kills_max_time_tgr _null" \
-  execOnDvarStringValue menu_cfg_gt war "seta scr_claymore_add_kills_max_time_war _null"
+#define SETA_SCR_CLAYMORE_ADD_KILL_ONLY_IF_DIRECTED \
+  execOnDvarStringValue menu_cfg_gt ass "seta scr_claymore_add_kill_only_if_directed_ass _null" \
+  execOnDvarStringValue menu_cfg_gt bel "seta scr_claymore_add_kill_only_if_directed_bel _null" \
+  execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_add_kill_only_if_directed_ch _null" \
+  execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_add_kill_only_if_directed_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_add_kill_only_if_directed_dm _null" \
+  execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_add_kill_only_if_directed_ftag _null" \
+  execOnDvarStringValue menu_cfg_gt gg "seta scr_claymore_add_kill_only_if_directed_gg _null" \
+  execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_add_kill_only_if_directed_gr _null" \
+  execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_add_kill_only_if_directed_koth _null" \
+  execOnDvarStringValue menu_cfg_gt oitc "seta scr_claymore_add_kill_only_if_directed_oitc _null" \
+  execOnDvarStringValue menu_cfg_gt re "seta scr_claymore_add_kill_only_if_directed_re _null" \
+  execOnDvarStringValue menu_cfg_gt sab "seta scr_claymore_add_kill_only_if_directed_sab _null" \
+  execOnDvarStringValue menu_cfg_gt sd "seta scr_claymore_add_kill_only_if_directed_sd _null" \
+  execOnDvarStringValue menu_cfg_gt ss "seta scr_claymore_add_kill_only_if_directed_ss _null" \
+  execOnDvarStringValue menu_cfg_gt tgr "seta scr_claymore_add_kill_only_if_directed_tgr _null" \
+  execOnDvarStringValue menu_cfg_gt war "seta scr_claymore_add_kill_only_if_directed_war _null"
   
 #define SETA_SCR_CLAYMORE_ARM_TIME \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_claymore_arm_time_ass _null" \
