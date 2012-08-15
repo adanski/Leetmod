@@ -10,7 +10,7 @@ itemDef
 	rect			FULLSCREEN_WIDE
 	background		"animbg_back"
 	//forecolor		0.8 0.8 1 1
-	visible			when( dvarString( fs_game ) != "" )
+	visible			1
 	decoration
 }
 
@@ -21,7 +21,7 @@ itemDef
 	exp				rect X((-107) - ((float(milliseconds() % FOG_SCROLL_TIME) / FOG_SCROLL_TIME) * (854)))
 	//forecolor		0.8 0.8 1 1
 	background		"animbg_fogscroll"
-	visible			when( dvarString( fs_game ) != "" )
+	visible			when( dvarBool( ct_menu_hide_fog ) )
 	decoration
 }
 
@@ -32,7 +32,7 @@ itemDef
 	exp				rect X((-961) + ((float(milliseconds() % THINFOG_SCROLL_TIME) / THINFOG_SCROLL_TIME) * (854)))
 	background		"animbg_fogscrollthin"
 	//forecolor		0.8 0.8 1 1
-	visible			when( dvarString( fs_game ) != "" )
+	visible			when( dvarBool( ct_menu_hide_fog ) )
 	decoration
 }
 
@@ -42,7 +42,7 @@ itemDef
 	rect			FULLSCREEN_WIDE
 	background		"animbg_front"
 	//forecolor		0.8 0.8 1 1
-	visible			when( dvarString( fs_game ) != "" )
+	visible			1
 	decoration
 }
 
@@ -52,6 +52,6 @@ itemDef
 	rect			FULLSCREEN_WIDE
 	background		"animbg_front2"
 	//forecolor		0.8 0.8 1 1
-	visible			when( dvarString( fs_game ) != "" )
+	visible			1
 	decoration
 }

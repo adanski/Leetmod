@@ -22,7 +22,7 @@ menuDef
   { 
     close self;
   }
-  #include "ui/blurredbg.inc"
+  #include "ui_mp/blurredbg.inc"
   #include "ui_mp/navcontrols.inc"
   
   #undef CHOICE_X_START

@@ -1,4 +1,4 @@
-#define SETA_CUSTOM_VARS1 "seta ct_conChatHistOnly 0; seta ct_hud_show_inventory 0; seta ct_hud_show_scores 0; seta ct_hud_hardcore_show_compass 0; seta ct_chat_position standard; seta ct_scoreboardNew 0; seta r_normal 1; seta ct_unlocked_wpf 0; seta ct_unlocked_attach 0; seta ct_unlocked_camo 0; seta ct_lm_ver 18"
+#include "ui_mp/custom.inc"
 
 /*
 #ifndef PC_IN_GAME
@@ -42,7 +42,7 @@ CHOICE_BUTTON_VIS( 7, "@MENU_MULTIPLAYER_OPTIONS", LOCAL_CLOSE_ALL open options_
 CHOICE_BUTTON_VIS( 8, "@MENU_RESET_SYSTEM_DEFAULTS", LOCAL_CLOSE_ALL open options_graphics_defaults, when( ( !dvarint( sv_running ) || dvarInt( ui_allow_graphic_change ) ) && dvarInt( arcademode ) == 0 ); )
 CHOICE_DBUTTON_VIS( 8, "@MENU_RESET_SYSTEM_DEFAULTS", when( ( dvarint( sv_running ) && dvarInt(ui_allow_graphic_change)==0 ) || dvarBool( arcademode ) ); )
 
-CHOICE_BUTTON_VIS( 10, "@OW_MENU_RESET_NEW_OPTIONS", exec SETA_CUSTOM_VARS1, when( dvarint( ui_multiplayer ) ); )
+CHOICE_BUTTON_VIS( 10, "@OW_MENU_RESET_NEW_OPTIONS", exec SETA_CUSTOM_VARS, when( dvarint( ui_multiplayer ) ); )
 
 // ---
 

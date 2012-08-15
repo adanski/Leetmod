@@ -34,7 +34,7 @@
 		{
 		}
 		
-		#include "ui/blurredbg.inc"
+		#include "ui_mp/blurredbg.inc"
 		#define 	BACK_ENABLE		1
 		#include "ui_mp/navcontrols.inc"
 		CHOICE_MENU_TITLE( "@OW_MENU_SERVER_CONFIGURATION" )

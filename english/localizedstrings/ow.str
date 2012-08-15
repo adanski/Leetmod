@@ -1411,6 +1411,9 @@ LANG_ENGLISH "^3Please try connecting again in a few minutes..."
 // ui_mp/options_game_pc.menu
 //******************************************************************************
 
+REFERENCE MENU_HIDE_FOG
+LANG_ENGLISH "Menu fog effect"
+
 REFERENCE MAX_FPS
 LANG_ENGLISH "Max FPS"
 
