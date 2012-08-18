@@ -616,6 +616,24 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_binoculars_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_binoculars_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_binoculars_war _null"
+
+#define SETA_SCR_ENABLE_NIGHTVISION \
+  execOnDvarStringValue menu_cfg_gt ass "seta scr_enable_nightvision_ass _null" \
+  execOnDvarStringValue menu_cfg_gt bel "seta scr_enable_nightvision_bel _null" \
+  execOnDvarStringValue menu_cfg_gt ch "seta scr_enable_nightvision_ch _null" \
+  execOnDvarStringValue menu_cfg_gt ctf "seta scr_enable_nightvision_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dm "seta scr_enable_nightvision_dm _null" \
+  execOnDvarStringValue menu_cfg_gt ftag "seta scr_enable_nightvision_ftag _null" \
+  execOnDvarStringValue menu_cfg_gt gg "seta scr_enable_nightvision_gg _null" \
+  execOnDvarStringValue menu_cfg_gt gr "seta scr_enable_nightvision_gr _null" \
+  execOnDvarStringValue menu_cfg_gt koth "seta scr_enable_nightvision_koth _null" \
+  execOnDvarStringValue menu_cfg_gt oitc "seta scr_enable_nightvision_oitc _null" \
+  execOnDvarStringValue menu_cfg_gt re "seta scr_enable_nightvision_re _null" \
+  execOnDvarStringValue menu_cfg_gt sab "seta scr_enable_nightvision_sab _null" \
+  execOnDvarStringValue menu_cfg_gt sd "seta scr_enable_nightvision_sd _null" \
+  execOnDvarStringValue menu_cfg_gt ss "seta scr_enable_nightvision_ss _null" \
+  execOnDvarStringValue menu_cfg_gt tgr "seta scr_enable_nightvision_tgr _null" \
+  execOnDvarStringValue menu_cfg_gt war "seta scr_enable_nightvision_war _null"
   
 #define SETA_SCR_MELEE_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_melee_enable_ass _null" \

@@ -19,7 +19,8 @@ CHOICE_DVARYESNO_VIS( 13, "@OW_SHOW_SCOREBOARD_BOMBER", scr_ch_scoreboard_flag_c
 
 
 CHOICE_DVARFLOATLIST_VIS( 14, "@OW_SHOW_BOMB_CARRIER", scr_ch_show_flag_carrier, { "Disabled" 0 "Always enabled" 1 "Anti Flag-Camping" 2 }, ;, when(G_GAMETYPE_CH) )
-CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SHOW_BOMB_CARRIER_TIME", scr_ch_show_flag_carrier_time, 3, ;, when(G_GAMETYPE_CH) )
+CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SHOW_BOMB_CARRIER_TIME", scr_ch_show_flag_carrier_time, 3, ;, when(G_GAMETYPE_CH && dvarInt(scr_ch_show_flag_carrier) == 1) )
+CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SHOW_BOMB_CARRIER_TIME_DISTANCE", scr_ch_show_flag_carrier_time, 3, ;, when(G_GAMETYPE_CH && dvarInt(scr_ch_show_flag_carrier) == 2) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 16, "@OW_SHOW_BOMB_CARRIER_DISTANCE", scr_ch_show_flag_carrier_distance, 5, ;, when(G_GAMETYPE_CH) )
 
 

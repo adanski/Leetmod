@@ -5,7 +5,7 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_wdm_enabled = getdvarx( "scr_wdm_enabled", "int", 0, 0, 1 );
-  level.scr_wdm_autoadjust_bolt_action = getdvarx( "scr_wdm_autoadjust_bolt_action", "int", 0, 0, 1 );
+  level.scr_bolt_action_damage_autoadjust = getdvarx( "scr_bolt_action_damage_autoadjust", "int", 0, 0, 1 );
 
 	// If weapon damage modifier is disabled then there's nothing else to do here
 	if ( level.scr_wdm_enabled == 0 )
@@ -24,7 +24,7 @@ wdmDamage( iDamage, sWeapon, sHitLoc, sMeansOfDeath )
   
 	// Make sure it was not a knife kill or a headshot
 	if ( sMeansOfDeath != "MOD_MELEE" && !maps\mp\gametypes\_globallogic::isHeadShot( sWeapon, sHitLoc, sMeansOfDeath ) ) {
-    if( !level.scr_wdm_autoadjust_bolt_action ) {
+    if( !level.scr_bolt_action_damage_autoadjust ) {
       // Check if we support wdm for this weapon
       if ( isDefined( level.wdm[ sWeapon ] ) ) {
         damageModifier = getdvarx( level.wdm[ sWeapon ], "float", 100.0, 0.0, 200.0 ) / 100;

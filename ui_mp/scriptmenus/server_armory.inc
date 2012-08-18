@@ -99,12 +99,11 @@ menuDef
   CHOICE_DVARYESNO_VIS( 39, "@WEAPON_SMOKE_GRENADE", menu_weap_allow_smoke_grenade, SETA_WEAP_ALLOW_SMOKE_GRENADE;, 1 )
   
   CHOICE_DVARYESNO_VIS( 40, "@OW_SCR_ALLOW_STATIONARY_TURRETS", menu_scr_allow_stationary_turrets, SETA_SCR_ALLOW_STATIONARY_TURRETS;, 1 )
-  CHOICE_DVARYESNO_VIS( 41, "@OW_BINOCULARS", menu_weap_allow_binoculars, SETA_WEAP_ALLOW_BINOCULARS;, 1 )
   
   CHOICE_DVARYESNO_VIS( 42, "@OW_SCR_MELEE_ENABLE", menu_scr_melee_enable, SETA_SCR_MELEE_ENABLE;, 1 )
-  CHOICE_DVAREDIT_NUMERIC_VIS( 43, "@OW_SCR_MELEE_RANGE", menu_scr_melee_range, 3, SETA_SCR_MELEE_RANGE;, when( dvarBool(scr_melee_enable) == 1 ) )
-  CHOICE_DVAREDIT_NUMERIC_VIS( 44, "@OW_SCR_MELEE_STAB_RANGE", menu_scr_melee_stab_range, 3, SETA_SCR_MELEE_STAB_RANGE;, when( dvarBool(scr_melee_enable) == 1 ) )
-  CHOICE_DVAREDIT_NUMERIC_VIS( 45, "@OW_SCR_MELEECHARGEFRICTION", menu_scr_meleeChargeFriction, 3, SETA_SCR_MELEECHARGEFRICTION;, when( dvarBool(scr_melee_enable) == 1 ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 43, "@OW_SCR_MELEE_RANGE", menu_scr_melee_range, 3, SETA_SCR_MELEE_RANGE;, when( dvarBool(menu_scr_melee_enable) == 1 ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 44, "@OW_SCR_MELEE_STAB_RANGE", menu_scr_melee_stab_range, 3, SETA_SCR_MELEE_STAB_RANGE;, when( dvarBool(menu_scr_melee_enable) == 1 ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 45, "@OW_SCR_MELEECHARGEFRICTION", menu_scr_meleeChargeFriction, 3, SETA_SCR_MELEECHARGEFRICTION;, when( dvarBool(menu_scr_melee_enable) == 1 ) )
   
   #undef	CHOICE_X_START
   #define CHOICE_X_START	-510
@@ -118,26 +117,35 @@ menuDef
   #undef CHOICE_X_SPACING
   #define CHOICE_X_SPACING 240
   
-  CHOICE_DVARFLOATLIST_VIS( 46, "@OW_MENU_MANAGE_ATTACHMENTS", menu_cfg_att, { "@WEAPON_ASSAULTRIFLES" 0 "@WEAPON_SMGS" 1 "@OW_LMGS" 2 "@WEAPON_SHOTGUNS" 3 "@WEAPON_SNIPERRIFLES" 4 "@OW_PISTOLS" 5 }, ;, 1 )
-  CHOICE_DVARYESNO_VIS( 47, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_pistol_none, ;, when( dvarInt(menu_cfg_att) == 5 ))
-  CHOICE_DVARYESNO_VIS( 47, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_assault_none, ;, when( dvarInt(menu_cfg_att) == 0 ))
-  CHOICE_DVARYESNO_VIS( 47, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_specops_none, ;, when( dvarInt(menu_cfg_att) == 1 ))
-  CHOICE_DVARYESNO_VIS( 47, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_heavygunner_none, ;, when( dvarInt(menu_cfg_att) == 2 ))
-  CHOICE_DVARYESNO_VIS( 47, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_shotgun_none, ;, when( dvarInt(menu_cfg_att) == 3 ))
-  CHOICE_DVARYESNO_VIS( 47, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_sniper_none, ;, when( dvarInt(menu_cfg_att) == 4 ))
-  CHOICE_DVARYESNO_VIS( 48, "@WEAPON_SILENCER", menu_attach_allow_pistol_silencer, ;, when( dvarInt(menu_cfg_att) == 5 ) )
-  CHOICE_DVARYESNO_VIS( 48, "@WEAPON_SILENCER", menu_attach_allow_assault_silencer, ;, when( dvarInt(menu_cfg_att) == 0 ) )
-  CHOICE_DVARYESNO_VIS( 48, "@WEAPON_SILENCER", menu_attach_allow_specops_silencer, ;, when( dvarInt(menu_cfg_att) == 1 ) )
-  CHOICE_DVARYESNO_VIS( 49, "@WEAPON_REDDOT", menu_attach_allow_assault_reflex, ;, when( dvarInt(menu_cfg_att) == 0 ) )
-  CHOICE_DVARYESNO_VIS( 49, "@WEAPON_REDDOT", menu_attach_allow_specops_reflex, ;, when( dvarInt(menu_cfg_att) == 1 ) )
-  CHOICE_DVARYESNO_VIS( 49, "@WEAPON_REDDOT", menu_attach_allow_heavygunner_reflex, ;, when( dvarInt(menu_cfg_att) == 2 ) )
-  CHOICE_DVARYESNO_VIS( 49, "@WEAPON_REDDOT", menu_attach_allow_shotgun_reflex, ;, when( dvarInt(menu_cfg_att) == 3 ) )
-  CHOICE_DVARYESNO_VIS( 50, "@WEAPON_ACOG", menu_attach_allow_assault_acog, ;, when( dvarInt(menu_cfg_att) == 0 ) )
-  CHOICE_DVARYESNO_VIS( 50, "@WEAPON_ACOG", menu_attach_allow_specops_acog, ;, when( dvarInt(menu_cfg_att) == 1 ) )
-  CHOICE_DVARYESNO_VIS( 50, "@WEAPON_ACOG", menu_attach_allow_heavygunner_acog, ;, when( dvarInt(menu_cfg_att) == 2 ) )
-  CHOICE_DVARYESNO_VIS( 50, "@WEAPON_ACOG", menu_attach_allow_sniper_acog, ;, when( dvarInt(menu_cfg_att) == 4 ) )
-  CHOICE_DVARYESNO_VIS( 51, "@WEAPON_GRIP", menu_attach_allow_heavygunner_grip, ;, when( dvarInt(menu_cfg_att) == 2 ) )
-  CHOICE_DVARYESNO_VIS( 51, "@WEAPON_GRIP", menu_attach_allow_shotgun_grip, ;, when( dvarInt(menu_cfg_att) == 3 ) )
-  CHOICE_DVARYESNO_VIS( 52, "@WEAPON_GRENADE_LAUNCHER", menu_attach_allow_assault_gl, ;, when( dvarInt(menu_cfg_att) == 0 ) )
-  CHOICE_DVARYESNO_VIS( 54, "@OW_SCR_DYNAMIC_ATTACHMENTS_ENABLE", menu_scr_dynamic_attachments_enable, SETA_SCR_DYNAMIC_ATTACHMENTS_ENABLE;, 1 )
+  CHOICE_DVARYESNO_VIS( 46, "@OW_SCR_DYNAMIC_ATTACHMENTS_ENABLE", menu_scr_dynamic_attachments_enable, SETA_SCR_DYNAMIC_ATTACHMENTS_ENABLE;, 1 )
+  CHOICE_DVARFLOATLIST_VIS( 48, "@OW_MENU_MANAGE_ATTACHMENTS", menu_cfg_att, { "@WEAPON_ASSAULTRIFLES" 0 "@WEAPON_SMGS" 1 "@OW_LMGS" 2 "@WEAPON_SHOTGUNS" 3 "@WEAPON_SNIPERRIFLES" 4 "@OW_PISTOLS" 5 }, ;, 1 )
+  CHOICE_DVARYESNO_VIS( 49, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_pistol_none, ;, when( dvarInt(menu_cfg_att) == 5 ))
+  CHOICE_DVARYESNO_VIS( 49, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_assault_none, ;, when( dvarInt(menu_cfg_att) == 0 ))
+  CHOICE_DVARYESNO_VIS( 49, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_specops_none, ;, when( dvarInt(menu_cfg_att) == 1 ))
+  CHOICE_DVARYESNO_VIS( 49, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_heavygunner_none, ;, when( dvarInt(menu_cfg_att) == 2 ))
+  CHOICE_DVARYESNO_VIS( 49, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_shotgun_none, ;, when( dvarInt(menu_cfg_att) == 3 ))
+  CHOICE_DVARYESNO_VIS( 49, "@OW_MENU_ALLOW_NO_ATTACHMENTS", menu_attach_allow_sniper_none, ;, when( dvarInt(menu_cfg_att) == 4 ))
+  CHOICE_DVARYESNO_VIS( 50, "@WEAPON_SILENCER", menu_attach_allow_pistol_silencer, ;, when( dvarInt(menu_cfg_att) == 5 ) )
+  CHOICE_DVARYESNO_VIS( 50, "@WEAPON_SILENCER", menu_attach_allow_assault_silencer, ;, when( dvarInt(menu_cfg_att) == 0 ) )
+  CHOICE_DVARYESNO_VIS( 50, "@WEAPON_SILENCER", menu_attach_allow_specops_silencer, ;, when( dvarInt(menu_cfg_att) == 1 ) )
+  CHOICE_DVARYESNO_VIS( 51, "@WEAPON_REDDOT", menu_attach_allow_assault_reflex, ;, when( dvarInt(menu_cfg_att) == 0 ) )
+  CHOICE_DVARYESNO_VIS( 51, "@WEAPON_REDDOT", menu_attach_allow_specops_reflex, ;, when( dvarInt(menu_cfg_att) == 1 ) )
+  CHOICE_DVARYESNO_VIS( 51, "@WEAPON_REDDOT", menu_attach_allow_heavygunner_reflex, ;, when( dvarInt(menu_cfg_att) == 2 ) )
+  CHOICE_DVARYESNO_VIS( 51, "@WEAPON_REDDOT", menu_attach_allow_shotgun_reflex, ;, when( dvarInt(menu_cfg_att) == 3 ) )
+  CHOICE_DVARYESNO_VIS( 52, "@WEAPON_ACOG", menu_attach_allow_assault_acog, ;, when( dvarInt(menu_cfg_att) == 0 ) )
+  CHOICE_DVARYESNO_VIS( 52, "@WEAPON_ACOG", menu_attach_allow_specops_acog, ;, when( dvarInt(menu_cfg_att) == 1 ) )
+  CHOICE_DVARYESNO_VIS( 52, "@WEAPON_ACOG", menu_attach_allow_heavygunner_acog, ;, when( dvarInt(menu_cfg_att) == 2 ) )
+  CHOICE_DVARYESNO_VIS( 52, "@WEAPON_ACOG", menu_attach_allow_sniper_acog, ;, when( dvarInt(menu_cfg_att) == 4 ) )
+  CHOICE_DVARYESNO_VIS( 53, "@WEAPON_GRIP", menu_attach_allow_heavygunner_grip, ;, when( dvarInt(menu_cfg_att) == 2 ) )
+  CHOICE_DVARYESNO_VIS( 53, "@WEAPON_GRIP", menu_attach_allow_shotgun_grip, ;, when( dvarInt(menu_cfg_att) == 3 ) )
+  CHOICE_DVARYESNO_VIS( 54, "@WEAPON_GRENADE_LAUNCHER", menu_attach_allow_assault_gl, ;, when( dvarInt(menu_cfg_att) == 0 ) )
+  
+  #undef	CHOICE_X_START
+  #define CHOICE_X_START	-280
+
+  #undef CHOICE_Y_START
+  #define CHOICE_Y_START -15
+  
+  CHOICE_DVARYESNO_VIS( 56, "@OW_BINOCULARS", menu_weap_allow_binoculars, SETA_WEAP_ALLOW_BINOCULARS;, 1 )
+  CHOICE_DVARYESNO_VIS( 57, "@MENU_NIGHT_VISION", menu_scr_enable_nightvision, SETA_SCR_ENABLE_NIGHTVISION;, 1 )
 }

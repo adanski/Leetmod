@@ -1651,8 +1651,8 @@ LANG_ENGLISH "Health System"
 REFERENCE SERVER_FAIRNESS
 LANG_ENGLISH "Fairness"
 
-REFERENCE SERVER_MAPDESIGN
-LANG_ENGLISH "Map Design"
+REFERENCE SERVER_WORLD
+LANG_ENGLISH "World"
 
 REFERENCE SERVER_SCORES
 LANG_ENGLISH "Scores"
@@ -1662,6 +1662,9 @@ LANG_ENGLISH "Spectators"
 
 REFERENCE SERVER_GAMETYPE
 LANG_ENGLISH "Gametype"
+
+REFERENCE SERVER_PLAYER
+LANG_ENGLISH "Player"
 
 REFERENCE LAUNCH_WITHOUT_MODS
 LANG_ENGLISH "Launch without mods"
@@ -1683,10 +1686,10 @@ REFERENCE ROUND_SWITCH
 LANG_ENGLISH "Round switch"
 
 REFERENCE PLAYER_RESPAWN_DELAY
-LANG_ENGLISH "Player respawn time"
+LANG_ENGLISH "Player respawn delay"
 
 REFERENCE WAVE_RESPAWN_DELAY
-LANG_ENGLISH "Wave respawn time"
+LANG_ENGLISH "Wave respawn delay"
 
 REFERENCE NUMBER_OF_LIVES
 LANG_ENGLISH "Number of lives"
@@ -1731,10 +1734,13 @@ REFERENCE SHOW_BOMB_CARRIER
 LANG_ENGLISH "Show Kill sign"
 
 REFERENCE SHOW_BOMB_CARRIER_TIME
-LANG_ENGLISH "Seconds to (--check)"
+LANG_ENGLISH "Seconds to mark the bomb carrier"
+
+REFERENCE SHOW_BOMB_CARRIER_TIME_DISTANCE
+LANG_ENGLISH "Seconds to move the distance below before being marked"
 
 REFERENCE SHOW_BOMB_CARRIER_DISTANCE
-LANG_ENGLISH " (--check)"
+LANG_ENGLISH "Distance to travel before being marked with sign"
 
 REFERENCE FLASH_ON_CAPTURE
 LANG_ENGLISH "Flash target on capturing"
@@ -1747,6 +1753,47 @@ LANG_ENGLISH "Perk on slot1"
 
 REFERENCE PERK_SLOT2
 LANG_ENGLISH "Perk on slot2"
+
+//******************************************************************************
+// ui_mp/server_gametype_ass.menu
+//******************************************************************************
+
+REFERENCE SCR_ASS_EXTRACTING_TIME
+LANG_ENGLISH "VIP extracting time"
+
+REFERENCE SCR_ASS_SCOREBOARD_VIP
+LANG_ENGLISH "Identify VIP player in scoreboard"
+
+REFERENCE SCR_ASS_VIP_HEALTH
+LANG_ENGLISH "VIP player health (0=same)"
+
+REFERENCE SCR_ASS_FORCE_VIP_HANDGUN
+LANG_ENGLISH "Force this handgun to the VIP"
+
+REFERENCE SCR_ASS_VIP_CLAN_TAGS
+LANG_ENGLISH "Clan tags allowed to be VIP"
+
+//******************************************************************************
+// ui_mp/server_gametype_bel.menu
+//******************************************************************************
+
+REFERENCE SCR_BEL_ALIVE_POINTS
+LANG_ENGLISH "Points to receive for staying alive"
+
+REFERENCE SCR_BEL_ALIVE_POINTS_TIME
+LANG_ENGLISH "Alive interval time to receive points"
+
+REFERENCE SCR_BEL_SHOWONCOMPASS
+LANG_ENGLISH "Show runners location to the enemies"
+
+REFERENCE SCR_BEL_SHOWONCOMPASS_POINTS
+LANG_ENGLISH "Points to receive when own location is shown"
+
+REFERENCE SCR_BEL_SHOWONCOMPASS_INTERVAL
+LANG_ENGLISH "Interval time to show a runner's location again"
+
+REFERENCE SCR_BEL_SHOWONCOMPASS_TIME
+LANG_ENGLISH "Time to show the location of a runner"
 
 //******************************************************************************
 // ui_mp/server_gametype_ch.menu
@@ -1915,6 +1962,29 @@ LANG_ENGLISH "Flash target on destroying"
 
 REFERENCE SS_OITC_AVAILABLE_WEAPONS
 LANG_ENGLISH "Available weapons"
+
+//******************************************************************************
+// ui_mp/server_gametype_re.menu
+//******************************************************************************
+
+REFERENCE SCR_RE_DEFENDERS_SPAWNDELAY
+LANG_ENGLISH "Defenders respawn delay"
+
+REFERENCE SCR_RE_OBJECTIVES_ENABLED
+LANG_ENGLISH "Enabled documents (objects to retrieve)"
+
+REFERENCE SCR_RE_ONE_RETRIEVE
+LANG_ENGLISH "Ends round when any of the objects are retrieved"
+
+REFERENCE SCR_RE_OBJECTIVE_AUTORESETTIME
+LANG_ENGLISH "Objects location auto-reset time when not picked again"
+
+REFERENCE SCR_RE_SCOREBOARD_OBJECTIVE_CARRIER
+LANG_ENGLISH "Identify objective carrier on scoreboard"
+
+REFERENCE SCR_RE_DEFENDERS_SHOW_BOTH
+LANG_ENGLISH "Show both objects to the defenders"
+
 
 //******************************************************************************
 // ui_mp/server_gametype_sd.menu
@@ -2518,7 +2588,7 @@ LANG_ENGLISH "Defuse bomb"
 
 
 //******************************************************************************
-// ui_mp/server_mapdesign.inc
+// ui_mp/server_world.inc
 //******************************************************************************
 
 REFERENCE SCR_MAP_SPECIAL_FX_ENABLE
@@ -2560,11 +2630,83 @@ LANG_ENGLISH "Special phase sounds"
 REFERENCE SCR_DCS_RESET_CYCLE
 LANG_ENGLISH "Reset cycle"
 
+//******************************************************************************
+// ui_mp/server_player.inc
+//******************************************************************************
+
+REFERENCE SCR_FALLDAMAGEMINHEIGHT
+LANG_ENGLISH "Fall damage min height"
+
+REFERENCE SCR_FALLDAMAGEMAXHEIGHT
+LANG_ENGLISH "Fall damage max height"
+
+REFERENCE SCR_JUMP_HEIGHT
+LANG_ENGLISH "Jump height"
+
+REFERENCE SCR_JUMP_SLOWDOWN_ENABLE
+LANG_ENGLISH "Jump landing slowdown"
+
+REFERENCE SCR_GAME_ALLOW_KILLCAM
+LANG_ENGLISH "Killcam"
+
+REFERENCE SCR_PLAYER_FORCERESPAWN
+LANG_ENGLISH "Force respawn"
+
+REFERENCE SCR_QUICKACTIONS_ENABLE
+LANG_ENGLISH "Quick actions (e.g. press 2xUse key)"
+
+REFERENCE SCR_THIRDPERSON_ENABLE
+LANG_ENGLISH "Play in third person"
+
+REFERENCE SCR_PLAYER_LEAN_FIX
+LANG_ENGLISH "Fix lean animations
+
+REFERENCE SCR_BOB_EFFECT_ENABLE
+LANG_ENGLISH "Bob effect"
+
+REFERENCE SCR_BOB_PRONE_FIX
+LANG_ENGLISH "Fix prone bob animation"
+
+REFERENCE SCR_CG_FOOTSTEPS
+LANG_ENGLISH "Hear own footsteeps (suit rattle still present)"
+
+REFERENCE SCR_CAP_ENABLE
+LANG_ENGLISH "Create-a-Player feature"
+
+REFERENCE SCR_CAP_TIME
+LANG_ENGLISH "CAP access time"
+
+REFERENCE SCR_CAP_TIME_ACTIVATED
+LANG_ENGLISH "CAP usage max time"
+
+REFERENCE SCR_CAP_FIRSTSPAWN
+LANG_ENGLISH CAP enabled just on first spawn"
+
+REFERENCE SCR_DE_DROPWEAPON_ON_ARM_HIT
+LANG_ENGLISH "Drop weapon when hit"
+
+REFERENCE SCR_DE_DROPWEAPON_CHANCE
+LANG_ENGLISH "Drop weapon chance (%)"
+
+REFERENCE SCR_DE_FALLDOWN_ON_LEG_HIT
+LANG_ENGLISH "Fall to the ground when hit"
+
+REFERENCE SCR_DE_FALLDOWN_CHANCE
+LANG_ENGLISH "Fall down chance (%)"
+
+REFERENCE SCR_DE_SHIFTVIEW_ON_DAMAGE
+LANG_ENGLISH "Player view shift when hit"
+
+REFERENCE SCR_DE_BREAK_ANKLE_ON_FALL
+LANG_ENGLISH "Break ankle on fall damage"
+
+REFERENCE SCR_DE_SLOWDOWN_ON_LEG_HIT
+LANG_ENGLISH "Slow down player when hit on upper leg damage"
 
 
-
-REFERENCE MELEE_DISABLED
-LANG_ENGLISH "Melee is disabled"
+//******************************************************************************
+// ui_mp/server_armory.inc
+//******************************************************************************
 
 REFERENCE LMGS
 LANG_ENGLISH "Light Machine Guns"
@@ -2576,7 +2718,7 @@ REFERENCE MENU_FRAG_GRENADE
 LANG_ENGLISH "Frag Grenade"
 
 REFERENCE MENU_MANAGE_ATTACHMENTS
-LANG_ENGLISH "Manage attachments for"
+LANG_ENGLISH "^2Manage attachments for:"
 
 REFERENCE MENU_ALLOW_NO_ATTACHMENTS
 LANG_ENGLISH "Allow No-Attachment"
@@ -2598,6 +2740,11 @@ LANG_ENGLISH "Stationary turrets"
 
 REFERENCE SCR_DYNAMIC_ATTACHMENTS_ENABLE
 LANG_ENGLISH "Dynamic attachments"
+
+
+//******************************************************************************
+// ui_mp/server_weapons.inc
+//******************************************************************************
 
 REFERENCE SCR_GRENADE_ALLOW_COOKING
 LANG_ENGLISH "Grenade cooking"
@@ -2682,6 +2829,12 @@ LANG_ENGLISH "Upper level zoom"
 
 REFERENCE SCR_RANGEFINDER_ENABLE
 LANG_ENGLISH "Range Finder"
+
+
+
+REFERENCE MELEE_DISABLED
+LANG_ENGLISH "Melee is disabled"
+
 
 
 ENDMARKER

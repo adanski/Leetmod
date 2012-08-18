@@ -6,7 +6,7 @@ CHOICE_DVAREDIT_NUMERIC_VIS( 4, "@OW_ROUNDLIMIT", scr_sd_roundlimit, 3, ;, when(
 CHOICE_DVAREDIT_NUMERIC_VIS( 5, "@OW_ROUND_SWITCH", scr_sd_roundswitch, 3, ;, when(G_GAMETYPE_SD) )
 
 //SD
-CHOICE_DVARFLOATLIST_VIS( 6, "@OW_SD_MODE", scr_sd_sdmode, { "COD4" 0 "WaW/MW2" 1 }, ;, when(G_GAMETYPE_SD) )
+CHOICE_DVARFLOATLIST_VIS( 6, "@OW_SD_MODE", scr_sd_sdmode, { "Identify in which bombsite the bomb was planted" 0 "Hide in which bombsite the bomb was planted" 1 }, ;, when(G_GAMETYPE_SD) )
 
 CHOICE_DVAREDIT_NUMERIC_VIS( 7, "@OW_BOMB_TIME", scr_sd_bombtimer, 3, ;, when(G_GAMETYPE_SD) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 8, "@OW_PLANT_TIME", scr_sd_planttime, 3, ;, when(G_GAMETYPE_SD) )
