@@ -157,7 +157,7 @@ REFERENCE FTAG_AXIS_FROZEN
 LANG_ENGLISH "Axis have been frozen"
 
 REFERENCE FTAG_UNFROZEN_STATS
-LANG_ENGLISH "You were unfrozen by &&1 after being frozen for ^3&&2^7 seconds."
+LANG_ENGLISH "You were unfrozen by &&1. Frozen time: ^3&&2^7s"
 
 REFERENCE OBJECTIVES_FTAG
 LANG_ENGLISH "Gain points by freezing all the enemy players."

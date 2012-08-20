@@ -76,7 +76,7 @@ main()
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 1, 1 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 0, 0, 0 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 20, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 10, 0, 1440 );
 
 
 	level.teamBased = true;
@@ -717,10 +717,10 @@ movePlayer( newTeam, autoBalance )
 		self freezeControls( false );	
 		self.spawn_protected = false;
 		
-//		if ( level.scr_explosives_allow_disarm == 1 )
-//			self thread openwarfare\_disarmexplosives::onPlayerSpawned();
-//		if ( level.specialty_grenadepulldeath_check_frags == 1 )
-//			self thread openwarfare\_martyrdom::onPlayerSpawned();
+		if ( level.scr_explosives_allow_disarm == 1 )
+			self thread openwarfare\_disarmexplosives::onPlayerSpawned();
+		if ( level.specialty_grenadepulldeath_check_frags == 1 )
+			self thread openwarfare\_martyrdom::onPlayerSpawned();
 		if ( level.scr_spawn_protection_enable == 1 )
 			self thread openwarfare\_spawnprotection::onPlayerSpawned();		
 			

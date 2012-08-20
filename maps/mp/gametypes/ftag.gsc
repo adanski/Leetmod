@@ -53,9 +53,9 @@ main()
 
 	// Additional variables that we'll be using
 	level.scr_ftag_forcestartspawns = getdvarx( "scr_ftag_forcestartspawns", "int", 0, 0, 1 );
-	level.scr_ftag_unfreeze_time = getdvarx( "scr_ftag_unfreeze_time", "int", 100, 1, 60000 );
-	level.scr_ftag_auto_unfreeze_time = getdvarx( "scr_ftag_auto_unfreeze_time", "int", int( 60000 / level.maxhealth ), 0, 60000 );
-	level.scr_ftag_unfreeze_maxdistance = getdvarx( "scr_ftag_unfreeze_maxdistance", "int", 1000, 0, 100000 );
+	level.scr_ftag_unfreeze_time = getdvarx( "scr_ftag_unfreeze_time", "float", 10, 1, 60 );
+	level.scr_ftag_auto_unfreeze_time = getdvarx( "scr_ftag_auto_unfreeze_time", "float", 60, 0, 600 );
+	level.scr_ftag_unfreeze_maxdistance = getdvarx( "scr_ftag_unfreeze_maxdistance", "int", 500, 0, 100000 );
 	level.scr_ftag_unfreeze_beam = getdvarx( "scr_ftag_unfreeze_beam", "int", 1, 0, 1 );
 	level.scr_ftag_unfreeze_respawn = getdvarx( "scr_ftag_unfreeze_respawn", "int", 0, 0, 1 );
 	level.scr_ftag_frozen_freelook = getdvarx( "scr_ftag_frozen_freelook", "int", 1, 0, 1 );
@@ -70,6 +70,7 @@ main()
 	setDvar( "scr_healthsystem_show_healthbar_ftag", "1" );
 	setDvar( "scr_player_forcerespawn_ftag", "1" );
 	setDvar( "scr_allow_stationary_turrets_ftag", "0" );
+	setDvar( "scr_game_allow_killcam_ftag", "0" );
   // to fix bug: when revived, timer doesn't reset so player will be without weapon and with a camping alert
   setDvar( "scr_anti_camping_enable_ftag", "0" );
 		
@@ -498,10 +499,10 @@ monitorTemperature()
 		
 		// Call the onPlayerSpawned from some modules to re-initiliaze some variables
 		// in case the player has changed loadouts while frozen
-//		if ( level.scr_explosives_allow_disarm == 1 )
-//			self thread openwarfare\_disarmexplosives::onPlayerSpawned();
-//		if ( level.specialty_grenadepulldeath_check_frags == 1 )
-//			self thread openwarfare\_martyrdom::onPlayerSpawned();
+		if ( level.scr_explosives_allow_disarm == 1 )
+			self thread openwarfare\_disarmexplosives::onPlayerSpawned();
+		if ( level.specialty_grenadepulldeath_check_frags == 1 )
+			self thread openwarfare\_martyrdom::onPlayerSpawned();
 		if ( level.scr_spawn_protection_enable == 1 )
 			self thread openwarfare\_spawnprotection::onPlayerSpawned();
 		
@@ -591,7 +592,7 @@ autoUnfreezePlayer()
 	
 	for (;;) {
 		// Calculate next temperature raise
-		xWait( level.scr_ftag_auto_unfreeze_time / 1000 );
+		xWait( level.scr_ftag_auto_unfreeze_time / level.maxhealth );
 		
 		// Make sure the player is still frozen
 		if ( self.freezeTag["frozen"] && self.health < level.maxhealth ) {
@@ -693,7 +694,7 @@ startHeatTransfer( frozenPlayer, triggerRadius )
 			frozenPlayer.health++;
 			frozenPlayer addHealthPoint( self );
 			self.freezeTag["healthgiven"]++;
-			xWait( level.scr_ftag_unfreeze_time / 1000 );
+			xWait( level.scr_ftag_unfreeze_time / level.maxhealth );
 		} else {
 			break;
 		}
@@ -863,7 +864,7 @@ monitorUnfreezeAttempt()
 							lookingPlayer.health++;
 							lookingPlayer addHealthPoint( self );
 							self.freezeTag["healthgiven"]++;
-							xWait( level.scr_ftag_unfreeze_time / 1000 );
+							xWait( level.scr_ftag_unfreeze_time / level.maxhealth );
 						} else {
 							break;
 						}

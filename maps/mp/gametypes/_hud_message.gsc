@@ -774,8 +774,7 @@ updateOutcome( firstTitle, secondTitle, thirdTitle )
 }
 
 showMeleeDisabled() {
-  if( !isDefined(self.showingMeleeTip) || !self.showingMeleeTip ) {
-    self.showingMeleeTip = true;
+  if( !isDefined(self.meleeDisabled) ) {
     self.meleeDisabled = createFontString( "objective", 1.8 );
     self.meleeDisabled setPoint( "CENTER", "CENTER", 0, 50 );
     self.meleeDisabled.sort = 1001;
@@ -786,8 +785,8 @@ showMeleeDisabled() {
     self.meleeDisabled setText( &"OW_MELEE_DISABLED" );
     self.meleeDisabled thread maps\mp\gametypes\_hud::fontPulse( level );
     wait (2.5);
+    // theoretically no need to confirm, but still... guarantees that we aren't destroying a undefined object resulting in scripting errors
     if( isDefined(self.meleeDisabled) )
       self.meleeDisabled destroyElem();
-    self.showingMeleeTip = false;
   }
 }
