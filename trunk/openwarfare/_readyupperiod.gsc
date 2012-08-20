@@ -419,8 +419,8 @@ deactivateMapObjectives()
 	switch ( level.gametype )
 	{
 		case "ass":
-			// Deactivate the extraction zone trigger 
-			level.extractionZone maps\mp\gametypes\_gameobjects::allowUse( "none" );
+			// Deactivate the extraction zone trigger
+      level.extractionZone maps\mp\gametypes\_gameobjects::allowUse( "none" );
 			break;
 					
 		case "ch":

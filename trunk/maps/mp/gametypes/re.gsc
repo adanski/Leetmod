@@ -70,10 +70,10 @@ main()
 	level.scr_re_objective_autoresettime = getdvarx( "scr_re_objective_autoresettime", "float", 0, 0, 120 );
 
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 1, 0, 10 );
-	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 5, 0, 500 );
+	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 10, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 2, 0, 500 );
-	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 3, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 7, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 5, 0, 5000 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 5, 0, 1440 );
 
 
 	level.teamBased = true;

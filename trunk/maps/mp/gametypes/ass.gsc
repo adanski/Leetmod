@@ -71,10 +71,10 @@ main()
 
 	// Get the dvars we need for this gametype
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 1, 1, 1 );
-	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 5, 0, 500 );
+	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 20, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 2, 0, 500 );
-	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 3, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 5, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 10, 0, 5000 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 3, 0, 1440 );
 
 
 	level.teamBased = true;
@@ -330,6 +330,9 @@ veryImportantPerson()
 	
 	// Create the extraction zone
 	level.extractionZone = createExtractionZone( game["attackers"], gametypeAssets["extractionzone_trigger"] );
+  // Slow process to create FX
+  wait( 0.08 );
+  triggerFx( level.extractionZone.baseEffect );
 	
 	// Pick the VIP 
 	level thread pickVIP();
@@ -365,11 +368,6 @@ createExtractionZone( attackerTeam, zoneTrigger )
 	trace = bulletTrace( traceStart, traceEnd, false, undefined );
 	upangles = vectorToAngles( trace["normal"] );
 	extractionZone.baseEffect = spawnFx( game[level.gameType]["extraction_base_effect"], trace["position"], anglesToForward( upangles ), anglesToRight( upangles ) );
-	
-  // Slow process to create FX
-  wait( 0.08 );
-  
-  triggerFx( extractionZone.baseEffect );
 	
 	return extractionZone;
 }
