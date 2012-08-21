@@ -14,7 +14,9 @@ init()
 		game["amvs_skip_voting"] = false;	
 		
 	// If the advanced map voting system is not enabled then there's nothing else to do here
-	if ( level.scr_amvs_enable == 0 )
+  if ( level.scr_amvs_enable == 0 )
+	//##commented temporarly, while feature is being thinked
+  //if ( level.scr_amvs_enable == 0 && (getDvar("dedicated") != "listen server") )
 		return;
 
 	// Initialize the variables for this AMV session		
@@ -28,6 +30,8 @@ init()
 	level.mapVoteThirdPlace = " (0)";
 
 	// Load the rest of the modules's variables
+  //now that there's a way to have intermission and do script commands, ideally this
+  // dvars controling time should be stripped out and intermission time be used instead
 	level.scr_amvs_gametype_time = getdvard( "scr_amvs_gametype_time", "float", 10, 5, 45 );
 	level.scr_amvs_map_time = getdvard( "scr_amvs_map_time", "float", 10, 5, 45 );
 	level.scr_amvs_winner_time = getdvard( "scr_amvs_winner_time", "float", 5, 5, 45 );
@@ -196,7 +200,7 @@ resetClientVariables()
 		"ui_amvs_firstplace", level.mapVoteFirstPlace,
 		"ui_amvs_secondplace", level.mapVoteSecondPlace,
 		"ui_amvs_thirdplace", level.mapVoteThirdPlace,
-		"ui_welcome_modinfo", "^7Running " + getDvar( "_Mod" ) + " " + getDvar( "_ModVer" ) + ", please visit us at ^2http://openwarfaremod.com/^7."
+		"ui_welcome_modinfo", "^7Running " + getDvar( "_Mod" ) + " " + getDvar( "_ModVer" ) + ", please visit us at ^2http://www.Leetmod.pt.am^7."
 	);
 }
 
@@ -251,7 +255,8 @@ closeMapVotingMenu()
 		if ( isDefined( player ) ) {
 			player closeMenu();
 			player closeInGameMenu();
-			player.sessionstate = "intermission";
+      // .sessionstate never reaches intermission (fix to allow script commands)
+			//player.sessionstate = "intermission";
 		}
 	}
 }

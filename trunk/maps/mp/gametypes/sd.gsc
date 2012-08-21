@@ -100,7 +100,7 @@ main()
 	level.scr_sd_sdmode = getdvarx( "scr_sd_sdmode", "int", 0, 0, 1  );
 	level.scr_sd_scoreboard_bomb_carrier = getdvarx( "scr_sd_scoreboard_bomb_carrier", "int", 0, 0, 1 );
 	level.scr_sd_bomb_notification_enable = getdvarx( "scr_sd_bomb_notification_enable", "int", 1, 0, 1 );
-	level.scr_sd_planting_sound = getdvarx( "scr_sd_planting_sound", "int", 1, 0, 1 );
+	level.scr_sd_planting_sound = getdvarx( "scr_sd_planting_sound", "int", 0, 0, 1 );
 	level.scr_sd_defusing_sound = getdvarx( "scr_sd_defusing_sound", "int", 1, 0, 1 );
 	level.scr_sd_show_briefcase = getdvarx( "scr_sd_show_briefcase", "int", 1, 0, 1 );
 	level.scr_sd_bombsites_enabled = getdvarx( "scr_sd_bombsites_enabled", "int", 0, 0, 4 );

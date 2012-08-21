@@ -564,7 +564,7 @@ setPlayerModels()
 	{
 		// assert( game["allies"] == "marines" );
 		if ( game["allies"] != "marines" ) {
-			iprintln( "WARNING: game[\"allies\"] == "+game["allies"]+", expected \"marines\"." );
+			iprintln( "WARNING: game['allies'] == "+game["allies"]+", expected 'marines'." );
 			game["allies"] = "marines";
 		}
 		
@@ -591,7 +591,7 @@ setPlayerModels()
 	{
 		// assert( game["allies"] == "sas" );
 		if ( game["allies"] != "sas" ) {
-			iprintln( "WARNING: game[\"allies\"] == "+game["allies"]+", expected \"sas\"." );
+			iprintln( "WARNING: game['allies'] == "+game["allies"]+", expected 'sas'." );
 			game["allies"] = "sas";
 		}
 		
@@ -618,7 +618,7 @@ setPlayerModels()
 	{
 		// assert( game["allies"] == "sas" );
 		if ( game["allies"] != "marines" ) {
-			iprintln( "WARNING: game[\"allies\"] == "+game["allies"]+", expected \"marines\"." );
+			iprintln( "WARNING: game['allies'] == "+game["allies"]+", expected 'marines'." );
 			game["allies"] = "marines";
 		}
 		
@@ -646,7 +646,7 @@ setPlayerModels()
 	{
 		// assert( game["axis"] == "opfor" || game["axis"] == "arab" );
 		if ( game["axis"] != "opfor" && game["axis"] != "arab" ) {
-			iprintln( "WARNING: game[\"axis\"] == "+game["axis"]+", expected \"opfor\" or \"arab\".");
+			iprintln( "WARNING: game['axis'] == "+game["axis"]+", expected 'opfor' or 'arab'.");
 			game["axis"] = "opfor";
 		}
 		
@@ -675,7 +675,7 @@ setPlayerModels()
 	{
 		// assert( game["axis"] == "opfor" );
 		if ( game["axis"] != "russian" ) {
-			iprintln( "WARNING: game[\"axis\"] == "+game["axis"]+", expected \"russian\".");
+			iprintln( "WARNING: game['axis'] == "+game["axis"]+", expected 'russian'.");
 			game["axis"] = "russian";
 		}
 		
@@ -702,7 +702,7 @@ setPlayerModels()
 	{
 		// assert( game["axis"] == "opfor" );
 		if ( game["axis"] != "russian" ) {
-			iprintln( "WARNING: game[\"axis\"] == "+game["axis"]+", expected \"russian\".");
+			iprintln( "WARNING: game['axis'] == "+game["axis"]+", expected 'russian'.");
 			game["axis"] = "russian";
 		}
 		

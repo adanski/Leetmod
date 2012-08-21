@@ -57,7 +57,7 @@ menuDef
   #undef CHOICE_TEXTALIGN
   #define	CHOICE_TEXTALIGN		ITEM_ALIGN_MIDDLE_CENTER
   
-  CHOICE_BUTTON_VIS( 12, "@OW_CAC_UNLOCK_WEAPONS", exec "set ct_tmp_proc 1"; scriptMenuResponse "ulkallw", when( dvarInt(ct_tmp_type) != 2 && (stat( 3001 ) == 0 || stat( 3003 ) == 0 || stat( 3026 ) == 0 || stat( 3023 ) == 0 || stat( 3024 ) == 0 || stat( 3021 ) == 0 || stat( 3022 ) == 0 || stat( 3082 ) == 0 || stat( 3012 ) == 0 || stat( 3013 ) == 0 || stat( 3014 ) == 0 || stat( 3070 ) == 0 || stat( 3065 ) == 0 || stat( 3060 ) == 0 || stat( 3064 ) == 0 || stat( 3062 ) == 0) ) )
+  CHOICE_BUTTON_VIS( 12, "@OW_CAC_UNLOCK_WEAPONS", exec "set ct_tmp_proc 1"; scriptMenuResponse "ulkallw", when( dvarInt(ct_tmp_type) != 2 && dvarInt(ui_isEndOfGame) != 1 && (stat( 3001 ) == 0 || stat( 3003 ) == 0 || stat( 3026 ) == 0 || stat( 3023 ) == 0 || stat( 3024 ) == 0 || stat( 3021 ) == 0 || stat( 3022 ) == 0 || stat( 3082 ) == 0 || stat( 3012 ) == 0 || stat( 3013 ) == 0 || stat( 3014 ) == 0 || stat( 3070 ) == 0 || stat( 3065 ) == 0 || stat( 3060 ) == 0 || stat( 3064 ) == 0 || stat( 3062 ) == 0) ) )
   
   
   CHOICE_BUTTON_VIS( 1, "@PERKS_BANDOLIER", exec "set ct_tmp_proc 1"; scriptMenuResponse "ulkp,specialty_extraammo", when( dvarInt(ct_tmp_type) == 2 && stat( 165 ) == 0 ) )
@@ -88,7 +88,7 @@ menuDef
   CHOICE_DBUTTON_VIS( 13, "@PERKS_UAV_JAMMER", when( dvarInt(ct_tmp_type) == 2 && stat( 151 ) != 0 ) )
   
   
-  //CHOICE_BUTTON_VIS( 14, "@OW_CAC_UNLOCK_PERKS", exec "set ct_tmp_proc 1"; scriptMenuResponse "ulkallp", when( dvarInt(ct_tmp_type) == 2 && (stat( 165 ) == 0 || stat( 155 ) == 0 || stat( 185 ) == 0 || stat( 163 ) == 0 || stat( 153 ) == 0 || stat( 150 ) == 0 || stat( 173 ) == 0 || stat( 152 ) == 0 || stat( 157 ) == 0 || stat( 158 ) == 0 || stat( 166 ) == 0 || stat( 164 ) == 0 || stat( 151 ) == 0) ) )
+  //CHOICE_BUTTON_VIS( 14, "@OW_CAC_UNLOCK_PERKS", exec "set ct_tmp_proc 1"; scriptMenuResponse "ulkallp", when( dvarInt(ct_tmp_type) == 2 && dvarInt(ui_isEndOfGame) != 1 && (stat( 165 ) == 0 || stat( 155 ) == 0 || stat( 185 ) == 0 || stat( 163 ) == 0 || stat( 153 ) == 0 || stat( 150 ) == 0 || stat( 173 ) == 0 || stat( 152 ) == 0 || stat( 157 ) == 0 || stat( 158 ) == 0 || stat( 166 ) == 0 || stat( 164 ) == 0 || stat( 151 ) == 0) ) )
   
   CHOICE_BUTTON_VIS( 14, "@MENU_BACK", close self, when( !dvarbool(ct_tmp_proc) ) )
   CHOICE_DBUTTON_VIS( 14, "@OW_MENU_PROCESSING", when( dvarbool(ct_tmp_proc) ) )

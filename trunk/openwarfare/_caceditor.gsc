@@ -22,11 +22,11 @@ cacResponseHandler()
 	{
 		self waittill( "menuresponse", menu, response );
 		
-		if ( (menu == "team_marinesopfor" || menu == "class") && response == "ow_cac_editor" ) {
+		if ( (menu == "team_marinesopfor" || menu == "class" || menu == "endofgame" ) && response == "ow_cac_editor" ) {
 			self openAllClasses();
 			self initializeEditor();
 			self openMenu( game["menu_ow_cac_editor"] );
-		}			
+		}
 		
 		if ( menu == game["menu_ow_cac_editor"] )
 		{

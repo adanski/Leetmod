@@ -387,7 +387,7 @@ onMenuResponse()
     
     targetPlayer = self;
     
-    if ( menu == "muteplayer" ) {
+    if ( menu == "muteplayer" || menu == "endofgame" ) {
       switch(response) {
         case "currpl":
           targetPlayer = self getCurrPl( false );

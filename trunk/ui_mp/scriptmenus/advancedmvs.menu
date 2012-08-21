@@ -9,8 +9,6 @@
 #define MENU_FONT_GRAY		0.55 0.55 0.55 1
 
 {
-
-
 	menuDef
 	{
 		name			"advancedmvs"

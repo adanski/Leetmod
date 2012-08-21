@@ -66,8 +66,9 @@
 		onEsc 
 		{
 			close scoreboard;
+      exec "-scores";
 			setdvar ui_showEndOfGame "1";
-			//open eog_statistics;
+      exec "toggleMenu";
 		}
 
 		onClose

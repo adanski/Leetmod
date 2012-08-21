@@ -39,7 +39,7 @@ main()
 	level.scr_sab_suddendeath_show_enemies = getdvarx( "scr_sab_suddendeath_show_enemies", "int", 1, 0, 1 );
 	level.scr_sab_suddendeath_timelimit = getdvarx( "scr_sab_suddendeath_timelimit", "int", 180, 0, 600 );
 	level.scr_sab_show_briefcase = getdvarx( "scr_sab_show_briefcase", "int", 1, 0, 1 );
-	level.scr_sab_planting_sound = getdvarx( "scr_sab_planting_sound", "int", 1, 0, 1 );
+	level.scr_sab_planting_sound = getdvarx( "scr_sab_planting_sound", "int", 0, 0, 1 );
 	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 3, 0, 500 );

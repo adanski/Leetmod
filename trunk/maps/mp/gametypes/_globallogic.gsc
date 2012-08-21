@@ -1202,11 +1202,13 @@ spawnIntermission()
 		"cg_drawhealth", 0
 	);
 
-	if ( !level.mapVotingInProgress ) {
-		self.sessionstate = "intermission";
-	} else {
-		self.sessionstate = "spectator";
-	}
+	// if ( !level.mapVotingInProgress ) {
+		// self.sessionstate = "intermission";
+	// } else {
+		// self.sessionstate = "spectator";
+	// }
+  self.sessionstate = "spectator";
+  
 	self.spectatorclient = -1;
 	self.killcamentity = -1;
 	self.archivetime = 0;
@@ -1681,7 +1683,7 @@ endGame( winner, endReasonText )
 		( level.gametype == "sd" && endReasonText != game["strings"]["target_destroyed"] && endReasonText != game["strings"]["bomb_defused"] )
 		) )
 	{
-		// wait for instatiation of the killcam first
+		// wait for the instantiation of the killcam first
 		wait( 0.1 );
 		if( isDefined(level.pers_killcam) ) {
 			wait( 0.9 );
@@ -1744,6 +1746,8 @@ endGame( winner, endReasonText )
 		
 		if ( isDefined( game["menu_eog_main"] ) )
 			player setClientDvar( "g_scriptMainMenu", game["menu_eog_main"] );
+    
+    player setClientDvar( "ui_isEndOfGame", 1);
 	}
 	
 	logString( "game ended" );
@@ -1771,6 +1775,9 @@ endGame( winner, endReasonText )
 	}
 
 	thread timeLimitClock_Intermission( level.scr_intermission_time, ( level.scr_amvs_enable == 0 || game["amvs_skip_voting"] ) );
+  // ## This waits for intermission time to run out, and then open map voting system
+  // ## Since now intermission is fixed and script commands can be run, we can use map voting at the same time as intermission
+  // ## This message is here for a later change on the current behavior
 	wait (level.scr_intermission_time);
 
 	if ( level.scr_eog_fastrestart != 0 ) {	

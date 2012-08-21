@@ -20,6 +20,14 @@ init()
 	if ( level.scr_realtime_stats_unit != "meters" && level.scr_realtime_stats_unit != "yards" ) {
 		level.scr_realtime_stats_unit = level.scr_measurement_unit_system;
 	}
+  
+  if ( level.scr_realtime_stats_unit == "meters" ) {
+		level.mUnit = " m";
+		level.mPSUnit = " m/s";
+	} else {
+		level.mUnit = " yd";
+		level.mPSUnit = " yd/s";
+	}
 	
 	// Check if we should show the end of game statistics
 	if ( level.scr_endofgame_stats_enable == 1 ) {
@@ -32,7 +40,7 @@ init()
 
 onGameEnded()
 {
-	level waittill("game_ended");	
+	level waittill("game_ended");
 
 	// Wait some time to let all the events be processed
 	wait (1.5);
@@ -95,7 +103,8 @@ onGameEnded()
 	
 	level.eogBest["avgspeedw"]["name"] = "";
 	level.eogBest["avgspeedw"]["value"] = 100;
-	gotOneGood = 0;
+	// got a good player : one that was alive at least for more than 60secs of the game
+  gotOneGood = 0;
 				
 	// Get all the best/worst players for each stat item we monitor and display at the end of the game
 	for ( index = 0; index < level.players.size; index++ )
@@ -128,21 +137,47 @@ onGameEnded()
 			player checkStatItem( player.pers["stats"]["hardpoints"]["helicopter_kills"], "helicopter_kills" );
 			
 			player checkStatItem( player.pers["stats"]["misc"]["distance"], "distance" );
-			player checkStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeed" );
+      
+      // unlikely to happen, but if avgspeed is greater than avgspeednosniper, we want to use that value
+      if( player.pers["stats"]["misc"]["avgspeed"] > player.pers["stats"]["misc"]["avgspeednosniper"] )
+        playerBestAvgSpeed = player.pers["stats"]["misc"]["avgspeed"];
+      else
+        playerBestAvgSpeed = player.pers["stats"]["misc"]["avgspeednosniper"];
+      
+      // Correct avgspeed display value to represent the one used in the statistics calculation
+      if ( level.scr_realtime_stats_unit == "meters" )
+        if( level.scr_realtime_stats_remove_sniping_time )
+          playerStatsAvgSpeedConverted = int( playerBestAvgSpeed * 0.0254 * 100 ) / 100;
+        else
+          playerStatsAvgSpeedConverted = int( player.pers["stats"]["misc"]["avgspeed"] * 0.0254 * 100 ) / 100;
+      else
+        if( level.scr_realtime_stats_remove_sniping_time )
+          playerStatsAvgSpeedConverted = int( playerBestAvgSpeed * 0.0278 * 100 ) / 100;
+        else
+          playerStatsAvgSpeedConverted = int( player.pers["stats"]["misc"]["avgspeed"] * 0.0278 * 100 ) / 100;
+          
+      player setClientDvar( "ps_asx", playerStatsAvgSpeedConverted + level.mPSUnit);
+      
+      // Calculate the fastest player
+			if( level.scr_realtime_stats_remove_sniping_time )
+        player checkStatItem( playerBestAvgSpeed, "avgspeed" );
+      else
+        player checkStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeed" );
 			
-			if( isDefined( player.pers["stats"]["misc"]["secsalive"] ) ) {
+      // Calculate Most Camper
+      if( isDefined( player.pers["stats"]["misc"]["secsalive"] ) ) {
         if( !gotOneGood ) {
           if( level.scr_realtime_stats_remove_sniping_time )
-            player checkMinStatItem( player.pers["stats"]["misc"]["avgspeednosniper"], "avgspeedw" );
+            player checkMinStatItem( playerBestAvgSpeed, "avgspeedw" );
           else
             player checkMinStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeedw" );
         } // if bellow implies gotOneGood == true
         else if( (!level.scr_realtime_stats_remove_sniping_time && player.pers["stats"]["misc"]["secsalive"] > 60)
                 || (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60 ) {
             // I think this can be commented since if we get here, gotOneGood is already true
-            //gotOneGood = 1;
+            // gotOneGood = 1;
             if( level.scr_realtime_stats_remove_sniping_time )
-              player checkMinStatItem( player.pers["stats"]["misc"]["avgspeednosniper"], "avgspeedw" );
+              player checkMinStatItem( playerBestAvgSpeed, "avgspeedw" );
             else
               player checkMinStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeedw" );
         }
@@ -151,7 +186,7 @@ onGameEnded()
           gotOneGood = 1;
           level.eogBest["avgspeedw"]["name"] = player.name;
           if( level.scr_realtime_stats_remove_sniping_time )
-            level.eogBest["avgspeedw"]["value"] = player.pers["stats"]["misc"]["avgspeednosniper"];
+            level.eogBest["avgspeedw"]["value"] = playerBestAvgSpeed;
           else
             level.eogBest["avgspeedw"]["value"] = player.pers["stats"]["misc"]["avgspeed"];
         }
@@ -163,14 +198,10 @@ onGameEnded()
 		level.eogBest["distance"]["value"] = int( level.eogBest["distance"]["value"] * 0.0254 * 10 ) / 10;
 		level.eogBest["avgspeed"]["value"] = int( level.eogBest["avgspeed"]["value"] * 0.0254 * 100 ) / 100;
 		level.eogBest["avgspeedw"]["value"] = int( level.eogBest["avgspeedw"]["value"] * 0.0254 * 100 ) / 100;
-		longestUnit = " m";
-		longestPSUnit = " m/s";
 	} else {
 		level.eogBest["distance"]["value"] = int( level.eogBest["distance"]["value"] * 0.0278 * 10 ) / 10;
 		level.eogBest["avgspeed"]["value"] = int( level.eogBest["avgspeed"]["value"] * 0.0278 * 100 ) / 100;
 		level.eogBest["avgspeedw"]["value"] = int( level.eogBest["avgspeedw"]["value"] * 0.0278 * 100 ) / 100;
-		longestUnit = " yd";
-		longestPSUnit = " yd/s";
 	}
 	
 	// Send the data to each player
@@ -215,7 +246,7 @@ onGameEnded()
 				"gs_ksn", level.eogBest["killstreak"]["name"],
 				"gs_ks", level.eogBest["killstreak"]["value"],
 				"gs_ln", level.eogBest["longest"]["name"],
-				"gs_l", level.eogBest["longest"]["value"] + longestUnit,
+				"gs_l", level.eogBest["longest"]["value"] + level.mUnit,
 				"gs_mn", level.eogBest["melee"]["name"],
 				"gs_m", level.eogBest["melee"]["value"],
 				"gs_hn", level.eogBest["headshots"]["name"],
@@ -223,7 +254,7 @@ onGameEnded()
 				"gs_lhn", level.eogBest["longesths"]["name"]				
 			);
 			player setClientDvars(
-				"gs_lh", level.eogBest["longesths"]["value"] + longestUnit,
+				"gs_lh", level.eogBest["longesths"]["value"] + level.mUnit,
 				"gs_dn", level.eogBest["deaths"]["name"],
 				"gs_d", level.eogBest["deaths"]["value"],
 				"gs_sn", level.eogBest["suicides"]["name"],
@@ -243,11 +274,11 @@ onGameEnded()
 			);
 			player setClientDvars(
 				"gs_dtn", level.eogBest["distance"]["name"],
-				"gs_dt", level.eogBest["distance"]["value"] + longestUnit,
+				"gs_dt", level.eogBest["distance"]["value"] + level.mUnit,
 				"gs_asn", level.eogBest["avgspeed"]["name"],
-				"gs_as", level.eogBest["avgspeed"]["value"] + longestPSUnit,
+				"gs_as", level.eogBest["avgspeed"]["value"] + level.mPSUnit,
 				"gs_aswn", level.eogBest["avgspeedw"]["name"],
-				"gs_asw", level.eogBest["avgspeedw"]["value"] + longestPSUnit,
+				"gs_asw", level.eogBest["avgspeedw"]["value"] + level.mPSUnit,
         "ps_ct_mkbn", mostKilledByName,
         "ps_ct_mkb", mostKilledByKC,
         "ps_ct_mkn", mostKilledName,
@@ -382,14 +413,6 @@ onPlayerConnected()
 onPlayerSpawned()
 {
 	self endon("disconnect");
-
-	if ( level.scr_realtime_stats_unit == "meters" ) {
-		mUnit = " m";
-		mPSUnit = " m/s";
-	} else {
-		mUnit = " yd";
-		mPSUnit = " yd/s";
-	}
   
   if( !isDefined(self.pers["stats"]["misc"]["secsalive"]) )
     self.pers["stats"]["misc"]["secsalive"] = 0;
@@ -438,8 +461,8 @@ onPlayerSpawned()
       } else {
         travelledDistance = int( oldValue * 0.0278 * 10 ) / 10;
       }
-      self setClientDvar( "ps_dt", travelledDistance + mUnit );
-			self setClientDvar( "ps_as", int( (travelledDistance/(self.pers["stats"]["misc"]["secsalive"]+1))*100) / 100 + mPSUnit );
+      self setClientDvar( "ps_dt", travelledDistance + level.mUnit );
+			self setClientDvar( "ps_as", int( (travelledDistance/(self.pers["stats"]["misc"]["secsalive"]+1))*100) / 100 + level.mPSUnit );
       self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/(self.pers["stats"]["misc"]["secsalive"]+1))*100 ) / 100;
       self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]+1))*100 ) / 100;
 		}
@@ -454,8 +477,8 @@ onPlayerSpawned()
   }
   self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/(self.pers["stats"]["misc"]["secsalive"]+1))*100 ) / 100;
   self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]+1))*100 ) / 100;
-  self setClientDvar( "ps_dt", travelledDistance + mUnit );
-  self setClientDvar( "ps_as", int( (travelledDistance/(self.pers["stats"]["misc"]["secsalive"]+1))*100) / 100 + mPSUnit );
+  self setClientDvar( "ps_dt", travelledDistance + level.mUnit );
+  self setClientDvar( "ps_as", int( (travelledDistance/(self.pers["stats"]["misc"]["secsalive"]+1))*100) / 100 + level.mPSUnit );
 }
 
 
