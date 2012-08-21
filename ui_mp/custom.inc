@@ -43,3 +43,160 @@
 #ifndef ASO1
 #define ASO1 "seta cg_scoreboardHeight 435; seta cg_scoreboardItemHeight 18; seta cg_scoreboardBannerHeight 35"
 #endif
+
+#ifndef INDEX_TIME_PLAYED_OTHER
+#define INDEX_TIME_PLAYED_OTHER 2313
+#endif
+#ifndef STATTODVAR_TIME_PLAYED_OTHER
+#define STATTODVAR_TIME_PLAYED_OTHER execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2313 ui_stat_time_played_other"
+#endif
+#ifndef INDEX_TIME_PLAYED_OPFOR
+#define INDEX_TIME_PLAYED_OPFOR 2312
+#endif
+#ifndef STATTODVAR_TIME_PLAYED_OPFOR
+#define STATTODVAR_TIME_PLAYED_OPFOR execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2312 ui_stat_time_played_opfor"
+#endif
+#ifndef INDEX_TIME_PLAYED_ALLIES
+#define INDEX_TIME_PLAYED_ALLIES 2311
+#endif
+#ifndef STATTODVAR_TIME_PLAYED_ALLIES
+#define STATTODVAR_TIME_PLAYED_ALLIES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2311 ui_stat_time_played_allies"
+#endif
+#ifndef INDEX_SUICIDES
+#define INDEX_SUICIDES 2310
+#endif
+#ifndef STATTODVAR_SUICIDES
+#define STATTODVAR_SUICIDES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2310 ui_stat_suicides"
+#endif
+#ifndef INDEX_TEAMKILLS
+#define INDEX_TEAMKILLS 2309
+#endif
+#ifndef STATTODVAR_TEAMKILLS
+#define STATTODVAR_TEAMKILLS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2309 ui_stat_teamkills"
+#endif
+#ifndef INDEX_HEADSHOTS
+#define INDEX_HEADSHOTS 2308
+#endif
+#ifndef STATTODVAR_HEADSHOTS
+#define STATTODVAR_HEADSHOTS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2308 ui_stat_headshots"
+#endif
+#ifndef INDEX_ASSISTS
+#define INDEX_ASSISTS 2307
+#endif
+#ifndef STATTODVAR_ASSISTS
+#define STATTODVAR_ASSISTS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2307 ui_stat_assists"
+#endif
+#ifndef INDEX_DEATH_STREAK
+#define INDEX_DEATH_STREAK 2306
+#endif
+#ifndef STATTODVAR_DEATH_STREAK
+#define STATTODVAR_DEATH_STREAK execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2306 ui_stat_death_streak"
+#endif
+#ifndef INDEX_DEATHS
+#define INDEX_DEATHS 2305
+#endif
+#ifndef STATTODVAR_DEATHS
+#define STATTODVAR_DEATHS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2305 ui_stat_deaths"
+#endif
+#ifndef INDEX_KILL_STREAK
+#define INDEX_KILL_STREAK 2304
+#endif
+#ifndef STATTODVAR_KILL_STREAK
+#define STATTODVAR_KILL_STREAK execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2304 ui_stat_kill_streak"
+#endif
+#ifndef INDEX_KILLS
+#define INDEX_KILLS 2303
+#endif
+#ifndef STATTODVAR_KILLS
+#define STATTODVAR_KILLS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2303 ui_stat_kills"
+#endif
+#ifndef INDEX_SCORE
+#define INDEX_SCORE 2302
+#endif
+#ifndef STATTODVAR_SCORE
+#define STATTODVAR_SCORE execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2302 ui_stat_score"
+#endif
+#ifndef INDEX_RANKXP
+#define INDEX_RANKXP 2301
+#endif
+#ifndef STATTODVAR_RANKXP
+#define STATTODVAR_RANKXP execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2301 ui_stat_rankxp"
+#endif
+#ifndef INDEX_TFT
+#define INDEX_TFT 252
+#endif
+#ifndef STATTODVAR_TFT
+#define STATTODVAR_TFT execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 252 ui_stat_tft"
+#endif
+#ifndef INDEX_TTTS
+#define INDEX_TTTS 2326
+#endif
+#ifndef STATTODVAR_TTTS
+#define STATTODVAR_TTTS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2326 ui_stat_ttts"
+#endif
+#ifndef INDEX_WINS
+#define INDEX_WINS 2316
+#endif
+#ifndef STATTODVAR_WINS
+#define STATTODVAR_WINS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2316 ui_stat_wins"
+#endif
+#ifndef INDEX_LOSSES
+#define INDEX_LOSSES 2317
+#endif
+#ifndef STATTODVAR_LOSSES
+#define STATTODVAR_LOSSES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2317 ui_stat_losses"
+#endif
+#ifndef INDEX_TIES
+#define INDEX_TIES 2318
+#endif
+#ifndef STATTODVAR_TIES
+#define STATTODVAR_TIES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2318 ui_stat_ties"
+#endif
+#ifndef INDEX_HITS
+#define INDEX_HITS 2322
+#endif
+#ifndef STATTODVAR_HITS
+#define STATTODVAR_HITS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2322 ui_stat_hit"
+#endif
+#ifndef INDEX_MISSES
+#define INDEX_MISSES 2323
+#endif
+#ifndef STATTODVAR_MISSES
+#define STATTODVAR_MISSES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2323 ui_stat_miss"
+#endif
+#ifndef INDEX_TOTAL_SHOTS
+#define INDEX_TOTAL_SHOTS 2324
+#endif
+#ifndef STATTODVAR_TOTAL_SHOTS
+#define STATTODVAR_TOTAL_SHOTS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2324 ui_stat_tshots"
+#endif
+
+#ifndef GETNAMEONDVAR
+#define GETNAMEONDVAR execNowOnDvarIntValue ct_displayingSelf 0 "setfromdvar ui_stat_name name"
+#endif
+
+#ifndef STAT_UPDATE_SELF
+#define STAT_UPDATE_SELF \
+  GETNAMEONDVAR; \
+	STATTODVAR_TIME_PLAYED_OTHER; \
+	STATTODVAR_TIME_PLAYED_OPFOR; \
+	STATTODVAR_TIME_PLAYED_ALLIES; \
+  STATTODVAR_SUICIDES; \
+	STATTODVAR_TEAMKILLS; \
+	STATTODVAR_HEADSHOTS; \
+	STATTODVAR_ASSISTS; \
+	STATTODVAR_DEATH_STREAK; \
+	STATTODVAR_DEATHS; \
+	STATTODVAR_KILL_STREAK; \
+	STATTODVAR_KILLS; \
+	STATTODVAR_SCORE; \
+	STATTODVAR_RANKXP; \
+  STATTODVAR_TFT; \
+  STATTODVAR_TTTS; \
+  STATTODVAR_WINS; \
+  STATTODVAR_LOSSES; \
+  STATTODVAR_TIES; \
+  STATTODVAR_HITS; \
+  STATTODVAR_MISSES; \
+  STATTODVAR_TOTAL_SHOTS;
+#endif

@@ -34,7 +34,7 @@ init()
 
 	level.scr_game_playerwaittime = getdvarx( "scr_game_playerwaittime", "int", 5, 1, 120 );
 	level.scr_game_matchstarttime = getdvarx( "scr_game_matchstarttime", "int", 3, 0, 120 );
-	level.scr_intermission_time = getdvarx( "scr_intermission_time", "int", 40, 0, 120 );
+	level.scr_intermission_time = getdvarx( "scr_intermission_time", "int", 60, 0, 120 );
 
 	level.scr_allow_thirdperson = getdvarx( "scr_allow_thirdperson", "int", 0, 0, 1 );
 	level.scr_allow_thirdperson_guids = getdvarx( "scr_allow_thirdperson_guids", "string", "" );

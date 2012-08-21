@@ -85,7 +85,7 @@ menuDef
   //CHOICE_DBUTTON_VIS( 4, "@WEAPON_GRIP", when( 0 ) )
   CHOICE_BUTTON_VIS( 5, "@WEAPON_GRENADE_LAUNCHER", exec "set ct_tmp_proc 1"; UNLOCK_ATTACHMENT_GL, when( dvarInt(ow_cac_stat_primary) == 21 || dvarInt(ow_cac_stat_primary) == 23 || dvarInt(ow_cac_stat_primary) == 24 || dvarInt(ow_cac_stat_primary) == 26 ) )
   
-  CHOICE_BUTTON_VIS( 6, "@OW_CAC_UNLOCK_ATTACH", exec "set ct_tmp_proc 1"; scriptMenuResponse "ulkalla", 1 )
+  CHOICE_BUTTON_VIS( 6, "@OW_CAC_UNLOCK_ATTACH", exec "set ct_tmp_proc 1"; scriptMenuResponse "ulkalla", when( dvarInt(ui_isEndOfGame) != 1 ) )
   //CHOICE_DBUTTON_VIS( 6, "@OW_CAC_UNLOCK_ATTACH", when( 0 ) )
   
   CHOICE_BUTTON_VIS( 7, "@MENU_BACK", close self, when( !dvarbool(ct_tmp_proc) ) )

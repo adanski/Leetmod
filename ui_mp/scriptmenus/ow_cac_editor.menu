@@ -52,9 +52,13 @@
 		focuscolor		COLOR_FOCUSED
 		style			WINDOW_STYLE_EMPTY
 		blurWorld		7.0
-		onEsc
+		onClose
+    {
+      play "mouse_click";
+      execOnDvarIntValue ui_isEndOfGame 1 "+scores";
+    }
+    onEsc
 		{
-			play "mouse_click";
 			close self;
 		}
     execkeyint 13 { play "oldschool_pickup"; scriptmenuresponse "cacSubmit"; }

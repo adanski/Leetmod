@@ -161,10 +161,13 @@ setSpectatePermissions()
 
    if ( isDefined( team ) && (team == "axis" || team == "allies") )
    {
-      if ( isdefined(level.spectateOverride[team].allowFreeSpectate) )
+      if ( isDefined(level.spectateOverride[team].allowFreeSpectate) )
          self allowSpectateTeam( "freelook", true );
 
-      if (isdefined(level.spectateOverride[team].allowEnemySpectate))
-         self allowSpectateTeam( getOtherTeam( team ), true );
+      if ( isDefined(level.spectateOverride[team].allowEnemySpectate) )
+        if ( level.spectateOverride[team].allowEnemySpectate == 1 )
+          self allowSpectateTeam( getOtherTeam( team ), true );
+        else
+          self allowSpectateTeam( getOtherTeam( team ), false );
    }
 }

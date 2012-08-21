@@ -4,86 +4,7 @@
 #include "ui_mp/menustyle.inc"
 #include "ui/choices_setup_common.menu"
 
-#define ASH1 "set con_outputWindowColor 0.1 0.2 1 0.2";
-#define ASH2 "set con_outputSliderColor 0.2 0.7 0 0.6";
-#define ASH3 "set con_inputBoxColor 0.4 0.5 0.8 1";
-#define ASH4 "set con_inputHintBoxColor 0.4 0.6 0.8 1";
-#define ASH5 "con_hidechannel *; con_showchannel client";
-		
-#define AHH1 "set con_outputWindowColor 0.35 0.35 0.3 0.75";
-#define AHH2 "set con_outputSliderColor 0.15 0.15 0.1 0.6";
-#define AHH3 "set con_inputBoxColor 0.25 0.25 0.2 1";
-#define AHH4 "set con_inputHintBoxColor 0.4 0.4 0.35 1";
-#define AHH5 "con_hidechannel *; con_showchannel dontfilter error gamenotify boldgame subtitle obituary logfile_only console_only gfx sound files devgui profile ui client server system playerweap ai anim physics fx leaderboards parserscript script";
-
-#define INDEX_TIME_PLAYED_OTHER 2313
-#define STATTODVAR_TIME_PLAYED_OTHER execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2313 ui_stat_time_played_other"
-#define INDEX_TIME_PLAYED_OPFOR 2312
-#define STATTODVAR_TIME_PLAYED_OPFOR execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2312 ui_stat_time_played_opfor"
-#define INDEX_TIME_PLAYED_ALLIES 2311
-#define STATTODVAR_TIME_PLAYED_ALLIES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2311 ui_stat_time_played_allies"
-#define INDEX_SUICIDES 2310
-#define STATTODVAR_SUICIDES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2310 ui_stat_suicides"
-#define INDEX_TEAMKILLS 2309
-#define STATTODVAR_TEAMKILLS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2309 ui_stat_teamkills"
-#define INDEX_HEADSHOTS 2308
-#define STATTODVAR_HEADSHOTS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2308 ui_stat_headshots"
-#define INDEX_ASSISTS 2307
-#define STATTODVAR_ASSISTS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2307 ui_stat_assists"
-#define INDEX_DEATH_STREAK 2306
-#define STATTODVAR_DEATH_STREAK execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2306 ui_stat_death_streak"
-#define INDEX_DEATHS 2305
-#define STATTODVAR_DEATHS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2305 ui_stat_deaths"
-#define INDEX_KILL_STREAK 2304
-#define STATTODVAR_KILL_STREAK execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2304 ui_stat_kill_streak"
-#define INDEX_KILLS 2303
-#define STATTODVAR_KILLS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2303 ui_stat_kills"
-#define INDEX_SCORE 2302
-#define STATTODVAR_SCORE execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2302 ui_stat_score"
-#define INDEX_RANKXP 2301
-#define STATTODVAR_RANKXP execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2301 ui_stat_rankxp"
-#define INDEX_TFT 252
-#define STATTODVAR_TFT execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 252 ui_stat_tft"
-#define INDEX_TTTS 2326
-#define STATTODVAR_TTTS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2326 ui_stat_ttts"
-#define INDEX_WINS 2316
-#define STATTODVAR_WINS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2316 ui_stat_wins"
-#define INDEX_LOSSES 2317
-#define STATTODVAR_LOSSES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2317 ui_stat_losses"
-#define INDEX_TIES 2318
-#define STATTODVAR_TIES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2318 ui_stat_ties"
-#define INDEX_HITS 2322
-#define STATTODVAR_HITS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2322 ui_stat_hit"
-#define INDEX_MISSES 2323
-#define STATTODVAR_MISSES execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2323 ui_stat_miss"
-#define INDEX_TOTAL_SHOTS 2324
-#define STATTODVAR_TOTAL_SHOTS execNowOnDvarIntValue ct_displayingSelf 0 "statGetInDvar 2324 ui_stat_tshots"
-
-#define GETNAMEONDVAR execNowOnDvarIntValue ct_displayingSelf 0 "setfromdvar ui_stat_name name"
-
-#define STAT_UPDATE_SELF \
-  GETNAMEONDVAR; \
-	STATTODVAR_TIME_PLAYED_OTHER; \
-	STATTODVAR_TIME_PLAYED_OPFOR; \
-	STATTODVAR_TIME_PLAYED_ALLIES; \
-  STATTODVAR_SUICIDES; \
-	STATTODVAR_TEAMKILLS; \
-	STATTODVAR_HEADSHOTS; \
-	STATTODVAR_ASSISTS; \
-	STATTODVAR_DEATH_STREAK; \
-	STATTODVAR_DEATHS; \
-	STATTODVAR_KILL_STREAK; \
-	STATTODVAR_KILLS; \
-	STATTODVAR_SCORE; \
-	STATTODVAR_RANKXP; \
-  STATTODVAR_TFT; \
-  STATTODVAR_TTTS; \
-  STATTODVAR_WINS; \
-  STATTODVAR_LOSSES; \
-  STATTODVAR_TIES; \
-  STATTODVAR_HITS; \
-  STATTODVAR_MISSES; \
-  STATTODVAR_TOTAL_SHOTS;
+#include "ui_mp/custom.inc"
 
 {
 	menuDef 
@@ -176,7 +97,7 @@
       background		"ui_arrow_left"
       //forecolor		0.409 0.801 0.999 1
       forecolor		0.97 0.81 0.42 1
-      visible			when( dvarInt( ui_showEndOfGame ) == 0 )
+      visible			1
       mouseEnter { play "mouse_over"; setitemcolor iprevpl forecolor 0.409 0.801 0.999 1 }
 			mouseExit { setitemcolor iprevpl forecolor 0.97 0.81 0.42 1 }
       action { play "mouse_click"; scriptMenuResponse "prevpl"; setdvar ct_displayingSelf 0; }	
@@ -190,7 +111,7 @@
       origin			ORIGIN_PLAYERSTATS
       background		"objective_down"
       forecolor		1 1 1 1
-      visible			when( dvarInt( ui_showEndOfGame ) == 0 )
+      visible			1
       mouseEnter { play "mouse_over"; setitemcolor comparestats forecolor 0.9 0.6 0.4 1 }
       mouseExit { setitemcolor comparestats forecolor 1 1 1 1 }
       action
@@ -210,7 +131,7 @@
       origin			ORIGIN_PLAYERSTATS
       background		"ui_arrow_right"
       forecolor		0.97 0.81 0.42 1
-      visible			when( dvarInt( ui_showEndOfGame ) == 0 )
+      visible			1
       mouseEnter { play "mouse_over"; setitemcolor inextpl forecolor 0.409 0.801 0.999 1 }
       mouseExit { setitemcolor inextpl forecolor 0.97 0.81 0.42 1 }
       action { play "mouse_click"; scriptMenuResponse "nextpl"; setdvar ct_displayingSelf 0; }	

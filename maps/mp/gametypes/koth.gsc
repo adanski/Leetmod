@@ -24,7 +24,7 @@ main()
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 350, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 10, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 12, 0, 1440 );
 
 
 	level.teamBased = true;
@@ -47,13 +47,13 @@ main()
 	precacheString( &"MP_WAITING_FOR_HQ" );
 
 	// Auxiliary variables
-	level.hqAutoDestroyTime = getdvarx( "scr_koth_autodestroytime", "int", 60, 0, 300 );
-	level.hqSpawnTime = getdvarx( "scr_koth_spawntime", "int", 40, 0, 300 );
-	level.kothMode = getdvarx( "scr_koth_kothmode", "int", 0, 0, 1 );
+	level.hqAutoDestroyTime = getdvarx( "scr_koth_autodestroytime", "int", 120, 0, 300 );
+	level.hqSpawnTime = getdvarx( "scr_koth_spawntime", "int", 15, 0, 300 );
+	level.kothMode = getdvarx( "scr_koth_kothmode", "int", 1, 0, 1 );
 	level.captureTime = getdvarx( "scr_koth_captureTime", "int", 35, 0, 300 );
 	level.destroyTime = getdvarx( "scr_koth_destroyTime", "int", 15, 0, 300 );
 	level.delayPlayer = getdvarx( "scr_koth_delayPlayer", "int", 1, 0, 1 );
-	level.spawnDelay = getdvarx( "scr_koth_spawnDelay", "int", 60, 0, 300);
+	level.spawnDelay = getdvarx( "scr_koth_spawnDelay", "int", level.hqAutoDestroyTime, 0, 300);
 
 	level.iconoffset = (0,0,32);
 
@@ -930,7 +930,7 @@ onRoundSwitch()
 checkAllowSpectating()
 {
 	wait ( 0.05 );
-
+  
 	if ( !level.aliveCount[ "axis" ] )
 	{
 		level.spectateOverride["axis"].allowEnemySpectate = 1;
@@ -958,7 +958,7 @@ checkAllowSpectating()
 			}
 	}
 	else
-		level.spectateOverride["axis"].allowEnemySpectate = 0;
-
+    level.spectateOverride["allies"].allowEnemySpectate = 0;
+  
 	maps\mp\gametypes\_spectating::updateSpectateSettings();
 }
