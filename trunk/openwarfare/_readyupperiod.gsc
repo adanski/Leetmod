@@ -422,7 +422,6 @@ deactivateMapObjectives()
 			// Deactivate the extraction zone trigger
       level.extractionZone maps\mp\gametypes\_gameobjects::allowUse( "none" );
 			break;
-					
 		case "ch":
 			// Deactivate the flag so nobody can pick it up
 			level.flag maps\mp\gametypes\_gameobjects::allowUse( "none" );

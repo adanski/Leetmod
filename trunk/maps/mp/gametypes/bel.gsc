@@ -329,7 +329,7 @@ onSpawnPlayer( teamMove )
 	}
 	
 	// If this player is a defender start giving score points for surviving
-	if ( self.pers["team"] == game["defenders"] ) {
+	if ( self.pers["team"] == game["defenders"] && !level.inReadyUpPeriod) {
 		self thread createHudElements();
 		
 		// Check if we need to show the player in the compass
@@ -725,7 +725,7 @@ movePlayer( newTeam, autoBalance )
 			self thread openwarfare\_spawnprotection::onPlayerSpawned();		
 			
 		// If this player is a defender start giving score points for surviving
-		if ( self.pers["team"] == game["defenders"] ) {
+		if ( self.pers["team"] == game["defenders"] && !level.inReadyUpPeriod ) {
 			self thread createHudElements();
 			
 			// Check if we need to show the player in the compass
