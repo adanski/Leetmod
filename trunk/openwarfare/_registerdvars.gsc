@@ -140,6 +140,7 @@ init()
 
 	// Leader Dialog
 	level.scr_allow_leader_dialog = getdvarx( "scr_allow_leader_dialog", "int", 1, 0, 1 );
+  level.scr_player_spawn_play_sounds = getdvarx( "scr_player_spawn_play_sounds", "int", 1, 0, 1 );
 
 	level.scr_show_obituaries = getdvarx( "scr_show_obituaries", "int", 1, 0, 2 );
 	level.scr_play_headshot_impact_sound = getdvarx( "scr_play_headshot_impact_sound", "int", 1, 0, 1 );
