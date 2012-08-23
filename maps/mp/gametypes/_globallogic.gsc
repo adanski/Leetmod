@@ -66,7 +66,7 @@ init()
 	
 	// Set mod name and version
 	setDvar( "_Mod", "Leetmod", true );
-	setDvar( "_ModVer", "v1.8", true );
+	setDvar( "_ModVer", "v1.8 beta", true );
 
 	// Make a health check of the server
 	level thread openwarfare\_servercheck::init();
@@ -834,9 +834,10 @@ spawnPlayer()
 			else
 				level.playedStartingMusic = true;
 		}
-
-		thread maps\mp\gametypes\_hud_message::oldNotifyMessage( game["strings"][team + "_name"], undefined, game["icons"][team], game["colors"][team], music );
-		if ( isDefined( game["dialog"]["gametype"] ) && (!level.splitscreen || self == level.players[0]) )
+    if( !level.scr_player_spawn_play_sounds )
+      music = undefined;
+    thread maps\mp\gametypes\_hud_message::oldNotifyMessage( game["strings"][team + "_name"], undefined, game["icons"][team], game["colors"][team], music );
+		if ( isDefined( game["dialog"]["gametype"] ) && (!level.splitscreen || self == level.players[0]) && level.scr_player_spawn_play_sounds )
 			self leaderDialogOnPlayer( "gametype" );
 
 		thread maps\mp\gametypes\_hud::showClientScoreBar( 5.0 );
@@ -856,9 +857,10 @@ spawnPlayer()
 			else
 				level.playedStartingMusic = true;
 		}
-
-		thread maps\mp\gametypes\_hud_message::oldNotifyMessage( game["strings"][team + "_name"], undefined, game["icons"][team], game["colors"][team], music );
-		if ( isDefined( game["dialog"]["gametype"] ) && (!level.splitscreen || self == level.players[0]) )
+    if( !level.scr_player_spawn_play_sounds )
+      music = undefined;
+    thread maps\mp\gametypes\_hud_message::oldNotifyMessage( game["strings"][team + "_name"], undefined, game["icons"][team], game["colors"][team], music );
+		if ( isDefined( game["dialog"]["gametype"] ) && (!level.splitscreen || self == level.players[0]) && level.scr_player_spawn_play_sounds )
 			self leaderDialogOnPlayer( "gametype" );
 
 		thread maps\mp\gametypes\_hud::showClientScoreBar( 5.0 );
@@ -884,11 +886,13 @@ spawnPlayer()
 				else
 					level.playedStartingMusic = true;
 			}
-
-			thread maps\mp\gametypes\_hud_message::oldNotifyMessage( game["strings"][team + "_name"], undefined, game["icons"][team], game["colors"][team], music );
+      
+      if( !level.scr_player_spawn_play_sounds )
+        music = undefined;
+      thread maps\mp\gametypes\_hud_message::oldNotifyMessage( game["strings"][team + "_name"], undefined, game["icons"][team], game["colors"][team], music );
 				
 			if ( level.gametype != "hns" ) {
-				if ( isDefined( game["dialog"]["gametype"] ) && (!level.splitscreen || self == level.players[0]) )
+				if ( isDefined( game["dialog"]["gametype"] ) && (!level.splitscreen || self == level.players[0]) && level.scr_player_spawn_play_sounds )
 				{
 					self leaderDialogOnPlayer( "gametype" );
 					if ( team == game["attackers"] )
