@@ -98,13 +98,7 @@ resetServerVariables()
 	variableNames[ variableNames.size ] = "scr_koth_autodestroytime scr_koth_capturetime scr_koth_delayPlayer scr_koth_destroytime scr_koth_flash_on_capture scr_koth_flash_on_destroy scr_koth_kothmode scr_koth_numlives scr_koth_playerrespawndelay scr_koth_roundlimit scr_koth_roundswitch scr_koth_scorelimit scr_koth_spawnDelay scr_koth_spawntime scr_koth_teambalanceendofround scr_koth_timelimit scr_koth_waverespawndelay";
 
 	// configs/gametypes/hideandseek.cfg
-	variableNames[ variableNames.size ] = "scr_hns_hunting_music_time;scr_hns_hunting_music_enable;scr_hns_hidetime;scr_hns_props_speed;scr_hns_props_max_morphs;scr_hns_props_survive_score_time;scr_hns_roundlimit;scr_hns_roundswitch;scr_hns_scorelimit;scr_hns_timelimit;scr_hns_teambalanceendofround";
-	
-	// configs/gametypes/lastmanstanding.cfg
-	variableNames[ variableNames.size ] = "scr_lms_roundlimit scr_lms_scorelimit scr_lms_timelimit";
-	
-	// configs/gametypes/lastteamstanding.cfg
-	variableNames[ variableNames.size ] = "scr_lts_roundlimit scr_lts_roundswitch scr_lts_scorelimit scr_lts_teambalanceendofround scr_lts_timelimit";
+	//variableNames[ variableNames.size ] = "scr_hns_hunting_music_time;scr_hns_hunting_music_enable;scr_hns_hidetime;scr_hns_props_speed;scr_hns_props_max_morphs;scr_hns_props_survive_score_time;scr_hns_roundlimit;scr_hns_roundswitch;scr_hns_scorelimit;scr_hns_timelimit;scr_hns_teambalanceendofround";
 
 	// configs/gametypes/oneinthechamber.cfg
 	variableNames[ variableNames.size ] = "scr_oitc_suddendeath_show_enemies;scr_oitc_suddendeath_timelimit;scr_oitc_playerrespawndelay;scr_oitc_roundlimit;scr_oitc_scorelimit;scr_oitc_timelimi;scr_oitc_handgun;scr_oitc_specialty_slot1;scr_oitc_specialty_slot2";

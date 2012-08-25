@@ -47,7 +47,7 @@ menuDef
   #undef CHOICE_Y_COUNT
   #define CHOICE_Y_COUNT			20
   
-  CHOICE_DVARYESNO( 1, "@OW_SCR_G_GRAVITY", menu_scr_g_gravity, SETA_SCR_G_GRAVITY; )
+  CHOICE_DVAREDIT_NUMERIC( 1, "@OW_SCR_G_GRAVITY", menu_scr_g_gravity, 5, SETA_SCR_G_GRAVITY; )
   
   CHOICE_DVARYESNO( 2, "@OW_SCR_MAP_SPECIAL_FX_ENABLE", menu_scr_map_special_fx_enable, SETA_SCR_MAP_SPECIAL_FX_ENABLE; )
   CHOICE_DVARYESNO( 3, "@OW_SCR_MAP_SPECIAL_FX_RAIN", menu_scr_map_special_fx_rain, SETA_SCR_MAP_SPECIAL_FX_RAIN; )

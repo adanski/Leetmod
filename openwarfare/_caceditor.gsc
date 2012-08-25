@@ -890,8 +890,10 @@ addSecondaries()
 addSecondaryAttachments()
 {
 	//Add Secondary Attachments ( attachment_stat )
-	self addCACSecondaryAttachments( 0 ); //None
-	self addCACSecondaryAttachments( 3 ); //Silencer
+	if( level.attach_allow_pistol_none )
+    self addCACSecondaryAttachments( 0 ); //None
+  if( level.attach_allow_pistol_silencer )
+    self addCACSecondaryAttachments( 3 ); //Silencer
 }
 
 addPerk1()

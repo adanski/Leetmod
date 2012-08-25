@@ -69,13 +69,13 @@
 		#undef CHOICE_Y_START
 		#define CHOICE_Y_START 110
 		
-		//CHOICE_BIND( 28, "@OW_ZOOM_IN", "openScriptMenu modkeybind zoomin", ; )
-		//CHOICE_BIND( 29, "@OW_ZOOM_OUT", "openScriptMenu modkeybind zoomout", ; )
-		//CHOICE_BIND( 30, "@OW_BINOCULARS", "+actionslot 2", ; )
-		//CHOICE_BIND( 31, "@OW_ATTACH_DETACH", "openScriptMenu modkeybind attachdetach", ; )
+		CHOICE_BIND( 27, "@OW_BINOCULARS", "+actionslot 2", ; )
+		CHOICE_BIND( 28, "@OW_ZOOM_IN", "openScriptMenu modkeybind zoomin", ; )
+		CHOICE_BIND( 29, "@OW_ZOOM_OUT", "openScriptMenu modkeybind zoomout", ; )
+		CHOICE_BIND( 30, "@OW_ATTACH_DETACH", "openScriptMenu modkeybind attachdetach", ; )
 		// commented because of xmodels limitation (respective code is also disabled)
     //CHOICE_BIND( 32, "@OW_FIRING_MODE", "openScriptMenu modkeybind firingmode", ; )
-		//CHOICE_BIND( 33, "@OW_UNJAM_WEAPON", "openScriptMenu modkeybind unjam", ; )
+		CHOICE_BIND( 31, "@OW_UNJAM_WEAPON", "openScriptMenu modkeybind unjam", ; )
 
 	
 		#undef CHOICE_X_START

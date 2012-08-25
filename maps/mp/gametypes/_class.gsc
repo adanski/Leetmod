@@ -73,6 +73,7 @@ init()
   level.attach_allow_grip = getdvarx( "attach_allow_grip", "int", 1, 0, 1 );
   level.attach_allow_assault_gl = getdvarx( "attach_allow_assault_gl", "int", 1, 0, 1 );
   
+  level.attach_allow_pistol_none = getdvarx( "attach_allow_pistol_none", "int", 1, 0, 1);
   level.attach_allow_pistol_silencer = getdvarx( "attach_allow_pistol_silencer", "int", 1, 0, 1 );
   
   level.scr_c4_ammo_count = getdvarx( "scr_c4_ammo_count", "int", 2, 1, 2 );
