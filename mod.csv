@@ -255,8 +255,8 @@ stringtable,mp/rankTable.csv
 stringtable,mp/statsTable.csv
 
 rawfile,openwarfare/_advancedacp.gsc
-rawfile,openwarfare/_advancedmvs.gsc
-#rawfile,openwarfare/_antibunnyhopping.gsc
+#rawfile,openwarfare/_advancedmvs.gsc
+rawfile,openwarfare/_antibunnyhopping.gsc
 rawfile,openwarfare/_anticamping.gsc
 rawfile,openwarfare/_bigbrotherbot.gsc
 #rawfile,openwarfare/_binoculars.gsc
@@ -264,28 +264,28 @@ rawfile,openwarfare/_blackscreen.gsc
 rawfile,openwarfare/_bloodsplatters.gsc
 rawfile,openwarfare/_bodyremoval.gsc
 rawfile,openwarfare/_caceditor.gsc
-#rawfile,openwarfare/_capeditor.gsc
+rawfile,openwarfare/_capeditor.gsc
 rawfile,openwarfare/_clanvsall.gsc
 rawfile,openwarfare/_cyclefpslag.gsc
-#rawfile,openwarfare/_damageeffect.gsc
+rawfile,openwarfare/_damageeffect.gsc
 rawfile,openwarfare/_daycyclesystem.gsc
 rawfile,openwarfare/_disarmexplosives.gsc
 rawfile,openwarfare/_dogtags.gsc
 rawfile,openwarfare/_dvarmonitor.gsc
 #rawfile,openwarfare/_dynamicattachments.gsc
 rawfile,openwarfare/_eventmanager.gsc
-#rawfile,openwarfare/_extendedobituaries.gsc
+rawfile,openwarfare/_extendedobituaries.gsc
 #rawfile,openwarfare/_firingmode.gsc
-#rawfile,openwarfare/_fitnesscs.gsc
+rawfile,openwarfare/_fitnesscs.gsc
 rawfile,openwarfare/_globalchat.gsc
 rawfile,openwarfare/_globalinit.gsc
-#rawfile,openwarfare/_guidcs.gsc
+rawfile,openwarfare/_guidcs.gsc
 rawfile,openwarfare/_healthsystem.gsc
-#rawfile,openwarfare/_hidescores.gsc
+rawfile,openwarfare/_hidescores.gsc
 rawfile,openwarfare/_idlemonitor.gsc
 rawfile,openwarfare/_keybinds.gsc
 #rawfile,openwarfare/_killingspree.gsc
-#rawfile,openwarfare/_limitexplosives.gsc
+rawfile,openwarfare/_limitexplosives.gsc
 rawfile,openwarfare/_livebroadcast.gsc
 rawfile,openwarfare/_maprotationcs.gsc
 rawfile,openwarfare/_martyrdom.gsc
@@ -297,8 +297,8 @@ rawfile,openwarfare/_overtime.gsc
 rawfile,openwarfare/_playerdvars.gsc
 rawfile,openwarfare/_players.gsc
 rawfile,openwarfare/_powerrank.gsc
-#rawfile,openwarfare/_quickactions.gsc
-#rawfile,openwarfare/_rangefinder.gsc
+rawfile,openwarfare/_quickactions.gsc
+rawfile,openwarfare/_rangefinder.gsc
 rawfile,openwarfare/_readyupperiod.gsc
 rawfile,openwarfare/_realtimestats.gsc
 rawfile,openwarfare/_registerdvars.gsc
@@ -306,14 +306,14 @@ rawfile,openwarfare/_reservedslots.gsc
 rawfile,openwarfare/_resetvariables.gsc
 rawfile,openwarfare/_rng.gsc
 rawfile,openwarfare/_rotateifempty.gsc
-#rawfile,openwarfare/_rsmonitor.gsc
+rawfile,openwarfare/_rsmonitor.gsc
 rawfile,openwarfare/_scorebot.gsc
 rawfile,openwarfare/_scoresystem.gsc
 rawfile,openwarfare/_serverbanners.gsc
 rawfile,openwarfare/_servercheck.gsc
 rawfile,openwarfare/_serverload.gsc
 rawfile,openwarfare/_servermessages.gsc
-#rawfile,openwarfare/_sniperzoom.gsc
+rawfile,openwarfare/_sniperzoom.gsc
 rawfile,openwarfare/_spawnprotection.gsc
 rawfile,openwarfare/_speedcontrol.gsc
 #rawfile,openwarfare/_sponsors.gsc
@@ -332,12 +332,10 @@ rawfile,openwarfare/_weapondamagemodifier.gsc
 #rawfile,openwarfare/_weaponjam.gsc
 rawfile,openwarfare/_weaponlocationmodifier.gsc
 rawfile,openwarfare/_weaponrangemodifier.gsc
-#rawfile,openwarfare/_weaponweightmodifier.gsc
+rawfile,openwarfare/_weaponweightmodifier.gsc
 rawfile,openwarfare/_welcomerulesinfo.gsc
 
 menufile,ui_mp/auto_update.menu
-# Where is this file? Commented
-#menufile,ui_mp/cac_assault.menu
 menufile,ui_mp/challenges.menu
 menufile,ui_mp/connect.menu
 menufile,ui_mp/controls_multi.menu
@@ -348,7 +346,7 @@ menufile,ui_mp/options_game_pc.menu
 #menufile,ui_mp/options_graphics_pc.menu
 menufile,ui_mp/options_multi.menu
 menufile,ui_mp/scriptmenus/advancedacp.menu
-menufile,ui_mp/scriptmenus/advancedmvs.menu
+#menufile,ui_mp/scriptmenus/advancedmvs.menu
 #menufile,ui_mp/scriptmenus/callvote.menu
 #menufile,ui_mp/scriptmenus/callvote_buttons.inc
 #menufile,ui_mp/scriptmenus/changeclass_marines_mw.menu

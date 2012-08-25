@@ -9,6 +9,7 @@ init()
 	level.scr_limit_planted_claymores = getdvarx( "scr_limit_planted_claymores", "int", 0, 0, 50 );
 
 	// Check if we need to stay here or not
+  // ## To check: what about bel gametype, should we limit like in a teambased?
 	if ( ( level.scr_limit_planted_c4s == 0 && level.scr_limit_planted_claymores == 0 ) || !level.teamBased )
 		return;
 

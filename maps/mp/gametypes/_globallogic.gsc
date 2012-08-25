@@ -15,7 +15,7 @@ init()
 	level.gametype = toLower( getDvar( "g_gametype" ) );
 
 	// Load the rulesets
-/*
+  
 	rulesets\openwarfare\rulesets::init();
 	if ( getDvar("dedicated") != "listen server" )
 		rulesets\leagues::init();
@@ -39,7 +39,7 @@ init()
 			}
 		}
 	}
-*/
+  
 	level.scr_league_ruleset = getdvarx( "scr_league_ruleset", "string", "" );
 
 
@@ -66,7 +66,7 @@ init()
 	
 	// Set mod name and version
 	setDvar( "_Mod", "Leetmod", true );
-	setDvar( "_ModVer", "v1.8 beta", true );
+	setDvar( "_ModVer", "v1.8beta", true );
 
 	// Make a health check of the server
 	level thread openwarfare\_servercheck::init();
