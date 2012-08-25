@@ -10,8 +10,8 @@ init()
 	openwarfare\_visualmover::init();
 
 	thread openwarfare\_advancedacp::init();
-	thread openwarfare\_advancedmvs::init();
-	//thread openwarfare\_antibunnyhopping::init();
+	//thread openwarfare\_advancedmvs::init();
+	thread openwarfare\_antibunnyhopping::init();
 	thread openwarfare\_anticamping::init();
 	thread openwarfare\_bigbrotherbot::init();
 	//thread openwarfare\_binoculars::init();
@@ -19,25 +19,25 @@ init()
 	thread openwarfare\_bloodsplatters::init();
 	thread openwarfare\_bodyremoval::init();
 	thread openwarfare\_caceditor::init();	
-	//thread openwarfare\_capeditor::init();
+	thread openwarfare\_capeditor::init();
 	thread openwarfare\_clanvsall::init();
-	//thread openwarfare\_damageeffect::init();
+	thread openwarfare\_damageeffect::init();
 	thread openwarfare\_daycyclesystem::init();
 	thread openwarfare\_disarmexplosives::init();
 	thread openwarfare\_dogtags::init();
 	thread openwarfare\_dvarmonitor::init();
-	//thread openwarfare\_dynamicattachments::init();		
-	//thread openwarfare\_extendedobituaries::init();
+	thread openwarfare\_dynamicattachments::init();		
+	thread openwarfare\_extendedobituaries::init();
 	//thread openwarfare\_firingmode::init();	
-	//thread openwarfare\_fitnesscs::init();	
+	thread openwarfare\_fitnesscs::init();	
 	thread openwarfare\_globalchat::init();
-	//thread openwarfare\_guidcs::init();
+	thread openwarfare\_guidcs::init();
 	thread openwarfare\_healthsystem::init();
-	//thread openwarfare\_hidescores::init();
+	thread openwarfare\_hidescores::init();
 	thread openwarfare\_idlemonitor::init();
 	thread openwarfare\_keybinds::init();		
 	//thread openwarfare\_killingspree::init();
-	//thread openwarfare\_limitexplosives::init();
+	thread openwarfare\_limitexplosives::init();
 	thread openwarfare\_livebroadcast::init();
 	thread openwarfare\_martyrdom::init();
 	thread openwarfare\_numlives::init();
@@ -48,8 +48,8 @@ init()
 	thread openwarfare\_playerdvars::init();
 	thread openwarfare\_players::init();		
 	thread openwarfare\_powerrank::init();
-	//thread openwarfare\_quickactions::init();
-	//thread openwarfare\_rangefinder::init();
+	thread openwarfare\_quickactions::init();
+	thread openwarfare\_rangefinder::init();
 	thread openwarfare\_realtimestats::init();
 	thread openwarfare\_reservedslots::init();
 	thread openwarfare\_rng::init();
@@ -59,7 +59,7 @@ init()
 	thread openwarfare\_scoresystem::init();
 	thread openwarfare\_serverbanners::init();
 	thread openwarfare\_servermessages::init();
-	//thread openwarfare\_sniperzoom::init();
+	thread openwarfare\_sniperzoom::init();
 	thread openwarfare\_spawnprotection::init();
 	thread openwarfare\_speedcontrol::init();
 	//thread openwarfare\_sponsors::init();
@@ -72,10 +72,10 @@ init()
 	thread openwarfare\_tkmonitor::init();
 	thread openwarfare\_virtualranks::init();
 	thread openwarfare\_weapondamagemodifier::init();
-	//thread openwarfare\_weaponjam::init();
+	thread openwarfare\_weaponjam::init();
 	thread openwarfare\_weaponlocationmodifier::init();
 	thread openwarfare\_weaponrangemodifier::init();
-	//thread openwarfare\_weaponweightmodifier::init();
+	thread openwarfare\_weaponweightmodifier::init();
 	thread openwarfare\_welcomerulesinfo::init();
 }
 

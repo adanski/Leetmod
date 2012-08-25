@@ -272,7 +272,7 @@ rawfile,openwarfare/_daycyclesystem.gsc
 rawfile,openwarfare/_disarmexplosives.gsc
 rawfile,openwarfare/_dogtags.gsc
 rawfile,openwarfare/_dvarmonitor.gsc
-#rawfile,openwarfare/_dynamicattachments.gsc
+rawfile,openwarfare/_dynamicattachments.gsc
 rawfile,openwarfare/_eventmanager.gsc
 rawfile,openwarfare/_extendedobituaries.gsc
 #rawfile,openwarfare/_firingmode.gsc
@@ -329,7 +329,7 @@ rawfile,openwarfare/_utils.gsc
 rawfile,openwarfare/_virtualranks.gsc
 rawfile,openwarfare/_visualmover.gsc
 rawfile,openwarfare/_weapondamagemodifier.gsc
-#rawfile,openwarfare/_weaponjam.gsc
+rawfile,openwarfare/_weaponjam.gsc
 rawfile,openwarfare/_weaponlocationmodifier.gsc
 rawfile,openwarfare/_weaponrangemodifier.gsc
 rawfile,openwarfare/_weaponweightmodifier.gsc
