@@ -54,7 +54,7 @@ init()
 	thread openwarfare\_reservedslots::init();
 	thread openwarfare\_rng::init();
 	thread openwarfare\_rotateifempty::init();
-	//thread openwarfare\_rsmonitor::init();
+	thread openwarfare\_rsmonitor::init();
 	thread openwarfare\_scorebot::init();
 	thread openwarfare\_scoresystem::init();
 	thread openwarfare\_serverbanners::init();

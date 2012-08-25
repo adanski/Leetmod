@@ -93,6 +93,8 @@ init()
 	// Add no custom reason option
 	level.scr_aacp_custom_reasons_code[0] = "<No Custom Reason>";
 	level.scr_aacp_custom_reasons_text[0] = "";
+  level.scr_aacp_custom_reasons_code[1] = "Cheats";
+	level.scr_aacp_custom_reasons_text[1] = "Your freedom ends where another's begins. Cheats never!";
 	for ( iLine=0; iLine < tempReasons.size; iLine++ ) {
 		thisLine = strtok( tempReasons[iLine], ";" );
 		
@@ -936,7 +938,7 @@ pointOutPlayer( player )
 	} else {
 		objWorld = newHudElem();		
 	}
-  // if reason == cheater
+  // if Reason == Cheats
   if( self.aacpReason == 1 ) {
   // disabled because mod goes public
   /*
