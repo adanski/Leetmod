@@ -1795,7 +1795,8 @@ endGame( winner, endReasonText )
 		}
 	}
 	
-	openwarfare\_advancedmvs::mapVoting_Intermission();
+  // ## Comented for now
+	//openwarfare\_advancedmvs::mapVoting_Intermission();
 	
 	players = level.players;
 	for ( index = 0; index < players.size; index++ )

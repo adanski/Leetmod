@@ -7,7 +7,7 @@ init()
 	level.scr_rangefinder_enable = getdvarx( "scr_rangefinder_enable", "int", 0, 0, 1 );
   
   level.scr_rangefinder_unit = getdvarx( "scr_rangefinder_unit", "string", "", undefined, undefined );
-	if ( level.scr_rangefinder_unit != "meters" && level.scr_rangefinder_unit != "yards" ) {
+	if ( level.scr_rangefinder_unit != "meters" && level.scr_rangefinder_unit != "yards" )
 		level.scr_rangefinder_unit = level.scr_measurement_unit_system;
 
 	// If range finder is disabled there's nothing else to do here
