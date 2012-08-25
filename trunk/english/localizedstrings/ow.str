@@ -1164,7 +1164,7 @@ REFERENCE	AACP_MENU
 LANG_ENGLISH	"Admin Control Panel"
 
 REFERENCE ATTACH_DETACH
-LANG_ENGLISH "Attach/Detach Attachment"
+LANG_ENGLISH "Change Attachment"
 
 REFERENCE FIRING_MODE
 LANG_ENGLISH "Switch Firing Mode"
@@ -1713,10 +1713,10 @@ REFERENCE MANTAIN_TIMER
 LANG_ENGLISH "Mantain bomb timer (Hot Potato)"
 
 REFERENCE PLANTING_SOUND
-LANG_ENGLISH "Planting sound (--CHECK)"
+LANG_ENGLISH "Planting sound"
 
 REFERENCE DEFUSING_SOUND
-LANG_ENGLISH "Defusing sound (--CHECK)"
+LANG_ENGLISH "Defusing sound"
 
 REFERENCE SHOW_BRIEFCASE_MODEL
 LANG_ENGLISH "Show briefcase model when plant/defusing"
@@ -2590,6 +2590,9 @@ LANG_ENGLISH "Defuse bomb"
 //******************************************************************************
 // ui_mp/server_world.inc
 //******************************************************************************
+
+REFERENCE SCR_G_GRAVITY
+LANG_ENGLISH "Gravity"
 
 REFERENCE SCR_MAP_SPECIAL_FX_ENABLE
 LANG_ENGLISH "Special effects (sounds, fire, smoke...), all maps"

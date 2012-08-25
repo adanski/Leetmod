@@ -48,7 +48,7 @@ menuDef
   #define CHOICE_Y_COUNT			20
 
   CHOICE_DVAREDIT_NUMERIC( 1, "@OW_SCR_PLAYER_MAXHEALTH", scr_player_maxhealth, 3, SETA_SCR_PLAYER_MAXHEALTH; )
-  CHOICE_DVARFLOATLIST( 2, "@OW_SCR_HEALTHREGEN_METHOD", scr_healthregen_method, { "No health regeneration" 0 "Stock method (fully regen. in 1 go after delay)" 1 "Regen progressively" 1 }, SETA_SCR_HEALTHREGEN_METHOD; )
+  CHOICE_DVARFLOATLIST( 2, "@OW_SCR_HEALTHREGEN_METHOD", scr_healthregen_method, { "No health regeneration" 0 "Stock method (fully regen. in 1 go after delay)" 1 "Regen progressively" 2 }, SETA_SCR_HEALTHREGEN_METHOD; )
   CHOICE_DVAREDIT_NUMERIC( 3, "@OW_SCR_PLAYER_HEALTHREGENTIME", scr_player_healthregentime, 3, SETA_SCR_PLAYER_HEALTHREGENTIME; )
   CHOICE_DVAREDIT_NUMERIC( 4, "@OW_SCR_SCR_HEALTH_PAIN_SOUND", scr_health_pain_sound, 2, SETA_SCR_HEALTH_PAIN_SOUND; )
   CHOICE_DVARYESNO( 5, "@OW_SCR_HEALTH_DEATH_SOUND", scr_health_death_sound, SETA_SCR_HEALTH_DEATH_SOUND; )

@@ -80,10 +80,10 @@
 		CHOICE_DVARFLOATLIST( 32, "@OW_HUD_SHOW_AMMO", ct_hud_show_inventory, { "No" 0 "Grenades" 1 "Full" 2 }, ; )
 		CHOICE_DVARYESNO( 33, "@OW_HUD_SHOW_MANTLE", cg_drawMantleHint, ; )
 		CHOICE_BUTTON_VIS( 34, "@OW_SCOREBOARD_COMPACT", exec ASO1;setdvar ct_scoreboardNew 0;, when( dvarbool( ct_scoreboardNew ) ); )
-		CHOICE_BUTTON_VIS( 35, "@OW_SCOREBOARD_BIG", exec ASN1;setdvar ct_scoreboardNew 1;, when( !dvarbool( ct_scoreboardNew ) ); )
-		CHOICE_DVARSTRINGLIST( 36, "@OW_CHAT_POSITION", ct_chat_position, { "Top"; "top"; "Standard"; "standard"; "Bottom"; "bottom" }, ; )
-		CHOICE_BUTTON_VIS( 37, "@OW_CONSOLE_HISTORY_ON", exec AHH1;exec AHH2;exec AHH3;exec AHH4;exec AHH5;setdvar ct_conChatHistOnly 0;, when( dvarbool( ct_conChatHistOnly ) ); )
-		CHOICE_BUTTON_VIS( 38, "@OW_CONSOLE_HISTORY_OFF", exec ASH1;exec ASH2;exec ASH3;exec ASH4;exec ASH5;setdvar monkeytoy 0;setdvar ct_conChatHistOnly 1;, when( !dvarbool( ct_conChatHistOnly ) ); )
+		CHOICE_BUTTON_VIS( 34, "@OW_SCOREBOARD_BIG", exec ASN1;setdvar ct_scoreboardNew 1;, when( !dvarbool( ct_scoreboardNew ) ); )
+		CHOICE_DVARSTRINGLIST( 35, "@OW_CHAT_POSITION", ct_chat_position, { "Top"; "top"; "Standard"; "standard"; "Bottom"; "bottom" }, ; )
+		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_HISTORY_ON", exec AHH1;exec AHH2;exec AHH3;exec AHH4;exec AHH5;setdvar ct_conChatHistOnly 0;, when( dvarbool( ct_conChatHistOnly ) ); )
+		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_HISTORY_OFF", exec ASH1;exec ASH2;exec ASH3;exec ASH4;exec ASH5;setdvar monkeytoy 0;setdvar ct_conChatHistOnly 1;, when( !dvarbool( ct_conChatHistOnly ) ); )
 		//CHOICE_BUTTON_VIS( 35, "@OW_POWER_RANK_ME", open popup_rankup, when( !dvarbool( ct_scoreboardNew ) ); )
 		
     itemDef 

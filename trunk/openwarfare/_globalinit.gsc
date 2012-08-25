@@ -14,7 +14,7 @@ init()
 	thread openwarfare\_antibunnyhopping::init();
 	thread openwarfare\_anticamping::init();
 	thread openwarfare\_bigbrotherbot::init();
-	//thread openwarfare\_binoculars::init();
+	thread openwarfare\_binoculars::init();
 	thread openwarfare\_blackscreen::init();
 	thread openwarfare\_bloodsplatters::init();
 	thread openwarfare\_bodyremoval::init();

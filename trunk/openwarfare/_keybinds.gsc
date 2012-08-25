@@ -36,31 +36,29 @@ onMenuResponse()
 					}
 					break;
 					
-		/*
 				case "zoomin":
-					if ( level.gametype == "hns" && self.pers["team"] == game["defenders"] ) {
-						self thread maps\mp\gametypes\hns::rotateProp(5);
-					} else {
+					//if ( level.gametype == "hns" && self.pers["team"] == game["defenders"] ) {
+					//	self thread maps\mp\gametypes\hns::rotateProp(5);
+					//} else {
 						self thread openwarfare\_sniperzoom::zoomIn();
-					}
+					//}
 					break;
 					
 				case "zoomout":
-					if ( level.gametype == "hns" && self.pers["team"] == game["defenders"] ) {
-						self thread maps\mp\gametypes\hns::rotateProp(-5);
-					} else {
+					//if ( level.gametype == "hns" && self.pers["team"] == game["defenders"] ) {
+					//	self thread maps\mp\gametypes\hns::rotateProp(-5);
+					//} else {
 						self thread openwarfare\_sniperzoom::zoomOut();
-					}
+					//}
 					break;
-		*/
+          
 				case "changeclass":
 					self openMenu( game[ "menu_changeclass_" + self.pers["team"] ] );
 					break;
-		/*
 				case "attachdetach":
 					self thread openwarfare\_dynamicattachments::attachDetachAttachment();
-					break;	
-		*/
+					break;
+          
 				case "firingmode":
 					//self thread openwarfare\_firingmode::switchFiringMode();
 					break;
@@ -79,29 +77,29 @@ onMenuResponse()
 						self thread openwarfare\_utils::weaponDrop();
 					}
 					break;
-		/*
+          
 				case "bandage":
 					if ( isDefined( self.isBleeding ) && self.isBleeding )
 						self thread openwarfare\_healthsystem::bandageSelf();
 					else
 						self thread openwarfare\_healthsystem::medic(); 
-					break;				
+					break;
 					
 				case "unjam":
 					self thread openwarfare\_weaponjam::unjamWeapon();
-					break;			
-		*/
+					break;
+          
 				case "calltimeout":
 					self thread openwarfare\_timeout::timeoutCalled();
 					break;
 					
 				case "redirect":
 					self thread openwarfare\_reservedslots::disconnectPlayer( true );
-					break;					
+					break;
 					
 				case "cyclefpslag":
 					self thread openwarfare\_cyclefpslag::cycleFPSLagometer();
-					break;		
+					break;
 
 				case "togglestats":
 					if ( level.scr_realtime_stats_enable == 1 ) {
@@ -121,7 +119,7 @@ onMenuResponse()
 					} else {
 						self iprintln( &"OW_AACP_NOTENABLED" );
 					}
-					break;		
+					break;
 												
 				default:
 					break;

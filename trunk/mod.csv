@@ -259,7 +259,7 @@ rawfile,openwarfare/_advancedacp.gsc
 rawfile,openwarfare/_antibunnyhopping.gsc
 rawfile,openwarfare/_anticamping.gsc
 rawfile,openwarfare/_bigbrotherbot.gsc
-#rawfile,openwarfare/_binoculars.gsc
+rawfile,openwarfare/_binoculars.gsc
 rawfile,openwarfare/_blackscreen.gsc
 rawfile,openwarfare/_bloodsplatters.gsc
 rawfile,openwarfare/_bodyremoval.gsc
@@ -381,7 +381,7 @@ sound,gungame,,all_mp
 sound,misc,,all_mp
 #sound,unreal,,all_mp
 
-#xanim,viewmodel_binoculars_idle
+xanim,viewmodel_binoculars_idle
 
 xmodel,body_complete_mp_zakhaev
 xmodel,com_office_book_red_flat
@@ -390,7 +390,7 @@ xmodel,hp_medium
 xmodel,iceberg
 xmodel,icebergred
 
-#weapon,mp/binoculars_mp
+weapon,mp/binoculars_mp
 weapon,mp/frag_grenade_nocook_mp
 
 #weapon,mp/ak47_single_mp
