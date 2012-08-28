@@ -84,27 +84,27 @@ menuDef
   #undef CHOICE_Y_COUNT
   #define CHOICE_Y_COUNT 10
 
-  CHOICE_DVAREDIT_NUMERIC( 31, "@OW_SCR_C4_AMMO_COUNT", menu_scr_c4_ammo_count, 2, SETA_SCR_C4_AMMO_COUNT; )
-  CHOICE_DVAREDIT_NUMERIC( 32, "@OW_SCR_CLAYMORE_AMMO_COUNT", menu_scr_claymore_ammo_count, 2, SETA_SCR_CLAYMORE_AMMO_COUNT; )
-  CHOICE_DVAREDIT_NUMERIC( 33, "@OW_SCR_RPG_AMMO_COUNT", menu_scr_rpg_ammo_count, 2, SETA_SCR_RPG_AMMO_COUNT; )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 31, "@OW_SCR_C4_AMMO_COUNT", menu_scr_c4_ammo_count, 2, SETA_SCR_C4_AMMO_COUNT;, when( dvarBool(menu_perk_allow_c4_mp) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 32, "@OW_SCR_CLAYMORE_AMMO_COUNT", menu_scr_claymore_ammo_count, 2, SETA_SCR_CLAYMORE_AMMO_COUNT;, when( dvarBool(menu_perk_allow_claymore_mp) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 33, "@OW_SCR_RPG_AMMO_COUNT", menu_scr_rpg_ammo_count, 2, SETA_SCR_RPG_AMMO_COUNT;, when( dvarBool(menu_perk_allow_rpg_mp) ) )
 
   CHOICE_DVAREDIT_NUMERIC( 34, "@OW_SPECIALTY_FRAGGRENADE_AMMO_COUNT", menu_specialty_fraggrenade_ammo_count, 2, SETA_SPECIALTY_FRAGGRENADE_AMMO_COUNT; )
   CHOICE_DVAREDIT_NUMERIC( 35, "@OW_SPECIALTY_SPECIALGRENADE_AMMO_COUNT", menu_specialty_specialgrenade_ammo_count, 2, SETA_SPECIALTY_SPECIALGRENADE_AMMO_COUNT; )
 
-  CHOICE_DVAREDIT_NUMERIC( 36, "@OW_ARMOR_VEST_VALUE", menu_perk_armorvest, 3, SETA_PERK_ARMORVEST; )
-  CHOICE_DVAREDIT_NUMERIC( 37, "@OW_BULLET_DAMAGE_VALUE", menu_perk_bulletdamage, 3, SETA_PERK_BULLETDAMAGE; )
-  CHOICE_DVAREDIT_NUMERIC( 38, "@OW_EXPLOSIVE_DAMAGE_VALUE", menu_perk_explosivedamage, 3, SETA_PERK_EXPLOSIVEDAMAGE; )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 36, "@OW_ARMOR_VEST_VALUE", menu_perk_armorvest, 3, SETA_PERK_ARMORVEST;, when( dvarBool(menu_perk_allow_specialty_armorvest) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 37, "@OW_BULLET_DAMAGE_VALUE", menu_perk_bulletdamage, 3, SETA_PERK_BULLETDAMAGE;, when( dvarBool(menu_perk_allow_specialty_bulletdamage) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 38, "@OW_EXPLOSIVE_DAMAGE_VALUE", menu_perk_explosivedamage, 3, SETA_PERK_EXPLOSIVEDAMAGE;, when( dvarBool(menu_perk_allow_specialty_explosivedamage) ) )
   
-  CHOICE_DVARFLOATLIST( 39, "@OW_SCR_CLAYMORE_FRIENDLY_FIRE", menu_scr_claymore_friendly_fire, { "Disabled" 0 "Enabled (except owner)" 1 "Enabled (everyone)" 2 }, SETA_SCR_CLAYMORE_FRIENDLY_FIRE; )
+  CHOICE_DVARFLOATLIST_VIS( 39, "@OW_SCR_CLAYMORE_FRIENDLY_FIRE", menu_scr_claymore_friendly_fire, { "Disabled" 0 "Enabled (except owner)" 1 "Enabled (everyone)" 2 }, SETA_SCR_CLAYMORE_FRIENDLY_FIRE;, when( dvarBool(menu_perk_allow_claymore_mp) ) )
   
-  CHOICE_DVARYESNO( 41, "@OW_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS", menu_specialty_grenadepulldeath_check_frags, SETA_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS; )
-  CHOICE_DVARYESNO( 42, "@OW_SPECIALTY_PISTOLDEATH_CHECK_PISTOL", menu_specialty_pistoldeath_check_pistol, SETA_SPECIALTY_PISTOLDEATH_CHECK_PISTOL; )
-  CHOICE_DVARYESNO( 43, "@OW_SCR_CLAYMORE_CHECK_PLANT_DISTANCE", menu_scr_claymore_check_plant_distance, SETA_SCR_CLAYMORE_CHECK_PLANT_DISTANCE; )
-  CHOICE_DVARYESNO( 44, "@OW_SCR_CLAYMORE_ADD_KILL_ONLY_IF_DIRECTED", menu_scr_claymore_add_kill_only_if_directed, SETA_SCR_CLAYMORE_ADD_KILL_ONLY_IF_DIRECTED; )
-  CHOICE_DVAREDIT_NUMERIC( 45, "@OW_SCR_CLAYMORE_ARM_TIME", menu_scr_claymore_arm_time, 2, SETA_SCR_CLAYMORE_ARM_TIME; )
+  CHOICE_DVARYESNO_VIS( 41, "@OW_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS", menu_specialty_grenadepulldeath_check_frags, SETA_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS;, when( dvarBool(menu_perk_allow_specialty_grenadepulldeath) ) )
+  CHOICE_DVARYESNO_VIS( 42, "@OW_SPECIALTY_PISTOLDEATH_CHECK_PISTOL", menu_specialty_pistoldeath_check_pistol, SETA_SPECIALTY_PISTOLDEATH_CHECK_PISTOL;, when( dvarBool(menu_perk_allow_specialty_pistoldeath) ) )
+  CHOICE_DVARYESNO_VIS( 43, "@OW_SCR_CLAYMORE_CHECK_PLANT_DISTANCE", menu_scr_claymore_check_plant_distance, SETA_SCR_CLAYMORE_CHECK_PLANT_DISTANCE;, when( dvarBool(menu_perk_allow_claymore_mp) ) )
+  CHOICE_DVARYESNO_VIS( 44, "@OW_SCR_CLAYMORE_ADD_KILL_ONLY_IF_DIRECTED", menu_scr_claymore_add_kill_only_if_directed, SETA_SCR_CLAYMORE_ADD_KILL_ONLY_IF_DIRECTED;, when( dvarBool(menu_perk_allow_claymore_mp) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 45, "@OW_SCR_CLAYMORE_ARM_TIME", menu_scr_claymore_arm_time, 2, SETA_SCR_CLAYMORE_ARM_TIME;, when( dvarBool(menu_perk_allow_claymore_mp) ) )
   CHOICE_DVARYESNO( 46, "@OW_SCR_EXPLOSIVES_ALLOW_DISARM", menu_scr_explosives_allow_disarm, SETA_SCR_EXPLOSIVES_ALLOW_DISARM; )
   CHOICE_DVAREDIT_VIS( 47, "@OW_SCR_EXPLOSIVES_DISARM_TIME", menu_scr_explosives_disarm_time, 4, 4, SETA_SCR_EXPLOSIVES_DISARM_TIME, when( dvarBool(menu_scr_explosives_allow_disarm) == 1) )
-  CHOICE_DVARYESNO( 48, "@OW_SCR_CLAYMORE_SHOW_HEADICON", menu_scr_claymore_show_headicon, SETA_SCR_CLAYMORE_SHOW_HEADICON; )
-  CHOICE_DVARYESNO( 49, "@OW_SCR_CLAYMORE_SHOW_LASER_BEAMS", menu_scr_claymore_show_laser_beams, SETA_SCR_CLAYMORE_SHOW_LASER_BEAMS; )
-  CHOICE_DVARYESNO( 50, "@OW_SCR_SHOW_C4_BLINK_EFFECT", menu_scr_show_c4_blink_effect, SETA_SCR_SHOW_C4_BLINK_EFFECT; )
+  CHOICE_DVARYESNO_VIS( 48, "@OW_SCR_CLAYMORE_SHOW_HEADICON", menu_scr_claymore_show_headicon, SETA_SCR_CLAYMORE_SHOW_HEADICON;, when( dvarBool(menu_perk_allow_claymore_mp) ) )
+  CHOICE_DVARYESNO_VIS( 49, "@OW_SCR_CLAYMORE_SHOW_LASER_BEAMS", menu_scr_claymore_show_laser_beams, SETA_SCR_CLAYMORE_SHOW_LASER_BEAMS;, when( dvarBool(menu_perk_allow_claymore_mp) ) )
+  CHOICE_DVARYESNO_VIS( 50, "@OW_SCR_SHOW_C4_BLINK_EFFECT", menu_scr_show_c4_blink_effect, SETA_SCR_SHOW_C4_BLINK_EFFECT;, when( dvarBool(menu_perk_allow_c4_mp) ) )
 }

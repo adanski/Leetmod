@@ -33,10 +33,10 @@ menuDef
   #define CHOICE_SIZE_Y 		20
 
   #undef	CHOICE_SIZE_X
-  #define CHOICE_SIZE_X		150
+  #define CHOICE_SIZE_X		180
 
   #undef CHOICE_X_SPACING
-  #define CHOICE_X_SPACING 300
+  #define CHOICE_X_SPACING 280
   
   #undef CHOICE_X_START
   #define CHOICE_X_START 0
@@ -45,32 +45,32 @@ menuDef
   #define CHOICE_Y_START 34
   
   #undef CHOICE_Y_COUNT
-  #define CHOICE_Y_COUNT			20
+  #define CHOICE_Y_COUNT			16
 
   
-  CHOICE_DVAREDIT_NUMERIC( 1, "@OW_SCR_FALLDAMAGEMINHEIGHT", scr_fallDamageMinHeight, 4, SETA_SCR_FALLDAMAGEMINHEIGHT; )
-  CHOICE_DVAREDIT_NUMERIC( 2, "@OW_SCR_FALLDAMAGEMAXHEIGHT", scr_fallDamageMaxHeight, 4, SETA_SCR_FALLDAMAGEMAXHEIGHT; )
-  CHOICE_DVAREDIT_NUMERIC( 3, "@OW_SCR_JUMP_HEIGHT", scr_jump_height, 4, SETA_SCR_JUMP_HEIGHT; )
-  CHOICE_DVARYESNO( 4, "@OW_SCR_JUMP_SLOWDOWN_ENABLE", scr_jump_slowdown_enable, SETA_SCR_JUMP_SLOWDOWN_ENABLE; )
-  CHOICE_DVARYESNO( 5, "@OW_SCR_GAME_ALLOW_KILLCAM", scr_game_allow_killcam, SETA_SCR_GAME_ALLOW_KILLCAM; )
-  CHOICE_DVARYESNO( 6, "@OW_SCR_PLAYER_FORCERESPAWN", scr_player_forcerespawn, SETA_SCR_PLAYER_FORCERESPAWN; )
-  CHOICE_DVARYESNO( 7, "@OW_SCR_QUICKACTIONS_ENABLE", scr_quickactions_enable, SETA_SCR_QUICKACTIONS_ENABLE; )
-  CHOICE_DVARYESNO( 8, "@OW_SCR_THIRDPERSON_ENABLE", scr_thirdperson_enable, SETA_SCR_THIRDPERSON_ENABLE; )
-  CHOICE_DVARYESNO( 9, "@OW_SCR_PLAYER_LEAN_FIX", scr_player_lean_fix, SETA_SCR_PLAYER_LEAN_FIX; )
-  CHOICE_DVARYESNO( 10, "@OW_SCR_BOB_EFFECT_ENABLE", scr_bob_effect_enable, SETA_SCR_BOB_EFFECT_ENABLE; )
-  CHOICE_DVARYESNO( 11, "@OW_SCR_BOB_PRONE_FIX", scr_bob_prone_fix, SETA_SCR_BOB_PRONE_FIX; )
-  CHOICE_DVARYESNO( 12, "@OW_SCR_CG_FOOTSTEPS", scr_cg_footsteps, SETA_SCR_CG_FOOTSTEPS; )
+  CHOICE_DVAREDIT_NUMERIC( 1, "@OW_SCR_FALLDAMAGEMINHEIGHT", menu_scr_fallDamageMinHeight, 4, SETA_SCR_FALLDAMAGEMINHEIGHT; )
+  CHOICE_DVAREDIT_NUMERIC( 2, "@OW_SCR_FALLDAMAGEMAXHEIGHT", menu_scr_fallDamageMaxHeight, 4, SETA_SCR_FALLDAMAGEMAXHEIGHT; )
+  CHOICE_DVAREDIT_NUMERIC( 3, "@OW_SCR_JUMP_HEIGHT", menu_scr_jump_height, 4, SETA_SCR_JUMP_HEIGHT; )
+  CHOICE_DVARYESNO( 4, "@OW_SCR_JUMP_SLOWDOWN_ENABLE", menu_scr_jump_slowdown_enable, SETA_SCR_JUMP_SLOWDOWN_ENABLE; )
+  CHOICE_DVARYESNO( 5, "@OW_SCR_GAME_ALLOW_KILLCAM", menu_scr_game_allow_killcam, SETA_SCR_GAME_ALLOW_KILLCAM; )
+  CHOICE_DVARYESNO( 6, "@OW_SCR_PLAYER_FORCERESPAWN", menu_scr_player_forcerespawn, SETA_SCR_PLAYER_FORCERESPAWN; )
+  CHOICE_DVARYESNO( 7, "@OW_SCR_QUICKACTIONS_ENABLE", menu_scr_quickactions_enable, SETA_SCR_QUICKACTIONS_ENABLE; )
+  CHOICE_DVARYESNO( 8, "@OW_SCR_THIRDPERSON_ENABLE", menu_scr_thirdperson_enable, SETA_SCR_THIRDPERSON_ENABLE; )
+  CHOICE_DVARYESNO( 9, "@OW_SCR_PLAYER_LEAN_FIX", menu_scr_player_lean_fix, SETA_SCR_PLAYER_LEAN_FIX; )
+  CHOICE_DVARYESNO( 10, "@OW_SCR_BOB_EFFECT_ENABLE", menu_scr_bob_effect_enable, SETA_SCR_BOB_EFFECT_ENABLE; )
+  CHOICE_DVARYESNO( 11, "@OW_SCR_BOB_PRONE_FIX", menu_scr_bob_prone_fix, SETA_SCR_BOB_PRONE_FIX; )
+  CHOICE_DVARYESNO( 12, "@OW_SCR_CG_FOOTSTEPS", menu_scr_cg_footsteps, SETA_SCR_CG_FOOTSTEPS; )
   
-  CHOICE_DVARYESNO( 13, "@OW_SCR_CAP_ENABLE", scr_cap_enable, SETA_SCR_CAP_ENABLE; )
-  CHOICE_DVAREDIT( 14, "@OW_SCR_CAP_TIME", scr_cap_time, SETA_SCR_CAP_TIME; )
-  CHOICE_DVAREDIT( 15, "@OW_SCR_CAP_TIME_ACTIVATED", scr_cap_time_activated, SETA_SCR_CAP_TIME_ACTIVATED; )
-  CHOICE_DVARYESNO( 16, "@OW_SCR_CAP_FIRSTSPAWN", scr_cap_firstspawn, SETA_SCR_CAP_FIRSTSPAWN; )
+  CHOICE_DVARYESNO( 13, "@OW_SCR_CAP_ENABLE", menu_scr_cap_enable, SETA_SCR_CAP_ENABLE; )
+  CHOICE_DVAREDIT_VIS( 14, "@OW_SCR_CAP_TIME", menu_scr_cap_time, 4, 4, SETA_SCR_CAP_TIME;, when( dvarBool(menu_scr_cap_enable) ) )
+  CHOICE_DVAREDIT_VIS( 15, "@OW_SCR_CAP_TIME_ACTIVATED", menu_scr_cap_time_activated, 4, 4, SETA_SCR_CAP_TIME_ACTIVATED;, when( dvarBool(menu_scr_cap_enable) ) )
+  CHOICE_DVARYESNO_VIS( 16, "@OW_SCR_CAP_FIRSTSPAWN", menu_scr_cap_firstspawn, SETA_SCR_CAP_FIRSTSPAWN;, when( dvarBool(menu_scr_cap_enable) ) )
   
-  CHOICE_DVARFLOATLIST( 17, "@OW_SCR_DE_DROPWEAPON_ON_ARM_HIT", scr_de_dropweapon_on_arm_hit, { "Disabled" 0 "Drop when hit on hands" 1 "Drop when hit on hands or lower arms" 2 "Drop when hit on hands or lower/upper arms" 3 }, SETA_SCR_DE_DROPWEAPON_ON_ARM_HIT; )
-  CHOICE_DVAREDIT_NUMERIC( 18, "@OW_SCR_DE_DROPWEAPON_CHANCE", scr_de_dropweapon_chance, 3, SETA_SCR_DE_DROPWEAPON_CHANCE; )
-  CHOICE_DVARFLOATLIST( 19, "@OW_SCR_DE_FALLDOWN_ON_LEG_HIT", scr_de_falldown_on_leg_hit, { "Disabled" 0 "Enabled (no speed reduction)" 1 "Enabled (also speed reduction)" 2 }, SETA_SCR_DE_FALLDOWN_ON_LEG_HIT; )
-  CHOICE_DVAREDIT_NUMERIC( 20, "@OW_SCR_DE_FALLDOWN_CHANCE", scr_de_falldown_chance, 3, SETA_SCR_DE_FALLDOWN_CHANCE; )
-  CHOICE_DVAREDIT_NUMERIC( 21, "@OW_SCR_DE_SHIFTVIEW_ON_DAMAGE", scr_de_shiftview_on_damage, 2, SETA_SCR_DE_SHIFTVIEW_ON_DAMAGE; )
-  CHOICE_DVAREDIT_NUMERIC( 22, "@OW_SCR_DE_BREAK_ANKLE_ON_FALL", scr_de_break_ankle_on_fall, 2, SETA_SCR_DE_BREAK_ANKLE_ON_FALL; )
-  CHOICE_DVAREDIT_NUMERIC( 23, "@OW_SCR_DE_SLOWDOWN_ON_LEG_HIT", scr_de_slowdown_on_leg_hit, 2, SETA_SCR_DE_SLOWDOWN_ON_LEG_HIT; )
+  CHOICE_DVARFLOATLIST( 17, "@OW_SCR_DE_DROPWEAPON_ON_ARM_HIT", menu_scr_de_dropweapon_on_arm_hit, { "Disabled" 0 "On hands" 1 "On hands/lower arms" 2 "On hands/lower/upper arms" 3 }, SETA_SCR_DE_DROPWEAPON_ON_ARM_HIT; )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 18, "@OW_SCR_DE_DROPWEAPON_CHANCE", menu_scr_de_dropweapon_chance, 3, SETA_SCR_DE_DROPWEAPON_CHANCE;, when( dvarBool(menu_scr_de_dropweapon_on_arm_hit) ) )
+  CHOICE_DVARFLOATLIST( 19, "@OW_SCR_DE_FALLDOWN_ON_LEG_HIT", menu_scr_de_falldown_on_leg_hit, { "Disabled" 0 "Enabled (no speed reduction)" 1 "Enabled (also speed reduction)" 2 }, SETA_SCR_DE_FALLDOWN_ON_LEG_HIT; )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 20, "@OW_SCR_DE_FALLDOWN_CHANCE", menu_scr_de_falldown_chance, 3, SETA_SCR_DE_FALLDOWN_CHANCE;, when( dvarBool(menu_scr_de_falldown_on_leg_hit) ) )
+  CHOICE_DVAREDIT_NUMERIC( 21, "@OW_SCR_DE_SHIFTVIEW_ON_DAMAGE", menu_scr_de_shiftview_on_damage, 2, SETA_SCR_DE_SHIFTVIEW_ON_DAMAGE; )
+  CHOICE_DVAREDIT_NUMERIC( 22, "@OW_SCR_DE_BREAK_ANKLE_ON_FALL", menu_scr_de_break_ankle_on_fall, 2, SETA_SCR_DE_BREAK_ANKLE_ON_FALL; )
+  CHOICE_DVAREDIT_NUMERIC( 23, "@OW_SCR_DE_SLOWDOWN_ON_LEG_HIT", menu_scr_de_slowdown_on_leg_hit, 2, SETA_SCR_DE_SLOWDOWN_ON_LEG_HIT; )
 }

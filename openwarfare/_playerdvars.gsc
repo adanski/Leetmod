@@ -51,7 +51,7 @@ init()
 	level.scr_force_autoassign_clan_tags = strtok( level.scr_force_autoassign_clan_tags, " " );
 
 	// Global voting switch
-	level.g_allowvote = getdvarx( "scr_allowvote", "int", 1, 0, 2 );
+	level.g_allowvote = getdvarx( "scr_allowvote", "int", 0, 0, 2 );
 	// Vote menu options
 	level.g_allowvote_restartmap = getdvarx( "scr_allowvote_restartmap", "int", 1, 0, 2 );
 	level.g_allowvote_nextmap = getdvarx( "scr_allowvote_nextmap", "int", 1, 0, 2 );

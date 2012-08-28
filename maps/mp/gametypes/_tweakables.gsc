@@ -329,7 +329,7 @@ init()
 //	registerTweakable( "player", 		"respawndelay", 		"scr_player_respawndelay", 			0 ); //*
 	registerTweakable( "player", 		"maxhealth", 			"scr_player_maxhealth", 			100 ); //*
 	registerTweakable( "player", 		"healthregentime", 		"scr_player_healthregentime", 		5 ); //*
-	registerTweakable( "player", 		"forcerespawn", 		"scr_player_forcerespawn", 			1 ); //*
+	registerTweakable( "player", 		"forcerespawn", 		"scr_player_forcerespawn", 			0 ); //*
 
 	registerTweakable( "weapon", 	"allowfrag", 		"scr_weapon_allowfrags", 1 );
 	registerTweakable( "weapon", 	"allowsmoke", 		"scr_weapon_allowsmoke", 1 );

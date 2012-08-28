@@ -39,13 +39,13 @@ menuDef
   #define CHOICE_X_SPACING 300
   
   #undef CHOICE_X_START
-  #define CHOICE_X_START 0
+  #define CHOICE_X_START 40
 
   #undef CHOICE_Y_START
   #define CHOICE_Y_START 34
   
   #undef CHOICE_Y_COUNT
-  #define CHOICE_Y_COUNT			20
+  #define CHOICE_Y_COUNT			17
   
   CHOICE_DVARYESNO_VIS( 1, "@OW_SCR_GRENADE_ALLOW_COOKING", menu_scr_grenade_allow_cooking, SETA_SCR_GRENADE_ALLOW_COOKING;, 1 )
   CHOICE_DVARYESNO_VIS( 2, "@OW_SCR_BULLET_PENETRATION_ENABLED", menu_scr_bullet_penetration_enabled, SETA_SCR_BULLET_PENETRATION_ENABLED;, 1)
@@ -68,17 +68,12 @@ menuDef
   CHOICE_DVARYESNO_VIS( 16, "@OW_SCR_DELAY_ONLY_ROUND_START", menu_scr_delay_only_round_start, SETA_SCR_DELAY_ONLY_ROUND_START;, 1)
   CHOICE_DVARYESNO_VIS( 17, "@OW_SCR_DELAY_SOUND_ENABLE", menu_scr_delay_sound_enable, SETA_SCR_DELAY_SOUND_ENABLE;, 1)
   
-  CHOICE_DVARFLOATLIST_VIS( 18, "@OW_SCR_RNG_ENABLED", menu_scr_rng_enabled, { "Disabled" 0 "Enabled" 1 "Enabled (except shotguns)" 2 }, SETA_SCR_RNG_ENABLED;, 1 )
-  CHOICE_DVAREDIT_NUMERIC_VIS( 19, "@OW_SCR_RNG_DISTANCE", menu_scr_rng_distance, 5, SETA_SCR_RNG_DISTANCE;, 1 )
-  CHOICE_DVAREDIT_NUMERIC_VIS( 20, "@OW_SCR_RNG_DAMAGE_CLOSER", menu_scr_rng_damage_closer, 3, SETA_SCR_RNG_DAMAGE_CLOSER;, 1 )
-  CHOICE_DVAREDIT_NUMERIC_VIS( 21, "@OW_SCR_RNG_DAMAGE_LONGER", menu_scr_rng_damage_longer, 3, SETA_SCR_RNG_DAMAGE_LONGER;, 1 )
+  CHOICE_DVARYESNO_VIS( 18, "@OW_SCR_WEAPONJAMS_ENABLE", menu_scr_weaponjams_enable, SETA_SCR_WEAPONJAMS_ENABLE;, 1 )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 19, "@OW_SCR_WEAPONJAMS_PROBABILITY", menu_scr_weaponjams_probability, 4, SETA_SCR_WEAPONJAMS_PROBABILITY;, when( dvarBool(menu_scr_weaponjams_enable) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 20, "@OW_SCR_WEAPONJAMS_GAP_TIME", menu_scr_weaponjams_gap_time, 4, SETA_SCR_WEAPONJAMS_GAP_TIME;, when( dvarBool(menu_scr_weaponjams_enable) ) )
   
-  CHOICE_DVARYESNO_VIS( 22, "@OW_SCR_WEAPONJAMS_ENABLE", menu_scr_weaponjams_enable, SETA_SCR_WEAPONJAMS_ENABLE;, 1)
-  CHOICE_DVAREDIT_NUMERIC_VIS( 23, "@OW_SCR_WEAPONJAMS_PROBABILITY", menu_scr_weaponjams_probability, 4, SETA_SCR_WEAPONJAMS_PROBABILITY;, 1 )
-  CHOICE_DVAREDIT_NUMERIC_VIS( 24, "@OW_SCR_WEAPONJAMS_GAP_TIME", menu_scr_weaponjams_gap_time, 4, SETA_SCR_WEAPONJAMS_GAP_TIME;, 1 )
-  
-  CHOICE_DVARYESNO_VIS( 25, "@OW_SCR_SNIPERZOOM_ENABLE", menu_scr_sniperzoom_enable, SETA_SCR_SNIPERZOOM_ENABLE;, 1)
-  CHOICE_DVAREDIT_NUMERIC_VIS( 26, "@OW_SCR_SNIPERZOOM_LOWER_LEVELS", menu_scr_sniperzoom_lower_levels, 4, SETA_SCR_SNIPERZOOM_LOWER_LEVELS;, 1 )
-  CHOICE_DVAREDIT_NUMERIC_VIS( 27, "@OW_SCR_SNIPERZOOM_UPPER_LEVELS", menu_scr_sniperzoom_upper_levels, 4, SETA_SCR_SNIPERZOOM_UPPER_LEVELS;, 1 )
-  CHOICE_DVARYESNO_VIS( 28, "@OW_SCR_RANGEFINDER_ENABLE", menu_scr_rangefinder_enable, SETA_SCR_RANGEFINDER_ENABLE;, 1)
+  CHOICE_DVARYESNO_VIS( 21, "@OW_SCR_SNIPERZOOM_ENABLE", menu_scr_sniperzoom_enable, SETA_SCR_SNIPERZOOM_ENABLE;, 1)
+  CHOICE_DVAREDIT_NUMERIC_VIS( 22, "@OW_SCR_SNIPERZOOM_LOWER_LEVELS", menu_scr_sniperzoom_lower_levels, 4, SETA_SCR_SNIPERZOOM_LOWER_LEVELS;, when( dvarBool(menu_scr_sniperzoom_enable) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 23, "@OW_SCR_SNIPERZOOM_UPPER_LEVELS", menu_scr_sniperzoom_upper_levels, 4, SETA_SCR_SNIPERZOOM_UPPER_LEVELS;, when( dvarBool(menu_scr_sniperzoom_enable) ) )
+  CHOICE_DVARYESNO_VIS( 24, "@OW_SCR_RANGEFINDER_ENABLE", menu_scr_rangefinder_enable, SETA_SCR_RANGEFINDER_ENABLE;, when( dvarBool(menu_scr_sniperzoom_enable) ) )
 }

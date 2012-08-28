@@ -33,7 +33,7 @@ menuDef
   #define CHOICE_SIZE_Y 		20
 
   #undef	CHOICE_SIZE_X
-  #define CHOICE_SIZE_X		150
+  #define CHOICE_SIZE_X		220
 
   #undef CHOICE_X_SPACING
   #define CHOICE_X_SPACING 300
@@ -50,19 +50,19 @@ menuDef
   CHOICE_DVAREDIT_NUMERIC( 1, "@OW_SCR_G_GRAVITY", menu_scr_g_gravity, 5, SETA_SCR_G_GRAVITY; )
   
   CHOICE_DVARYESNO( 2, "@OW_SCR_MAP_SPECIAL_FX_ENABLE", menu_scr_map_special_fx_enable, SETA_SCR_MAP_SPECIAL_FX_ENABLE; )
-  CHOICE_DVARYESNO( 3, "@OW_SCR_MAP_SPECIAL_FX_RAIN", menu_scr_map_special_fx_rain, SETA_SCR_MAP_SPECIAL_FX_RAIN; )
-  CHOICE_DVARYESNO( 4, "@OW_SCR_MAP_SPECIAL_FX_PARTICLES", menu_scr_map_special_fx_particles, SETA_SCR_MAP_SPECIAL_FX_PARTICLES; )
-  CHOICE_DVARYESNO( 5, "@OW_SCR_MAP_SPECIAL_FX_BGSOUND", menu_scr_map_special_fx_bgsound, SETA_SCR_MAP_SPECIAL_FX_BGSOUND; )
+  CHOICE_DVARYESNO_VIS( 3, "@OW_SCR_MAP_SPECIAL_FX_RAIN", menu_scr_map_special_fx_rain, SETA_SCR_MAP_SPECIAL_FX_RAIN;, when( dvarBool(menu_scr_map_special_fx_enable) ) )
+  CHOICE_DVARYESNO_VIS( 4, "@OW_SCR_MAP_SPECIAL_FX_PARTICLES", menu_scr_map_special_fx_particles, SETA_SCR_MAP_SPECIAL_FX_PARTICLES;, when( dvarBool(menu_scr_map_special_fx_enable) ) )
+  CHOICE_DVARYESNO_VIS( 5, "@OW_SCR_MAP_SPECIAL_FX_BGSOUND", menu_scr_map_special_fx_bgsound, SETA_SCR_MAP_SPECIAL_FX_BGSOUND;, when( dvarBool(menu_scr_map_special_fx_enable) ) )
   CHOICE_DVARYESNO( 6, "@OW_SCR_SHOW_FOG", menu_scr_show_fog, SETA_SCR_SHOW_FOG; )
   
   CHOICE_DVARYESNO( 7, "@OW_SCR_DCS_ENABLED", menu_scr_dcs_enabled, SETA_SCR_DCS_ENABLED; )
-  CHOICE_DVAREDIT_NUMERIC( 8, "@OW_SCR_DCS_DAY_LENGTH", menu_scr_dcs_day_length, 4, SETA_SCR_DCS_DAY_LENGTH; )
-  CHOICE_DVAREDIT_NUMERIC( 9, "@OW_SCR_DCS_DUSK_LENGTH", menu_scr_dcs_dusk_length, 4, SETA_SCR_DCS_DUSK_LENGTH; )
-  CHOICE_DVAREDIT_NUMERIC( 10, "@OW_SCR_DCS_NIGHT_LENGTH", menu_scr_dcs_night_length, 4, SETA_SCR_DCS_NIGHT_LENGTH; )
-  CHOICE_DVAREDIT_NUMERIC( 11, "@OW_SCR_DCS_DAWN_LENGTH", menu_scr_dcs_dawn_length, 4, SETA_SCR_DCS_DAWN_LENGTH; )
-  CHOICE_DVARFLOATLIST( 12, "@OW_SCR_DCS_FIRST_CYCLE", menu_scr_dcs_first_cycle, { "Random" -1 "Dawn" 0 "Day" 1 "Dusk" 2 "Night" 3 }, SETA_SCR_DCS_FIRST_CYCLE; )
-  CHOICE_DVARYESNO( 13, "@OW_SCR_DCS_SOUNDS_ENABLE", menu_scr_dcs_sounds_enable, SETA_SCR_DCS_SOUNDS_ENABLE; )
-  CHOICE_DVARFLOATLIST( 14, "@OW_SCR_DCS_RESET_CYCLE", menu_scr_dcs_reset_cycle, { "Disabled" 0 "Enabled (Resets on new map)" 1 "Enabled (Resets on new round)" 2}, SETA_SCR_DCS_RESET_CYCLE; )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 8, "@OW_SCR_DCS_DAY_LENGTH", menu_scr_dcs_day_length, 4, SETA_SCR_DCS_DAY_LENGTH;, when( dvarBool(menu_scr_dcs_enabled) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 9, "@OW_SCR_DCS_DUSK_LENGTH", menu_scr_dcs_dusk_length, 4, SETA_SCR_DCS_DUSK_LENGTH;, when( dvarBool(menu_scr_dcs_enabled) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 10, "@OW_SCR_DCS_NIGHT_LENGTH", menu_scr_dcs_night_length, 4, SETA_SCR_DCS_NIGHT_LENGTH;, when( dvarBool(menu_scr_dcs_enabled) ) )
+  CHOICE_DVAREDIT_NUMERIC_VIS( 11, "@OW_SCR_DCS_DAWN_LENGTH", menu_scr_dcs_dawn_length, 4, SETA_SCR_DCS_DAWN_LENGTH;, when( dvarBool(menu_scr_dcs_enabled) ) )
+  CHOICE_DVARFLOATLIST_VIS( 12, "@OW_SCR_DCS_FIRST_CYCLE", menu_scr_dcs_first_cycle, { "Random" -1 "Dawn" 0 "Day" 1 "Dusk" 2 "Night" 3 }, SETA_SCR_DCS_FIRST_CYCLE;, when( dvarBool(menu_scr_dcs_enabled) ) )
+  CHOICE_DVARYESNO_VIS( 13, "@OW_SCR_DCS_SOUNDS_ENABLE", menu_scr_dcs_sounds_enable, SETA_SCR_DCS_SOUNDS_ENABLE;, when( dvarBool(menu_scr_dcs_enabled) ) )
+  CHOICE_DVARFLOATLIST_VIS( 14, "@OW_SCR_DCS_RESET_CYCLE", menu_scr_dcs_reset_cycle, { "Disabled" 0 "Enabled (Resets on new map)" 1 "Enabled (Resets on new round)" 2}, SETA_SCR_DCS_RESET_CYCLE;, when( dvarBool(menu_scr_dcs_enabled) ) )
   
   CHOICE_DVARSTRINGLIST_VIS( 16, "Configure to gametype:", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS;, 1 )
   
