@@ -1846,10 +1846,10 @@ REFERENCE FTAG_UNFREEZE_SCORE
 LANG_ENGLISH "Give this score to unfreezer"
 
 REFERENCE FTAG_UNFREEZE_TIME
-LANG_ENGLISH "Unfreeze 'time' (in units)"
+LANG_ENGLISH "Unfreeze time"
 
 REFERENCE FTAG_AUTO_UNFREEZE_TIME
-LANG_ENGLISH "Auto unfreeze 'time' (1430=60sec)"
+LANG_ENGLISH "Auto unfreeze time"
 
 REFERENCE FTAG_UNFREEZE_MAXDISTANCE
 LANG_ENGLISH "Max distance to unfreeze player"
@@ -2237,25 +2237,25 @@ REFERENCE SCR_SPAWN_PROTECTION_INVISIBLE
 LANG_ENGLISH "Be invisible during protection time"
 
 REFERENCE SCR_SPAWN_PROTECTION_HITICON
-LANG_ENGLISH "Warning icon when attacking protected player"
+LANG_ENGLISH "Warn when attacking protected player"
 
 REFERENCE SCR_SPAWN_PROTECTION_MAXDISTANCE
-LANG_ENGLISH "Max distance to travel while spawn protected"
+LANG_ENGLISH "Max distance to travel spawn protected"
 
 REFERENCE SCR_SPAWN_PROTECTION_PUNISHMENT_TIME
-LANG_ENGLISH "Punish spawn-attacker during (0=disable)"
+LANG_ENGLISH "Punish spawn-attacker during (time)"
 
 REFERENCE SCR_ANTI_CAMPING_ENABLE
 LANG_ENGLISH "Anti-Camping"
 
 REFERENCE SCR_ANTI_CAMPING_SHOW
-LANG_ENGLISH "Warn the player when he is camping with"
+LANG_ENGLISH "Warn the player when he's camping with"
 
 REFERENCE SCR_ANTI_CAMPING_MESSAGE
 LANG_ENGLISH "Custom camping message"
 
 REFERENCE SCR_ANTI_CAMPING_TIME
-LANG_ENGLISH "Time the player has to move the set distance"
+LANG_ENGLISH "Time to move the set distance"
 
 REFERENCE SCR_ANTI_CAMPING_DISTANCE
 LANG_ENGLISH "Distance to travel in the set time"
@@ -2267,6 +2267,9 @@ REFERENCE SCR_ANTI_DOLPHIN_DIVE_ENABLE
 LANG_ENGLISH "Anti-Dolphin Dive (prone and fire)"
 
 
+//******************************************************************************
+// ui_mp/server_spectate.inc
+//******************************************************************************
 
 REFERENCE SCR_GAME_SPECTATETYPE
 LANG_ENGLISH "Spectate type"
@@ -2289,16 +2292,14 @@ LANG_ENGLISH "Live broadcast"
 REFERENCE SCR_LIVEBROADCAST_GUIDS
 LANG_ENGLISH "Live broadcast GUIDs"
 
-
-
 REFERENCE SCR_IDLE_SWITCH_SPECTATOR
-LANG_ENGLISH "Player idle time before being switched to spect."
+LANG_ENGLISH "Idle time before being switched to spect."
 
 REFERENCE SCR_IDLE_SPECTATOR_TIMEOUT
-LANG_ENGLISH "Next idle time before said player is kicked"
+LANG_ENGLISH "Next idle time before he is kicked"
 
 REFERENCE SCR_IDLE_SHOW_WARNING
-LANG_ENGLISH "Show warning 10 seconds before the actions"
+LANG_ENGLISH "Warn player before taking those actions"
 
 REFERENCE SCR_IDLE_PROTECTED_TAGS
 LANG_ENGLISH "Clan tags exempt from Idle Monitor"
@@ -2315,19 +2316,19 @@ REFERENCE SCR_GAME_HARDPOINTS
 LANG_ENGLISH "Killstreaks"
 
 REFERENCE SCR_HARDPOINT_SHOW_REMINDER
-LANG_ENGLISH "Remind player if he has an unused killstreak"
+LANG_ENGLISH "Remind player of unused killstreaks"
 
 REFERENCE SCR_REMOVE_HARDPOINT_ON_DEATH
-LANG_ENGLISH "When player dies remove his unused killstreaks"
+LANG_ENGLISH "Remove unused killst. on player death"
 
 REFERENCE SCR_GAME_HARDPOINTS_CYCLE
-LANG_ENGLISH "Cycle killstreaks (continue regaining them)"
+LANG_ENGLISH "Cycle killstreaks (keep regaining them)"
 
 REFERENCE SCR_GAME_HARDPOINTS_MODE
 LANG_ENGLISH "Killstreaks earning mode"
 
 REFERENCE SCR_ANNOUNCE_KILLSTREAK
-LANG_ENGLISH "Announce KS earned to other players (message)"
+LANG_ENGLISH "Announce KS earned to the other players"
 
 REFERENCE SCR_HARDPOINT_ALLOW_UAV
 LANG_ENGLISH "Allow UAV"
@@ -2345,7 +2346,7 @@ REFERENCE SCR_ANNOUNCE_ENEMY_UAV_ONLINE
 LANG_ENGLISH "Announce UAV activation to enemies"
 
 REFERENCE SCR_UAV_SHOW_HARDPOINTS
-LANG_ENGLISH "UAV show objects (eg. airstrikes or objectives)"
+LANG_ENGLISH "UAV show objects (e.g. airstrikes)"
 
 REFERENCE SCR_HARDPOINT_ALLOW_AIRSTRIKE
 LANG_ENGLISH "Allow Airstrike"
@@ -2354,13 +2355,13 @@ REFERENCE SCR_HARDPOINT_AIRSTRIKE_STREAK
 LANG_ENGLISH "Number of kills to get Airstrike"
 
 REFERENCE SCR_AIRSTRIKE_HARDPOINT_INTERVAL
-LANG_ENGLISH "Interval between consecutive team airstrikes"
+LANG_ENGLISH "Min. interval between team airstrikes"
 
 REFERENCE SCR_ANNOUNCE_ENEMY_AIRSTRIKE_INBOUND
 LANG_ENGLISH "Announce air strike to enemies"
 
 REFERENCE SCR_AIRSTRIKE_ADD_KILLS
-LANG_ENGLISH "Airstrike kills count towards player kills"
+LANG_ENGLISH "Airstrike kills count towards player's"
 
 REFERENCE SCR_AIRSTRIKE_KILLS_TOWARD_STREAK
 LANG_ENGLISH "Airstrike kills count towards killstreaks"
@@ -2375,13 +2376,13 @@ REFERENCE SCR_HARDPOINT_HELICOPTER_STREAK
 LANG_ENGLISH "Number of kills to get Helicopter"
 
 REFERENCE SCR_HELI_HARDPOINT_INTERVAL
-LANG_ENGLISH "Interval between consecutive team helicopters"
+LANG_ENGLISH "Min. interval between team helicopters"
 
 REFERENCE SCR_ANNOUNCE_ENEMY_HELI_INBOUND
 LANG_ENGLISH "Announce helicopter inbound to enemies"
 
 REFERENCE SCR_HELICOPTER_ADD_KILLS
-LANG_ENGLISH "Helicopter kills count towards player kills"
+LANG_ENGLISH "Helicopter kills count towards player's"
 
 REFERENCE SCR_HELICOPTER_KILLS_TOWARD_STREAK
 LANG_ENGLISH "Helicopter kills count towards killstreaks"
@@ -2410,14 +2411,14 @@ LANG_ENGLISH "Health regeneration method"
 REFERENCE SCR_PLAYER_HEALTHREGENTIME
 LANG_ENGLISH "Health regeneration time"
 
-REFERENCE SCR_SCR_HEALTH_PAIN_SOUND
-LANG_ENGLISH "Play a pain sound when damage is taken (chance)"
+REFERENCE SCR_HEALTH_PAIN_SOUND
+LANG_ENGLISH "Play pain sound when damaged (chance)"
 
 REFERENCE SCR_HEALTH_DEATH_SOUND
-LANG_ENGLISH "Play a sound whenever the player dies"
+LANG_ENGLISH "Play sound whenever the player dies"
 
 REFERENCE SCR_HEALTH_HURT_SOUND
-LANG_ENGLISH "Plays breathing sounds when health isn't full"
+LANG_ENGLISH "Play breathing sounds when injured"
 
 REFERENCE SCR_HEALTHSYSTEM_SHOW_HEALTHBAR
 LANG_ENGLISH "Show health bar"
@@ -2426,7 +2427,7 @@ REFERENCE SCR_HEALTHSYSTEM_BLEEDING_ENABLE
 LANG_ENGLISH "Enable bleeding from damage (rate)"
 
 REFERENCE SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE
-LANG_ENGLISH "Needed % of health loss before bleeding begins"
+LANG_ENGLISH "% of health loss before start bleeding"
 
 REFERENCE SCR_HEALTHSYSTEM_BLEEDING_ICON
 LANG_ENGLISH "Show icon when bleeding"
@@ -2438,7 +2439,7 @@ REFERENCE SCR_HEALTHSYSTEM_BANDAGE_MAX
 LANG_ENGLISH "Player max bandages"
 
 REFERENCE SCR_HEALTHSYSTEM_BANDAGE_SELF
-LANG_ENGLISH "Player can bandage himself (when bleeding)"
+LANG_ENGLISH "Bleeding player can bandage himself"
 
 REFERENCE SCR_HEALTHSYSTEM_BANDAGE_TIME
 LANG_ENGLISH "Time a player takes to fully bandage"
@@ -2494,7 +2495,7 @@ REFERENCE SCR_ENABLE_SCORESYSTEM
 LANG_ENGLISH "Override default scores"
 
 REFERENCE SCR_SCORE_TK_AFFECTS_TEAMSCORE
-LANG_ENGLISH "Team-kills affect team scores (=/> player's)"
+LANG_ENGLISH "Team-kills affect team score"
 
 REFERENCE SCR_SCORE_STANDARD_KILL
 LANG_ENGLISH "Standart kill"
@@ -2550,7 +2551,7 @@ LANG_ENGLISH "Player dies"
 REFERENCE SCR_SCORE_PLAYER_SUICIDE
 LANG_ENGLISH "Player commits suicide"
 
-REFERENCE SCR_SCR_SCORE_PLAYER_TEAMKILL
+REFERENCE SCR_SCORE_PLAYER_TEAMKILL
 LANG_ENGLISH "Player commits team-kill"
 
 REFERENCE SCR_SCORE_HARDPOINT_USED
@@ -2595,10 +2596,10 @@ REFERENCE SCR_G_GRAVITY
 LANG_ENGLISH "Gravity"
 
 REFERENCE SCR_MAP_SPECIAL_FX_ENABLE
-LANG_ENGLISH "Special effects (sounds, fire, smoke...), all maps"
+LANG_ENGLISH "Special effects (fire, smoke...), all maps"
 
 REFERENCE SCR_MAP_SPECIAL_FX_RAIN
-LANG_ENGLISH "Rain drops and sound (Wet Work and Downpour)"
+LANG_ENGLISH "Rain drops and sound"
 
 REFERENCE SCR_MAP_SPECIAL_FX_PARTICLES
 LANG_ENGLISH "Dust particles and air (semi-fog)"
@@ -2607,7 +2608,7 @@ REFERENCE SCR_MAP_SPECIAL_FX_BGSOUND
 LANG_ENGLISH "Map background sounds"
 
 REFERENCE SCR_SHOW_FOG
-LANG_ENGLISH "Show fog (Warning: forces r_fog on clients)"
+LANG_ENGLISH "Show fog (forces r_fog on clients)"
 
 REFERENCE SCR_DCS_ENABLED
 LANG_ENGLISH "Day Cycle System"
@@ -2656,7 +2657,7 @@ REFERENCE SCR_PLAYER_FORCERESPAWN
 LANG_ENGLISH "Force respawn"
 
 REFERENCE SCR_QUICKACTIONS_ENABLE
-LANG_ENGLISH "Quick actions (e.g. press 2xUse key)"
+LANG_ENGLISH "Quick actions (press 2xUse key)"
 
 REFERENCE SCR_THIRDPERSON_ENABLE
 LANG_ENGLISH "Play in third person"
@@ -2671,7 +2672,7 @@ REFERENCE SCR_BOB_PRONE_FIX
 LANG_ENGLISH "Fix prone bob animation"
 
 REFERENCE SCR_CG_FOOTSTEPS
-LANG_ENGLISH "Hear own footsteeps (suit rattle still present)"
+LANG_ENGLISH "Hear own footsteeps"
 
 REFERENCE SCR_CAP_ENABLE
 LANG_ENGLISH "Create-a-Player feature"
@@ -2704,7 +2705,7 @@ REFERENCE SCR_DE_BREAK_ANKLE_ON_FALL
 LANG_ENGLISH "Break ankle on fall damage"
 
 REFERENCE SCR_DE_SLOWDOWN_ON_LEG_HIT
-LANG_ENGLISH "Slow down player when hit on upper leg damage"
+LANG_ENGLISH "Slow player when hit on leg damage"
 
 
 //******************************************************************************

@@ -11,7 +11,7 @@ init()
 	
 	// Initialize all the commands that we'll support
 	quickActions = initQuickActions();
-	level.scr_player_forcerespawn = getdvarx( "scr_player_forcerespawn", "int", 1, 0, 1 );
+	level.scr_player_forcerespawn = getdvarx( "scr_player_forcerespawn", "int", 0, 0, 1 );
 	
 	// Make sure at least one quick action is enabled
 	if ( quickActions ) {
