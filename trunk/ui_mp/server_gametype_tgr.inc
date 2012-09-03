@@ -1,3 +1,6 @@
+#undef CHOICE_GROUP
+#define CHOICE_GROUP tgr
+
 #define G_GAMETYPE_TGR (dvarString( "settings_config_gametype" ) == "tgr")
 
 //CHECK

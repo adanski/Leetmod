@@ -11,7 +11,7 @@ menuDef
   //soundloop		""
   onOpen
   {
-    
+    FILLMENUDVARS;
   }
   onClose
   {
@@ -22,7 +22,9 @@ menuDef
     close self;
   }
   #include "ui_mp/blurredbg.inc"
+  #define MENU_TOPBARSHORT
   #include "ui_mp/navcontrols.inc"
+  #undef MENU_TOPBARSHORT
   
   CHOICE_MENU_TITLE("@OW_SERVER_SCORES" )
   
@@ -85,5 +87,20 @@ menuDef
   CHOICE_DVAREDIT_NUMERIC_VIS( 31, "@OW_SCR_SCORE_PLANT_BOMB", menu_scr_score_plant_bomb, 2, SETA_SCR_SCORE_PLANT_BOMB;, when( dvarBool(menu_scr_enable_scoresystem) ) )
   CHOICE_DVAREDIT_NUMERIC_VIS( 32, "@OW_SCR_SCORE_DEFUSE_BOMB", menu_scr_score_defuse_bomb, 2, SETA_SCR_SCORE_DEFUSE_BOMB;, when( dvarBool(menu_scr_enable_scoresystem) ) )
 
-  //CHOICE_DVARSTRINGLIST( 1, "Configure to gametype:", ct_serverCfgGametype, { "ALL" ""; "DM" "_dm"; "TDM" "_war"; "DOM" "_dom"; "SAB" "_sab"; "HQ" "_koth"; "SD" "_sd"; "GG" "_gg"; "SS" "_ss"; "OITC" "_oitc"; "GR" "_gr"; "CTF" "_ctf"; }, ; )
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT			100
+  
+  #undef CHOICE_Y_START
+  #define CHOICE_Y_START -2172
+  
+  #undef CHOICE_X_START
+  #define CHOICE_X_START 190
+  
+  #undef CHOICE_SIZE_X
+  #define CHOICE_SIZE_X 160
+  
+  #undef TEXTSIZE_BUTTON_PC
+  #define TEXTSIZE_BUTTON_PC	0.38
+  
+  CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS;, 1 )
 }

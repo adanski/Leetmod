@@ -1,3 +1,6 @@
+#undef CHOICE_GROUP
+#define CHOICE_GROUP ch
+
 #define G_GAMETYPE_CH (dvarString( "settings_config_gametype" ) == "ch")
 
 CHOICE_DVAREDIT_NUMERIC_VIS( 2, "@OW_TIMELIMIT", scr_ch_timelimit, 5, ;, when(G_GAMETYPE_CH) )
@@ -10,7 +13,7 @@ CHOICE_DVAREDIT_NUMERIC_VIS( 8, "@OW_NUMBER_OF_LIVES", scr_ch_numlives, 3, ;, wh
 CHOICE_DVARYESNO_VIS( 9, "@OW_TEAM_BALANCE_EOR", scr_ch_teambalanceendofround, ;, when(G_GAMETYPE_CH) )
 
 //CH TODO
-CHOICE_DVARFLOATLIST_VIS( 10, "@OW_CTF_MODE", scr_ch_chmode, { "Touch own flag to return to base" 0 "Automatically returned after amount of time" 1 "Capture and manually return it to base" 2 }, ;, when(G_GAMETYPE_CH) )
+CHOICE_DVARFLOATLIST_VIS( 10, "@OW_CTF_MODE", scr_ch_chmode, { "Win after holding flag continuously during x seconds" 0 "Win when reaching x amount of points for holding flag" 1 }, ;, when(G_GAMETYPE_CH) )
 
 CHOICE_DVARYESNO_VIS( 11, "@OW_SUDDEN_SHOW_ENEMIES", scr_ch_suddendeath_show_enemies, ;, when(G_GAMETYPE_CH) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 12, "@OW_SUDDEN_TIMELIMIT", scr_ch_suddendeath_timelimit, 3, ;, when(G_GAMETYPE_CH) )
@@ -21,7 +24,7 @@ CHOICE_DVARYESNO_VIS( 13, "@OW_SHOW_SCOREBOARD_BOMBER", scr_ch_scoreboard_flag_c
 CHOICE_DVARFLOATLIST_VIS( 14, "@OW_SHOW_BOMB_CARRIER", scr_ch_show_flag_carrier, { "Disabled" 0 "Always enabled" 1 "Anti Flag-Camping" 2 }, ;, when(G_GAMETYPE_CH) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SHOW_BOMB_CARRIER_TIME", scr_ch_show_flag_carrier_time, 3, ;, when(G_GAMETYPE_CH && dvarInt(scr_ch_show_flag_carrier) == 1) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SHOW_BOMB_CARRIER_TIME_DISTANCE", scr_ch_show_flag_carrier_time, 3, ;, when(G_GAMETYPE_CH && dvarInt(scr_ch_show_flag_carrier) == 2) )
-CHOICE_DVAREDIT_NUMERIC_VIS( 16, "@OW_SHOW_BOMB_CARRIER_DISTANCE", scr_ch_show_flag_carrier_distance, 5, ;, when(G_GAMETYPE_CH) )
+CHOICE_DVAREDIT_NUMERIC_VIS( 16, "@OW_SHOW_BOMB_CARRIER_DISTANCE", scr_ch_show_flag_carrier_distance, 5, ;, when(G_GAMETYPE_CH && dvarInt(scr_ch_show_flag_carrier) == 2) )
 
 
 CHOICE_DVAREDIT_NUMERIC_VIS( 17, "@OW_CH_HOLDTIME", scr_ch_holdtime, 3, ;, when(G_GAMETYPE_CH) )

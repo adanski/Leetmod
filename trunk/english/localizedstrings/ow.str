@@ -1661,7 +1661,7 @@ REFERENCE SERVER_SPECTATE
 LANG_ENGLISH "Spectators"
 
 REFERENCE SERVER_GAMETYPE
-LANG_ENGLISH "Gametype"
+LANG_ENGLISH "Gametype Settings..."
 
 REFERENCE SERVER_PLAYER
 LANG_ENGLISH "Player"
@@ -1737,10 +1737,10 @@ REFERENCE SHOW_BOMB_CARRIER_TIME
 LANG_ENGLISH "Seconds to mark the bomb carrier"
 
 REFERENCE SHOW_BOMB_CARRIER_TIME_DISTANCE
-LANG_ENGLISH "Seconds to move the distance below before being marked"
+LANG_ENGLISH "Time to move the distance below"
 
 REFERENCE SHOW_BOMB_CARRIER_DISTANCE
-LANG_ENGLISH "Distance to travel before being marked with sign"
+LANG_ENGLISH "Distance to travel before being marked ('kill')"
 
 REFERENCE FLASH_ON_CAPTURE
 LANG_ENGLISH "Flash target on capturing"
@@ -1974,10 +1974,10 @@ REFERENCE SCR_RE_OBJECTIVES_ENABLED
 LANG_ENGLISH "Enabled documents (objects to retrieve)"
 
 REFERENCE SCR_RE_ONE_RETRIEVE
-LANG_ENGLISH "Ends round when any of the objects are retrieved"
+LANG_ENGLISH "Round ends when any object is retrieved"
 
 REFERENCE SCR_RE_OBJECTIVE_AUTORESETTIME
-LANG_ENGLISH "Objects location auto-reset time when not picked again"
+LANG_ENGLISH "Objects location auto-reset time when dropped"
 
 REFERENCE SCR_RE_SCOREBOARD_OBJECTIVE_CARRIER
 LANG_ENGLISH "Identify objective carrier on scoreboard"
@@ -1991,7 +1991,7 @@ LANG_ENGLISH "Show both objects to the defenders"
 //******************************************************************************
 
 REFERENCE SD_MODE
-LANG_ENGLISH "SD mode"
+LANG_ENGLISH "Identify planting bombsite to defenders"
 
 REFERENCE SD_MULTIBOMB
 LANG_ENGLISH "Every player has a bomb"
@@ -2030,7 +2030,7 @@ REFERENCE SD_QUICK_DEFUSE_WIRES
 LANG_ENGLISH "Allow quick defuse by guessing 1 of 4 wires"
 
 REFERENCE SD_OBJ_TAKE_DAMAGE_ENABLE
-LANG_ENGLISH "Allow objective destroy (with explosives only)"
+LANG_ENGLISH "Allow objective destroy w/explosives"
 
 REFERENCE SD_OBJ_TAKE_DAMAGE_OPTION
 LANG_ENGLISH "Objective damage mode"
@@ -2042,7 +2042,7 @@ REFERENCE SD_OBJ_TAKE_DAMAGE_HEALTH
 LANG_ENGLISH "Health of the objective (HP)"
 
 REFERENCE SD_HQ_TEAM_DEAD_SPECTATE_3RD_P
-LANG_ENGLISH "When own team is dead, spectate enemies in 3rd p."
+LANG_ENGLISH "When waiting, spectate enemies in 3rd p."
 
 //******************************************************************************
 // ui_mp/server_gametype_ss.menu
@@ -2839,6 +2839,8 @@ LANG_ENGLISH "Range Finder"
 REFERENCE MELEE_DISABLED
 LANG_ENGLISH "Melee is disabled"
 
+REFERENCE MENU_CONFIGURE_TO_GAMETYPE
+LANG_ENGLISH "^2Configure to gametype:"
 
 
 ENDMARKER

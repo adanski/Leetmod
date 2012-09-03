@@ -1,3 +1,6 @@
+#undef CHOICE_GROUP
+#define CHOICE_GROUP oitc
+
 #define G_GAMETYPE_OITC (dvarString( "settings_config_gametype" ) == "oitc")
 
 CHOICE_DVAREDIT_NUMERIC_VIS( 2, "@OW_TIMELIMIT", scr_oitc_timelimit, 5, ;, when(G_GAMETYPE_OITC) )

@@ -1,3 +1,6 @@
+#undef CHOICE_GROUP
+#define CHOICE_GROUP dom
+
 #define G_GAMETYPE_DOM (dvarString( "settings_config_gametype" ) == "dom")
 
 CHOICE_DVAREDIT_NUMERIC_VIS( 2, "@OW_TIMELIMIT", scr_dom_timelimit, 5, ;, when(G_GAMETYPE_DOM) )

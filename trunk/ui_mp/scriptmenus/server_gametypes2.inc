@@ -34,6 +34,9 @@ menuDef
   #undef TEXTSIZE_BUTTON_PC
   #define TEXTSIZE_BUTTON_PC	0.4
   
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		200
+  
   CHOICE_DVARSTRINGLIST( 1, "@MENU_GAME_TYPE", settings_config_gametype, { ""; "p"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; ""; "n" }, ROTATEMENUGAMETYPES3 )
   
   #undef TEXTSIZE_BUTTON_PC
@@ -48,8 +51,8 @@ menuDef
   #undef CHOICE_SIZE_Y
   #define CHOICE_SIZE_Y 		20
 
-  //#undef	CHOICE_SIZE_X
-  //#define CHOICE_SIZE_X		150
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		250
   
   //#undef CHOICE_X_SPACING
   //#define CHOICE_X_SPACING 200

@@ -13,8 +13,8 @@ init()
 	
 	// Special FXs
 	level.scr_map_special_fx_enable = getdvarx( "scr_map_special_fx_enable", "int", 1, 0, 1 );
-  level.scr_map_special_fx_bgsound = getdvarx( "scr_map_special_fx_bgsound", "int", 1, 0, 1 );
-  level.scr_map_special_fx_particles = getdvarx( "scr_map_special_fx_particles", "int", 1, 0, 1 );
+  level.scr_map_special_fx_bgsound = getdvarx( "scr_map_special_fx_bgsound", "int", 0, 0, 1 );
+  level.scr_map_special_fx_particles = getdvarx( "scr_map_special_fx_particles", "int", 0, 0, 1 );
   level.scr_map_special_fx_rain = getdvarx( "scr_map_special_fx_rain", "int", 1, 0, 1 );
 
 	// Jump height based on oldschool or normal game
