@@ -33,7 +33,10 @@ menuDef
   
   #undef TEXTSIZE_BUTTON_PC
   #define TEXTSIZE_BUTTON_PC	0.4
-  //
+  
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		200
+  
   CHOICE_DVARSTRINGLIST( 1, "@MENU_GAME_TYPE", settings_config_gametype, { ""; "p"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; ""; "n" }, ROTATEMENUGAMETYPES1 )
   
   #undef TEXTSIZE_BUTTON_PC
@@ -47,14 +50,27 @@ menuDef
   
   #undef CHOICE_SIZE_Y
   #define CHOICE_SIZE_Y 		20
-
-  //#undef	CHOICE_SIZE_X
-  //#define CHOICE_SIZE_X		150
   
-  //#undef CHOICE_X_SPACING
-  //#define CHOICE_X_SPACING 200
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT		19
+
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		215
+  
+  #undef CHOICE_X_SPACING
+  #define CHOICE_X_SPACING 320
   
   #include "ui_mp/server_gametype_sd.inc"
+  
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT			20
+  
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		250
+  
+  #undef CHOICE_X_SPACING
+  #define CHOICE_X_SPACING 350
+  
   #include "ui_mp/server_gametype_ss.inc"
   #include "ui_mp/server_gametype_war.inc"
   #include "ui_mp/server_gametype_tgr.inc"

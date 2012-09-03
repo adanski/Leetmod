@@ -34,6 +34,9 @@ menuDef
   #undef TEXTSIZE_BUTTON_PC
   #define TEXTSIZE_BUTTON_PC	0.4
   
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		200
+  
   CHOICE_DVARSTRINGLIST( 1, "@MENU_GAME_TYPE", settings_config_gametype, { ""; "p"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; ""; "n" }, ROTATEMENUGAMETYPES2 )
   
   #undef TEXTSIZE_BUTTON_PC
@@ -48,14 +51,30 @@ menuDef
   #undef CHOICE_SIZE_Y
   #define CHOICE_SIZE_Y 		20
 
-  //#undef	CHOICE_SIZE_X
-  //#define CHOICE_SIZE_X		150
-  
-  //#undef CHOICE_X_SPACING
-  //#define CHOICE_X_SPACING 200
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		250
   
   #include "ui_mp/server_gametype_koth.inc"
   #include "ui_mp/server_gametype_oitc.inc"
   #include "ui_mp/server_gametype_re.inc"
+  
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT			18
+  
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		235
+  
+  #undef CHOICE_X_SPACING
+  #define CHOICE_X_SPACING 285
+  
   #include "ui_mp/server_gametype_sab.inc"
+  
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT			20
+  
+  #undef	CHOICE_SIZE_X
+  #define CHOICE_SIZE_X		250
+  
+  #undef CHOICE_X_SPACING
+  #define CHOICE_X_SPACING 350
 }

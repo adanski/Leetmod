@@ -1,3 +1,6 @@
+#undef CHOICE_GROUP
+#define CHOICE_GROUP war
+
 #define G_GAMETYPE_WAR (dvarString( "settings_config_gametype" ) == "war")
 
 //TDM

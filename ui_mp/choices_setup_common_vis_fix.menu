@@ -761,12 +761,12 @@
 		CHOICE_DVARSLIDER_VIS( itemIndex, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, 1 )
 
 #define CHOICE_DVARSLIDER_VIS( itemIndex, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, visArg ) \
-		CHOICE_DVARSLIDER_VIS_EX( itemIndex, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, ;, 1 )
+		CHOICE_DVARSLIDER_VIS_EX( itemIndex, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, ;, visArg )
 
 #define CHOICE_DVARSLIDER_VIS_EX( itemIndex, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, extraArg, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
-		CHOICE_CAPTION( itemIndex, textArg ) \
+		CHOICE_CAPTION_VIS( itemIndex, textArg, visArg ) \
 		itemDef \
 		{ \
 			type			ITEM_TYPE_SLIDER \

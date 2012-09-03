@@ -1,3 +1,6 @@
+#undef CHOICE_GROUP
+#define CHOICE_GROUP koth
+
 #define G_GAMETYPE_KOTH (dvarString( "settings_config_gametype" ) == "koth")
 
 CHOICE_DVAREDIT_NUMERIC_VIS( 2, "@OW_TIMELIMIT", scr_koth_timelimit, 5, ;, when(G_GAMETYPE_KOTH) )
@@ -19,4 +22,4 @@ CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_HQ_SPAWN_TIME", scr_koth_spawntime, 3, ;, 
 CHOICE_DVARYESNO_VIS( 16, "@OW_FLASH_ON_CAPTURE", scr_koth_flash_on_capture, ;, when(G_GAMETYPE_KOTH) )
 CHOICE_DVARYESNO_VIS( 17, "@OW_HQ_FLASH_ON_DESTROY", scr_koth_flash_on_destroy, ;, when(G_GAMETYPE_KOTH) )
 
-CHOICE_DVARYESNO_VIS( 18, "@OW_SD_HQ_TEAM_DEAD_SPECTATE_3RD_P", scr_koth_teamdeadspectate_tp, ;, when(G_GAMETYPE_KOTH) )
+//CHOICE_DVARYESNO_VIS( 18, "@OW_SD_HQ_TEAM_DEAD_SPECTATE_3RD_P", scr_koth_teamdeadspectate_tp, ;, when(G_GAMETYPE_KOTH) )

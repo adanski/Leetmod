@@ -22,7 +22,9 @@ menuDef
     close self;
   }
   #include "ui_mp/blurredbg.inc"
+  #define MENU_TOPBARSHORT
   #include "ui_mp/navcontrols.inc"
+  #undef MENU_TOPBARSHORT
   
   CHOICE_MENU_TITLE_VIS("@OW_SERVER_WORLD", 1 )
   
@@ -64,7 +66,19 @@ menuDef
   CHOICE_DVARYESNO_VIS( 13, "@OW_SCR_DCS_SOUNDS_ENABLE", menu_scr_dcs_sounds_enable, SETA_SCR_DCS_SOUNDS_ENABLE;, when( dvarBool(menu_scr_dcs_enabled) ) )
   CHOICE_DVARFLOATLIST_VIS( 14, "@OW_SCR_DCS_RESET_CYCLE", menu_scr_dcs_reset_cycle, { "Disabled" 0 "Enabled (Resets on new map)" 1 "Enabled (Resets on new round)" 2}, SETA_SCR_DCS_RESET_CYCLE;, when( dvarBool(menu_scr_dcs_enabled) ) )
   
-  CHOICE_DVARSTRINGLIST_VIS( 16, "Configure to gametype:", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS;, 1 )
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT			100
+  
+  #undef CHOICE_Y_START
+  #define CHOICE_Y_START -2170
+  
+  #undef CHOICE_X_START
+  #define CHOICE_X_START 180
+  
+  #undef CHOICE_SIZE_X
+  #define CHOICE_SIZE_X 160
+  
+  CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS;, 1 )
   
   itemDef {
     name			save

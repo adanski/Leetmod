@@ -20,21 +20,31 @@
 
 #ifdef	PC
   #ifndef MENU_HIDETOPBAR
-    itemDef 	{ 
-      style			WINDOW_STYLE_SHADER 
-      rect			-120 -32 378 64 0 0 
-      background		"white" 
-      forecolor		0.9 0.9 0.95 0.175 
-      visible			1
-      decoration 	} 
-    itemDef 	{ 
-      style			WINDOW_STYLE_SHADER 
-      rect			258 -32 16 -64 0 0 
-      origin			0 0 
-      background		HIGHLIGHT_SHADER_ART 
-      forecolor		0.9 0.9 0.95 0.175 
-      visible			1
-      decoration	}
+    #ifdef MENU_TOPBARSHORT
+      itemDef 	{ 
+        style			WINDOW_STYLE_SHADER 
+        rect			-120 -32 310 64 0 0 
+        background		"white" 
+        forecolor		0.9 0.9 0.95 0.175 
+        visible			1
+        decoration 	} 
+    #else
+      itemDef 	{ 
+        style			WINDOW_STYLE_SHADER 
+        rect			-120 -32 378 64 0 0 
+        background		"white" 
+        forecolor		0.9 0.9 0.95 0.175 
+        visible			1
+        decoration 	} 
+      itemDef 	{ 
+        style			WINDOW_STYLE_SHADER 
+        rect			258 -32 16 -64 0 0 
+        origin			0 0 
+        background		HIGHLIGHT_SHADER_ART 
+        forecolor		0.9 0.9 0.95 0.175 
+        visible			1
+        decoration	}
+    #endif
   #endif
 		
 	itemDef		{

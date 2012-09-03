@@ -1,3 +1,6 @@
+#undef CHOICE_GROUP
+#define CHOICE_GROUP dm
+
 #define G_GAMETYPE_DM (dvarString( "settings_config_gametype" ) == "dm")
 
 //DM

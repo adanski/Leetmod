@@ -9,7 +9,7 @@ menuDef
   //soundloop		""
   onOpen
   {
-    
+    FILLMENUDVARS;
   }
   onClose
   {
@@ -20,7 +20,9 @@ menuDef
     close self;
   }
   #include "ui_mp/blurredbg.inc"
+  #define MENU_TOPBARSHORT
   #include "ui_mp/navcontrols.inc"
+  #undef MENU_TOPBARSHORT
   
   CHOICE_MENU_TITLE("@OW_SERVER_SPECTATE" )
   
@@ -60,5 +62,22 @@ menuDef
   CHOICE_DVARYESNO_VIS( 10, "@OW_SCR_IDLE_SHOW_WARNING", menu_scr_idle_show_warning, SETA_SCR_IDLE_SHOW_WARNING;, when( dvarBool(menu_scr_idle_switch_spectator) ) )
   CHOICE_DVAREDIT_VIS( 11, "@OW_SCR_IDLE_PROTECTED_TAGS", menu_scr_idle_protected_tags, 1000, 80, SETA_SCR_IDLE_PROTECTED_TAGS;, when( dvarBool(menu_scr_idle_switch_spectator) ) )
   CHOICE_DVAREDIT_VIS( 12, "@OW_SCR_IDLE_PROTECTED_GUIDS", menu_scr_idle_protected_guids, 1000, 80, SETA_SCR_IDLE_PROTECTED_GUIDS;, when( dvarBool(menu_scr_idle_switch_spectator) ) )
+  
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT			100
+  
+  #undef CHOICE_Y_START
+  #define CHOICE_Y_START -2172
+  
+  #undef CHOICE_X_START
+  #define CHOICE_X_START 190
+  
+  #undef CHOICE_SIZE_X
+  #define CHOICE_SIZE_X 160
+  
+  #undef TEXTSIZE_BUTTON_PC
+  #define TEXTSIZE_BUTTON_PC	0.38
+  
+  CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS;, 1 )
   
 }

@@ -1,3 +1,6 @@
+#undef CHOICE_GROUP
+#define CHOICE_GROUP ctf
+
 #define G_GAMETYPE_CTF (dvarString( "settings_config_gametype" ) == "ctf")
 
 CHOICE_DVAREDIT_NUMERIC_VIS( 2, "@OW_TIMELIMIT", scr_ctf_timelimit, 5, ;, when(G_GAMETYPE_CTF) )
@@ -21,8 +24,8 @@ CHOICE_DVARYESNO_VIS( 15, "@OW_SHOW_SCOREBOARD_BOMBER", scr_ctf_scoreboard_flag_
 
 
 CHOICE_DVARFLOATLIST_VIS( 16, "@OW_SHOW_BOMB_CARRIER", scr_ctf_show_flag_carrier, { "Disabled" 0 "Always enabled" 1 "Anti Flag-Camping" 2 }, ;, when(G_GAMETYPE_CTF) )
-CHOICE_DVAREDIT_NUMERIC_VIS( 17, "@OW_SHOW_BOMB_CARRIER_TIME", scr_ctf_show_flag_carrier_time, 3, ;, when(G_GAMETYPE_CTF && dvarBool(scr_ctf_show_flag_carrier) ) )
-CHOICE_DVAREDIT_NUMERIC_VIS( 17, "@OW_SHOW_BOMB_CARRIER_TIME_DISTANCE", scr_ctf_show_flag_carrier_time, 3, ;, when(G_GAMETYPE_CTF && dvarBool(scr_ctf_show_flag_carrier) ) )
-CHOICE_DVAREDIT_NUMERIC_VIS( 18, "@OW_SHOW_BOMB_CARRIER_DISTANCE", scr_ctf_show_flag_carrier_distance, 5, ;, when(G_GAMETYPE_CTF) )
+CHOICE_DVAREDIT_NUMERIC_VIS( 17, "@OW_SHOW_BOMB_CARRIER_TIME", scr_ctf_show_flag_carrier_time, 3, ;, when(G_GAMETYPE_CTF && dvarInt(scr_ctf_show_flag_carrier) == 1 ) )
+CHOICE_DVAREDIT_NUMERIC_VIS( 17, "@OW_SHOW_BOMB_CARRIER_TIME_DISTANCE", scr_ctf_show_flag_carrier_time, 3, ;, when(G_GAMETYPE_CTF && dvarInt(scr_ctf_show_flag_carrier) == 2 ) )
+CHOICE_DVAREDIT_NUMERIC_VIS( 18, "@OW_SHOW_BOMB_CARRIER_DISTANCE", scr_ctf_show_flag_carrier_distance, 5, ;, when(G_GAMETYPE_CTF && dvarInt(scr_ctf_show_flag_carrier) == 2) )
 
 CHOICE_DVARYESNO_VIS( 19, "@OW_CTF_FLAG_CARRIER_CAN_RETURN", scr_ctf_flag_carrier_can_return, ;, when(G_GAMETYPE_CTF) )

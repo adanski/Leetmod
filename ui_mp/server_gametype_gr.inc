@@ -1,3 +1,6 @@
+#undef CHOICE_GROUP
+#define CHOICE_GROUP gr
+
 #define G_GAMETYPE_GR (dvarString( "settings_config_gametype" ) == "gr")
 
 CHOICE_DVAREDIT_NUMERIC_VIS( 2, "@OW_TIMELIMIT", scr_gr_timelimit, 5, ;, when(G_GAMETYPE_GR) )

@@ -6,7 +6,7 @@ init()
 	level.scr_cap_enable = getdvarx( "scr_cap_enable", "int", 0, 0, 1 ); 
 	level.scr_cap_time = getdvarx( "scr_cap_time", "float", 5.0, 1.0, 15.0 );
 	level.scr_cap_activated = getdvarx( "scr_cap_time_activated", "float", 15.0, 5.0, 30.0 );
-	level.scr_cap_firstspawn = getdvarx( "scr_cap_firstspawn", "int", 0, 0, 1 );
+	level.scr_cap_firstspawn = getdvarx( "scr_cap_firstspawn", "int", 1, 0, 1 );
 	
 	if ( !level.scr_cap_enable || level.gametype == "ass" )
 		return;

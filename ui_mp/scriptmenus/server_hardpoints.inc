@@ -11,7 +11,7 @@ menuDef
   //soundloop		""
   onOpen
   {
-    
+    FILLMENUDVARS;
   }
   onClose
   {
@@ -22,7 +22,9 @@ menuDef
     close self;
   }
   #include "ui_mp/blurredbg.inc"
+  #define MENU_TOPBARSHORT
   #include "ui_mp/navcontrols.inc"
+  #undef MENU_TOPBARSHORT
   
   CHOICE_MENU_TITLE("@OW_SERVER_HARDPOINTS" )
   
@@ -79,5 +81,20 @@ menuDef
   //CHOICE_DVAREDIT_NUMERIC_VIS( 27, "@OW_SCR_HELI_MAXHEALTH", menu_scr_heli_maxhealth, 4, SETA_SCR_HELI_MAXHEALTH;, when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
   //CHOICE_DVARSLIDER_VIS( 28, "@OW_SCR_HELI_TARGET_RECOGNITION", menu_scr_heli_target_recognition, 0.95, 0, 1, SETA_SCR_HELI_TARGET_RECOGNITION;, when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
   
-  //CHOICE_DVARSTRINGLIST( 1, "Configure to gametype:", ct_serverCfgGametype, { "ALL" ""; "DM" "_dm"; "TDM" "_war"; "DOM" "_dom"; "SAB" "_sab"; "HQ" "_koth"; "SD" "_sd"; "GG" "_gg"; "SS" "_ss"; "OITC" "_oitc"; "GR" "_gr"; "CTF" "_ctf"; }, ; )
+  #undef CHOICE_Y_COUNT
+  #define CHOICE_Y_COUNT			100
+  
+  #undef CHOICE_Y_START
+  #define CHOICE_Y_START -2172
+  
+  #undef CHOICE_X_START
+  #define CHOICE_X_START 190
+  
+  #undef CHOICE_SIZE_X
+  #define CHOICE_SIZE_X 160
+  
+  #undef TEXTSIZE_BUTTON_PC
+  #define TEXTSIZE_BUTTON_PC	0.38
+  
+  CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS;, 1 )
 }
