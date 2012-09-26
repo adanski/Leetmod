@@ -48,9 +48,9 @@ menuDef
   #define CHOICE_Y_COUNT			20
 
   
-  CHOICE_DVARFLOATLIST( 1, "@OW_SCR_GAME_SPECTATETYPE", menu_scr_game_spectatetype, { "Disabled" 0 "Team/Player only" 1 "Free" 2 }, SETA_SCR_GAME_SPECTATETYPE; )
-  CHOICE_DVARFLOATLIST( 2, "@OW_SCR_GAME_SPECTATETYPE_SPECTATORS", menu_scr_game_spectatetype_spectators, { "Disabled" 0 "Team/Player only" 1 "Free" 2 }, SETA_SCR_GAME_SPECTATETYPE_SPECTATORS; )
-  CHOICE_DVAREDIT( 3, "@OW_SCR_GAME_SPECTATORS_GUIDS", menu_scr_game_spectators_guids, SETA_SCR_GAME_SPECTATORS_GUIDS; )
+  CHOICE_DVARFLOATLIST_VIS( 1, "@OW_SCR_GAME_SPECTATETYPE", menu_scr_game_spectatetype, { "Disabled" 0 "Team/Player only" 1 "Free" 2 }, SETA_SCR_GAME_SPECTATETYPE;, when( dvarString(menu_cfg_gt) != "oitc" ) )
+  CHOICE_DVARFLOATLIST_VIS( 2, "@OW_SCR_GAME_SPECTATETYPE_SPECTATORS", menu_scr_game_spectatetype_spectators, { "Disabled" 0 "Team/Player only" 1 "Free" 2 }, SETA_SCR_GAME_SPECTATETYPE_SPECTATORS;, when( dvarString(menu_cfg_gt) != "oitc" ) )
+  CHOICE_DVAREDIT_VIS( 3, "@OW_SCR_GAME_SPECTATORS_GUIDS", menu_scr_game_spectators_guids, 1000, 80, SETA_SCR_GAME_SPECTATORS_GUIDS;, when( dvarString(menu_cfg_gt) != "oitc" ) )
   CHOICE_DVARYESNO( 4, "@OW_SCR_ALLOW_THIRDPERSON", menu_scr_allow_thirdperson, SETA_SCR_ALLOW_THIRDPERSON; )
   CHOICE_DVAREDIT_VIS( 5, "@OW_SCR_ALLOW_THIRDPERSON_GUIDS", menu_scr_allow_thirdperson_guids, 1000, 80, SETA_SCR_ALLOW_THIRDPERSON_GUIDS;, when( dvarBool(menu_scr_allow_thirdperson) ) )
   

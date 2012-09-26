@@ -55,13 +55,13 @@ menuDef
   CHOICE_DVAREDIT_NUMERIC( 4, "@OW_SCR_HEALTH_PAIN_SOUND", menu_scr_health_pain_sound, 2, SETA_SCR_HEALTH_PAIN_SOUND; )
   CHOICE_DVARYESNO( 5, "@OW_SCR_HEALTH_DEATH_SOUND", menu_scr_health_death_sound, SETA_SCR_HEALTH_DEATH_SOUND; )
   CHOICE_DVARYESNO( 6, "@OW_SCR_HEALTH_HURT_SOUND", menu_scr_health_hurt_sound, SETA_SCR_HEALTH_HURT_SOUND; )
-  CHOICE_DVARYESNO( 7, "@OW_SCR_HEALTHSYSTEM_SHOW_HEALTHBAR", menu_scr_healthsystem_show_healthbar, SETA_SCR_HEALTHSYSTEM_SHOW_HEALTHBAR; )
+  CHOICE_DVARYESNO_VIS( 7, "@OW_SCR_HEALTHSYSTEM_SHOW_HEALTHBAR", menu_scr_healthsystem_show_healthbar, SETA_SCR_HEALTHSYSTEM_SHOW_HEALTHBAR;, when( dvarString(menu_cfg_gt) != "ftag" ) )
   
   //CHOICE_DVAREDIT( 8, "@OW_SCR_HEALTHSYSTEM_BLEEDING_ENABLE", menu_scr_healthsystem_bleeding_enable, ; )
-  CHOICE_DVARSLIDER( 8, "@OW_SCR_HEALTHSYSTEM_BLEEDING_ENABLE", menu_scr_healthsystem_bleeding_enable, 0, 0, 15, SETA_SCR_HEALTHSYSTEM_BLEEDING_ENABLE; )
+  CHOICE_DVARSLIDER_VIS( 8, "@OW_SCR_HEALTHSYSTEM_BLEEDING_ENABLE", menu_scr_healthsystem_bleeding_enable, 0, 0, 15, SETA_SCR_HEALTHSYSTEM_BLEEDING_ENABLE;, when( dvarString(menu_cfg_gt) != "bel" ) )
   //CHOICE_DVAREDIT_NUMERIC( 9, "@OW_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE", menu_scr_healthsystem_bleeding_start_percentage, 2, ; )
-  CHOICE_DVARSLIDER_VIS( 9, "@OW_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE", menu_scr_healthsystem_bleeding_start_percentage, 0, 0, 99, SETA_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE;, when( dvarBool(menu_scr_healthsystem_bleeding_enable) ) )
-  CHOICE_DVARYESNO_VIS( 10, "@OW_SCR_HEALTHSYSTEM_BLEEDING_ICON", menu_scr_healthsystem_bleeding_icon, SETA_SCR_HEALTHSYSTEM_BLEEDING_ICON;, when( dvarBool(menu_scr_healthsystem_bleeding_enable) ) )
+  CHOICE_DVARSLIDER_VIS( 9, "@OW_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE", menu_scr_healthsystem_bleeding_start_percentage, 0, 0, 99, SETA_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE;, when( dvarBool(menu_scr_healthsystem_bleeding_enable) && dvarString(menu_cfg_gt) != "bel" ) )
+  CHOICE_DVARYESNO_VIS( 10, "@OW_SCR_HEALTHSYSTEM_BLEEDING_ICON", menu_scr_healthsystem_bleeding_icon, SETA_SCR_HEALTHSYSTEM_BLEEDING_ICON;, when( dvarBool(menu_scr_healthsystem_bleeding_enable) && dvarString(menu_cfg_gt) != "bel" ) )
   
   CHOICE_DVAREDIT_NUMERIC( 11, "@OW_SCR_HEALTHSYSTEM_BANDAGE_START", menu_scr_healthsystem_bandage_start, 1, SETA_SCR_HEALTHSYSTEM_BANDAGE_START; )
   CHOICE_DVAREDIT_NUMERIC( 12, "@OW_SCR_HEALTHSYSTEM_BANDAGE_MAX", menu_scr_healthsystem_bandage_max, 1, SETA_SCR_HEALTHSYSTEM_BANDAGE_MAX; )
