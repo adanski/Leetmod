@@ -77,6 +77,7 @@
 ;Installer Sections
 
 Section "${APPNAME}" Leetmod
+  SectionIn RO
 
   SetOutPath "$INSTDIR\mods\${MODFOLDER}${MODVERSION}\"
   
@@ -88,6 +89,7 @@ Section "${APPNAME}" Leetmod
 SectionEnd
 
 Section "New Maps" MapPack
+  ;SectionIn RO
 
   SetOutPath "$INSTDIR\usermaps"
   
