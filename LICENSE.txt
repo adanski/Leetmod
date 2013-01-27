@@ -22,7 +22,3 @@ There are some things that you must shoulder:
 The ModEPL continues perpetually, except that your license rights end automatically if:
  You do not abide by the "give back to the community" terms (your licensees get to keep their rights if they abide);
  Anyone prevents you from distributing the mod assets under the terms of the ModEPL.
-
-
-Regards,
-The OpenWarfare Project Team
