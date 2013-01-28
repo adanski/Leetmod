@@ -230,5 +230,5 @@ FunctionEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${CTGarena} "New map by |RASTA|RoKo_859"
     !insertmacro MUI_DESCRIPTION_TEXT ${CTHangar} "New map by miregrobar"
     !insertmacro MUI_DESCRIPTION_TEXT ${CTShipment2} "New map by Carcass26"
-    !insertmacro MUI_DESCRIPTION_TEXT ${CTShipment3} "New map by "
+    !insertmacro MUI_DESCRIPTION_TEXT ${CTShipment3} "New map by LLLDR|dB99"
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
