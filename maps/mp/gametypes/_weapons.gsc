@@ -45,6 +45,25 @@ init()
 	level.class_heavygunner_allowdrop = getdvarx( "class_heavygunner_allowdrop", "int", 1, 0, 1 );
 
 	setdvar( "weapon_index_reverse_load_mp_killhouse", "1" );
+/*#CUSTOM - this doesn't fixed the 'file/sum mismatch problem'...
+// News - No file/sum mismatch.. don't know why..
+	setdvar( "weapon_index_reverse_load_mp_bog", "1" );
+	setdvar( "weapon_index_reverse_load_mp_mw2_term", "1" );
+	setdvar( "weapon_index_reverse_load_mp_garena", "1" );
+	setdvar( "weapon_index_reverse_load_mp_carentan", "1" );
+	setdvar( "weapon_index_reverse_load_mp_pipeline", "1" );
+	setdvar( "weapon_index_reverse_load_mp_shipment", "1" );
+	setdvar( "weapon_index_reverse_load_mp_showdown", "1" );
+  
+  setdvar( "sv_pure_mp_killhouse", "0" );
+	setdvar( "sv_pure_mp_bog", "0" );
+	setdvar( "sv_pure_mp_mw2_term", "0" );
+	setdvar( "sv_pure_mp_garena", "0" );
+	setdvar( "sv_pure_mp_carentan", "0" );
+	setdvar( "sv_pure_mp_pipeline", "0" );
+	setdvar( "sv_pure_mp_shipment", "0" );
+	setdvar( "sv_pure_mp_showdown", "0" );
+*/
 	level.weapon_index_reverse_load = getdvarx( "weapon_index_reverse_load", "int", 0, 0, 1 );
 
 
