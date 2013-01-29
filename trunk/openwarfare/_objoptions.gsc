@@ -58,7 +58,8 @@ onPlayerKilled()
 
   for( index = 0; index < self.safeZone.size; index++ )
   {       
-      self.safeZone[index] delete();
+      if( isDefined(self.safeZone[index]) )
+        self.safeZone[index] delete();
   }
 }
 
@@ -201,10 +202,10 @@ monitorSafeZone()
             self setWeaponAmmoStock( explosive.weaponName, stockCount + 1 );
 
           explosive delete();
-          break;  
-        } 
+          break;
+        }
       }
-    }      
+    }
   }
 }
 

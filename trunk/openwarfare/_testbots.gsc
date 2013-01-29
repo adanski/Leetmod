@@ -54,7 +54,7 @@ initBotClass()
 
 	if ( !level.oldschool )	{
 		if ( level.gametype != "hns" || self.pers["team"] == game["attackers"] ) {
-			if ( level.rankedMatch ) {
+			if ( level.offlineClasses ) {
 				self notify( "menuresponse", game["menu_changeclass"], "assault_mp" );			
 			} else {		
 				self notify( "menuresponse", game["menu_changeclass_" + self.pers["team"] ], "assault" );

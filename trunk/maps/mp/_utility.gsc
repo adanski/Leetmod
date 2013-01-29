@@ -943,7 +943,8 @@ play_sound_in_space (alias, origin, master)
 	else
 		org playsound (alias);
 	wait ( 10.0 );
-	org delete();
+  if( isDefined(org) )
+    org delete();
 }
 
 fire_effect()

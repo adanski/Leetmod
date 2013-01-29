@@ -143,7 +143,7 @@ resetServerVariables()
 	variableNames[ variableNames.size ] = "scr_overtime_enable scr_overtime_incrementalspawndelay scr_overtime_numlives scr_overtime_playerrespawndelay scr_overtime_suddendeath scr_overtime_timelimit";
 	
 	// configs/server/rank.cfg
-	variableNames[ variableNames.size ] = "scr_enable_virtual_ranks scr_server_rank_type scr_power_rank_delay scr_power_rank_mode scr_virtual_ranks scr_virtual_ranks_score";
+	variableNames[ variableNames.size ] = "scr_enable_virtual_ranks scr_power_rank_delay scr_power_rank_mode scr_virtual_ranks scr_virtual_ranks_score";
 	
 	// configs/server/reservedslots.cfg
 	variableNames[ variableNames.size ] = "scr_reservedslots_amount scr_reservedslots_clantags scr_reservedslots_enable scr_reservedslots_guids_1 scr_reservedslots_redirectip";

@@ -52,7 +52,7 @@
 ;--------------------------------
 ;Pages
 
-  !insertmacro MUI_PAGE_LICENSE ".\..\LICENSE.txt"
+  !insertmacro MUI_PAGE_LICENSE "LICENSE"
   !define MUI_PAGE_CUSTOMFUNCTION_PRE DirectoryPre
   !insertmacro MUI_PAGE_DIRECTORY
   !insertmacro MUI_PAGE_COMPONENTS

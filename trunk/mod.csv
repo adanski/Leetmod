@@ -335,33 +335,39 @@ rawfile,openwarfare/_weaponrangemodifier.gsc
 rawfile,openwarfare/_weaponweightmodifier.gsc
 rawfile,openwarfare/_welcomerulesinfo.gsc
 
-menufile,ui_mp/auto_update.menu
+# commented for 640 menu assets, uncomment later
+     menufile,ui_mp/auto_update.menu
 menufile,ui_mp/challenges.menu
 menufile,ui_mp/connect.menu
 menufile,ui_mp/controls_multi.menu
 menufile,ui_mp/hud.menu
 menufile,ui_mp/main.menu
 #menufile,ui_mp/mods.menu
-menufile,ui_mp/options_game_pc.menu
+# commented for 640 menu assets, uncomment later
+     menufile,ui_mp/options_game_pc.menu
 #menufile,ui_mp/options_graphics_pc.menu
-menufile,ui_mp/options_multi.menu
-menufile,ui_mp/scriptmenus/advancedacp.menu
+# commented for 640 menu assets, uncomment later
+     menufile,ui_mp/options_multi.menu
+# commented for 640 menu assets, uncomment later
+     menufile,ui_mp/scriptmenus/advancedacp.menu
 #menufile,ui_mp/scriptmenus/advancedmvs.menu
 #menufile,ui_mp/scriptmenus/callvote.menu
 #menufile,ui_mp/scriptmenus/callvote_buttons.inc
-#menufile,ui_mp/scriptmenus/changeclass_marines_mw.menu
+#menufile,ui_mp/scriptmenus/changeclass_marines_mw.menu  #
 menufile,ui_mp/scriptmenus/changeclass.menu
-#menufile,ui_mp/scriptmenus/changeclass_mw.menu
-#menufile,ui_mp/scriptmenus/changeclass_opfor_mw.menu
+#menufile,ui_mp/scriptmenus/changeclass_mw.menu  #
+#menufile,ui_mp/scriptmenus/changeclass_opfor_mw.menu  #
 #menufile,ui_mp/scriptmenus/changeclass_props.menu
 menufile,ui_mp/scriptmenus/class.menu
 menufile,ui_mp/scriptmenus/clientcmd.menu
-menufile,ui_mp/scriptmenus/createserver.menu
+# commented for 640 menu assets, uncomment later
+   menufile,ui_mp/scriptmenus/createserver.menu
 menufile,ui_mp/scriptmenus/endofgame.menu
 menufile,ui_mp/scriptmenus/eog_statistics.menu
 menufile,ui_mp/scriptmenus/muteplayer.menu
 menufile,ui_mp/scriptmenus/ow_cac_editor.menu
-menufile,ui_mp/scriptmenus/popup_eog.menu
+# commented for 640 menu assets, uncomment later
+   menufile,ui_mp/scriptmenus/popup_eog.menu
 menufile,ui_mp/scriptmenus/popup_leavegame.menu
 menufile,ui_mp/scriptmenus/scoreboard.menu
 menufile,ui_mp/scriptmenus/serverinfo.menu

@@ -366,10 +366,12 @@ removeDropZone()
 	self.objWorld destroy();
 	
 	// Remove the base effect
-	self.baseEffect delete();
+  if( isDefined( self.baseEffect ) )
+    self.baseEffect delete();
 	
 	// Remove the trigger
-	self.trigger delete();
+  if( isDefined( self.trigger ) )
+    self.trigger delete();
 }
 
 
@@ -660,14 +662,18 @@ removeTriggerOnTimeout( dogtagTrigger, colorEffect )
 	
 	// Remove the special effect and the trigger
 	dogtagTrigger notify("timed_out");
-	wait (0.05);	
-	dogtagTrigger delete();
-	colorEffect delete();	
+  
+	wait (0.05);
+  
+	if( isDefined( dogtagTrigger ) )
+    dogtagTrigger delete();
+  if( isDefined( colorEffect ) )
+    colorEffect delete();	
 	
 	// Remove the body 
 	if ( isDefined( self ) ) {
 		playfx( game[level.gameType]["pickup"], self.origin );
-		self delete();	
+		self delete();
 	}	
 }
 
@@ -695,9 +701,13 @@ removeTriggerOnPickup( dogtagsAmount, dogtagTrigger, colorEffect )
 			
 	// Remove the special effect and the trigger
 	dogtagTrigger notify("picked_up");
+  
 	wait (0.05);
-	colorEffect delete();
-	dogtagTrigger delete();
+  
+  if( isDefined( colorEffect ) )
+    colorEffect delete();
+  if( isDefined( dogtagTrigger ) )
+    dogtagTrigger delete();
 		
 	// Remove the body 
 	if ( isDefined( self ) ) {

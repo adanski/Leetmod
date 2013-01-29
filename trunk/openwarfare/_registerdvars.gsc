@@ -150,9 +150,13 @@ init()
 
 	level.scr_switch_teams_at_halftime = getdvarx( "scr_switch_teams_at_halftime", "int", 0, 0, 1 );
 
-	// If we are running unranked load some variables that are only loaded in _modwarfare.gsc
-  // ### TO FIX ### shouldn't it be negated?
-	if ( level.rankedMatch ) {
+	// Original comment:
+  // If we are running unranked load some variables that are only loaded in _modwarfare.gsc
+  // End of Original comment /
+  // ### TO FIX ### shouldn't it be negated? ( level.offlineClasses -> !level.offlineClasses )
+  // # I've tested the fix and it brings scripting errors when offline class perk1 is
+  // # extra flash or stun, so, reverting
+	if ( level.offlineClasses ) {
 		game["loadout_CLASS_ASSAULT_frags"] =	getdvarx( "class_assault_frags", "int", 1, 0, 4 );
 		game["loadout_CLASS_ASSAULT_special"] = getdvarx( "class_assault_special", "int", 1, 0, 4 );
 		game["loadout_CLASS_SPECOPS_frags"] =	getdvarx( "class_specops_frags", "int", 1, 0, 4 );

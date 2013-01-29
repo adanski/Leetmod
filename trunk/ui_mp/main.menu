@@ -1,4 +1,4 @@
-#define OPENWARFARE_VERSION "v1.8"
+#define LEETMOD_VERSION "1.8"
 
 #include "ui/menudef.h"
 #include "ui_mp/common_macro.inc"
@@ -102,21 +102,35 @@
 			mouseExit { setitemcolor leetmodlogo forecolor 1 1 1 0.77 }
 			action { play "mouse_click"; open auconfirm; }
 		}
-/*
+
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
-			rect			(LOGO_START_X+242) (LOGO_START_Y+55) 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_BOTTOM
+			rect			(LOGO_START_X+100) (LOGO_START_Y+63) 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_BOTTOM
 			textfont		UI_FONT_NORMAL
-			textscale		0.25
+			textscale		0.3
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
-			forecolor		1 1 1 1
-			text				OPENWARFARE_VERSION
-			visible			0 //when( !localvarBool( ui_hideBack ) );
+			forecolor		0.7 0.7 0.7 1
+			text				LEETMOD_VERSION
+			visible			when( !localvarBool( ui_hideBack ) );
 			decoration	
 		}
-*/
+
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			(LOGO_START_X+75) (LOGO_START_Y+47) 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_BOTTOM
+			textfont		UI_FONT_NORMAL
+			textscale		0.4
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_LEFT
+			forecolor		0.9 0.05 0.08 1
+			text				"---------"
+			visible			when( !localvarBool( ui_hideBack ) );
+			decoration	
+		}
+
 		
 		#define SETUP_ACTION_CREATEACLASS \
 				execnow "statset 260 1"; \
@@ -128,6 +142,7 @@
 
 		//CHOICE_BUTTON_VIS( 1, "@MENU_AUTO_UPDATE", open auconfirm;, 1 )
 		//CHOICE_BUTTON_VIS( 2, "@MENU_JOIN_GAME", open join_game_popup;, when( !localvarBool( ui_hideBack ) ) )
+		CHOICE_BUTTON_VIS( 1, "@OW_MENU_RECONNECT", exec "reconnect";, when( dvarBool( tmp_ui_reconnect ) ) )
 		CHOICE_BUTTON_VIS( 2, "@MENU_JOIN_GAME", open pc_join_unranked;, when( !localvarBool( ui_hideBack ) ) )
 		CHOICE_BUTTON_VIS( 3, "@MENU_START_NEW_SERVER", open createserver;, when( !localvarBool( ui_hideBack ) ) )
 

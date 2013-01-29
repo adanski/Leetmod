@@ -29,7 +29,7 @@ mayProcessChallenges()
 		return true;
 	#/
 	
-	return ( level.rankedMatch || level.scr_server_rank_type == 2 );
+	return level.rankedMatch;
 }
 
 // Gives the result as an angle between - 180 and 180

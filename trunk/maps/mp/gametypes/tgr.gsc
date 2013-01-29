@@ -569,9 +569,13 @@ removeTriggerOnTimeout( dogtagTrigger, colorEffect )
 	
 	// Remove the special effect and the trigger
 	dogtagTrigger notify("timed_out");
-	wait (0.05);	
-	dogtagTrigger delete();
-	colorEffect delete();	
+  
+	wait (0.05);
+  
+  if( isDefined(dogtagTrigger) )
+    dogtagTrigger delete();
+  if( isDefined(colorEffect) )
+    colorEffect delete();	
 	
 	// Remove the body 
 	if ( isDefined( self ) ) {
@@ -612,8 +616,12 @@ removeTriggerOnPickup( droppedTeam, dogtagsAmount, dogtagTrigger, colorEffect )
          
    // Remove the special effect and the trigger
    dogtagTrigger notify("picked_up");
+   
    wait (0.05);
-   colorEffect delete();
+   
+   if( isDefined(colorEffect) )
+    colorEffect delete();
+   if( isDefined(dogtagTrigger) )
    dogtagTrigger delete();
       
    // Remove the body 

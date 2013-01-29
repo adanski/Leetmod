@@ -1297,7 +1297,7 @@ switchPlayerTeam( newTeam, halfTimeSwitch )
 resetPlayerClassOnTeamSwitch( halfTimeSwitch )
 {
 	// If the server is ranked there's no need to reset
-	if ( level.rankedMatch || !isDefined( self.pers["class"] ) )
+	if ( level.offlineClasses || !isDefined( self.pers["class"] ) )
 		return false;
 		
 	// Check non-class dependent limits
