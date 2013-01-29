@@ -79,11 +79,11 @@ main()
 	}
 
 	badtrig = getent( "sab_bomb_defuse_allies", "targetname" );
-	if ( isdefined( badtrig ) )
+	if ( isDefined( badtrig ) )
 		badtrig delete();
 
 	badtrig = getent( "sab_bomb_defuse_axis", "targetname" );
-	if ( isdefined( badtrig ) )
+	if ( isDefined( badtrig ) )
 		badtrig delete();
 }
 
@@ -128,7 +128,7 @@ onPrecacheGameType()
 
 onRoundSwitch()
 {
-	if ( !isdefined( game["switchedsides"] ) )
+	if ( !isDefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;
 
 	if ( game["teamScores"]["allies"] == level.scorelimit - 1 && game["teamScores"]["axis"] == level.scorelimit - 1 )
@@ -147,7 +147,7 @@ onRoundSwitch()
 
 onStartGameType()
 {
-	if ( !isdefined( game["switchedsides"] ) )
+	if ( !isDefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;
 
 	setClientNameMode("auto_change");
@@ -732,7 +732,7 @@ bombPlanted( destroyedObj, team )
 	explosionOrigin = level.sabBomb.visuals[0].origin;
 	level.bombExploded = true;
 
-	if ( isdefined( level.bombowner ) )
+	if ( isDefined( level.bombowner ) )
 		destroyedObj.visuals[0] radiusDamage( explosionOrigin, 512, 200, 20, level.bombowner );
 	else
 	destroyedObj.visuals[0] radiusDamage( explosionOrigin, 512, 200, 20 );
@@ -763,7 +763,8 @@ playSoundinSpace( alias, origin )
 	org.origin = origin;
 	org playSound( alias  );
 	wait 10; // MP doesn't have "sounddone" notifies =(
-	org delete();
+	if( isDefined( org ) )
+    org delete();
 }
 
 
@@ -819,7 +820,7 @@ bombDefused( object )
 
 onEndGame( winningTeam )
 {
-	if ( isdefined( winningTeam ) && (winningTeam == "allies" || winningTeam == "axis") )
+	if ( isDefined( winningTeam ) && (winningTeam == "allies" || winningTeam == "axis") )
 		[[level._setTeamScore]]( winningTeam, [[level._getTeamScore]]( winningTeam ) + 1 );
 }
 

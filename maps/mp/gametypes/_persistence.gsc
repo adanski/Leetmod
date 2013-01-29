@@ -2,7 +2,8 @@ init()
 {
 	level.persistentDataInfo = [];
 
-	if ( !level.rankedMatch ) {
+	//if ( !level.rankedMatch ) {
+	if ( !level.offlineClasses ) {
 		maps\mp\gametypes\_class_unranked::init();
 	} else {
 		maps\mp\gametypes\_class::init();
@@ -40,7 +41,7 @@ Returns the value of the named stat
 */
 statGet( dataName )
 {
-if ( !level.rankedMatch && level.scr_server_rank_type != 2 )
+if ( !level.rankedMatch )
 		return 0;
 	
 	return self getStat( int(tableLookup( "mp/playerStatsTable.csv", 1, dataName, 0 )) );
@@ -55,7 +56,7 @@ Sets the value of the named stat
 */
 statSet( dataName, value )
 {
-	if ( !level.rankedMatch && level.scr_server_rank_type != 2 )
+	if ( !level.rankedMatch )
 		return;
 	
 	self setStat( int(tableLookup( "mp/playerStatsTable.csv", 1, dataName, 0 )), value );	
@@ -70,7 +71,7 @@ Adds the passed value to the value of the named stat
 */
 statAdd( dataName, value )
 {	
-	if ( !level.rankedMatch && level.scr_server_rank_type != 2 )
+	if ( !level.rankedMatch )
 		return;
 
 	curValue = self getStat( int(tableLookup( "mp/playerStatsTable.csv", 1, dataName, 0 )) );

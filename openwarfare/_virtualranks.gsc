@@ -9,7 +9,7 @@ init()
 	level.maxRank = int(tableLookup( "mp/rankTable.csv", 0, "maxrank", 1 ));
 	
 	// If virtual ranks are disabled then there's nothing else to do here
-	if ( level.rankedMatch || level.scr_server_rank_type == 2 || level.scr_enable_virtual_ranks == 0 || level.gametype == "gg" ) {
+	if ( level.rankedMatch || level.scr_enable_virtual_ranks == 0 || level.gametype == "gg" ) {
 		level.scr_enable_virtual_ranks = 0;
 		return;
 	}

@@ -190,7 +190,7 @@ sd_getTeamKillPenalty( eInflictor, attacker, sMeansOfDeath, sWeapon )
 {
 	teamkill_penalty = maps\mp\gametypes\_globallogic::default_getTeamKillPenalty( eInflictor, attacker, sMeansOfDeath, sWeapon );
 
-	if ( ( isdefined( self.isDefusing ) && self.isDefusing ) || ( isdefined( self.isPlanting ) && self.isPlanting ) )
+	if ( ( isDefined( self.isDefusing ) && self.isDefusing ) || ( isDefined( self.isPlanting ) && self.isPlanting ) )
 	{
 		teamkill_penalty = teamkill_penalty * level.teamKillPenaltyMultiplier;
 	}
@@ -202,7 +202,7 @@ sd_getTeamKillScore( eInflictor, attacker, sMeansOfDeath, sWeapon )
 {
 	teamkill_score = maps\mp\gametypes\_rank::getScoreInfoValue( "kill" );
 	
-	if ( ( isdefined( self.isDefusing ) && self.isDefusing ) || ( isdefined( self.isPlanting ) && self.isPlanting ) )
+	if ( ( isDefined( self.isDefusing ) && self.isDefusing ) || ( isDefined( self.isPlanting ) && self.isPlanting ) )
 	{
 		teamkill_score = teamkill_score * level.teamKillScoreMultiplier;
 	}
@@ -212,7 +212,7 @@ sd_getTeamKillScore( eInflictor, attacker, sMeansOfDeath, sWeapon )
 
 onRoundSwitch()
 {
-	if ( !isdefined( game["switchedsides"] ) )
+	if ( !isDefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;
 
 	if ( game["teamScores"]["allies"] == level.scorelimit - 1 && game["teamScores"]["axis"] == level.scorelimit - 1 )
@@ -416,7 +416,7 @@ sd_endGame( winningTeam, endReasonText )
   //## added wait, check if it fixes the problem with weird score count
 	wait ( 0.05 );
   
-	if ( isdefined( winningTeam ) )
+	if ( isDefined( winningTeam ) )
 		[[level._setTeamScore]]( winningTeam, [[level._getTeamScore]]( winningTeam ) + 1 );
 
 	thread maps\mp\gametypes\_globallogic::endGame( winningTeam, endReasonText );
@@ -470,7 +470,7 @@ onTimeLimit()
 
 warnLastPlayer( team )
 {
-	if ( !isdefined( level.warnedLastPlayer ) )
+	if ( !isDefined( level.warnedLastPlayer ) )
 		level.warnedLastPlayer = [];
 
 	if ( isDefined( level.warnedLastPlayer[team] ) )
@@ -483,7 +483,7 @@ warnLastPlayer( team )
 	{
 		player = players[i];
 
-		if ( isDefined( player.pers["team"] ) && player.pers["team"] == team && isdefined( player.pers["class"] ) )
+		if ( isDefined( player.pers["team"] ) && player.pers["team"] == team && isDefined( player.pers["class"] ) )
 		{
 			if ( player.sessionstate == "playing" && !player.afk )
 				break;
@@ -631,7 +631,7 @@ bombs()
 		level.bombZones[level.bombZones.size] = bombZone;
 
 		bombZone.bombDefuseTrig = getent( visuals[0].target, "targetname" );
-		assert( isdefined( bombZone.bombDefuseTrig ) );
+		assert( isDefined( bombZone.bombDefuseTrig ) );
 		bombZone.bombDefuseTrig.origin += (0,0,-10000);
 		bombZone.bombDefuseTrig.label = label;
 	}
@@ -976,7 +976,7 @@ bombPlanted( destroyedObj, player )
 	explosionOrigin = level.sdBombModel.origin;
 	level.sdBombModel hide();
 
-	if ( isdefined( player ) )
+	if ( isDefined( player ) )
 		destroyedObj.visuals[0] radiusDamage( explosionOrigin, 512, 200, 20, player );
 	else
 		destroyedObj.visuals[0] radiusDamage( explosionOrigin, 512, 200, 20 );
@@ -1015,7 +1015,8 @@ playSoundinSpace( alias, origin )
 	org.origin = origin;
 	org playSound( alias  );
 	wait 10; // MP doesn't have "sounddone" notifies =(
-	org delete();
+	if( isDefined( org ) )
+    org delete();
 }
 
 bombDefused()

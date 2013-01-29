@@ -838,7 +838,8 @@ play_loop_sound_on_entity(alias, offset)
 //	println ("playing loop sound ", alias," on entity at origin ", self.origin, " at ORIGIN ", org.origin);
 	self waittill ("stop sound" + alias);
 	org stoploopsound (alias);
-	org delete();
+	if( isDefined(org) )
+    org delete();
 }
 
 
@@ -873,7 +874,8 @@ playSoundinSpace (alias, origin, master)
 	else
 		org playsound (alias);
 	wait ( 10.0 );
-	org delete();
+  if( isDefined(org) )
+    org delete();
 }
 
 

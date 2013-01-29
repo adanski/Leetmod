@@ -33,6 +33,7 @@
 		onOpen
 		{
 			focusFirst;
+      execondvarintvalue sv_running 0 "set tmp_ui_reconnect 1";
 		}
 		onEsc
 		{

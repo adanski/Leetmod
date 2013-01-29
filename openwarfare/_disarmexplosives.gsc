@@ -116,7 +116,8 @@ deleteTriggerOnDeath()
 	self waittill("death");
 
 	// Delete the radius entity
-	triggerRadius delete();
+  if( isDefined(triggerRadius) )
+    triggerRadius delete();
 }
 
 

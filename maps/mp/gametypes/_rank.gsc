@@ -170,7 +170,7 @@ onPlayerConnect()
 		player.cur_rankNum = rankId;
 		player.rankUpdateTotal = 0;
 
-		if ( level.rankedMatch || level.scr_server_rank_type == 2 ) {			
+		if ( level.rankedMatch ) {
 			
 			player maps\mp\gametypes\_persistence::statSet( "rank", rankId );
 			player maps\mp\gametypes\_persistence::statSet( "plevel", prestigeId );
@@ -382,8 +382,7 @@ giveRankXP( type, value, powerrank )
 		case "defuse":
 
 		case "pickup":
-			if ( level.numLives >= 1 && ( level.rankedMatch || level.scr_server_rank_type == 2 ) )
-			{
+			if ( level.numLives >= 1 && level.rankedMatch ) {
 				multiplier = max(1,int( 10/level.numLives ));
 				value = int(value * multiplier);
 			}
@@ -394,7 +393,7 @@ giveRankXP( type, value, powerrank )
 		
 	self incRankXP( value );
 
-	if ( ( level.rankedMatch || level.scr_server_rank_type == 2 ) && updateRank() ) {
+	if ( level.rankedMatch && updateRank() ) {
 		if ( !isDefined( powerrank ) ) {
 			self thread updateRankAnnounceHUD();
 		}
@@ -499,7 +498,7 @@ updateRank()
 	
 		// tell lobby to popup promotion window instead
 		self.setPromotion = true;
-		if ( ( level.rankedMatch || level.scr_server_rank_type == 2 ) && level.gameEnded )
+		if ( level.rankedMatch && level.gameEnded )
 			self setClientDvar( "ui_lobbypopup", "promotion" );
 		
 		// unlocks weapon =======
@@ -1435,10 +1434,11 @@ getRank()
 
 getRankForXp( xpVal )
 {
-	if ( !level.rankedMatch && level.scr_server_rank_type != 2 ) {
+	//#if ( !level.rankedMatch && level.scr_server_rank_type != 2 ) {
+	if ( level.scr_enable_virtual_ranks ) {
 		rankId = openwarfare\_virtualranks::getRankForName( self );
 		return rankId;
-	}	
+	}
 	
 	rankId = 0;
 	rankName = level.rankTable[rankId][1];
@@ -1478,7 +1478,7 @@ getRankXP()
 
 incRankXP( amount )
 {
-	if ( !level.rankedMatch && level.scr_server_rank_type != 2 )
+	if ( !level.rankedMatch )
 		return;
 	
 	xp = self getRankXP();

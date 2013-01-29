@@ -38,7 +38,7 @@ main()
 	if(getdvar("mapname") == "mp_background")
 		return;
 		
-	if ( !isdefined( game["switchedsides"] ) )
+	if ( !isDefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;		
 
 	// Get the amount of health we'll be using for players
@@ -666,7 +666,8 @@ deleteTriggerZone( triggerRadius )
 		wait (0.05);
 	
 	// Remove the trigger
-	triggerRadius delete();	
+	if( isDefined( triggerRadius ) )
+    triggerRadius delete();
 }
 
 
@@ -894,8 +895,11 @@ showDefrostBeam( frozenPlayer )
 	defrostBeam = spawn( "script_origin", self.origin + ( 0, 0, 40 ) );
 	self thread loopBeamEffect( defrostBeam );
 	defrostBeam moveTo( frozenPlayer.origin + ( 0, 0, 40 ), distance( self.origin, frozenPlayer.origin ) / 750 );
-	defrostBeam waittill("movedone");
-	defrostBeam delete();	
+	
+  defrostBeam waittill("movedone");
+	
+  if( isDefined( defrostBeam ) )
+    defrostBeam delete();
 	
 	self.showingBeam = false;
 }

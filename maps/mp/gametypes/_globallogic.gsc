@@ -76,14 +76,9 @@ init()
 		maps\mp\gametypes\_tweakables::init();
 
 	// We do this for compatibility with previous variable
-	level.scr_server_rank_type = getdvarx( "scr_server_rank_type", "int", getdvarx( "scr_forceunrankedmatch", "int", 0, 0, 1 ), 0, 2 );
-	
-	// Make the game unranked in case is being forced by the new dvar
-	if ( level.scr_server_rank_type != 0 ) {
-		level.rankedMatch = false;
-	} else {
-		level.rankedMatch = true;
-	}
+	//level.scr_server_rank_type = getdvarx( "scr_server_rank_type", "int", getdvarx( "scr_forceunrankedmatch", "int", 0, 0, 1 ), 0, 2 );
+	level.rankedMatch = !(getdvarx( "scr_forceunrankedmatch", "int", 0, 0, 1 ));
+	level.offlineClasses = getdvarx( "scr_player_classes_enable", "int", 1, 0, 1 );
 	
 	// Initialize variables used by OpenWarfare
 	openwarfare\_registerdvars::init();
@@ -96,7 +91,6 @@ init()
 	
 	// If the server is not running in the standard directory then we declare an unranked match
 	/*if ( !isSubStr( toLower(getDvar("sv_referencedFFNames")), "mods/leetmod/mod" ) ) {
-		level.scr_server_rank_type = 1;
 		level.rankedMatch = false;
 	}*/
   
@@ -151,7 +145,7 @@ init()
 
 	registerDvars();
 
-	if ( !level.rankedMatch ) {
+	if ( !level.offlineClasses ) {
 		maps\mp\gametypes\_class_unranked::initPerkDvars();
 	} else {
 		maps\mp\gametypes\_class::initPerkDvars();
@@ -523,7 +517,7 @@ default_onScoreLimit()
 
 updateGameEvents()
 {
-	if ( ( level.rankedMatch || level.scr_server_rank_type == 2 ) && !level.inGracePeriod )
+	if ( level.rankedMatch && !level.inGracePeriod )
 	{
 		if ( level.teamBased && level.gametype != "bel" )
 		{
@@ -777,7 +771,7 @@ spawnPlayer()
 	{
 		assert( !isDefined( self.class ) );
 		self maps\mp\gametypes\_oldschool::giveLoadout();
-		if ( !level.rankedMatch ) {
+		if ( !level.offlineClasses ) {
 			self maps\mp\gametypes\_class_unranked::setClass( level.defaultClass );
 		} else {
 			self maps\mp\gametypes\_class::setClass( level.defaultClass );
@@ -787,7 +781,7 @@ spawnPlayer()
 	{
 		if ( level.gametype != "hns" || self.pers["team"] == game["attackers"] ) {
 			assert( self isValidClass( self.class ) );
-			if ( !level.rankedMatch ) {
+			if ( !level.offlineClasses ) {
 				self maps\mp\gametypes\_class_unranked::setClass( self.class );
 				self maps\mp\gametypes\_class_unranked::giveLoadout( self.team, self.class );
 			} else {
@@ -1375,7 +1369,7 @@ endGame( winner, endReasonText )
 	
 	setGameEndTime( 0 ); // stop/hide the timers
 
-	if ( level.rankedMatch || level.scr_server_rank_type == 2 )
+	if ( level.rankedMatch )
 	{
 		setXenonRanks();
 
@@ -1411,7 +1405,7 @@ endGame( winner, endReasonText )
 			"cg_drawhealth", 0
 		);
 
-		if( level.rankedMatch || level.scr_server_rank_type == 2 )
+		if( level.rankedMatch )
 		{
 			if ( isDefined( player.setPromotion ) )
 				player setClientDvar( "ui_lobbypopup", "promotion" );
@@ -1763,10 +1757,9 @@ endGame( winner, endReasonText )
 		return;
 	}
 
-	if ( ( level.rankedMatch || level.scr_server_rank_type == 2 ) || level.scr_endofgame_stats_enable == 1 ) {
-		if ( level.scr_endofgame_stats_enable == 1 ) {
+	if ( level.rankedMatch || level.scr_endofgame_stats_enable == 1 ) {
+		if ( level.scr_endofgame_stats_enable == 1 )
 			wait (1.0);
-		}
 		
 		// popup for game summary
 		players = level.players;
@@ -1776,9 +1769,11 @@ endGame( winner, endReasonText )
 			
 			player openMenu( game["menu_eog_unlock"] );
     }
-	}
+  }
 
-	thread timeLimitClock_Intermission( level.scr_intermission_time, ( level.scr_amvs_enable == 0 || game["amvs_skip_voting"] ) );
+  // ## Disabled while AMVS is disabled in code
+  //thread timeLimitClock_Intermission( level.scr_intermission_time, ( level.scr_amvs_enable == 0 || game["amvs_skip_voting"] ) );
+  thread timeLimitClock_Intermission( level.scr_intermission_time, true );
   // ## This waits for intermission time to run out, and then open map voting system
   // ## Since now intermission is fixed and script commands can be run, we can use map voting at the same time as intermission
   // ## This message is here for a later change on the current behavior
@@ -1879,7 +1874,7 @@ updateMatchBonusScores( winner )
 	if ( !game["timepassed"] )
 		return;
 
-	if ( !level.rankedMatch && level.scr_server_rank_type != 2 )
+	if ( !level.rankedMatch )
 		return;
 
 	if ( !level.timeLimit || level.forcedEnd )
@@ -2684,7 +2679,7 @@ menuClass( response )
 	if(!isDefined(self.pers["team"]) || (self.pers["team"] != "allies" && self.pers["team"] != "axis"))
 		return;
 
-	if ( !level.rankedMatch ) {
+	if ( !level.offlineClasses ) {
 		class = self maps\mp\gametypes\_class_unranked::getClassChoice( response );
 		primary = self maps\mp\gametypes\_class_unranked::getWeaponChoice( response );
 	} else {
@@ -2716,7 +2711,7 @@ menuClass( response )
 		{
 			self thread deleteExplosives();
 
-			if ( !level.rankedMatch ) {
+			if ( !level.offlineClasses ) {
 				self maps\mp\gametypes\_class_unranked::setClass( self.pers["class"] );
 				self.tag_stowed_back = undefined;
 				self.tag_stowed_hip = undefined;
@@ -3234,13 +3229,13 @@ timeLimitClock_Intermission( waitTime, playSound )
 
 	while ( waitTime > 0 ) {
 		if ( playSound && waitTime <= 11 ) {
-			clockObject playSound( "ui_mp_timer_countdown" );			
+			clockObject playSound( "ui_mp_timer_countdown" );
 		}
 		wait ( 1.0 );
 		waitTime -= 1.0;
 	}
-	
-	clockObject delete();
+	if( isDefined( clockObject ) )
+		clockObject delete();
 }
 
 
@@ -4228,11 +4223,10 @@ Callback_StartGameType()
 
 	thread maps\mp\gametypes\_persistence::init();
 
-	if ( !level.rankedMatch ) {
+	if ( !level.offlineClasses ) {
 		thread maps\mp\gametypes\_modwarfare::init();
 		thread maps\mp\gametypes\_menus_unranked::init();
 	} else {
-
 		thread maps\mp\gametypes\_menus::init();
 	}
 
@@ -4684,7 +4678,9 @@ Callback_PlayerConnect()
 
 		[[level.spawnSpectator]]();
 
-		if ( ( level.rankedMatch || level.scr_server_rank_type == 2 ) && level.console )
+		//if ( ( level.rankedMatch || level.scr_server_rank_type == 2 ) && level.console )
+    //# Isn't it level.offlineClasses ?
+		if ( level.rankedMatch && level.console )
 		{
 			[[level.autoassign]]();
 
@@ -5047,7 +5043,7 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 		
 	// create a class specialty checks; CAC:bulletdamage, CAC:armorvest
 	if ( sWeapon != "concussion_grenade_mp" ) {
-		if ( !level.rankedMatch ) {
+		if ( !level.offlineClasses ) {
 			iDamage = maps\mp\gametypes\_class_unranked::cac_modified_damage( self, eAttacker, iDamage, sMeansOfDeath );
 		} else {
 			iDamage = maps\mp\gametypes\_class::cac_modified_damage( self, eAttacker, iDamage, sMeansOfDeath );
@@ -6077,7 +6073,7 @@ getPerks( player )
 	if ( level.gametype == "hns" && player.pers["team"] == game["defenders"] )
 		return perks;
 
-	if ( !level.rankedMatch || level.gametype == "gg" || level.gametype == "ss" || level.gametype == "oitc" ) {
+	if ( !level.offlineClasses || level.gametype == "gg" || level.gametype == "ss" || level.gametype == "oitc" ) {
 		if ( isPlayer( player ) )
 		{
 			if ( isDefined( player.specialty[0] ) )

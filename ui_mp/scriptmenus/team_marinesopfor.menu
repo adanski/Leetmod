@@ -34,6 +34,7 @@
 		{
 			//focusFirst;
 			//setfocus "auto_assign";
+      execondvarintvalue sv_running 0 "set tmp_ui_reconnect 1";
 		}
 
 		#ifndef PC

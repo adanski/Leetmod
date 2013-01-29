@@ -424,10 +424,12 @@ pickupHealthPackTimeout( healthPackModel, healthPackGlow )
 destroyHealthPack( healthPackTrigger, healthPackModel, healthPackGlow )
 {
 	// Destroy the trigger first
-	healthPackTrigger delete();
+	if ( isDefined( healthPackTrigger ) )
+    healthPackTrigger delete();
 
 	// Destroy the script model entity
-	healthPackModel delete();
+	if ( isDefined( healthPackModel ) )
+    healthPackModel delete();
 	
 	if ( isDefined( healthPackGlow ) )
 		healthPackGlow delete();
