@@ -53,16 +53,17 @@ initBotClass()
 		wait(1);
 
 	if ( !level.oldschool )	{
+  //# watch out hns here, it's disabled but if someone wants to enable it, look at the else code, those menus don't exist anymore
 		if ( level.gametype != "hns" || self.pers["team"] == game["attackers"] ) {
-			if ( level.offlineClasses ) {
-				self notify( "menuresponse", game["menu_changeclass"], "assault_mp" );			
-			} else {		
-				self notify( "menuresponse", game["menu_changeclass_" + self.pers["team"] ], "assault" );
-				wait(1);
-				self notify( "menuresponse", game["menu_changeclass"] , "go" );
-			}
+			if ( level.rankedClasses ) {
+				self notify( "menuresponse", game["menu_changeclass"], "assault_mp" );
+			} else {
+        //# Change later to more apropriate class name
+        self notify( "menuresponse", game["menu_changeclass"], "assault_mp" );
+      }
 		} else {
-				self notify( "menuresponse", game["menu_changeclass_" + self.pers["team"] ], "" + randomIntRange( 1, level.maxPropNumber + 1 ) );			
+      // See note above, these menus don't exist, so this line was commented
+      //self notify( "menuresponse", game["menu_changeclass_" + self.pers["team"] ], "" + randomIntRange( 1, level.maxPropNumber + 1 ) );			
 		}
 	}
 }

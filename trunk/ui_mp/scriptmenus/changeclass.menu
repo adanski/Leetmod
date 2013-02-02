@@ -30,6 +30,7 @@
 #define STAT_XP execNow "statGetInDvar 2301 ui_stat_rankxp"
 
 #define CLASS_MODE (gametype() != "gg" && gametype() != "oitc" && gametype() != "ss")
+#define RANKED_CLASSES (dvarbool(ui_ranked_classes))
 
 {
 	menuDef
@@ -127,11 +128,11 @@
 		CHOICE_SECTION_TITLE_VIS( 1, "@MPUI_DEFAULT_CLASSES", when( CLASS_MODE ); )
 		CHOICE_SECTION_TITLE_VIS( 1, "@OW_NO_CLASS_MODE", when( CLASS_MODE == 0 ); )
 		
-		CHOICE_BUTTON_FOCUS_VIS( 2, dvarString(tmp_class_name_200), scriptMenuResponse "assault_mp,0"; close self, execnow "set ui_class_offset 200; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
-		CHOICE_BUTTON_FOCUS_VIS( 3, dvarString(tmp_class_name_210), scriptMenuResponse "specops_mp,0"; close self, execnow "set ui_class_offset 210; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
-		CHOICE_BUTTON_FOCUS_VIS( 4, dvarString(tmp_class_name_220), scriptMenuResponse "heavygunner_mp,0"; close self, execnow "set ui_class_offset 220; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )		
-		CHOICE_BUTTON_FOCUS_VIS( 5, dvarString(tmp_class_name_230), scriptMenuResponse "demolitions_mp,0"; close self, execnow "set ui_class_offset 230; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
-		CHOICE_BUTTON_FOCUS_VIS( 6, dvarString(tmp_class_name_240), scriptMenuResponse "sniper_mp,0"; close self, execnow "set ui_class_offset 240; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ); )
+		CHOICE_BUTTON_FOCUS_VIS( 2, dvarString(tmp_class_name_200), scriptMenuResponse "assault_mp,0"; close self, execnow "set ui_class_offset 200; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
+		CHOICE_BUTTON_FOCUS_VIS( 3, dvarString(tmp_class_name_210), scriptMenuResponse "specops_mp,0"; close self, execnow "set ui_class_offset 210; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
+		CHOICE_BUTTON_FOCUS_VIS( 4, dvarString(tmp_class_name_220), scriptMenuResponse "heavygunner_mp,0"; close self, execnow "set ui_class_offset 220; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
+		CHOICE_BUTTON_FOCUS_VIS( 5, dvarString(tmp_class_name_230), scriptMenuResponse "demolitions_mp,0"; close self, execnow "set ui_class_offset 230; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
+		CHOICE_BUTTON_FOCUS_VIS( 6, dvarString(tmp_class_name_240), scriptMenuResponse "sniper_mp,0"; close self, execnow "set ui_class_offset 240; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
     execkey "q" { play "mouse_click"; scriptMenuResponse "assault_mp,0"; close self; }
     execkey "w" { play "mouse_click"; scriptMenuResponse "specops_mp,0"; close self; }
     execkey "e" { play "mouse_click"; scriptMenuResponse "heavygunner_mp,0"; close self; }
@@ -155,18 +156,36 @@
       #define CHOICE_Y_START			41//34
     #endif
 				
-		CHOICE_SECTION_TITLE_VIS( 8, "@MPUI_CUSTOM_CLASSES", when( stat(260) > 0 && CLASS_MODE); )	
+		CHOICE_SECTION_TITLE_VIS( 8, "@MPUI_CUSTOM_CLASSES", when( CLASS_MODE) )
 
-		CHOICE_BUTTON_FOCUS_VIS( 9, dvarString( customclass1 ), scriptMenuResponse "custom1,0"; close self, setdvar ui_custom_class_highlighted "0"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( stat(260) > 0 && CLASS_MODE); )
-		CHOICE_BUTTON_FOCUS_VIS( 10, dvarString( customclass2 ), scriptMenuResponse "custom2,0"; close self, setdvar ui_custom_class_highlighted "10"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( stat(210) > 0 && CLASS_MODE); )
-		CHOICE_BUTTON_FOCUS_VIS( 11, dvarString( customclass3 ), scriptMenuResponse "custom3,0"; close self, setdvar ui_custom_class_highlighted "20"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( stat(220) > 0 && CLASS_MODE); )
-		CHOICE_BUTTON_FOCUS_VIS( 12, dvarString( customclass4 ), scriptMenuResponse "custom4,0"; close self;, setdvar ui_custom_class_highlighted "30"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( stat(230) > 0 && CLASS_MODE); )
-		CHOICE_BUTTON_FOCUS_VIS( 13, dvarString( customclass5 ), scriptMenuResponse "custom5,0"; close self;, setdvar ui_custom_class_highlighted "40"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( stat(240) > 0 && CLASS_MODE); )
+		CHOICE_BUTTON_FOCUS_VIS( 9, dvarString( customclass1 ), scriptMenuResponse "custom1,0"; close self, setdvar ui_custom_class_highlighted "0"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES ) )
+		CHOICE_BUTTON_FOCUS_VIS( 10, dvarString( customclass2 ), scriptMenuResponse "custom2,0"; close self, setdvar ui_custom_class_highlighted "10"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 11, dvarString( customclass3 ), scriptMenuResponse "custom3,0"; close self, setdvar ui_custom_class_highlighted "20"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 12, dvarString( customclass4 ), scriptMenuResponse "custom4,0"; close self;, setdvar ui_custom_class_highlighted "30"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 13, dvarString( customclass5 ), scriptMenuResponse "custom5,0"; close self;, setdvar ui_custom_class_highlighted "40"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 14, dvarString( customclass6 ), scriptMenuResponse "custom6,0"; close self;, setdvar ui_custom_class_highlighted "150"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 15, dvarString( customclass7 ), scriptMenuResponse "custom7,0"; close self;, setdvar ui_custom_class_highlighted "160"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 16, dvarString( customclass8 ), scriptMenuResponse "custom8,0"; close self;, setdvar ui_custom_class_highlighted "170"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 17, dvarString( customclass9 ), scriptMenuResponse "custom9,0"; close self;, setdvar ui_custom_class_highlighted "180"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
+    
+    CHOICE_BUTTON_FOCUS_VIS( 9, dvarString( customclass11 ), scriptMenuResponse "custom1,0"; close self, setdvar ui_custom_class_highlighted "200"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES ) )
+		CHOICE_BUTTON_FOCUS_VIS( 10, dvarString( customclass12 ), scriptMenuResponse "custom2,0"; close self, setdvar ui_custom_class_highlighted "210"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 11, dvarString( customclass13 ), scriptMenuResponse "custom3,0"; close self, setdvar ui_custom_class_highlighted "220"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 12, dvarString( customclass14 ), scriptMenuResponse "custom4,0"; close self;, setdvar ui_custom_class_highlighted "230"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 13, dvarString( customclass15 ), scriptMenuResponse "custom5,0"; close self;, setdvar ui_custom_class_highlighted "240"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 14, dvarString( customclass16 ), scriptMenuResponse "custom6,0"; close self;, setdvar ui_custom_class_highlighted "250"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 15, dvarString( customclass17 ), scriptMenuResponse "custom7,0"; close self;, setdvar ui_custom_class_highlighted "260"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 16, dvarString( customclass18 ), scriptMenuResponse "custom8,0"; close self;, setdvar ui_custom_class_highlighted "270"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 17, dvarString( customclass19 ), scriptMenuResponse "custom9,0"; close self;, setdvar ui_custom_class_highlighted "280"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
     execkey "1" { play "mouse_click"; scriptMenuResponse "custom1,0"; close self; }
     execkey "2" { play "mouse_click"; scriptMenuResponse "custom2,0"; close self; }
     execkey "3" { play "mouse_click"; scriptMenuResponse "custom3,0"; close self; }
     execkey "4" { play "mouse_click"; scriptMenuResponse "custom4,0"; close self; }
     execkey "5" { play "mouse_click"; scriptMenuResponse "custom5,0"; close self; }
+    execkey "6" { play "mouse_click"; scriptMenuResponse "custom6,0"; close self; }
+    execkey "7" { play "mouse_click"; scriptMenuResponse "custom7,0"; close self; }
+    execkey "8" { play "mouse_click"; scriptMenuResponse "custom8,0"; close self; }
+    execkey "9" { play "mouse_click"; scriptMenuResponse "custom9,0"; close self; }
     
     CHOICE_BUTTON_VIS( 12, "@OW_NO_CLASS_MODE_START", scriptMenuResponse "assault_mp,0"; close self, when( CLASS_MODE == 0 ) )
     execkeyint 13 { play "mouse_click"; scriptMenuResponse "assault_mp,0"; close self; }

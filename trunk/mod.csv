@@ -239,7 +239,6 @@ material,objpoint_flag_american
 material,objpoint_flag_british
 material,objpoint_flag_opfor
 material,objpoint_flag_russian
-material,openwarfare
 material,shield
 #material,sponsor_logo1
 #material,sponsor_logo2
@@ -335,8 +334,6 @@ rawfile,openwarfare/_weaponrangemodifier.gsc
 rawfile,openwarfare/_weaponweightmodifier.gsc
 rawfile,openwarfare/_welcomerulesinfo.gsc
 
-# commented for 640 menu assets, uncomment later
-     menufile,ui_mp/auto_update.menu
 menufile,ui_mp/challenges.menu
 menufile,ui_mp/connect.menu
 menufile,ui_mp/controls_multi.menu

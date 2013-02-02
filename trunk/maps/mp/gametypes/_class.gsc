@@ -5,6 +5,9 @@
 
 init()
 {
+  // Is player able to select all allowed weapons (unranked classes) or only the ones he has unlocked (ranked classes)?
+	level.rankedClasses = getdvarx( "scr_ranked_classes_enable", "int", 1, 0, 1 );
+  
   // Load allowed perks
   level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 1, 0, 1 );
   level.perk_allow_specialty_specialgrenade = getdvarx( "perk_allow_specialty_specialgrenade", "int", 1, 0, 1 );
@@ -30,6 +33,28 @@ init()
   level.perk_allow_specialty_holdbreath = getdvarx( "perk_allow_specialty_holdbreath", "int", 1, 0, 1 );
   level.perk_allow_specialty_quieter = getdvarx( "perk_allow_specialty_quieter", "int", 1, 0, 1 );
   level.perk_allow_specialty_parabolic = getdvarx( "perk_allow_specialty_parabolic", "int", 1, 0, 1 );
+  
+  // Load allowed classes
+  // Warning: TODO limitation
+  level.limitClasses = getdvarx( "classes_limit_enable", "int", 0, 0, 1 );
+  level.class_allies_assault_limit = getdvarx( "class_allies_assault_limit", "int", 64, 0, 64 );
+  level.class_allies_specops_limit = getdvarx( "class_allies_specops_limit", "int", 64, 0, 64 );
+  level.class_allies_heavygunner_limit = getdvarx( "class_allies_heavygunner_limit", "int", 64, 0, 64 );
+  level.class_allies_demolitions_limit = getdvarx( "class_allies_demolitions_limit", "int", 64, 0, 64 );
+  level.class_allies_sniper_limit = getdvarx( "class_allies_sniper_limit", "int", 64, 0, 64 );
+  
+  level.class_axis_assault_limit = getdvarx( "class_axis_assault_limit", "int", 64, 0, 64 );
+  level.class_axis_specops_limit = getdvarx( "class_axis_specops_limit", "int", 64, 0, 64 );
+  level.class_axis_heavygunner_limit = getdvarx( "class_axis_heavygunner_limit", "int", 64, 0, 64 );
+  level.class_axis_demolitions_limit = getdvarx( "class_axis_demolitions_limit", "int", 64, 0, 64 );
+  level.class_axis_sniper_limit = getdvarx( "class_axis_sniper_limit", "int", 64, 0, 64 );
+  
+  // at least one class type must be enabled for onlineClasses, else player can't select anything
+  if ( !level.limitClasses && (level.class_allies_assault_limit + level.class_allies_specops_limit + level.class_allies_heavygunner_limit + level.class_allies_demolitions_limit + level.class_allies_sniper_limit) == 0 )
+    level.class_allies_assault_limit = 64;
+    
+  if ( !level.limitClasses && (level.class_axis_assault_limit + level.class_axis_specops_limit + level.class_axis_heavygunner_limit + level.class_axis_demolitions_limit + level.class_axis_sniper_limit) == 0 )
+    level.class_axis_assault_limit = 64;
   
   // Load allowed weapons
   level.weap_allow_assault_m16 = getdvarx( "weap_allow_assault_m16", "int", 1, 0, 1 );
@@ -117,6 +142,10 @@ init()
 	level.classMap["custom3"] = "CLASS_CUSTOM3";
 	level.classMap["custom4"] = "CLASS_CUSTOM4";
 	level.classMap["custom5"] = "CLASS_CUSTOM5";
+	level.classMap["custom6"] = "CLASS_CUSTOM6";
+	level.classMap["custom7"] = "CLASS_CUSTOM7";
+	level.classMap["custom8"] = "CLASS_CUSTOM8";
+	level.classMap["custom9"] = "CLASS_CUSTOM9";
 
 	level.defaultClass = "CLASS_ASSAULT";
 
@@ -144,7 +173,9 @@ init()
 	// default class weapon loadout for offline mode
 	// param( team, class, stat number, inventory string, inventory count )
 
-	offline_class_datatable = "mp/offline_classTable.csv";
+	//# Commented because it's unecessary - bug test needed
+  /*
+  offline_class_datatable = "mp/offline_classTable.csv";
 
 	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS1", 200 );
 	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS2", 210 );
@@ -156,7 +187,7 @@ init()
 	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS8", 270 );
 	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS9", 280 );
 	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS10", 290 );
-
+  */
 	online_class_datatable = "mp/classTable.csv";
 
 	load_default_loadout( "", "both", "CLASS_ASSAULT", 0 );			// assault
@@ -629,26 +660,32 @@ cac_getdata()
 	209	 weapon_primary_camo_style
 	*/
 
-	for( i = 0; i < 5; i ++ )
+	//# if increasing number of offline classes, change cycle limit
+  for( i = 0; i < 9; i ++ )
 	{
-		//assertex( self getstat ( i*10+200 ) == 1, "Custom class not initialized!" );
+    offset = 200;
+    if( !level.rankedClasses )
+      offset = 400;
+    else if( i >= 5 )
+      offset = 300;
+		//assertex( self getstat ( i*10+offset ) == 1, "Custom class not initialized!" );
 
 		// do not change the allocation and assignment of 0-299 stat bytes, or data will be misinterpreted by this function!
-		primary_num = self getstat ( 200+(i*10)+1 );				// returns weapon number (also the unlock stat number from data table)
-		primary_attachment_flag = self getstat ( 200+(i*10)+2 ); 	// returns attachment number (from data table)
+		primary_num = self getstat ( offset+(i*10)+1 );				// returns weapon number (also the unlock stat number from data table)
+		primary_attachment_flag = self getstat ( offset+(i*10)+2 ); 	// returns attachment number (from data table)
 		if ( !isDefined( level.tbl_WeaponAttachment[primary_attachment_flag] ) ) // handle bad attachment stat
 			primary_attachment_flag = 0;
 		primary_attachment_mask = level.tbl_WeaponAttachment[primary_attachment_flag]["bitmask"];
-		secondary_num = self getstat ( 200+(i*10)+3 );				// returns weapon number (also the unlock stat number from data table)
-		secondary_attachment_flag = self getstat ( 200+(i*10)+4 ); 	// returns attachment number (from data table)
+		secondary_num = self getstat ( offset+(i*10)+3 );				// returns weapon number (also the unlock stat number from data table)
+		secondary_attachment_flag = self getstat ( offset+(i*10)+4 ); 	// returns attachment number (from data table)
 		if ( !isDefined( level.tbl_WeaponAttachment[secondary_attachment_flag] ) ) // handle bad attachment stat
 			secondary_attachment_flag = 0;
 		secondary_attachment_mask = level.tbl_WeaponAttachment[secondary_attachment_flag]["bitmask"];
-		specialty1 = self getstat ( 200+(i*10)+5 ); 				// returns specialty number (from data table)
-		specialty2 = self getstat ( 200+(i*10)+6 ); 				// returns specialty number (from data table)
-		specialty3 = self getstat ( 200+(i*10)+7 ); 				// returns specialty number (from data table)
-		special_grenade = self getstat ( 200+(i*10)+8 );			// returns special grenade type as single special grenade items (from data table)
-		camo_num = self getstat ( 200+(i*10)+9 );					// returns camo number (from data table)
+		specialty1 = self getstat ( offset+(i*10)+5 ); 				// returns specialty number (from data table)
+		specialty2 = self getstat ( offset+(i*10)+6 ); 				// returns specialty number (from data table)
+		specialty3 = self getstat ( offset+(i*10)+7 ); 				// returns specialty number (from data table)
+		special_grenade = self getstat ( offset+(i*10)+8 );			// returns special grenade type as single special grenade items (from data table)
+		camo_num = self getstat ( offset+(i*10)+9 );					// returns camo number (from data table)
 
 		if ( camo_num < 0 || camo_num >= level.tbl_CamoSkin.size )
 		{
@@ -1604,6 +1641,106 @@ readDefaultClasses(class)
   level.class_sgrenade[class] = getdvarx( "class_"+class+"_sgrenade", "string", sgrenadeDefault );
 }
 
+setDefaultClasses(class)
+{
+  if( isDefined(self.team) && (self.team == "allies" || self.team == "axis") )
+    team = self.team;
+  else
+    team = "none";
+  stat = 200;
+  dlfClassName = "Assault";
+  switch(class) {
+    case "specops":
+      stat = 210;
+      dlfClassName = "Commando";
+    break;
+    case "heavygunner":
+      stat = 220;
+      dlfClassName = "Stealth";
+    break;
+    case "demolitions":
+      stat = 230;
+      dlfClassName = "Runner";
+    break;
+    case "sniper":
+      stat = 240;
+      dlfClassName = "Sniper";
+    break;
+  }
+  
+  self setClientDvar("tmp_class_name_"+stat, getdvarx("class_"+class+"_displayname", "string", dlfClassName) );
+  
+  self setClientDvars(
+    "tmp_class_prim_"+stat, level.class_primary[class][team],
+    "tmp_class_prim_att_"+stat, level.class_primary_attachment[class],
+    "tmp_class_second_"+stat, level.class_secondary[class][team],
+    "tmp_class_second_att_"+stat, level.class_secondary_attachment[class],
+    "tmp_class_perk1_"+stat, level.class_perk1[class],
+    "tmp_class_perk2_"+stat, level.class_perk2[class],
+    "tmp_class_perk3_"+stat, level.class_perk3[class],
+    "tmp_class_specialg_"+stat, level.class_sgrenade[class]);
+}
+
+isClassAvailable()
+{
+//## TO FIX: change to current usage of the class
+  if( level.limitClasses || (self.classesIndex >= 0 && self.classesIndex < 5) )
+    return true;
+  
+  return false;
+/*
+  if( !isDefined(self.pers["team"]) )
+    team = "undefined";
+  
+  switch(self.classesIndex) {
+  // assault
+    case 0:
+      if( team == "axis" )
+        return level.class_axis_assault_limit;
+      else
+        return level.class_allies_assault_limit;
+    break;
+  // specops
+    case 1:
+      if( team == "axis" )
+        return level.class_axis_specops_limit;
+      else
+        return level.class_allies_specops_limit;
+    break;
+  // heavygunner
+    case 2:
+      if( team == "axis" )
+        return level.class_axis_heavygunner_limit;
+      else
+        return level.class_allies_heavygunner_limit;
+    break;
+  // demolitions
+    case 3:
+      if( team == "axis" )
+        return level.class_axis_demolitions_limit;
+      else
+        return level.class_allies_demolitions_limit;
+    break;
+  // sniper
+    case 4:
+      if( team == "axis" )
+        return level.class_axis_sniper_limit;
+      else
+        return level.class_allies_sniper_limit;
+    break;
+  }
+  return false;
+*/
+}
+
+numFirstAvailableClass() {
+  // for each class type: assault, specops...
+  for( i=0; i < 5; i++)
+    if( self isClassAvailable(i) )
+      return i;
+  return 0;
+}
+
 isPrimaryEnabled(weaponNum)
 {
   if(weaponNum == 25 && level.weap_allow_assault_m16 )
@@ -1740,4 +1877,161 @@ numFirstEnabledSecondary()
     return 4;
   
   return -1;
+}
+
+WeaponHasAttachment( weapon, attach ) {
+  // for speed up we compare attachments against integers
+  attachNum = AttachmentNameToNum(attach);
+  
+  if(attachNum == 0)
+    return true;
+  
+  if(attachNum < 0 || attachNum > 5 )
+    return false;
+  
+  if( weapon == "deserteagle" || weapon == "deserteaglegold" || weapon == "mp44" )
+    return false;
+  
+  if( (weapon == "colt45" || weapon == "beretta" || weapon == "usp" ) && attachNum != 3)
+    return false;
+  
+  if( (weapon == "m16" || weapon == "m4" || weapon == "ak47" || weapon == "m14" || weapon == "g3" || weapon == "g36c") && attachNum == 4 )
+    return false;
+    
+  if( (weapon == "mp5" || weapon == "skorpion" || weapon == "uzi" || weapon == "ak74u" || weapon == "p90") && (attachNum == 4 || attachNum == 5) )
+    return false;
+    
+  if( (weapon == "rpd" || weapon == "saw" || weapon == "m60e4") && (attachNum == 3 || attachNum == 5) )
+    return false;
+    
+  if( (weapon == "m1014" || weapon == "winchester1200" ) && (attachNum == 3 || attachNum == 1 || attachNum == 5) )
+    return false;
+    
+  if( (weapon == "dragunov" || weapon == "m40a3" || weapon == "barrett" || weapon == "remington700" || weapon == "m21" ) && (attachNum == 3 || attachNum == 2 || attachNum == 4 || attachNum == 5) )
+    return false;
+  
+  return true;
+}
+
+WeaponHasCamo( weapon, camoNum ) {
+  if(camoNum == 0)
+    return true;
+  
+  if(camoNum < 0 || camoNum > 6 )
+    return false;
+  
+  // if camo_gold and weapon doesn't have it
+  if( camoNum == 6 && weapon != "ak47" && weapon != "uzi" && weapon != "m60e4" && weapon != "m1014" && weapon != "dragunov" )
+    return false;
+    
+  return true;
+}
+
+AttachmentNameToNum(attachName)
+{
+  switch( attachName )
+  {
+    case "none":      return 0;
+    case "acog":      return 1;
+    case "reflex":    return 2;
+    case "silencer":  return 3;
+    case "grip":      return 4;
+    case "gl":        return 5;
+  }
+  return 0;
+}
+
+CamoNameToNum(camoName)
+{
+  switch( camoName )
+  {
+    case "camo_none":             return 0;
+    case "camo_brockhaurd":       return 1;
+    case "camo_bushdweller":      return 2;
+    case "camo_blackwhitemarpat": return 3;
+    case "camo_tigerred":         return 4;
+    case "camo_stagger":          return 5;
+    case "camo_gold":             return 6;
+  }
+  return 0;
+}
+
+openAllClasses()
+{
+	//If the first custom class is unlocked then in order
+	//to display all of the classes in the class selection
+	//menu without having to exit game and edit them
+	//then we need to unlock them on initialization of the menu
+	//so players can edit and then select from any custom class.
+	if ( self getStat( 200 ) < 1 )
+		self setStat( 200, 1 );
+	if ( self getStat( 210 ) < 1 )
+		self setStat( 210, 1 );
+	if ( self getStat( 220 ) < 1 )
+		self setStat( 220, 1 );
+	if ( self getStat( 230 ) < 1 )
+		self setStat( 230, 1 );
+	if ( self getStat( 240 ) < 1 )
+		self setStat( 240, 1 );
+    
+  // initialize extra classes for the first time with m16 by default
+  if ( self getStat( 350 ) < 1 )
+		self setClassFirstTime(350, 25);
+  if ( self getStat( 360 ) < 1 )
+		self setClassFirstTime(360, 25);
+  if ( self getStat( 370 ) < 1 )
+		self setClassFirstTime(370, 25);
+  if ( self getStat( 380 ) < 1 )
+		self setClassFirstTime(380, 25);
+  if ( self getStat( 390 ) < 1 )
+		self setClassFirstTime(390, 25);
+    
+  // m16
+  if ( self getStat( 400 ) < 1 )
+		self setClassFirstTime(400, 25);
+  // mp5
+  if ( self getStat( 410 ) < 1 )
+		self setClassFirstTime(410, 10);
+  // saw
+  if ( self getStat( 420 ) < 1 )
+		self setClassFirstTime(420, 81);
+  // winchester
+  if ( self getStat( 430 ) < 1 )
+		self setClassFirstTime(430, 71);
+  // m40a3
+  if ( self getStat( 440 ) < 1 )
+		self setClassFirstTime(440, 61);
+  // m16
+  if ( self getStat( 450 ) < 1 )
+		self setClassFirstTime(450, 25);
+  // mp5
+  if ( self getStat( 460 ) < 1 )
+		self setClassFirstTime(460, 10);
+  // saw
+  if ( self getStat( 470 ) < 1 )
+		self setClassFirstTime(470, 81);
+  // winchester
+  if ( self getStat( 480 ) < 1 )
+		self setClassFirstTime(480, 71);
+  // m40a3
+  if ( self getStat( 490 ) < 1 )
+		self setClassFirstTime(490, 61);
+}
+
+setClassFirstTime(classNum, weaponNum) {
+  wait (0.1);
+  // setting this first so that this class isn't writted again (defaulted)
+  self setStat( classNum, 1 );
+  // set m16
+  self setStat( classNum+1, weaponNum );
+  self setStat( classNum+2, 0 );
+  self setStat( classNum+3, 0 );
+  self setStat( classNum+4, 0 );
+  // null perks
+  self setStat( classNum+5, 190 );
+  self setStat( classNum+6, 190 );
+  self setStat( classNum+7, 190 );
+  // flash
+  self setStat( classNum+8, 101 );
+  self setStat( classNum+9, 0 );
 }

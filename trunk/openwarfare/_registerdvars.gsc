@@ -2,6 +2,8 @@
 
 init()
 {
+  // Server variables are set here (mainly gameplay related)
+  
   level.scr_measurement_unit_system = getdvarx( "scr_measurement_unit_system", "string", "meters" );
   
 	// Overall admin GUIDs
@@ -153,10 +155,11 @@ init()
 	// Original comment:
   // If we are running unranked load some variables that are only loaded in _modwarfare.gsc
   // End of Original comment /
-  // ### TO FIX ### shouldn't it be negated? ( level.offlineClasses -> !level.offlineClasses )
+  // ### TO FIX ### shouldn't it be negated? ( level.rankedClasses -> !level.rankedClasses )
   // # I've tested the fix and it brings scripting errors when offline class perk1 is
   // # extra flash or stun, so, reverting
-	if ( level.offlineClasses ) {
+  // # 2. Offline and online classes are very similar so we are forcing this code for any type
+	//if ( level.rankedClasses ) {
 		game["loadout_CLASS_ASSAULT_frags"] =	getdvarx( "class_assault_frags", "int", 1, 0, 4 );
 		game["loadout_CLASS_ASSAULT_special"] = getdvarx( "class_assault_special", "int", 1, 0, 4 );
 		game["loadout_CLASS_SPECOPS_frags"] =	getdvarx( "class_specops_frags", "int", 1, 0, 4 );
@@ -169,7 +172,7 @@ init()
 		game["loadout_CLASS_SNIPER_special"] = getdvarx( "class_sniper_special", "int", 1, 0, 4 );
 		game["loadout_CLASS_UNKNOWN_frags"] = 0;
 		game["loadout_CLASS_UNKNOWN_special"] = 0;
-	}
+	//}
 /*
 	level.scr_relocate_chat_position = getdvarx( "scr_relocate_chat_position", "int", 0, 0, 2 );
 	if ( level.scr_relocate_chat_position == 1 ) {

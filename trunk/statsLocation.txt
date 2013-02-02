@@ -1,0 +1,70 @@
+Used by leetmod:
+350-390 new ranked classes
+400-490 new unranked classes
+
+Note: Listed from here onwards are the stats found on .csv or .gsc files. Assume that there are more, and if you are going to use a stat,
+always round to the nearest hundred or half-hundred. E.g.: perks found from 150-194, assume 195-199 are also used.
+
+257-258 Unlock class demolitions, sniper
+260-264 Features (CAC, ClanTag(xbox?), Oldschool, Hardcore, Challenges)
+270 CHOICE_DBUTTON_VIS( 1,  "Tier 1", when( stat(270) == 0 ); )
+271 - 286
+
+#############
+statstable.csv
+150-194 Perks and inventory
+
+257-258 Unlock class demolitions, sniper
+260-264 Features (CAC, ClanTag(xbox?), Oldschool, Hardcore, Challenges)
+
+3000-3149 Weapons (many positions aren't used)
+
+#############
+classtable.csv
+200-249
+
+#############
+challenges.menu:
+270 CHOICE_DBUTTON_VIS( 1,  "Tier 1", when( stat(270) == 0 ); )
+271 - 286
+
+#############
+_rank.gsc (commented code)
+290	level.statOffsets["weapon_assault"]
+291	level.statOffsets["weapon_lmg"]
+292	level.statOffsets["weapon_smg"]
+293 level.statOffsets["weapon_shotgun"]
+294 level.statOffsets["weapon_sniper"]
+295 level.statOffsets["weapon_pistol"]
+296 level.statOffsets["perk1"]
+297 level.statOffsets["perk2"]
+298 level.statOffsets["perk3"]
+
+#############
+Player Performance And Rank
+2300-2326
+2350-2353
+
+#############
+Player Challenges
+501-513
+521-530
+541-546
+561-564
+581-590
+601-616
+621-632
+641-656
+661-698
+
+2501-2513
+2521-2530
+2541-2546
+2561-2564
+2581-2590
+2601-2616
+2621-2632
+2641-2656
+2661-2698
+
+#############

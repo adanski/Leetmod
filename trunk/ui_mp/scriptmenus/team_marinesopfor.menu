@@ -113,11 +113,10 @@
 		CHOICE_DBUTTON_VIS_NOHI( 3, "@MPUI_AUTOASSIGN", when( ( ( team( name ) == "TEAM_ALLIES" || team( name ) == "TEAM_AXIS" ) && gametype() == "bel" ) || dvarint(ui_force_allies) == 1 || dvarint(ui_force_axis) == 1 ); )
 		CHOICE_SEPARATOR_VIS( CHOICE_SEP_1, when( !localvarBool( ui_hideBack ) && team( name ) == "TEAM_SPECTATOR" && CLASS_MODE ) )
 
-		CHOICE_BUTTON_FOCUS_VIS_ADV( 4, "@OW_CAC_MENU_ITEM", close self; scriptMenuResponse "ow_cac_editor", exec "set ui_hint_text @MPUI_DESC_CREATE_A_CLASS", CLEARUIHINT, when( CLASS_MODE && !localvarBool( ui_hideBack ) && stat( 260 ) >= 1 && team( name ) == "TEAM_SPECTATOR" ), CLASS_MODE && !localvarBool( ui_hideBack ) && stat( 260 ) >= 1 && team( name ) == "TEAM_SPECTATOR" )
+		CHOICE_BUTTON_FOCUS_VIS_ADV( 4, "@OW_CAC_MENU_ITEM", close self; scriptMenuResponse "ow_cac_editor", exec "set ui_hint_text @MPUI_DESC_CREATE_A_CLASS", CLEARUIHINT, when( CLASS_MODE && !localvarBool( ui_hideBack ) && team( name ) == "TEAM_SPECTATOR" ), CLASS_MODE && !localvarBool( ui_hideBack ) && team( name ) == "TEAM_SPECTATOR" )
 		//CHOICE_BUTTON_FOCUS_VIS_NOHI( 4, "", ;, exec "set ui_hint_text @MPUI_DESC_CREATE_A_CLASS_LOCKED", CLEARUIHINT, when( !localvarBool( ui_hideBack ) && stat( 260 ) < 1  && team( name ) == "TEAM_SPECTATOR" ) )
 		//CHOICE_DBUTTON_VIS( 4, "@OW_CAC_MENU_ITEM", when( !localvarBool( ui_hideBack ) && stat( 260 ) < 1 && team( name ) == "TEAM_SPECTATOR" ) )
 		CHOICE_NEWICON_VIS( 4, "specialty_new", when( CLASS_MODE && !localvarBool( ui_hideBack ) && ANY_NEW_CAC && team( name ) == "TEAM_SPECTATOR" ) )
-    CHOICE_BUTTON_VIS( 4, "@OW_CAC_MENU_ITEM", open unlockcacmenu;, when( CLASS_MODE && !localvarBool( ui_hideBack ) && stat( 260 ) < 1 && team( name ) == "TEAM_SPECTATOR") )
 		
 		CHOICE_BUTTON_BG( 5, 1 )
 		CHOICE_HIGHLIGHT( 5, 1 )
@@ -136,12 +135,9 @@
     execkey "5" { play "mouse_click"; open muteplayer; close self; }
     execkey "a" { play "mouse_click"; scriptMenuResponse "autoassign"; }
     execkey "c" {
-      execNow "statGetInDvar 260 ui_stat_cac_unlocked";
       play "mouse_click";
       close self;
-      uiScript openMenuOnDvar ui_stat_cac_unlocked 0 unlockcacmenu;
-      scriptMenuRespondOnDvarIntValue ui_stat_cac_unlocked 1 "ow_cac_editor";
-      scriptMenuRespondOnDvarIntValue ui_stat_cac_unlocked 2 "ow_cac_editor";
+      scriptMenuResponse "ow_cac_editor";
     }
     execkey "o" { play "mouse_click"; close self; open main_options; execnow "set ui_allow_graphic_change 0"; }
     execkey "p" { play "mouse_click"; open muteplayer; close self; }

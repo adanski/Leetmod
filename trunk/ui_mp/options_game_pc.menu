@@ -35,7 +35,7 @@
 			
 			exec "setfromdvar ui_sensitivity sensitivity";
       
-			execondvarintvalue ct_lm_ver 0 SETA_CUSTOM_VARS_EX
+			execondvarintvalue ct_lm_ver 0 SETA_CUSTOM_VARS_CLASSES1NAME
 			execondvarintvalue ct_lm_ver 0 SETA_CUSTOM_VARS
 			execondvarintvalue ct_hud_show_inventory 1 "seta hud_fade_ammodisplay 0; seta hud_fade_offhand 0";
 			execondvarintvalue ct_hud_show_inventory 2 "seta hud_fade_ammodisplay 0; seta hud_fade_offhand 0";
