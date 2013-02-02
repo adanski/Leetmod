@@ -19,7 +19,7 @@ rulesetMonitor()
 	currentRuleset = level.cod_mode;
 
 	// Loop until we have a valid new ruleset
-	for (;;)
+	for(;;)
 	{
 		// Monitor a change in ruleset
 		while ( level.cod_mode == currentRuleset ) {

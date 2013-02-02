@@ -92,7 +92,7 @@ dogTagMonitor()
 	self.bodyTrigger = spawn( "trigger_radius", self.body.origin, 0, 32 , 32 );
 	self thread removeTriggerOnDisconnect();
 	
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 		self.bodyTrigger waittill("trigger", player);

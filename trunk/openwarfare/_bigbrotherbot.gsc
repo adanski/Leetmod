@@ -40,7 +40,7 @@ powerAdmin()
 	thread precacheEffects();
 	initializeCommands();
 		
-	for (;;)
+	for(;;)
 	{
 		wait (0.5);
 		// Check if any of the variables we support has been set

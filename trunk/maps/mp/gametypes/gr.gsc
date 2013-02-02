@@ -268,7 +268,7 @@ greed()
 	
 	thread hideTimerDisplayOnGameEnd( timerDisplay );
 
-	for (;;) {
+	for(;;) {
 		// Deactive the current active drop zones
 		for ( i=0; i < level.activeDropZones.size; i++ ) {
 			level.activeDropZones[i] removeDropZone();
@@ -440,7 +440,7 @@ onDropZoneUse()
 	level endon("game_ended");
 	self endon("death");
 	
-	for (;;) {
+	for(;;) {
 		self.trigger waittill( "trigger", player );
 		
 		// Check if this player is carrying an object

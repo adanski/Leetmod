@@ -1271,7 +1271,7 @@ monitorBombUse()
 
 monitorLiveTime()
 {
-	for ( ;; )
+	for(;;)
 	{
 		self waittill ( "spawned_player" );
 		
@@ -1299,7 +1299,7 @@ monitorStreaks()
 
 	self thread monitorMisc();
 
-	for ( ;; )
+	for(;;)
 	{
 		self waittill ( "death" );
 		

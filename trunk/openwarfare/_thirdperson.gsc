@@ -66,7 +66,7 @@ monitorPlayerADS()
 	oldAds = 0;
 	firstPersonView = false;
 
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 		

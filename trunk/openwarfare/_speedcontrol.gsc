@@ -48,7 +48,7 @@ speedController()
 	self endon("disconnect");
 	self endon("death");
 	
-	for (;;)
+	for(;;)
 	{
 		// Calculate new speed
 		modifierPercents = 0;

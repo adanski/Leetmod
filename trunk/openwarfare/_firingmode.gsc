@@ -88,7 +88,7 @@ watchWeaponChange()
 		self thread showFireModeShader( fireModeShader );		
 	}
 
-	for (;;) {
+	for(;;) {
 		self waittill( "weapon_change", newWeapon );
 		if ( isDefined( level.weaponNextFireMode[ newWeapon ] ) ) {
 			fireModeShader = getFireModeShader( newWeapon );

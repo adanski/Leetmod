@@ -101,7 +101,7 @@ reloadTracking()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for( ;; )
+	for(;;)
 	{
 		self waittill ( "reload_start" );
 		if ( shouldPlayBattlechatter( level.scr_battlechatter_reload_probability ) )
@@ -115,7 +115,7 @@ grenadeTracking()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for( ;; )
+	for(;;)
 	{
 		self waittill ( "grenade_fire", grenade, weaponName );
 		

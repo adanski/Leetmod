@@ -33,7 +33,7 @@ weaponWeightMonitoring()
 	self endon( "death" );
 	level endon( "game_ended" );
 
-	for (;;)
+	for(;;)
 	{
 		wait (0.5);
 

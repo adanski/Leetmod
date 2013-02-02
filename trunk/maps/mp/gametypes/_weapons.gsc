@@ -614,7 +614,7 @@ watchWeaponUsage()
 
 	self.firingWeapon = false;
 
-	for ( ;; )
+	for(;;)
 	{
 		self waittill ( "begin_firing" );
 
@@ -791,7 +791,7 @@ watchGrenadeUsage()
 
 	self thread watchForThrowbacks();
 
-	for ( ;; )
+	for(;;)
 	{
 		self waittill ( "grenade_pullback", weaponName );
 
@@ -865,7 +865,7 @@ watchForThrowbacks()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for ( ;; )
+	for(;;)
 	{
 		self waittill ( "grenade_fire", grenade, weapname );
 		if ( self.gotPullbackNotify )
@@ -1123,7 +1123,7 @@ watchC4AltDetonate()
 	level endon( "game_ended" );
 
 	buttonTime = 0;
-	for( ;; )
+	for(;;)
 	{
 		if ( self UseButtonPressed() )
 		{

@@ -96,7 +96,7 @@ onPlayerConnect()
 		player.enable3DWaypoints = true;
 		player setClientDvar("ui_deathicontext", "1");
 		player.enableDeathIcons = true;
-    player initStatsPlayer();
+    player thread initStatsPlayer();
 		player thread onMenuResponse();
 	}
 }
@@ -419,13 +419,12 @@ onMenuResponse()
 			self closeInGameMenu();
 			self openMenu(game["menu_team"]);
 		}
-//  Commented because: never found in any menu where this response is used
-//    if(response == "changeclass" ) {
-//			self closeMenu();
-//			self closeInGameMenu();
-//			self openMenu( game[ "menu_changeclass_" + self.pers["team"] ] );
-//      continue;
-//    }
+    if(response == "changeclass" ) {
+			self closeMenu();
+			self closeInGameMenu();
+			self openMenu( game[ "menu_changeclass_" + self.pers["team"] ] );
+      continue;
+    }
 		if(response == "changeclass_marines" )
 		{
 			self closeMenu();

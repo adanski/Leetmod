@@ -1,6 +1,6 @@
+#include common_scripts\utility;
 #include maps\mp\_utility;
 #include maps\mp\gametypes\_hud_util;
-#include common_scripts\utility;
 #include openwarfare\_utils;
 
 
@@ -16,9 +16,11 @@ init()
 
 	// Load the rulesets
   
-	rulesets\openwarfare\rulesets::init();
+	//#commented while rulesets aren't established yet (neither present in .iwd)
+  /*rulesets\openwarfare\rulesets::init();
 	if ( getDvar("dedicated") != "listen server" )
 		rulesets\leagues::init();
+  */
 
 	// Initialize the rule sets
 	if ( level.cod_mode != "" ) {
@@ -230,7 +232,7 @@ SetupCallbacks()
 
 	level.autoassign = ::menuAutoAssign;
 	level.spectator = ::menuSpectator;
-	level.class = ::menuClass;
+	level.class = maps\mp\gametypes\_class::menuClass;
 	level.allies = ::menuAllies;
 	level.axis = ::menuAxis;
 }
@@ -961,7 +963,7 @@ testMenu()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for ( ;; )
+	for(;;)
 	{
 		wait ( 10.0 );
 
@@ -979,7 +981,7 @@ testShock()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for ( ;; )
+	for(;;)
 	{
 		wait ( 3.0 );
 
@@ -1004,7 +1006,7 @@ testHPs()
 	hps[hps.size] = "airstrike_mp";
 	hps[hps.size] = "helicopter_mp";
 
-	for ( ;; )
+	for(;;)
 	{
 //		hp = hps[randomInt(hps.size)];
 		hp = "radar_mp";
@@ -2638,93 +2640,6 @@ menuSpectator()
 	}
 }
 
-
-menuClass( response )
-{
-	self closeMenus();
-
-	// clears new status of unlocked classes
-	if ( response == "demolitions_mp,0" && self getstat( int( tablelookup( "mp/statstable.csv", 4, "feature_demolitions", 1 ) ) ) != 1 )
-	{
-		demolitions_stat = int( tablelookup( "mp/statstable.csv", 4, "feature_demolitions", 1 ) );
-		self setstat( demolitions_stat, 1 );
-		//println( "Demolitions class [new status cleared]: stat(" + demolitions_stat + ") = " + self getstat( demolitions_stat ) );
-	}
-	if ( response == "sniper_mp,0" && self getstat( int( tablelookup( "mp/statstable.csv", 4, "feature_sniper", 1 ) ) ) != 1 )
-	{
-		sniper_stat = int( tablelookup( "mp/statstable.csv", 4, "feature_sniper", 1 ) );
-		self setstat( sniper_stat, 1 );
-		//println( "Sniper class [new status cleared]: stat(" + sniper_stat + ") = " + self getstat( sniper_stat ) );
-	}
-	assert( !level.oldschool );
-
-	// this should probably be an assert
-	if(!isDefined(self.pers["team"]) || (self.pers["team"] != "allies" && self.pers["team"] != "axis"))
-		return;
-
-  class = self maps\mp\gametypes\_class::getClassChoice( response );
-  primary = self maps\mp\gametypes\_class::getWeaponChoice( response );
-
-	if ( class == "restricted" )
-	{
-		self beginClassChoice();
-		return;
-	}
-
-	//if( (isDefined( self.pers["class"] ) && self.pers["class"] == class) &&
-	//	(isDefined( self.pers["primary"] ) && self.pers["primary"] == primary) )
-	//	return;
-
-	if ( self.sessionstate == "playing" )
-	{
-		self.pers["class"] = class;
-		self.class = class;
-		self.pers["primary"] = primary;
-		self.pers["weapon"] = undefined;
-
-		if ( game["state"] == "postgame" )
-			return;
-
-		if ( ( ( level.inGracePeriod || level.inStrategyPeriod ) && !self.hasDoneCombat && ( level.gametype != "ass" || !isDefined( self.isVIP ) || !self.isVIP ) ) || ( level.gametype == "ftag" && self.freezeTag["frozen"] ) )
-		{
-			self thread deleteExplosives();
-
-			//if ( !level.rankedClasses ) {
-			//	self maps\mp\gametypes\_class_unranked::setClass( self.pers["class"] );
-			//	self.tag_stowed_back = undefined;
-			//	self.tag_stowed_hip = undefined;
-			//	self maps\mp\gametypes\_class_unranked::giveLoadout( self.pers["team"], self.pers["class"] );
-			//} else {
-      self maps\mp\gametypes\_class::setClass( self.pers["class"] );
-      self.tag_stowed_back = undefined;
-      self.tag_stowed_hip = undefined;
-      self maps\mp\gametypes\_class::giveLoadout( self.pers["team"], self.pers["class"] );
-			//}
-		}
-		else if ( !level.splitScreen )
-		{
-			self iPrintLn( game["strings"]["change_class"] );
-		}
-	}
-	else
-	{
-		self.pers["class"] = class;
-		self.class = class;
-		self.pers["primary"] = primary;
-		self.pers["weapon"] = undefined;
-
-		if ( game["state"] == "postgame" )
-			return;
-
-		if ( game["state"] == "playing" )
-			self thread [[level.spawnClient]]();
-	}
-
-	level thread updateTeamStatus();
-
-	self thread maps\mp\gametypes\_spectating::setSpectatePermissions();
-}
-
 /#
 assertProperPlacement()
 {
@@ -3376,7 +3291,7 @@ suspenseMusic()
 	level endon ( "match_ending_soon" );
 
 	numTracks = game["music"]["suspense"].size;
-	for ( ;; )
+	for(;;)
 	{
 		wait ( randomFloatRange( 60, 120 ) );
 
@@ -4443,7 +4358,7 @@ fakeLag()
 	self endon ( "disconnect" );
 	self.fakeLag = randomIntRange( 50, 150 );
 
-	for ( ;; )
+	for(;;)
 	{
 		self setClientDvar( "fakelag_target", self.fakeLag );
 		wait ( randomFloatRange( 5.0, 15.0 ) );
@@ -5970,7 +5885,7 @@ cancelKillCamOnUse()
 	self endon ( "disconnect" );
 	level endon ( "game_ended" );
 
-	for ( ;; )
+	for(;;)
 	{
 		if ( !self UseButtonPressed() )
 		{
