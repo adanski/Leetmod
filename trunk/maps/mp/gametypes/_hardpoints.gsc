@@ -1139,7 +1139,7 @@ triggerHardpoint( hardpointType )
 	{
 		if ( isDefined( level.airstrikeInProgress ) )
 		{
-			self iPrintLn( level.hardpointHints[hardpointType+"_not_available"] );  //### FIX: was iprintlnbold before
+			self iPrintLn( level.hardpointHints[hardpointType+"_not_available"] );
 			return false;
 		}
 
@@ -1173,7 +1173,7 @@ triggerHardpoint( hardpointType )
 			currentTime = openwarfare\_timer::getTimePassed() / 1000;
 			if ( last_airstrike > 0 && ( currentTime - last_airstrike ) < level.scr_airstrike_hardpoint_interval ) {
 				availableIn = int(level.scr_airstrike_hardpoint_interval - ( currentTime - last_airstrike ));
-				self iPrintLn( &"OW_AIRSTRIKE_AVAILABLEIN", availableIn );  //### FIX: was iprintlnbold before
+				self iPrintLn( &"OW_AIRSTRIKE_AVAILABLEIN", availableIn );
 				return false;
 			}
 		}

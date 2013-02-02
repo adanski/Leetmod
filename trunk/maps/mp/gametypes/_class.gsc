@@ -188,7 +188,6 @@ init()
 	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS9", 280 );
 	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS10", 290 );
   */
-	online_class_datatable = "mp/classTable.csv";
 
 	load_default_loadout( "", "both", "CLASS_ASSAULT", 0 );			// assault
 	load_default_loadout( "", "both", "CLASS_SPECOPS", 0 );			// spec ops
@@ -660,7 +659,6 @@ cac_getdata()
 	209	 weapon_primary_camo_style
 	*/
 
-	//# if increasing number of offline classes, change cycle limit
   for( i = 0; i < 9; i ++ )
 	{
     offset = 200;
@@ -697,7 +695,7 @@ cac_getdata()
 
 		m16WeaponIndex = 25;
 		assert( level.tbl_weaponIDs[m16WeaponIndex]["reference"] == "m16" );
-    //## if a client manages to pick a disabled weapon by some weird way, we make sure to change it to another that is allowed
+    // if a client manages to pick a disabled weapon by some weird way, we make sure to change it to another that is allowed
 		if ( primary_num < 0 || !isDefined( level.tbl_weaponIDs[ primary_num ] ) || !isPrimaryEnabled(primary_num) )
 		{
 			primary_num = numFirstEnabledPrimary();
@@ -1684,10 +1682,12 @@ setDefaultClasses(class)
 isClassAvailable()
 {
 //## TO FIX: change to current usage of the class
-  if( level.limitClasses || (self.classesIndex >= 0 && self.classesIndex < 5) )
-    return true;
+  return true;
   
-  return false;
+  ///if( !level.limitClasses )
+    ///...
+  
+  //return false;
 /*
   if( !isDefined(self.pers["team"]) )
     team = "undefined";

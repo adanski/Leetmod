@@ -21,7 +21,6 @@ cacResponseHandler()
 	for(;;)
 	{
 		self waittill( "menuresponse", menu, response );
-		//# add check for possible selection in !level.cSC if there are no team constrains
 		if ( ( menu == "team_marinesopfor" || menu == "class" || menu == "endofgame" ) && response == "ow_cac_editor" ) {
 			self initializeEditor();
 			self openMenu( game["menu_ow_cac_editor"] );
@@ -339,42 +338,26 @@ class( direction )
     self.classesIndex++;
   else
     self.classesIndex--;
-    
+  
   if ( self.classesIndex < 0 )
     self.classesIndex = self.cacEdit_classes.size - 1;
   else if ( self.classesIndex >= self.cacEdit_classes.size )
     self.classesIndex = 0;
-    
-  //# comment this limitClasses part and put it in weapon selection
-  while( level.limitClasses && !self maps\mp\gametypes\_class::isClassAvailable() ) {
-    if ( direction == "next" )
-      self.classesIndex++;
-    else
-      self.classesIndex--;
-      
-    if ( self.classesIndex < 0 )
-      self.classesIndex = self.cacEdit_classes.size - 1;
-    else if ( self.classesIndex >= self.cacEdit_classes.size )
-      self.classesIndex = 0;
-  }
-		
+  
 	self displayDefaultLoadout();
 }
 
 classIdx( index )
 {
-  self.classesIndex = index;
+  if(index >= 0 && index < self.cacEdit_classes.size)
+    self.classesIndex = index;
+  else
+    self.classesIndex = 0;
   
-  while( level.limitClasses && !self maps\mp\gametypes\_class::isClassAvailable() ) {
-    self.classesIndex++;
-    
-    if ( self.classesIndex >= self.cacEdit_classes.size )
-      self.classesIndex = 0;
-  }
-		
 	self displayDefaultLoadout();
 }
 
+//# Use isClassAvailable() to check if that weapon can be selected
 primary( direction )
 {
 	if ( direction == "next" )
@@ -801,13 +784,11 @@ camo( direction )
 	else if ( self.camosIndex >= self.cacEdit_camos.size )
 		self.camosIndex = 0;
 		
-	//## is this correct? there is no 11th index in attachmenttable, besides, it refers attachments, not camos
-  //## I wonder how this works without problems
+	// Is this correct? there is no 11th index in attachmenttable, besides, it refers attachments, not camos
+  // I wonder how this works without problems
   addonMask = int( tableLookup( "mp/attachmenttable.csv", 11, self.cacEdit_camos[self.camosIndex].stat, 10 ) );
 	weaponStat = self getStat( self.cacEdit_primaries[self.primariesIndex].stat + 3000 );
   weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primariesIndex].stat, 4 );
-  //# To remove, debug only
-  iprintln("Camo num: ", addonMask);
     
   while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasCamo(weaponName, addonMask) ) )
 	{
@@ -822,8 +803,6 @@ camo( direction )
 			self.camosIndex = 0;
 			
 		addonMask = int( tableLookup( "mp/attachmenttable.csv", 11, self.cacEdit_camos[self.camosIndex].stat, 10 ) );
-    //# To remove, debug only
-    iprintln("Camo num: ", addonMask);
 	}	
 	
 	//Display new camo
@@ -876,7 +855,7 @@ addClasses()
     self addCACClasses( "customclass8", 370 ); //Custom class 8
     self addCACClasses( "customclass9", 380 ); //Custom class 9
   } else {
-    //# customclass or assault, etc?
+    // unranked clases (they have storage too)
     self addCACClasses( "customclass11", 400 ); //Settable class 1
     self addCACClasses( "customclass12", 410 ); //Settable class 2
     self addCACClasses( "customclass13", 420 ); //Settable class 3

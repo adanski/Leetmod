@@ -1588,7 +1588,6 @@ endGame( winner, endReasonText )
 	for ( index = 0; index < players.size; index++ )
 	{
 		player = players[index];
-		//### REMOVED SPECTATOR CLOSEMENUS###
 		player.musicTimeWait = 0;
 		if ( !(level.teamBased && level.gametype != "bel") ) {
 			if ( isDefined( winner ) && player == winner ) {
@@ -2704,7 +2703,7 @@ menuClass( response )
 		}
 		else if ( !level.splitScreen )
 		{
-			self iPrintLn( game["strings"]["change_class"] );   //### FIX: was iprintlnbold before
+			self iPrintLn( game["strings"]["change_class"] );
 		}
 	}
 	else
