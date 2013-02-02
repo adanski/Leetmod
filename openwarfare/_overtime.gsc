@@ -41,7 +41,7 @@ monitorTeamScores()
 {
 	level endon("game_ended");
 	
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 		// If the scores are different it means someone has scored

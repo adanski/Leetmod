@@ -42,7 +42,7 @@ monitorBinosUtilization()
 	oldWeapon = self getCurrentWeapon();
 	wasBinos = ( oldWeapon == "binoculars_mp" );
 	
-	for (;;) 
+	for(;;) 
 	{
 		wait (0.05);
 		if ( isDefined( self ) ) {

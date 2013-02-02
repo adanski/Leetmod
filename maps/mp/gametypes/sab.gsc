@@ -857,7 +857,7 @@ monitorBombCarrier( bombCarrier )
 
 	// Monitor that the players is moving certain amount of distance in a given time or show him on the radar
 	oldPlayerPosition = bombCarrier.origin;
-	for (;;)
+	for(;;)
 	{
 		// Wait for the given time
 		xWait( level.scr_sab_show_bomb_carrier_time );

@@ -490,10 +490,7 @@ addTestClients()
 			
 		ent[i].pers["isBot"] = true;
 
-		//if( level.rankedClasses )
-			ent[i] thread TestClient("autoassign");
-		//else
-		//    ent[i] thread TestClient_mw("autoassign");
+		ent[i] thread TestClient("autoassign");
 	}
 	
 	thread addTestClients();

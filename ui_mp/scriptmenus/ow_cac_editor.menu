@@ -86,15 +86,15 @@
       play "mouse_click";
     }
     
-    execkey "1" { play "mouse_click"; scriptMenuResponse "cacClass1"; }
-    execkey "2" { play "mouse_click"; scriptMenuResponse "cacClass2"; }
-    execkey "3" { play "mouse_click"; scriptMenuResponse "cacClass3"; }
-    execkey "4" { play "mouse_click"; scriptMenuResponse "cacClass4"; }
-    execkey "5" { play "mouse_click"; scriptMenuResponse "cacClass5"; }
-    execkey "6" { play "mouse_click"; scriptMenuResponse "cacClass6"; }
-    execkey "7" { play "mouse_click"; scriptMenuResponse "cacClass7"; }
-    execkey "8" { play "mouse_click"; scriptMenuResponse "cacClass8"; }
-    execkey "9" { play "mouse_click"; scriptMenuResponse "cacClass9"; }
+    execkey "1" { play "mouse_click"; scriptMenuResponse "cacClass,1"; }
+    execkey "2" { play "mouse_click"; scriptMenuResponse "cacClass,2"; }
+    execkey "3" { play "mouse_click"; scriptMenuResponse "cacClass,3"; }
+    execkey "4" { play "mouse_click"; scriptMenuResponse "cacClass,4"; }
+    execkey "5" { play "mouse_click"; scriptMenuResponse "cacClass,5"; }
+    execkey "6" { play "mouse_click"; scriptMenuResponse "cacClass,6"; }
+    execkey "7" { play "mouse_click"; scriptMenuResponse "cacClass,7"; }
+    execkey "8" { play "mouse_click"; scriptMenuResponse "cacClass,8"; }
+    execkey "9" { play "mouse_click"; scriptMenuResponse "cacClass,9"; }
     execkey "z" {
       execNow "set ct_cac_special_attach 0";
       execNowOnDvarIntValue ow_cac_stat_perk1 193 "set ct_cac_special_attach 1";
@@ -156,10 +156,10 @@
 			}
 		}
     //# TODO
-    /*
+    
     itemDef 
 		{
-			name			saveuse1
+			name			submitanduse
 			text			"@OW_CAC_SUBMIT_USE"
 			type			1
 			style			WINDOW_STYLE_FILLED
@@ -174,12 +174,10 @@
 			action
 			{
 				play "oldschool_pickup";
-				scriptmenuresponse "cacSubmit";
-				//scriptmenuresponse "custom1,0";
-        exec "openScriptMenu changeclass custom1,0";
+				scriptmenuresponse "cacSubNgo";
 			}
 		}
-    */
+    
 
 		// ------------------ TREE TITLE ------------------
 
@@ -974,6 +972,7 @@
 			visible			when( dvarstring( ow_cac_class ) == "customclass11" )
 			mouseenter		{ show keyBindStatus; play "mouse_over"; }
 			mouseexit		{ hide keyBindStatus; setfocus submit; }
+      action	{ play "oldschool_pickup"; }
 		}
     itemDef 
 		{

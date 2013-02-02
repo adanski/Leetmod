@@ -242,7 +242,7 @@ explodable_barrel_think()
 	self breakable_clip();
 	self.damageTaken = 0;
 	self setcandamage(true);
-	for (;;)
+	for(;;)
 	{
 		self waittill("damage", amount ,attacker, direction_vec, P, type);
 		if(type == "MOD_MELEE" || ( type == "MOD_IMPACT" && !maps\mp\gametypes\_weapons::isSniper( attacker getCurrentWeapon() ) ) )

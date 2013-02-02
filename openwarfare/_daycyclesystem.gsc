@@ -73,7 +73,7 @@ dayCycleController()
 		level thread dayCycleSounds( dayCycle );
 	}
 		
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 		
@@ -129,7 +129,7 @@ dayCycleSounds( dayCycle )
 {
 	level endon( "game_ended" );
 	
-	for (;;)
+	for(;;)
 	{
 		wait ( randomFloatRange( 5.0, 15.0 ) );
 		

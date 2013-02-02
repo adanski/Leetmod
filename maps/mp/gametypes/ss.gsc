@@ -142,7 +142,7 @@ startSharpshooter()
 	weaponsCyclingAvailable = level.scr_ss_available_weapons;
 	level thread showCyclingCountDown();
 		
-	for (;;) {
+	for(;;) {
 		// Make a random weapon selection and assign it to everyone in the server
 		newWeaponElement = randomIntRange( 0, weaponsCyclingAvailable.size );
 		level.sharpshooterWeapon = weaponsCyclingAvailable[ newWeaponElement ];
@@ -193,7 +193,7 @@ showCyclingCountDown()
 	weaponCyclingCountDown.archived = false;
 	weaponCyclingCountDown.hideWhenInMenu = true;
 
-	for (;;) {
+	for(;;) {
 		timeLeft = level.scr_ss_weapon_switch_time;
 		weaponCyclingCountDown.color = (1,1,1);
 		weaponCyclingCountDown setTimer( timeLeft );
@@ -343,7 +343,7 @@ SSmonitorPlayerADS()
 	oldAds = 0;
 	firstPersonView = false;
 
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 		

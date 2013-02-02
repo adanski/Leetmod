@@ -84,7 +84,7 @@ emptyWeaponSounds()
 	self endon("death");
 	level endon( "game_ended" );
 	
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 		
@@ -135,7 +135,7 @@ weaponJammer()
 	self endon("death");
 	level endon( "game_ended" );
 	
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 
@@ -179,7 +179,7 @@ showWeaponJammed()
 
 	blinkState = 0;
 	
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 

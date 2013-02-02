@@ -590,7 +590,7 @@ autoUnfreezePlayer()
 	// Wait two seconds to start unfreezing
 	xWait( 2.0 );
 	
-	for (;;) {
+	for(;;) {
 		// Calculate next temperature raise
 		xWait( level.scr_ftag_auto_unfreeze_time / level.maxhealth );
 		
@@ -624,7 +624,7 @@ monitorTriggerZone( triggerRadius )
 	
 	triggerRadius endon("death");
 	
-	for (;;)
+	for(;;)
 	{
 		// Wait until a player has entered my radius
 		triggerRadius waittill( "trigger", player );
@@ -717,7 +717,7 @@ monitorGameStatus()
 	alliesOneLeft = false;
 	axisOneLeft = false;
 	
-	for (;;)
+	for(;;)
 	{
 		wait (0.5);
 		
@@ -1031,7 +1031,7 @@ monitorPlayerScore()
 	
 	unfreezeScoresGiven = 0;
 	
-	for (;;) {
+	for(;;) {
 		wait (0.05);
 		
 		// Check if we have enough units to give the player a score point

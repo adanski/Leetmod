@@ -11,7 +11,7 @@ init()
   
 	level.teamBalanceEndOfRound = getdvarx( "scr_" + level.gameType + "_teamBalanceEndOfRound", "int", isNoRespawnGametype, 0, 1 );
 	level.scr_teambalance_show_message = getdvarx( "scr_teambalance_show_message", "int", 1, 0, 1 );
-	level.scr_teambalance_check_interval = getdvarx( "scr_teambalance_check_interval", "float", 20.0, 1.0, 120.0 );
+	level.scr_teambalance_check_interval = getdvarx( "scr_teambalance_check_interval", "float", 20.0, 5.0, 120.0 );
 	level.scr_teambalance_delay = getdvarx( "scr_teambalance_delay", "int", 10, 0, 30 );
 
 	level.scr_teambalance_protected_clan_tags = getdvarx( "scr_teambalance_protected_clan_tags", "string", "" );
@@ -38,21 +38,15 @@ init()
 
 	level.freeplayers = [];
 
-	if( level.teamBased )
-	{
+	if( level.teamBased ) {
 		level thread onPlayerConnect();
 		level thread updateTeamBalance();
-
-		wait .15;
-		level thread updatePlayerTimes();
 	}
-	else
-	{
+	else {
 		level thread onFreePlayerConnect();
-
-		wait .15;
-		level thread updateFreePlayerTimes();
 	}
+  wait .15;
+  level thread updatePlayerTimes();
 }
 
 
@@ -126,7 +120,7 @@ trackPlayedTime()
 	while ( level.inPrematchPeriod )
 		wait ( 0.05 );
 
-	for ( ;; )
+	for(;;)
 	{
 		if ( game["state"] == "playing" )
 		{
@@ -151,11 +145,10 @@ trackPlayedTime()
 	}
 }
 
-
 updatePlayerTimes()
 {
 	nextToUpdate = 0;
-	for ( ;; )
+	for(;;)
 	{
 		nextToUpdate++;
 		if ( nextToUpdate >= level.players.size )
@@ -164,7 +157,10 @@ updatePlayerTimes()
 		if ( isDefined( level.players[nextToUpdate] ) )
 			level.players[nextToUpdate] updatePlayedTime();
 
-		wait ( 4.0 );
+    if(level.teamBased)
+      wait ( 4.0 );
+    else
+      wait ( 1.0 );
 	}
 }
 
@@ -256,7 +252,7 @@ updateTeamBalance()
 	else
 	{
 		level endon ( "game_ended" );
-		for( ;; )
+		for(;;)
 		{
 			if( level.teamBalance )
 			{
@@ -846,7 +842,7 @@ trackFreePlayedTime()
 	self.timePlayed["other"] = 0;
 	self.timePlayed["total"] = 0;
 
-	for ( ;; )
+	for(;;)
 	{
 		if ( game["state"] == "playing" )
 		{
@@ -869,53 +865,6 @@ trackFreePlayedTime()
 		wait ( 1.0 );
 	}
 }
-
-
-updateFreePlayerTimes()
-{
-	nextToUpdate = 0;
-	for ( ;; )
-	{
-		nextToUpdate++;
-		if ( nextToUpdate >= level.players.size )
-			nextToUpdate = 0;
-
-		if ( isDefined( level.players[nextToUpdate] ) )
-			level.players[nextToUpdate] updateFreePlayedTime();
-
-		wait ( 1.0 );
-	}
-}
-
-
-updateFreePlayedTime()
-{
-	if ( self.timePlayed["allies"] )
-	{
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_allies", self.timePlayed["allies"] );
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_total", self.timePlayed["allies"] );
-	}
-
-	if ( self.timePlayed["axis"] )
-	{
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_opfor", self.timePlayed["axis"] );
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_total", self.timePlayed["axis"] );
-	}
-
-	if ( self.timePlayed["other"] )
-	{
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_other", self.timePlayed["other"] );
-		self maps\mp\gametypes\_persistence::statAdd( "time_played_total", self.timePlayed["other"] );
-	}
-
-	if ( game["state"] == "postgame" )
-		return;
-
-	self.timePlayed["allies"] = 0;
-	self.timePlayed["axis"] = 0;
-	self.timePlayed["other"] = 0;
-}
-
 
 getJoinTeamPermissions( team )
 {

@@ -32,7 +32,7 @@ cacResponseHandler()
 			//The class can be unlocked in game so we still 
 			//want to give player the ability to edit their class.
       switch( response )
-      {		
+      {
         case "open": 
           self initializeEditor();
           self openMenu( game["menu_ow_cac_editor"] );
@@ -42,33 +42,6 @@ cacResponseHandler()
           break;
         case "cacClassPrev":
           self class( "prev" );
-          break;
-        case "cacClass1":
-          self classIdx( 0 );
-          break;
-        case "cacClass2":
-          self classIdx( 1 );
-          break;
-        case "cacClass3":
-          self classIdx( 2 );
-          break;
-        case "cacClass4":
-          self classIdx( 3 );
-          break;
-        case "cacClass5":
-          self classIdx( 4 );
-          break;
-        case "cacClass6":
-          self classIdx( 5 );
-          break;
-        case "cacClass7":
-          self classIdx( 6 );
-          break;
-        case "cacClass8":
-          self classIdx( 7 );
-          break;
-        case "cacClass9":
-          self classIdx( 8 );
           break;
         case "cacPrimaryNext":
           self primary( "next" );
@@ -127,7 +100,21 @@ cacResponseHandler()
         case "cacSubmit":
           self submitUpdate();
           break;
-      }		
+        case "cacSubNgo":
+          self submitUpdate();
+          self useSelectedClass();
+          break;
+        default:
+          respTok = strtok( response, "," );
+          if( !isDefined(respTok[1]) )
+            break;
+          switch(respTok[0]) {
+            case "cacClass":
+              self classIdx( respTok[1]-1 );
+              break;
+          }
+          break;
+      }
     }
   }
 }
@@ -1119,4 +1106,10 @@ addCACCamos( stat )
 	cacCamo = spawnstruct();
 	cacCamo.stat = stat;
 	self.cacEdit_camos[self.cacEdit_camos.size] = cacCamo;
+}
+
+useSelectedClass()
+{
+  selectedClassName = "custom" + (self.classesIndex+1) + ",0";
+  self maps\mp\gametypes\_class::menuClass( selectedClassName );
 }

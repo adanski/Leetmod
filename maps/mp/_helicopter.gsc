@@ -162,7 +162,7 @@ init()
 // update helicopter dvars realtime
 heli_update_global_dvars()
 {
-	for( ;; )
+	for(;;)
 	{
 		// heli_update_dvar( dvar, default ) returns value
 		level.heli_loopmax = getdvarx( "scr_heli_loopmax", "int", 1, 0, 50);			// how many times helicopter will circle the map before it leaves
@@ -289,7 +289,7 @@ heli_missile_regen()
 	self endon( "crashing" );
 	self endon( "leaving" );
 	
-	for( ;; )
+	for(;;)
 	{
 		debug_print3d( "Missile Ammo: " + self.missile_ammo, ( 0.5, 0.5, 1 ), self, ( 0, 0, -100 ), 0 );
 		
@@ -318,8 +318,8 @@ heli_targeting()
 	self endon( "leaving" );
 	
 	// targeting sweep cycle
-	for ( ;; )
-	{		
+	for(;;)
+	{
 		// array of helicopter's targets
 		targets = [];
 		
@@ -523,7 +523,7 @@ heli_hover()
 	
 	// random hovering movement loop
 	/*
-	for( ;; )
+	for(;;)
 	{
 		for( idx=0; idx<10; idx++ )
 		{
@@ -555,7 +555,7 @@ heli_damage_monitor()
 	
 	self.damageTaken = 0;
 	
-	for( ;; )
+	for(;;)
 	{
 		// this damage is done to self.health which isnt used to determine the helicopter's health, damageTaken is.
 		self waittill( "damage", damage, attacker, direction_vec, P, type );
@@ -617,7 +617,7 @@ heli_health()
 	self.laststate = "ok";
 	self setdamagestage( 3 );
 	
-	for ( ;; )
+	for(;;)
 	{
 		if ( self.health_bulletdamageble > self.health_low )
 		{
@@ -767,7 +767,7 @@ trail_fx( trail_fx, trail_tag, stop_notify )
 	self endon( stop_notify );
 	self endon( "death" );
 		
-	for ( ;; )
+	for(;;)
 	{
 		playfxontag( trail_fx, self, trail_tag );
 		wait( 0.05 );
@@ -996,7 +996,7 @@ attack_secondary()
 	self endon( "crashing" );
 	self endon( "leaving" );	
 	
-	for( ;; )
+	for(;;)
 	{
 		if ( isdefined( self.secondaryTarget ) )
 		{
@@ -1123,7 +1123,7 @@ attack_primary()
 	self endon( "crashing" );
 	self endon( "leaving" );
 	
-	for( ;; )
+	for(;;)
 	{
 		if ( isdefined( self.primaryTarget ) )
 		{
@@ -1356,7 +1356,7 @@ draw_line( from, to, color, frames )
 	}
 	else
 	{
-		for( ;; )
+		for(;;)
 		{
 			line( from, to, color );
 			wait 0.05;

@@ -91,7 +91,7 @@ idleMonitor()
 	self.idleWarned = false;
 	self.idleSwitched = false;
 
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 

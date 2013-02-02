@@ -105,7 +105,7 @@ playerHealthRegen()
 	hurtTime = 0;
 	newHealth = 0;
 
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 
@@ -196,7 +196,7 @@ playerBreathingSound(healthcap)
 
 	wait (2);
 	player = self;
-	for (;;)
+	for(;;)
 	{
 		wait (0.2);
 		if (player.health <= 0)

@@ -27,7 +27,7 @@ monitorMap()
 	if ( !isDefined( game["rotateifempty"] ) )
 		game["rotateifempty"] = 0;
 	
-	for (;;) {
+	for(;;) {
 		wait(1);
 		
 		// Check if we have enough players for the type of game

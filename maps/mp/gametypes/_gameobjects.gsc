@@ -153,7 +153,7 @@ onPlayerConnect()
 {
 	level endon ( "game_ended" );
 
-	for( ;; )
+	for(;;)
 	{
 		level waittill( "connecting", player );
 
@@ -406,7 +406,7 @@ pickupObjectDelay( origin )
 
 	self.canPickupObject = false;
 
-	for( ;; )
+	for(;;)
 	{
 		if ( distanceSquared( self.origin, origin ) > 64*64 )
 			break;
@@ -483,7 +483,7 @@ updateCarryObjectOrigin()
 	level endon ( "game_ended" );
 
 	objPingDelay = 5.0;
-	for ( ;; )
+	for(;;)
 	{
 		if ( isDefined( self.carrier ) )
 		{
@@ -540,8 +540,11 @@ updateCarryObjectOrigin()
 			self.objPoints["allies"] maps\mp\gametypes\_objpoints::updateOrigin( self.curOrigin + self.offset3d );
 			self.objPoints["axis"] maps\mp\gametypes\_objpoints::updateOrigin( self.curOrigin + self.offset3d );
 
-			wait ( 0.05 );
+			//wait ( 0.05 );
 		}
+    //# Passed wait to here, so if going by the true block of the 'if', it also waits
+    //# Test for problems
+    wait ( 0.05 );
 	}
 }
 
@@ -865,7 +868,7 @@ manualDropThink()
 	self endon ( "death" );
 	self endon ( "drop_object" );
 
-	for( ;; )
+	for(;;)
 	{
 		while ( self attackButtonPressed() || self fragButtonPressed() || self secondaryOffhandButtonPressed() || self meleeButtonPressed() )
 			wait .05;

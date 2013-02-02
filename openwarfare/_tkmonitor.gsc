@@ -54,7 +54,7 @@ monitorTeamKills()
 
 	lastExplosiveTK = 0;
 
-	for (;;)
+	for(;;)
 	{
 		self waittill( "team_kill", eVictim, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime);
 
@@ -107,7 +107,7 @@ monitorForPunishment()
 	self endon("death");
 	level endon( "game_ended" );
 
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 

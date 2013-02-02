@@ -171,7 +171,6 @@ onPlayerConnect()
 		player.rankUpdateTotal = 0;
 
 		if ( level.rankedMatch ) {
-			
 			player maps\mp\gametypes\_persistence::statSet( "rank", rankId );
 			player maps\mp\gametypes\_persistence::statSet( "plevel", prestigeId );
 			player maps\mp\gametypes\_persistence::statSet( "minxp", getRankInfoMinXp( rankId ) );
@@ -186,8 +185,7 @@ onPlayerConnect()
 			player setStat( 2326, 0 );
 				
 			// resetting unlockable vars
-			if ( !isDefined( player.pers["unlocks"] ) )
-			{
+			if ( !isDefined( player.pers["unlocks"] ) ) {
 				player.pers["unlocks"] = [];
 				player.pers["unlocks"]["weapon"] = 0;
 				player.pers["unlocks"]["perk"] = 0;

@@ -351,7 +351,7 @@ hintMessageDeathThink()
 {
 	self endon ( "disconnect" );
 
-	for ( ;; )
+	for(;;)
 	{
 		self waittill ( "death" );
 		

@@ -360,7 +360,7 @@ setClientTweakable( category, name )
 
 updateUITweakables()
 {
-	for ( ;; )
+	for(;;)
 	{
 		for ( index = 0; index < level.clientTweakables.size; index++ )
 		{

@@ -182,8 +182,8 @@ monitorSafeZone()
   self endon( "death" );
   self endon( "disconnect" );
     
-  for (;;)
-  {    
+  for(;;)
+  {
     self waittill( "grenade_fire", explosive, weaponName );
   
     if ( weaponName == "c4_mp" || weaponName == "claymore_mp" )

@@ -20,7 +20,7 @@ monitorTimeOuts()
 {
 	level endon("game_ended");
 	
-	for (;;)
+	for(;;)
 	{
 		wait (0.05);
 		// Check if we are in timeout mode
