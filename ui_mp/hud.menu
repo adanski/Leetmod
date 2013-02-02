@@ -1803,7 +1803,7 @@
 			rect			0 0 FULL_SCREEN_MAP_WIDTH FULL_SCREEN_MAP_HEIGHT
 			forecolor		1 1 1 1
 			ownerdraw		CG_PLAYER_FULLMAP_ENEMIES
-			visible			when( FSM_VISIBILITY );
+			visible			when( FSM_VISIBILITY && (ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies )) );
 		}
 		// Player direction indicator
 		itemDef

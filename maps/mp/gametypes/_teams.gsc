@@ -17,7 +17,6 @@ init()
 	level.scr_teambalance_protected_clan_tags = getdvarx( "scr_teambalance_protected_clan_tags", "string", "" );
 	level.scr_teambalance_protected_clan_tags = strtok( level.scr_teambalance_protected_clan_tags, " " );
 	
-
 	switch(game["allies"])
 	{
 	case "marines":
@@ -229,7 +228,7 @@ updateTeamBalanceWarning()
 	{
 		if( !getTeamBalance() )
 		{
-			iPrintLn( &"MP_AUTOBALANCE_NEXT_ROUND" );   //##FIX: was iPrintLnBold before
+			iPrintLn( &"MP_AUTOBALANCE_NEXT_ROUND" );
 			break; 
 		}
 		wait level.scr_teambalance_check_interval; 
@@ -267,7 +266,7 @@ updateTeamBalance()
 					if ( level.scr_teambalance_show_message == 1 ) {
 						// Make sure the that the delay is not zero
 						if ( level.scr_teambalance_delay > 0 ) {
-							iPrintLn( &"MP_AUTOBALANCE_SECONDS", level.scr_teambalance_delay );   //##FIX: was iPrintLnBold before
+							iPrintLn( &"MP_AUTOBALANCE_SECONDS", level.scr_teambalance_delay );
 						}
 					}
 					// Use the new variable instead of a fixed value
@@ -502,7 +501,7 @@ balanceDeadPlayers()
 balanceTeams()
 {
 	if ( level.scr_teambalance_show_message == 1 ) {
-		iPrintLnBold( game["strings"]["autobalance"] );   //##FIX: was iPrintLnBold before
+		iPrintLnBold( game["strings"]["autobalance"] );
 	}
 	
 	//if( level.teamBalanceDeadFirst )
@@ -586,6 +585,11 @@ setPlayerModels()
 		game["allies_model"]["CLASS_CUSTOM3"] = mptype\mptype_ally_cqb::main;
 		game["allies_model"]["CLASS_CUSTOM4"] = mptype\mptype_ally_cqb::main;
 		game["allies_model"]["CLASS_CUSTOM5"] = mptype\mptype_ally_cqb::main;
+    
+    game["allies_model"]["CLASS_CUSTOM6"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM7"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM8"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM9"] = mptype\mptype_ally_cqb::main;
 	}
 	else if ( game["allies_soldiertype"] == "urban" )
 	{
@@ -613,6 +617,11 @@ setPlayerModels()
 		game["allies_model"]["CLASS_CUSTOM3"] = mptype\mptype_ally_urban_assault::main;
 		game["allies_model"]["CLASS_CUSTOM4"] = mptype\mptype_ally_urban_assault::main;
 		game["allies_model"]["CLASS_CUSTOM5"] = mptype\mptype_ally_urban_assault::main;
+    
+    game["allies_model"]["CLASS_CUSTOM6"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM7"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM8"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM9"] = mptype\mptype_ally_urban_assault::main;
 	}
 	else
 	{
@@ -640,6 +649,11 @@ setPlayerModels()
 		game["allies_model"]["CLASS_CUSTOM3"] = mptype\mptype_ally_woodland_recon::main;
 		game["allies_model"]["CLASS_CUSTOM4"] = mptype\mptype_ally_woodland_recon::main;
 		game["allies_model"]["CLASS_CUSTOM5"] = mptype\mptype_ally_woodland_recon::main;
+
+		game["allies_model"]["CLASS_CUSTOM6"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM7"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM8"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM9"] = mptype\mptype_ally_woodland_recon::main;
 	}
 
 	if ( game["axis_soldiertype"] == "desert" )
@@ -670,6 +684,11 @@ setPlayerModels()
 		game["axis_model"]["CLASS_CUSTOM3"] = mptype\mptype_axis_cqb::main;
 		game["axis_model"]["CLASS_CUSTOM4"] = mptype\mptype_axis_cqb::main;
 		game["axis_model"]["CLASS_CUSTOM5"] = mptype\mptype_axis_cqb::main;
+    
+		game["axis_model"]["CLASS_CUSTOM6"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM7"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM8"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM9"] = mptype\mptype_axis_cqb::main;
 	}
 	else if ( game["axis_soldiertype"] == "urban" )
 	{
@@ -697,6 +716,11 @@ setPlayerModels()
 		game["axis_model"]["CLASS_CUSTOM3"] = mptype\mptype_axis_urban_assault::main;
 		game["axis_model"]["CLASS_CUSTOM4"] = mptype\mptype_axis_urban_assault::main;
 		game["axis_model"]["CLASS_CUSTOM5"] = mptype\mptype_axis_urban_assault::main;
+    
+    game["axis_model"]["CLASS_CUSTOM6"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM7"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM8"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM9"] = mptype\mptype_axis_urban_assault::main;
 	}
 	else
 	{
@@ -724,6 +748,11 @@ setPlayerModels()
 		game["axis_model"]["CLASS_CUSTOM3"] = mptype\mptype_axis_woodland_cqb::main;
 		game["axis_model"]["CLASS_CUSTOM4"] = mptype\mptype_axis_woodland_cqb::main;
 		game["axis_model"]["CLASS_CUSTOM5"] = mptype\mptype_axis_woodland_cqb::main;
+    
+    game["axis_model"]["CLASS_CUSTOM6"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM7"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM8"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM9"] = mptype\mptype_axis_woodland_cqb::main;
 	}
 }
 
