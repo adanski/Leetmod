@@ -62,8 +62,9 @@
 			close self;
 		}
     execkeyint 13 { play "oldschool_pickup"; scriptmenuresponse "cacSubmit"; }
-    execkey "c" { play "mouse_click"; scriptMenuResponse "cacClassPrev"; }
-    execkeyint 32 { play "mouse_click"; scriptMenuResponse "cacClassNext"; }
+    execkeyint 32 { play "oldschool_pickup"; scriptmenuresponse "cacSubmit"; }
+    execkey "n" { play "mouse_click"; scriptMenuResponse "cacClassPrev"; }
+    execkey "m" { play "mouse_click"; scriptMenuResponse "cacClassNext"; }
     execkey "q" { play "mouse_click"; scriptMenuResponse "cacPrimaryPrev"; }
     execkey "w" { play "mouse_click"; scriptMenuResponse "cacPrimaryNext"; }
     execkey "e" {
@@ -85,17 +86,24 @@
       play "mouse_click";
     }
     
-    execkey "1" {
+    execkey "1" { play "mouse_click"; scriptMenuResponse "cacClass1"; }
+    execkey "2" { play "mouse_click"; scriptMenuResponse "cacClass2"; }
+    execkey "3" { play "mouse_click"; scriptMenuResponse "cacClass3"; }
+    execkey "4" { play "mouse_click"; scriptMenuResponse "cacClass4"; }
+    execkey "5" { play "mouse_click"; scriptMenuResponse "cacClass5"; }
+    execkey "6" { play "mouse_click"; scriptMenuResponse "cacClass6"; }
+    execkey "7" { play "mouse_click"; scriptMenuResponse "cacClass7"; }
+    execkey "8" { play "mouse_click"; scriptMenuResponse "cacClass8"; }
+    execkey "9" { play "mouse_click"; scriptMenuResponse "cacClass9"; }
+    execkey "z" {
       execNow "set ct_cac_special_attach 0";
       execNowOnDvarIntValue ow_cac_stat_perk1 193 "set ct_cac_special_attach 1";
       scriptMenuRespondOnDvarIntValue ct_cac_special_attach 0 "cacPerk1Next";
       play "mouse_click";
     }
-    execkey "2" { play "mouse_click"; scriptMenuResponse "cacPerk2Next"; }
-    execkey "3" { play "mouse_click"; scriptMenuResponse "cacPerk3Next"; }
-    execkey "4" { play "mouse_click"; scriptMenuResponse "cacSGrenadeNext"; }
-    
-    execkey "b" { play "mouse_click"; close self; }
+    execkey "x" { play "mouse_click"; scriptMenuResponse "cacPerk2Next"; }
+    execkey "c" { play "mouse_click"; scriptMenuResponse "cacPerk3Next"; }
+    execkey "v" { play "mouse_click"; scriptMenuResponse "cacSGrenadeNext"; }
 
 		// background overlay
 		itemDef
@@ -644,9 +652,9 @@
     #undef CHOICE_TEXTALIGN
     #define	CHOICE_TEXTALIGN		ITEM_ALIGN_MIDDLE_RIGHT
     
-    CHOICE_BUTTON_VIS( 11, "@OW_CAC_UNLOCK_MANUALLY_WEAP", execNow "set ct_tmp_type 0"; open unlockweaponsperks, when( stat( 3001 ) == 0 || stat( 3003 ) == 0 || stat( 3026 ) == 0 || stat( 3023 ) == 0 || stat( 3024 ) == 0 || stat( 3021 ) == 0 || stat( 3022 ) == 0 || stat( 3082 ) == 0 || stat( 3012 ) == 0 || stat( 3013 ) == 0 || stat( 3014 ) == 0 || stat( 3070 ) == 0 || stat( 3065 ) == 0 || stat( 3060 ) == 0 || stat( 3064 ) == 0 || stat( 3062 ) == 0 ) )
-    CHOICE_BUTTON_VIS( 12, "@OW_CAC_UNLOCK_MANUALLY_PERK", execNow "set ct_tmp_type 2"; open unlockweaponsperks, when( stat( 165 ) == 0 || stat( 155 ) == 0 || stat( 185 ) == 0 || stat( 163 ) == 0 || stat( 153 ) == 0 || stat( 150 ) == 0 || stat( 173 ) == 0 || stat( 152 ) == 0 || stat( 157 ) == 0 || stat( 158 ) == 0 || stat( 166 ) == 0 || stat( 164 ) == 0 || stat( 151 ) == 0 ) )
-    CHOICE_BUTTON_VIS( 13, "@OW_CAC_UNLOCK_MANUALLY_ATTACH", open unlockattachments, 1 )
+    CHOICE_BUTTON_VIS( 11, "@OW_CAC_UNLOCK_MANUALLY_WEAP", execNow "set ct_tmp_type 0"; open unlockweaponsperks, when( dvarbool(ui_ranked_classes) && (stat( 3001 ) == 0 || stat( 3003 ) == 0 || stat( 3026 ) == 0 || stat( 3023 ) == 0 || stat( 3024 ) == 0 || stat( 3021 ) == 0 || stat( 3022 ) == 0 || stat( 3082 ) == 0 || stat( 3012 ) == 0 || stat( 3013 ) == 0 || stat( 3014 ) == 0 || stat( 3070 ) == 0 || stat( 3065 ) == 0 || stat( 3060 ) == 0 || stat( 3064 ) == 0 || stat( 3062 ) == 0) ) )
+    CHOICE_BUTTON_VIS( 12, "@OW_CAC_UNLOCK_MANUALLY_PERK", execNow "set ct_tmp_type 2"; open unlockweaponsperks, when( dvarbool(ui_ranked_classes) && (stat( 165 ) == 0 || stat( 155 ) == 0 || stat( 185 ) == 0 || stat( 163 ) == 0 || stat( 153 ) == 0 || stat( 150 ) == 0 || stat( 173 ) == 0 || stat( 152 ) == 0 || stat( 157 ) == 0 || stat( 158 ) == 0 || stat( 166 ) == 0 || stat( 164 ) == 0 || stat( 151 ) == 0) ) )
+    CHOICE_BUTTON_VIS( 13, "@OW_CAC_UNLOCK_MANUALLY_ATTACH", open unlockattachments, when( dvarbool(ui_ranked_classes) ) )
     #undef CHOICE_TEXTALIGN
     #define	CHOICE_TEXTALIGN		ITEM_ALIGN_MIDDLE_CENTER
     
@@ -808,6 +816,345 @@
 			style			WINDOW_STYLE_FILLED
 			backcolor		0.25 0.25 0.25 1
 			visible			when( dvarstring( ow_cac_class ) == "customclass5" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    // New editable classes
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass6
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass6" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass7
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass7" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass8
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass8" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass9
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass9" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass11
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass11" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass12
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass12" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass13
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass13" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass14
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass14" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass15
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass15" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass16
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass16" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass17
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass17" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass18
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass18" )
+			mouseenter		{ show keyBindStatus; play "mouse_over"; }
+			mouseexit		{ hide keyBindStatus; setfocus submit; }
+		}
+    itemDef 
+		{
+			name			renameEntry
+			group			grpControls
+			TYPE			4
+			text			" "
+			dvar			customclass19
+			rect			-481 50 150 23 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin			125 -1
+			textalignx		-4
+			textaligny		-1
+			maxchars		15
+			maxpaintchars	15
+			textalign		ITEM_ALIGN_MIDDLE_LEFT
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
+			border			1
+			bordersize		1
+			bordercolor		0 0 0 .2		
+			forecolor		.9 .9 .9 1
+			style			WINDOW_STYLE_FILLED
+			backcolor		0.25 0.25 0.25 1
+			visible			when( dvarstring( ow_cac_class ) == "customclass19" )
 			mouseenter		{ show keyBindStatus; play "mouse_over"; }
 			mouseexit		{ hide keyBindStatus; setfocus submit; }
 		}

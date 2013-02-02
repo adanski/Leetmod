@@ -75,12 +75,9 @@ init()
 	if ( !isDefined( level.tweakablesInitialized ) )
 		maps\mp\gametypes\_tweakables::init();
 
-	// We do this for compatibility with previous variable
-	//level.scr_server_rank_type = getdvarx( "scr_server_rank_type", "int", getdvarx( "scr_forceunrankedmatch", "int", 0, 0, 1 ), 0, 2 );
 	level.rankedMatch = !(getdvarx( "scr_forceunrankedmatch", "int", 0, 0, 1 ));
-	level.offlineClasses = getdvarx( "scr_player_classes_enable", "int", 1, 0, 1 );
 	
-	// Initialize variables used by OpenWarfare
+	// Initialize variables used by Leetmod
 	openwarfare\_registerdvars::init();
 
 	level.splitscreen = isSplitScreen();
@@ -93,11 +90,6 @@ init()
 	/*if ( !isSubStr( toLower(getDvar("sv_referencedFFNames")), "mods/leetmod/mod" ) ) {
 		level.rankedMatch = false;
 	}*/
-  
-  //commented because:
-  // 1. it doesn't need a menu
-  // 2. max number of precached menus is 32
-  //precacheMenu("popup_addfavorite");
 
 	level.otherTeam["allies"] = "axis";
 	level.otherTeam["axis"] = "allies";
@@ -145,11 +137,7 @@ init()
 
 	registerDvars();
 
-	if ( !level.offlineClasses ) {
-		maps\mp\gametypes\_class_unranked::initPerkDvars();
-	} else {
-		maps\mp\gametypes\_class::initPerkDvars();
-	}
+  maps\mp\gametypes\_class::initPerkDvars();
 
 	if ( level.oldschool )
 	{
@@ -771,23 +759,19 @@ spawnPlayer()
 	{
 		assert( !isDefined( self.class ) );
 		self maps\mp\gametypes\_oldschool::giveLoadout();
-		if ( !level.offlineClasses ) {
-			self maps\mp\gametypes\_class_unranked::setClass( level.defaultClass );
-		} else {
-			self maps\mp\gametypes\_class::setClass( level.defaultClass );
-		}
+    self maps\mp\gametypes\_class::setClass( level.defaultClass );
 	}
 	else
 	{
 		if ( level.gametype != "hns" || self.pers["team"] == game["attackers"] ) {
 			assert( self isValidClass( self.class ) );
-			if ( !level.offlineClasses ) {
-				self maps\mp\gametypes\_class_unranked::setClass( self.class );
-				self maps\mp\gametypes\_class_unranked::giveLoadout( self.team, self.class );
-			} else {
-				self maps\mp\gametypes\_class::setClass( self.class );
-				self maps\mp\gametypes\_class::giveLoadout( self.team, self.class );
-			}
+			//if ( !level.rankedClasses ) {
+			//	self maps\mp\gametypes\_class_unranked::setClass( self.class );
+			//	self maps\mp\gametypes\_class_unranked::giveLoadout( self.team, self.class );
+			//} else {
+      self maps\mp\gametypes\_class::setClass( self.class );
+      self maps\mp\gametypes\_class::giveLoadout( self.team, self.class );
+			//}
 		}
 	}
 	
@@ -2679,13 +2663,8 @@ menuClass( response )
 	if(!isDefined(self.pers["team"]) || (self.pers["team"] != "allies" && self.pers["team"] != "axis"))
 		return;
 
-	if ( !level.offlineClasses ) {
-		class = self maps\mp\gametypes\_class_unranked::getClassChoice( response );
-		primary = self maps\mp\gametypes\_class_unranked::getWeaponChoice( response );
-	} else {
-		class = self maps\mp\gametypes\_class::getClassChoice( response );
-		primary = self maps\mp\gametypes\_class::getWeaponChoice( response );
-	}
+  class = self maps\mp\gametypes\_class::getClassChoice( response );
+  primary = self maps\mp\gametypes\_class::getWeaponChoice( response );
 
 	if ( class == "restricted" )
 	{
@@ -2711,17 +2690,17 @@ menuClass( response )
 		{
 			self thread deleteExplosives();
 
-			if ( !level.offlineClasses ) {
-				self maps\mp\gametypes\_class_unranked::setClass( self.pers["class"] );
-				self.tag_stowed_back = undefined;
-				self.tag_stowed_hip = undefined;
-				self maps\mp\gametypes\_class_unranked::giveLoadout( self.pers["team"], self.pers["class"] );
-			} else {
-				self maps\mp\gametypes\_class::setClass( self.pers["class"] );
-				self.tag_stowed_back = undefined;
-				self.tag_stowed_hip = undefined;
-				self maps\mp\gametypes\_class::giveLoadout( self.pers["team"], self.pers["class"] );
-			}
+			//if ( !level.rankedClasses ) {
+			//	self maps\mp\gametypes\_class_unranked::setClass( self.pers["class"] );
+			//	self.tag_stowed_back = undefined;
+			//	self.tag_stowed_hip = undefined;
+			//	self maps\mp\gametypes\_class_unranked::giveLoadout( self.pers["team"], self.pers["class"] );
+			//} else {
+      self maps\mp\gametypes\_class::setClass( self.pers["class"] );
+      self.tag_stowed_back = undefined;
+      self.tag_stowed_hip = undefined;
+      self maps\mp\gametypes\_class::giveLoadout( self.pers["team"], self.pers["class"] );
+			//}
 		}
 		else if ( !level.splitScreen )
 		{
@@ -4223,12 +4202,12 @@ Callback_StartGameType()
 
 	thread maps\mp\gametypes\_persistence::init();
 
-	if ( !level.offlineClasses ) {
-		thread maps\mp\gametypes\_modwarfare::init();
-		thread maps\mp\gametypes\_menus_unranked::init();
-	} else {
-		thread maps\mp\gametypes\_menus::init();
-	}
+	//if ( !level.rankedClasses ) {
+	//	thread maps\mp\gametypes\_modwarfare::init();
+	//	thread maps\mp\gametypes\_menus_unranked::init();
+	//} else {
+  thread maps\mp\gametypes\_menus::init();
+	//}
 
 	thread maps\mp\gametypes\_hud::init();
 	thread maps\mp\gametypes\_serversettings::init();
@@ -4438,9 +4417,10 @@ checkRoundSwitch()
 			level.ignoreUpdateClassLimit = false;
 			
 			// If we are running unranked then update the class limits
-			if ( !level.rankedMatch ) {
-				level thread maps\mp\gametypes\_modwarfare::updateClassLimits();
-			}
+			//# TOFIX: reenable this code and use variable level.limitClasses (inexistent at the moment) to use the function bellow
+      //if ( !level.rankedClasses ) {
+			//	level thread maps\mp\gametypes\_modwarfare::updateClassLimits();
+			//}
 			
 		} else {
 			[[level.onRoundSwitch]]();
@@ -4554,6 +4534,10 @@ Callback_PlayerConnect()
 		}
 		self.hitlocInited = true;
 	}
+  
+  self setClientDvar( "ui_ranked_classes", level.rankedClasses );
+  self setClientDvar( "ui_limit_classes", level.limitClasses );
+  self thread maps\mp\gametypes\_class::openAllClasses();
   
   self setClientDvar( "ct_playingrwk", 0 );
 
@@ -4679,7 +4663,7 @@ Callback_PlayerConnect()
 		[[level.spawnSpectator]]();
 
 		//if ( ( level.rankedMatch || level.scr_server_rank_type == 2 ) && level.console )
-    //# Isn't it level.offlineClasses ?
+    //# Isn't it level.rankedClasses ?
 		if ( level.rankedMatch && level.console )
 		{
 			[[level.autoassign]]();
@@ -4762,6 +4746,8 @@ Callback_PlayerConnect()
 		return;
 
 	// <font size="8"><strong>TO DO: DELETE THIS WHEN CODE HAS CHECKSUM SUPPORT!</strong></font> :: Check for stat integrity
+  // Why the heck is this code even here? F*cking weird validation from some lazy programmer @ Infinity Ward, thanks for your leftovers
+  /*
 	for( i=0; i<5; i++ )
 	{
 		if( self getstat( 205+(i*10) ) == 0 )
@@ -4770,6 +4756,7 @@ Callback_PlayerConnect()
 			return;
 		}
 	}
+  */
 }
 
 
@@ -5042,13 +5029,8 @@ Callback_PlayerDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, s
 	}
 		
 	// create a class specialty checks; CAC:bulletdamage, CAC:armorvest
-	if ( sWeapon != "concussion_grenade_mp" ) {
-		if ( !level.offlineClasses ) {
-			iDamage = maps\mp\gametypes\_class_unranked::cac_modified_damage( self, eAttacker, iDamage, sMeansOfDeath );
-		} else {
-			iDamage = maps\mp\gametypes\_class::cac_modified_damage( self, eAttacker, iDamage, sMeansOfDeath );
-		}
-	}
+	if ( sWeapon != "concussion_grenade_mp" )
+    iDamage = maps\mp\gametypes\_class::cac_modified_damage( self, eAttacker, iDamage, sMeansOfDeath );
 
 	// If iDamage has been reduced to zero we don't do anything else
 	if ( iDamage == 0 )
@@ -6073,7 +6055,8 @@ getPerks( player )
 	if ( level.gametype == "hns" && player.pers["team"] == game["defenders"] )
 		return perks;
 
-	if ( !level.offlineClasses || level.gametype == "gg" || level.gametype == "ss" || level.gametype == "oitc" ) {
+	//if ( !level.rankedClasses || level.gametype == "gg" || level.gametype == "ss" || level.gametype == "oitc" ) {
+	if ( level.gametype == "gg" || level.gametype == "ss" || level.gametype == "oitc" ) {
 		if ( isPlayer( player ) )
 		{
 			if ( isDefined( player.specialty[0] ) )

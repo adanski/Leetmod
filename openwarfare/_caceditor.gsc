@@ -21,9 +21,8 @@ cacResponseHandler()
 	for(;;)
 	{
 		self waittill( "menuresponse", menu, response );
-		
-		if ( (menu == "team_marinesopfor" || menu == "class" || menu == "endofgame" ) && response == "ow_cac_editor" ) {
-			self openAllClasses();
+		//# add check for possible selection in !level.cSC if there are no team constrains
+		if ( ( menu == "team_marinesopfor" || menu == "class" || menu == "endofgame" ) && response == "ow_cac_editor" ) {
 			self initializeEditor();
 			self openMenu( game["menu_ow_cac_editor"] );
 		}
@@ -33,89 +32,114 @@ cacResponseHandler()
 			//Restart loop if custom classes aren't unlocked. 
 			//The class can be unlocked in game so we still 
 			//want to give player the ability to edit their class.
-			if ( self getStat( 260 ) > 0 )
-			{
-				switch( response )
-				{		
-					case "open": 
-						self initializeEditor();
-						self openAllClasses();
-						self openMenu( game["menu_ow_cac_editor"] );
-						break;	
-					case "cacClassNext":
-						self class( "next" );
-						break;
-					case "cacClassPrev":
-						self class( "prev" );
-						break;					
-					case "cacPrimaryNext":
-						self primary( "next" );
-						break;
-					case "cacPrimaryPrev":
-						self primary( "prev" );
-						break;
-					case "cacSecondaryNext":
-						self secondary( "next" );
-						break;
-					case "cacSecondaryPrev":
-						self secondary( "prev" );
-						break;	
-					case "cacPAttachmentNext":
-						self primaryAttachment( "next" );
-						break;
-					case "cacPAttachmentPrev":
-						self primaryAttachment( "prev" );
-						break;	
-					case "cacSAttachmentNext":
-						self secondaryAttachment( "next" );
-						break;
-					case "cacSAttachmentPrev":
-						self secondaryAttachment( "prev" );
-						break;
-					case "cacPerk1Next":
-						self perk1( "next" );
-						break;	
-					case "cacPerk1Prev":
-						self perk1( "prev" );
-						break;	
-					case "cacPerk2Next":
-						self perk2( "next" );
-						break;
-					case "cacPerk2Prev":
-						self perk2( "prev" );
-						break;	
-					case "cacPerk3Next":
-						self perk3( "next" );
-						break;	
-					case "cacPerk3Prev":
-						self perk3( "prev" );
-						break;	
-					case "cacSGrenadeNext":
-						self specialGrenade( "next" );
-						break;
-					case "cacSGrenadePrev":
-						self specialGrenade( "prev" );
-						break;	
-					case "cacCamoNext":
-						self camo( "next" );
-						break;
-					case "cacCamoPrev":
-						self camo( "prev" );
-						break;	
-					case "cacSubmit":
-						self submitUpdate();
-						break;
-				}		
-			}
-		}
-	}
+      switch( response )
+      {		
+        case "open": 
+          self initializeEditor();
+          self openMenu( game["menu_ow_cac_editor"] );
+          break;	
+        case "cacClassNext":
+          self class( "next" );
+          break;
+        case "cacClassPrev":
+          self class( "prev" );
+          break;
+        case "cacClass1":
+          self classIdx( 0 );
+          break;
+        case "cacClass2":
+          self classIdx( 1 );
+          break;
+        case "cacClass3":
+          self classIdx( 2 );
+          break;
+        case "cacClass4":
+          self classIdx( 3 );
+          break;
+        case "cacClass5":
+          self classIdx( 4 );
+          break;
+        case "cacClass6":
+          self classIdx( 5 );
+          break;
+        case "cacClass7":
+          self classIdx( 6 );
+          break;
+        case "cacClass8":
+          self classIdx( 7 );
+          break;
+        case "cacClass9":
+          self classIdx( 8 );
+          break;
+        case "cacPrimaryNext":
+          self primary( "next" );
+          break;
+        case "cacPrimaryPrev":
+          self primary( "prev" );
+          break;
+        case "cacSecondaryNext":
+          self secondary( "next" );
+          break;
+        case "cacSecondaryPrev":
+          self secondary( "prev" );
+          break;	
+        case "cacPAttachmentNext":
+          self primaryAttachment( "next" );
+          break;
+        case "cacPAttachmentPrev":
+          self primaryAttachment( "prev" );
+          break;	
+        case "cacSAttachmentNext":
+          self secondaryAttachment( "next" );
+          break;
+        case "cacSAttachmentPrev":
+          self secondaryAttachment( "prev" );
+          break;
+        case "cacPerk1Next":
+          self perk1( "next" );
+          break;	
+        case "cacPerk1Prev":
+          self perk1( "prev" );
+          break;	
+        case "cacPerk2Next":
+          self perk2( "next" );
+          break;
+        case "cacPerk2Prev":
+          self perk2( "prev" );
+          break;	
+        case "cacPerk3Next":
+          self perk3( "next" );
+          break;	
+        case "cacPerk3Prev":
+          self perk3( "prev" );
+          break;	
+        case "cacSGrenadeNext":
+          self specialGrenade( "next" );
+          break;
+        case "cacSGrenadePrev":
+          self specialGrenade( "prev" );
+          break;	
+        case "cacCamoNext":
+          self camo( "next" );
+          break;
+        case "cacCamoPrev":
+          self camo( "prev" );
+          break;	
+        case "cacSubmit":
+          self submitUpdate();
+          break;
+      }		
+    }
+  }
 }
+
 
 initializeEditor()
 {
 	//Set up arrays and starting indexes
-	self.classesIndex = 0;
-	self.primariesIndex = 0;
+  self.classesIndex = 0;
+	
+  self.primariesIndex = 0;
 	self.primaries2Index = 0;
 	self.pattachmentsIndex = 0;
 	self.pattachments2Index = 0;
@@ -152,7 +176,7 @@ initializeEditor()
 	self addSGrenades();
 	self addCamos();
 	
-	//On startup this will display customclass1
+	//On startup this will display customclass1 (or customclass11 in !level.rankedClasses)
 	self displayDefaultLoadout();
 }
 
@@ -162,16 +186,19 @@ displayDefaultLoadout()
 	self setClientDvar( "ow_cac_class", self.cacEdit_classes[self.classesIndex].text );
 	
 	//Get current class' stats
-	def_primary = self getStat( self.cacEdit_classes[self.classesIndex].stat + 1 );
-	def_pattach = self getStat( self.cacEdit_classes[self.classesIndex].stat + 2 );
-	def_secondary = self getStat( self.cacEdit_classes[self.classesIndex].stat + 3 );
-	def_sattach = self getStat( self.cacEdit_classes[self.classesIndex].stat + 4 );
-	def_perk1 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 5 );
-	def_perk2 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 6 );
-	def_perk3 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 7 );
-	def_sgrenade = self getStat( self.cacEdit_classes[self.classesIndex].stat + 8 );
-	def_camo = self getStat( self.cacEdit_classes[self.classesIndex].stat + 9 );
-	
+  // self.classesIndex: 0=assault, specops, heavygunner, demolition, sniper
+  // self .stat = 200, 210, ...
+  // def_primary = 3020 for ak47
+  def_primary = self getStat( self.cacEdit_classes[self.classesIndex].stat + 1 );
+  def_pattach = self getStat( self.cacEdit_classes[self.classesIndex].stat + 2 );
+  def_secondary = self getStat( self.cacEdit_classes[self.classesIndex].stat + 3 );
+  def_sattach = self getStat( self.cacEdit_classes[self.classesIndex].stat + 4 );
+  def_perk1 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 5 );
+  def_perk2 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 6 );
+  def_perk3 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 7 );
+  def_sgrenade = self getStat( self.cacEdit_classes[self.classesIndex].stat + 8 );
+  def_camo = self getStat( self.cacEdit_classes[self.classesIndex].stat + 9 );
+  
 	//Check if class is using overkill
 	if ( def_perk2 == 166 )
 		self.isUsingOverkill = true;
@@ -304,25 +331,48 @@ displayDefaultLoadout()
 			break;
 		}
 	}
-  
-  self setClientDvar( "ct_oldWPF", self getStat(3004) );
-  self setClientDvar( "ct_oldAttach", self getStat(3150) );
-  self setClientDvar( "ct_oldCammo", self getStat(3151) );
 }
 
 class( direction )
 {
-	if ( direction == "next" )
-		self.classesIndex++;
-	else
-		self.classesIndex--;
+  if ( direction == "next" )
+    self.classesIndex++;
+  else
+    self.classesIndex--;
+    
+  if ( self.classesIndex < 0 )
+    self.classesIndex = self.cacEdit_classes.size - 1;
+  else if ( self.classesIndex >= self.cacEdit_classes.size )
+    self.classesIndex = 0;
+    
+  //# comment this limitClasses part and put it in weapon selection
+  while( level.limitClasses && !self maps\mp\gametypes\_class::isClassAvailable() ) {
+    if ( direction == "next" )
+      self.classesIndex++;
+    else
+      self.classesIndex--;
+      
+    if ( self.classesIndex < 0 )
+      self.classesIndex = self.cacEdit_classes.size - 1;
+    else if ( self.classesIndex >= self.cacEdit_classes.size )
+      self.classesIndex = 0;
+  }
 		
-	if ( self.classesIndex < 0 )
-		self.classesIndex = self.cacEdit_classes.size - 1;
-	else if ( self.classesIndex >= self.cacEdit_classes.size )
-		self.classesIndex = 0;
+	self displayDefaultLoadout();
+}
+
+classIdx( index )
+{
+  self.classesIndex = index;
+  
+  while( level.limitClasses && !self maps\mp\gametypes\_class::isClassAvailable() ) {
+    self.classesIndex++;
+    
+    if ( self.classesIndex >= self.cacEdit_classes.size )
+      self.classesIndex = 0;
+  }
 		
-	self displayDefaultLoadout();	
+	self displayDefaultLoadout();
 }
 
 primary( direction )
@@ -338,7 +388,7 @@ primary( direction )
 		self.primariesIndex = 0;	
 		
 	weapon_stat = self getStat( self.cacEdit_primaries[self.primariesIndex].stat + 3000 );
-	while ( weapon_stat < 1 || ( self.isUsingOverkill && ( self.cacEdit_primaries[self.primariesIndex].stat == self.cacEdit_primaries[self.primaries2Index].stat ) ) )
+	while ( (weapon_stat < 1 && level.rankedClasses) || ( self.isUsingOverkill && ( self.cacEdit_primaries[self.primariesIndex].stat == self.cacEdit_primaries[self.primaries2Index].stat ) ) )
 	{
 		if ( direction == "next" )
 			self.primariesIndex++;
@@ -382,8 +432,11 @@ primaryAttachment( direction )
 	
 	//We have to check to make sure the camo is unlocked for this weapon
 	addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 10 ) );
+  addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 4 );
 	weaponStat = self getStat( self.cacEdit_primaries[self.primariesIndex].stat + 3000 );
-	while( ( int(weaponStat) & addonMask ) == 0 )
+  weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primariesIndex].stat, 4 );
+  
+	while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasAttachment(weaponName, addonName) ) )
 	{
 		if ( direction == "next" )
 			self.pattachmentsIndex++;
@@ -396,6 +449,7 @@ primaryAttachment( direction )
 			self.pattachmentsIndex = 0;
 
 		addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 10 ) );
+    addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 4 );
 	}	
 	
 	//Perk 1 Hack
@@ -429,7 +483,7 @@ secondary( direction )
 			self.secondariesIndex = 0;
 			
 		weapon_stat = self getStat( self.cacEdit_secondaries[self.secondariesIndex].stat + 3000 );
-		while ( weapon_stat < 1 )
+		while ( weapon_stat < 1 && level.rankedClasses )
 		{
 			if ( direction == "next" )
 				self.secondariesIndex++;
@@ -462,7 +516,7 @@ secondary( direction )
 			self.primaries2Index = 0;
 			
 		weapon_stat = self getStat( self.cacEdit_primaries[self.primaries2Index].stat + 3000 );
-		while ( weapon_stat < 1 || ( self.cacEdit_primaries[self.primariesIndex].stat == self.cacEdit_primaries[self.primaries2Index].stat ) )
+		while ( ( weapon_stat < 1 && level.rankedClasses ) || ( self.cacEdit_primaries[self.primariesIndex].stat == self.cacEdit_primaries[self.primaries2Index].stat ) )
 		{
 			if ( direction == "next" )
 				self.primaries2Index++;
@@ -506,8 +560,11 @@ secondaryAttachment( direction )
 			self.sattachmentsIndex = 0;
 			
 		addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 10 ) );
+    addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 4 );
 		weaponStat = self getStat( self.cacEdit_secondaries[self.secondariesIndex].stat + 3000 );
-		while( ( int(weaponStat) & addonMask ) == 0 )
+    weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_secondaries[self.secondariesIndex].stat, 4 );
+    
+    while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasAttachment(weaponName, addonName) ) )
 		{
 			if ( direction == "next" )
 				self.sattachmentsIndex++;
@@ -520,6 +577,7 @@ secondaryAttachment( direction )
 				self.sattachmentsIndex = 0;
 				
 			addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 10 ) );
+      addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 4 );
 		}
 		
 		//Display new attachment
@@ -543,8 +601,11 @@ secondaryAttachment( direction )
 			
 		//We have to check to make sure the camo is unlocked for this weapon
 		addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 10 ) );
+    addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 4 );
 		weaponStat = self getStat( self.cacEdit_primaries[self.primaries2Index].stat + 3000 );
-		while( ( int(weaponStat) & addonMask ) == 0 )
+    weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primaries2Index].stat, 4 );
+  
+		while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasAttachment(weaponName, addonName) ) )
 		{
 			if ( direction == "next" )
 				self.pattachments2Index++;
@@ -557,6 +618,7 @@ secondaryAttachment( direction )
 				self.pattachments2Index = 0;
 				
 			addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 10 ) );
+      addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 4 );
 		}	
 		
 		//Perk 1 Hack
@@ -595,7 +657,7 @@ perk1( direction )
 	else if ( self.perk1Index >= self.cacEdit_perk1.size )
 		self.perk1Index = 0;
 		
-	while ( self getStat( self.cacEdit_perk1[self.perk1Index].stat ) < 1 || ( self.sgrenadesIndex == 2 && self.cacEdit_perk1[self.perk1Index].stat == 176 ) )
+	while ( (self getStat( self.cacEdit_perk1[self.perk1Index].stat ) < 1 && level.rankedClasses) || ( self.sgrenadesIndex == 2 && self.cacEdit_perk1[self.perk1Index].stat == 176 ) )
 	{
 		if ( direction == "next" )
 			self.perk1Index++;
@@ -627,7 +689,7 @@ perk2( direction )
 	else if ( self.perk2Index >= self.cacEdit_perk2.size )
 		self.perk2Index = 0;
 		
-	while ( self getStat( self.cacEdit_perk2[self.perk2Index].stat ) < 1 )
+	while ( self getStat( self.cacEdit_perk2[self.perk2Index].stat ) < 1 && level.rankedClasses )
 	{
 		if ( direction == "next" )
 			self.perk2Index++;
@@ -687,7 +749,7 @@ perk3( direction )
 	else if ( self.perk3Index >= self.cacEdit_perk3.size )
 		self.perk3Index = 0;	
 		
-	while ( self getStat( self.cacEdit_perk3[self.perk3Index].stat ) < 1 )
+	while ( self getStat( self.cacEdit_perk3[self.perk3Index].stat ) < 1 && level.rankedClasses )
 	{
 		if ( direction == "next" )
 			self.perk3Index++;
@@ -739,9 +801,15 @@ camo( direction )
 	else if ( self.camosIndex >= self.cacEdit_camos.size )
 		self.camosIndex = 0;
 		
-	addonMask = int( tableLookup( "mp/attachmenttable.csv", 11, self.cacEdit_camos[self.camosIndex].stat, 10 ) );
-	weaponStat = self getStat( self.cacEdit_primaries[self.primariesIndex].stat + 3000 );	
-	while( ( int(weaponStat) & addonMask ) == 0 )
+	//## is this correct? there is no 11th index in attachmenttable, besides, it refers attachments, not camos
+  //## I wonder how this works without problems
+  addonMask = int( tableLookup( "mp/attachmenttable.csv", 11, self.cacEdit_camos[self.camosIndex].stat, 10 ) );
+	weaponStat = self getStat( self.cacEdit_primaries[self.primariesIndex].stat + 3000 );
+  weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primariesIndex].stat, 4 );
+  //# To remove, debug only
+  iprintln("Camo num: ", addonMask);
+    
+  while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasCamo(weaponName, addonMask) ) )
 	{
 		if ( direction == "next" )
 			self.camosIndex++;
@@ -754,6 +822,8 @@ camo( direction )
 			self.camosIndex = 0;
 			
 		addonMask = int( tableLookup( "mp/attachmenttable.csv", 11, self.cacEdit_camos[self.camosIndex].stat, 10 ) );
+    //# To remove, debug only
+    iprintln("Camo num: ", addonMask);
 	}	
 	
 	//Display new camo
@@ -794,11 +864,30 @@ submitUpdate()
 addClasses()
 {
 	//Add classes ( name, class_stat )
-	self addCACClasses( "customclass1", 200 ); //Custom class 1
-	self addCACClasses( "customclass2", 210 ); //Custom class 2
-	self addCACClasses( "customclass3", 220 ); //Custom class 3
-	self addCACClasses( "customclass4", 230 ); //Custom class 4
-	self addCACClasses( "customclass5", 240 ); //Custom class 5
+  if( level.rankedClasses ) {
+    self addCACClasses( "customclass1", 200 ); //Custom class 1
+    self addCACClasses( "customclass2", 210 ); //Custom class 2
+    self addCACClasses( "customclass3", 220 ); //Custom class 3
+    self addCACClasses( "customclass4", 230 ); //Custom class 4
+    self addCACClasses( "customclass5", 240 ); //Custom class 5
+    
+    self addCACClasses( "customclass6", 350 ); //Custom class 6
+    self addCACClasses( "customclass7", 360 ); //Custom class 7
+    self addCACClasses( "customclass8", 370 ); //Custom class 8
+    self addCACClasses( "customclass9", 380 ); //Custom class 9
+  } else {
+    //# customclass or assault, etc?
+    self addCACClasses( "customclass11", 400 ); //Settable class 1
+    self addCACClasses( "customclass12", 410 ); //Settable class 2
+    self addCACClasses( "customclass13", 420 ); //Settable class 3
+    self addCACClasses( "customclass14", 430 ); //Settable class 4
+    self addCACClasses( "customclass15", 440 ); //Settable class 5
+    
+    self addCACClasses( "customclass16", 450 ); //Settable class 6
+    self addCACClasses( "customclass17", 460 ); //Settable class 7
+    self addCACClasses( "customclass18", 470 ); //Settable class 8
+    self addCACClasses( "customclass19", 480 ); //Settable class 9
+  }
 }
 	
 
@@ -1051,21 +1140,4 @@ addCACCamos( stat )
 	cacCamo = spawnstruct();
 	cacCamo.stat = stat;
 	self.cacEdit_camos[self.cacEdit_camos.size] = cacCamo;
-}
-
-openAllClasses()
-{
-	//If the first custom class is unlocked then in order
-	//to display all of the classes in the class selection
-	//menu without having to exit game and edit them
-	//then we need to unlock them on initialization of the menu
-	//so players can edit and then select from any custom class.
-	if ( self getStat( 210 ) < 1 )
-		self setStat( 210, 1 );
-	if ( self getStat( 220 ) < 1 )
-		self setStat( 220, 1 );
-	if ( self getStat( 230 ) < 1 )
-		self setStat( 230, 1 );	
-	if ( self getStat( 240 ) < 1 )
-		self setStat( 240, 1 );		
 }

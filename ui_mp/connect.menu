@@ -30,6 +30,10 @@
 		
 		onClose
 		{
+      #include "ui_mp/custom.inc"
+      execondvarintvalue ct_lm_ver 0 SETA_CUSTOM_VARS_CLASSES1NAME
+			execondvarintvalue ct_lm_ver 0 SETA_CUSTOM_VARS
+    
 			execondvarintvalue ct_conChatHistOnly 1 "clear";
       setdvar tmp_firstserverconf 0;
       setdvar ui_isEndOfGame 0;
@@ -130,7 +134,7 @@
 			rect			-112 50 200 100 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_CENTER
 			forecolor		1 1 1 1
 			style			WINDOW_STYLE_SHADER
-			background		"openwarfare"
+			background		"loadinglogo"
 			visible 		1
 			decoration
 		}

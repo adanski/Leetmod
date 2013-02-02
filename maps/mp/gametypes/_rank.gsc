@@ -404,7 +404,7 @@ giveRankXP( type, value, powerrank )
 	{
 		if ( type == "teamkill" )
 		  // teamkills are handled differently
-		        self thread updateRankScoreHUD( getScoreInfoValue( "teamkill" ) );
+      self thread updateRankScoreHUD( getScoreInfoValue( "teamkill" ) );
 		else
 			self thread updateRankScoreHUD( value, powerrank );
 	}
@@ -832,7 +832,7 @@ forceUnlockAllAttach()
   }
 }
 
-updateRankAnnounceHUD( powerrank )
+updateRankAnnounceHUD()
 {
 	self endon("disconnect");
 
@@ -848,11 +848,8 @@ updateRankAnnounceHUD( powerrank )
 	
 	notifyData = spawnStruct();
 
-	if ( isDefined( powerrank ) ) {
-		notifyData.titleText = &"OW_POWER_RANKED";
-	} else {
-		notifyData.titleText = &"RANK_PROMOTED";
-	}
+  notifyData.titleText = &"RANK_PROMOTED";
+  
 	notifyData.iconName = self getRankInfoIcon( self.pers["rank"], self.pers["prestige"] );
 	notifyData.sound = "mp_level_up";
 	notifyData.duration = 4.0;
@@ -1081,25 +1078,7 @@ unlockAttachmentSingularSpecial( refString )
 	baseWeapon = Tok[0];
 	addon = Tok[1];
   
-  if(addon != "silencer" && addon != "reflex" && addon != "acog" && addon != "grip" && addon != "gl" )
-    return;
-  
-  if( baseWeapon == "mp44")
-    return;
-  
-  if( (baseWeapon == "m16" || baseWeapon == "m4" || baseWeapon == "ak47" || baseWeapon == "m14" || baseWeapon == "g3" || baseWeapon == "g36c") && addon == "grip" )
-    return;
-    
-  if( (baseWeapon == "mp5" || baseWeapon == "skorpion" || baseWeapon == "uzi" || baseWeapon == "ak74u" || baseWeapon == "p90") && (addon == "grip" || addon == "gl") )
-    return;
-    
-  if( (baseWeapon == "rpd" || baseWeapon == "saw" || baseWeapon == "m60e4") && (addon == "silencer" || addon == "gl") )
-    return;
-    
-  if( (baseWeapon == "m1014" || baseWeapon == "winchester1200" ) && (addon == "silencer" || addon == "acog" || addon == "gl") )
-    return;
-    
-  if( (baseWeapon == "dragunov" || baseWeapon == "m40a3" || baseWeapon == "barrett" || baseWeapon == "remington700" || baseWeapon == "m21" ) && (addon == "silencer" || addon == "reflex" || addon == "grip" || addon == "gl") )
+  if( !maps\mp\gametypes\_class::WeaponHasAttachment( baseWeapon, addon ) )
     return;
   
 	weaponStat = int( tableLookup( "mp/statstable.csv", 4, baseWeapon, 1 ) );

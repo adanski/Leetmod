@@ -128,7 +128,7 @@ echo  Checking language directories...
 if not exist ..\..\zone\%LTARGET% mkdir ..\..\zone\%LTARGET%
 if not exist ..\..\zone_source\%LTARGET% xcopy ..\..\zone_source\english ..\..\zone_source\%LTARGET% /SYI > NUL
 
-echo  OpenWarfare will be created in %CLANGUAGE%!
+echo  Leetmod will be created in %CLANGUAGE%!
 if "%make_option%"=="1" goto MAKE_OPENWARFARE_IWD
 if "%make_option%"=="2" goto MAKE_OPENWARFARE_IWD
 if "%make_option%"=="3" goto MAKE_RULES_IWD

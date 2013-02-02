@@ -13,7 +13,6 @@
     execOnDvarStringValue menu_cfg_gt gg "exec menudvars/hardpoints/l/gg.cfg"\
     execOnDvarStringValue menu_cfg_gt gr "exec menudvars/hardpoints/l/gr.cfg"\
     execOnDvarStringValue menu_cfg_gt koth "exec menudvars/hardpoints/l/koth.cfg"\
-    execOnDvarStringValue menu_cfg_gt oitc "exec menudvars/hardpoints/l/oitc.cfg"\
     execOnDvarStringValue menu_cfg_gt re "exec menudvars/hardpoints/l/re.cfg"\
     execOnDvarStringValue menu_cfg_gt sab "exec menudvars/hardpoints/l/sab.cfg"\
     execOnDvarStringValue menu_cfg_gt sd "exec menudvars/hardpoints/l/sd.cfg"\
@@ -33,7 +32,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_game_hardpoints_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_game_hardpoints_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_game_hardpoints_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_game_hardpoints_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_game_hardpoints_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_game_hardpoints_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_game_hardpoints_sd _null" \
@@ -51,7 +49,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_hardpoint_show_reminder_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_hardpoint_show_reminder_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_hardpoint_show_reminder_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_hardpoint_show_reminder_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_hardpoint_show_reminder_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_hardpoint_show_reminder_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_hardpoint_show_reminder_sd _null" \
@@ -69,7 +66,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_remove_hardpoint_on_death_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_remove_hardpoint_on_death_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_remove_hardpoint_on_death_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_remove_hardpoint_on_death_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_remove_hardpoint_on_death_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_remove_hardpoint_on_death_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_remove_hardpoint_on_death_sd _null" \
@@ -87,7 +83,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_game_hardpoints_cycle_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_game_hardpoints_cycle_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_game_hardpoints_cycle_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_game_hardpoints_cycle_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_game_hardpoints_cycle_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_game_hardpoints_cycle_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_game_hardpoints_cycle_sd _null" \
@@ -105,7 +100,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_game_hardpoints_mode_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_game_hardpoints_mode_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_game_hardpoints_mode_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_game_hardpoints_mode_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_game_hardpoints_mode_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_game_hardpoints_mode_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_game_hardpoints_mode_sd _null" \
@@ -123,7 +117,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_announce_killstreak_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_announce_killstreak_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_announce_killstreak_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_announce_killstreak_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_announce_killstreak_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_announce_killstreak_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_announce_killstreak_sd _null" \
@@ -141,7 +134,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_hardpoint_allow_uav_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_hardpoint_allow_uav_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_hardpoint_allow_uav_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_hardpoint_allow_uav_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_hardpoint_allow_uav_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_hardpoint_allow_uav_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_hardpoint_allow_uav_sd _null" \
@@ -159,7 +151,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_game_forceuav_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_game_forceuav_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_game_forceuav_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_game_forceuav_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_game_forceuav_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_game_forceuav_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_game_forceuav_sd _null" \
@@ -177,7 +168,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_hardpoint_uav_streak_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_hardpoint_uav_streak_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_hardpoint_uav_streak_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_hardpoint_uav_streak_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_hardpoint_uav_streak_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_hardpoint_uav_streak_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_hardpoint_uav_streak_sd _null" \
@@ -195,7 +185,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_uav_view_time_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_uav_view_time_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_uav_view_time_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_uav_view_time_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_uav_view_time_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_uav_view_time_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_uav_view_time_sd _null" \
@@ -213,7 +202,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_announce_enemy_uav_online_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_announce_enemy_uav_online_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_announce_enemy_uav_online_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_announce_enemy_uav_online_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_announce_enemy_uav_online_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_announce_enemy_uav_online_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_announce_enemy_uav_online_sd _null" \
@@ -231,7 +219,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_uav_show_hardpoints_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_uav_show_hardpoints_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_uav_show_hardpoints_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_uav_show_hardpoints_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_uav_show_hardpoints_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_uav_show_hardpoints_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_uav_show_hardpoints_sd _null" \
@@ -249,7 +236,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_hardpoint_allow_airstrike_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_hardpoint_allow_airstrike_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_hardpoint_allow_airstrike_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_hardpoint_allow_airstrike_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_hardpoint_allow_airstrike_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_hardpoint_allow_airstrike_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_hardpoint_allow_airstrike_sd _null" \
@@ -267,7 +253,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_hardpoint_airstrike_streak_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_hardpoint_airstrike_streak_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_hardpoint_airstrike_streak_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_hardpoint_airstrike_streak_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_hardpoint_airstrike_streak_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_hardpoint_airstrike_streak_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_hardpoint_airstrike_streak_sd _null" \
@@ -285,7 +270,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_airstrike_hardpoint_interval_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_airstrike_hardpoint_interval_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_airstrike_hardpoint_interval_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_airstrike_hardpoint_interval_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_airstrike_hardpoint_interval_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_airstrike_hardpoint_interval_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_airstrike_hardpoint_interval_sd _null" \
@@ -303,7 +287,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_announce_enemy_airstrike_inbound_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_announce_enemy_airstrike_inbound_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_announce_enemy_airstrike_inbound_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_announce_enemy_airstrike_inbound_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_announce_enemy_airstrike_inbound_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_announce_enemy_airstrike_inbound_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_announce_enemy_airstrike_inbound_sd _null" \
@@ -321,7 +304,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_airstrike_add_kills_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_airstrike_add_kills_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_airstrike_add_kills_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_airstrike_add_kills_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_airstrike_add_kills_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_airstrike_add_kills_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_airstrike_add_kills_sd _null" \
@@ -339,7 +321,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_airstrike_kills_toward_streak_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_airstrike_kills_toward_streak_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_airstrike_kills_toward_streak_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_airstrike_kills_toward_streak_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_airstrike_kills_toward_streak_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_airstrike_kills_toward_streak_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_airstrike_kills_toward_streak_sd _null" \
@@ -357,7 +338,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_airstrike_delay_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_airstrike_delay_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_airstrike_delay_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_airstrike_delay_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_airstrike_delay_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_airstrike_delay_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_airstrike_delay_sd _null" \
@@ -375,7 +355,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_hardpoint_allow_helicopter_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_hardpoint_allow_helicopter_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_hardpoint_allow_helicopter_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_hardpoint_allow_helicopter_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_hardpoint_allow_helicopter_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_hardpoint_allow_helicopter_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_hardpoint_allow_helicopter_sd _null" \
@@ -393,7 +372,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_hardpoint_helicopter_streak_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_hardpoint_helicopter_streak_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_hardpoint_helicopter_streak_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_hardpoint_helicopter_streak_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_hardpoint_helicopter_streak_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_hardpoint_helicopter_streak_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_hardpoint_helicopter_streak_sd _null" \
@@ -411,7 +389,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_heli_hardpoint_interval_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_heli_hardpoint_interval_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_heli_hardpoint_interval_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_heli_hardpoint_interval_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_heli_hardpoint_interval_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_heli_hardpoint_interval_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_heli_hardpoint_interval_sd _null" \
@@ -429,7 +406,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_announce_enemy_heli_inbound_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_announce_enemy_heli_inbound_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_announce_enemy_heli_inbound_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_announce_enemy_heli_inbound_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_announce_enemy_heli_inbound_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_announce_enemy_heli_inbound_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_announce_enemy_heli_inbound_sd _null" \
@@ -447,7 +423,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_helicopter_add_kills_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_helicopter_add_kills_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_helicopter_add_kills_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_helicopter_add_kills_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_helicopter_add_kills_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_helicopter_add_kills_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_helicopter_add_kills_sd _null" \
@@ -465,7 +440,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_helicopter_kills_toward_streak_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_helicopter_kills_toward_streak_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_helicopter_kills_toward_streak_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_helicopter_kills_toward_streak_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_helicopter_kills_toward_streak_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_helicopter_kills_toward_streak_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_helicopter_kills_toward_streak_sd _null" \
@@ -483,7 +457,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_helicopter_delay_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_helicopter_delay_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_helicopter_delay_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_helicopter_delay_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_helicopter_delay_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_helicopter_delay_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_helicopter_delay_sd _null" \
@@ -501,7 +474,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_heli_maxhealth_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_heli_maxhealth_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_heli_maxhealth_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_heli_maxhealth_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_heli_maxhealth_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_heli_maxhealth_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_heli_maxhealth_sd _null" \
@@ -519,7 +491,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_heli_target_recognition_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_heli_target_recognition_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_heli_target_recognition_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_heli_target_recognition_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_heli_target_recognition_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_heli_target_recognition_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_heli_target_recognition_sd _null" \

@@ -3,7 +3,7 @@
 
 init()
 {
-	// Get the module's dvar
+  // Attention: These variables are set on the client only when he spawns and at every spawn
 
 	// These variables apply to any game mod
 	level.scr_hud_show_enemy_names = getdvarx( "scr_hud_show_enemy_names", "int", 0, 0, 1 );
@@ -308,20 +308,11 @@ onJoinedTeam()
   // We restore this variable again
   self setClientDvar("waypointOffscreenPointerDistance", 30);
   
-  if( isDefined(self.team) && (self.team == "allies" || self.team == "axis") ) {
-    self setDefaultClasses(self.team, "assault");
-    self setDefaultClasses(self.team, "specops");
-    self setDefaultClasses(self.team, "heavygunner");
-    self setDefaultClasses(self.team, "demolitions");
-    self setDefaultClasses(self.team, "sniper");
-  }
-  else {
-    self setDefaultClasses("none", "assault");
-    self setDefaultClasses("none", "specops");
-    self setDefaultClasses("none", "heavygunner");
-    self setDefaultClasses("none", "demolitions");
-    self setDefaultClasses("none", "sniper");
-  }
+  self maps\mp\gametypes\_class::setDefaultClasses("assault");
+  self maps\mp\gametypes\_class::setDefaultClasses("specops");
+  self maps\mp\gametypes\_class::setDefaultClasses("heavygunner");
+  self maps\mp\gametypes\_class::setDefaultClasses("demolitions");
+  self maps\mp\gametypes\_class::setDefaultClasses("sniper");
 }
 
 onPlayerSpawned()
@@ -401,40 +392,4 @@ setForcedClientVariables()
 	}
 	
 	return;	
-}
-
-setDefaultClasses(team, class)
-{
-  stat = 200;
-  dlfClassName = "Assault";
-  switch(class) {
-    case "specops":
-      stat = 210;
-      dlfClassName = "Commando";
-    break;
-    case "heavygunner":
-      stat = 220;
-      dlfClassName = "Stealth";
-    break;
-    case "demolitions":
-      stat = 230;
-      dlfClassName = "Runner";
-    break;
-    case "sniper":
-      stat = 240;
-      dlfClassName = "Sniper";
-    break;
-  }
-  
-  self setClientDvar("tmp_class_name_"+stat, getdvarx("class_"+class+"_displayname", "string", dlfClassName) );
-  
-  self setClientDvars(
-    "tmp_class_prim_"+stat, level.class_primary[class][team],
-    "tmp_class_prim_att_"+stat, level.class_primary_attachment[class],
-    "tmp_class_second_"+stat, level.class_secondary[class][team],
-    "tmp_class_second_att_"+stat, level.class_secondary_attachment[class],
-    "tmp_class_perk1_"+stat, level.class_perk1[class],
-    "tmp_class_perk2_"+stat, level.class_perk2[class],
-    "tmp_class_perk3_"+stat, level.class_perk3[class],
-    "tmp_class_specialg_"+stat, level.class_sgrenade[class]);
 }

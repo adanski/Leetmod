@@ -2,12 +2,14 @@ init()
 {
 	level.persistentDataInfo = [];
 
-	//if ( !level.rankedMatch ) {
-	if ( !level.offlineClasses ) {
-		maps\mp\gametypes\_class_unranked::init();
-	} else {
+	// previously this was:
+  //if ( !level.rankedMatch ) {
+  // it was changed to:
+	//if ( !level.rankedClasses ) {
+	//	maps\mp\gametypes\_class_unranked::init();
+	//} else {
 		maps\mp\gametypes\_class::init();
-	}
+	//}
 	
 	maps\mp\gametypes\_rank::init();
 	maps\mp\gametypes\_missions::init();

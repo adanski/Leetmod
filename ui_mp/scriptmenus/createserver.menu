@@ -68,10 +68,10 @@
 		
 		//CHOICE_SEPARATOR( CHOICE_SEP_2 )
 		
-		CHOICE_BUTTON( 8, "@OW_SERVER_ARMORY", open "settings_quick_war_@MPUI_RULES_SCORE_LIMIT"; )
-		CHOICE_BUTTON( 9, "@OW_SERVER_PERKS", open "settings_quick_war_@MPUI_RULES_TIME_LIMIT"; )
-		CHOICE_BUTTON( 10, "@OW_SERVER_HARDPOINTS", open "settings_quick_war_@MPUI_RULES_SPECTATING"; )
-		CHOICE_BUTTON( 11, "@OW_SERVER_HEALTHSYSTEM", open "settings_quick_war_@MPUI_RULES_FRIENDLY_FIRE"; )
+		CHOICE_BUTTON_VIS( 8, "@OW_SERVER_ARMORY", open "settings_quick_war_@MPUI_RULES_SCORE_LIMIT";, when( dvarString(g_gametype) != "oitc" ) )
+		CHOICE_BUTTON_VIS( 9, "@OW_SERVER_PERKS", open "settings_quick_war_@MPUI_RULES_TIME_LIMIT";, when( dvarString(g_gametype) != "oitc" ) )
+		CHOICE_BUTTON_VIS( 10, "@OW_SERVER_HARDPOINTS", open "settings_quick_war_@MPUI_RULES_SPECTATING";, when( dvarString(g_gametype) != "oitc" ) )
+		CHOICE_BUTTON_VIS( 11, "@OW_SERVER_HEALTHSYSTEM", open "settings_quick_war_@MPUI_RULES_FRIENDLY_FIRE";, when( dvarString(g_gametype) != "oitc" ) )
 		CHOICE_BUTTON( 12, "@OW_SERVER_FAIRNESS", open "settings_quick_koth_@MPUI_RULES_TIME_LIMIT"; )
     
     #undef CHOICE_X_START
@@ -82,7 +82,7 @@
     #undef CHOICE_X_START
     #define CHOICE_X_START  10
     
-    CHOICE_BUTTON( 25, "@OW_SERVER_WEAPONS", open "settings_quick_dom_@MPUI_RULES_SCORE_LIMIT"; )
+    CHOICE_BUTTON_VIS( 25, "@OW_SERVER_WEAPONS", open "settings_quick_dom_@MPUI_RULES_SCORE_LIMIT";, when( dvarString(g_gametype) != "oitc" ) )
     CHOICE_BUTTON( 26, "@OW_SERVER_PLAYER", open "settings_quick_dom_@MPUI_RULES_TIME_LIMIT"; )
     CHOICE_BUTTON( 27, "@OW_SERVER_WORLD", open "settings_quick_koth_@MPUI_RULES_SCORE_LIMIT"; )
 		CHOICE_BUTTON( 28, "@OW_SERVER_SCORES", open "settings_quick_koth_@MPUI_RULES_SPECTATING"; )

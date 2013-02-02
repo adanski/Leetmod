@@ -693,11 +693,11 @@ movePlayer( newTeam, autoBalance )
 	self maps\mp\gametypes\_globallogic::updateObjectiveText();
 	
 	// Re-adjust the model of the player and give him full ammo again
-	if ( !level.offlineClasses ) {
-		self maps\mp\gametypes\_class_unranked::giveLoadout( self.team, self.class );
-	} else {
+	//if ( !level.rankedClasses ) {
+	//	self maps\mp\gametypes\_class_unranked::giveLoadout( self.team, self.class );
+	//} else {
 		self maps\mp\gametypes\_class::giveLoadout( self.team, self.class );
-	}
+	//}
 
 	// We indicate the player is not being moved anymore as soon as we switch the team
 	self.beingMoved = false;	

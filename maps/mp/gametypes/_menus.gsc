@@ -9,7 +9,7 @@ init()
 	game["menu_initteam_axis"] = "initteam_opfor";
 	game["menu_class"] = "class";
 	game["menu_changeclass"] = "changeclass";
-	game["menu_changeclass_offline"] = "changeclass_offline";
+	//game["menu_changeclass_offline"] = "changeclass_offline";
   
 	if ( !level.console )
 	{
@@ -70,7 +70,7 @@ init()
 	precacheMenu(game["menu_class"]);
 	precacheMenu(game["menu_changeclass"]);
 	precacheMenu(game["menu_initteam_axis"]);
-	precacheMenu(game["menu_changeclass_offline"]);
+	//precacheMenu(game["menu_changeclass_offline"]);
   
   
   if ( getDvar("dedicated") == "listen server" ) {
@@ -315,7 +315,8 @@ onMenuResponse()
 
 			if ( level.console )
 			{
-				if( menu == game["menu_changeclass"] || menu == game["menu_changeclass_offline"] || menu == game["menu_team"] || menu == game["menu_controls"] )
+				//if( menu == game["menu_changeclass"] || menu == game["menu_changeclass_offline"] || menu == game["menu_team"] || menu == game["menu_controls"] )
+				if( menu == game["menu_changeclass"] || menu == game["menu_team"] || menu == game["menu_controls"] )
 				{
 //					assert(self.pers["team"] == "allies" || self.pers["team"] == "axis");
 
@@ -334,11 +335,6 @@ onMenuResponse()
 			//self thread maps\mp\gametypes\hns::choosePropClass( response );
 			continue;			
 		}
-    
-    if ( response == "unlockcac" ) {
-      self thread maps\mp\gametypes\_rank::forceUnlockAll(4);
-      continue;
-    }
     
     if(response == "ulkallw") {
       self thread maps\mp\gametypes\_rank::forceUnlockAllWeapons();
@@ -416,13 +412,6 @@ onMenuResponse()
       continue;
     }
     */
-    /*
-    if(response == "powerrankme")
-		{
-      self waittill("spawned_player");
-        self thread openwarfare\_powerrank::givePowerRankXP();
-		}
-    */
 
 		if(response == "changeteam")
 		{
@@ -430,7 +419,13 @@ onMenuResponse()
 			self closeInGameMenu();
 			self openMenu(game["menu_team"]);
 		}
-
+//  Commented because: never found in any menu where this response is used
+//    if(response == "changeclass" ) {
+//			self closeMenu();
+//			self closeInGameMenu();
+//			self openMenu( game[ "menu_changeclass_" + self.pers["team"] ] );
+//      continue;
+//    }
 		if(response == "changeclass_marines" )
 		{
 			self closeMenu();
@@ -563,7 +558,8 @@ onMenuResponse()
 				break;
 			}
 		}	// the only responses remain are change class events
-		else if( menu == game["menu_changeclass"] || menu == game["menu_changeclass_offline"] )
+		//else if( menu == game["menu_changeclass"] || menu == game["menu_changeclass_offline"] )
+		else if( menu == game["menu_changeclass"] )
 		{
 			self closeMenu();
 			self closeInGameMenu();
@@ -580,86 +576,5 @@ onMenuResponse()
 			else if(menu == game["menu_quickresponses"])
 				maps\mp\gametypes\_quickmessages::quickresponses(response);
 		}
-
-		// ======== catching response for create-a-class events ========
-		/*
-		responseTok = strTok( response, "," );
-
-		if( isdefined( responseTok ) && responseTok.size > 1 )
-		{
-			if( responseTok[0] == "primary" )
-			{
-				// primary weapon selection
-				assertex( responseTok.size != 2, "Primary weapon selection in create-a-class-ingame is sending bad response:" + response );
-
-				stat_offset = cacMenuStatOffset( menu, response );
-				self setstat( stat_offset+201, ( int( tableLookup( "mp/statsTable.csv", 4, responseTok[1], 1 ) ) - 3000 ) );
-			}
-			else if( responseTok[0] == "attachment" )
-			{
-				// primary or secondary weapon attachment selection
-				assertex( responseTok.size != 3, "Weapon attachment selection in create-a-class-ingame is sending bad response:" + response );
-
-				stat_offset = cacMenuStatOffset( menu, response );
-				if( responseTok[1] == "primary" )
-					self setstat( stat_offset+202, int( tableLookup( "mp/attachmentTable.csv", 4, responseTok[2], 9 ) ) );
-				else if( responseTok[1] == "secondary" )
-					self setstat( stat_offset+204, int( tableLookup( "mp/attachmentTable.csv", 4, responseTok[2], 9 ) ) );
-			}
-			else if( responseTok[0] == "secondary" )
-			{
-				// secondary weapon selection
-				assertex( responseTok.size != 2, "Secondary weapon selection in create-a-class-ingame is sending bad response:" + response );
-
-				stat_offset = cacMenuStatOffset( menu, response );
-				self setstat( stat_offset+203, ( int( tableLookup( "mp/statsTable.csv", 4, responseTok[1], 1 ) ) - 3000 ) );
-			}
-			else if( responseTok[0] == "perk" )
-			{
-				// all 3 perks selection
-				assertex( responseTok.size != 3, "Perks selection in create-a-class-ingame is sending bad response:" + response );
-
-				stat_offset = cacMenuStatOffset( menu, response );
-				self setstat( stat_offset+200+int(responseTok[1]), int( tableLookup( "mp/statsTable.csv", 4, responseTok[2], 1 ) ) );
-			}
-			else if( responseTok[0] == "sgrenade" )
-			{
-				assertex( responseTok.size != 2, "Special grenade selection in create-a-class-ingame is sending bad response:" + response );
-
-				stat_offset = cacMenuStatOffset( menu, response );
-				self setstat( stat_offset+208, ( int( tableLookup( "mp/statsTable.csv", 4, responseTok[1], 1 ) ) - 3000 ) );
-			}
-			else if( responseTok[0] == "camo" )
-			{
-				assertex( responseTok.size != 2, "Primary weapon camo skin selection in create-a-class-ingame is sending bad response:" + response );
-
-				stat_offset = cacMenuStatOffset( menu, response );
-				self setstat( stat_offset+209, int( tableLookup( "mp/attachmentTable.csv", 4, responseTok[2], 11 ) ) );
-			}
-		}
-		*/
 	}
 }
-
-/*
-// sort response message from CAC menu
-cacMenuStatOffset( menu, response )
-{
-	stat_offset = -1;
-
-	if( menu == "menu_cac_assault" )
-		stat_offset = 0;
-	else if( menu == "menu_cac_specops" )
-		stat_offset = 10;
-	else if( menu == "menu_cac_heavygunner" )
-		stat_offset = 20;
-	else if( menu == "menu_cac_demolitions" )
-		stat_offset = 30;
-	else if( menu == "menu_cac_sniper" )
-		stat_offset = 40;
-
-	assertex( stat_offset >= 0, "The response: " + response + " came from non-CAC menu" );
-
-	return stat_offset;
-}
-*/
