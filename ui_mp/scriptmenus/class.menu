@@ -157,7 +157,7 @@
 		CHOICE_BUTTON_VIS_NOHI( 3, "@MPUI_CHOOSE_CLASS", scriptMenuResponse "changeclass_opfor", when( TEAM_IS_OPFOR && MAY_CHOOSE_CLASS ) )
 		CHOICE_DBUTTON_VIS( 3, "@MPUI_CHOOSE_CLASS", when( dvarInt( scr_oldschool ) == 1 ); )
 
-		CHOICE_BUTTON_FOCUS_VIS_ADV( 4, "@OW_CAC_MENU_ITEM", close self;scriptMenuResponse "ow_cac_editor", exec "set ui_hint_text @MPUI_DESC_CREATE_A_CLASS", CLEARUIHINT, when( CLASS_MODE && !localvarBool( ui_hideBack ) ), CLASS_MODE && dvarbool( ui_ranked_game ) && !localvarBool( ui_hideBack ) )
+		CHOICE_BUTTON_FOCUS_VIS_ADV( 4, "@OW_CAC_MENU_ITEM", close self; scriptMenuResponse "ow_cac_editor", exec "set ui_hint_text @MPUI_DESC_CREATE_A_CLASS", CLEARUIHINT, when( CLASS_MODE && !localvarBool( ui_hideBack ) ), CLASS_MODE && dvarbool( ui_ranked_game ) && !localvarBool( ui_hideBack ) )
 		//CHOICE_BUTTON_FOCUS_VIS_NOHI( 4, "", ;, exec "set ui_hint_text @MPUI_DESC_CREATE_A_CLASS_LOCKED", CLEARUIHINT, when( !localvarBool( ui_hideBack ) && stat( 260 ) < 1 ) )
 		//CHOICE_DBUTTON_VIS( 4, "@OW_CAC_MENU_ITEM", when( ( !localvarBool( ui_hideBack ) && stat( 260 ) < 1 ) ) )
 		CHOICE_NEWICON_VIS( 4, "specialty_new", when( CLASS_MODE && !localvarBool( ui_hideBack ) && ANY_NEW_CAC ) )
@@ -177,29 +177,44 @@
     //CHOICE_BUTTON_VIS( 10, "@OW_MENU_SERVER_CONFIGURATION", open createserver;, when( dvarbool( sv_running ) ) )
     
     execkey "1" { play "mouse_click"; scriptMenuResponse "changeclass_keyboard"; }
-    execkey "2" { play "mouse_click"; close self; scriptMenuResponse "ow_cac_editor"; }
+    execkey "2" {
+      play "mouse_click";
+      close self;
+      setdvar tmp_denyUseCAC 0;
+      execNowOnDvarStringValue g_gametype gg "set tmp_denyUseCAC 1";
+      execNowOnDvarStringValue g_gametype oitc "set tmp_denyUseCAC 1";
+      execNowOnDvarStringValue g_gametype ss "set tmp_denyUseCAC 1";
+      scriptMenuRespondOnDvarStringValue tmp_denyUseCAC 0 "ow_cac_editor";
+    }
     execkey "3" { play "mouse_click"; scriptMenuResponse "changeteam"; }
     execkey "4" { play "mouse_click"; open muteplayer; close self; }
     execkeyint 13 { play "mouse_click"; open muteplayer; close self; }
     execkeyint 32 { play "mouse_click"; scriptMenuResponse "changeclass_keyboard"; }
     execkey "i" { play "mouse_click"; close self; open serverinfo; }
     execkey "c" {
-      //# I'm commenting this instead of removing because this piece of code is a good hack that can be handy someday
-      //execNow "statGetInDvar 260 ui_stat_cac_unlocked";
       play "mouse_click";
       close self;
-      //uiScript openMenuOnDvar ui_stat_cac_unlocked 0 unlockcacmenu;
-      //scriptMenuRespondOnDvarIntValue ui_stat_cac_unlocked 1 "ow_cac_editor";
-      //scriptMenuRespondOnDvarIntValue ui_stat_cac_unlocked 2 "ow_cac_editor";
-      scriptMenuResponse "ow_cac_editor";
+      setdvar tmp_denyUseCAC 0;
+      execNowOnDvarStringValue g_gametype gg "set tmp_denyUseCAC 1";
+      execNowOnDvarStringValue g_gametype oitc "set tmp_denyUseCAC 1";
+      execNowOnDvarStringValue g_gametype ss "set tmp_denyUseCAC 1";
+      scriptMenuRespondOnDvarStringValue tmp_denyUseCAC 0 "ow_cac_editor";
     }
+    //# I'm commenting this instead of removing because this piece of code is a good hack that can be handy someday
+    //execNow "statGetInDvar 260 ui_stat_cac_unlocked";
+    //play "mouse_click";
+    //close self;
+    //uiScript openMenuOnDvar ui_stat_cac_unlocked 0 unlockcacmenu;
+    //scriptMenuRespondOnDvarIntValue ui_stat_cac_unlocked 1 "ow_cac_editor";
+    //scriptMenuRespondOnDvarIntValue ui_stat_cac_unlocked 2 "ow_cac_editor";
+    //scriptMenuResponse "ow_cac_editor";
     execkey "t" { play "mouse_click"; scriptMenuResponse "changeteam"; }
     execkey "o" { play "mouse_click"; close self; open main_options; execnow "set ui_allow_graphic_change 0"; }
     execkey "p" { play "mouse_click"; open muteplayer; close self; }
     
     execkey "q" { play "mouse_click"; open popup_leavegame; }
     
-    execkey "s" { play "mouse_click"; open createserver; }
+    execkey "s" { play "mouse_click"; uiScript openMenuOnDvar sv_running 1 createserver; }
   
     itemDef
 		{

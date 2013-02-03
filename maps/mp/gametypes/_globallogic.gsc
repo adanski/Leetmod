@@ -69,9 +69,18 @@ init()
 	// Set mod name and version
 	setDvar( "_Mod", "Leetmod", true );
 	setDvar( "_ModVer", "v1.8beta", true );
-
-	// Make a health check of the server
+	
+  setDvar( "_modfile", "leetmod.test" );
+  
+  // Make a health check of the server
 	level thread openwarfare\_servercheck::init();
+  
+  //# We will get a better place and logic to reset these variables
+  // They're the ones that cause the very nasty 'File/sum mismatch' error
+  //setDvar("sv_referencedFFNames", "");
+  //setDvar("sv_referencedFFCheckSums", "");
+  //setDvar("sv_referencedIwdNames", "");
+  //setDvar("sv_referencedIwds", "");
 
 	// hack to allow maps with no scripts to run correctly
 	if ( !isDefined( level.tweakablesInitialized ) )

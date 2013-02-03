@@ -137,7 +137,11 @@
     execkey "c" {
       play "mouse_click";
       close self;
-      scriptMenuResponse "ow_cac_editor";
+      setdvar tmp_denyUseCAC 0;
+      execNowOnDvarStringValue g_gametype gg "set tmp_denyUseCAC 1";
+      execNowOnDvarStringValue g_gametype oitc "set tmp_denyUseCAC 1";
+      execNowOnDvarStringValue g_gametype ss "set tmp_denyUseCAC 1";
+      scriptMenuRespondOnDvarStringValue tmp_denyUseCAC 0 "ow_cac_editor";
     }
     execkey "o" { play "mouse_click"; close self; open main_options; execnow "set ui_allow_graphic_change 0"; }
     execkey "p" { play "mouse_click"; open muteplayer; close self; }
@@ -148,7 +152,7 @@
       scriptMenuRespondOnDvarStringValue ui_team opfor "allies";
     }
     
-    execkey "s" { play "mouse_click"; open createserver; }
+    execkey "s" { play "mouse_click"; uiScript openMenuOnDvar sv_running 1 createserver; }
     
     itemDef 
 		{
