@@ -22,11 +22,6 @@
 		}
     onOpen
 		{
-      /*
-      scriptMenuRespondOnDvarIntValue compassObjectiveScreen 1 "common_menu_com";
-      scriptMenuRespondOnDvarIntValue player_breath_snd_src 1 "common_menu_com";
-      scriptMenuRespondOnDvarIntValue snd_enableSrc 1 "common_menu_com";
-      */
       execondvarintvalue sv_running 0 "set tmp_ui_reconnect 1";
       exec "setfromdvar ui_hud_hardcore_show_compass ct_hud_hardcore_show_compass";
 			exec "setfromdvar ui_hud_show_inventory ct_hud_show_inventory";

@@ -4,6 +4,12 @@ init()
 {
 	// Give some time to the server to populate variables with the referenced IWDs
 	wait( 5.0 );
+  
+  iprintln("Server check disabled while in development.");
+  iprintln("Release: Re-enable it in openwarfare/_servercheck.gsc");
+  development = true;
+  if( development )
+    return;
 	
 	// Check all the .IWDs active in the server
 	checkResult = runCheck();
@@ -26,11 +32,12 @@ runCheck()
 	// Check if there's any .IWD file that doesn't belong to the mod
 	iwdFiles = strtok( tolower( getdvar( "sv_referencedIwdNames" ) ), " " );
 	modPath = tolower( getdvar("fs_game") ) + "/";
+  modFile = getdvar("_modfile");
 	
 	for ( index = 0; index < iwdFiles.size; index++ ) {
 		if ( isSubStr( iwdFiles[index], modPath ) ) {
 			// Check if the .IWD file doesn't belong to the mod
-			if ( iwdFiles[index] != modPath + "z_leetmod" ) {
+			if ( iwdFiles[index] != "" + modPath + modFile ) {
 				return "Invalid file ^3" + iwdFiles[index] + ".iwd^7 has been found in the mod directory.";
 			}
 		}

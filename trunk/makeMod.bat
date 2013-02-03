@@ -31,7 +31,7 @@ echo _________________________________________________________________
 echo.
 echo  Please select an option:
 echo    1. Build everything (might take longer)
-echo    2. Build z_leetmod.iwd
+echo    2. Build leetmod.iwd
 echo    3. Build ruleset .IWD file
 echo    4. Build mod.ff
 echo.
@@ -161,25 +161,25 @@ goto MAKE_OPENWARFARE_IWD
 :BUILD_OPENWARFARE_IWD
 echo _________________________________________________________________
 echo.
-echo  Building z_leetmod.iwd:
-echo    Deleting old z_leetmod.iwd file...
-del z_leetmod.iwd
+echo  Building leetmod.iwd:
+echo    Deleting old leetmod.iwd file...
+del leetmod.iwd
 echo    Adding images...
-7za a -r -tzip z_leetmod.iwd images\*.iwi > NUL
+7za a -r -tzip leetmod.iwd images\*.iwi > NUL
 echo    Adding sounds...
-7za a -r -tzip z_leetmod.iwd sound\*.mp3 > NUL
+7za a -r -tzip leetmod.iwd sound\*.mp3 > NUL
 echo    Adding weapons...
-7za a -r -tzip z_leetmod.iwd weapons\mp\*_mp > NUL
+7za a -r -tzip leetmod.iwd weapons\mp\*_mp > NUL
 REM #COMMENT FOR REMOVING RULESETS - START
 REM echo    Adding OpenWarfare standard rulesets...
-REM 7za a -r -tzip z_leetmod.iwd rulesets\openwarfare\*.gsc > NUL
-REM 7za a -r -tzip z_leetmod.iwd rulesets\leagues.gsc > NUL
+REM 7za a -r -tzip leetmod.iwd rulesets\openwarfare\*.gsc > NUL
+REM 7za a -r -tzip leetmod.iwd rulesets\leagues.gsc > NUL
 REM #COMMENT FOR REMOVING RULESETS - END
 REM echo    Adding empty mod.arena file...
-REM 7za a -r -tzip z_leetmod.iwd mod.arena > NUL
+REM 7za a -r -tzip leetmod.iwd mod.arena > NUL
 REM echo    Adding fill menu support cfg files...
-REM 7za a -r -tzip z_leetmod.iwd menudvars\* > NUL
-echo  New z_leetmod.iwd file successfully built!
+REM 7za a -r -tzip leetmod.iwd menudvars\* > NUL
+echo  New leetmod.iwd file successfully built!
 del /f /q weapons\mp\* >NUL
 rmdir weapons\mp >NUL
 if "%make_option%"=="1" goto MAKE_MOD_FF

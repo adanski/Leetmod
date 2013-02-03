@@ -18,13 +18,13 @@ cacResponseHandler()
 {
 	self endon( "disconnect" );
 	
-	for(;;)
+  self initializeEditor();
+	
+  for(;;)
 	{
 		self waittill( "menuresponse", menu, response );
-		if ( ( menu == "team_marinesopfor" || menu == "class" || menu == "endofgame" ) && response == "ow_cac_editor" ) {
-			self initializeEditor();
+		if ( ( menu == "team_marinesopfor" || menu == "class" || menu == "endofgame" ) && response == "ow_cac_editor" )
 			self openMenu( game["menu_ow_cac_editor"] );
-		}
 		
 		if ( menu == game["menu_ow_cac_editor"] )
 		{
@@ -33,8 +33,7 @@ cacResponseHandler()
 			//want to give player the ability to edit their class.
       switch( response )
       {
-        case "open": 
-          self initializeEditor();
+        case "open":
           self openMenu( game["menu_ow_cac_editor"] );
           break;	
         case "cacClassNext":
@@ -110,7 +109,7 @@ cacResponseHandler()
             break;
           switch(respTok[0]) {
             case "cacClass":
-              self classIdx( respTok[1]-1 );
+              self classIdx( int(respTok[1])-1 );
               break;
           }
           break;
@@ -1110,6 +1109,9 @@ addCACCamos( stat )
 
 useSelectedClass()
 {
+  if ( !isDefined( self.pers ) || !isDefined( self.pers["team"] ) || self.pers["team"] == "spectator" )
+    return;
+    
   selectedClassName = "custom" + (self.classesIndex+1) + ",0";
   self maps\mp\gametypes\_class::menuClass( selectedClassName );
 }

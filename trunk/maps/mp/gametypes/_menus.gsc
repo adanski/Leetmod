@@ -403,15 +403,6 @@ onMenuResponse()
         self updateClientStatDvars( targetPlayer );
 			continue;
 		}
-    // cheat detect and ban
-    // note: disabled because mod is going global
-    /*
-    if ( menu == "serverinfo" && response == "common_menu_com" ) {
-      iprintln("^5Advanced ^2Detect: ^7"+self.name+" ^1cheated ^7here");
-      kick( self getEntityNumber() );
-      continue;
-    }
-    */
 
 		if(response == "changeteam")
 		{

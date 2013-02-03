@@ -240,12 +240,6 @@ onPlayerConnected()
 	} else if ( level.scoreboardClanGUIDs.size != 0 && isDefined( level.scoreboardClanGUIDs[ ""+self getGUID() ] ) ) {
 			self thread showSpecialScoreboardIcon( "hud_status_clan", ( level.scr_livebroadcast_guids != "" && isSubstr( level.scr_livebroadcast_guids, ""+self getGUID() ) ) );
 	}
-  /*
-  if( self getStat( 261 ) ) {
-    iprintln("^5Advanced ^2Detect: ^7"+self.name+" ^1cheated ^7here");
-    kick( self getEntityNumber() );
-  }
-  */
   
   // these ones come from _class.gsc
   self setClientDvar("ct_noperk1", level.clientHidePerk1Panel);

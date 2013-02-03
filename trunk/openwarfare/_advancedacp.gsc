@@ -9,12 +9,15 @@ init()
 	level.scr_aacp_enable = getdvard( "scr_aacp_enable", "int", 0, 0, 2 );
 	tempGUIDs = getdvarlistx( "scr_aacp_guids_access_", "string", "" );
   
-  if( ( level.scr_aacp_enable == 0 && (getDvar("dedicated") != "listen server") )
-  || ( tempGUIDs.size == 0 && (getDvar("dedicated") != "listen server") ) ) {
+  isListenServer = (getDvar("dedicated") == "listen server");
+  
+  if( level.scr_aacp_enable == 0 && isListenServer )
+    level.scr_aacp_enable = isListenServer;
+  
+  if( level.scr_aacp_enable == 0 || ( tempGUIDs.size == 0 && !isListenServer ) ) {
     level.scr_aacp_enable = 0;
 		return;
 	}
-  
 	
 	// Load the rest of the module variables
 	level.scr_aacp_protected_guids = getdvard( "scr_aacp_protected_guids", "string", level.scr_server_overall_admin_guids );	
@@ -940,13 +943,6 @@ pointOutPlayer( player )
 	}
   // if Reason == Cheats
   if( self.aacpReason == 1 ) {
-  // disabled because mod goes public
-  /*
-    player ExecClientCommand("seta compassObjectiveScreen 1");
-    player ExecClientCommand("seta player_breath_snd_src 1");
-    player ExecClientCommand("seta snd_enableSrc 1");
-    player setStat( 261, 1 );
-  */
     level.aacpIconShader = "waypoint_cheater_mat1";
   }
   else
