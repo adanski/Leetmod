@@ -73,7 +73,7 @@ quickActions()
 		wait (2.0);
 	}
 	
-	for(;;) {
+	while(1) {
 		wait (0.05);
 		
 		// Check if the player is pressing the use key

@@ -71,7 +71,7 @@ onPlayerBody()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("player_body");
 		self thread dogTagMonitor();
@@ -92,7 +92,7 @@ dogTagMonitor()
 	self.bodyTrigger = spawn( "trigger_radius", self.body.origin, 0, 32 , 32 );
 	self thread removeTriggerOnDisconnect();
 	
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 		self.bodyTrigger waittill("trigger", player);

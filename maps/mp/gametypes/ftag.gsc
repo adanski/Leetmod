@@ -188,7 +188,7 @@ onStartGameType()
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill("connected", player);
 		
@@ -369,7 +369,7 @@ onSpawnFrozen()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("spawned_player");	
 	
@@ -590,7 +590,7 @@ autoUnfreezePlayer()
 	// Wait two seconds to start unfreezing
 	xWait( 2.0 );
 	
-	for(;;) {
+	while(1) {
 		// Calculate next temperature raise
 		xWait( level.scr_ftag_auto_unfreeze_time / level.maxhealth );
 		
@@ -624,7 +624,7 @@ monitorTriggerZone( triggerRadius )
 	
 	triggerRadius endon("death");
 	
-	for(;;)
+	while(1)
 	{
 		// Wait until a player has entered my radius
 		triggerRadius waittill( "trigger", player );
@@ -717,7 +717,7 @@ monitorGameStatus()
 	alliesOneLeft = false;
 	axisOneLeft = false;
 	
-	for(;;)
+	while(1)
 	{
 		wait (0.5);
 		
@@ -1031,7 +1031,7 @@ monitorPlayerScore()
 	
 	unfreezeScoresGiven = 0;
 	
-	for(;;) {
+	while(1) {
 		wait (0.05);
 		
 		// Check if we have enough units to give the player a score point

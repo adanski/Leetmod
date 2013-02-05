@@ -153,7 +153,7 @@ onPlayerConnect()
 {
 	level endon ( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		level waittill( "connecting", player );
 
@@ -174,7 +174,7 @@ onPlayerSpawned()
 	self endon( "disconnect" );
 	level endon ( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		self waittill( "spawned_player" );
 
@@ -406,7 +406,7 @@ pickupObjectDelay( origin )
 
 	self.canPickupObject = false;
 
-	for(;;)
+	while(1)
 	{
 		if ( distanceSquared( self.origin, origin ) > 64*64 )
 			break;
@@ -483,7 +483,7 @@ updateCarryObjectOrigin()
 	level endon ( "game_ended" );
 
 	objPingDelay = 5.0;
-	for(;;)
+	while(1)
 	{
 		if ( isDefined( self.carrier ) )
 		{
@@ -868,7 +868,7 @@ manualDropThink()
 	self endon ( "death" );
 	self endon ( "drop_object" );
 
-	for(;;)
+	while(1)
 	{
 		while ( self attackButtonPressed() || self fragButtonPressed() || self secondaryOffhandButtonPressed() || self meleeButtonPressed() )
 			wait .05;
@@ -1825,7 +1825,7 @@ updateVisibilityAccordingToRadar()
 	self endon("death");
 	self endon("carrier_cleared");
 
-	for(;;)
+	while(1)
 	{
 		level waittill("radar_status_change");
 		self updateCompassIcons();
@@ -1912,7 +1912,7 @@ makeSolid()
 	self notify("changing_solidness");
 	self endon("changing_solidness");
 
-	for(;;)
+	while(1)
 	{
 		for ( i = 0; i < level.players.size; i++ )
 		{

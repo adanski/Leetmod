@@ -172,7 +172,7 @@ init()
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill("connected", player);
 
@@ -188,7 +188,7 @@ onPlayerSpawned()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("spawned_player");
 
@@ -210,7 +210,7 @@ onPlayerKilled()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("killed_player");
 		if ( level.scr_deleteexplosivesondeath == 1 )
@@ -230,7 +230,7 @@ watchWeaponChange()
 	if ( !mayDropWeapon( self.lastDroppableWeapon ) )
 		self.lastDroppableWeapon = "none";
 
-	for(;;)
+	while(1)
 	{
 		self waittill( "weapon_change", newWeapon );
 
@@ -455,7 +455,7 @@ watchPickup()
 
 	weapname = self getItemWeaponName();
 
-	for(;;)
+	while(1)
 	{
 		self waittill( "trigger", player, droppedItem );
 
@@ -497,7 +497,7 @@ watchGrenadePickup( grenadeType )
 {
 	self endon("death");
 
-	for(;;)
+	while(1)
 	{
 		self waittill( "trigger", player );
 
@@ -614,7 +614,7 @@ watchWeaponUsage()
 
 	self.firingWeapon = false;
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "begin_firing" );
 
@@ -791,7 +791,7 @@ watchGrenadeUsage()
 
 	self thread watchForThrowbacks();
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "grenade_pullback", weaponName );
 
@@ -865,7 +865,7 @@ watchForThrowbacks()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "grenade_fire", grenade, weapname );
 		if ( self.gotPullbackNotify )
@@ -891,7 +891,7 @@ watchC4()
 
 	//maxc4 = 2;
 
-	for(;;)
+	while(1)
 	{
 		self waittill( "grenade_fire", c4, weapname );
 		if ( weapname == "c4" || weapname == "c4_mp" )
@@ -924,7 +924,7 @@ watchClaymores()
 	self endon( "disconnect" );
 
 	self.claymorearray = [];
-	for(;;)
+	while(1)
 	{
 		self waittill( "grenade_fire", claymore, weapname );
 		if ( weapname == "claymore" || weapname == "claymore_mp" )
@@ -980,7 +980,7 @@ showCone( angle, range, color )
 	fullforward = forward * range * cos( angle );
 	sideamnt = range * sin( angle );
 
-	for(;;)
+	while(1)
 	{
 		prevpoint = (0,0,0);
 		for ( i = 0; i <= 20; i++ )
@@ -1039,7 +1039,7 @@ claymoreDetonation()
 	damagearea = spawn("trigger_radius", self.origin + (0,0,0-level.claymoreDetonateRadius), 0, level.claymoreDetonateRadius, level.claymoreDetonateRadius*2);
 	self thread deleteOnDeath( damagearea );
 
-	for(;;)
+	while(1)
 	{
 		damagearea waittill("trigger", player);
 
@@ -1123,7 +1123,7 @@ watchC4AltDetonate()
 	level endon( "game_ended" );
 
 	buttonTime = 0;
-	for(;;)
+	while(1)
 	{
 		if ( self UseButtonPressed() )
 		{
@@ -1163,7 +1163,7 @@ watchC4Detonation()
 	self endon("death");
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill( "detonate" );
 		weap = self getCurrentWeapon();
@@ -1197,7 +1197,7 @@ watchC4AltDetonation()
 	self endon("death");
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill( "alt_detonate" );
 		weap = self getCurrentWeapon();
@@ -1258,7 +1258,7 @@ c4Damage()
 
 	attacker = undefined;
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "damage", damage, attacker, direction_vec, point, type, modelName, tagName, partName, iDFlags );
 		if ( !isplayer(attacker) )
@@ -1358,7 +1358,7 @@ playC4Effects()
 	self endon("death");
 	self waittill("activated");
 
-	for(;;)
+	while(1)
 	{
 		org = self getTagOrigin( "tag_fx" );
 		ang = self getTagAngles( "tag_fx" );
@@ -1370,7 +1370,7 @@ playC4Effects()
 
 		originalOrigin = self.origin;
 
-		for(;;)
+		while(1)
 		{
 			wait .25;
 			if ( self.origin != originalOrigin )
@@ -1552,7 +1552,7 @@ playClaymoreEffects()
 {
 	self endon("death");
 
-	for(;;)
+	while(1)
 	{
 		self waittillNotMoving();
 
@@ -1565,7 +1565,7 @@ playClaymoreEffects()
 
 		originalOrigin = self.origin;
 
-		for(;;)
+		while(1)
 		{
 			wait .25;
 			if ( self.origin != originalOrigin )

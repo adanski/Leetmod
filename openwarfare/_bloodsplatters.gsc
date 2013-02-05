@@ -134,7 +134,7 @@ onPlayerDamaged()
 	self endon("disconnect");
 	self endon("death");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("damage_taken", eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 

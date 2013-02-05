@@ -27,7 +27,7 @@ onPlayerBody()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("player_body");
 		self thread removeBody();

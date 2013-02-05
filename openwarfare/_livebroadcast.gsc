@@ -67,7 +67,7 @@ showBroadcasterScoreboardIcon()
 	if ( level.scr_scoreboard_marshal_guids != "" && isSubstr( level.scr_scoreboard_marshal_guids, ""+self getGUID() ) )
 		return;
 	
-	for(;;) {
+	while(1) {
 		wait(1);
 
 		// Check if we can set the broadcaster icon for this player as it might have changed if the player is playing and not spectating
@@ -90,7 +90,7 @@ liveBroadcastGame()
 	maxPlayersPerTeam = 12;
 	statusTracker = [];
 	
-	for(;;)
+	while(1)
 	{
 		// We stop refreshing player status during a time out
 		xwait(0.25);

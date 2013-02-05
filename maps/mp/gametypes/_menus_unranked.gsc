@@ -42,7 +42,7 @@ init()
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill("connected", player);
 
@@ -61,7 +61,7 @@ onMenuResponse()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("menuresponse", menu, response);
 

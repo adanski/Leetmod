@@ -27,7 +27,7 @@ cleanScoreBoard()
 {
 	level endon( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		wait (0.1);
 

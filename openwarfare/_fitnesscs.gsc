@@ -149,7 +149,7 @@ monitorSprintStart()
 	self endon("disconnect");
 	level endon("game_ended");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("sprint_begin");
 		self.fcs["sprinting"] = true;
@@ -163,7 +163,7 @@ monitorSprintEnd()
 	self endon("disconnect");
 	level endon("game_ended");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("sprint_end");
 		self.fcs["sprinting"] = false;
@@ -182,7 +182,7 @@ monitorJumping()
 	heightTracker = 0;
 	lastDistance = 0;
 		
-	for(;;)
+	while(1)
 	{
 		wait (0.05);	
 		
@@ -230,7 +230,7 @@ monitorWalkWithoutADS()
 	self endon("disconnect");
 	level endon("game_ended");
 	
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 		// Check for the velocity of the player, stance, etc to see if the player is walking with no ADS
@@ -257,7 +257,7 @@ speedScaleControl( maxSprintTime )
 	// Initialize the speed modifier
 	currentModifierValue = 0;
 
-	for(;;)
+	while(1)
 	{
 		wait (0.05);	
 		// Calculate how speed this player should lose according to the maximum 
@@ -280,7 +280,7 @@ sprintControl()
 	self endon("disconnect");
 	level endon("game_ended");
 	
-	for(;;)
+	while(1)
 	{	
 		wait (0.05);
 		
@@ -344,7 +344,7 @@ recoveryControl( maxSprintTime )
 	self endon("disconnect");
 	level endon("game_ended");
 	
-	for(;;)
+	while(1)
 	{	
 		wait (0.05);
 		
@@ -393,7 +393,7 @@ hudColorControl( maxSprintTime )
 	// Color levels: 0 = Grey, 1 = Green, 2 = Yellow, 3 = Orange, 4 = Red
 	currentColorLevel = 0;
 	
-	for(;;)
+	while(1)
 	{	
 		wait (0.05);
 		
@@ -430,7 +430,7 @@ pulseControl( maxSprintTime, maxHealth )
 
 	swayIndex = level.swaySin.size - 1;
 
-	for(;;)
+	while(1)
 	{
 		wait (0.03);
 

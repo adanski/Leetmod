@@ -321,7 +321,7 @@ createFxLogic()
 	lastSelectEntity = undefined;
 	thread createfx_autosave();
 
-	for(;;)
+	while(1)
 	{
 		changedSelectedEnts = false;
 
@@ -1198,7 +1198,7 @@ entity_highlight_disable()
 	self notify ("highlight change");
 	self endon ("highlight change");
 
-	for(;;)
+	while(1)
 	{
 		self.textalpha = self.textalpha * 0.85;
 		self.textalpha = self.textalpha - 0.05;
@@ -1215,7 +1215,7 @@ entity_highlight_enable()
 	self notify ("highlight change");
 	self endon ("highlight change");
 
-	for(;;)
+	while(1)
 	{
 //		self.textalpha = sin(gettime()) * 0.5 + 0.5;
 		self.textalpha = self.textalpha + 0.05;
@@ -1228,7 +1228,7 @@ entity_highlight_enable()
 	self.textalpha = 1;
 
 	/*
-	for(;;)
+	while(1)
 	{
 		self.textalpha = self.textalpha + 0.05;
 		self.textalpha = self.textalpha * 1.25;
@@ -1253,7 +1253,7 @@ get_center_of_array( array )
 ent_draw_axis()
 {
 	self endon ("death");
-	for(;;)
+	while(1)
 	{
 		draw_axis();
 		wait (0.05);
@@ -1644,7 +1644,7 @@ draw_distance()
 	if ( getdvarint( "createfx_drawdist" ) == 0 )
 		setdvar( "createfx_drawdist", "1500" );
 
-	for(;;)
+	while(1)
 	{
 		maxDist = getdvarint( "createfx_drawdist" );
 		for ( i = 0; i < level.createFXent.size; i++ )
@@ -1666,7 +1666,7 @@ draw_distance()
 
 createfx_autosave()
 {
-	for(;;)
+	while(1)
 	{
 		flag_waitopen( "createfx_saving" );
 		generate_fx_log( true );

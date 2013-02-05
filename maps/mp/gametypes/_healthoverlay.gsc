@@ -18,7 +18,7 @@ init()
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill("connected", player);
 		player thread onPlayerSpawned();
@@ -33,7 +33,7 @@ onJoinedTeam()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_team");
 		self notify("end_healthregen");
@@ -44,7 +44,7 @@ onJoinedSpectators()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_spectators");
 		self notify("end_healthregen");
@@ -55,7 +55,7 @@ onPlayerSpawned()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("spawned_player");
 		self thread playerHealthRegen();
@@ -66,7 +66,7 @@ onPlayerKilled()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("killed_player");
 		self notify("end_healthregen");
@@ -105,7 +105,7 @@ playerHealthRegen()
 	hurtTime = 0;
 	newHealth = 0;
 
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 
@@ -196,7 +196,7 @@ playerBreathingSound(healthcap)
 
 	wait (2);
 	player = self;
-	for(;;)
+	while(1)
 	{
 		wait (0.2);
 		if (player.health <= 0)

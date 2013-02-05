@@ -110,7 +110,7 @@ main()
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "connected", player);
 		player thread onJoinedTeam();
@@ -239,7 +239,7 @@ onJoinedTeam()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_team");
 		
@@ -560,7 +560,7 @@ giveLastAttackerWarning()
 	fullHealthTime = 0;
 	interval = .05;
 
-	for(;;)
+	while(1)
 	{
 		if ( self.health != self.maxhealth )
 			fullHealthTime = 0;

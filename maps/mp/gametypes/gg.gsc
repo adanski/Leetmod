@@ -91,7 +91,7 @@ main()
 
 onPlayerConnected()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill("connected", player);
 		player thread handiCap();
@@ -285,7 +285,7 @@ autoLevelUp()
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 
@@ -539,7 +539,7 @@ watchGrenadesUsage()
 	self endon ( "death" );
 	self endon ( "disconnect" );	
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "grenade_fire", grenade, weapName );
 		// Check if we ran out of grenades and give a player an extra one if this is the level grenade
@@ -555,7 +555,7 @@ watchRocketLauncherUsage()
 	self endon ( "death" );
 	self endon ( "disconnect" );	
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "end_firing" );
 		// Check if we are using the rocket launcher and if we have no more ammo

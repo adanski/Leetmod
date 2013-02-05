@@ -256,7 +256,7 @@ showSpecialScoreboardIcon( statusIcon, isBroadcaster )
 {
 	self endon("disconnect");
 	
-	for(;;) {
+	while(1) {
 		wait(1);
 		
 		// Check if we can set the special icon for this player as it might have changed in some gametypes

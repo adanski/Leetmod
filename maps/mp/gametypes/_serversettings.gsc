@@ -47,7 +47,7 @@ init()
 	constrainGameType(getdvar("g_gametype"));
 	constrainMapSize(level.mapsize);
 
-	for(;;)
+	while(1)
 	{
 		updateServerSettings();
 		wait 5;

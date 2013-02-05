@@ -45,7 +45,7 @@ checkReservedSlots()
 	maxClientsAllowed = getDvarInt( "sv_maxclients" ) - level.scr_reservedslots_amount;
 	clanMembersOnlyAt = getDvarInt( "sv_maxclients" ) - 1;
 	
-	for(;;)
+	while(1)
 	{
 		wait (2.5);
 		

@@ -586,7 +586,7 @@ flashThread()
 	if ( !self.hidden )
 		self.alpha = 1;
 		
-	for(;;)
+	while(1)
 	{
 		if ( self.frac >= self.flashFrac )
 		{

@@ -54,7 +54,7 @@ init()
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill ( "connecting", player );
 		player thread onPlayerSpawned();
@@ -66,7 +66,7 @@ onPlayerSpawned()
 {
 	self endon( "disconnect" );
 
-	for(;;)
+	while(1)
 	{
 		self waittill( "spawned_player" );
 		
@@ -86,7 +86,7 @@ claymoreTracking()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 	
-	for(;;)
+	while(1)
 	{
 		self waittill( "begin_firing" );
 		weaponName = self getCurrentWeapon();
@@ -101,7 +101,7 @@ reloadTracking()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "reload_start" );
 		if ( shouldPlayBattlechatter( level.scr_battlechatter_reload_probability ) )
@@ -115,7 +115,7 @@ grenadeTracking()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "grenade_fire", grenade, weaponName );
 		

@@ -182,7 +182,7 @@ monitorSafeZone()
   self endon( "death" );
   self endon( "disconnect" );
     
-  for(;;)
+  while(1)
   {
     self waittill( "grenade_fire", explosive, weaponName );
   
@@ -304,7 +304,7 @@ createDamageArea()
 waitForDamage( index, object, visuals )
 {
   attacker = undefined;
-  for(;;)
+  while(1)
   {
     if ( level.objectiveHealth[index] <= 0 )
       break;

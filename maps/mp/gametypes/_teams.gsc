@@ -55,7 +55,7 @@ init()
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill("connected", player);
 
@@ -76,7 +76,7 @@ onPlayerConnect()
 
 onFreePlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill("connecting", player);
 
@@ -89,7 +89,7 @@ onJoinedTeam()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_team");
 		self logString( "joined team: " + self.pers["team"] );
@@ -102,7 +102,7 @@ onJoinedSpectators()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_spectators");
 		self.pers["teamTime"] = undefined;
@@ -123,7 +123,7 @@ trackPlayedTime()
 	while ( level.inPrematchPeriod )
 		wait ( 0.05 );
 
-	for(;;)
+	while(1)
 	{
 		if ( game["state"] == "playing" )
 		{
@@ -151,7 +151,7 @@ trackPlayedTime()
 updatePlayerTimes()
 {
 	nextToUpdate = 0;
-	for(;;)
+	while(1)
 	{
 		nextToUpdate++;
 		if ( nextToUpdate >= level.players.size )
@@ -208,7 +208,7 @@ updateTeamTime()
 
 updateTeamBalanceDvar()
 {
-	for(;;)
+	while(1)
 	{
 		teambalance = getdvarx( "scr_teambalance", "int", 0, 0, 2 );
 		if(level.teambalance != teambalance)
@@ -223,7 +223,7 @@ updateTeamBalanceWarning()
 {
 	level endon ( "roundSwitching" );
 	
-	for(;;)
+	while(1)
 	{
 		if( !getTeamBalance() )
 		{
@@ -255,7 +255,7 @@ updateTeamBalance()
 	else
 	{
 		level endon ( "game_ended" );
-		for(;;)
+		while(1)
 		{
 			if( level.teamBalance )
 			{
@@ -868,7 +868,7 @@ trackFreePlayedTime()
 	self.timePlayed["other"] = 0;
 	self.timePlayed["total"] = 0;
 
-	for(;;)
+	while(1)
 	{
 		if ( game["state"] == "playing" )
 		{

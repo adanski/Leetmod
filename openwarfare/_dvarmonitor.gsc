@@ -17,7 +17,7 @@ dvarMonitor()
 {
 	level endon( "game_ended" );
 	
-	for(;;)
+	while(1)
 	{
 		wait (1);
 		

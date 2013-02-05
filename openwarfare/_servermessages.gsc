@@ -33,7 +33,7 @@ displayServerMessages()
 	iMessage = 0;
 	
 	// Loop forever until the player disconnects
-	for(;;)
+	while(1)
 	{
 		xwait(0.05);
 		

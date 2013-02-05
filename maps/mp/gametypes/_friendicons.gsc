@@ -13,7 +13,7 @@ init()
 
 	level thread onPlayerConnect();
 	
-	/*for(;;)
+	/*while(1)
 	{
 		updateFriendIconSettings();
 		wait 5;
@@ -22,7 +22,7 @@ init()
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill("connected", player);
 
@@ -35,7 +35,7 @@ onPlayerSpawned()
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("spawned_player");
 		
@@ -47,7 +47,7 @@ onPlayerKilled()
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("killed_player");
 		self.headicon = "";

@@ -81,7 +81,7 @@ monitorCurrentWeapon()
 		distMultiplier = 0.0278;
 	}
 
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 		

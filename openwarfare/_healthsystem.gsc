@@ -230,7 +230,7 @@ playerHealthRegen()
 	newHealth = 0;
 	healthRegenUnitPerCycle = 0;
 
-	for(;;)
+	while(1)
 	{
 		// Wait for the cycle time
 		wait ( level.healthRegenCycle );
@@ -353,7 +353,7 @@ pickupHealthPackThink( healthPackModel, healthPackGlow )
 {
 	self endon("death");
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "trigger", player );
 
@@ -447,7 +447,7 @@ onPlayerDamaged()
 	self endon("death");
 	level endon( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		self waittill("damage_taken", eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 

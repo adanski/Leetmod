@@ -15,7 +15,7 @@ addTestClients()
 {
 	wait 5;
 	
-	for(;;) {
+	while(1) {
 		wait (1);
 		
 		testClients = getdvarInt( "scr_testclients" );

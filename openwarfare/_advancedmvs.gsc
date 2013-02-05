@@ -77,7 +77,7 @@ mapVoting_Intermission()
 			thisGameType = [];
 			// Check if we have maps just for this gametype first
 			lineNumber = 1;
-			for(;;) {
+			while(1) {
 				thisLine = getdvarl( "scr_amvs_maps_" + level.scr_amvs_gametypes[type] + "_" + lineNumber, "string", "", undefined, undefined, true );
 				if ( thisLine == "" ) {
 					break;
@@ -97,7 +97,7 @@ mapVoting_Intermission()
 			if ( thisGameType.size == 0 ) {
 				// Check if we have maps just for this gametype first
 				lineNumber = 1;
-				for(;;) {
+				while(1) {
 					thisLine = getdvarl( "scr_amvs_maps_" + lineNumber, "string", "", undefined, undefined, true );
 					if ( thisLine == "" && lineNumber == 1 ) {
 						thisLine = getdvarl( "scr_amvs_maps", "string", level.defaultMapList, undefined, undefined, true );
@@ -450,7 +450,7 @@ onMenuResponse()
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill( "menuresponse", menuName, menuOption );
 		
@@ -530,7 +530,7 @@ onMenuResponse()
 
 monitorPlayerVotes()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "vote_casted" );
 		

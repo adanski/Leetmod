@@ -33,7 +33,7 @@ onReadyupPeriodStarted()
 {
 	level endon( "game_ended" );
 
-	for(;;) {
+	while(1) {
 		level waittill( "readyupperiod_started" );
 		setDvar( "globalchat", 1 );
 	}
@@ -44,7 +44,7 @@ onPrematchOver()
 {
 	level endon( "game_ended" );
 
-	for(;;) {
+	while(1) {
 		level waittill( "prematch_over" );
 		setDvar( "globalchat", 0 );
 	}
@@ -64,7 +64,7 @@ monitorAllChat()
 {
 	globalChat = getDvarInt( "globalchat" );
 
-	for(;;)
+	while(1)
 	{
 		wait (1.0);
 
