@@ -560,7 +560,7 @@ giveLastAttackerWarning()
 	fullHealthTime = 0;
 	interval = .05;
 
-	while(1)
+	for(;;)
 	{
 		if ( self.health != self.maxhealth )
 			fullHealthTime = 0;

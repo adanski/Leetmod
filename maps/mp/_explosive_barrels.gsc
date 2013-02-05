@@ -75,7 +75,7 @@ oil_spill_think()
 		self thread oil_spill_burn_after();
 	}
 	
-	while(1)
+	for(;;)
 	{
 		self waittill("damage", amount, attacker, direction_vec, P, type );
 		if(type == "MOD_MELEE" || type == "MOD_IMPACT")
@@ -122,7 +122,7 @@ getClosestEnt(org, array)
 
 oil_spill_burn_after()
 {
-	while(1)
+	for(;;)
 	{
 		self.barrel waittill("damage", amount ,attacker, direction_vec, P, type);
 		if(type == "MOD_MELEE" || ( type == "MOD_IMPACT" && !maps\mp\gametypes\_weapons::isSniper( attacker getCurrentWeapon() ) ) )
@@ -154,7 +154,7 @@ oil_spill_burn(P, dest)
 	test = spawn("script_origin", P);
 	
 	num = 0;
-	while(1)
+	for(;;)
 	{
 		dist -= range;
 		if(dist < range *.1)

@@ -304,7 +304,7 @@ createDamageArea()
 waitForDamage( index, object, visuals )
 {
   attacker = undefined;
-  while (1)
+  for(;;)
   {
     if ( level.objectiveHealth[index] <= 0 )
       break;

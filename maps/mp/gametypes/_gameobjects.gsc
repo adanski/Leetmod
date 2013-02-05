@@ -1825,7 +1825,7 @@ updateVisibilityAccordingToRadar()
 	self endon("death");
 	self endon("carrier_cleared");
 
-	while(1)
+	for(;;)
 	{
 		level waittill("radar_status_change");
 		self updateCompassIcons();
@@ -1912,7 +1912,7 @@ makeSolid()
 	self notify("changing_solidness");
 	self endon("changing_solidness");
 
-	while(1)
+	for(;;)
 	{
 		for ( i = 0; i < level.players.size; i++ )
 		{

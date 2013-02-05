@@ -7,8 +7,13 @@ init()
 	level.scr_cap_time = getdvarx( "scr_cap_time", "float", 5.0, 1.0, 15.0 );
 	level.scr_cap_activated = getdvarx( "scr_cap_time_activated", "float", 15.0, 5.0, 30.0 );
 	level.scr_cap_firstspawn = getdvarx( "scr_cap_firstspawn", "int", 1, 0, 1 );
+	// already set on _teams.gsc, but resetting because that file was called threaded, so this file could
+  // be executed before that one
+  level.scr_cap_allow_othermodels = getdvarx( "scr_cap_allow_othermodels", "int", 0, 0, 3 );
 	
-	if ( !level.scr_cap_enable || level.gametype == "ass" )
+  //# TODO: Allow in "assassination" gametype too, but not if player is VIP
+  // For now and because of it's not yet implemented, it is disabled for "ass"
+	if ( !level.scr_cap_enable )
 		return;
 	
 	initializeModelsArray();
@@ -17,171 +22,191 @@ init()
 }
 
 initializeModelsArray()
-{
-	//Allies
-	if ( game["allies_soldiertype"] == "desert" )
+{ 
+  game["cap_allies_model"]["function"] = [];
+  game["cap_allies_model"]["body_model"] = [];
+  game["cap_axis_model"]["function"] = [];
+  game["cap_axis_model"]["body_model"] = [];
+  game["cap_neutral_model"]["function"] = [];
+  game["cap_neutral_model"]["body_model"] = [];
+  
+  // level.scr_cap_allow_othermodels
+  // 1 - free gametypes only
+  // 2 - teambased gametypes only
+  // 3 - all gametypes
+  
+  //Allies
+  alliesModelsFound = false;
+	if ( game["allies_soldiertype"] == "desert" || level.scr_cap_allow_othermodels != 0 )
 	{
-		game["cap_allies_model"]["function"][0] = mptype\mptype_ally_rifleman::main;
-		game["cap_allies_model"]["body_model"][0] = "body_mp_usmc_assault";
-		game["cap_neutral_model"]["function"][0] = mptype\mptype_ally_rifleman::main;
-		game["cap_neutral_model"]["body_model"][0] = "body_mp_usmc_assault";
-		
-		game["cap_allies_model"]["function"][1] = mptype\mptype_ally_cqb::main;
-		game["cap_allies_model"]["body_model"][1] = "body_mp_usmc_specops";
-		game["cap_neutral_model"]["function"][1] = mptype\mptype_ally_cqb::main;
-		game["cap_neutral_model"]["body_model"][1] = "body_mp_usmc_specops";
-		
-		game["cap_allies_model"]["function"][2] = mptype\mptype_ally_support::main;
-		game["cap_allies_model"]["body_model"][2] = "body_mp_usmc_support";
-		game["cap_neutral_model"]["function"][2] = mptype\mptype_ally_support::main;
-		game["cap_neutral_model"]["body_model"][2] = "body_mp_usmc_support";
-		
-		game["cap_allies_model"]["function"][3] = mptype\mptype_ally_engineer::main;
-		game["cap_allies_model"]["body_model"][3] = "body_mp_usmc_recon";
-		game["cap_neutral_model"]["function"][3] = mptype\mptype_ally_engineer::main;
-		game["cap_neutral_model"]["body_model"][3] = "body_mp_usmc_recon";
-		
-		game["cap_allies_model"]["function"][4] = mptype\mptype_ally_sniper::main;
-		game["cap_allies_model"]["body_model"][4] = "body_mp_usmc_sniper";
-		game["cap_neutral_model"]["function"][4] = mptype\mptype_ally_sniper::main;
-		game["cap_neutral_model"]["body_model"][4] = "body_mp_usmc_sniper";
+    alliesModelsFound = true;
+    if( game["allies_soldiertype"] == "desert" || level.scr_cap_allow_othermodels > 1 ) {
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_rifleman::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_assault";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_cqb::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_specops";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_support::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_support";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_engineer::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_recon";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_sniper::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_sniper";
+    }
+    if( game["allies_soldiertype"] == "desert" || (level.scr_cap_allow_othermodels != 0 && level.scr_cap_allow_othermodels != 2) ) {
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_rifleman::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_assault";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_cqb::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_specops";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_support::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_support";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_engineer::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_recon";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_sniper::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_sniper";
+    }
 	}
-	else if ( game["allies_soldiertype"] == "urban" )
+	if ( game["allies_soldiertype"] == "urban" || level.scr_cap_allow_othermodels != 0 )
 	{
-		game["cap_allies_model"]["function"][0] = mptype\mptype_ally_urban_assault::main;
-		game["cap_allies_model"]["body_model"][0] = "body_mp_sas_urban_assault";
-		game["cap_neutral_model"]["function"][0] = mptype\mptype_ally_urban_assault::main;
-		game["cap_neutral_model"]["body_model"][0] = "body_mp_sas_urban_assault";
-		
-		game["cap_allies_model"]["function"][1] = mptype\mptype_ally_urban_specops::main;
-		game["cap_allies_model"]["body_model"][1] = "body_mp_sas_urban_specops";
-		game["cap_neutral_model"]["function"][1] = mptype\mptype_ally_urban_specops::main;
-		game["cap_neutral_model"]["body_model"][1] = "body_mp_sas_urban_specops";
-		
-		game["cap_allies_model"]["function"][2] = mptype\mptype_ally_urban_support::main;
-		game["cap_allies_model"]["body_model"][2] = "body_mp_sas_urban_support";
-		game["cap_neutral_model"]["function"][2] = mptype\mptype_ally_urban_support::main;
-		game["cap_neutral_model"]["body_model"][2] = "body_mp_sas_urban_support";
-		
-		game["cap_allies_model"]["function"][3] = mptype\mptype_ally_urban_recon::main;
-		game["cap_allies_model"]["body_model"][3] = "body_mp_sas_urban_recon";
-		game["cap_neutral_model"]["function"][3] = mptype\mptype_ally_urban_recon::main;
-		game["cap_neutral_model"]["body_model"][3] = "body_mp_sas_urban_recon";
-		
-		game["cap_allies_model"]["function"][4] = mptype\mptype_ally_urban_sniper::main;
-		game["cap_allies_model"]["body_model"][4] = "body_mp_sas_urban_sniper";
-		game["cap_neutral_model"]["function"][4] = mptype\mptype_ally_urban_sniper::main;
-		game["cap_neutral_model"]["body_model"][4] = "body_mp_sas_urban_sniper";
+    alliesModelsFound = true;
+    if( game["allies_soldiertype"] == "urban" || level.scr_cap_allow_othermodels > 1 ) {
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_urban_assault::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_sas_urban_assault";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_urban_specops::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_sas_urban_specops";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_urban_support::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_sas_urban_support";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_urban_recon::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_sas_urban_recon";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_urban_sniper::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_sas_urban_sniper";
+    }
+    if( game["allies_soldiertype"] == "urban" || (level.scr_cap_allow_othermodels != 0 && level.scr_cap_allow_othermodels != 2) ) {
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_urban_assault::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_sas_urban_assault";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_urban_specops::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_sas_urban_specops";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_urban_support::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_sas_urban_support";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_urban_recon::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_sas_urban_recon";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_urban_sniper::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_sas_urban_sniper";
+    }
 	}
-	else 
+  // soldier type here is woodland, hack for making maps that don't have the right teams work correctly
+	if( !alliesModelsFound || level.scr_cap_allow_othermodels != 0 )
 	{
-		game["cap_allies_model"]["function"][0] = mptype\mptype_ally_woodland_assault::main;
-		game["cap_allies_model"]["body_model"][0] = "body_mp_usmc_woodland_assault";
-		game["cap_neutral_model"]["function"][0] = mptype\mptype_ally_woodland_assault::main;
-		game["cap_neutral_model"]["body_model"][0] = "body_mp_usmc_woodland_assault";
-		
-		game["cap_allies_model"]["function"][1] = mptype\mptype_ally_woodland_specops::main;
-		game["cap_allies_model"]["body_model"][1] = "body_mp_usmc_woodland_specops";
-		game["cap_neutral_model"]["function"][1] = mptype\mptype_ally_woodland_specops::main;
-		game["cap_neutral_model"]["body_model"][1] = "body_mp_usmc_woodland_specops";
-		
-		game["cap_allies_model"]["function"][2] = mptype\mptype_ally_woodland_support::main;
-		game["cap_allies_model"]["body_model"][2] = "body_mp_usmc_woodland_support";
-		game["cap_neutral_model"]["function"][2] = mptype\mptype_ally_woodland_support::main;
-		game["cap_neutral_model"]["body_model"][2] = "body_mp_usmc_woodland_support";
-		
-		game["cap_allies_model"]["function"][3] = mptype\mptype_ally_woodland_recon::main;
-		game["cap_allies_model"]["body_model"][3] = "body_mp_usmc_woodland_recon";
-		game["cap_neutral_model"]["function"][3] = mptype\mptype_ally_woodland_recon::main;
-		game["cap_neutral_model"]["body_model"][3] = "body_mp_usmc_woodland_recon";
-		
-		game["cap_allies_model"]["function"][4] = mptype\mptype_ally_woodland_sniper::main;
-		game["cap_allies_model"]["body_model"][4] = "body_mp_usmc_woodland_sniper";
-		game["cap_neutral_model"]["function"][4] = mptype\mptype_ally_woodland_sniper::main;
-		game["cap_neutral_model"]["body_model"][4] = "body_mp_usmc_woodland_sniper";
+    if( !alliesModelsFound || level.scr_cap_allow_othermodels > 1 ) {
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_woodland_assault::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_woodland_assault";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_woodland_specops::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_woodland_specops";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_woodland_support::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_woodland_support";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_woodland_recon::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_woodland_recon";
+      game["cap_allies_model"]["function"][game["cap_allies_model"]["function"].size] = mptype\mptype_ally_woodland_sniper::main;
+      game["cap_allies_model"]["body_model"][game["cap_allies_model"]["body_model"].size] = "body_mp_usmc_woodland_sniper";
+    }
+    if( !alliesModelsFound || (level.scr_cap_allow_othermodels != 0 && level.scr_cap_allow_othermodels != 2) ) {
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_woodland_assault::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_woodland_assault";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_woodland_specops::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_woodland_specops";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_woodland_support::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_woodland_support";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_woodland_recon::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_woodland_recon";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_ally_woodland_sniper::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_usmc_woodland_sniper";
+    }
 	}
 	
 	//Opfor
-	if ( game["axis_soldiertype"] == "desert" )
+  axisModelsFound = false;
+	if ( game["axis_soldiertype"] == "desert" || level.scr_cap_allow_othermodels != 0 )
 	{
-		game["cap_axis_model"]["function"][0] = mptype\mptype_axis_rifleman::main;
-		game["cap_axis_model"]["body_model"][0] = "body_mp_arab_regular_assault";
-		game["cap_neutral_model"]["function"][5] = mptype\mptype_axis_rifleman::main;
-		game["cap_neutral_model"]["body_model"][5] = "body_mp_arab_regular_assault";
-		
-		game["cap_axis_model"]["function"][1] = mptype\mptype_axis_cqb::main;
-		game["cap_axis_model"]["body_model"][1] = "body_mp_arab_regular_cqb";
-		game["cap_neutral_model"]["function"][6] = mptype\mptype_axis_cqb::main;
-		game["cap_neutral_model"]["body_model"][6] = "body_mp_arab_regular_cqb";
-		
-		game["cap_axis_model"]["function"][2] = mptype\mptype_axis_support::main;
-		game["cap_axis_model"]["body_model"][2] = "body_mp_arab_regular_support";
-		game["cap_neutral_model"]["function"][7] = mptype\mptype_axis_support::main;
-		game["cap_neutral_model"]["body_model"][7] = "body_mp_arab_regular_support";
-		
-		game["cap_axis_model"]["function"][3] = mptype\mptype_axis_engineer::main;
-		game["cap_axis_model"]["body_model"][3] = "body_mp_arab_regular_engineer";
-		game["cap_neutral_model"]["function"][8] = mptype\mptype_axis_engineer::main;
-		game["cap_neutral_model"]["body_model"][8] = "body_mp_arab_regular_engineer";
-		
-		game["cap_axis_model"]["function"][4] = mptype\mptype_axis_sniper::main;
-		game["cap_axis_model"]["body_model"][4] = "body_mp_arab_regular_sniper";
-		game["cap_neutral_model"]["function"][9] = mptype\mptype_axis_sniper::main;
-		game["cap_neutral_model"]["body_model"][9] = "body_mp_arab_regular_sniper";
+    axisModelsFound = true;
+    if( game["axis_soldiertype"] == "desert" || level.scr_cap_allow_othermodels > 1 ) {
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_rifleman::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_arab_regular_assault";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_cqb::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_arab_regular_cqb";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_support::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_arab_regular_support";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_engineer::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_arab_regular_engineer";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_sniper::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_arab_regular_sniper";
+    }
+		if( game["axis_soldiertype"] == "desert" || (level.scr_cap_allow_othermodels != 0 && level.scr_cap_allow_othermodels != 2) ) {
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_rifleman::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_arab_regular_assault";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_cqb::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_arab_regular_cqb";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_support::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_arab_regular_support";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_engineer::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_arab_regular_engineer";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_sniper::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_arab_regular_sniper";
+    }
 	}
-	else if ( game["axis_soldiertype"] == "urban" )
+	if ( game["axis_soldiertype"] == "urban" || level.scr_cap_allow_othermodels != 0 )
 	{
-		game["cap_axis_model"]["function"][0] = mptype\mptype_axis_urban_assault::main;
-		game["cap_axis_model"]["body_model"][0] = "body_mp_opforce_assault";
-		game["cap_neutral_model"]["function"][5] = mptype\mptype_axis_urban_assault::main;
-		game["cap_neutral_model"]["body_model"][5] = "body_mp_opforce_assault";
-		
-		game["cap_axis_model"]["function"][1] = mptype\mptype_axis_urban_cqb::main;
-		game["cap_axis_model"]["body_model"][1] = "body_mp_opforce_cqb";
-		game["cap_neutral_model"]["function"][6] = mptype\mptype_axis_urban_cqb::main;
-		game["cap_neutral_model"]["body_model"][6] = "body_mp_opforce_cqb";
-		
-		game["cap_axis_model"]["function"][2] = mptype\mptype_axis_urban_support::main;
-		game["cap_axis_model"]["body_model"][2] = "body_mp_opforce_support";
-		game["cap_neutral_model"]["function"][7] = mptype\mptype_axis_urban_support::main;
-		game["cap_neutral_model"]["body_model"][7] = "body_mp_opforce_support";
-		
-		game["cap_axis_model"]["function"][3] = mptype\mptype_axis_urban_engineer::main;
-		game["cap_axis_model"]["body_model"][3] = "body_mp_opforce_eningeer";
-		game["cap_neutral_model"]["function"][8] = mptype\mptype_axis_urban_engineer::main;
-		game["cap_neutral_model"]["body_model"][8] = "body_mp_opforce_eningeer";
-		
-		game["cap_axis_model"]["function"][4] = mptype\mptype_axis_urban_sniper::main;
-		game["cap_axis_model"]["body_model"][4] = "body_mp_opforce_sniper_urban";
-		game["cap_neutral_model"]["function"][9] = mptype\mptype_axis_urban_sniper::main;
-		game["cap_neutral_model"]["body_model"][9] = "body_mp_opforce_sniper_urban";
+    axisModelsFound = true;
+    if( game["axis_soldiertype"] == "urban" || level.scr_cap_allow_othermodels > 1 ) {
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_urban_assault::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_opforce_assault";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_urban_cqb::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_opforce_cqb";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_urban_support::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_opforce_support";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_urban_engineer::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_opforce_eningeer";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_urban_sniper::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_opforce_sniper_urban";
+    }
+    if( game["axis_soldiertype"] == "urban" || (level.scr_cap_allow_othermodels != 0 && level.scr_cap_allow_othermodels != 2) ) {
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_urban_assault::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_assault";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_urban_cqb::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_cqb";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_urban_support::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_support";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_urban_engineer::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_eningeer";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_urban_sniper::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_sniper_urban";
+    }
 	}
-	else
+  // soldier type here is woodland, hack for making maps that don't have the right teams work correctly
+	if( !axisModelsFound || level.scr_cap_allow_othermodels != 0 )
 	{
-		game["cap_axis_model"]["function"][0] = mptype\mptype_axis_woodland_rifleman::main;
-		game["cap_axis_model"]["body_model"][0] = "body_mp_opforce_assault";
-		game["cap_neutral_model"]["function"][5] = mptype\mptype_axis_woodland_rifleman::main;
-		game["cap_neutral_model"]["body_model"][5] = "body_mp_opforce_assault";
-		
-		game["cap_axis_model"]["function"][1] = mptype\mptype_axis_woodland_cqb::main;
-		game["cap_axis_model"]["body_model"][1] = "body_mp_opforce_cqb";
-		game["cap_neutral_model"]["function"][6] = mptype\mptype_axis_woodland_cqb::main;
-		game["cap_neutral_model"]["body_model"][6] = "body_mp_opforce_cqb";
-		
-		game["cap_axis_model"]["function"][2] = mptype\mptype_axis_woodland_support::main;
-		game["cap_axis_model"]["body_model"][2] = "body_mp_opforce_support";
-		game["cap_neutral_model"]["function"][7] = mptype\mptype_axis_woodland_support::main;
-		game["cap_neutral_model"]["body_model"][7] = "body_mp_opforce_support";
-		
-		game["cap_axis_model"]["function"][3] = mptype\mptype_axis_woodland_engineer::main;
-		game["cap_axis_model"]["body_model"][3] = "body_mp_opforce_eningeer";
-		game["cap_neutral_model"]["function"][8] = mptype\mptype_axis_woodland_engineer::main;
-		game["cap_neutral_model"]["body_model"][8] = "body_mp_opforce_eningeer";
-		
-		game["cap_axis_model"]["function"][4] = mptype\mptype_axis_woodland_sniper::main;
-		game["cap_axis_model"]["body_model"][4]= "body_mp_opforce_sniper";
-		game["cap_neutral_model"]["function"][9] = mptype\mptype_axis_woodland_sniper::main;
-		game["cap_neutral_model"]["body_model"][9] = "body_mp_opforce_sniper";
+    if( !axisModelsFound || level.scr_cap_allow_othermodels > 1 ) {
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_woodland_rifleman::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_opforce_assault";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_woodland_cqb::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_opforce_cqb";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_woodland_support::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_opforce_support";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_woodland_engineer::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size] = "body_mp_opforce_eningeer";
+      game["cap_axis_model"]["function"][game["cap_axis_model"]["function"].size] = mptype\mptype_axis_woodland_sniper::main;
+      game["cap_axis_model"]["body_model"][game["cap_axis_model"]["body_model"].size]= "body_mp_opforce_sniper";
+    }
+    if( !axisModelsFound || (level.scr_cap_allow_othermodels != 0 && level.scr_cap_allow_othermodels != 2) ) {
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_woodland_rifleman::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_assault";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_woodland_cqb::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_cqb";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_woodland_support::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_support";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_woodland_engineer::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_eningeer";
+      game["cap_neutral_model"]["function"][game["cap_neutral_model"]["function"].size] = mptype\mptype_axis_woodland_sniper::main;
+      game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_sniper";
+    }
 	}
 }
 
@@ -205,12 +230,17 @@ onPlayerSpawned()
 	{
 		while ( level.inPrematchPeriod )
 			wait .05;
-	}	
+	}
 	
 	self.cap_protected = false;
 	
-	self checkAndChangeModel();
-	if ( !isDefined( self.pers["isBot"] ) || ( isDefined( self.pers["isBot"] ) && self.pers["isBot"] == false ) )
+	isVip = (isDefined(self.isVIP) && self.isVIP);
+  // set model at spawn (the one that was selected if already done), don't set if VIP
+  if( !isVip )
+    self checkAndChangeModel();
+  
+  isBot = (isDefined( self.pers["isBot"] ) && self.pers["isBot"]);
+	if ( !isBot && !isVip )
 	{
 		if ( ( level.scr_cap_firstspawn && ( isDefined( self.pers["spawned_once"] ) && self.pers["spawned_once"] == false ) ) || !level.scr_cap_firstspawn )
 		{
@@ -245,38 +275,28 @@ checkAndChangeModel()
 		count = self getattachsize();
 		for ( index = 0; index < count; index++ )
 		{
-			head = self getattachmodelname( index );
+			iModel = self getattachmodelname( index );
 		
-			if ( startsWith( head, "head" ) )
+			if ( startsWith( iModel, "head" ) )
 			{
-				self detach( head );
+				self detach( iModel );
 				self.isHeadOff = true;
 				break;
 			}
 		}
 		
-		if ( level.teamBased )
-		{
-			for ( index = 0; index < 5; index++ )
-			{
-				if ( game["cap_" + self.pers["team"] + "_model"]["body_model"][index] == self.pers["current_body_model"] )
-				{
-					self [[game["cap_" + self.pers["team"] + "_model"]["function"][index]]]();
-					self.isHeadOff = false;
-				}
-			}
-		}
-		else
-		{
-			for ( index = 0; index < 10; index++ )
-			{
-				if ( game["cap_neutral_model"]["body_model"][index] == self.pers["current_body_model"] )
-				{
-					self [[game["cap_neutral_model"]["function"][index]]]();
-					self.isHeadOff = false;
-				}
-			}
-		}
+    team = "neutral";
+    if ( level.teamBased )
+      team = self.pers["team"];
+
+    for ( index = 0; index < game["cap_" +team+ "_model"]["body_model"].size; index++ )
+    {
+      if ( game["cap_" +team+ "_model"]["body_model"][index] == self.pers["current_body_model"] )
+      {
+        self [[game["cap_" +team+ "_model"]["function"][index]]]();
+        self.isHeadOff = false;
+      }
+    }
 		
 		if ( self.isHeadOff ) //Something went wrong or dvar changed in game
 		{
@@ -287,7 +307,6 @@ checkAndChangeModel()
 		if ( ( isDefined( level.scr_spawn_protection_invisible ) && level.scr_spawn_protection_invisible == 1 ) && isDefined( self.spawn_protected ) && self.spawn_protected )
 			self hide();
 	}
-	return;
 }
 
 customizePlayer()
@@ -336,48 +355,57 @@ customizePlayer()
 	passedTime = openwarfare\_timer::getTimePassed();
 	maxTime = level.scr_cap_activated * 1000;
 	timeDifference = 0;
+  
+  //#Moved from below
+  modelIndex = self getCurrentModelIndex();
+  
+  self thread showCountDownAccessTime(maxTime, passedTime);
 	
 	while( !self meleeButtonPressed() && ( timeDifference < maxTime ) )
 	{
 		if ( !isDefined( self.cap_protected ) )
-			self.cap_protected = true;	
-			
+			self.cap_protected = true;
+		
 		hudTimer = int( ( maxTime - timeDifference ) / 1000 );
-		self setClientDvar( "cap_time", hudTimer );
+		//# This sets every x miliseconds a dvar that should only be set every 1 second
+    // commenting for now, fix later
+    //self setClientDvar( "cap_time", hudTimer );
 			
 		timeDifference = openwarfare\_timer::getTimePassed() - passedTime;
 		if ( self useButtonPressed() )
-		{			
+		{
 			//Find current model of player
-			modelIndex = self getCurrentModelIndex();
+      //#Moved above
+			//modelIndex = self getCurrentModelIndex();
 			
 			//Detach Head Model (Original snip of script by BionicNipple)
 			count = self getattachsize();
 			for ( index = 0; index < count; index++ )
 			{
-				head = self getattachmodelname( index );
+				iModel = self getattachmodelname( index );
 		
-				if ( startsWith( head, "head" ) )
+				if ( startsWith( iModel, "head" ) )
 				{
-					self detach( head );
+					self detach( iModel );
 					break;
 				}
 			}
 		
-			if ( level.teamBased && modelIndex + 1 == 5 )
-				modelIndex = 0;
-			else if ( !level.teamBased && modelIndex + 1 == 10 )
-				modelIndex = 0;
-			else 
-				modelIndex++;
-			
+			team = "neutral";
+      if( level.teamBased )
+        team = self.pers["team"];
+      
+      modelIndex++;
+      if( modelIndex >= game["cap_" +team+ "_model"]["body_model"].size )
+        modelIndex = 0;
+      
+      iprintln("Size body: ", game["cap_" +team+ "_model"]["body_model"].size);
+      iprintln("Size func: ", game["cap_" +team+ "_model"]["function"].size);
+      iprintln("Model index: ", modelIndex);
+      
 			//Change player model
-			if ( level.teamBased )
-				self [[game["cap_" + self.pers["team"] + "_model"]["function"][modelIndex]]]();
-			else
-				self [[game["cap_neutral_model"]["function"][modelIndex]]]();
+      self [[game["cap_" +team+ "_model"]["function"][modelIndex]]]();
 			self.pers["current_body_model"] = self.model;
-			
 			wait .5;
 		}
 		wait .01;
@@ -404,22 +432,14 @@ customizePlayer()
 
 getCurrentModelIndex()
 {
+  team = "neutral";
 	if ( level.teamBased )
-	{
-		for ( index = 0; index < 5; index++ )
-		{
-			if ( game["cap_" + self.pers["team"] + "_model"]["body_model"][index] == self.model )
-				return index;
-		}
-	}
-	else
-	{
-		for ( index = 0; index < 10; index++ )
-		{
-			if ( game["cap_neutral_model"]["body_model"][index] == self.model )
-				return index;
-		}
-	}
+    team = self.pers["team"];
+  for ( index = 0; index < game["cap_" +team+ "_model"]["body_model"].size; index++ )
+  {
+    if ( game["cap_" +team+ "_model"]["body_model"][index] == self.model )
+      return index;
+  }
 	
 	return 0;
 }
@@ -441,3 +461,14 @@ startsWith( string, pattern )
     return true;
 }
 
+showCountDownAccessTime(maxTime, passedTime) {
+	self endon( "disconnect" );
+	self endon( "death" );
+  
+  timeDifference = 0;
+  while( timeDifference < maxTime ) {
+    self setClientDvar( "cap_time", int( ( maxTime - timeDifference ) / 1000 ) );
+    timeDifference = openwarfare\_timer::getTimePassed() - passedTime;
+    wait 1;
+  }
+}

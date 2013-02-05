@@ -233,7 +233,7 @@ HQMainLoop()
 
 	objective_add( locationObjID, "invisible", (0,0,0) );
 
-	while( 1 )
+	for(;;)
 	{
 		radio = PickRadioToSpawn();
 
@@ -334,7 +334,7 @@ HQMainLoop()
 		thread scriptDestroyHQ();
 		#/
 
-		while( 1 )
+		for(;;)
 		{
 			ownerTeam = radioObject maps\mp\gametypes\_gameobjects::getOwnerTeam();
 			otherTeam = getOtherTeam( ownerTeam );
@@ -506,7 +506,7 @@ onRadioCapture( player )
 scriptDestroyHQ()
 {
 	level endon("hq_destroyed");
-	while(1)
+	for(;;)
 	{
 		if ( getdvar("scr_destroyhq") != "1" )
 		{

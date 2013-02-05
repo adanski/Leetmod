@@ -39,7 +39,7 @@ monitorFlash()
 {
 	self endon("disconnect");
 	self.flashEndTime = 0;
-	while(1)
+	for(;;)
 	{
 		self waittill( "flashbang", amount_distance, amount_angle, attacker );
 

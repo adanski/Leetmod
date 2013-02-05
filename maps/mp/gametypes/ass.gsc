@@ -136,6 +136,7 @@ onPrecacheGameType()
 	precacheShader( "waypoint_defend" );
 	
 	precacheModel( "body_complete_mp_zakhaev" );
+  precacheModel( "body_complete_mp_price_woodland" );
 }
 
 
@@ -503,7 +504,13 @@ pickVIP()
 	
 	// Change the model of the VIP
 	level.playerVIP detachHead();
-	level.playerVIP setModel( "body_complete_mp_zakhaev" );
+  
+  if( level.playerVIP.pers["team"] == "allies" )
+      level.playerVIP setModel( "body_complete_mp_price_woodland" );
+  
+  if( level.playerVIP.pers["team"] == "axis" )
+    level.playerVIP setModel( "body_complete_mp_zakhaev" );
+      
 
 	// Verify weapons and remove anyone considered invalid
 	level.playerVIP thread removeInvalidWeapons();
