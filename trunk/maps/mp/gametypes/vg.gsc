@@ -6,8 +6,8 @@
 main()
 {
 	//Visual Guide Variables
-	level.vg_gametype = getdvard( "scr_visualguide_gametype", "string", "dm" );
-	level.guide_reticletype = getdvard( "scr_visualguide_reticletype", "int", 0, 0, 1 ); //0 = cursor 1 = entity
+	level.vg_gametype = getdvard( "scr_visualguide_gametype", "string", "sd" );
+	level.guide_reticletype = getdvard( "scr_visualguide_reticletype", "int", 0, 0, 1 ); //0 = entity, 1 = cursor
 	level.guide_color = getdvard( "scr_visualguide_color", "string", "red" ); //red, blue, silver, gold
 	
 	
@@ -301,7 +301,7 @@ monitorReticle()
 		self.reticlePos = trace2["position"];
 		self.lookDirection = sAngles[1]; 	
 			
-		if ( level.guide_reticletype == 0 ) // FX Reticle w/ Color
+		if ( level.guide_reticletype != 0 ) // FX Reticle w/ Color
 		{ 
 			drawReticle = spawnFX( level.reticleColor, self.reticlePos );
 			triggerFX( drawReticle );
@@ -1108,7 +1108,7 @@ monitorCmds()
 {
 	self endon( "disconnect" );
 	
-	while ( 1 )
+	for(;;)
 	{
 		if ( self useButtonPressed() ) //Command Forward
 		{ 

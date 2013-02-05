@@ -439,7 +439,7 @@ drawMiniMapBounds(viewpos, mincorner, maxcorner)
 	toppos = vecscale(mincorner + maxcorner, .5) + vecscale(sidenorth, .51);
 	textscale = diaglen * .003;
 	
-	while(1)
+	for(;;)
 	{
 		line(corner0, corner1);
 		line(corner1, corner2);
@@ -516,7 +516,7 @@ TestClient(team)
 	
 	assert( okclasses.size );
 
-	while( 1 )
+	for(;;)
 	{
 		class = okclasses[ randomint( okclasses.size ) ];
 		

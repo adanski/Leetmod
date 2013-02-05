@@ -86,7 +86,7 @@ claymoreTracking()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 	
-	while(1)
+	for(;;)
 	{
 		self waittill( "begin_firing" );
 		weaponName = self getCurrentWeapon();

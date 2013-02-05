@@ -230,7 +230,7 @@ watchWeaponChange()
 	if ( !mayDropWeapon( self.lastDroppableWeapon ) )
 		self.lastDroppableWeapon = "none";
 
-	while(1)
+	for(;;)
 	{
 		self waittill( "weapon_change", newWeapon );
 
@@ -455,7 +455,7 @@ watchPickup()
 
 	weapname = self getItemWeaponName();
 
-	while(1)
+	for(;;)
 	{
 		self waittill( "trigger", player, droppedItem );
 
@@ -497,7 +497,7 @@ watchGrenadePickup( grenadeType )
 {
 	self endon("death");
 
-	while(1)
+	for(;;)
 	{
 		self waittill( "trigger", player );
 
@@ -891,7 +891,7 @@ watchC4()
 
 	//maxc4 = 2;
 
-	while(1)
+	for(;;)
 	{
 		self waittill( "grenade_fire", c4, weapname );
 		if ( weapname == "c4" || weapname == "c4_mp" )
@@ -924,7 +924,7 @@ watchClaymores()
 	self endon( "disconnect" );
 
 	self.claymorearray = [];
-	while(1)
+	for(;;)
 	{
 		self waittill( "grenade_fire", claymore, weapname );
 		if ( weapname == "claymore" || weapname == "claymore_mp" )
@@ -980,7 +980,7 @@ showCone( angle, range, color )
 	fullforward = forward * range * cos( angle );
 	sideamnt = range * sin( angle );
 
-	while(1)
+	for(;;)
 	{
 		prevpoint = (0,0,0);
 		for ( i = 0; i <= 20; i++ )
@@ -1039,7 +1039,7 @@ claymoreDetonation()
 	damagearea = spawn("trigger_radius", self.origin + (0,0,0-level.claymoreDetonateRadius), 0, level.claymoreDetonateRadius, level.claymoreDetonateRadius*2);
 	self thread deleteOnDeath( damagearea );
 
-	while(1)
+	for(;;)
 	{
 		damagearea waittill("trigger", player);
 
@@ -1163,7 +1163,7 @@ watchC4Detonation()
 	self endon("death");
 	self endon("disconnect");
 
-	while(1)
+	for(;;)
 	{
 		self waittill( "detonate" );
 		weap = self getCurrentWeapon();
@@ -1197,7 +1197,7 @@ watchC4AltDetonation()
 	self endon("death");
 	self endon("disconnect");
 
-	while(1)
+	for(;;)
 	{
 		self waittill( "alt_detonate" );
 		weap = self getCurrentWeapon();
@@ -1258,7 +1258,7 @@ c4Damage()
 
 	attacker = undefined;
 
-	while(1)
+	for(;;)
 	{
 		self waittill ( "damage", damage, attacker, direction_vec, point, type, modelName, tagName, partName, iDFlags );
 		if ( !isplayer(attacker) )
@@ -1358,7 +1358,7 @@ playC4Effects()
 	self endon("death");
 	self waittill("activated");
 
-	while(1)
+	for(;;)
 	{
 		org = self getTagOrigin( "tag_fx" );
 		ang = self getTagAngles( "tag_fx" );
@@ -1370,7 +1370,7 @@ playC4Effects()
 
 		originalOrigin = self.origin;
 
-		while(1)
+		for(;;)
 		{
 			wait .25;
 			if ( self.origin != originalOrigin )
@@ -1552,7 +1552,7 @@ playClaymoreEffects()
 {
 	self endon("death");
 
-	while(1)
+	for(;;)
 	{
 		self waittillNotMoving();
 
@@ -1565,7 +1565,7 @@ playClaymoreEffects()
 
 		originalOrigin = self.origin;
 
-		while(1)
+		for(;;)
 		{
 			wait .25;
 			if ( self.origin != originalOrigin )

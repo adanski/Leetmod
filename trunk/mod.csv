@@ -386,7 +386,57 @@ sound,misc,,all_mp
 
 xanim,viewmodel_binoculars_idle
 
+# adding all player xmodels so that you can use them in every map
+# if xmodel limit is reached, remove them
+# For now they're commented so that mod.ff compilation is faster
+# Uncomment for release
+#xmodel,body_mp_sas_urban_sniper
+#xmodel,viewhands_black_kit
+#xmodel,body_mp_sas_urban_support
+#xmodel,body_mp_sas_urban_assault
+#xmodel,body_mp_sas_urban_recon
+#xmodel,body_mp_sas_urban_specops
+#xmodel,body_mp_usmc_woodland_assault
+#xmodel,viewhands_sas_woodland
+#xmodel,body_mp_usmc_woodland_recon
+#xmodel,body_mp_usmc_woodland_sniper
+#xmodel,head_mp_usmc_ghillie
+#xmodel,viewhands_marine_sniper
+#xmodel,body_mp_usmc_woodland_specops
+#xmodel,body_mp_usmc_woodland_support
+#xmodel,body_mp_opforce_sniper_urban
+#xmodel,head_mp_opforce_justin
+#xmodel,viewhands_op_force
+#xmodel,body_mp_opforce_support
+#xmodel,head_mp_opforce_3hole_mask
+#xmodel,body_mp_opforce_assault
+#xmodel,head_mp_opforce_headwrap
+#xmodel,body_mp_opforce_eningeer
+#xmodel,head_mp_opforce_gasmask
+#xmodel,body_mp_opforce_cqb
+#xmodel,body_mp_opforce_sniper
+#xmodel,head_mp_opforce_ghillie
+#xmodel,body_mp_usmc_specops
+#xmodel,body_mp_usmc_sniper
+#xmodel,head_mp_usmc_tactical_baseball_cap
+#xmodel,body_mp_usmc_recon
+#xmodel,body_mp_usmc_assault
+#xmodel,body_mp_usmc_support
+#xmodel,body_mp_arab_regular_cqb
+#xmodel,head_mp_arab_regular_headwrap
+#xmodel,viewhands_desert_opfor
+#xmodel,body_mp_arab_regular_sniper
+#xmodel,head_mp_arab_regular_sadiq
+#xmodel,body_mp_arab_regular_engineer
+#xmodel,head_mp_arab_regular_ski_mask
+#xmodel,body_mp_arab_regular_assault
+#xmodel,head_mp_arab_regular_suren
+#xmodel,body_mp_arab_regular_support
+#xmodel,head_mp_arab_regular_asad
+
 xmodel,body_complete_mp_zakhaev
+xmodel,body_complete_mp_price_woodland
+
 xmodel,com_office_book_red_flat
 xmodel,health_obj
 xmodel,hp_medium

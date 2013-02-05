@@ -3071,7 +3071,7 @@ playTickingSound()
 	self endon("stop_ticking");
 	level endon("game_ended");
 
-	while(1)
+	for(;;)
 	{
 		self playSound( "ui_mp_suitcasebomb_timer" );
 		wait 1.0;
@@ -4275,7 +4275,7 @@ initialDMScoreUpdate()
 	// the first time someone kills someone else.
 	wait .2;
 	numSent = 0;
-	while(1)
+	for(;;)
 	{
 		didAny = false;
 
@@ -5954,7 +5954,7 @@ reduceTeamKillsOverTime()
 	timePerOneTeamkillReduction = 20.0;
 	reductionPerSecond = 1.0 / timePerOneTeamkillReduction;
 
-	while(1)
+	for(;;)
 	{
 		if ( isAlive( self ) )
 		{
@@ -6209,7 +6209,7 @@ lastStandAllowSuicide()
 	self endon( "disconnect" );
 	self endon( "game_ended" );
 
-	while(1)
+	for(;;)
 	{
 		if ( self useButtonPressed() )
 		{
@@ -6236,7 +6236,7 @@ lastStandKeepOverlay()
 	self endon( "game_ended" );
 
 	// keep the health overlay going by making code think the player is getting damaged
-	while(1)
+	for(;;)
 	{
 		self.health = 2;
 		wait .05;

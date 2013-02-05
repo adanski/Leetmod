@@ -433,7 +433,7 @@ readSpawnData( desiredID, relativepos )
 	if ( isdefined( relativepos ) && !isdefined( oldspawndata ) )
 		return;
 
-	while(1)
+	for(;;)
 	{
 		if (freadln(file) <= 0)
 			break;
@@ -605,7 +605,7 @@ drawSpawnData()
 	level endon("drawing_spawn_data");
 
 	textoffset = (0,0,-12);
-	while(1)
+	for(;;)
 	{
 		if (!isdefined(level.curspawndata)) {
 			wait .5;
@@ -960,9 +960,9 @@ init()
 
 watchSpawnProfile()
 {
-	while(1)
+	for(;;)
 	{
-		while(1)
+		for(;;)
 		{
 			if (getdvarint("scr_spawnprofile") > 0)
 				break;
@@ -971,7 +971,7 @@ watchSpawnProfile()
 
 		thread spawnProfile();
 
-		while(1)
+		for(;;)
 		{
 			if (getdvarint("scr_spawnprofile") <= 0)
 				break;
@@ -985,7 +985,7 @@ watchSpawnProfile()
 spawnProfile()
 {
 	level endon("stop_spawn_profile");
-	while(1)
+	for(;;)
 	{
 		if ( level.players.size > 0 && level.spawnpoints.size > 0 )
 		{
@@ -1008,7 +1008,7 @@ spawnProfile()
 // DEBUG
 loopbotspawns()
 {
-	while(1)
+	for(;;)
 	{
 		if ( getdvarint("scr_killbots") < 1 )
 		{
@@ -1099,7 +1099,7 @@ allowSpawnDataReading()
 
 	readthistime = false;
 
-	while(1)
+	for(;;)
 	{
 		val = getdvar("scr_showspawnid");
 		relval = undefined;
@@ -1138,7 +1138,7 @@ allowSpawnDataReading()
 // DEBUG
 showDeathsDebug()
 {
-	while(1)
+	for(;;)
 	{
 		if (getdvar("scr_spawnpointdebug") == "0") {
 			wait(3);
@@ -1198,7 +1198,7 @@ showDeathsDebug()
 // DEBUG
 updateDeathInfoDebug()
 {
-	while(1)
+	for(;;)
 	{
 		if (getdvar("scr_spawnpointdebug") == "0") {
 			wait(3);
@@ -1213,7 +1213,7 @@ spawnWeightDebug(spawnpoints)
 {
 	level notify("stop_spawn_weight_debug");
 	level endon("stop_spawn_weight_debug");
-	while(1)
+	for(;;)
 	{
 		if (getdvar("scr_spawnpointdebug") == "0") {
 			wait(3);
@@ -1232,7 +1232,7 @@ spawnWeightDebug(spawnpoints)
 // DEBUG
 profileDebug()
 {
-	while(1)
+	for(;;)
 	{
 		if (getdvar("scr_spawnpointprofile") != "1") {
 			wait(3);
@@ -1254,7 +1254,7 @@ debugNearbyPlayers(players, origin)
 		return;
 	}
 	starttime = gettime();
-	while(1)
+	for(;;)
 	{
 		for (i = 0; i < players.size; i++)
 			line(players[i].origin, origin, (.5,1,.5));
@@ -1416,7 +1416,7 @@ avoidDangerousSpawns(spawnpoints, teambased) // (assign weights to the return va
 
 trackGrenades()
 {
-	while ( 1 )
+	for(;;)
 	{
 		level.grenades = getentarray("grenade", "classname");
 		wait .05;
@@ -1509,7 +1509,7 @@ spawnPerFrameUpdate()
 
 	debug = false;
 
-	while(1)
+	for(;;)
 	{
 		wait .05;
 

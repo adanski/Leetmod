@@ -16,6 +16,9 @@ init()
 
 	level.scr_teambalance_protected_clan_tags = getdvarx( "scr_teambalance_protected_clan_tags", "string", "" );
 	level.scr_teambalance_protected_clan_tags = strtok( level.scr_teambalance_protected_clan_tags, " " );
+  // also set on _capeditor.gsc, but setting here first because this file is called threaded, so that file could
+  // be executed before thit one
+  level.scr_cap_allow_othermodels = getdvarx( "scr_cap_allow_othermodels", "int", 0, 0, 3 );
 	
 	switch(game["allies"])
 	{
@@ -554,20 +557,73 @@ setPlayerModels()
 	else
 		game["axis_soldiertype"] = axisCharSet;
 
-
-	if ( game["allies_soldiertype"] == "desert" )
+  // Allies models precaching
+  alliesModelsFound = false;
+	if( game["allies_soldiertype"] == "desert" || level.scr_cap_allow_othermodels != 0 ) {
+    logPrint("precach allies desert");
+    alliesModelsFound = true;
+    mptype\mptype_ally_cqb::precache();
+		mptype\mptype_ally_sniper::precache();
+		mptype\mptype_ally_engineer::precache();
+		mptype\mptype_ally_rifleman::precache();
+		mptype\mptype_ally_support::precache();
+  }
+  if( game["allies_soldiertype"] == "urban" || level.scr_cap_allow_othermodels != 0 ) {
+  logPrint("precach allies urb");
+    alliesModelsFound = true;
+    mptype\mptype_ally_urban_sniper::precache();
+		mptype\mptype_ally_urban_support::precache();
+		mptype\mptype_ally_urban_assault::precache();
+		mptype\mptype_ally_urban_recon::precache();
+		mptype\mptype_ally_urban_specops::precache();
+  }
+  if( !alliesModelsFound || level.scr_cap_allow_othermodels != 0 ) {
+  logPrint("precach allies wood");
+    mptype\mptype_ally_woodland_assault::precache();
+		mptype\mptype_ally_woodland_recon::precache();
+		mptype\mptype_ally_woodland_sniper::precache();
+		mptype\mptype_ally_woodland_specops::precache();
+		mptype\mptype_ally_woodland_support::precache();
+  }
+  
+  // Axis models precaching
+  axisModelsFound = false;
+  if( game["axis_soldiertype"] == "desert" || level.scr_cap_allow_othermodels != 0 ) {
+  logPrint("precach axis desert");
+    axisModelsFound = true;
+    mptype\mptype_axis_cqb::precache();
+		mptype\mptype_axis_sniper::precache();
+		mptype\mptype_axis_engineer::precache();
+		mptype\mptype_axis_rifleman::precache();
+		mptype\mptype_axis_support::precache();
+    
+  }
+  if( game["axis_soldiertype"] == "urban" || level.scr_cap_allow_othermodels != 0 ) {
+  logPrint("precach axis urb");
+    axisModelsFound = true;
+    mptype\mptype_axis_urban_sniper::precache();
+		mptype\mptype_axis_urban_support::precache();
+		mptype\mptype_axis_urban_assault::precache();
+		mptype\mptype_axis_urban_engineer::precache();
+		mptype\mptype_axis_urban_cqb::precache();
+  }
+  if( !axisModelsFound || level.scr_cap_allow_othermodels != 0 ) {
+  logPrint("precach axis woo");
+    mptype\mptype_axis_woodland_rifleman::precache();
+		mptype\mptype_axis_woodland_cqb::precache();
+		mptype\mptype_axis_woodland_sniper::precache();
+		mptype\mptype_axis_woodland_engineer::precache();
+		mptype\mptype_axis_woodland_support::precache();
+  }
+  
+  // Default map models usage (models were already precached above if needed)
+  if ( game["allies_soldiertype"] == "desert" )
 	{
 		// assert( game["allies"] == "marines" );
 		if ( game["allies"] != "marines" ) {
 			iprintln( "WARNING: game['allies'] == "+game["allies"]+", expected 'marines'." );
 			game["allies"] = "marines";
 		}
-		
-		mptype\mptype_ally_cqb::precache();
-		mptype\mptype_ally_sniper::precache();
-		mptype\mptype_ally_engineer::precache();
-		mptype\mptype_ally_rifleman::precache();
-		mptype\mptype_ally_support::precache();
 
 		game["allies_model"]["SNIPER"] = mptype\mptype_ally_sniper::main;
 		game["allies_model"]["SUPPORT"] = mptype\mptype_ally_support::main;
@@ -594,12 +650,6 @@ setPlayerModels()
 			iprintln( "WARNING: game['allies'] == "+game["allies"]+", expected 'sas'." );
 			game["allies"] = "sas";
 		}
-		
-		mptype\mptype_ally_urban_sniper::precache();
-		mptype\mptype_ally_urban_support::precache();
-		mptype\mptype_ally_urban_assault::precache();
-		mptype\mptype_ally_urban_recon::precache();
-		mptype\mptype_ally_urban_specops::precache();
 
 		game["allies_model"]["SNIPER"] = mptype\mptype_ally_urban_sniper::main;
 		game["allies_model"]["SUPPORT"] = mptype\mptype_ally_urban_support::main;
@@ -626,12 +676,6 @@ setPlayerModels()
 			iprintln( "WARNING: game['allies'] == "+game["allies"]+", expected 'marines'." );
 			game["allies"] = "marines";
 		}
-		
-		mptype\mptype_ally_woodland_assault::precache();
-		mptype\mptype_ally_woodland_recon::precache();
-		mptype\mptype_ally_woodland_sniper::precache();
-		mptype\mptype_ally_woodland_specops::precache();
-		mptype\mptype_ally_woodland_support::precache();
 
 		game["allies_model"]["SNIPER"] = mptype\mptype_ally_woodland_sniper::main;
 		game["allies_model"]["SUPPORT"] = mptype\mptype_ally_woodland_support::main;
@@ -660,12 +704,6 @@ setPlayerModels()
 			game["axis"] = "opfor";
 		}
 		
-		mptype\mptype_axis_cqb::precache();
-		mptype\mptype_axis_sniper::precache();
-		mptype\mptype_axis_engineer::precache();
-		mptype\mptype_axis_rifleman::precache();
-		mptype\mptype_axis_support::precache();
-
 		game["axis_model"] = [];
 
 		game["axis_model"]["SNIPER"] = mptype\mptype_axis_sniper::main;
@@ -694,12 +732,6 @@ setPlayerModels()
 			game["axis"] = "russian";
 		}
 		
-		mptype\mptype_axis_urban_sniper::precache();
-		mptype\mptype_axis_urban_support::precache();
-		mptype\mptype_axis_urban_assault::precache();
-		mptype\mptype_axis_urban_engineer::precache();
-		mptype\mptype_axis_urban_cqb::precache();
-
 		game["axis_model"]["SNIPER"] = mptype\mptype_axis_urban_sniper::main;
 		game["axis_model"]["SUPPORT"] = mptype\mptype_axis_urban_support::main;
 		game["axis_model"]["ASSAULT"] = mptype\mptype_axis_urban_assault::main;
@@ -726,12 +758,6 @@ setPlayerModels()
 			game["axis"] = "russian";
 		}
 		
-		mptype\mptype_axis_woodland_rifleman::precache();
-		mptype\mptype_axis_woodland_cqb::precache();
-		mptype\mptype_axis_woodland_sniper::precache();
-		mptype\mptype_axis_woodland_engineer::precache();
-		mptype\mptype_axis_woodland_support::precache();
-
 		game["axis_model"]["SNIPER"] = mptype\mptype_axis_woodland_sniper::main;
 		game["axis_model"]["SUPPORT"] = mptype\mptype_axis_woodland_support::main;
 		game["axis_model"]["ASSAULT"] = mptype\mptype_axis_woodland_rifleman::main;

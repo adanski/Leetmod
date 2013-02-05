@@ -485,7 +485,7 @@ traceBomb()
 {
 	self endon("death");
 	prevpos = self.origin;
-	while(1)
+	for(;;)
 	{
 		thread airstrikeLine( prevpos, self.origin, (.5,1,0), 20 );
 		prevpos = self.origin;
