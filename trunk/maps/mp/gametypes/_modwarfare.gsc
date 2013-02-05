@@ -308,7 +308,7 @@ isPerkAllowed( perkName, className )
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "connected", player );
 		
@@ -330,7 +330,7 @@ onJoinedTeam()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_team");
 		// If this player already has a class it means it switched teams 
@@ -354,7 +354,7 @@ onJoinedSpectators()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_spectators");
 		self.pers["oldteam"] = "spectator";

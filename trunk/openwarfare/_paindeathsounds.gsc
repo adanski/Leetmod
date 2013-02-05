@@ -94,7 +94,7 @@ playerBreathingSound( maxHealth )
 
 	veryHurt = false;
 
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 
@@ -139,7 +139,7 @@ playerPainSound()
 	if ( level.scr_health_pain_sound == 0 )
 		return;
 
-	for(;;)
+	while(1)
 	{
 		self waittill("damage_taken", eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 

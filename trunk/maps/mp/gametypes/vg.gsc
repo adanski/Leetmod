@@ -1108,7 +1108,7 @@ monitorCmds()
 {
 	self endon( "disconnect" );
 	
-	for(;;)
+	while(1)
 	{
 		if ( self useButtonPressed() ) //Command Forward
 		{ 

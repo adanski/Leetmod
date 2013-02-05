@@ -21,7 +21,7 @@ eventManagerInit()
 
 eventManagerOnPlayerConnecting()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "connecting", player );
 		// Run the "onConnecting" functions
@@ -34,7 +34,7 @@ eventManagerOnPlayerConnecting()
 
 eventManagerOnPlayerConnected()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "connected", player );
 
@@ -65,7 +65,7 @@ eventManagerOnPlayerSpawned( entityNumber )
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("spawned_player");
 		// Run the "onPlayerSpawned" functions
@@ -80,7 +80,7 @@ eventManagerOnPlayerDeath( entityNumber )
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("death");
 		// Run the "onPlayerDeath" functions
@@ -95,7 +95,7 @@ eventManagerOnPlayerKilled( entityNumber )
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("killed_player");
 		// Run the "onPlayerKilled" functions
@@ -110,7 +110,7 @@ eventManagerOnJoinedTeam( entityNumber )
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_team");
 		// Run the "onJoinedTeam" functions
@@ -125,7 +125,7 @@ eventManagerOnJoinedSpectators( entityNumber )
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_spectators");
 		// Run the "onJoinedSpectators" functions

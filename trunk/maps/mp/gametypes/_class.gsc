@@ -1293,7 +1293,7 @@ replenishLoadout() // used by ammo hardpoint.
 
 onPlayerConnecting()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "connecting", player );
 

@@ -25,7 +25,7 @@ init()
 
 onPlayerConnect()
 {
-   for(;;)
+   while(1)
    {
       level waittill("connected", player);
 
@@ -40,7 +40,7 @@ onPlayerSpawned()
 {
    self endon("disconnect");
 
-   for(;;)
+   while(1)
    {
       self waittill("spawned_player");
       self setSpectatePermissions();
@@ -52,7 +52,7 @@ onJoinedTeam()
 {
    self endon("disconnect");
 
-   for(;;)
+   while(1)
    {
       self waittill("joined_team");
       self setSpectatePermissions();
@@ -63,7 +63,7 @@ onJoinedSpectators()
 {
    self endon("disconnect");
 
-   for(;;)
+   while(1)
    {
       self waittill("joined_spectators");
       self setSpectatePermissions();

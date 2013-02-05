@@ -46,7 +46,7 @@ onPlayerKillStreak()
 	self endon("disconnect");
 	level endon( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		self waittill("kill_streak", killStreak, streakGiven, sMeansOfDeath );
 		playedSound = false;

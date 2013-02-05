@@ -50,7 +50,7 @@ controlFragsForMartyrdom()
 	self endon("unfrozen_player");
 	level endon( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		// Wait for the player to throw a grenade
 		self waittill ( "grenade_fire", grenade, weaponName );

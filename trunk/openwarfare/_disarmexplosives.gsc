@@ -65,7 +65,7 @@ checkExplosivesUtilization()
 	self endon("unfrozen_player");
 	level endon( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		// Wait for the player to plant an explosive
 		self waittill("grenade_fire", explosiveEnt, weaponName);
@@ -92,7 +92,7 @@ explosiveMonitor()
 		self.triggerRadius = spawn( "trigger_radius", self.origin + ( 0, 0, -40 ), 0, 35, 80 );
 		self thread deleteTriggerOnDeath();
 
-		for(;;)
+		while(1)
 		{
 			wait (0.05);
 

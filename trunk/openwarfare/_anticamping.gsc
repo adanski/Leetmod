@@ -62,7 +62,7 @@ monitorPlayerCamping()
 	if ( isDefined( self.hud_camping_icon ) )
 		self.hud_camping_icon destroy();
 
-	for(;;)
+	while(1)
 	{
 		distanceMoved = 0;
 

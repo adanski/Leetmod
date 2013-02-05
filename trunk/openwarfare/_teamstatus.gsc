@@ -227,7 +227,7 @@ startTeamStatusRefresh()
 	previousTeamStatus["allies"] = -1;
 	previousTeamStatus["axis"] = -1;	
 
-	for(;;)
+	while(1)
 	{
 		wait (0.1);
 

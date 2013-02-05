@@ -618,7 +618,7 @@ preventInvalidWeaponsPickup()
    self endon("death");
    self endon("disconnect");
    
-   for(;;)
+   while(1)
    {
       wait (0.05);
       currentWeapon = self getCurrentWeapon();

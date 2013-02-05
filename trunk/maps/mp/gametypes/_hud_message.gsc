@@ -26,7 +26,7 @@ init()
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "connecting", player );
 
@@ -351,7 +351,7 @@ hintMessageDeathThink()
 {
 	self endon ( "disconnect" );
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "death" );
 		

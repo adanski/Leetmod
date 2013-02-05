@@ -768,7 +768,7 @@ Distort()
 	yshift = 0;
 
 
-	for(;;)
+	while(1)
 	{
 		VMag = self.VaxisMag;
 		YMag = self.YaxisMag;

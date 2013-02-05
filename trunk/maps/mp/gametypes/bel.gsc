@@ -165,7 +165,7 @@ balanceTeams()
 {
 	level endon("game_ended");
 	
-	for(;;)
+	while(1)
 	{
 		xWait( level.scr_teambalance_delay );
 		
@@ -407,7 +407,7 @@ giveSurvivalScore()
 	self endon("stop_survivalscore");
 	level endon("game_ended");
 	
-	for(;;)
+	while(1)
 	{
 		// Wait for the proper amount of time
 		xWait(1);
@@ -463,7 +463,7 @@ showOnCompass()
 	if ( level.scr_hud_show_2dicons == 0 && level.scr_hud_show_3dicons == 0 )
 		return;
 	
-	for(;;)
+	while(1)
 	{
 		// Wait for the proper amount of time
 		xWait( level.scr_bel_showoncompass_interval );

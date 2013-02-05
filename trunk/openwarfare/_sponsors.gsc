@@ -65,7 +65,7 @@ onPlayerSpawned()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("spawned_player");
 		self thread rotateSponsors();	

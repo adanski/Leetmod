@@ -485,7 +485,7 @@ traceBomb()
 {
 	self endon("death");
 	prevpos = self.origin;
-	for(;;)
+	while(1)
 	{
 		thread airstrikeLine( prevpos, self.origin, (.5,1,0), 20 );
 		prevpos = self.origin;
@@ -1089,7 +1089,7 @@ hardpointItemWaiter()
 
 	self giveOwnedHardpointItem();
 
-	for(;;)
+	while(1)
 	{
 		self waittill( "weapon_change" );
 
@@ -1514,7 +1514,7 @@ hardpointReminder( hardpointType )
 	self endon("death");
 	level endon( "game_ended" );
 	
-	for(;;)
+	while(1)
 	{
 		// Calculate next reminder
 		nextReminder = openwarfare\_timer::getTimePassed() + level.scr_hardpoint_show_reminder * 1000;

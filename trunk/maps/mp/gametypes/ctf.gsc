@@ -821,7 +821,7 @@ monitorFlagCarrier( flagCarrier )
 
 	// Monitor that the player is moving certain amount of distance in a given time or show him on the radar
 	oldPlayerPosition = flagCarrier.origin;
-	for(;;)
+	while(1)
 	{
 		// Wait for the given time
 		xWait( level.scr_ctf_show_flag_carrier_time );

@@ -154,7 +154,7 @@ getRankInfoLevel( rankId )
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "connected", player );
 
@@ -274,7 +274,7 @@ onJoinedTeam()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_team");
 		self thread removeRankHUD();
@@ -286,7 +286,7 @@ onJoinedSpectators()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("joined_spectators");
 		self thread removeRankHUD();
@@ -298,7 +298,7 @@ onPlayerSpawned()
 {
 	self endon("disconnect");
 
-	for(;;)
+	while(1)
 	{
 		self waittill("spawned_player");
 

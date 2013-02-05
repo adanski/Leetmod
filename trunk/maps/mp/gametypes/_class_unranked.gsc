@@ -342,7 +342,7 @@ setWeaponAmmoOverall( weaponname, amount )
 
 onPlayerConnecting()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "connecting", player );
 

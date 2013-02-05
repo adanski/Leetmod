@@ -43,7 +43,7 @@ monitorPlayerScore()
 	
 	playerRank = -1;
 	
-	for(;;)
+	while(1)
 	{
 		// Get the player's rank based on score
 		newPlayerRank = self getRankForScore();

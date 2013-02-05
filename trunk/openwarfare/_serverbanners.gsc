@@ -67,7 +67,7 @@ displayServerBanners() {
 	level.matchServerBanners[ level.matchServerBanners.size ] = "^3" + getDvar( "_Mod" ) + " " + getDvar( "_ModVer" );
 
 	// Loop forever until the player disconnects
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 

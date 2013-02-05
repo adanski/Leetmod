@@ -15,7 +15,7 @@ init()
 	setdvar( "scr_giveperk", "" );
 	setdvar( "scr_takeperk", "" );
 	
-	for(;;)
+	while(1)
 	{
 		updateDevSettings();
 		wait .05;
@@ -439,7 +439,7 @@ drawMiniMapBounds(viewpos, mincorner, maxcorner)
 	toppos = vecscale(mincorner + maxcorner, .5) + vecscale(sidenorth, .51);
 	textscale = diaglen * .003;
 	
-	for(;;)
+	while(1)
 	{
 		line(corner0, corner1);
 		line(corner1, corner2);
@@ -461,7 +461,7 @@ addTestClients()
 {
 	wait 5;
 
-	for(;;)
+	while(1)
 	{
 		if(getdvarInt("scr_testclients") > 0)
 			break;
@@ -516,7 +516,7 @@ TestClient(team)
 	
 	assert( okclasses.size );
 
-	for(;;)
+	while(1)
 	{
 		class = okclasses[ randomint( okclasses.size ) ];
 		
@@ -617,7 +617,7 @@ print3DUntilNotified(origin, text, color, alpha, scale)
 {
 	level endon("hide_spawnpoints");
 	
-	for(;;)
+	while(1)
 	{
 		print3d(origin, text, color, alpha, scale);
 		wait .05;
@@ -628,7 +628,7 @@ lineUntilNotified(start, end, color, depthTest)
 {
 	level endon("hide_spawnpoints");
 	
-	for(;;)
+	while(1)
 	{
 		line(start, end, color, depthTest);
 		wait .05;

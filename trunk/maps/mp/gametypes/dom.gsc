@@ -428,14 +428,14 @@ getUnownedFlagNearestStart( team, excludeFlag )
 /#
 domDebug()
 {
-	for(;;)
+	while(1)
 	{
 		if (getdvar("scr_domdebug") != "1") {
 			wait 2;
 			continue;
 		}
 
-		for(;;)
+		while(1)
 		{
 			if (getdvar("scr_domdebug") != "1")
 				break;

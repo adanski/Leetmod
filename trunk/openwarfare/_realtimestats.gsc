@@ -486,7 +486,7 @@ onRefreshAccuracy()
 {
 	self endon("disconnect");
 	
-	for(;;) {
+	while(1) {
 		self waittill( "refresh_accuracy", shotsFired, hits );
 
 		self.pers["stats"]["accuracy"]["total_shots"] += shotsFired;
@@ -506,7 +506,7 @@ onPlayerKilled()
 {
 	self endon("disconnect");
 	
-	for(;;) {
+	while(1) {
 		self waittill( "player_killed", eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration, fDistance );
 
 		// Make sure the player is not switching teams or being team balanced (our suicides count only when the player kills himself)
@@ -644,7 +644,7 @@ onHardpointCalled()
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill( "hardpoint_called", hardpointName );
 		

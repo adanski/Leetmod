@@ -44,7 +44,7 @@ AngleClamp180( angle )
 
 onPlayerConnect()
 {
-	for(;;)
+	while(1)
 	{
 		level waittill( "connected", player );
 
@@ -326,7 +326,7 @@ MGKill()
 endMGStreakWhenLeaveMG()
 {
 	self endon("disconnect");
-	for(;;)
+	while(1)
 	{
 		if ( !isAlive( self ) || self useButtonPressed() )
 		{
@@ -1165,7 +1165,7 @@ monitorSprintDistance()
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		self waittill("sprint_begin");
 		
@@ -1183,7 +1183,7 @@ monitorSingleSprintDistance()
 	self endon("sprint_end");
 	
 	prevpos = self.origin;
-	for(;;)
+	while(1)
 	{
 		wait(.1);
 
@@ -1198,7 +1198,7 @@ monitorFallDistance()
 
 	self.pers["midairStreak"] = 0;
 	
-	for(;;)
+	while(1)
 	{
 		if ( !isAlive( self ) )
 		{
@@ -1252,7 +1252,7 @@ monitorBombUse()
 {
 	self endon("disconnect");
 	
-	for(;;)
+	while(1)
 	{
 		result = self waittill_any_return( "bomb_planted", "bomb_defused" );
 		
@@ -1270,7 +1270,7 @@ monitorBombUse()
 
 monitorLiveTime()
 {
-	for(;;)
+	while(1)
 	{
 		self waittill ( "spawned_player" );
 		
@@ -1298,7 +1298,7 @@ monitorStreaks()
 
 	self thread monitorMisc();
 
-	for(;;)
+	while(1)
 	{
 		self waittill ( "death" );
 		
@@ -1329,7 +1329,7 @@ monitorMiscSingle( waittillString )
 	// don't need to endon disconnect because we will get the notify we're waiting for when we disconnect.
 	// avoiding the endon disconnect saves a lot of script variables (5 * 4 threads * 64 players = 1280)
 	
-	for(;;)
+	while(1)
 	{
 		self waittill( waittillString );
 		

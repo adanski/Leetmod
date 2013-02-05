@@ -112,7 +112,7 @@ monitorCurrentWeapon()
 	oldAds = 0;
 	zoomLevelSet = false;
 
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 		
@@ -211,7 +211,7 @@ monitorUseMeleeKeys()
 	self endon("disconnect");
 	self endon("death");
 	
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 		

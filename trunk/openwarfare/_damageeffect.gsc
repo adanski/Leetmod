@@ -38,7 +38,7 @@ onDamageTaken()
 	self endon("death");
 	level endon( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		self waittill("damage_taken", eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
 

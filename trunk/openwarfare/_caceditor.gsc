@@ -20,7 +20,7 @@ cacResponseHandler()
 	
   self initializeEditor();
 	
-  for(;;)
+  while(1)
 	{
 		self waittill( "menuresponse", menu, response );
 		if ( ( menu == "team_marinesopfor" || menu == "class" || menu == "endofgame" ) && response == "ow_cac_editor" )

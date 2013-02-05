@@ -972,7 +972,7 @@ testMenu()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for(;;)
+	while(1)
 	{
 		wait ( 10.0 );
 
@@ -990,7 +990,7 @@ testShock()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 
-	for(;;)
+	while(1)
 	{
 		wait ( 3.0 );
 
@@ -1015,7 +1015,7 @@ testHPs()
 	hps[hps.size] = "airstrike_mp";
 	hps[hps.size] = "helicopter_mp";
 
-	for(;;)
+	while(1)
 	{
 //		hp = hps[randomInt(hps.size)];
 		hp = "radar_mp";
@@ -3071,7 +3071,7 @@ playTickingSound()
 	self endon("stop_ticking");
 	level endon("game_ended");
 
-	for(;;)
+	while(1)
 	{
 		self playSound( "ui_mp_suitcasebomb_timer" );
 		wait 1.0;
@@ -3300,7 +3300,7 @@ suspenseMusic()
 	level endon ( "match_ending_soon" );
 
 	numTracks = game["music"]["suspense"].size;
-	for(;;)
+	while(1)
 	{
 		wait ( randomFloatRange( 60, 120 ) );
 
@@ -4275,7 +4275,7 @@ initialDMScoreUpdate()
 	// the first time someone kills someone else.
 	wait .2;
 	numSent = 0;
-	for(;;)
+	while(1)
 	{
 		didAny = false;
 
@@ -4367,7 +4367,7 @@ fakeLag()
 	self endon ( "disconnect" );
 	self.fakeLag = randomIntRange( 50, 150 );
 
-	for(;;)
+	while(1)
 	{
 		self setClientDvar( "fakelag_target", self.fakeLag );
 		wait ( randomFloatRange( 5.0, 15.0 ) );
@@ -5894,7 +5894,7 @@ cancelKillCamOnUse()
 	self endon ( "disconnect" );
 	level endon ( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		if ( !self UseButtonPressed() )
 		{
@@ -5954,7 +5954,7 @@ reduceTeamKillsOverTime()
 	timePerOneTeamkillReduction = 20.0;
 	reductionPerSecond = 1.0 / timePerOneTeamkillReduction;
 
-	for(;;)
+	while(1)
 	{
 		if ( isAlive( self ) )
 		{
@@ -6209,7 +6209,7 @@ lastStandAllowSuicide()
 	self endon( "disconnect" );
 	self endon( "game_ended" );
 
-	for(;;)
+	while(1)
 	{
 		if ( self useButtonPressed() )
 		{
@@ -6236,7 +6236,7 @@ lastStandKeepOverlay()
 	self endon( "game_ended" );
 
 	// keep the health overlay going by making code think the player is getting damaged
-	for(;;)
+	while(1)
 	{
 		self.health = 2;
 		wait .05;

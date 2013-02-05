@@ -43,7 +43,7 @@ monitorPlantedExplosives( explosiveLimit, explosiveName )
 	ammoCount = 0;
 	ammoTaken = 0;
 	
-	for(;;)
+	while(1)
 	{
 		wait (0.5);
 		

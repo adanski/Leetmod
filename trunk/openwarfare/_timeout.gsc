@@ -63,7 +63,7 @@ monitorTimeout()
 	level endon( "game_ended" );
 
 	// We'll check if a timeout is called and freeze the player
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 		// Check if we are in timeout mode

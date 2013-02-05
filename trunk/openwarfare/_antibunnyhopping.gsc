@@ -41,7 +41,7 @@ antiBunnyHopping()
 	lastDistance = 0;
 	weaponsDisabled = false;
 
-	for(;;)
+	while(1)
 	{
 		wait (0.05);
 
@@ -105,7 +105,7 @@ antiDolphinDive()
 
   self.previousStance = "";
 
-  for(;;)
+  while(1)
 	{
 		wait (0.05);
 		if (self.previousstance != "prone" && ( self getStance() == "prone" ) && ( self attackButtonPressed() ) )
