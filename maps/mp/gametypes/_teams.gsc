@@ -772,14 +772,28 @@ setPlayerModels()
       game["cap_neutral_model"]["body_model"][game["cap_neutral_model"]["body_model"].size] = "body_mp_opforce_sniper";
     }
   }
-  // Model loading order: 1 - desert, 2 - urban, 3 - woodland
-  defaultAlliesModels = 1;
+
   if ( game["allies_soldiertype"] == "desert" ) {
 		// assert( game["allies"] == "marines" );
 		if ( game["allies"] != "marines" ) {
 			iprintln( "WARNING: game['allies'] == "+game["allies"]+", expected 'marines'." );
 			game["allies"] = "marines";
 		}
+		game["allies_model"]["ASSAULT"] = mptype\mptype_ally_rifleman::main;
+		game["allies_model"]["SPECOPS"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["SUPPORT"] = mptype\mptype_ally_support::main;
+		game["allies_model"]["RECON"] = mptype\mptype_ally_engineer::main;
+    game["allies_model"]["SNIPER"] = mptype\mptype_ally_sniper::main;
+		// custom class defaults
+		game["allies_model"]["CLASS_CUSTOM1"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM2"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM3"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM4"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM5"] = mptype\mptype_ally_cqb::main;
+    game["allies_model"]["CLASS_CUSTOM6"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM7"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM8"] = mptype\mptype_ally_cqb::main;
+		game["allies_model"]["CLASS_CUSTOM9"] = mptype\mptype_ally_cqb::main;
   }
   else if ( game["allies_soldiertype"] == "urban" ) {
 		// assert( game["allies"] == "sas" );
@@ -787,7 +801,21 @@ setPlayerModels()
 			iprintln( "WARNING: game['allies'] == "+game["allies"]+", expected 'sas'." );
 			game["allies"] = "sas";
 		}
-    defaultAlliesModels = 2;
+		game["allies_model"]["ASSAULT"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["SPECOPS"] = mptype\mptype_ally_urban_specops::main;
+		game["allies_model"]["SUPPORT"] = mptype\mptype_ally_urban_support::main;
+		game["allies_model"]["RECON"] = mptype\mptype_ally_urban_recon::main;
+    game["allies_model"]["SNIPER"] = mptype\mptype_ally_urban_sniper::main;
+		// custom class defaults
+		game["allies_model"]["CLASS_CUSTOM1"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM2"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM3"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM4"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM5"] = mptype\mptype_ally_urban_assault::main;
+    game["allies_model"]["CLASS_CUSTOM6"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM7"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM8"] = mptype\mptype_ally_urban_assault::main;
+		game["allies_model"]["CLASS_CUSTOM9"] = mptype\mptype_ally_urban_assault::main;
   }
 	else {
 		// assert( game["allies"] == "sas" );
@@ -795,16 +823,44 @@ setPlayerModels()
 			iprintln( "WARNING: game['allies'] == "+game["allies"]+", expected 'marines'." );
 			game["allies"] = "marines";
 		}
-    defaultAlliesModels = 3;
+		game["allies_model"]["ASSAULT"] = mptype\mptype_ally_woodland_assault::main;
+		game["allies_model"]["SPECOPS"] = mptype\mptype_ally_woodland_specops::main;
+		game["allies_model"]["SUPPORT"] = mptype\mptype_ally_woodland_support::main;
+		game["allies_model"]["RECON"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["SNIPER"] = mptype\mptype_ally_woodland_sniper::main;
+		// custom class defaults
+		game["allies_model"]["CLASS_CUSTOM1"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM2"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM3"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM4"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM5"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM6"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM7"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM8"] = mptype\mptype_ally_woodland_recon::main;
+		game["allies_model"]["CLASS_CUSTOM9"] = mptype\mptype_ally_woodland_recon::main;
   }
   
-  defaultAxisModels = 1;
   if ( game["axis_soldiertype"] == "desert" ) {
 		// assert( game["axis"] == "opfor" || game["axis"] == "arab" );
 		if ( game["axis"] != "opfor" && game["axis"] != "arab" ) {
 			iprintln( "WARNING: game['axis'] == "+game["axis"]+", expected 'opfor' or 'arab'.");
 			game["axis"] = "opfor";
 		}
+		game["axis_model"]["ASSAULT"] = mptype\mptype_axis_rifleman::main;
+		game["axis_model"]["SPECOPS"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["SUPPORT"] = mptype\mptype_axis_support::main;
+		game["axis_model"]["RECON"] = mptype\mptype_axis_engineer::main;
+		game["axis_model"]["SNIPER"] = mptype\mptype_axis_sniper::main;
+		// custom class defaults
+		game["axis_model"]["CLASS_CUSTOM1"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM2"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM3"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM4"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM5"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM6"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM7"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM8"] = mptype\mptype_axis_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM9"] = mptype\mptype_axis_cqb::main;
 	}
 	else if ( game["axis_soldiertype"] == "urban" ) {
 		// assert( game["axis"] == "opfor" );
@@ -812,7 +868,21 @@ setPlayerModels()
 			iprintln( "WARNING: game['axis'] == "+game["axis"]+", expected 'russian'.");
 			game["axis"] = "russian";
 		}
-    defaultAxisModels = 2;
+		game["axis_model"]["ASSAULT"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["SPECOPS"] = mptype\mptype_axis_urban_cqb::main;
+		game["axis_model"]["SUPPORT"] = mptype\mptype_axis_urban_support::main;
+		game["axis_model"]["RECON"] = mptype\mptype_axis_urban_engineer::main;
+    game["axis_model"]["SNIPER"] = mptype\mptype_axis_urban_sniper::main;
+		// custom class defaults
+		game["axis_model"]["CLASS_CUSTOM1"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM2"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM3"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM4"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM5"] = mptype\mptype_axis_urban_assault::main;
+    game["axis_model"]["CLASS_CUSTOM6"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM7"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM8"] = mptype\mptype_axis_urban_assault::main;
+		game["axis_model"]["CLASS_CUSTOM9"] = mptype\mptype_axis_urban_assault::main;
 	}
 	else {
 		// assert( game["axis"] == "opfor" );
@@ -820,40 +890,22 @@ setPlayerModels()
 			iprintln( "WARNING: game['axis'] == "+game["axis"]+", expected 'russian'.");
 			game["axis"] = "russian";
 		}
-    defaultAxisModels = 3;
+		game["axis_model"]["ASSAULT"] = mptype\mptype_axis_woodland_rifleman::main;
+		game["axis_model"]["SPECOPS"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["SUPPORT"] = mptype\mptype_axis_woodland_support::main;
+		game["axis_model"]["RECON"] = mptype\mptype_axis_woodland_engineer::main;
+    game["axis_model"]["SNIPER"] = mptype\mptype_axis_woodland_sniper::main;
+		// custom class defaults
+		game["axis_model"]["CLASS_CUSTOM1"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM2"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM3"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM4"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM5"] = mptype\mptype_axis_woodland_cqb::main;
+    game["axis_model"]["CLASS_CUSTOM6"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM7"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM8"] = mptype\mptype_axis_woodland_cqb::main;
+		game["axis_model"]["CLASS_CUSTOM9"] = mptype\mptype_axis_woodland_cqb::main;
 	}
-  
-  game["allies_model"]["ASSAULT"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-  game["allies_model"]["SPECOPS"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+1];
-  game["allies_model"]["SUPPORT"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+2];
-  game["allies_model"]["RECON"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+3];
-  game["allies_model"]["SNIPER"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+4];
-  // custom class defaults
-  game["allies_model"]["CLASS_CUSTOM1"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-  game["allies_model"]["CLASS_CUSTOM2"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-  game["allies_model"]["CLASS_CUSTOM3"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-  game["allies_model"]["CLASS_CUSTOM4"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-  game["allies_model"]["CLASS_CUSTOM5"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-  game["allies_model"]["CLASS_CUSTOM6"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-  game["allies_model"]["CLASS_CUSTOM7"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-  game["allies_model"]["CLASS_CUSTOM8"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-  game["allies_model"]["CLASS_CUSTOM9"] = game["cap_allies_model"]["function"][defaultAlliesModels*5+0];
-
-  game["axis_model"]["ASSAULT"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
-  game["axis_model"]["SPECOPS"] = game["cap_axis_model"]["function"][defaultAxisModels*5+1];
-  game["axis_model"]["SUPPORT"] = game["cap_axis_model"]["function"][defaultAxisModels*5+2];
-  game["axis_model"]["RECON"] = game["cap_axis_model"]["function"][defaultAxisModels*5+3];
-  game["axis_model"]["SNIPER"] = game["cap_axis_model"]["function"][defaultAxisModels*5+4];
-  // custom class defaults
-  game["axis_model"]["CLASS_CUSTOM1"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
-  game["axis_model"]["CLASS_CUSTOM2"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
-  game["axis_model"]["CLASS_CUSTOM3"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
-  game["axis_model"]["CLASS_CUSTOM4"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
-  game["axis_model"]["CLASS_CUSTOM5"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
-  game["axis_model"]["CLASS_CUSTOM6"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
-  game["axis_model"]["CLASS_CUSTOM7"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
-  game["axis_model"]["CLASS_CUSTOM8"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
-  game["axis_model"]["CLASS_CUSTOM9"] = game["cap_axis_model"]["function"][defaultAxisModels*5+0];
 }
 
 
@@ -865,20 +917,20 @@ playerModelForWeapon( weapon )
 
 	switch ( weaponClass )
 	{
-		case "weapon_smg":
-			[[game[self.pers["team"]+"_model"]["SPECOPS"]]]();
-			break;
 		case "weapon_assault":
 			[[game[self.pers["team"]+"_model"]["ASSAULT"]]]();
 			break;
-		case "weapon_sniper":
-			[[game[self.pers["team"]+"_model"]["SNIPER"]]]();
+		case "weapon_smg":
+			[[game[self.pers["team"]+"_model"]["SPECOPS"]]]();
+			break;
+		case "weapon_lmg":
+			[[game[self.pers["team"]+"_model"]["SUPPORT"]]]();
 			break;
 		case "weapon_shotgun":
 			[[game[self.pers["team"]+"_model"]["RECON"]]]();
 			break;
-		case "weapon_lmg":
-			[[game[self.pers["team"]+"_model"]["SUPPORT"]]]();
+		case "weapon_sniper":
+			[[game[self.pers["team"]+"_model"]["SNIPER"]]]();
 			break;
 		default:
 			[[game[self.pers["team"]+"_model"]["ASSAULT"]]]();
@@ -893,20 +945,20 @@ playerModelForClass( class )
 
 	switch ( class )
 	{
-		case "specops":
-			[[game[self.pers["team"]+"_model"]["SPECOPS"]]]();
-			break;
 		case "assault":
 			[[game[self.pers["team"]+"_model"]["ASSAULT"]]]();
 			break;
-		case "sniper":
-			[[game[self.pers["team"]+"_model"]["SNIPER"]]]();
+		case "specops":
+			[[game[self.pers["team"]+"_model"]["SPECOPS"]]]();
+			break;
+		case "heavygunner":
+			[[game[self.pers["team"]+"_model"]["SUPPORT"]]]();
 			break;
 		case "demolitions":
 			[[game[self.pers["team"]+"_model"]["RECON"]]]();
 			break;
-		case "heavygunner":
-			[[game[self.pers["team"]+"_model"]["SUPPORT"]]]();
+		case "sniper":
+			[[game[self.pers["team"]+"_model"]["SNIPER"]]]();
 			break;
 		default:
 			[[game[self.pers["team"]+"_model"]["ASSAULT"]]]();

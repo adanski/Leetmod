@@ -206,11 +206,12 @@
 			name 		"previousmap"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-177 POSITION_Y(48) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-177 POSITION_Y(52) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor previousmap forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor previousmap forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "previousmap"; }	
 		}		
 		
@@ -218,11 +219,12 @@
 			name 		"nextmap"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-159 POSITION_Y(48) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-159 POSITION_Y(52) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor nextmap forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor nextmap forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "nextmap"; }	
 		}		
 				
@@ -249,7 +251,8 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor previoustype forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor previoustype forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "previoustype"; }	
 		}		
 		
@@ -261,7 +264,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor nexttype forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor nexttype forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "nexttype"; }	
 		}		
 
@@ -497,7 +501,8 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor previousruleset forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor previousruleset forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "previousruleset"; }	
 		}		
 		
@@ -509,7 +514,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor nextruleset forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor nextruleset forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "nextruleset"; }	
 		}		
 		
@@ -584,7 +590,8 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor previousplayer forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor previousplayer forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "previousplayer"; }	
 		}		
 		
@@ -596,7 +603,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor nextplayer forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor nextplayer forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "nextplayer"; }	
 		}		
 
@@ -623,7 +631,8 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor previousreason forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor previousreason forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "previousreason"; }	
 		}		
 		
@@ -635,7 +644,8 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; } 
+		  mouseEnter { play "mouse_over"; setitemcolor nextreason forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor nextreason forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "nextreason"; }	
 		}		
 		
