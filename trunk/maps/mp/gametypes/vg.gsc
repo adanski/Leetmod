@@ -5,7 +5,13 @@
 
 main()
 {
-	//Visual Guide Variables
+  // Force some server variables
+	setDvar( "scr_match_readyup_period_vg", "0" );
+	setDvar( "scr_match_strategy_time_vg", "0" );
+	setDvar( "scr_game_playerwaittime_vg", "0" );
+	setDvar( "scr_game_matchstarttime_vg", "0" );
+  
+  //Visual Guide Variables
 	level.vg_gametype = getdvard( "scr_visualguide_gametype", "string", "sd" );
 	level.guide_reticletype = getdvard( "scr_visualguide_reticletype", "int", 0, 0, 1 ); //0 = entity, 1 = cursor
 	level.guide_color = getdvard( "scr_visualguide_color", "string", "red" ); //red, blue, silver, gold
