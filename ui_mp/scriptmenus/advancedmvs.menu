@@ -29,7 +29,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		// gradient_top
 		itemDef
 		{
@@ -39,7 +39,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		// gradient_bottom
 		itemDef
 		{
@@ -49,51 +49,54 @@
 			visible			1
 			decoration
 		}
-
+		
 		// ------------------ TREE TITLE ------------------
-
+		
 		CHOICE_MENU_TITLE( "@OW_AMVS_TITLE" )
-				
-		itemDef 	{ 
-			style			WINDOW_STYLE_SHADER 
-			rect			-120 -32 378 64 0 0 
-			background		"white" 
-			forecolor		0.9 0.9 0.95 0.175 
+		
+		itemDef 	{
+			style			WINDOW_STYLE_SHADER
+			rect			-120 -32 378 64 0 0
+			background		"white"
+			forecolor		0.9 0.9 0.95 0.175
 			visible			1
-			decoration 	} 
-		itemDef 	{ 
-			style			WINDOW_STYLE_SHADER 
-			rect			258 -32 16 -64 0 0 
-			origin			0 0 
-			background		HIGHLIGHT_SHADER_ART 
-			forecolor		0.9 0.9 0.95 0.175 
+			decoration
+		}
+		itemDef 	{
+			style			WINDOW_STYLE_SHADER
+			rect			258 -32 16 -64 0 0
+			origin			0 0
+			background		HIGHLIGHT_SHADER_ART
+			forecolor		0.9 0.9 0.95 0.175
 			visible			1
-			decoration	}
+			decoration
+		}
 		
 		// PC widescreen fix
-		#undef	CHOICE_HORIZONTAL_ALIGN
-		#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
-
-		#undef TEXTSIZE_SMALL
-		#define TEXTSIZE_SMALL 0.3
-		#undef TEXTSIZE_MEDIUM
-		#define TEXTSIZE_MEDIUM 0.5	
-		#undef TEXTSIZE_BIG
-		#define TEXTSIZE_BIG 0.8	
-		#undef TEXTSIZE_HUGE
-		#define TEXTSIZE_HUGE 1.1					
+#undef	CHOICE_HORIZONTAL_ALIGN
+#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
 		
-		#define TITLES_ORIGIN 65
-		#define POSITION_Y( yOffset ) 		(TITLES_ORIGIN + yOffset)
-
-
+#undef TEXTSIZE_SMALL
+#define TEXTSIZE_SMALL 0.3
+#undef TEXTSIZE_MEDIUM
+#define TEXTSIZE_MEDIUM 0.5
+#undef TEXTSIZE_BIG
+#define TEXTSIZE_BIG 0.8
+#undef TEXTSIZE_HUGE
+#define TEXTSIZE_HUGE 1.1
+		
+#define TITLES_ORIGIN 65
+#define POSITION_Y( yOffset ) 		(TITLES_ORIGIN + yOffset)
+		
+		
 		// Gametype title
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-80 TITLES_ORIGIN 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
+			visible			1	decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-140 TITLES_ORIGIN 300 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -101,15 +104,17 @@
 			background		"line_horizontal"
 			forecolor		OBJECTIVE_COLOR_MARINES
 			visible			1
-			decoration	}
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-140 TITLES_ORIGIN 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			origin			0 12
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
-
+			visible			1	decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -121,9 +126,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			when ( dvarString( ui_amvs_gametype_winner ) == "" )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -135,9 +140,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		// Gametype values
 		itemDef
 		{
@@ -146,45 +151,45 @@
 			exp				text( dvarstring( ui_amvs_gametype_previous ) );
 			textfont		UI_FONT_NORMAL
 			textscale		TEXTSIZE_MEDIUM
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		MENU_FONT_GRAY
 			visible			when ( dvarString( ui_amvs_gametype_winner ) == "" )
 			decoration
-		}		
-				
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
 			exp				text( dvarstring( ui_amvs_gametype_vote ) );
 			style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			0 POSITION_Y(40) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		UI_FONT_NORMAL
-		  textscale		TEXTSIZE_BIG
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_BIG
 			forecolor		MENU_FONT_WHITE
 			visible			when ( dvarString( ui_amvs_gametype_winner ) == "" )
 			decoration
-		}		
-
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
 			exp				text( dvarstring( ui_amvs_gametype_next ) );
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			220 POSITION_Y(40) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		UI_FONT_NORMAL
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		MENU_FONT_GRAY
 			visible			when ( dvarString( ui_amvs_gametype_winner ) == "" )
 			decoration
-		}		
-
-
+		}
+		
+		
 		// Gametype arrow left
 		itemDef {
 			name 		"previousgametype"
@@ -194,10 +199,10 @@
 			background		"ui_arrow_left"
 			forecolor		1 1 1 1
 			visible			when ( dvarString( ui_amvs_gametype_winner ) == "" )
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_over"; scriptMenuResponse "previousgametype"; }	
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_over"; scriptMenuResponse "previousgametype"; }
 		}
-
+		
 		// Gametype timer
 		itemDef
 		{
@@ -212,24 +217,24 @@
 			visible			when ( dvarString( ui_amvs_gametype_winner ) == "" )
 			decoration
 		}
-
+		
 		// Gametype cast vote
 		itemDef
 		{
 			name      "votegametype"
 			text      "@OW_AMVS_CASTVOTE"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-40 POSITION_Y(80) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarString( ui_amvs_gametype_winner ) == "" )
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "votegametype"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "votegametype"; }
+		}
 		
 		// Gametype arrow right
 		itemDef {
@@ -240,10 +245,10 @@
 			background		"ui_arrow_right"
 			forecolor		1 1 1 1
 			visible			when ( dvarString( ui_amvs_gametype_winner ) == "" )
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "nextgametype"; }	
-		}		
-
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "nextgametype"; }
+		}
+		
 		// Gametype winner
 		itemDef
 		{
@@ -259,15 +264,16 @@
 			decoration
 		}
 		
-
+		
 		// Map title
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-80 POSITION_Y(120) 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" )	
-			decoration	}
+			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" )
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-140 POSITION_Y(120) 300 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -275,16 +281,18 @@
 			background		"line_horizontal"
 			forecolor		OBJECTIVE_COLOR_MARINES
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" )
-			decoration	}
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-140 POSITION_Y(120) 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			origin			0 12
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" )	
-			decoration	}
-
+			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" )
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -296,9 +304,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) == "" )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -310,9 +318,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) != "" )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		// Map values
 		itemDef
 		{
@@ -321,45 +329,45 @@
 			exp				text( dvarstring( ui_amvs_map_previous ) );
 			textfont		UI_FONT_NORMAL
 			textscale		TEXTSIZE_MEDIUM
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		MENU_FONT_GRAY
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) == "" )
 			decoration
-		}		
-				
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
 			exp				text( dvarstring( ui_amvs_map_vote ) );
 			style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			0 POSITION_Y(160) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		UI_FONT_NORMAL
-		  textscale		TEXTSIZE_BIG
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_BIG
 			forecolor		MENU_FONT_WHITE
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) == "" )
 			decoration
-		}		
-
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
 			exp				text( dvarstring( ui_amvs_map_next ) );
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			220 POSITION_Y(160) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		UI_FONT_NORMAL
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		MENU_FONT_GRAY
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) == "" )
 			decoration
-		}		
-
-
+		}
+		
+		
 		// Map arrow left
 		itemDef {
 			name 		"previousmap"
@@ -369,10 +377,10 @@
 			background		"ui_arrow_left"
 			forecolor		1 1 1 1
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) == "" )
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "previousmap"; }	
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "previousmap"; }
 		}
-
+		
 		// Map timer
 		itemDef
 		{
@@ -394,17 +402,17 @@
 			name      "votemap"
 			text      "@OW_AMVS_CASTVOTE"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-40 POSITION_Y(200) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) == "" )
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "votemap"; }	
-		}				
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "votemap"; }
+		}
 		
 		// Map arrow right
 		itemDef {
@@ -415,10 +423,10 @@
 			background		"ui_arrow_right"
 			forecolor		1 1 1 1
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) == "" )
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "nextmap"; }	
-		}		
-
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "nextmap"; }
+		}
+		
 		// Map winner
 		itemDef
 		{
@@ -440,8 +448,9 @@
 			rect			-80 POSITION_Y(280) 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	
-			decoration	}
+			visible			1
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-140 POSITION_Y(280) 300 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -449,7 +458,8 @@
 			background		"line_horizontal"
 			forecolor		OBJECTIVE_COLOR_MARINES
 			visible			1
-			decoration	}
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-140 POSITION_Y(280) 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -457,8 +467,9 @@
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
 			visible			1
-			decoration	}
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -470,9 +481,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			when ( dvarString( ui_amvs_gametype_winner ) == "" || dvarString( ui_amvs_map_winner ) == "" )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -484,8 +495,8 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) != "" )
-			decoration	
-		}		
+			decoration
+		}
 		
 		itemDef
 		{
@@ -500,7 +511,7 @@
 			visible			when ( dvarString( ui_amvs_gametype_winner ) != "" && dvarString( ui_amvs_map_winner ) != "" )
 			decoration
 		}
-
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -512,9 +523,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		MENU_FONT_WHITE
 			visible			when ( ( dvarString( ui_amvs_gametype_winner ) == "" || dvarString( ui_amvs_map_winner ) == "" ) && dvarString( ui_amvs_firstplace ) != " (0)" )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -526,9 +537,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		MENU_FONT_GRAY
 			visible			when ( ( dvarString( ui_amvs_gametype_winner ) == "" || dvarString( ui_amvs_map_winner ) == "" ) && dvarString( ui_amvs_firstplace ) == " (0)" )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -540,9 +551,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		MENU_FONT_GRAY
 			visible			when ( ( dvarString( ui_amvs_gametype_winner ) == "" || dvarString( ui_amvs_map_winner ) == "" ) && dvarString( ui_amvs_secondplace ) != " (0)" )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -554,9 +565,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		MENU_FONT_GRAY
 			visible			when ( ( dvarString( ui_amvs_gametype_winner ) == "" || dvarString( ui_amvs_map_winner ) == "" ) && dvarString( ui_amvs_thirdplace ) != " (0)" )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		// Leave game info
 		itemDef
 		{
@@ -569,7 +580,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration		
+			decoration
 		}
 		
 		// OpenWarfare information
@@ -584,10 +595,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration		
+			decoration
 		}
-
+		
 		//#include "ui/safearea.menu"
 	}
 }
-		

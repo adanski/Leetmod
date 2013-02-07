@@ -1,5 +1,5 @@
 #ifdef FILLMENUDVARS
-  #undef FILLMENUDVARS
+#undef FILLMENUDVARS
 #endif
 
 #define FILLMENUDVARS     exec "exec menudvars/scores/l/_def.cfg"\
@@ -21,8 +21,8 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/scores/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/scores/l/war.cfg"
 
-    
-    
+
+
 #define SETA_SCR_ENABLE_SCORESYSTEM \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_enable_scoresystem_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_enable_scoresystem_bel _null" \
@@ -40,7 +40,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_enable_scoresystem_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_enable_scoresystem_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_enable_scoresystem_war _null"
-  
+
 #define SETA_SCR_SCORE_TK_AFFECTS_TEAMSCORE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_tk_affects_teamscore_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_tk_affects_teamscore_bel _null" \
@@ -58,7 +58,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_tk_affects_teamscore_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_tk_affects_teamscore_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_tk_affects_teamscore_war _null"
-  
+
 #define SETA_SCR_SCORE_STANDARD_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_standard_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_standard_kill_bel _null" \
@@ -76,7 +76,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_standard_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_standard_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_standard_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_HEADSHOT_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_headshot_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_headshot_kill_bel _null" \
@@ -94,7 +94,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_headshot_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_headshot_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_headshot_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_MELEE_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_melee_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_melee_kill_bel _null" \
@@ -112,7 +112,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_melee_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_melee_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_melee_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_GRENADE_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_grenade_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_grenade_kill_bel _null" \
@@ -130,7 +130,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_grenade_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_grenade_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_grenade_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_C4_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_c4_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_c4_kill_bel _null" \
@@ -148,7 +148,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_c4_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_c4_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_c4_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_CLAYMORE_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_claymore_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_claymore_kill_bel _null" \
@@ -166,7 +166,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_claymore_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_claymore_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_claymore_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_RPG_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_rpg_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_rpg_kill_bel _null" \
@@ -184,7 +184,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_rpg_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_rpg_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_rpg_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_GRENADE_LAUNCHER_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_grenade_launcher_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_grenade_launcher_kill_bel _null" \
@@ -202,7 +202,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_grenade_launcher_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_grenade_launcher_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_grenade_launcher_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_AIRSTRIKE_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_airstrike_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_airstrike_kill_bel _null" \
@@ -220,7 +220,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_airstrike_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_airstrike_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_airstrike_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_HELICOPTER_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_helicopter_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_helicopter_kill_bel _null" \
@@ -238,7 +238,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_helicopter_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_helicopter_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_helicopter_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_VEHICLE_EXPLOSION_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_vehicle_explosion_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_vehicle_explosion_kill_bel _null" \
@@ -256,7 +256,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_vehicle_explosion_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_vehicle_explosion_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_vehicle_explosion_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_BARREL_EXPLOSION_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_barrel_explosion_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_barrel_explosion_kill_bel _null" \
@@ -274,7 +274,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_barrel_explosion_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_barrel_explosion_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_barrel_explosion_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_ASSIST_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_assist_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_assist_kill_bel _null" \
@@ -292,7 +292,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_assist_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_assist_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_assist_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_ASSIST_25_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_assist_25_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_assist_25_kill_bel _null" \
@@ -310,7 +310,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_assist_25_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_assist_25_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_assist_25_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_ASSIST_50_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_assist_50_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_assist_50_kill_bel _null" \
@@ -328,7 +328,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_assist_50_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_assist_50_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_assist_50_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_ASSIST_75_KILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_assist_75_kill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_assist_75_kill_bel _null" \
@@ -346,7 +346,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_assist_75_kill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_assist_75_kill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_assist_75_kill_war _null"
-  
+
 #define SETA_SCR_SCORE_PLAYER_DEATH \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_player_death_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_player_death_bel _null" \
@@ -364,7 +364,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_player_death_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_player_death_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_player_death_war _null"
-  
+
 #define SETA_SCR_SCORE_PLAYER_SUICIDE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_player_suicide_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_player_suicide_bel _null" \
@@ -382,7 +382,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_player_suicide_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_player_suicide_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_player_suicide_war _null"
-  
+
 #define SETA_SCR_SCORE_PLAYER_TEAMKILL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_player_teamkill_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_player_teamkill_bel _null" \
@@ -400,7 +400,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_player_teamkill_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_player_teamkill_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_player_teamkill_war _null"
-  
+
 #define SETA_SCR_SCORE_HARDPOINT_USED \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_hardpoint_used_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_hardpoint_used_bel _null" \
@@ -418,7 +418,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_hardpoint_used_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_hardpoint_used_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_hardpoint_used_war _null"
-  
+
 #define SETA_SCR_SCORE_SHOT_DOWN_HELICOPTER \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_shot_down_helicopter_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_shot_down_helicopter_bel _null" \
@@ -436,7 +436,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_shot_down_helicopter_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_shot_down_helicopter_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_shot_down_helicopter_war _null"
-  
+
 #define SETA_SCR_SCORE_CAPTURE_OBJECTIVE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_capture_objective_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_capture_objective_bel _null" \
@@ -454,7 +454,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_capture_objective_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_capture_objective_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_capture_objective_war _null"
-  
+
 #define SETA_SCR_SCORE_TAKE_OBJECTIVE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_take_objective_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_take_objective_bel _null" \
@@ -472,7 +472,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_take_objective_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_take_objective_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_take_objective_war _null"
-  
+
 #define SETA_SCR_SCORE_RETURN_OBJECTIVE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_return_objective_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_return_objective_bel _null" \
@@ -490,7 +490,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_return_objective_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_return_objective_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_return_objective_war _null"
-  
+
 #define SETA_SCR_SCORE_DEFEND_OBJECTIVE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_defend_objective_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_defend_objective_bel _null" \
@@ -508,7 +508,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_defend_objective_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_defend_objective_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_defend_objective_war _null"
-  
+
 #define SETA_SCR_SCORE_HOLDING_OBJECTIVE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_holding_objective_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_holding_objective_bel _null" \
@@ -526,7 +526,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_holding_objective_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_holding_objective_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_holding_objective_war _null"
-  
+
 #define SETA_SCR_SCORE_KILL_OBJECTIVE_CARRIER \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_kill_objective_carrier_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_kill_objective_carrier_bel _null" \
@@ -544,7 +544,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_kill_objective_carrier_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_kill_objective_carrier_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_kill_objective_carrier_war _null"
-  
+
 #define SETA_SCR_SCORE_ASSAULT_OBJECTIVE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_assault_objective_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_assault_objective_bel _null" \
@@ -562,7 +562,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_assault_objective_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_assault_objective_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_assault_objective_war _null"
-  
+
 #define SETA_SCR_SCORE_PLANT_BOMB \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_plant_bomb_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_plant_bomb_bel _null" \
@@ -580,7 +580,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_plant_bomb_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_plant_bomb_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_plant_bomb_war _null"
-  
+
 #define SETA_SCR_SCORE_DEFUSE_BOMB \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_score_defuse_bomb_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_score_defuse_bomb_bel _null" \
@@ -598,4 +598,3 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_score_defuse_bomb_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_score_defuse_bomb_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_score_defuse_bomb_war _null"
-  

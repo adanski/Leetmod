@@ -12,23 +12,23 @@
 #define CHOICE_VERTICAL_ALIGN VERTICAL_ALIGN_TOP
 
 //CHOICE_BUTTON( 2, "@MPUI_RESTART_MAP", exec "cmd callvote map_restart"; close self; )
-CHOICE_BUTTON_VIS( 2, "@MPUI_RESTART_MAP", exec "cmd callvote map_restart"; close self; setdvar ui_allowvote_restartmap 0;, when ( dvarint( ui_allowvote_restartmap ) == 1 ); )
+CHOICE_BUTTON_VIS( 2, "@MPUI_RESTART_MAP", exec "cmd callvote map_restart"; close self; setdvar ui_allowvote_restartmap 0; , when ( dvarint( ui_allowvote_restartmap ) == 1 ); )
 CHOICE_DBUTTON_VIS( 2, "@MPUI_RESTART_MAP", when ( dvarint( ui_allowvote_restartmap ) != 1 ); )
 
 //CHOICE_BUTTON( 3, "@MPUI_NEXT_MAP", exec "cmd callvote map_rotate"; close self; )
-CHOICE_BUTTON_VIS( 3, "@MPUI_NEXT_MAP", exec "cmd callvote map_rotate"; close self;, when ( dvarint( ui_allowvote_nextmap ) == 1 ); )
+CHOICE_BUTTON_VIS( 3, "@MPUI_NEXT_MAP", exec "cmd callvote map_rotate"; close self; , when ( dvarint( ui_allowvote_nextmap ) == 1 ); )
 CHOICE_DBUTTON_VIS( 3, "@MPUI_NEXT_MAP", when ( dvarint( ui_allowvote_nextmap ) != 1 ); )
 
 //CHOICE_BUTTON( 4, "@MPUI_CHANGE_MAP", open changemap; close changegametype; close kickplayer; close callvote; )
-CHOICE_BUTTON_VIS( 4, "@MPUI_CHANGE_MAP", open changemap; close changegametype; close kickplayer; close callvote;, when ( dvarint( ui_allowvote_changemap ) == 1 ); )
+CHOICE_BUTTON_VIS( 4, "@MPUI_CHANGE_MAP", open changemap; close changegametype; close kickplayer; close callvote; , when ( dvarint( ui_allowvote_changemap ) == 1 ); )
 CHOICE_DBUTTON_VIS( 4, "@MPUI_CHANGE_MAP", when ( dvarint( ui_allowvote_changemap ) != 1 ); )
 
 //CHOICE_BUTTON( 5, "@MPUI_CHANGE_GAME_TYPEMAP", open changegametype; close changemap; close kickplayer; close callvote; )
-CHOICE_BUTTON_VIS( 5, "@MPUI_CHANGE_GAME_TYPEMAP", open changegametype; close changemap; close kickplayer; close callvote;, when ( dvarint( ui_allowvote_changegametype ) == 1 ); )
+CHOICE_BUTTON_VIS( 5, "@MPUI_CHANGE_GAME_TYPEMAP", open changegametype; close changemap; close kickplayer; close callvote; , when ( dvarint( ui_allowvote_changegametype ) == 1 ); )
 CHOICE_DBUTTON_VIS( 5, "@MPUI_CHANGE_GAME_TYPEMAP", when ( dvarint( ui_allowvote_changegametype ) != 1 ); )
 
 //CHOICE_BUTTON( 6, "@MPUI_KICK_PLAYER", open kickplayer; close changemap; close changegametype; close callvote; )
-CHOICE_BUTTON_VIS( 6, "@MPUI_KICK_PLAYER", open kickplayer; close changemap; close changegametype; close callvote;, when ( dvarint( ui_allowvote_kickplayer ) == 1 ); )
+CHOICE_BUTTON_VIS( 6, "@MPUI_KICK_PLAYER", open kickplayer; close changemap; close changegametype; close callvote; , when ( dvarint( ui_allowvote_kickplayer ) == 1 ); )
 CHOICE_DBUTTON_VIS( 6, "@MPUI_KICK_PLAYER", when ( dvarint( ui_allowvote_kickplayer ) != 1 ); )
 
 

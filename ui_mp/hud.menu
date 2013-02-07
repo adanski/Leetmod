@@ -96,7 +96,7 @@
 		fadeCycle		1					// how often fade happens in milliseconds
 		fadeAmount		0.1					// amount to adjust alpha per cycle
 	}
-
+	
 	// Low health overlay
 	menuDef
 	{
@@ -128,9 +128,9 @@
 			text      		"VISUAL GUIDE"
 			textfont		UI_FONT_NORMAL
 			forecolor		0 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" )
-			decoration	
+			decoration
 		}
 		//CATEGORIES
 		itemDef
@@ -141,9 +141,9 @@
 			text      		"@OW_MOVER_CAT"
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 1 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -153,9 +153,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "allies_spawns" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -165,9 +165,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "allies_start_spawns" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -177,9 +177,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "axis_spawns" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -189,9 +189,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "axis_start_spawns" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -201,9 +201,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "attacker_spawns" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -213,9 +213,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "defender_spawns" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -225,9 +225,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "spawns" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -237,9 +237,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "objectives" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -249,9 +249,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "explosive" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -261,9 +261,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "flags" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -273,9 +273,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "extract_zone" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -285,9 +285,9 @@
 			rect			280 350 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when ( dvarString( "g_gametype" ) == "vg" && dvarString( cat_info ) == "radios" )
-			decoration	
+			decoration
 		}
 		
 		//ITEMS
@@ -299,9 +299,9 @@
 			text      		"Item #:"
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 1 1
-			textscale		.30	
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -311,9 +311,9 @@
 			dvar			item_index;
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -323,9 +323,9 @@
 			text      		"@OW_MOVER_CMD"
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 1 1
-			textscale		.30	
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -335,9 +335,9 @@
 			rect			280 380 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" && dvarString( cmd_info ) == "next_category" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -347,9 +347,9 @@
 			rect			280 380 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" && dvarString( cmd_info ) == "prev_category" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -359,9 +359,9 @@
 			rect			280 380 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" && dvarString( cmd_info ) == "next_item" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -371,9 +371,9 @@
 			rect			280 380 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" && dvarString( cmd_info ) == "prev_item" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -383,9 +383,9 @@
 			rect			280 380 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" && dvarString( cmd_info ) == "location" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -395,9 +395,9 @@
 			rect			280 380 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" && dvarString( cmd_info ) == "reset_item_loc" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -407,9 +407,9 @@
 			rect			280 380 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" && dvarString( cmd_info ) == "reset_all_loc" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -419,9 +419,9 @@
 			rect			280 380 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" && dvarString( cmd_info ) == "write_item_log" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -431,12 +431,12 @@
 			rect			280 380 0 0
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( "g_gametype" ) == "vg" && dvarString( cmd_info ) == "write_all_log" )
-			decoration	
+			decoration
 		}
 		//END VISUAL GUIDE
-
+		
 		//CAP INFO
 		itemDef
 		{
@@ -446,9 +446,9 @@
 			text			"@OW_CAP_OPEN"
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( cap_info ) == "open" && dvarString( cap_enable ) == "true" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -458,9 +458,9 @@
 			text			"@OW_CAP_INITIALIZING"
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( cap_info ) == "init" && dvarString( cap_enable ) == "true" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -470,9 +470,9 @@
 			exp				text( "@OW_CAP_CYCLE_AND_CLOSE" )
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.30		
+			textscale		.30
 			visible			when( dvarString( cap_info ) == "cycle_close" && dvarString( cap_enable ) == "true" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -482,9 +482,9 @@
 			dvar			cap_time
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.35		
+			textscale		.35
 			visible			when( dvarString( "cap_time" ) > 0 && dvarString( cap_enable ) == "true" && dvarString( cap_info ) == "cycle_close" )
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -494,9 +494,9 @@
 			rect			55 20 0 0 HORIZONTAL_ALIGN_CENTER_SAFEAREA VERTICAL_ALIGN_CENTER_SAFEAREA
 			textfont		UI_FONT_NORMAL
 			forecolor		1 1 0 1
-			textscale		.35		
+			textscale		.35
 			visible			when( dvarString( "cap_time" ) > 0 && dvarString( cap_enable ) == "true" && dvarString( cap_info ) == "cycle_close" )
-			decoration	
+			decoration
 		}
 		//END CAP INFO
 		
@@ -510,7 +510,7 @@
 			visible			when( dvarInt( ui_healthoverlay ) == 1 );
 			decoration
 		}
-
+		
 		// HEALTH BAR
 		itemDef
 		{
@@ -542,7 +542,7 @@
 			visible when( !dvarInt( "wideScreen" ) && !flashbanged() && !ui_active() && NOT_SPECTATING && team( name ) != "TEAM_SPECTATOR" );
 			decoration
 		}
-
+		
 		// HEALTH BAR WIDESCREEN
 		itemDef
 		{
@@ -575,15 +575,15 @@
 			decoration
 		}
 	}
-
+	
 	// Mantle hint
 	menuDef
 	{
-    	name			"MantleHint"
-    	rect			0 105 40 40 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+		name			"MantleHint"
+		rect			0 105 40 40 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 		fullScreen		0
 		visible			when( dvarBool( cg_drawMantleHint ) ) //when( ( dvarInt( ui_hud_hardcore ) == 0 && dvarInt( ui_hud_show_mantle_hint ) == 1 ) || dvarInt( ui_hud_show_mantle_hint ) == 2 )
-
+		
 		itemDef
 		{
 			name			"chRect"
@@ -595,16 +595,16 @@
 			decoration
 		}
 	}
-
+	
 	// Stance indicator
 	menuDef
 	{
-    	name			"stance"
-    	// place this offscreen so it doesn't show the stance indicator but only shows the "prone blocked"
+		name			"stance"
+		// place this offscreen so it doesn't show the stance indicator but only shows the "prone blocked"
 		rect			0 -93 0 0 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
-    	fullScreen		0
+		fullScreen		0
 		visible			when( !flashbanged() && !ui_active() && NOT_SPECTATING && team( name ) != "TEAM_SPECTATOR" );
-
+		
 		itemDef
 		{
 			name			"chRect"
@@ -617,7 +617,7 @@
 			forecolor		1 1 1 HUD_ALPHA
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"chRect"
@@ -630,7 +630,7 @@
 			forecolor		0 0.5 0 HUD_ALPHA
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"chRect"
@@ -643,7 +643,7 @@
 			forecolor		1 1 0 HUD_ALPHA
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"chRect"
@@ -656,7 +656,7 @@
 			forecolor		1 0.5 0 HUD_ALPHA
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"chRect"
@@ -669,17 +669,17 @@
 			forecolor		1 0 0 HUD_ALPHA
 			decoration
 		}
-										
+		
 	}
-
-	#define ALLIES_HAVE_UAV (dvarint( ui_uav_allies ) && team( name ) == "TEAM_ALLIES" )
-	#define AXIS_HAVE_UAV (dvarint( ui_uav_axis ) && team( name ) == "TEAM_AXIS" )
-	#define CLIENT_HAS_UAV (dvarint( ui_uav_client ) && team( name ) == "TEAM_FREE" )
-
-	#define RECT_COMPASS	0 0 COMPASS_SIZE_MP COMPASS_SIZE_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	#undef MINIMAP_ORIGIN
-	#define MINIMAP_ORIGIN 	6 6 //2 2
-
+	
+#define ALLIES_HAVE_UAV (dvarint( ui_uav_allies ) && team( name ) == "TEAM_ALLIES" )
+#define AXIS_HAVE_UAV (dvarint( ui_uav_axis ) && team( name ) == "TEAM_AXIS" )
+#define CLIENT_HAS_UAV (dvarint( ui_uav_client ) && team( name ) == "TEAM_FREE" )
+	
+#define RECT_COMPASS	0 0 COMPASS_SIZE_MP COMPASS_SIZE_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+#undef MINIMAP_ORIGIN
+#define MINIMAP_ORIGIN 	6 6 //2 2
+	
 	// Compass
 	menuDef
 	{
@@ -687,12 +687,12 @@
 		rect			RECT_COMPASS
 		fullScreen		0
 		visible 		when ( !inkillcam() && !flashbanged() && !ui_active() && !scoped() && dvarString( createfx ) != "on" && dvarInt( ui_broadcaster ) == 0 );
-
+		
 		itemDef
 		{
 			name			"minimapBG"
 			rect			(MINIMAP_X_MP - 14) (MINIMAP_Y_MP - 6) COMPASS_SIZE_MP COMPASS_SIZE_MP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			background		"minimap_background"
 			ownerdraw		CG_PLAYER_COMPASS_BACK
@@ -700,71 +700,71 @@
 			decoration
 		}
 		itemDef
-        {
-            name			"minimapTickerBorder"
-            rect			MINIMAP_X_MP (MINIMAP_Y_MP - 15) MINIMAP_W_MP 14
-	 	   	origin 			MINIMAP_ORIGIN
-            forecolor		1 1 1 1
-            background		"minimap_tickertape_background"
-            ownerdraw		CG_PLAYER_COMPASS_BACK
+		{
+			name			"minimapTickerBorder"
+			rect			MINIMAP_X_MP (MINIMAP_Y_MP - 15) MINIMAP_W_MP 14
+			origin 			MINIMAP_ORIGIN
+			forecolor		1 1 1 1
+			background		"minimap_tickertape_background"
+			ownerdraw		CG_PLAYER_COMPASS_BACK
 			visible when ( (dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_hardcore_show_compass ) == 1 || ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && !selecting_location() );
 			decoration
-        }
+		}
 		// compass without obj points
 		itemDef
-        {
-            name			"minimapTicker"
-            rect			MINIMAP_X_MP (MINIMAP_Y_MP - 12) MINIMAP_W_MP 9
-	 	   	origin 			MINIMAP_ORIGIN
-            forecolor		1 1 1 1
-            background		"minimap_tickertape_mp"
-            ownerdraw		CG_PLAYER_COMPASS_TICKERTAPE_NO_OBJ
+		{
+			name			"minimapTicker"
+			rect			MINIMAP_X_MP (MINIMAP_Y_MP - 12) MINIMAP_W_MP 9
+			origin 			MINIMAP_ORIGIN
+			forecolor		1 1 1 1
+			background		"minimap_tickertape_mp"
+			ownerdraw		CG_PLAYER_COMPASS_TICKERTAPE_NO_OBJ
 			visible when ( (dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_hardcore_show_compass ) == 1 || ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && !dvarint( compass_objectives ) && !selecting_location() );
 			decoration
-        }
+		}
 		// compass with obj points
 		itemDef
-        {
-            name			"minimapTicker"
-            rect			MINIMAP_X_MP (MINIMAP_Y_MP - 12) MINIMAP_W_MP 9
-	 	   	origin 			MINIMAP_ORIGIN
-            forecolor		1 1 1 1
-            background		"minimap_tickertape_mp"
-            ownerdraw		CG_PLAYER_COMPASS_TICKERTAPE
-            textscale		0.25
-            textstyle		ITEM_TEXTSTYLE_SHADOWED
+		{
+			name			"minimapTicker"
+			rect			MINIMAP_X_MP (MINIMAP_Y_MP - 12) MINIMAP_W_MP 9
+			origin 			MINIMAP_ORIGIN
+			forecolor		1 1 1 1
+			background		"minimap_tickertape_mp"
+			ownerdraw		CG_PLAYER_COMPASS_TICKERTAPE
+			textscale		0.25
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			visible when ( (dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_hardcore_show_compass ) == 1 || ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && dvarint( compass_objectives ) && !selecting_location() );
 			decoration
-        }
+		}
 		itemDef
- 	   	{
+		{
 			name			"mini_map"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			background		"compass_map_default"
 			ownerdraw		CG_PLAYER_COMPASS_MAP
 			visible when ( (dvarint( ui_hud_hardcore ) == 0 || ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && !selecting_location() );
 			decoration
- 	   	}
+		}
 		// Objective pointers
 		itemDef
 		{
 			name			"compasspointers"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			background		"objective_line"
 			ownerdraw		CG_PLAYER_COMPASS_POINTERS
 			visible when ( (dvarint( ui_hud_hardcore ) == 0 || ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && !selecting_location() && dvarint( ui_hud_showobjicons ) > 0 );
 			decoration
 		}
- 	   	// Friendlies pointers
+		// Friendlies pointers
 		itemDef
 		{
 			name			"compassfriendlies"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			ownerdraw		CG_PLAYER_COMPASS_FRIENDS
 			visible when ( (dvarint( ui_hud_hardcore ) == 0 || ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && !selecting_location() );
@@ -774,27 +774,27 @@
 		{
 			name			"compassenemies"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			ownerdraw		CG_PLAYER_COMPASS_ENEMIES
 			visible when ( ( ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && !selecting_location() );  //### FIXED ###
 		}
- 	   	// Helicopter pointers
+		// Helicopter pointers
 		itemDef
 		{
 			name			"compasshelicopters"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			ownerdraw		CG_PLAYER_COMPASS_HELICOPTERS
 			visible when ( (dvarint( ui_hud_hardcore ) == 0 || ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && !selecting_location() && dvarint( ui_hud_show_hardpoints ) == 1 );
 		}
- 	   	// Plane pointers
+		// Plane pointers
 		itemDef
 		{
 			name			"compassplanes"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			ownerdraw		CG_PLAYER_COMPASS_PLANES
 			visible when ( (dvarint( ui_hud_hardcore ) == 0 || ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && !selecting_location() && dvarint( ui_hud_show_hardpoints ) == 1 );
@@ -804,22 +804,22 @@
 		{
 			name			"compassplayer"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1//HUD_FOREGROUND_ALPHA
 			background		"compassping_player"
 			ownerdraw		CG_PLAYER_COMPASS_PLAYER
 			visible when ( (dvarint( ui_hud_hardcore ) == 0 || ALLIES_HAVE_UAV || AXIS_HAVE_UAV || CLIENT_HAS_UAV || dvarInt( g_compassShowEnemies ) ) && !selecting_location() );
 		}
 	}
-
-
+	
+	
 #define STATS_WIDTH 160
 #define STATS_CAT1  18
 #define STATS_CAT2  21
 #define STATS_VALUE 12
 #define STATS_FONT_SCALE 0.25
 #define STATS_TRANSPARENCY 0.7
-
+	
 	// XP bar
 	menuDef
 	{
@@ -827,7 +827,7 @@
 		rect			BOTTOM_RECT_X -8 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen		0
 		visible 		when( dvarBool( ui_hud_showstats ) && !inkillcam() && !scoped() && !ui_active() && team( name ) != "TEAM_SPECTATOR" && NOT_SPECTATING );
-
+		
 		// Player statistics frame
 		itemDef
 		{
@@ -838,7 +838,7 @@
 			border             0
 			visible                 1     decoration
 		}
-
+		
 		// Accuracy
 		itemDef
 		{
@@ -850,9 +850,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -863,9 +863,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}	
-
+			decoration
+		}
+		
 		// Kills/Deaths Ratio
 		itemDef
 		{
@@ -877,9 +877,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -890,9 +890,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}	
-
+			decoration
+		}
+		
 		// Total Kills
 		itemDef
 		{
@@ -904,9 +904,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -917,9 +917,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}	
-
+			decoration
+		}
+		
 		// Current Killstreak
 		itemDef
 		{
@@ -931,9 +931,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -944,9 +944,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}			
-
+			decoration
+		}
+		
 		// Highest Killstreak
 		itemDef
 		{
@@ -958,9 +958,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -971,9 +971,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-						
+			decoration
+		}
+		
 		// Longest shot
 		itemDef
 		{
@@ -985,9 +985,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -998,9 +998,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}			
-
+			decoration
+		}
+		
 		// Melee Kills
 		itemDef
 		{
@@ -1012,9 +1012,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1025,9 +1025,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}			
-
+			decoration
+		}
+		
 		// Headshots
 		itemDef
 		{
@@ -1039,9 +1039,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1052,9 +1052,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
-
+		
 		// Longest Headshots
 		itemDef
 		{
@@ -1066,9 +1066,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1079,7 +1079,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
 		// Deaths
 		itemDef
@@ -1092,9 +1092,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1105,9 +1105,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
-
+		
 		// Suicides
 		itemDef
 		{
@@ -1119,9 +1119,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1132,9 +1132,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
-
+		
 		// Current Deathstreak
 		itemDef
 		{
@@ -1146,9 +1146,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1159,10 +1159,10 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
-
-
+		
+		
 		// Highest Deathstreak
 		itemDef
 		{
@@ -1174,9 +1174,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1187,9 +1187,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
-
+		
 		// Distance travelled
 		itemDef
 		{
@@ -1201,9 +1201,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
-
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1214,7 +1214,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
 		
 		// Distance travelled per second
@@ -1228,9 +1228,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
-
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1241,7 +1241,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			1
-			decoration	
+			decoration
 		}
 		
 		// Teamkills
@@ -1255,9 +1255,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		1 1 1 STATS_TRANSPARENCY
 			visible			when( dvarint( scr_team_fftype ) == 1 || dvarint( scr_team_fftype ) == 3 )
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1268,26 +1268,26 @@
 			textAlign		ITEM_ALIGN_MIDDLE_RIGHT
 			forecolor		1 1 0 STATS_TRANSPARENCY
 			visible			when( dvarint( scr_team_fftype ) == 1 || dvarint( scr_team_fftype ) == 3 )
-			decoration	
-		}	
+			decoration
+		}
 	}
 	
-	#define SCOREBAR_ORIGIN 0 -7
-	#define ESCOREBAR_ORIGIN 8 -6
-
-	#define SCORE_OFFSET_X	4
-	#define SCORE_OFFSET_Y	2
-
-	#define TEAM_IS_TIED	(team(score) == otherteam(score))
-	#define TEAM_IS_WINNING (team(score) > otherteam(score))
-	#define TEAM_IS_LOSING	(team(score) < otherteam(score))
-
-	#define PLAYER_IS_TIED		(player(score) == scoreatrank(1) && scoreatrank(1) == scoreatrank(2))
-	#define PLAYER_IS_WINNING	(player(score) > scoreatrank(2))
-	#define PLAYER_IS_LOSING	(player(score) < scoreatrank(1))
-
-	#define SHOULD_DISPLAY_SCOREBAR (team( name ) != "TEAM_SPECTATOR")
-
+#define SCOREBAR_ORIGIN 0 -7
+#define ESCOREBAR_ORIGIN 8 -6
+	
+#define SCORE_OFFSET_X	4
+#define SCORE_OFFSET_Y	2
+	
+#define TEAM_IS_TIED	(team(score) == otherteam(score))
+#define TEAM_IS_WINNING (team(score) > otherteam(score))
+#define TEAM_IS_LOSING	(team(score) < otherteam(score))
+	
+#define PLAYER_IS_TIED		(player(score) == scoreatrank(1) && scoreatrank(1) == scoreatrank(2))
+#define PLAYER_IS_WINNING	(player(score) > scoreatrank(2))
+#define PLAYER_IS_LOSING	(player(score) < scoreatrank(1))
+	
+#define SHOULD_DISPLAY_SCOREBAR (team( name ) != "TEAM_SPECTATOR")
+	
 	// Bottom bar
 	menuDef
 	{
@@ -1296,7 +1296,7 @@
 		exp				rect Y( BOTTOM_RECT_Y - (ONLINEGAME * ONLINEGAME_OFFSET) );
 		fullScreen		0
 		visible 		when( !inkillcam() && !ui_active() && dvarint( ui_hud_show_scores ) == 1 );
-
+		
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -1480,7 +1480,7 @@
 			visible 	when ( ( team( name ) == "TEAM_FREE" || gametype() == "bel" ) && SHOULD_DISPLAY_SCOREBAR )
 			decoration
 		}
-
+		
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -1634,12 +1634,12 @@
 			decoration
 		}
 	}
-
+	
 	//#define WEAPINFO_X -150
 	//#define WEAPINFO_Y -60
-	#define WEAPINFO_X -4
-	#define WEAPINFO_Y -36
-
+#define WEAPINFO_X -4
+#define WEAPINFO_Y -36
+	
 	menuDef
 	{
 		name			"weaponinfo"
@@ -1647,7 +1647,7 @@
 		exp				rect Y( BOTTOM_RECT_Y - (ONLINEGAME * ONLINEGAME_OFFSET) );
 		fullScreen		0
 		visible			when( !inkillcam() && dvarBool( ammoCounterHide ) == 0 && !flashbanged() && !ui_active() && NOT_SPECTATING );
-
+		
 		itemDef
 		{
 			name			"clipGraphic"
@@ -1657,7 +1657,7 @@
 			visible			when ( dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_show_inventory ) == 2 );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"ammoStock"
@@ -1670,7 +1670,7 @@
 			visible			when ( dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_show_inventory ) == 2 );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"offhandFragIcon"
@@ -1681,7 +1681,7 @@
 			visible			when ( dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_show_inventory ) > 0 );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"offhandSmokeIcon"
@@ -1703,7 +1703,7 @@
 			visible			when ( dvarint( ui_bandages ) == 1 && ( dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_show_inventory ) > 0 ) );
 			decoration
 		}
-				
+		
 		itemDef
 		{
 			name			"offHandFragAmmo"
@@ -1716,7 +1716,7 @@
 			visible			when ( dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_show_inventory ) > 0 );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"offHandSmokeAmmo"
@@ -1729,7 +1729,7 @@
 			visible			when ( dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_show_inventory ) > 0 );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"bandagesQty"
@@ -1743,21 +1743,21 @@
 			decoration
 		}
 	}
-
+	
 	// Full Screen Map for location selection
-	#define FULL_SCREEN_MAP_WIDTH 400
-	#define FULL_SCREEN_MAP_HEIGHT 400
+#define FULL_SCREEN_MAP_WIDTH 400
+#define FULL_SCREEN_MAP_HEIGHT 400
 	menuDef
 	{
 		name			"FullScreenMap"
- 	   	rect			-100 -100 FULL_SCREEN_MAP_WIDTH FULL_SCREEN_MAP_HEIGHT HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
- 	   	fullScreen		0
-  	   	visible			1
-
-		#define FSM_VISIBILITY (selecting_location() && NOT_SPECTATING)
-
+		rect			-100 -100 FULL_SCREEN_MAP_WIDTH FULL_SCREEN_MAP_HEIGHT HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+		fullScreen		0
+		visible			1
+		
+#define FSM_VISIBILITY (selecting_location() && NOT_SPECTATING)
+		
 		itemDef
- 	   	{
+		{
 			name			"map_map"
 			rect			0 0 FULL_SCREEN_MAP_WIDTH FULL_SCREEN_MAP_HEIGHT
 			forecolor		1 1 1 1
@@ -1765,9 +1765,9 @@
 			ownerdraw		CG_PLAYER_FULLMAP_MAP
 			visible			when( FSM_VISIBILITY );
 			decoration
- 	   	}
+		}
 		itemDef
- 	   	{
+		{
 			name			"map_locator"
 			rect			0 0 FULL_SCREEN_MAP_WIDTH FULL_SCREEN_MAP_HEIGHT
 			forecolor		1 1 1 1
@@ -1775,7 +1775,7 @@
 			ownerdraw		CG_PLAYER_FULLMAP_LOCATION_SELECTOR
 			visible			when( FSM_VISIBILITY );
 			decoration
- 	   	}
+		}
 		// Objective pointers
 		itemDef
 		{
@@ -1787,7 +1787,7 @@
 			visible			when( FSM_VISIBILITY );
 			decoration
 		}
- 	   	// Friendlies pointers
+		// Friendlies pointers
 		itemDef
 		{
 			name			"mapfriendlies"
@@ -1796,7 +1796,7 @@
 			ownerdraw		CG_PLAYER_FULLMAP_FRIENDS
 			visible			when( FSM_VISIBILITY );
 		}
- 	   	// Enemies pointers
+		// Enemies pointers
 		itemDef
 		{
 			name			"mapenemies"
@@ -1815,7 +1815,7 @@
 			ownerdraw		CG_PLAYER_FULLMAP_PLAYER
 			visible			when( FSM_VISIBILITY );
 		}
-
+		
 		// border
 		itemDef
 		{
@@ -1827,7 +1827,7 @@
 			visible			when( FSM_VISIBILITY );
 			decoration
 		}
-
+		
 		// instruction
 		itemDef
 		{
@@ -1842,13 +1842,13 @@
 			decoration
 		}
 	}
-
-	#define	DPAD_BASE_SIZE		28
-	#define	DPAD_BASE_SIZE_HALF	14
-	#define DPAD_ICON_Y			-1//3
-	#define DPAD_LABEL_Y		40//44
-	#define DPAD_ICON_SPACING	60
-
+	
+#define	DPAD_BASE_SIZE		28
+#define	DPAD_BASE_SIZE_HALF	14
+#define DPAD_ICON_Y			-1//3
+#define DPAD_LABEL_Y		40//44
+#define DPAD_ICON_SPACING	60
+	
 	menuDef
 	{
 		name			"DPad"
@@ -1856,9 +1856,9 @@
 //		exp				rect Y( (BOTTOM_RECT_Y-42) - (ONLINEGAME * ONLINEGAME_OFFSET) );
 		rect			BOTTOM_RECT_X BOTTOM_RECT_Y 0 0 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_BOTTOM
 		exp				rect Y( BOTTOM_RECT_Y - (ONLINEGAME * ONLINEGAME_OFFSET) );
- 	   	fullScreen		0
+		fullScreen		0
 		visible			when( !inkillcam() && !flashbanged() && !ui_active() && !scoped() && (dvarString( createfx ) != "on") );
-
+		
 		itemDef
 		{
 			name			"slot3"
@@ -1872,7 +1872,7 @@
 			visible			when ( dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_show_inventory ) > 0 );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"slot4"
@@ -1886,9 +1886,9 @@
 			visible			when ( dvarint( ui_hud_hardcore ) == 0 || dvarint( ui_hud_show_inventory ) > 0 );
 			decoration
 		}
-
-    }
-
+		
+	}
+	
 	//	Local Talking Status
 	
 	menuDef
@@ -1897,12 +1897,12 @@
 		rect				BOTTOM_RECT_X BOTTOM_RECT_Y 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen	0
 		visible 		when( dvarInt( ui_broadcaster ) == 1 && !ui_active() && team( name ) == "TEAM_SPECTATOR" && !isIntermission() );
-
+		
 		itemDef
 		{
 			name			"minimapBG"
 			rect			(MINIMAP_X_MP - 14) (MINIMAP_Y_MP - 6) COMPASS_SIZE_MP COMPASS_SIZE_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			background		"minimap_background"
 			ownerdraw		CG_PLAYER_COMPASS_BACK
@@ -1910,57 +1910,57 @@
 			decoration
 		}
 		itemDef
-        {
-            name			"minimapTickerBorder"
-            rect			MINIMAP_X_MP (MINIMAP_Y_MP - 15) MINIMAP_W_MP 14 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
-            forecolor		1 1 1 1
-            background		"minimap_tickertape_background"
-            ownerdraw		CG_PLAYER_COMPASS_BACK
+		{
+			name			"minimapTickerBorder"
+			rect			MINIMAP_X_MP (MINIMAP_Y_MP - 15) MINIMAP_W_MP 14 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			origin 			MINIMAP_ORIGIN
+			forecolor		1 1 1 1
+			background		"minimap_tickertape_background"
+			ownerdraw		CG_PLAYER_COMPASS_BACK
 			visible 1
 			decoration
-        }
+		}
 		// compass without obj points
 		itemDef
-        {
-            name			"minimapTicker"
-            rect			MINIMAP_X_MP (MINIMAP_Y_MP - 12) MINIMAP_W_MP 9 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
-            forecolor		1 1 1 1
-            background		"minimap_tickertape_mp"
-            ownerdraw		CG_PLAYER_COMPASS_TICKERTAPE_NO_OBJ
+		{
+			name			"minimapTicker"
+			rect			MINIMAP_X_MP (MINIMAP_Y_MP - 12) MINIMAP_W_MP 9 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			origin 			MINIMAP_ORIGIN
+			forecolor		1 1 1 1
+			background		"minimap_tickertape_mp"
+			ownerdraw		CG_PLAYER_COMPASS_TICKERTAPE_NO_OBJ
 			visible 1
 			decoration
-        }
+		}
 		itemDef
- 	   	{
+		{
 			name			"mini_map"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			background		"compass_map_default"
 			ownerdraw		CG_PLAYER_COMPASS_MAP
 			visible 1
 			decoration
- 	   	}
+		}
 		// Objective pointers
 		itemDef
 		{
 			name			"compasspointers"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP  HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			background		"objective_line"
 			ownerdraw		CG_PLAYER_COMPASS_POINTERS
 			visible 1
 			decoration
 		}
- 	   	// Friendlies pointers
+		// Friendlies pointers
 		itemDef
 		{
 			name			"compassfriendlies"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			ownerdraw		CG_PLAYER_COMPASS_FRIENDS
 			visible 1
@@ -1970,27 +1970,27 @@
 		{
 			name			"compassenemies"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			ownerdraw		CG_PLAYER_COMPASS_ENEMIES
 			visible 1
 		}
- 	   	// Helicopter pointers
+		// Helicopter pointers
 		itemDef
 		{
 			name			"compasshelicopters"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			ownerdraw		CG_PLAYER_COMPASS_HELICOPTERS
 			visible 1
 		}
- 	   	// Plane pointers
+		// Plane pointers
 		itemDef
 		{
 			name			"compassplanes"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1
 			ownerdraw		CG_PLAYER_COMPASS_PLANES
 			visible 1
@@ -2000,14 +2000,14 @@
 		{
 			name			"compassplayer"
 			rect			MINIMAP_X_MP MINIMAP_Y_MP MINIMAP_W_MP MINIMAP_H_MP HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-	 	   	origin 			MINIMAP_ORIGIN
+			origin 			MINIMAP_ORIGIN
 			forecolor		1 1 1 1//HUD_FOREGROUND_ALPHA
 			background		"compassping_player"
 			ownerdraw		CG_PLAYER_COMPASS_PLAYER
 			visible 1
 		}
-
-
+		
+		
 		// CLAN LOGO
 		itemDef
 		{
@@ -2017,10 +2017,10 @@
 			forecolor		1 1 1 .8
 			visible			1
 			decoration
-		}		
-
-
-		#define 	SCOREBAR_OFFSET 0 40
+		}
+		
+		
+#define 	SCOREBAR_OFFSET 0 40
 		// GAME TIMER
 		itemDef
 		{
@@ -2069,11 +2069,11 @@
 			forecolor	1 0.5 0 1
 			visible 	when ( (timeLeft() >= 0 && timeLeft() < 30) || dvarBool( ui_bomb_timer ) );
 			decoration
-		}		
-
-
-		#undef SCOREBAR_OFFSET
-		#define 	SCOREBAR_OFFSET 0 0
+		}
+		
+		
+#undef SCOREBAR_OFFSET
+#define 	SCOREBAR_OFFSET 0 0
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -2084,7 +2084,7 @@
 			visible			1
 			decoration
 		}
-		itemDef	
+		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
 			rect			0 -1 640 1 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_BOTTOM
@@ -2093,7 +2093,7 @@
 			forecolor		0 0 0 0.5
 			visible			1
 			decoration
-		}	
+		}
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -2114,7 +2114,7 @@
 			visible			1
 			decoration
 		}
-		itemDef	
+		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
 			rect			0 -41 640 1 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_BOTTOM
@@ -2124,8 +2124,8 @@
 			visible			1
 			decoration
 		}
-
-		itemDef 
+		
+		itemDef
 		{
 			rect		0 -25 1 1 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
 			origin		SCOREBAR_OFFSET
@@ -2135,10 +2135,10 @@
 			textalign	ITEM_ALIGN_CENTER
 			textstyle	ITEM_TEXTSTYLE_SHADOWEDMORE
 			visible 	1
-			decoration 
+			decoration
 		}
-
-		itemDef 
+		
+		itemDef
 		{
 			rect		0 -7 1 1 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
 			origin		SCOREBAR_OFFSET
@@ -2148,10 +2148,10 @@
 			textalign	ITEM_ALIGN_CENTER
 			textstyle	ITEM_TEXTSTYLE_SHADOWEDMORE
 			visible 	1
-			decoration 
+			decoration
 		}
-				
-		// ALLIES ICON AND SCORE		
+		
+		// ALLIES ICON AND SCORE
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -2161,8 +2161,8 @@
 			visible			1
 			decoration
 		}
-
-		itemDef 
+		
+		itemDef
 		{
 			rect		60 -0 1 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
 			origin		SCOREBAR_OFFSET
@@ -2172,10 +2172,10 @@
 			textalign	ITEM_ALIGN_LEFT
 			textstyle	ITEM_TEXTSTYLE_SHADOWEDMORE
 			visible 	1
-			decoration 
+			decoration
 		}
-
-
+		
+		
 		// AXIS ICON AND SCORE
 		itemDef
 		{
@@ -2185,9 +2185,9 @@
 			exp				material( dvarString( "g_TeamIcon_Axis" ) );
 			visible			1
 			decoration
-		}		
-
-		itemDef 
+		}
+		
+		itemDef
 		{
 			rect		-60 0 1 1 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_BOTTOM
 			origin		SCOREBAR_OFFSET
@@ -2197,19 +2197,19 @@
 			textalign	ITEM_ALIGN_RIGHT
 			textstyle	ITEM_TEXTSTYLE_SHADOWEDMORE
 			visible 	1
-			decoration 
+			decoration
 		}
-
-
+		
+		
 		// PLAYERS
-		#define LB_HEALTHBAR_WIDTH 157
-		#define LB_HEALTHBAR_OFFSET (LB_HEALTHBAR_WIDTH-256)
-		#define LB_HEALTHBAR_HEIGHT 16
-		#define LB_FONT_SIZE 0.35
-
+#define LB_HEALTHBAR_WIDTH 157
+#define LB_HEALTHBAR_OFFSET (LB_HEALTHBAR_WIDTH-256)
+#define LB_HEALTHBAR_HEIGHT 16
+#define LB_FONT_SIZE 0.35
+		
 		// ALLIES PLAYERS
-		#define LB_ALLIES_OFFSET 0 -165
-		#define LB_ALLIES_PLAYER( playerItem, playerName, playerHealth ) \
+#define LB_ALLIES_OFFSET 0 -165
+#define LB_ALLIES_PLAYER( playerItem, playerName, playerHealth ) \
 			itemDef \
 			{ \
 				style				WINDOW_STYLE_SHADER \
@@ -2261,7 +2261,7 @@
 				visible			when (dvarString(playerName)!="" && dvarFloat(playerHealth)<=0); \
 				decoration \
 			}
-
+		
 		itemDef
 		{
 			style				WINDOW_STYLE_SHADER
@@ -2287,7 +2287,7 @@
 			visible			when (dvarString(lb_allies_p1)=="");
 			decoration
 		}
-			
+		
 		LB_ALLIES_PLAYER( 1, "lb_allies_p1", "lb_allies_h1" )
 		LB_ALLIES_PLAYER( 2, "lb_allies_p2", "lb_allies_h2" )
 		LB_ALLIES_PLAYER( 3, "lb_allies_p3", "lb_allies_h3" )
@@ -2302,15 +2302,15 @@
 		LB_ALLIES_PLAYER( 12, "lb_allies_p12", "lb_allies_h12" )
 		
 		// AXIS PLAYERS
-		#define LB_AXIS_OFFSET (-LB_HEALTHBAR_WIDTH) -165
-		#define LB_AXIS_PLAYER( playerItem, playerName, playerHealth ) \
+#define LB_AXIS_OFFSET (-LB_HEALTHBAR_WIDTH) -165
+#define LB_AXIS_PLAYER( playerItem, playerName, playerHealth ) \
 			itemDef \
 			{ \
 				style				WINDOW_STYLE_SHADER \
 				rect				0 (-((playerItem-1)*(LB_HEALTHBAR_HEIGHT+1))) 256 LB_HEALTHBAR_HEIGHT HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_BOTTOM \
 				origin			LB_AXIS_OFFSET \
 				background	"lb_healthbar" \
-				forecolor		.3 .3 .3 .4 \				
+				forecolor		.3 .3 .3 .4 \
 				border			0 \
 				visible			when (dvarString(playerName)!=""); \
 				decoration \
@@ -2355,7 +2355,7 @@
 				visible			when (dvarString(playerName)!="" && dvarFloat(playerHealth)<=0); \
 				decoration \
 			}
-
+		
 		itemDef
 		{
 			style				WINDOW_STYLE_SHADER
@@ -2381,7 +2381,7 @@
 			visible			when (dvarString(lb_axis_p1)=="");
 			decoration
 		}
-			
+		
 		LB_AXIS_PLAYER( 1, "lb_axis_p1", "lb_axis_h1" )
 		LB_AXIS_PLAYER( 2, "lb_axis_p2", "lb_axis_h2" )
 		LB_AXIS_PLAYER( 3, "lb_axis_p3", "lb_axis_h3" )
@@ -2395,15 +2395,15 @@
 		LB_AXIS_PLAYER( 11, "lb_axis_p11", "lb_axis_h11" )
 		LB_AXIS_PLAYER( 12, "lb_axis_p12", "lb_axis_h12" )
 	}
-
+	
 	// Remote Talking Status
 	menuDef
 	{
-    	name			"talkers"
+		name			"talkers"
 		rect			3 120 24 24 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
-    	fullScreen		0
-    	visible			when ( team( name ) != "TEAM_SPECTATOR" );
-
+		fullScreen		0
+		visible			when ( team( name ) != "TEAM_SPECTATOR" );
+		
 		itemDef
 		{
 			name			"talkingRect"
@@ -2427,7 +2427,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"talker2Rect"
@@ -2439,7 +2439,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"talker3Rect"
@@ -2451,7 +2451,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		itemDef
 		{
 			name			"talker4Rect"
@@ -2464,14 +2464,14 @@
 			decoration
 		}
 	}
-
+	
 	menuDef
 	{
 		name			"killcam"
 		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen		0
 		visible 		when ( inkillcam() );
-
+		
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -2481,7 +2481,7 @@
 			visible			when ( !dvarbool(ct_playingrwk) );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -2491,7 +2491,7 @@
 			visible			when ( !dvarbool(ct_playingrwk) );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -2501,7 +2501,7 @@
 			visible			when ( dvarbool(ct_playingrwk) );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -2511,7 +2511,7 @@
 			visible			when ( dvarbool(ct_playingrwk) );
 			decoration
 		}
-
+		
 		itemDef
 		{
 			rect		0 45 1 1 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -2525,7 +2525,7 @@
 			decoration
 		}
 	}
-
+	
 	// Center obituary (you killed/were killed by)
 	menuDef
 	{
@@ -2533,7 +2533,7 @@
 		rect			0 180 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
 		fullScreen		0
 		visible			when ( dvarstring( "g_gametype" ) != "vg" && dvarint( ui_hud_show_center_obituary ) == 1 );
-
+		
 		itemDef
 		{
 			name			"chRect"
@@ -2545,7 +2545,7 @@
 			decoration
 		}
 	}
-
+	
 	// Score Bar
 	menuDef
 	{
@@ -2553,9 +2553,9 @@
 		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen		0
 		visible 		when ( ( ( ( team( name ) == "TEAM_ALLIES" || team( name ) == "TEAM_AXIS" ) && gametype() != "bel" ) && !inkillcam() && NOT_SPECTATING && !menuisopen( background_main ) && !menuisopen( background_systemlink ) && !menuisopen( scoreboard )) && dvarInt( ui_hud_hardcore ) == 0 && (dvarInt( "ui_score_bar" ) || team( name ) == "TEAM_SPECTATOR" || (dvarInt( "ui_timelimit" ) > 0 && timeLeft() < 0) || (timeLeft() >= 0 && (timeLeft() % 60 < 5 || timeLeft() < 60)) || (timeLeft() < 0 && (timeLeft() % 60 > (0-5))) || (dvarInt( "ui_scorelimit" ) > 0 && max( marinesfield( score ), opforfield( score ) ) / dvarInt( "ui_scorelimit" ) > 0.75 ) ) );
-
-		#define BARWIDTH	400
-
+		
+#define BARWIDTH	400
+		
 		itemDef
 		{
 			style			WINDOW_STYLE_SHADER
@@ -2565,7 +2565,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		itemDef
 		{
 			rect		0 0 1 1 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -2606,7 +2606,7 @@
 			decoration
 		}
 	}
-
+	
 	// game messages
 	menuDef
 	{
@@ -2615,7 +2615,7 @@
 		rect			6 -65 10 10 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_BOTTOM
 		fullScreen		0
 		visible			when( !inkillcam() );
-
+		
 		itemDef
 		{
 			origin				0 0
@@ -2636,7 +2636,7 @@
 		rect			0 -60 10 10 HORIZONTAL_ALIGN_CENTER_SAFEAREA VERTICAL_ALIGN_CENTER_SAFEAREA
 		fullScreen		0
 		visible			when( !inkillcam() );
-
+		
 		itemDef
 		{
 			origin				0 0
@@ -2650,7 +2650,7 @@
 			visible				when ( dvarstring( "g_gametype" ) != "vg" && dvarint( ui_hud_obituaries ) == 1 && !ui_active() );
 		}
 	}
-
+	
 	// Hold breath hint
 	//Pel - Removed to allow CAC Class in
 	menuDef
@@ -2660,7 +2660,7 @@
 		fullScreen		0
 		visible 0
 		//visible when ( !adsjavelin() && dvarInt( ui_hud_hardcore ) == 0 && !inkillcam() && NOT_SPECTATING );
-
+		
 		itemDef
 		{
 			name			"chRect"
@@ -2672,7 +2672,7 @@
 			decoration
 		}
 	}
-
+	
 	// Safe area
 	menuDef
 	{
@@ -2680,7 +2680,7 @@
 		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 		fullScreen		0
 		visible			1
-
+		
 		//#include "ui/safearea.menu"
 	}
 }

@@ -1,7 +1,7 @@
 // To overcome itemDef max limit, this overrides buttons display to use less itemDef's (at the cost of a more simple interface)
 
 #ifdef CHOICE_HIGHLIGHT_CUSTOM
-  #undef CHOICE_HIGHLIGHT_CUSTOM
+#undef CHOICE_HIGHLIGHT_CUSTOM
 #endif
 
 #define CHOICE_HIGHLIGHT_CUSTOM( itemIndex, foreColorArg, borderColorArg, visArg ) \
@@ -14,9 +14,9 @@
 			visible			when( localVarInt( ui_highlight ) == itemIndex && localVarString( ui_choicegroup ) == CHOICE_GROUP ); \
 			decoration \
 		}
-    
+
 #ifdef CHOICE_BUTTON_BG_RAW
-  #undef CHOICE_BUTTON_BG_RAW
+#undef CHOICE_BUTTON_BG_RAW
 #endif
 
 #define CHOICE_BUTTON_BG_RAW( itemIndex, bgimage, foreColorArg, visArg ) \
@@ -28,4 +28,4 @@
 			forecolor		foreColorArg \
 			visible			visArg; \
 			decoration \
-		} 
+		}

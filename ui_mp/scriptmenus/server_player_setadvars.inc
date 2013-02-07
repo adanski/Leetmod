@@ -1,5 +1,5 @@
 #ifdef FILLMENUDVARS
-  #undef FILLMENUDVARS
+#undef FILLMENUDVARS
 #endif
 
 #define FILLMENUDVARS     exec "exec menudvars/player/l/_def.cfg"\
@@ -21,8 +21,8 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/player/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/player/l/war.cfg"
 
-    
-    
+
+
 #define SETA_SCR_FALLDAMAGEMINHEIGHT \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_fallDamageMinHeight_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_fallDamageMinHeight_bel _null" \
@@ -40,7 +40,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_fallDamageMinHeight_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_fallDamageMinHeight_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_fallDamageMinHeight_war _null"
-  
+
 #define SETA_SCR_FALLDAMAGEMAXHEIGHT \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_fallDamageMaxHeight_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_fallDamageMaxHeight_bel _null" \
@@ -58,7 +58,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_fallDamageMaxHeight_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_fallDamageMaxHeight_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_fallDamageMaxHeight_war _null"
-  
+
 #define SETA_SCR_JUMP_HEIGHT \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_jump_height_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_jump_height_bel _null" \
@@ -76,7 +76,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_jump_height_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_jump_height_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_jump_height_war _null"
-  
+
 #define SETA_SCR_JUMP_SLOWDOWN_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_jump_slowdown_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_jump_slowdown_enable_bel _null" \
@@ -94,7 +94,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_jump_slowdown_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_jump_slowdown_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_jump_slowdown_enable_war _null"
-  
+
 #define SETA_SCR_GAME_ALLOW_KILLCAM \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_game_allow_killcam_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_game_allow_killcam_bel _null" \
@@ -112,7 +112,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_game_allow_killcam_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_game_allow_killcam_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_game_allow_killcam_war _null"
-  
+
 #define SETA_SCR_PLAYER_FORCERESPAWN \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_player_forcerespawn_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_player_forcerespawn_bel _null" \
@@ -130,7 +130,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_player_forcerespawn_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_player_forcerespawn_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_player_forcerespawn_war _null"
-  
+
 #define SETA_SCR_QUICKACTIONS_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_quickactions_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_quickactions_enable_bel _null" \
@@ -148,7 +148,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_quickactions_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_quickactions_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_quickactions_enable_war _null"
-  
+
 #define SETA_SCR_THIRDPERSON_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_thirdperson_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_thirdperson_enable_bel _null" \
@@ -166,7 +166,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_thirdperson_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_thirdperson_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_thirdperson_enable_war _null"
-  
+
 #define SETA_SCR_PLAYER_LEAN_FIX \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_player_lean_fix_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_player_lean_fix_bel _null" \
@@ -184,7 +184,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_player_lean_fix_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_player_lean_fix_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_player_lean_fix_war _null"
-  
+
 #define SETA_SCR_BOB_EFFECT_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_bob_effect_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_bob_effect_enable_bel _null" \
@@ -202,7 +202,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_bob_effect_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_bob_effect_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_bob_effect_enable_war _null"
-  
+
 #define SETA_SCR_BOB_PRONE_FIX \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_bob_prone_fix_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_bob_prone_fix_bel _null" \
@@ -220,7 +220,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_bob_prone_fix_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_bob_prone_fix_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_bob_prone_fix_war _null"
-  
+
 #define SETA_SCR_CG_FOOTSTEPS \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_cg_footsteps_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_cg_footsteps_bel _null" \
@@ -238,7 +238,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_cg_footsteps_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_cg_footsteps_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_cg_footsteps_war _null"
-  
+
 #define SETA_SCR_CAP_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_cap_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_cap_enable_bel _null" \
@@ -256,7 +256,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_cap_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_cap_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_cap_enable_war _null"
-  
+
 #define SETA_SCR_CAP_TIME \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_cap_time_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_cap_time_bel _null" \
@@ -274,7 +274,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_cap_time_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_cap_time_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_cap_time_war _null"
-  
+
 #define SETA_SCR_CAP_TIME_ACTIVATED \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_cap_time_activated_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_cap_time_activated_bel _null" \
@@ -292,7 +292,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_cap_time_activated_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_cap_time_activated_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_cap_time_activated_war _null"
-  
+
 #define SETA_SCR_CAP_FIRSTSPAWN \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_cap_firstspawn_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_cap_firstspawn_bel _null" \
@@ -310,7 +310,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_cap_firstspawn_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_cap_firstspawn_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_cap_firstspawn_war _null"
-  
+
 #define SETA_SCR_DE_DROPWEAPON_ON_ARM_HIT \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_de_dropweapon_on_arm_hit_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_de_dropweapon_on_arm_hit_bel _null" \
@@ -328,7 +328,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_de_dropweapon_on_arm_hit_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_de_dropweapon_on_arm_hit_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_de_dropweapon_on_arm_hit_war _null"
-  
+
 #define SETA_SCR_DE_DROPWEAPON_CHANCE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_de_dropweapon_chance_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_de_dropweapon_chance_bel _null" \
@@ -346,7 +346,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_de_dropweapon_chance_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_de_dropweapon_chance_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_de_dropweapon_chance_war _null"
-  
+
 #define SETA_SCR_DE_FALLDOWN_ON_LEG_HIT \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_de_falldown_on_leg_hit_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_de_falldown_on_leg_hit_bel _null" \
@@ -364,7 +364,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_de_falldown_on_leg_hit_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_de_falldown_on_leg_hit_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_de_falldown_on_leg_hit_war _null"
-  
+
 #define SETA_SCR_DE_FALLDOWN_CHANCE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_de_falldown_chance_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_de_falldown_chance_bel _null" \
@@ -382,7 +382,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_de_falldown_chance_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_de_falldown_chance_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_de_falldown_chance_war _null"
-  
+
 #define SETA_SCR_DE_SHIFTVIEW_ON_DAMAGE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_de_shiftview_on_damage_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_de_shiftview_on_damage_bel _null" \
@@ -400,7 +400,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_de_shiftview_on_damage_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_de_shiftview_on_damage_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_de_shiftview_on_damage_war _null"
-  
+
 #define SETA_SCR_DE_BREAK_ANKLE_ON_FALL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_de_break_ankle_on_fall_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_de_break_ankle_on_fall_bel _null" \
@@ -418,7 +418,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_de_break_ankle_on_fall_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_de_break_ankle_on_fall_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_de_break_ankle_on_fall_war _null"
-  
+
 #define SETA_SCR_DE_SLOWDOWN_ON_LEG_HIT \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_de_slowdown_on_leg_hit_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_de_slowdown_on_leg_hit_bel _null" \
@@ -436,4 +436,4 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_de_slowdown_on_leg_hit_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_de_slowdown_on_leg_hit_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_de_slowdown_on_leg_hit_war _null"
-  
+

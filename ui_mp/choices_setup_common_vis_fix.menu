@@ -65,11 +65,11 @@
 #define CHOICE_ACCEPT_ALIGN_Y	2
 #endif
 
-#ifndef NEW_X_OFFSET			
+#ifndef NEW_X_OFFSET
 #define NEW_X_OFFSET			0
 #endif
 
-#ifndef NEW_Y_OFFSET			
+#ifndef NEW_Y_OFFSET
 #define NEW_Y_OFFSET			0
 #endif
 
@@ -209,9 +209,9 @@
 
 
 #ifdef PS3
-	#define A_BUTTON_BG_COLOR 	0.25 0.25 0.25 1
+#define A_BUTTON_BG_COLOR 	0.25 0.25 0.25 1
 #else
-	#define A_BUTTON_BG_COLOR 	0 0 0 1
+#define A_BUTTON_BG_COLOR 	0 0 0 1
 #endif
 
 #define A_BUTTON_TEXTSTYLE	ITEM_TEXTSTYLE_NORMAL
@@ -270,8 +270,8 @@
 			forecolor		pcolor \
 			visible			1; \
 			decoration \
-		} \		
-
+		} \
+ 
 #define CHOICE_BUTTON_BG( itemIndex, visArg ) CHOICE_BUTTON_BG_RAW( itemIndex, "gradient_fadein", BUTTON_BG_COLOR, visArg )
 
 #define CHOICE_BUTTON_BG_RAW( itemIndex, bgimage, foreColorArg, visArg ) \
@@ -293,7 +293,7 @@
     visible			visArg; \
     decoration \
   }
-  
+
 #define CHOICE_HIGHLIGHT_CUSTOM( itemIndex, foreColorArg, borderColorArg, visArg ) \
     itemDef \
     { \
@@ -315,7 +315,7 @@
       forecolor		foreColorArg \
       visible			when( localVarInt( ui_highlight ) == itemIndex && localVarString( ui_choicegroup ) == CHOICE_GROUP ); \
       decoration \
-    } \	
+    } \
     CHOICE_ACCEPT_HINT( itemIndex, visArg )
 
 // used for custom highlights for itemDefs that are special and can not use itemIndex or complie with the strict alignment of this macro set
@@ -337,7 +337,7 @@
 			forecolor		BUTTON_BG_COLOR \
 			visible			1 \
 			decoration \
-		} \		
+		} \
 		itemDef \
 		{ \
 			style			WINDOW_STYLE_SHADER \
@@ -355,8 +355,8 @@
 			forecolor		HIGHLIGHT_COLOR \
 			visible			visArg \
 			decoration \
-		} \	
-
+		} \
+ 
 
 //CHOICE_TEXT_OFFSET_X
 
@@ -376,11 +376,11 @@
 			forecolor		1 1 1 1 \
 			visible			when( localVarInt( ui_highlight ) == itemIndex && localVarString( ui_choicegroup ) == CHOICE_GROUP && vis ); \
 			decoration \
-		} 
+		}
 #else // #if defined( CONSOLE ) && !defined( SPLITSCREEN )
 #define CHOICE_ACCEPT_HINT( itemIndex, vis )
 #endif // #else // #if defined( CONSOLE ) && !defined( SPLITSCREEN )
-		
+
 #define CHOICE_MENU_TITLE_SS( titleArg ) \
 		itemDef \
 		{ \
@@ -395,8 +395,8 @@
 			textalign		ITEM_ALIGN_TOP_LEFT \
 			visible			1 \
 			decoration \
-		}		
-		
+		}
+
 #define CHOICE_MENU_TITLE( titleArg ) \
 		itemDef \
 		{ \
@@ -413,7 +413,7 @@
 			visible			1 \
 			decoration \
 		}
-		
+
 #define CHOICE_MENU_TITLE_VIS( titleArg, visArg ) \
 		itemDef \
 		{ \
@@ -430,9 +430,9 @@
 			visible			when( visArg ) \
 			decoration \
 		}
-	
+
 #define CHOICE_SECTION_TITLE( itemIndex, titleArg ) \
-	CHOICE_SECTION_TITLE_VIS( itemIndex, titleArg, 1 )	
+	CHOICE_SECTION_TITLE_VIS( itemIndex, titleArg, 1 )
 
 #define CHOICE_SECTION_TITLE_VIS( itemIndex, titleArg, visArg ) \
 	itemDef \
@@ -485,7 +485,7 @@
 
 #define CHOICE_SEPARATOR( afterItemIndex ) \
 		CHOICE_SEPARATOR_VIS( afterItemIndex, when( ENABLE_SEPARATOR ) )
-		
+
 #define CHOICE_SEPARATOR_VIS( afterItemIndex, visArg ) \
 		itemDef \
 		{ \
@@ -497,7 +497,7 @@
 			visible			visArg \
 			decoration \
 		}
-		
+
 #define CHOICE_BUTTON( itemIndex, textArg, actionArg ) \
 		CHOICE_BUTTON_VIS( itemIndex, textArg, actionArg, 1 )
 
@@ -508,7 +508,7 @@
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_BUTTON_VIS_NOHI( itemIndex, textArg, actionArg, visArg )
-		
+
 #define CHOICE_BUTTON_VIS_ADV( itemIndex, textArg, actionArg, visArg, vis ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, vis ) \
@@ -527,7 +527,7 @@
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_BUTTON_FOCUS_VIS_NOHI( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg )
-		
+
 #define CHOICE_BUTTON_FOCUS_VIS_ADV( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg, vis ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, vis ) \
@@ -545,12 +545,12 @@
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_BUTTON_FOCUS_VIS_NOHI_EX( itemIndex, textArg, actionArg, ;, ;, visArg, extraArgs )
-		
+
 #define CHOICE_BUTTON_FOCUS_VIS_EX( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg, extraArgs ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
 		CHOICE_BUTTON_FOCUS_VIS_NOHI_EX( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg, extraArgs )
-		
+
 #define CHOICE_BUTTON_FOCUS_VIS_EX_ADV( itemIndex, textArg, actionArg, onFocusArg, leaveFocusArg, visArg, extraArgs, vis ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, vis ) \
@@ -572,7 +572,7 @@
 			extraArgs \
 			CHOICE_SCRIPTS_ALL( itemIndex, actionArg, onFocusArg, leaveFocusArg ) \
 		} \
-
+ 
 
 #define CHOICE_DBUTTON_VIS_NOHI( itemIndex, textArg, visArg ) \
 		itemDef \
@@ -589,7 +589,7 @@
 			visible			visArg \
 			decoration \
 		} \
-		
+	
 #define CHOICE_DBUTTON_VIS( itemIndex, textArg, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		itemDef \
@@ -606,7 +606,7 @@
 			visible			visArg \
 			decoration \
 		} \
-
+ 
 #define CHOICE_DVARENUMLIST( itemIndex, textArg, dvarArg, dvarListArg, actionArg ) \
 		CHOICE_DVARLIST_VIS( itemIndex, textArg, dvarArg, ITEM_TYPE_DVARENUM, dvarEnumList dvarListArg, actionArg, 1 )
 
@@ -709,7 +709,7 @@
 
 #define CHOICE_DVAREDIT_NUMERIC( itemIndex, textArg, dvarArg, max_chars, onFocusArg ) \
 		CHOICE_DVAREDIT_NUMERIC_VIS( itemIndex, textArg, dvarArg, max_chars, onFocusArg, 1 )
-    
+
 #define CHOICE_DVAREDIT_NUMERIC_VIS( itemIndex, textArg, dvarArg, max_chars, onFocusArg, visArg ) \
 		CHOICE_BUTTON_BG( itemIndex, visArg ) \
 		CHOICE_HIGHLIGHT( itemIndex, visArg ) \
@@ -730,8 +730,8 @@
 			maxChars		max_chars \
 			CHOICE_SCRIPTS_ALL( itemIndex, ;, onFocusArg, ; ) \
 		}
-		
-		
+
+
 #define CHOICE_DVAREDIT( itemIndex, textArg, dvarArg, actionArg ) \
 		CHOICE_DVAREDIT_VIS( itemIndex, textArg, dvarArg, 31, 18, actionArg, 1 )
 
@@ -756,7 +756,7 @@
 			maxpaintchars	max_paintchars \
 			CHOICE_SCRIPTS_ACTION( itemIndex, actionArg ) \
 		}
-		
+
 #define CHOICE_DVARSLIDER( itemIndex, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg ) \
 		CHOICE_DVARSLIDER_VIS( itemIndex, textArg, dvarArg, defaultArg, minArg, maxArg, actionArg, 1 )
 
@@ -880,7 +880,7 @@
 			{ \
 				play CHOICE_FOCUS_SOUND; \
 				setLocalVarInt ui_highlight itemIndex; \
-				setLocalVarString ui_choicegroup CHOICE_GROUP; \				
+				setLocalVarString ui_choicegroup CHOICE_GROUP; \
 				onFocusArg \
 			} \
 			leaveFocus \

@@ -46,25 +46,25 @@
 			STAT_XP
 			
 			// pc's initial selection loadout display workaround
-			#ifdef PC
-				execnow "set ui_class_offset 200; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0";
-			#endif
+#ifdef PC
+			execnow "set ui_class_offset 200; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0";
+#endif
 		}
-		onEsc 
+		onEsc
 		{
 			scriptMenuResponse "back";
 		}
-    onClose
-    {
-      execondvarintvalue r_normal 0 "toggle r_normal; set r_normal 0";
-    }
+		onClose
+		{
+			execondvarintvalue r_normal 0 "toggle r_normal; set r_normal 0";
+		}
 		
-		#ifndef PC
+#ifndef PC
 		execkeyint BUTTON_START
 		{
 			close self;
 		}
-		#endif
+#endif
 		
 		// background overlay
 		itemDef	{
@@ -90,19 +90,19 @@
 			visible			1
 			decoration
 		}
-
+		
 		// ------------------ TREE TITLE ------------------
 		
 		CHOICE_MENU_TITLE( "@MPUI_CHOOSE_CLASS_CAP" )
-
+		
 		// ------------------ buttons ---------------------
-		#define BACK_OPEN	;
-		#include "ui_mp/navcontrols.inc"
+#define BACK_OPEN	;
+#include "ui_mp/navcontrols.inc"
 		
 		//=========================================================================
 		//================ MENU SELECTION FOR ONLINE/OFFLINE GAME =================
 		//=========================================================================
-		#include "ui_mp/teamicon.inc"
+#include "ui_mp/teamicon.inc"
 		
 		/*
 		#ifdef PC
@@ -115,125 +115,125 @@
 		*/
 		
 		/* =================================== default classes ================================= */
-
+		
 		// PC widescreen fix
-		#ifdef PC
-			#undef  CHOICE_X_START
-			#define CHOICE_X_START	-320
-			
-			#undef	CHOICE_HORIZONTAL_ALIGN
-			#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
-		#endif
+#ifdef PC
+#undef  CHOICE_X_START
+#define CHOICE_X_START	-320
+		
+#undef	CHOICE_HORIZONTAL_ALIGN
+#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
+#endif
 		
 		CHOICE_SECTION_TITLE_VIS( 1, "@MPUI_DEFAULT_CLASSES", when( CLASS_MODE ); )
 		CHOICE_SECTION_TITLE_VIS( 1, "@OW_NO_CLASS_MODE", when( CLASS_MODE == 0 ); )
 		
-		CHOICE_BUTTON_FOCUS_VIS( 2, dvarString(tmp_class_name_200), scriptMenuResponse "assault_mp,0"; close self, execnow "set ui_class_offset 200; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
-		CHOICE_BUTTON_FOCUS_VIS( 3, dvarString(tmp_class_name_210), scriptMenuResponse "specops_mp,0"; close self, execnow "set ui_class_offset 210; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
-		CHOICE_BUTTON_FOCUS_VIS( 4, dvarString(tmp_class_name_220), scriptMenuResponse "heavygunner_mp,0"; close self, execnow "set ui_class_offset 220; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
-		CHOICE_BUTTON_FOCUS_VIS( 5, dvarString(tmp_class_name_230), scriptMenuResponse "demolitions_mp,0"; close self, execnow "set ui_class_offset 230; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
-		CHOICE_BUTTON_FOCUS_VIS( 6, dvarString(tmp_class_name_240), scriptMenuResponse "sniper_mp,0"; close self, execnow "set ui_class_offset 240; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ;, when( CLASS_MODE ) )
-    execkey "q" { play "mouse_click"; scriptMenuResponse "assault_mp,0"; close self; }
-    execkey "w" { play "mouse_click"; scriptMenuResponse "specops_mp,0"; close self; }
-    execkey "e" { play "mouse_click"; scriptMenuResponse "heavygunner_mp,0"; close self; }
-    execkey "r" { play "mouse_click"; scriptMenuResponse "demolitions_mp,0"; close self; }
-    execkey "t" { play "mouse_click"; scriptMenuResponse "sniper_mp,0"; close self; }
+		CHOICE_BUTTON_FOCUS_VIS( 2, dvarString(tmp_class_name_200), scriptMenuResponse "assault_mp,0"; close self, execnow "set ui_class_offset 200; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ; , when( CLASS_MODE ) )
+		CHOICE_BUTTON_FOCUS_VIS( 3, dvarString(tmp_class_name_210), scriptMenuResponse "specops_mp,0"; close self, execnow "set ui_class_offset 210; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ; , when( CLASS_MODE ) )
+		CHOICE_BUTTON_FOCUS_VIS( 4, dvarString(tmp_class_name_220), scriptMenuResponse "heavygunner_mp,0"; close self, execnow "set ui_class_offset 220; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ; , when( CLASS_MODE ) )
+		CHOICE_BUTTON_FOCUS_VIS( 5, dvarString(tmp_class_name_230), scriptMenuResponse "demolitions_mp,0"; close self, execnow "set ui_class_offset 230; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ; , when( CLASS_MODE ) )
+		CHOICE_BUTTON_FOCUS_VIS( 6, dvarString(tmp_class_name_240), scriptMenuResponse "sniper_mp,0"; close self, execnow "set ui_class_offset 240; set ui_multi_s "HIGH_BOUND"; set ui_multi_dt 0", ; , when( CLASS_MODE ) )
+		execkey "q" { play "mouse_click"; scriptMenuResponse "assault_mp,0"; close self; }
+		execkey "w" { play "mouse_click"; scriptMenuResponse "specops_mp,0"; close self; }
+		execkey "e" { play "mouse_click"; scriptMenuResponse "heavygunner_mp,0"; close self; }
+		execkey "r" { play "mouse_click"; scriptMenuResponse "demolitions_mp,0"; close self; }
+		execkey "t" { play "mouse_click"; scriptMenuResponse "sniper_mp,0"; close self; }
 		
-		#define DATA_TABLE_PRIMARY				      int(tablelookup( "mp/statsTable.csv", 4, dvarString("tmp_class_prim_"+dvarString("ui_class_offset")), 0 ))
-		#define DATA_TABLE_PRIMARY_ATTACHMENT	  int(tablelookup( "mp/attachmentTable.csv", 4, dvarString("tmp_class_prim_att_"+dvarString("ui_class_offset")), 9 ))
-		#define DATA_TABLE_SECONDARY			      int(tablelookup( "mp/statsTable.csv", 4, dvarString("tmp_class_second_"+dvarString("ui_class_offset")), 0 ))
-		#define DATA_TABLE_SECONDARY_ATTACHMENT	int(tablelookup( "mp/attachmentTable.csv", 4, dvarString("tmp_class_second_att_"+dvarString("ui_class_offset")), 9 ))
-		#define DATA_TABLE_SPECIALTY_EQUIPMENT	int(tablelookup( "mp/statsTable.csv", 6, dvarString("tmp_class_perk1_"+dvarString("ui_class_offset")), 0 ))
-		#define DATA_TABLE_SPECIALTY_WEAPON		  int(tablelookup( "mp/statsTable.csv", 6, dvarString("tmp_class_perk2_"+dvarString("ui_class_offset")), 0 ))
-		#define DATA_TABLE_SPECIALTY_ABILITY	  int(tablelookup( "mp/statsTable.csv", 6, dvarString("tmp_class_perk3_"+dvarString("ui_class_offset")), 0 ))
-		#define DATA_TABLE_SPECIAL_GRENADE		  int(tablelookup( "mp/statsTable.csv", 4, dvarString("tmp_class_specialg_"+dvarString("ui_class_offset")), 0 ))
-		#define DATA_TABLE_CAMO		              int(0)
-
+#define DATA_TABLE_PRIMARY				      int(tablelookup( "mp/statsTable.csv", 4, dvarString("tmp_class_prim_"+dvarString("ui_class_offset")), 0 ))
+#define DATA_TABLE_PRIMARY_ATTACHMENT	  int(tablelookup( "mp/attachmentTable.csv", 4, dvarString("tmp_class_prim_att_"+dvarString("ui_class_offset")), 9 ))
+#define DATA_TABLE_SECONDARY			      int(tablelookup( "mp/statsTable.csv", 4, dvarString("tmp_class_second_"+dvarString("ui_class_offset")), 0 ))
+#define DATA_TABLE_SECONDARY_ATTACHMENT	int(tablelookup( "mp/attachmentTable.csv", 4, dvarString("tmp_class_second_att_"+dvarString("ui_class_offset")), 9 ))
+#define DATA_TABLE_SPECIALTY_EQUIPMENT	int(tablelookup( "mp/statsTable.csv", 6, dvarString("tmp_class_perk1_"+dvarString("ui_class_offset")), 0 ))
+#define DATA_TABLE_SPECIALTY_WEAPON		  int(tablelookup( "mp/statsTable.csv", 6, dvarString("tmp_class_perk2_"+dvarString("ui_class_offset")), 0 ))
+#define DATA_TABLE_SPECIALTY_ABILITY	  int(tablelookup( "mp/statsTable.csv", 6, dvarString("tmp_class_perk3_"+dvarString("ui_class_offset")), 0 ))
+#define DATA_TABLE_SPECIAL_GRENADE		  int(tablelookup( "mp/statsTable.csv", 4, dvarString("tmp_class_specialg_"+dvarString("ui_class_offset")), 0 ))
+#define DATA_TABLE_CAMO		              int(0)
+		
 		/* ==================================== custom classes ============================================= */
-    
-    #ifdef PC
-			#undef  CHOICE_Y_START
-      #define CHOICE_Y_START			41//34
-    #endif
-				
-		CHOICE_SECTION_TITLE_VIS( 8, "@MPUI_CUSTOM_CLASSES", when( CLASS_MODE) )
-
-		CHOICE_BUTTON_FOCUS_VIS( 9, dvarString( customclass1 ), scriptMenuResponse "custom1,0"; close self, setdvar ui_custom_class_highlighted "0"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES ) )
-		CHOICE_BUTTON_FOCUS_VIS( 10, dvarString( customclass2 ), scriptMenuResponse "custom2,0"; close self, setdvar ui_custom_class_highlighted "10"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 11, dvarString( customclass3 ), scriptMenuResponse "custom3,0"; close self, setdvar ui_custom_class_highlighted "20"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 12, dvarString( customclass4 ), scriptMenuResponse "custom4,0"; close self;, setdvar ui_custom_class_highlighted "30"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 13, dvarString( customclass5 ), scriptMenuResponse "custom5,0"; close self;, setdvar ui_custom_class_highlighted "40"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 14, dvarString( customclass6 ), scriptMenuResponse "custom6,0"; close self;, setdvar ui_custom_class_highlighted "150"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 15, dvarString( customclass7 ), scriptMenuResponse "custom7,0"; close self;, setdvar ui_custom_class_highlighted "160"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 16, dvarString( customclass8 ), scriptMenuResponse "custom8,0"; close self;, setdvar ui_custom_class_highlighted "170"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 17, dvarString( customclass9 ), scriptMenuResponse "custom9,0"; close self;, setdvar ui_custom_class_highlighted "180"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && RANKED_CLASSES) )
-    
-    CHOICE_BUTTON_FOCUS_VIS( 9, dvarString( customclass11 ), scriptMenuResponse "custom1,0"; close self, setdvar ui_custom_class_highlighted "200"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES ) )
-		CHOICE_BUTTON_FOCUS_VIS( 10, dvarString( customclass12 ), scriptMenuResponse "custom2,0"; close self, setdvar ui_custom_class_highlighted "210"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 11, dvarString( customclass13 ), scriptMenuResponse "custom3,0"; close self, setdvar ui_custom_class_highlighted "220"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 12, dvarString( customclass14 ), scriptMenuResponse "custom4,0"; close self;, setdvar ui_custom_class_highlighted "230"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 13, dvarString( customclass15 ), scriptMenuResponse "custom5,0"; close self;, setdvar ui_custom_class_highlighted "240"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 14, dvarString( customclass16 ), scriptMenuResponse "custom6,0"; close self;, setdvar ui_custom_class_highlighted "250"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 15, dvarString( customclass17 ), scriptMenuResponse "custom7,0"; close self;, setdvar ui_custom_class_highlighted "260"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 16, dvarString( customclass18 ), scriptMenuResponse "custom8,0"; close self;, setdvar ui_custom_class_highlighted "270"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
-		CHOICE_BUTTON_FOCUS_VIS( 17, dvarString( customclass19 ), scriptMenuResponse "custom9,0"; close self;, setdvar ui_custom_class_highlighted "280"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND;, ;, when( CLASS_MODE && !RANKED_CLASSES) )
-    execkey "1" { play "mouse_click"; scriptMenuResponse "custom1,0"; close self; }
-    execkey "2" { play "mouse_click"; scriptMenuResponse "custom2,0"; close self; }
-    execkey "3" { play "mouse_click"; scriptMenuResponse "custom3,0"; close self; }
-    execkey "4" { play "mouse_click"; scriptMenuResponse "custom4,0"; close self; }
-    execkey "5" { play "mouse_click"; scriptMenuResponse "custom5,0"; close self; }
-    execkey "6" { play "mouse_click"; scriptMenuResponse "custom6,0"; close self; }
-    execkey "7" { play "mouse_click"; scriptMenuResponse "custom7,0"; close self; }
-    execkey "8" { play "mouse_click"; scriptMenuResponse "custom8,0"; close self; }
-    execkey "9" { play "mouse_click"; scriptMenuResponse "custom9,0"; close self; }
-    
-    CHOICE_BUTTON_VIS( 12, "@OW_NO_CLASS_MODE_START", scriptMenuResponse "assault_mp,0"; close self, when( CLASS_MODE == 0 ) )
-    execkeyint 13 { play "mouse_click"; scriptMenuResponse "assault_mp,0"; close self; }
-    execkeyint 32 { play "mouse_click"; scriptMenuResponse "custom1,0"; close self; }
 		
-		#define STATS_PRIMARY					stat( dvarInt( ui_custom_class_highlighted ) + 201 )
-		#define STATS_RIMARY_ATTACHMENT			stat( dvarInt( ui_custom_class_highlighted ) + 202 )
-		#define STATS_SECONDARY					stat( dvarInt( ui_custom_class_highlighted ) + 203 )
-		#define STATS_SECONDARY_ATTACHMENT		stat( dvarInt( ui_custom_class_highlighted ) + 204 )
-		#define STATS_SPECIALTY_EQUIPMENT		stat( dvarInt( ui_custom_class_highlighted ) + 205 )
-		#define STATS_SPECIALTY_WEAPON			stat( dvarInt( ui_custom_class_highlighted ) + 206 )
-		#define STATS_SPECIALTY_ABILITY			stat( dvarInt( ui_custom_class_highlighted ) + 207 )
-		#define STATS_SPECIAL_GRENADE			stat( dvarInt( ui_custom_class_highlighted ) + 208 )
-		#define STATS_CAMO						stat( dvarInt( ui_custom_class_highlighted ) + 209 )
-
+#ifdef PC
+#undef  CHOICE_Y_START
+#define CHOICE_Y_START			41//34
+#endif
+		
+		CHOICE_SECTION_TITLE_VIS( 8, "@MPUI_CUSTOM_CLASSES", when( CLASS_MODE) )
+		
+		CHOICE_BUTTON_FOCUS_VIS( 9, dvarString( customclass1 ), scriptMenuResponse "custom1,0"; close self, setdvar ui_custom_class_highlighted "0"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && RANKED_CLASSES ) )
+		CHOICE_BUTTON_FOCUS_VIS( 10, dvarString( customclass2 ), scriptMenuResponse "custom2,0"; close self, setdvar ui_custom_class_highlighted "10"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 11, dvarString( customclass3 ), scriptMenuResponse "custom3,0"; close self, setdvar ui_custom_class_highlighted "20"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 12, dvarString( customclass4 ), scriptMenuResponse "custom4,0"; close self; , setdvar ui_custom_class_highlighted "30"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 13, dvarString( customclass5 ), scriptMenuResponse "custom5,0"; close self; , setdvar ui_custom_class_highlighted "40"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 14, dvarString( customclass6 ), scriptMenuResponse "custom6,0"; close self; , setdvar ui_custom_class_highlighted "150"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 15, dvarString( customclass7 ), scriptMenuResponse "custom7,0"; close self; , setdvar ui_custom_class_highlighted "160"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 16, dvarString( customclass8 ), scriptMenuResponse "custom8,0"; close self; , setdvar ui_custom_class_highlighted "170"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 17, dvarString( customclass9 ), scriptMenuResponse "custom9,0"; close self; , setdvar ui_custom_class_highlighted "180"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && RANKED_CLASSES) )
+		
+		CHOICE_BUTTON_FOCUS_VIS( 9, dvarString( customclass11 ), scriptMenuResponse "custom1,0"; close self, setdvar ui_custom_class_highlighted "200"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && !RANKED_CLASSES ) )
+		CHOICE_BUTTON_FOCUS_VIS( 10, dvarString( customclass12 ), scriptMenuResponse "custom2,0"; close self, setdvar ui_custom_class_highlighted "210"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 11, dvarString( customclass13 ), scriptMenuResponse "custom3,0"; close self, setdvar ui_custom_class_highlighted "220"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 12, dvarString( customclass14 ), scriptMenuResponse "custom4,0"; close self; , setdvar ui_custom_class_highlighted "230"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 13, dvarString( customclass15 ), scriptMenuResponse "custom5,0"; close self; , setdvar ui_custom_class_highlighted "240"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 14, dvarString( customclass16 ), scriptMenuResponse "custom6,0"; close self; , setdvar ui_custom_class_highlighted "250"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 15, dvarString( customclass17 ), scriptMenuResponse "custom7,0"; close self; , setdvar ui_custom_class_highlighted "260"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 16, dvarString( customclass18 ), scriptMenuResponse "custom8,0"; close self; , setdvar ui_custom_class_highlighted "270"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && !RANKED_CLASSES) )
+		CHOICE_BUTTON_FOCUS_VIS( 17, dvarString( customclass19 ), scriptMenuResponse "custom9,0"; close self; , setdvar ui_custom_class_highlighted "280"; exec "set ui_multi_s 0; set ui_multi_dt "HIGH_BOUND; , ; , when( CLASS_MODE && !RANKED_CLASSES) )
+		execkey "1" { play "mouse_click"; scriptMenuResponse "custom1,0"; close self; }
+		execkey "2" { play "mouse_click"; scriptMenuResponse "custom2,0"; close self; }
+		execkey "3" { play "mouse_click"; scriptMenuResponse "custom3,0"; close self; }
+		execkey "4" { play "mouse_click"; scriptMenuResponse "custom4,0"; close self; }
+		execkey "5" { play "mouse_click"; scriptMenuResponse "custom5,0"; close self; }
+		execkey "6" { play "mouse_click"; scriptMenuResponse "custom6,0"; close self; }
+		execkey "7" { play "mouse_click"; scriptMenuResponse "custom7,0"; close self; }
+		execkey "8" { play "mouse_click"; scriptMenuResponse "custom8,0"; close self; }
+		execkey "9" { play "mouse_click"; scriptMenuResponse "custom9,0"; close self; }
+		
+		CHOICE_BUTTON_VIS( 12, "@OW_NO_CLASS_MODE_START", scriptMenuResponse "assault_mp,0"; close self, when( CLASS_MODE == 0 ) )
+		execkeyint 13 { play "mouse_click"; scriptMenuResponse "assault_mp,0"; close self; }
+		execkeyint 32 { play "mouse_click"; scriptMenuResponse "custom1,0"; close self; }
+		
+#define STATS_PRIMARY					stat( dvarInt( ui_custom_class_highlighted ) + 201 )
+#define STATS_RIMARY_ATTACHMENT			stat( dvarInt( ui_custom_class_highlighted ) + 202 )
+#define STATS_SECONDARY					stat( dvarInt( ui_custom_class_highlighted ) + 203 )
+#define STATS_SECONDARY_ATTACHMENT		stat( dvarInt( ui_custom_class_highlighted ) + 204 )
+#define STATS_SPECIALTY_EQUIPMENT		stat( dvarInt( ui_custom_class_highlighted ) + 205 )
+#define STATS_SPECIALTY_WEAPON			stat( dvarInt( ui_custom_class_highlighted ) + 206 )
+#define STATS_SPECIALTY_ABILITY			stat( dvarInt( ui_custom_class_highlighted ) + 207 )
+#define STATS_SPECIAL_GRENADE			stat( dvarInt( ui_custom_class_highlighted ) + 208 )
+#define STATS_CAMO						stat( dvarInt( ui_custom_class_highlighted ) + 209 )
+		
 		//#include "ui/safearea.menu"
 		
 		/* ================================================================================= */
 		/* ================================ LOADOUT DISPLAY ================================ */
 		/* ================================================================================= */
-
-		#define STAT_CAC_PRIMARY				int(min( STATS_PRIMARY+dvarInt(ui_multi_s), DATA_TABLE_PRIMARY+dvarInt(ui_multi_dt) ))
-		#define STAT_CAC_PRIMARY_ATTACHMENT		int(min( STATS_RIMARY_ATTACHMENT+dvarInt(ui_multi_s), DATA_TABLE_PRIMARY_ATTACHMENT+dvarInt(ui_multi_dt) ))
-		#define STAT_CAC_SECONDARY				int(min( STATS_SECONDARY+dvarInt(ui_multi_s), DATA_TABLE_SECONDARY+dvarInt(ui_multi_dt) ))
-		#define STAT_CAC_SECONDARY_ATTACHMENT	int(min( STATS_SECONDARY_ATTACHMENT+dvarInt(ui_multi_s), DATA_TABLE_SECONDARY_ATTACHMENT+dvarInt(ui_multi_dt) ))
-		#define STAT_CAC_SPECIALTY_EQUIPMENT	int(min( STATS_SPECIALTY_EQUIPMENT+dvarInt(ui_multi_s), DATA_TABLE_SPECIALTY_EQUIPMENT+dvarInt(ui_multi_dt) ))
-		#define STAT_CAC_SPECIALTY_WEAPON		int(min( STATS_SPECIALTY_WEAPON+dvarInt(ui_multi_s), DATA_TABLE_SPECIALTY_WEAPON+dvarInt(ui_multi_dt) ))
-		#define STAT_CAC_SPECIALTY_ABILITY		int(min( STATS_SPECIALTY_ABILITY+dvarInt(ui_multi_s), DATA_TABLE_SPECIALTY_ABILITY+dvarInt(ui_multi_dt) ))
-		#define STAT_CAC_SPECIAL_GRENADE		int(min( STATS_SPECIAL_GRENADE+dvarInt(ui_multi_s), DATA_TABLE_SPECIAL_GRENADE+dvarInt(ui_multi_dt) ))
-		#define STAT_CAC_CAMO					int(min( STATS_CAMO+dvarInt(ui_multi_s), DATA_TABLE_CAMO+dvarInt(ui_multi_dt) ))
+		
+#define STAT_CAC_PRIMARY				int(min( STATS_PRIMARY+dvarInt(ui_multi_s), DATA_TABLE_PRIMARY+dvarInt(ui_multi_dt) ))
+#define STAT_CAC_PRIMARY_ATTACHMENT		int(min( STATS_RIMARY_ATTACHMENT+dvarInt(ui_multi_s), DATA_TABLE_PRIMARY_ATTACHMENT+dvarInt(ui_multi_dt) ))
+#define STAT_CAC_SECONDARY				int(min( STATS_SECONDARY+dvarInt(ui_multi_s), DATA_TABLE_SECONDARY+dvarInt(ui_multi_dt) ))
+#define STAT_CAC_SECONDARY_ATTACHMENT	int(min( STATS_SECONDARY_ATTACHMENT+dvarInt(ui_multi_s), DATA_TABLE_SECONDARY_ATTACHMENT+dvarInt(ui_multi_dt) ))
+#define STAT_CAC_SPECIALTY_EQUIPMENT	int(min( STATS_SPECIALTY_EQUIPMENT+dvarInt(ui_multi_s), DATA_TABLE_SPECIALTY_EQUIPMENT+dvarInt(ui_multi_dt) ))
+#define STAT_CAC_SPECIALTY_WEAPON		int(min( STATS_SPECIALTY_WEAPON+dvarInt(ui_multi_s), DATA_TABLE_SPECIALTY_WEAPON+dvarInt(ui_multi_dt) ))
+#define STAT_CAC_SPECIALTY_ABILITY		int(min( STATS_SPECIALTY_ABILITY+dvarInt(ui_multi_s), DATA_TABLE_SPECIALTY_ABILITY+dvarInt(ui_multi_dt) ))
+#define STAT_CAC_SPECIAL_GRENADE		int(min( STATS_SPECIAL_GRENADE+dvarInt(ui_multi_s), DATA_TABLE_SPECIAL_GRENADE+dvarInt(ui_multi_dt) ))
+#define STAT_CAC_CAMO					int(min( STATS_CAMO+dvarInt(ui_multi_s), DATA_TABLE_CAMO+dvarInt(ui_multi_dt) ))
 		
 		// enable positioning tweaks
-		#define REPOSITIONING	1
+#define REPOSITIONING	1
 		
-		#define WEAPON_X					300
-		#define WEAPON_Y					72
-		#define WEAPON_SIZEX				311
-		#define WEAPON_SIZEY				180
-		#define WEAPON_ORIGIN				WEAPON_X WEAPON_Y
+#define WEAPON_X					300
+#define WEAPON_Y					72
+#define WEAPON_SIZEX				311
+#define WEAPON_SIZEY				180
+#define WEAPON_ORIGIN				WEAPON_X WEAPON_Y
 		
-		#define INV_X						300
-		#define INV_Y						260
-		#define INV_SIZEX					311
-		#define INV_SIZEY					146
-		#define INV_ORIGIN					INV_X INV_Y
+#define INV_X						300
+#define INV_Y						260
+#define INV_SIZEX					311
+#define INV_SIZEY					146
+#define INV_ORIGIN					INV_X INV_Y
 		
-		#define HIDE_WEAPON_ATTRIBUTE		1
-		#include "ui_mp/cac_loadout_ex.inc"
+#define HIDE_WEAPON_ATTRIBUTE		1
+#include "ui_mp/cac_loadout_ex.inc"
 		
 	}
 }

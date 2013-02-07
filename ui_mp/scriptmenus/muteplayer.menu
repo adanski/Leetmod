@@ -7,10 +7,10 @@
 #include "ui_mp/custom.inc"
 
 {
-	menuDef 
+	menuDef
 	{
 		name 			muteplayer
-		fullScreen 		0				
+		fullScreen 		0
 		rect 			0 0 640 480				// Size and position of the menu
 		focusColor 		COLOR_FOCUSED			// Menu focus color for text and items
 		blurWorld		7.0
@@ -19,42 +19,42 @@
 			close self;
 		}
 		PREPROC_SHADER_DRAW( -120 0 880 480, 0 0, "white", 0 0 0 0.75, 0, 1, 0 0 0 0 )
-
-		#undef BACK_OPEN
-		#define BACK_OPEN exec "wait";
-		#include "ui_mp/navcontrols.inc"
+		
+#undef BACK_OPEN
+#define BACK_OPEN exec "wait";
+#include "ui_mp/navcontrols.inc"
 		CHOICE_MENU_TITLE( "@OW_PLAYERS_STATS_VOICE" )
-
+		
 		CHOICE_BUTTON( 3, "@MP_PLAYER_TOGGLE_MUTE", uiScript mutePlayer; )
 		CHOICE_DVARYESNO( 17, "@MPUI_ENABLE_VOICE_CHAT", cl_voice, ; )
-		CHOICE_BUTTON_VIS( 18, "@OW_CONSOLE_HISTORY_ABREV_ON", exec AHH1;exec AHH2;exec AHH3;exec AHH4;exec AHH5;setdvar ct_conChatHistOnly 0;, when( dvarbool( ct_conChatHistOnly ) ); )
-		CHOICE_BUTTON_VIS( 18, "@OW_CONSOLE_HISTORY_ABREV_OFF", exec ASH1;exec ASH2;exec ASH3;exec ASH4;exec ASH5;setdvar monkeytoy 0;setdvar ct_conChatHistOnly 1;, when( !dvarbool( ct_conChatHistOnly ) ); )
+		CHOICE_BUTTON_VIS( 18, "@OW_CONSOLE_HISTORY_ABREV_ON", exec AHH1; exec AHH2; exec AHH3; exec AHH4; exec AHH5; setdvar ct_conChatHistOnly 0; , when( dvarbool( ct_conChatHistOnly ) ); )
+		CHOICE_BUTTON_VIS( 18, "@OW_CONSOLE_HISTORY_ABREV_OFF", exec ASH1; exec ASH2; exec ASH3; exec ASH4; exec ASH5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 1; , when( !dvarbool( ct_conChatHistOnly ) ); )
 		//CHOICE_BUTTON_VIS( 17, "@MPUI_ENABLE_VOICE_CHAT", setdvar cl_voice "1";, when( !dvarbool( cl_voice ) ) )
 		//CHOICE_BUTTON_VIS( 17, "@MPUI_DISABLE_VOICE_CHAT", setdvar cl_voice "0";, when( dvarbool( cl_voice ) ) )
 		//CHOICE_BUTTON( 14, "@MPUI_ENABLE_VOICE_CHAT", close self; setdvar cl_voice "1"; )
 		//CHOICE_BUTTON( 14, "@MPUI_DISABLE_VOICE_CHAT", close self; setdvar cl_voice "0"; )
-    execkeyint 13 { play "mouse_click"; uiScript mutePlayer; }
-    execkeyint 32
-    {
-      play "mouse_click";
-      STAT_UPDATE_SELF
-      execNowOnDvarIntValue ct_displayingSelf 1 "openScriptMenu muteplayer currpl";
-      execNow "toggle ct_displayingSelf 0 1";
-    }
-    execkey "q" { close self; }
-    execkey "b" { close self; }
-    execkey "v" { play "mouse_click"; exec "toggle cl_voice"; }
-    execkey "a" { play "mouse_click"; scriptMenuResponse "prevpl"; setdvar ct_displayingSelf 0; }
-    execkey "d" { play "mouse_click"; scriptMenuResponse "nextpl"; setdvar ct_displayingSelf 0; }
-    execkey "s"
-    {
-      play "mouse_click";
-      STAT_UPDATE_SELF
-      execNowOnDvarIntValue ct_displayingSelf 1 "openScriptMenu muteplayer currpl";
-      execNow "toggle ct_displayingSelf 0 1";
-    }
-
-		itemDef 
+		execkeyint 13 { play "mouse_click"; uiScript mutePlayer; }
+		execkeyint 32
+		{
+			play "mouse_click";
+			STAT_UPDATE_SELF
+			execNowOnDvarIntValue ct_displayingSelf 1 "openScriptMenu muteplayer currpl";
+			execNow "toggle ct_displayingSelf 0 1";
+		}
+		execkey "q" { close self; }
+		execkey "b" { close self; }
+		execkey "v" { play "mouse_click"; exec "toggle cl_voice"; }
+		execkey "a" { play "mouse_click"; scriptMenuResponse "prevpl"; setdvar ct_displayingSelf 0; }
+		execkey "d" { play "mouse_click"; scriptMenuResponse "nextpl"; setdvar ct_displayingSelf 0; }
+		execkey "s"
+		{
+			play "mouse_click";
+			STAT_UPDATE_SELF
+			execNowOnDvarIntValue ct_displayingSelf 1 "openScriptMenu muteplayer currpl";
+			execNow "toggle ct_displayingSelf 0 1";
+		}
+		
+		itemDef
 		{
 			name			playermutelist
 			visible			1
@@ -76,7 +76,7 @@
 			outlinecolor	1 1 1 0.2
 			feeder			FEEDER_MUTELIST
 			columns			2 	2  62 	10
-							  	64 172  25
+			64 172  25
 			doubleclick
 			{
 				play "mouse_click";
@@ -85,56 +85,56 @@
 			mouseEnter 		{ setitemcolor playermutelist bordercolor 1 1 1 0.55 }
 			mouseExit 		{ setitemcolor playermutelist bordercolor 1 1 1 0.15 }
 		}
-    // ====================== player stats =========================
-    #include "ui_mp/player_info.inc"
-    
-    itemDef {
-      name 		iprevpl
-      type			1
-      style			WINDOW_STYLE_SHADER
-      rect			-9 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
-      origin			ORIGIN_PLAYERSTATS
-      background		"ui_arrow_left"
-      //forecolor		0.409 0.801 0.999 1
-      forecolor		0.97 0.81 0.42 1
-      visible			1
-      mouseEnter { play "mouse_over"; setitemcolor iprevpl forecolor 0.409 0.801 0.999 1 }
+		// ====================== player stats =========================
+#include "ui_mp/player_info.inc"
+		
+		itemDef {
+			name 		iprevpl
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-9 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
+			origin			ORIGIN_PLAYERSTATS
+			background		"ui_arrow_left"
+			//forecolor		0.409 0.801 0.999 1
+			forecolor		0.97 0.81 0.42 1
+			visible			1
+			mouseEnter { play "mouse_over"; setitemcolor iprevpl forecolor 0.409 0.801 0.999 1 }
 			mouseExit { setitemcolor iprevpl forecolor 0.97 0.81 0.42 1 }
-      action { play "mouse_click"; scriptMenuResponse "prevpl"; setdvar ct_displayingSelf 0; }	
-    }
-    
-    itemDef {
-      name 		comparestats
-      type			1
-      style			WINDOW_STYLE_SHADER
-      rect			11 -11 30 30 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
-      origin			ORIGIN_PLAYERSTATS
-      background		"objective_down"
-      forecolor		1 1 1 1
-      visible			1
-      mouseEnter { play "mouse_over"; setitemcolor comparestats forecolor 0.9 0.6 0.4 1 }
-      mouseExit { setitemcolor comparestats forecolor 1 1 1 1 }
-      action
-      {
-        play "mouse_click";
-        STAT_UPDATE_SELF
-        execNowOnDvarIntValue ct_displayingSelf 1 "openScriptMenu muteplayer currpl";
-        execNow "toggle ct_displayingSelf 0 1";
-      }
-    }
-
-    itemDef {
-      name 		inextpl
-      type			1
-      style			WINDOW_STYLE_SHADER
-      rect			41 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
-      origin			ORIGIN_PLAYERSTATS
-      background		"ui_arrow_right"
-      forecolor		0.97 0.81 0.42 1
-      visible			1
-      mouseEnter { play "mouse_over"; setitemcolor inextpl forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor inextpl forecolor 0.97 0.81 0.42 1 }
-      action { play "mouse_click"; scriptMenuResponse "nextpl"; setdvar ct_displayingSelf 0; }	
-    }
+			action { play "mouse_click"; scriptMenuResponse "prevpl"; setdvar ct_displayingSelf 0; }
+		}
+		
+		itemDef {
+			name 		comparestats
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			11 -11 30 30 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
+			origin			ORIGIN_PLAYERSTATS
+			background		"objective_down"
+			forecolor		1 1 1 1
+			visible			1
+			mouseEnter { play "mouse_over"; setitemcolor comparestats forecolor 0.9 0.6 0.4 1 }
+			mouseExit { setitemcolor comparestats forecolor 1 1 1 1 }
+			action
+			{
+				play "mouse_click";
+				STAT_UPDATE_SELF
+				execNowOnDvarIntValue ct_displayingSelf 1 "openScriptMenu muteplayer currpl";
+				execNow "toggle ct_displayingSelf 0 1";
+			}
+		}
+		
+		itemDef {
+			name 		inextpl
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			41 -6 20 20 RIGHTITEM_ALIGN VERTICAL_ALIGN_TOP
+			origin			ORIGIN_PLAYERSTATS
+			background		"ui_arrow_right"
+			forecolor		0.97 0.81 0.42 1
+			visible			1
+			mouseEnter { play "mouse_over"; setitemcolor inextpl forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor inextpl forecolor 0.97 0.81 0.42 1 }
+			action { play "mouse_click"; scriptMenuResponse "nextpl"; setdvar ct_displayingSelf 0; }
+		}
 	}
 }
