@@ -255,7 +255,7 @@ stringtable,mp/rankTable.csv
 stringtable,mp/statsTable.csv
 
 rawfile,openwarfare/_advancedacp.gsc
-#rawfile,openwarfare/_advancedmvs.gsc
+rawfile,openwarfare/_advancedmvs.gsc
 rawfile,openwarfare/_antibunnyhopping.gsc
 rawfile,openwarfare/_anticamping.gsc
 rawfile,openwarfare/_bigbrotherbot.gsc

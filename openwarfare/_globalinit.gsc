@@ -10,7 +10,8 @@ init()
 	openwarfare\_visualmover::init();
 	
 	thread openwarfare\_advancedacp::init();
-	//thread openwarfare\_advancedmvs::init();
+	// It seams enabled but it's disabled on its own file:
+	thread openwarfare\_advancedmvs::init();
 	thread openwarfare\_antibunnyhopping::init();
 	thread openwarfare\_anticamping::init();
 	thread openwarfare\_bigbrotherbot::init();

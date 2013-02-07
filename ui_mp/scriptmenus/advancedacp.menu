@@ -16,9 +16,7 @@
 		blurWorld		7.0
 		onEsc
 		{
-			play "mouse_click";
 			close self;
-			//open "class";
 		}
 
 		// background overlay
