@@ -122,7 +122,7 @@ mapVoting_Intermission()
 		
 	} else {
 		// Get the current map/gametypes combinations and build the arrays
-		mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations();
+		mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations(false);
 		level.scr_amvs_gametypes = [];
 		level.scr_amvs_maps = [];
 		auxVar = [];

@@ -187,7 +187,7 @@
 			decoration	
 		}				
 		
-		// Map rotation
+		// Map and gametype
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -200,33 +200,32 @@
 			exp					text( dvarstring( ui_aacp_map ) );
 			visible			1
 			decoration	
-		}		
+		}
 
 		itemDef {
 			name 		"previousmap"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-177 POSITION_Y(52) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-177 POSITION_Y(51) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
 		  mouseEnter { play "mouse_over"; setitemcolor previousmap forecolor 0.409 0.801 0.999 1 }
       mouseExit { setitemcolor previousmap forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "previousmap"; }	
-		}		
-		
+		}
 		itemDef {
 			name 		"nextmap"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-159 POSITION_Y(52) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-159 POSITION_Y(51) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
 		  mouseEnter { play "mouse_over"; setitemcolor nextmap forecolor 0.409 0.801 0.999 1 }
       mouseExit { setitemcolor nextmap forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "nextmap"; }	
-		}		
+		}
 				
 		// Gametype
 		itemDef
@@ -254,8 +253,7 @@
 		  mouseEnter { play "mouse_over"; setitemcolor previoustype forecolor 0.409 0.801 0.999 1 }
       mouseExit { setitemcolor previoustype forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "previoustype"; }	
-		}		
-		
+		}
 		itemDef {
 			name 		"nexttype"
 			type			1
@@ -267,8 +265,92 @@
 		  mouseEnter { play "mouse_over"; setitemcolor nexttype forecolor 0.409 0.801 0.999 1 }
       mouseExit { setitemcolor nexttype forecolor 1.0 1.0 1.0 1 }
 		  action { play "mouse_click"; scriptMenuResponse "nexttype"; }	
-		}		
-
+		}
+    
+    // Map rotation		
+    itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-280 POSITION_Y(60) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+      text      "@OW_AACP_ROTATION"
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_TITLE
+			visible			1
+			decoration	
+		}
+    itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-230 POSITION_Y(60) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_TITLE
+			exp					text( dvarstring( ui_aacp_mrcurridx ) );
+			visible			when ( dvarint( ui_aacp_mrcurridx ) == dvarint( ui_aacp_mridx ) );
+			decoration	
+		}
+    itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-230 POSITION_Y(60) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		0.4 0.96 0.1 1
+			exp					text( dvarstring( ui_aacp_mrcurridx ) );
+			visible			when ( dvarint( ui_aacp_mrcurridx ) != dvarint( ui_aacp_mridx ) );
+			decoration	
+		}
+    itemDef {
+			name 		"protationmg"
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-314 POSITION_Y(70) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"ui_arrow_left"
+			forecolor		COLOR_FOCUSED
+			visible			1
+		  mouseEnter { play "mouse_over"; setitemcolor protationmg forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor protationmg forecolor 1.0 1.0 1.0 1 }
+		  action { play "mouse_click"; scriptMenuResponse "protationmg"; }
+		}
+		itemDef {
+			name 		"nrotationmg"
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-296 POSITION_Y(70) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"ui_arrow_right"
+			forecolor		COLOR_FOCUSED
+			visible			1
+		  mouseEnter { play "mouse_over"; setitemcolor nrotationmg forecolor 0.409 0.801 0.999 1 }
+      mouseExit { setitemcolor nrotationmg forecolor 1.0 1.0 1.0 1 }
+		  action { play "mouse_click"; scriptMenuResponse "nrotationmg"; }
+		}
+    itemDef {
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-270 POSITION_Y(70) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"setrotationicon"
+			forecolor		1.0 0.4 0.0 1
+			visible			when ( dvarint( ui_aacp_mrcurridx ) == dvarint( ui_aacp_mridx ) );
+		}
+    itemDef {
+			name 		"setmrhere"
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-270 POSITION_Y(70) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"setrotationicon"
+			forecolor		0.0 0.6 0.0 1
+			visible			when ( dvarint( ui_aacp_mrcurridx ) != dvarint( ui_aacp_mridx ) );
+		  mouseEnter { play "mouse_over"; setitemcolor setmrhere forecolor COLOR_FOCUSED }
+      mouseExit { setitemcolor setmrhere forecolor 0.0 0.6 0.0 1 }
+		  action { play "mouse_click"; scriptMenuResponse "setmrhere"; }
+		}
 
 		// LOAD MAP
 		itemDef

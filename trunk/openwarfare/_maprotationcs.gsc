@@ -26,9 +26,9 @@ init()
 	level.scr_mrcs_auto_generate = getdvard( "scr_mrcs_auto_generate", "int", 0, 0, 1  );
 
 	// Make sure this is not a listen server
-  // ## Why? What is the limitation?
-	if ( getDvar("dedicated") == "listen server" )
-		return;
+  // Why? Shouldn't a listen server use this features?
+	//if ( getDvar("dedicated") == "listen server" )
+		//return;
 		
 	// Clean the map rotation
 	cleanMapRotation( false );
@@ -75,7 +75,7 @@ setRotationCurrent( initCheck )
 		if ( getdvarl( "_mrcs_line", "int", -1, -1, 99, level.sv_mapRotationLoadBased ) == -1 ) {
 			cleanMapRotation( false );
 			currentLine = 0;
-			restartRotation = ( true && initCheck );
+			restartRotation = initCheck && (level.sv_mapRotationScramble == 1 || level.scr_mrcs_auto_generate == 1);
 		} else {
 			currentLine = getdvarl( "_mrcs_line", "int", -1, -1, 99, level.sv_mapRotationLoadBased );
 			if ( initCheck ) {
@@ -115,7 +115,7 @@ cleanMapRotation( forceClean )
 		return;
 		
 	// Get the combinations
-	mgCombinations = getMapGametypeCombinations();
+	mgCombinations = getMapGametypeCombinations(false);
 	
 	// Check if we need to scramble the rotation
 	if ( level.sv_mapRotationScramble == 1 || level.scr_mrcs_auto_generate == 1 ) {
@@ -147,9 +147,9 @@ cleanMapRotation( forceClean )
 	newMapRotationsLine++;
 	newMapRotations[newMapRotationsLine] = "";
 	
-	setDvarL( "sv_mapRotation", newMapRotations[0], true );
+	setDvarL( "sv_mapRotation", newMapRotations[0], false );
 	for ( mr=1; mr < newMapRotations.size; mr++ ) {
-		setDvarL( "sv_mapRotation_" + mr, newMapRotations[mr], true );
+		setDvarL( "sv_mapRotation_" + mr, newMapRotations[mr], false );
 	}	
 	
 	// Map rotation cleaned, reset rotation string and restart the first map
@@ -212,18 +212,18 @@ getMapRotations()
 		// Get the next line
 		mr++;
 		thisMapRotation = tolower( getdvarl( "sv_mapRotation_" + mr, "string", "", undefined, undefined, level.sv_mapRotationLoadBased ) );
-	}		
+	}
 	
 	return mapRotations;	
 }
 
 
-getMapGametypeCombinations()
+getMapGametypeCombinations(fromCurrentRotation)
 {
 	mgCombinations = [];
 	
 	// Get the map rotations
-	if ( level.scr_mrcs_auto_generate == 1 ) {
+	if ( level.scr_mrcs_auto_generate == 1 && !fromCurrentRotation ) {
 		// Get the default gametype list
 		defaultGametypes = strtok( tolower( getdvarl( "scr_mrcs_auto_gametypes", "string", level.defaultGametypeList, undefined, undefined, level.sv_mapRotationLoadBased ) ), ";" );
 		
@@ -265,7 +265,10 @@ getMapGametypeCombinations()
 		}
 		
 	} else {
-		mapRotations = getMapRotations();
+    if(fromCurrentRotation && getdvar( "sv_mapRotationCurrent" ) != "")
+      mapRotations[0] = tolower( getdvar( "sv_mapRotationCurrent" ) );
+    else
+      mapRotations = getMapRotations();
 	
 		// Convert map rotations into array with all the map/gametype combinations
 		currentGametype = tolower( getdvard( "g_gametype", "string", "war" ) );
@@ -350,8 +353,8 @@ setDvarL( varName, varValue, printLog )
 	}
 	
 	// Comment the following line on public release
-	if ( printLog ) {
-		logPrint( "MRCS;" + varName + ": \"" + varValue + "\"\n" );
-	}
+	//if ( printLog ) {
+	//	logPrint( "MRCS;" + varName + ": \"" + varValue + "\"\n" );
+	//}
 	setDvar( varName, varValue );
 }

@@ -37,10 +37,12 @@ init()
 		}
 	}
 		
-	// Check if we should get the maps and gametypes from the current map rotation
-	if ( level.scr_aacp_enable == 2 ) {
-		// Get the current map/gametypes combinations and build the arrays
-		mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations();
+  // Get the current map/gametypes combinations (outside the conditional if because
+  // its used for another purposes below, so we avoid calculating them twice)
+  level.mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations(false);
+  level.mgCombinationsCurr = openwarfare\_maprotationcs::getMapGametypeCombinations(true);
+  // Check if we should get the maps and gametypes from the current map rotation
+  if ( level.scr_aacp_enable == 2 ) {
 		
 		// Distribute the gametype and map names to the corresponding variables
 		level.scr_aacp_maps = [];
@@ -48,21 +50,21 @@ init()
 		tempObjects = [];
 		
 		// Process the array containing the gametypes and maps
-		for ( index=0; index < mgCombinations.size; index++ ) {
+		for ( index=0; index < level.mgCombinations.size; index++ ) {
 			// Check if we need to add this gametype
-			if ( !isDefined( tempObjects[ mgCombinations[index]["gametype"] ] ) ) {
-				tempObjects[ mgCombinations[index]["gametype"] ] = true;
-				level.scr_aacp_gametypes[ level.scr_aacp_gametypes.size ] = mgCombinations[index]["gametype"];
+			if ( !isDefined( tempObjects[ level.mgCombinations[index]["gametype"] ] ) ) {
+				tempObjects[ level.mgCombinations[index]["gametype"] ] = true;
+				level.scr_aacp_gametypes[ level.scr_aacp_gametypes.size ] = level.mgCombinations[index]["gametype"];
 			}
 			
 			// Check if we need to add this map
-			if ( !isDefined( tempObjects[ mgCombinations[index]["mapname"] ] ) ) {
-				tempObjects[ mgCombinations[index]["mapname"] ] = true;
-				level.scr_aacp_maps[ level.scr_aacp_maps.size ] = mgCombinations[index]["mapname"];
+			if ( !isDefined( tempObjects[ level.mgCombinations[index]["mapname"] ] ) ) {
+				tempObjects[ level.mgCombinations[index]["mapname"] ] = true;
+				level.scr_aacp_maps[ level.scr_aacp_maps.size ] = level.mgCombinations[index]["mapname"];
 			}			
 		}
 		
-	} else {	
+	} else {
 		// Load maps
 		tempMaps = getdvarlistx( "scr_aacp_maps_", "string", "" );
 		// If we don't have any maps we'll set the stock ones
@@ -83,6 +85,9 @@ init()
 		level.scr_aacp_gametypes = getdvard( "scr_aacp_gametypes", "string", level.defaultGametypeList );
 		level.scr_aacp_gametypes = strtok( level.scr_aacp_gametypes, ";" );
 	}
+  
+  // Load map rotation values and calculate current position
+  level.scr_aacp_maprotationcurrent_index = calculateMapRotationCurrentIndex();
 	
 	// Rulesets
 	level.scr_aacp_rulesets = getdvard( "scr_aacp_rulesets", "string", "pub_softcore_all;pub_hardcore_all;pub_tactical_all;pub_softcore_pistols;pub_hardcore_pistols;pub_tactical_pistols;pub_softcore_shotguns;pub_hardcore_shotguns;pub_tactical_shotguns;pub_softcore_snipers;pub_hardcore_snipers;pub_tactical_snipers;match_softcore_all;match_hardcore_all;match_tactical_all;match_softcore_pistols;match_hardcore_pistols;match_tactical_pistols;match_softcore_shotguns;match_hardcore_shotguns;match_tactical_shotguns;match_softcore_snipers;match_hardcore_snipers;match_tactical_snipers" );
@@ -221,57 +226,59 @@ initAACP()
 			"ui_aacp_kck", ( issubstr( self.aacpAccess, level.scr_aacp_kick_player_access_code ) ),
 			"ui_aacp_ban", ( issubstr( self.aacpAccess, level.scr_aacp_ban_player_access_code ) ),
 			
-			"ui_aacp_map", self getCurrentMap(),
-			"ui_aacp_gametype", self getCurrentGametype(),
+			"ui_aacp_map", self getMapNameSetAacpPosition(getDvar( "mapname" )),
+			"ui_aacp_gametype", self getGametypeSetAacpPosition(getDvar( "g_gametype" )),
+      "ui_aacp_mridx", level.scr_aacp_maprotationcurrent_index+1,
+      "ui_aacp_mrcurridx", level.scr_aacp_maprotationcurrent_index+1,
 			"ui_aacp_ruleset", self getCurrentRuleset(),
 			"ui_aacp_player", self getFirstPlayer(),
 			"ui_aacp_reason", self getFirstReason()
 		);
+    
+    self.aacpMapRotationCurrent_index = level.scr_aacp_maprotationcurrent_index;
 		
 		self thread onMenuResponse();
 	}
 }
 
 
-getCurrentMap()
+getMapNameSetAacpPosition(MapFile)
 {
-	// Get the current map and get the position in our array
-	currentMap = toLower( getDvar( "mapname" ) );
+	MapFile = toLower( MapFile );
 	
 	index = 0;
-	while ( index < level.scr_aacp_maps.size && currentMap != level.scr_aacp_maps[ index ] ) {
+	while ( index < level.scr_aacp_maps.size && MapFile != level.scr_aacp_maps[ index ] ) {
 		index++;
 	}
 	
 	// If we can't find the map then we just use the first map in the array
 	if ( index == level.scr_aacp_maps.size ) {
 		index = 0;
-		currentMap = level.scr_aacp_maps[ index ];
+		MapFile = level.scr_aacp_maps[ index ];
 	}
 	
 	self.aacpMap = index;
-	return getMapName( currentMap );	
+	return getMapName( MapFile );	
 }
 
 
-getCurrentGametype()
+getGametypeSetAacpPosition(gametype)
 {
-	// Get the current gametype and get the position in our array
-	currentType = toLower( getDvar( "g_gametype" ) );
+	gametype = toLower( gametype );
 	
 	index = 0;
-	while ( index < level.scr_aacp_gametypes.size && currentType != level.scr_aacp_gametypes[ index ] ) {
+	while ( index < level.scr_aacp_gametypes.size && gametype != level.scr_aacp_gametypes[ index ] ) {
 		index++;
 	}
 	
 	// If we can't find the gametype then we just use the first gametype in the array
 	if ( index == level.scr_aacp_gametypes.size ) {
 		index = 0;
-		currentType = level.scr_aacp_gametypes[ index ];
+		gametype = level.scr_aacp_gametypes[ index ];
 	}
 	
 	self.aacpType = index;
-	return getGameType( currentType );	
+	return getGameType( gametype );	
 }
 
 
@@ -382,6 +389,34 @@ getNextGametype()
 		self.aacpType++;
 	}
 	return getGameType( level.scr_aacp_gametypes[ self.aacpType ] );		
+}
+
+getPreviousRotationMG()
+{
+  if( self.aacpMapRotationCurrent_index <= 0 ) {
+		self.aacpMapRotationCurrent_index = level.mgCombinations.size-1;
+	} else {
+		self.aacpMapRotationCurrent_index--;
+	}
+  
+  MapGametype["mapname"] = self getMapNameSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["mapname"]);
+  MapGametype["gametype"] = self getGametypeSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["gametype"]);
+  
+  return MapGametype;
+}
+
+getNextRotationMG()
+{
+  if( self.aacpMapRotationCurrent_index >= level.mgCombinations.size-1 ) {
+		self.aacpMapRotationCurrent_index = 0;
+	} else {
+		self.aacpMapRotationCurrent_index++;
+	}
+  
+  MapGametype["mapname"] = getMapNameSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["mapname"]);
+  MapGametype["gametype"] = getGametypeSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["gametype"]);
+  
+  return MapGametype;
 }
 
 
@@ -581,6 +616,25 @@ onMenuResponse()
 					self setClientDvar( "ui_aacp_gametype", self getNextGametype() );
 					break;
 					
+        case "protationmg":
+          MapGametype = self getPreviousRotationMG();
+          self setClientDvars( "ui_aacp_mrcurridx", self.aacpMapRotationCurrent_index+1,
+                               "ui_aacp_map", MapGametype["mapname"],
+                               "ui_aacp_gametype", MapGametype["gametype"]);
+          break;
+          
+        case "nrotationmg":
+          MapGametype = self getNextRotationMG();
+          self setClientDvars( "ui_aacp_mrcurridx", self.aacpMapRotationCurrent_index+1,
+                               "ui_aacp_map", MapGametype["mapname"],
+                               "ui_aacp_gametype", MapGametype["gametype"]);
+          break;
+          
+        case "setmrhere":
+          self eatOutRotation();
+          self setClientDvar("ui_aacp_mridx", level.scr_aacp_maprotationcurrent_index+1);
+          break;
+          
 				case "loadmap":
 					// Make sure the map being loaded is not the current one
 					if ( level.scr_aacp_gametypes[ self.aacpType ] != level.gametype || level.scr_aacp_maps[ self.aacpMap ] != level.script ) {
@@ -1058,4 +1112,24 @@ adminActionLog( adminAction, playerAffected )
 	
 	// Send the line to the server log
 	logPrint( logLine + "\n" );
+}
+
+calculateMapRotationCurrentIndex()
+{
+  for(i=level.mgCombinations.size-1; i>=0; i--) {
+    for(j=level.mgCombinationsCurr.size-1; j>=0; j--) {
+      if( level.mgCombinationsCurr[j] != level.mgCombinations[i] )
+        break;
+      if( j == 0)
+        return i;
+    }
+  }
+  // strange, there was no match between the rotations, return index 0 then
+  return 0;
+}
+
+eatOutRotation()
+{
+  iprintln("TODO");
+  level.scr_aacp_maprotationcurrent_index = self.aacpMapRotationCurrent_index;
 }

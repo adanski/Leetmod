@@ -230,8 +230,22 @@ onTimeLimit()
 {
 	if ( level.inOvertime )
 		return;
+    
+	isSomeonePlayingAllies = false;
+	isSomeonePlayingAxis = false;
+  // Cycle through all the players
+	for ( index = 0; index < level.players.size; index++ ) {
+		player = level.players[index];
 
-	thread onOvertime();
+		if ( player.pers["team"] == "allies" )
+      isSomeonePlayingAllies = true;
+    if ( player.pers["team"] == "axis" )
+      isSomeonePlayingAxis = true;
+	}
+  if( isSomeonePlayingAllies && isSomeonePlayingAxis )
+    thread onOvertime();
+  else
+    thread maps\mp\gametypes\_globallogic::endGame( "tie", game["strings"]["tie"] );
 }
 
 

@@ -239,6 +239,7 @@ material,objpoint_flag_american
 material,objpoint_flag_british
 material,objpoint_flag_opfor
 material,objpoint_flag_russian
+material,setrotationicon
 material,shield
 #material,sponsor_logo1
 #material,sponsor_logo2

@@ -31,7 +31,9 @@ onIntermission()
 {
 	// Wait until the map ends to count for the amount of players
 	level waittill( "intermission" );
-	
+  
+	// Wait until its almost about to rotate (4 seconds left), so we have time to calculate everything
+  wait( level.scr_intermission_time-4 );
 	// Count how many players we have in the server
 	players = 0;
 	for ( index = 0; index < level.players.size; index++ )
