@@ -7,12 +7,12 @@ init()
 	// Get the main module's dvar
 	level.scr_limit_planted_c4s = getdvarx( "scr_limit_planted_c4s", "int", 0, 0, 50 );
 	level.scr_limit_planted_claymores = getdvarx( "scr_limit_planted_claymores", "int", 0, 0, 50 );
-
+	
 	// Check if we need to stay here or not
-  // ## To check: what about bel gametype, should we limit like in a teambased?
+	// ## To check: what about bel gametype, should we limit like in a teambased?
 	if ( ( level.scr_limit_planted_c4s == 0 && level.scr_limit_planted_claymores == 0 ) || !level.teamBased )
 		return;
-
+		
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -38,13 +38,12 @@ monitorPlantedExplosives( explosiveLimit, explosiveName )
 	self endon("disconnect");
 	self endon("death");
 	level endon( "game_ended" );
-
+	
 	// Initialize some variables
 	ammoCount = 0;
 	ammoTaken = 0;
 	
-	while(1)
-	{
+	while(1) {
 		wait (0.5);
 		
 		// Check if the player has these kind of explosives or we have taken away explosives from the player
@@ -58,10 +57,11 @@ monitorPlantedExplosives( explosiveLimit, explosiveName )
 			if ( ammoTaken > 0 && explosiveCount < explosiveLimit ) {
 				// Give the explosives back
 				self giveWeapon( explosiveName );
-				self setWeaponAmmoStock( explosiveName, ammoTaken );				
+				self setWeaponAmmoStock( explosiveName, ammoTaken );
 				ammoTaken = 0;
 				
-			} else if ( ammoCount > 0 && explosiveCount >= explosiveLimit ) {
+			}
+			else if ( ammoCount > 0 && explosiveCount >= explosiveLimit ) {
 				// Remove the ammo from the player
 				if ( self getCurrentWeapon() == explosiveName ) {
 					// Switch to the player's primary weapon as we are about to remove his/her explosives
@@ -71,10 +71,10 @@ monitorPlantedExplosives( explosiveLimit, explosiveName )
 					}
 				}
 				ammoTaken += ammoCount;
-				self setWeaponAmmoStock( explosiveName, 0 );				
-			}			
-		}		
-	}	
+				self setWeaponAmmoStock( explosiveName, 0 );
+			}
+		}
+	}
 }
 
 
@@ -83,5 +83,5 @@ countActiveExplosives( explosiveName, explosiveTeam )
 	// Count placed explosives
 	explosiveEntities = getEntArray( explosiveName + "_" + explosiveTeam, "targetname");
 	
-	return explosiveEntities.size;	
+	return explosiveEntities.size;
 }

@@ -5,11 +5,11 @@ init()
 {
 	// Get the main module's dvar
 	level.specialty_grenadepulldeath_check_frags = getdvarx( "specialty_grenadepulldeath_check_frags", "int", 1, 0, 1 );
-
+	
 	// Check if we need to run this process
 	if ( level.specialty_grenadepulldeath_check_frags == 0 )
 		return;
-
+		
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -26,7 +26,8 @@ onPlayerSpawned()
 		self.hasMartyrdom = true;
 		self.hasFragsForMartyrdom = true;
 		self thread controlFragsForMartyrdom();
-	} else {
+	}
+	else {
 		self.hasMartyrdom = false;
 	}
 }
@@ -35,7 +36,7 @@ onPlayerKilled()
 {
 	self waittill("killed_player");
 	self notify("stop_frags_control");
-
+	
 	// Just display a message if the player had martyrdom but no more frags available
 	if ( self.hasMartyrdom && !self.hasFragsForMartyrdom ) {
 		if ( level.hardcoreMode == 0 )
@@ -49,12 +50,11 @@ controlFragsForMartyrdom()
 	self endon("stop_frags_control");
 	self endon("unfrozen_player");
 	level endon( "game_ended" );
-
-	while(1)
-	{
+	
+	while(1) {
 		// Wait for the player to throw a grenade
 		self waittill ( "grenade_fire", grenade, weaponName );
-
+		
 		// Check if it was a frag grenade
 		if ( weaponName == "frag_grenade_mp" || weaponName == "frag_grenade_nocook_mp" ) {
 			// Check if the player has no more frag grenades left

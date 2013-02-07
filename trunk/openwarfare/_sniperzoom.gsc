@@ -5,39 +5,41 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_sniperzoom_enable = getdvarx( "scr_sniperzoom_enable", "int", 0, 0, 1 );
-
+	
 	// We'll stay in this module no matter what to set back the default zoom level
 	if ( level.scr_sniperzoom_enable == 1 ) {
 		level.scr_sniperzoom_lower_levels = getdvarx( "scr_sniperzoom_lower_levels", "int", 8, 0, 8 );
-		level.scr_sniperzoom_upper_levels = getdvarx( "scr_sniperzoom_upper_levels", "int", 9, 0, 9 );		
+		level.scr_sniperzoom_upper_levels = getdvarx( "scr_sniperzoom_upper_levels", "int", 9, 0, 9 );
 		
-	  // Initialize some variables we'll be using to handle the different zoom levels
-	  level.sniperZooms = []; level.sniperZoomsText = [];
-	  iZoom = 10 - level.scr_sniperzoom_upper_levels; 
-	  iZoomText = 34 - ( 2 * ( 9 - level.scr_sniperzoom_upper_levels ) );
-	  upperLevel = 11 + level.scr_sniperzoom_lower_levels;
-	  
-	  while( iZoom < upperLevel && iZoom < 18 ) {
-	   	// Check if this level is the default zoom level
-	   	if ( iZoom == 10 ) {
-	   		level.sniperZoomDefault = level.sniperZooms.size;
-	   	}
-	   	
-	   	// Add this zoom level to the allowed zoom levels
-	   	level.sniperZooms[ level.sniperZooms.size ] = iZoom;
-	   	level.sniperZoomsText[ level.sniperZoomsText.size ] = iZoomText;
-	   	
-	   	// Move to the next zoom level
-	   	iZoom++; iZoomText -= 2;
+		// Initialize some variables we'll be using to handle the different zoom levels
+		level.sniperZooms = [];
+		level.sniperZoomsText = [];
+		iZoom = 10 - level.scr_sniperzoom_upper_levels;
+		iZoomText = 34 - ( 2 * ( 9 - level.scr_sniperzoom_upper_levels ) );
+		upperLevel = 11 + level.scr_sniperzoom_lower_levels;
+		
+		while( iZoom < upperLevel && iZoom < 18 ) {
+			// Check if this level is the default zoom level
+			if ( iZoom == 10 ) {
+				level.sniperZoomDefault = level.sniperZooms.size;
+			}
+			
+			// Add this zoom level to the allowed zoom levels
+			level.sniperZooms[ level.sniperZooms.size ] = iZoom;
+			level.sniperZoomsText[ level.sniperZoomsText.size ] = iZoomText;
+			
+			// Move to the next zoom level
+			iZoom++;
+			iZoomText -= 2;
 		}
 		
 		// Add the last zoom level x1
 		if ( level.scr_sniperzoom_lower_levels == 8 ) {
 			level.sniperZooms[ level.sniperZooms.size ] = 18;
-		  level.sniperZoomsText[ level.sniperZoomsText.size ] = 1;
+			level.sniperZoomsText[ level.sniperZoomsText.size ] = 1;
 		}
 	}
-
+	
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -48,7 +50,8 @@ onPlayerConnected()
 	if ( level.scr_sniperzoom_enable == 1 ) {
 		self thread addNewEvent( "onPlayerSpawned", ::onPlayerSpawned );
 		self thread addNewEvent( "onPlayerDeath", ::onPlayerDeath );
-	} else {
+	}
+	else {
 		self setClientDvar( "cg_fovmin", 10 );
 	}
 }
@@ -70,10 +73,10 @@ onPlayerSpawned()
 	self.zoomLevelText.sort = 1001;
 	self.zoomLevelText.label = &"&&1x";
 	self.zoomLevelText.x = -10;
-	self.zoomLevelText.y = 10;	
+	self.zoomLevelText.y = 10;
 	
 	// Set the default zoom level and start monitoring the player
-	self setZoomLevel( level.sniperZoomDefault );	
+	self setZoomLevel( level.sniperZoomDefault );
 	self thread monitorCurrentWeapon();
 	self thread monitorUseMeleeKeys();
 }
@@ -82,11 +85,11 @@ onPlayerSpawned()
 onPlayerDeath()
 {
 	// Reset the zoom level
-	self setClientDvar( "cg_fovmin", level.sniperZooms[ level.sniperZoomDefault ] );	
+	self setClientDvar( "cg_fovmin", level.sniperZooms[ level.sniperZoomDefault ] );
 	
 	// Destroy the HUD element
 	if ( isDefined( self.zoomLevelText ) )
-		self.zoomLevelText destroy();		
+		self.zoomLevelText destroy();
 }
 
 
@@ -97,7 +100,7 @@ setZoomLevel( sniperZoomLevel )
 	self setClientDvar( "cg_fovmin", level.sniperZooms[ sniperZoomLevel ] );
 	
 	// Update the text element showing the zoom level
-	self.zoomLevelText setValue( level.sniperZoomsText[ sniperZoomLevel ] );		
+	self.zoomLevelText setValue( level.sniperZoomsText[ sniperZoomLevel ] );
 }
 
 
@@ -106,14 +109,13 @@ monitorCurrentWeapon()
 	self endon("disconnect");
 	self endon("death");
 	level endon( "game_ended" );
-
+	
 	// Get the current weapon (at this point the player should have the default sniper zoom value
 	oldWeapon = self getCurrentWeapon();
 	oldAds = 0;
 	zoomLevelSet = false;
-
-	while(1)
-	{
+	
+	while(1) {
 		wait (0.05);
 		
 		// Check if the player has switched weapons
@@ -123,17 +125,19 @@ monitorCurrentWeapon()
 				self setClientDvar( "cg_fovmin", level.sniperZooms[ level.sniperZoomDefault ] );
 				zoomLevelSet = false;
 			}
-		} else {
+		}
+		else {
 			// Check if the player enable/disable ADS
 			if ( self playerADS() > oldAds ) {
 				oldAds = self playerADS();
 				// Player is enabling ADS
 				if ( !zoomLevelSet && isSniperRifle( oldWeapon ) ) {
 					self setClientDvar( "cg_fovmin", level.sniperZooms[ self.sniperZoomLevel ] );
-					self thread updateZoomLevel();	
-					zoomLevelSet = true;				
+					self thread updateZoomLevel();
+					zoomLevelSet = true;
 				}
-			} else if ( self playerADS() < oldAds ) {
+			}
+			else if ( self playerADS() < oldAds ) {
 				oldAds = self playerADS();
 				// Player is disabling ADS
 				if ( zoomLevelSet ) {
@@ -142,7 +146,7 @@ monitorCurrentWeapon()
 				}
 			}
 		}
-	}	
+	}
 }
 
 
@@ -150,9 +154,9 @@ updateZoomLevel()
 {
 	// Adjust the location based on the level
 	self.zoomLevelText.x = -10 + ( -15 * self.sniperZoomLevel );
-	self.zoomLevelText.alpha = 1; 
+	self.zoomLevelText.alpha = 1;
 	self.zoomLevelText fadeOverTime( 1.5 );
-	self.zoomLevelText.alpha = 0;	
+	self.zoomLevelText.alpha = 0;
 }
 
 
@@ -161,7 +165,7 @@ zoomIn()
 	// Check if sniper zoom is enabled
 	if ( level.scr_sniperzoom_enable == 0 )
 		return;
-	
+		
 	// Make sure the player is using a sniper rifle and ADS are active
 	if ( self playerAds() && isSniperRifle( self getCurrentWeapon() ) ) {
 		if ( self.sniperZoomLevel > 0 ) {
@@ -169,7 +173,7 @@ zoomIn()
 			self thread setZoomLevel( self.sniperZoomLevel );
 			self thread updateZoomLevel();
 		}
-	}	
+	}
 }
 
 
@@ -178,7 +182,7 @@ zoomOut()
 	// Check if sniper zoom is enabled
 	if ( level.scr_sniperzoom_enable == 0 )
 		return;
-	
+		
 	// Make sure the player is using a sniper rifle and ADS are active
 	if ( self playerAds() && isSniperRifle( self getCurrentWeapon() ) ) {
 		if ( self.sniperZoomLevel < level.sniperZooms.size - 1 ) {
@@ -186,7 +190,7 @@ zoomOut()
 			self thread setZoomLevel( self.sniperZoomLevel );
 			self thread updateZoomLevel();
 		}
-	}	
+	}
 }
 
 
@@ -211,15 +215,15 @@ monitorUseMeleeKeys()
 	self endon("disconnect");
 	self endon("death");
 	
-	while(1)
-	{
+	while(1) {
 		wait (0.05);
 		
 		// Check if one of the keys we are monitoring has been pressed (Use = Zooms In, Melee = Zooms Out)
 		if ( self useButtonPressed() ) {
 			self thread zoomIn();
-		} else if ( self meleeButtonPressed() ) {
+		}
+		else if ( self meleeButtonPressed() ) {
 			self thread zoomOut();
-		}	
+		}
 	}
 }

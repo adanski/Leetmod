@@ -5,11 +5,11 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_rangefinder_enable = getdvarx( "scr_rangefinder_enable", "int", 0, 0, 1 );
-  
-  level.scr_rangefinder_unit = getdvarx( "scr_rangefinder_unit", "string", "", undefined, undefined );
+	
+	level.scr_rangefinder_unit = getdvarx( "scr_rangefinder_unit", "string", "", undefined, undefined );
 	if ( level.scr_rangefinder_unit != "meters" && level.scr_rangefinder_unit != "yards" )
 		level.scr_rangefinder_unit = level.scr_measurement_unit_system;
-
+		
 	// If range finder is disabled there's nothing else to do here
 	if ( level.scr_rangefinder_enable == 0 )
 		return;
@@ -46,7 +46,8 @@ onPlayerSpawned()
 	// Check which unit we should show
 	if ( level.scr_rangefinder_unit == "meters" ) {
 		self.rangeFinder.label = &"OW_RANGEFINDER_METERS";
-	} else {
+	}
+	else {
 		self.rangeFinder.label = &"OW_RANGEFINDER_YARDS";
 	}
 	
@@ -59,7 +60,7 @@ onPlayerDeath()
 {
 	// Destroy the HUD element
 	if ( isDefined( self.rangeFinder ) )
-		self.rangeFinder destroy();		
+		self.rangeFinder destroy();
 }
 
 
@@ -68,7 +69,7 @@ monitorCurrentWeapon()
 	self endon("disconnect");
 	self endon("death");
 	level endon( "game_ended" );
-
+	
 	// Get the current weapon (at this point the player should have the default sniper zoom value
 	oldWeapon = self getCurrentWeapon();
 	oldAds = 0;
@@ -77,12 +78,12 @@ monitorCurrentWeapon()
 	// Define which multiplier to use
 	if ( level.scr_rangefinder_unit == "meters" ) {
 		distMultiplier = 0.0254;
-	} else {
+	}
+	else {
 		distMultiplier = 0.0278;
 	}
-
-	while(1)
-	{
+	
+	while(1) {
 		wait (0.05);
 		
 		// Check if the player has switched weapons
@@ -90,7 +91,8 @@ monitorCurrentWeapon()
 			oldWeapon = self getCurrentWeapon();
 			self.rangeFinder.alpha = 0;
 			updateRangeFinder = false;
-		} else {
+		}
+		else {
 			// Check if the player enable/disable ADS
 			if ( self playerADS() > oldAds ) {
 				oldAds = self playerADS();
@@ -99,7 +101,8 @@ monitorCurrentWeapon()
 					self.rangeFinder.alpha = 1;
 					updateRangeFinder = true;
 				}
-			} else if ( self playerADS() < oldAds ) {
+			}
+			else if ( self playerADS() < oldAds ) {
 				oldAds = self playerADS();
 				// Player is disabling ADS
 				self.rangeFinder.alpha = 0;
@@ -116,9 +119,9 @@ monitorCurrentWeapon()
 			playerEyes = self getPlayerEyes();
 			trace = bulletTrace( playerEyes, playerEyes + vForward, true, self );
 			distance = int( distance( playerEyes, trace["position"] ) * distMultiplier * 10 ) / 10;
-
+			
 			// Update the HUD element
-			self.rangeFinder setValue( distance );			
+			self.rangeFinder setValue( distance );
 		}
-	}	
+	}
 }

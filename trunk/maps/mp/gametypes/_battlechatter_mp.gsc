@@ -7,17 +7,17 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_allowbattlechatter = getdvarx( "scr_allowbattlechatter", "int", 1, 0, 1 );
-
+	
 	if ( game["allies"] == "sas" )
 		level.teamPrefix["allies"] = "UK_1";
 	else
 		level.teamPrefix["allies"] = "US_1";
-
+		
 	if ( game["axis"] == "russian" )
 		level.teamPrefix["axis"] = "RU_1";
 	else
 		level.teamPrefix["axis"] = "AB_1";
-
+		
 	level.speakers["allies"] = [];
 	level.speakers["axis"] = [];
 	
@@ -30,7 +30,7 @@ init()
 	level.scr_battlechatter_c4_planted_probability = getdvarx( "scr_battlechatter_c4_planted_probability", "int", 75, 0, 100 );
 	level.scr_battlechatter_claymore_planted_probability = getdvarx( "scr_battlechatter_claymore_planted_probability", "int", 75, 0, 100 );
 	level.scr_battlechatter_kill_probability = getdvarx( "scr_battlechatter_kill_probability", "int", 75, 0, 100 );
-
+	
 	// If battlechatter is not enabled there's nothing else to do here
 	if ( level.scr_allowbattlechatter == 0 )
 		return;
@@ -47,15 +47,14 @@ init()
 	level.bcSounds["c4_plant"] = "inform_attack_thwc4";
 	level.bcSounds["claymore_plant"] = "inform_plant_claymore";
 	level.bcSounds["kill"] = "inform_killfirm_infantry";
-
-	level thread onPlayerConnect();	
+	
+	level thread onPlayerConnect();
 }
 
 
 onPlayerConnect()
 {
-	while(1)
-	{
+	while(1) {
 		level waittill ( "connecting", player );
 		player thread onPlayerSpawned();
 	}
@@ -65,15 +64,14 @@ onPlayerConnect()
 onPlayerSpawned()
 {
 	self endon( "disconnect" );
-
-	while(1)
-	{
+	
+	while(1) {
 		self waittill( "spawned_player" );
 		
 		// help players be stealthy in splitscreen by not announcing their intentions
 		if ( level.splitscreen )
 			continue;
-		
+			
 		self thread claymoreTracking();
 		self thread reloadTracking();
 		self thread grenadeTracking();
@@ -86,8 +84,7 @@ claymoreTracking()
 	self endon ( "death" );
 	self endon ( "disconnect" );
 	
-	while(1)
-	{
+	while(1) {
 		self waittill( "begin_firing" );
 		weaponName = self getCurrentWeapon();
 		if ( weaponName == "claymore_mp" && shouldPlayBattlechatter( level.scr_battlechatter_claymore_planted_probability ) )
@@ -100,9 +97,8 @@ reloadTracking()
 {
 	self endon ( "death" );
 	self endon ( "disconnect" );
-
-	while(1)
-	{
+	
+	while(1) {
 		self waittill ( "reload_start" );
 		if ( shouldPlayBattlechatter( level.scr_battlechatter_reload_probability ) )
 			level thread sayLocalSound( self, "reload" );
@@ -114,9 +110,8 @@ grenadeTracking()
 {
 	self endon ( "death" );
 	self endon ( "disconnect" );
-
-	while(1)
-	{
+	
+	while(1) {
 		self waittill ( "grenade_fire", grenade, weaponName );
 		
 		if ( (weaponName == "frag_grenade_mp" || weaponName == "frag_grenade_nocook_mp") && shouldPlayBattlechatter( level.scr_battlechatter_frag_out_probability ) )
@@ -155,12 +150,11 @@ sayLocalSound( player, soundType )
 	
 	if ( level.scr_allowbattlechatter == 0 )
 		return;
-
+		
 	if ( isSpeakerInRange( player ) )
 		return;
 		
-	if( player.pers["team"] != "spectator" )
-	{
+	if( player.pers["team"] != "spectator" ) {
 		soundAlias = level.teamPrefix[player.pers["team"]] + "_" + level.bcSounds[soundType];
 		player thread doSound( soundAlias );
 	}
@@ -182,7 +176,7 @@ timeHack( soundAlias )
 {
 	self endon ( "death" );
 	self endon ( "disconnect" );
-
+	
 	wait ( 2.0 );
 	self notify ( soundAlias );
 }
@@ -192,14 +186,12 @@ isSpeakerInRange( player )
 {
 	player endon ( "death" );
 	player endon ( "disconnect" );
-
+	
 	distSq = 1000 * 1000;
-
+	
 	// to prevent player switch to spectator after throwing a granade causing damage to someone and result in attacker.pers["team"] = "spectator"
-	if( isdefined( player ) && isdefined( player.pers["team"] ) && player.pers["team"] != "spectator" )
-	{
-		for ( index = 0; index < level.speakers[player.pers["team"]].size; index++ )
-		{
+	if( isdefined( player ) && isdefined( player.pers["team"] ) && player.pers["team"] != "spectator" ) {
+		for ( index = 0; index < level.speakers[player.pers["team"]].size; index++ ) {
 			teammate = level.speakers[player.pers["team"]][index];
 			if ( teammate == player )
 				return true;
@@ -208,7 +200,7 @@ isSpeakerInRange( player )
 				return true;
 		}
 	}
-
+	
 	return false;
 }
 
@@ -223,12 +215,11 @@ addSpeaker( player, team )
 removeSpeaker( player, team )
 {
 	newSpeakers = [];
-	for ( index = 0; index < level.speakers[team].size; index++ )
-	{
+	for ( index = 0; index < level.speakers[team].size; index++ ) {
 		if ( level.speakers[team][index] == player )
 			continue;
 			
-		newSpeakers[newSpeakers.size] = level.speakers[team][index]; 
+		newSpeakers[newSpeakers.size] = level.speakers[team][index];
 	}
 	
 	level.speakers[team] = newSpeakers;
@@ -242,5 +233,5 @@ shouldPlayBattlechatter( bcProbability )
 	else if ( bcProbability == 100 || randomIntRange( 1, 101 ) <= bcProbability )
 		return true;
 		
-	return false;	
+	return false;
 }

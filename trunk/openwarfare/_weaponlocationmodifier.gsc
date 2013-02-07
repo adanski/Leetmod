@@ -5,13 +5,13 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_wlm_enabled = getdvarx( "scr_wlm_enabled", "int", 0, 0, 1 );
-
+	
 	// If weapon damage modifier is disabled then there's nothing else to do here
 	if ( level.scr_wlm_enabled == 0 )
 		return;
-
+		
 	thread loadWLM();
-
+	
 	return;
 }
 
@@ -20,13 +20,14 @@ wlmDamage( iDamage, sHitLoc, sMeansOfDeath )
 {
 	// By default we won't change the iDamage value
 	damageModifier = 1.0;
-
-	// Make sure it was not a knife kill 
+	
+	// Make sure it was not a knife kill
 	if ( sMeansOfDeath != "MOD_MELEE" ) {
 		// Check if we support wdm for this weapon
 		if ( isDefined( level.wlm[ sHitLoc ] ) ) {
 			damageModifier = getdvarx( level.wlm[ sHitLoc ], "float", 100.0, 5.0, 200.0 ) / 100;
-		} else {
+		}
+		else {
 			// Just for testing. Remove this line on release version!
 			//iprintln( "No damage defined for " + sHitLoc );
 		}
@@ -40,7 +41,7 @@ loadWLM()
 {
 	// Load all the weapons with their corresponding dvar controlling it
 	level.wlm = [];
-
+	
 	// Different hit locations
 	level.wlm[ "left_arm_upper" ] = "scr_wlm_upper_arm";
 	level.wlm[ "right_arm_upper" ] = "scr_wlm_upper_arm";
@@ -63,7 +64,7 @@ loadWLM()
 	level.wlm[ "head" ] = "scr_wlm_head";
 	level.wlm[ "neck" ] = "scr_wlm_neck";
 	level.wlm[ "torso_upper" ] = "scr_wlm_upper_torso";
-	level.wlm[ "torso_lower" ] = "scr_wlm_lower_torso";				
+	level.wlm[ "torso_lower" ] = "scr_wlm_lower_torso";
 	
 	return;
 }

@@ -28,7 +28,7 @@
 		Goal Zone:
 			classname trigger_radius targetname mp_retrieval_goal_zone
 			Goal zone where the retrieved object needs to be taken.
-			
+
 		Objectives:
 			classname script_model targetname retrieval_objective_a
 			classname trigger_use targetname retrieval_trigger_use_a
@@ -56,11 +56,11 @@ main()
 {
 	if(getdvar("mapname") == "mp_background")
 		return;
-
+		
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
-
+	
 	level.scr_re_scoreboard_objective_carrier = getdvarx( "scr_re_scoreboard_objective_carrier", "int", 0, 0, 1  );
 	level.scr_re_one_retrieve = getdvarx( "scr_re_one_retrieve", "int", 0, 0, 1  );
 	level.scr_re_objectives_enabled = getdvarx( "scr_re_objectives_enabled", "int", 0, 0, 4 );
@@ -68,14 +68,14 @@ main()
 	
 	level.scr_re_defenders_spawndelay = getdvarx( "scr_re_defenders_spawndelay", "int", 0, 0, 60 );
 	level.scr_re_objective_autoresettime = getdvarx( "scr_re_objective_autoresettime", "float", 0, 0, 120 );
-
+	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 1, 0, 10 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 10, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 2, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 5, 0, 5000 );
 	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 5, 0, 1440 );
-
-
+	
+	
 	level.teamBased = true;
 	level.overrideTeamScore = true;
 	level.onPrecacheGameType = ::onPrecacheGameType;
@@ -86,13 +86,13 @@ main()
 	level.onOneLeftEvent = ::onOneLeftEvent;
 	level.onTimeLimit = ::onTimeLimit;
 	level.onRoundSwitch = ::onRoundSwitch;
-
+	
 	if ( level.scr_re_defenders_spawndelay > 0 ) {
 		level.onRespawnDelay = ::getRespawnDelay;
 	}
-
+	
 	level.endGameOnScoreLimit = false;
-
+	
 	game["dialog"]["gametype"] = gameTypeDialog( "retrieval" );
 	game["dialog"]["offense_obj"] = "capture_objs";
 	game["dialog"]["defense_obj"] = "obj_defend";
@@ -111,30 +111,33 @@ onPrecacheGameType()
 {
 	// Initialize an array to keep all the assets we'll be using
 	game[level.gameType] = [];
-
+	
 	if ( game["attackers"] == "allies" ) {
 		// Precache team dependent assets for allies
 		if ( game["allies"] == "marines" ) {
 			game[level.gameType]["extraction_base"] = loadFX( "misc/ui_flagbase_silver" );
-		} else {
+		}
+		else {
 			game[level.gameType]["extraction_base"] = loadFX( "misc/ui_flagbase_black" );
 		}
-	} else {
+	}
+	else {
 		// Precache team dependent assets for axis
 		if ( game["axis"] == "russian" ) {
 			game[level.gameType]["extraction_base"] = loadFX( "misc/ui_flagbase_red" );
-		} else {
+		}
+		else {
 			game[level.gameType]["extraction_base"] = loadFX( "misc/ui_flagbase_gold" );
-		}		
+		}
 	}
-
+	
 	// Precache other assets that are not team dependent
 	game[level.gameType]["objectiveModel"] = "com_office_book_red_flat";
 	game[level.gameType]["objectiveIcon"] = "icon_redbinder";
 	precacheModel( game[level.gameType]["objectiveModel"] );
 	precacheShader( game[level.gameType]["objectiveIcon"] );
 	precacheStatusIcon( game[level.gameType]["objectiveIcon"] );
-
+	
 	precacheShader( "compass_waypoint_captureneutral_a" );
 	precacheShader( "compass_waypoint_defend_a" );
 	precacheShader( "waypoint_captureneutral_a" );
@@ -145,7 +148,7 @@ onPrecacheGameType()
 	precacheShader( "waypoint_captureneutral_b" );
 	precacheShader( "waypoint_defend_b" );
 	
-	precacheShader( "compass_waypoint_extraction_zone" );	
+	precacheShader( "compass_waypoint_extraction_zone" );
 	precacheShader( "waypoint_extraction_zone" );
 }
 
@@ -162,36 +165,33 @@ onStartGameType()
 {
 	// Check if this map supports native RE
 	nativeRE = isDefined( getEnt( "mp_retrieval_goal_zone", "targetname" ) );
-
+	
 	if ( !isDefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;
-
-	if ( game["switchedsides"] )
-	{
+		
+	if ( game["switchedsides"] ) {
 		oldAttackers = game["attackers"];
 		oldDefenders = game["defenders"];
 		game["attackers"] = oldDefenders;
 		game["defenders"] = oldAttackers;
 	}
-
+	
 	setClientNameMode( "manual_change" );
-
+	
 	maps\mp\gametypes\_globallogic::setObjectiveText( game["attackers"], &"OW_OBJECTIVES_RE_ATTACKER" );
 	maps\mp\gametypes\_globallogic::setObjectiveText( game["defenders"], &"OW_OBJECTIVES_RE_DEFENDER" );
-
-	if ( level.splitscreen )
-	{
+	
+	if ( level.splitscreen ) {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["attackers"], &"OW_OBJECTIVES_RE_ATTACKER" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["defenders"], &"OW_OBJECTIVES_RE_DEFENDER" );
 	}
-	else
-	{
+	else {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["attackers"], &"OW_OBJECTIVES_RE_ATTACKER_SCORE" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["defenders"], &"OW_OBJECTIVES_RE_DEFENDER_SCORE" );
 	}
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( game["attackers"], &"OW_OBJECTIVES_RE_ATTACKER_HINT" );
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( game["defenders"], &"OW_OBJECTIVES_RE_DEFENDER_HINT" );
-
+	
 	level.spawnMins = ( 0, 0, 0 );
 	level.spawnMaxs = ( 0, 0, 0 );
 	
@@ -199,26 +199,27 @@ onStartGameType()
 	if ( nativeRE ) {
 		level.attackersSpawnPoints = "mp_retrieval_spawn_attacker";
 		level.defendersSpawnPoints = "mp_retrieval_spawn_defender";
-	} else {
+	}
+	else {
 		level.attackersSpawnPoints = "mp_sd_spawn_attacker";
 		level.defendersSpawnPoints = "mp_sd_spawn_defender";
 		// Let's get the locations of the bomb zones and the bomb from S&D to locate the assets
 		level.retrieval_objective_a = getOriginFromBombZone("_a");
 		level.retrieval_objective_b = getOriginFromBombZone("_b");
 		level.mp_retrieval_goal_zone = getOriginFromBomb();
-	}	
+	}
 	
 	maps\mp\gametypes\_spawnlogic::placeSpawnPoints( level.attackersSpawnPoints );
 	maps\mp\gametypes\_spawnlogic::placeSpawnPoints( level.defendersSpawnPoints );
-
+	
 	level.mapCenter = maps\mp\gametypes\_spawnlogic::findBoxCenter( level.spawnMins, level.spawnMaxs );
 	setMapCenter( level.mapCenter );
-
+	
 	level.displayRoundEndText = true;
-
+	
 	allowed[0] = "retrieval";
 	maps\mp\gametypes\_gameobjects::main(allowed);
-
+	
 	thread retrieval();
 }
 
@@ -238,7 +239,7 @@ getOriginFromBomb()
 		trace = playerPhysicsTrace( bombLocation.origin + (0,0,20), bombLocation.origin - (0,0,2000), false, undefined );
 		return trace;
 	}
-	return;	
+	return;
 }
 
 
@@ -258,12 +259,12 @@ getOriginFromBombZone( label )
 		
 		if ( !isDefined( trigger.script_label ) || trigger.script_label != label )
 			continue;
-		
+			
 		trace = playerPhysicsTrace( trigger.origin + (0,0,20), trigger.origin - (0,0,2000), false, undefined );
 		return trace;
 	}
 	
-	return;	
+	return;
 }
 
 
@@ -276,8 +277,7 @@ Add extra spawn time to defenders when they die
 */
 getRespawnDelay()
 {
-	if ( self.pers["team"] == game["defenders"] )
-	{
+	if ( self.pers["team"] == game["defenders"] ) {
 		return level.scr_re_defenders_spawndelay;
 	}
 	
@@ -295,16 +295,16 @@ Determines what spawn points to use and spawns the player
 onSpawnPlayer()
 {
 	self.isObjectiveCarrier = false;
-
+	
 	if( self.pers["team"] == game["attackers"] )
 		spawnPointName = level.attackersSpawnPoints;
 	else
 		spawnPointName = level.defendersSpawnPoints;
-
+		
 	spawnPoints = getEntArray( spawnPointName, "classname" );
 	assert( spawnPoints.size );
 	spawnpoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_Random( spawnPoints );
-
+	
 	self spawn( spawnpoint.origin, spawnpoint.angles );
 	level notify ( "spawned_player" );
 }
@@ -323,13 +323,14 @@ onPlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHit
 {
 	// Make sure the attacker is not in the same team
 	if ( isPlayer( attacker ) && self.pers["team"] != attacker.pers["team"] && attacker.pers["team"] == game["defenders"] ) {
-
+	
 		// Check if the victim was the object carrier
 		if ( self.isObjectiveCarrier ) {
 			attacker thread [[level.onXPEvent]]( "killcarrier" );
 			maps\mp\gametypes\_globallogic::givePlayerScore( "killcarrier", attacker );
 			
-		} else {
+		}
+		else {
 			// Get the distance between the victim and the objects - 591 units = 15 meters
 			if ( ( !level.objectiveA.isRetrieved && distance( self.origin, level.objectiveA.curOrigin ) <= 591 ) || ( !level.objectiveB.isRetrieved && distance( self.origin, level.objectiveB.curOrigin ) <= 591 ) ) {
 				attacker thread [[level.onXPEvent]]( "defend" );
@@ -354,10 +355,11 @@ onDeadEvent( team )
 		[[level._setTeamScore]]( game["defenders"], [[level._getTeamScore]]( game["defenders"] ) + 1 );
 		thread maps\mp\gametypes\_globallogic::endGame( game["defenders"], game["strings"][game["attackers"]+"_eliminated"] );
 		
-	}	else if ( team == game["defenders"] )	{
+	}
+	else if ( team == game["defenders"] )	{
 		[[level._setTeamScore]]( game["attackers"], [[level._getTeamScore]]( game["attackers"] ) + 1 );
 		thread maps\mp\gametypes\_globallogic::endGame( game["attackers"], game["strings"][game["defenders"]+"_eliminated"] );
-
+		
 	}
 }
 
@@ -373,7 +375,7 @@ Declares the defenders as the winners in the case a time limit has been reached
 onTimeLimit()
 {
 	[[level._setTeamScore]]( game["defenders"], [[level._getTeamScore]]( game["defenders"] ) + 1 );
-	thread maps\mp\gametypes\_globallogic::endGame( game["defenders"], game["strings"]["time_limit_reached"] );	
+	thread maps\mp\gametypes\_globallogic::endGame( game["defenders"], game["strings"]["time_limit_reached"] );
 }
 
 
@@ -389,25 +391,25 @@ onOneLeftEvent( team )
 {
 	if ( !isdefined( level.warnedLastPlayer ) )
 		level.warnedLastPlayer = [];
-
+		
 	if ( isDefined( level.warnedLastPlayer[team] ) )
 		return;
-
+		
 	level.warnedLastPlayer[team] = true;
-
+	
 	players = level.players;
-	for ( i = 0; i < players.size; i++ ){
+	for ( i = 0; i < players.size; i++ ) {
 		player = players[i];
-
+		
 		if ( isDefined( player.pers["team"] ) && player.pers["team"] == team && isdefined( player.pers["class"] ) )	{
 			if ( player.sessionstate == "playing" && !player.afk )
 				break;
 		}
 	}
-
+	
 	if ( i == players.size )
 		return;
-
+		
 	players[i] maps\mp\gametypes\_globallogic::leaderDialogOnPlayer( "last_alive" );
 }
 
@@ -434,7 +436,7 @@ onRoundSwitch()
 retrieval
 
 Initializes all the map entities to be used or creates them (based on Search and Destroy) in the case
-the native RE assets are not present. 
+the native RE assets are not present.
 =============
 */
 retrieval()
@@ -445,7 +447,8 @@ retrieval()
 		// Check if we can manually create the trigger
 		if ( isDefined( level.mp_retrieval_goal_zone ) ) {
 			mp_retrieval_goal_zone = spawn( "trigger_radius", level.mp_retrieval_goal_zone, 0, 40, 10 );
-		} else {
+		}
+		else {
 			error( "No mp_retrieval_goal_zone trigger found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -459,7 +462,8 @@ retrieval()
 		// Check if we can manually create the trigger
 		if ( isDefined( level.retrieval_objective_a ) ) {
 			retrieval_trigger_use_a = spawn( "trigger_radius", level.retrieval_objective_a, 0, 16, 16);
-		} else {
+		}
+		else {
 			error( "No retrieval_trigger_use_a trigger found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -471,7 +475,8 @@ retrieval()
 		// Check if we can manually create the script model
 		if ( isDefined( level.retrieval_objective_a ) ) {
 			retrieval_objective_a[0] = spawn( "script_model", level.retrieval_objective_a );
-		} else {
+		}
+		else {
 			error( "No retrieval_objective_a script model found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -479,14 +484,15 @@ retrieval()
 	}
 	retrieval_objective_a[0] setModel( game[level.gameType]["objectiveModel"] );
 	level.objectiveA = createObjective( game["defenders"], retrieval_trigger_use_a, retrieval_objective_a, "a"  );
-
+	
 	// Create the objective B
 	retrieval_trigger_use_b = getEnt( "retrieval_trigger_use_b", "targetname" );
 	if ( !isDefined( retrieval_trigger_use_b ) ) {
 		// Check if we can manually create the trigger
 		if ( isDefined( level.retrieval_objective_b ) ) {
 			retrieval_trigger_use_b = spawn( "trigger_radius", level.retrieval_objective_b, 0, 16, 16);
-		} else {
+		}
+		else {
 			error( "No retrieval_trigger_use_b trigger found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -498,7 +504,8 @@ retrieval()
 		// Check if we can manually create the script model
 		if ( isDefined( level.retrieval_objective_b ) ) {
 			retrieval_objective_b[0] = spawn( "script_model", level.retrieval_objective_b );
-		} else {
+		}
+		else {
 			error( "No retrieval_objective_b script model found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -506,26 +513,31 @@ retrieval()
 	}
 	retrieval_objective_b[0] setModel( game[level.gameType]["objectiveModel"] );
 	level.objectiveB = createObjective( game["defenders"], retrieval_trigger_use_b, retrieval_objective_b, "b" );
-
+	
 	// Check if we should randomly disable one of the objectives
 	if ( level.scr_re_objectives_enabled == 1 )	{
 		if ( percentChance(50) ) {
 			if ( percentChance(50) ) {
 				level.objectiveA disableObject();
-			}	else {
+			}
+			else {
 				level.objectiveB disableObject();
 			}
 		}
-	}	else if ( level.scr_re_objectives_enabled == 3 ) {
+	}
+	else if ( level.scr_re_objectives_enabled == 3 ) {
 		level.objectiveB disableObject();
 		
-	}	else if (level.scr_re_objectives_enabled == 4 ) {
+	}
+	else if (level.scr_re_objectives_enabled == 4 ) {
 		level.objectiveA disableObject();
-	
-	}	else if ( level.scr_re_objectives_enabled == 2 ) {
+		
+	}
+	else if ( level.scr_re_objectives_enabled == 2 ) {
 		if ( percentChance(50) ) {
 			level.objectiveA disableObject();
-		} else {
+		}
+		else {
 			level.objectiveB disableObject();
 		}
 	}
@@ -552,7 +564,7 @@ createGoalZone( attackerTeam, zoneTrigger )
 	goalZone maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_extraction_zone" );
 	goalZone maps\mp\gametypes\_gameobjects::allowUse( "friendly" );
 	goalZone.onUse = ::onGoalZoneUse;
-
+	
 	// Spawn an special effect at the base of the goal zone to indicate where it is located
 	traceStart = zoneTrigger.origin + (0,0,32);
 	traceEnd = zoneTrigger.origin + (0,0,-32);
@@ -582,25 +594,26 @@ onGoalZoneUse( player )
 		// Give the player the retrieved score
 		player thread [[level.onXPEvent]]( "capture" );
 		maps\mp\gametypes\_globallogic::givePlayerScore( "capture", player );
-
+		
 		lpselfnum = player getEntityNumber();
 		lpGuid = player getGuid();
-		logPrint("RO;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");		
+		logPrint("RO;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");
 		
 		// Mark this object as retrieved
 		player.carryObject.isRetrieved = true;
-
+		
 		thread printAndSoundOnEveryone( player.pers["team"], getOtherTeam( player.pers["team"] ), &"OW_RE_RETRIEVED", &"OW_RE_RETRIEVED", "mp_enemy_obj_captured", "mp_obj_captured", player, player, player.carryObject.longname );
-		player.carryObject maps\mp\gametypes\_gameobjects::setVisibleTeam( "none" );		
+		player.carryObject maps\mp\gametypes\_gameobjects::setVisibleTeam( "none" );
 		player.carryObject maps\mp\gametypes\_gameobjects::clearCarrier();
 		
-		// Check if both objectives have been retrieved or if only one objective will end the round 
+		// Check if both objectives have been retrieved or if only one objective will end the round
 		if ( level.scr_re_one_retrieve == 1 || ( level.objectiveA.isRetrieved && level.objectiveB.isRetrieved ) ) {
 			[[level._setTeamScore]]( game["attackers"], [[level._getTeamScore]]( game["attackers"] ) + 1 );
 			
 			if ( level.scr_re_one_retrieve == 1 ) {
 				thread maps\mp\gametypes\_globallogic::endGame( game["attackers"], &"OW_RE_ONE_RETRIEVED" );
-			} else {
+			}
+			else {
 				thread maps\mp\gametypes\_globallogic::endGame( game["attackers"], &"OW_RE_ALL_RETRIEVED" );
 			}
 		}
@@ -629,32 +642,33 @@ createObjective( team, trigger, visuals, name )
 	objective.objPoints["allies"].archived = true;
 	objective.objPoints["axis"].archived = true;
 	if( level.scr_re_objective_autoresettime == 0 )
-    objective.autoResetTime = undefined;
-  else
-    objective.autoResetTime = level.scr_re_objective_autoresettime;
-
+		objective.autoResetTime = undefined;
+	else
+		objective.autoResetTime = level.scr_re_objective_autoresettime;
+		
 	// Make the objective visible to everyone
 	objective maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", "compass_waypoint_defend_" + name );
 	objective maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", "waypoint_defend_" + name );
-
+	
 	objective maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_captureneutral_" + name );
 	objective maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_captureneutral_" + name );
-
+	
 	objective maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
-
+	
 	// Make sure only the attackers can pick up the objective
 	objective maps\mp\gametypes\_gameobjects::allowCarry( "enemy" );
-		
+	
 	// Set the name of this objective
 	objective.name = name;
 	if ( name == "a" ) {
 		objective.longname = &"OW_RE_OBJECTIVE_A";
-	} else {
+	}
+	else {
 		objective.longname = &"OW_RE_OBJECTIVE_B";
 	}
 	
 	objective.isRetrieved = false;
-
+	
 	return objective;
 }
 
@@ -670,29 +684,29 @@ Handles the carry of the objective when picked up by the enemy.
 onPickup( player )
 {
 	level notify( "objective_picked_up", self, player );
-
+	
 	// Set this player as the objective carrier, set up the scoreboard status and give the proper score
 	player.isObjectiveCarrier = true;
 	if ( level.scr_re_scoreboard_objective_carrier == 1 ) {
 		player.statusicon = game[level.gameType]["objectiveIcon"];
 	}
-
+	
 	// We only give "take" points when it's taken from the enemy's base
 	if ( self.curOrigin == self.trigger.baseOrigin ) {
 		player thread [[level.onXPEvent]]( "take" );
 		maps\mp\gametypes\_globallogic::givePlayerScore( "take", player );
 	}
-
+	
 	// Play the corresponding sounds for players
 	thread printAndSoundOnEveryone( player.pers["team"], getOtherTeam( player.pers["team"] ), &"OW_RE_TAKEN", &"OW_RE_TAKEN", "mp_enemy_obj_taken", "mp_obj_taken", player, player, self.longname );
-
+	
 	// Log the event
 	player logString( "objective " + self.name + " taken" );
-
+	
 	lpselfnum = player getEntityNumber();
 	lpGuid = player getGuid();
 	logPrint("OT;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");
-
+	
 	// Set the new icons to be displayed
 	self maps\mp\gametypes\_gameobjects::setVisibleTeam( "enemy" );
 	self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_defend_" + self.name );
@@ -711,7 +725,7 @@ Updates the compass and waypoints
 onDrop( player )
 {
 	level notify( "objective_dropped", self, player );
-
+	
 	if ( isDefined( player ) ) {
 		// Player is not the objective carrier anymore.
 		if ( isAlive( player ) ) {
@@ -722,23 +736,24 @@ onDrop( player )
 			player.statusicon = "";
 		}
 		player logString( "objective " + self.name + " dropped" );
-
+		
 		// Play sound and show the proper message
 		thread printAndSoundOnEveryone( game["defenders"], game["attackers"], &"OW_RE_DROPPED_BY", &"OW_RE_DROPPED_BY", "mp_war_objective_taken", "mp_war_objective_lost", player, player, self.longname );
-	
-	} else {
+		
+	}
+	else {
 		// Play sound and show the proper message
 		thread printAndSoundOnEveryone( game["defenders"], game["attackers"], &"OW_RE_DROPPED", &"OW_RE_DROPPED", "mp_war_objective_taken", "mp_war_objective_lost", self.longname );
 		
 		logString( "objective " + self.name + " dropped" );
 	}
-
-
-
+	
+	
+	
 	// Make the objective visible to everyone
 	self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_captureneutral_" + self.name );
 	self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_captureneutral_" + self.name );
-
+	
 	self maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
 }
 
@@ -763,11 +778,12 @@ disableObject()
 {
 	// Consider this objective retrieved if disabled
 	self.isRetrieved = true;
-		
+	
 	// Check if the objective should still show to the defenders
 	if ( level.scr_re_defenders_show_both == 1 ) {
 		self maps\mp\gametypes\_gameobjects::setVisibleTeam( "friendly" );
-	} else {
+	}
+	else {
 		self maps\mp\gametypes\_gameobjects::disableObject();
-	}	
+	}
 }

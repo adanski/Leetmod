@@ -52,28 +52,28 @@ main()
 	// Force some server variables
 	setDvar( "scr_player_forcerespawn_oitc", "1" );
 	setDvar( "scr_show_lives_enable_oitc", "1" );
-  // If spectating in OITC isn't Free by default, dead players can't watch the action anymore
-  setDvar( "scr_game_spectatetype_oitc", "2" );
-  // Disable killstreaks
-  setDvar( "scr_game_hardpoints", "0" );
+	// If spectating in OITC isn't Free by default, dead players can't watch the action anymore
+	setDvar( "scr_game_spectatetype_oitc", "2" );
+	// Disable killstreaks
+	setDvar( "scr_game_hardpoints", "0" );
 	
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
-
+	
 	// Additional variables that we'll be using
 	level.scr_oitc_handgun = toLower( getdvarx( "scr_oitc_handgun", "string", "beretta_mp;colt45_mp;usp_mp;deserteagle_mp" ) );
 	level.scr_oitc_handgun = strtok( level.scr_oitc_handgun, ";" );
 	
 	level.scr_oitc_timelimit_for_math = getdvarx( "scr_oitc_timelimit", "float", 1.75, 0, 1440 );
 	level.scr_oitc_suddendeath_show_enemies = getdvarx( "scr_oitc_suddendeath_show_enemies", "int", 1, 0, 1 );
-	level.scr_oitc_suddendeath_timelimit = getdvarx( "scr_oitc_suddendeath_timelimit", "int", 45, 0, 600 );	
-
+	level.scr_oitc_suddendeath_timelimit = getdvarx( "scr_oitc_suddendeath_timelimit", "int", 45, 0, 600 );
+	
 	level.scr_oitc_specialty_slot1 = getdvarx( "scr_oitc_specialty_slot1", "string", "specialty_null" );
 	if ( !issubstr( "specialty_null;specialty_bulletdamage;specialty_fastreload;specialty_rof", level.scr_oitc_specialty_slot1 ) ) {
 		level.scr_oitc_specialty_slot1 = "specialty_null";
 	}
-
+	
 	level.scr_oitc_specialty_slot2 = getdvarx( "scr_oitc_specialty_slot2", "string", "specialty_longersprint" );
 	if ( !issubstr( "specialty_null;specialty_longersprint;specialty_bulletaccuracy;specialty_bulletpenetration;specialty_quieter", level.scr_oitc_specialty_slot2 ) ) {
 		level.scr_oitc_specialty_slot2 = "specialty_longersprint";
@@ -83,16 +83,16 @@ main()
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 10, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 3, 0, 5000 );
 	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, level.scr_oitc_timelimit_for_math, 0, 1440 );
-
+	
 	level.teamBased = false;
-
+	
 	level.onStartGameType = ::onStartGameType;
 	level.onSpawnPlayer = ::onSpawnPlayer;
 	level.onLoadoutGiven = ::onLoadoutGiven;
 	level.onRoundSwitch = ::onRoundSwitch;
 	level.onPlayerKilled = ::onPlayerKilled;
 	level.onTimeLimit = ::onTimeLimit;
-
+	
 	game["dialog"]["gametype"] = gameTypeDialog( "oneinthechamber" );
 }
 
@@ -100,23 +100,21 @@ main()
 onStartGameType()
 {
 	setClientNameMode("auto_change");
-
+	
 	maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OW_OBJECTIVES_ONEINTHECHAMBER" );
 	maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OW_OBJECTIVES_ONEINTHECHAMBER" );
-
-	if ( level.splitscreen )
-	{
+	
+	if ( level.splitscreen ) {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_ONEINTHECHAMBER" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_ONEINTHECHAMBER" );
 	}
-	else
-	{
+	else {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_ONEINTHECHAMBER_SCORE" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_ONEINTHECHAMBER_SCORE" );
 	}
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OW_OBJECTIVES_ONEINTHECHAMBER_HINT" );
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OW_OBJECTIVES_ONEINTHECHAMBER_HINT" );
-
+	
 	level.spawnMins = ( 0, 0, 0 );
 	level.spawnMaxs = ( 0, 0, 0 );
 	maps\mp\gametypes\_spawnlogic::addSpawnPoints( "allies", "mp_dm_spawn" );
@@ -126,9 +124,9 @@ onStartGameType()
 	
 	allowed[0] = "dm";
 	maps\mp\gametypes\_gameobjects::main(allowed);
-
+	
 	level.QuickMessageToAll = true;
-
+	
 	// elimination style
 	level.displayRoundEndText = true;
 	level.overridePlayerScore = true;
@@ -141,7 +139,7 @@ onStartGameType()
 onTimeLimit()
 {
 	if( !level.OITCExtraTime ) {
-				level.OITCExtraTime = true;
+		level.OITCExtraTime = true;
 		if ( level.scr_oitc_suddendeath_timelimit > 0 ) {
 			//level.timeLimitOverride = true;
 			if ( level.scr_oitc_suddendeath_show_enemies == 1 ) {
@@ -169,9 +167,9 @@ onTimeLimit()
 		}
 	}
 	else {
-			logString( "time limit, tie" );
-			thread maps\mp\gametypes\_globallogic::endGame( undefined, game["strings"]["time_limit_reached"] );
-		}
+		logString( "time limit, tie" );
+		thread maps\mp\gametypes\_globallogic::endGame( undefined, game["strings"]["time_limit_reached"] );
+	}
 }
 
 
@@ -179,7 +177,7 @@ onSpawnPlayer()
 {
 	spawnPoints = maps\mp\gametypes\_spawnlogic::getTeamSpawnPoints( self.pers["team"] );
 	spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_DM( spawnPoints );
-
+	
 	self spawn( spawnPoint.origin, spawnPoint.angles );
 	
 	if( level.OITCExtraTime ) {
@@ -195,7 +193,7 @@ onPlayerDeath()
 {
 	self waittill("death");
 	// Remove all the weapons from this player so nothing gets dropped
-	self takeAllWeapons();	
+	self takeAllWeapons();
 }
 
 
@@ -204,24 +202,24 @@ onOneLeftEvent( team )
 	wait 0.05;
 	
 	winner = getLastAlivePlayer();
-
+	
 	if ( isDefined( winner ) )
 		logString( "last one alive, win: " + winner.name );
 	else
 		logString( "last one alive, win: unknown" );
-
+		
 	if ( isDefined( winner ) ) {
 		[[level._setPlayerScore]]( winner, [[level._getPlayerScore]]( winner ) + 1 );
 	}
 	
-	thread maps\mp\gametypes\_globallogic::endGame( winner, &"MP_ENEMIES_ELIMINATED" );		
+	thread maps\mp\gametypes\_globallogic::endGame( winner, &"MP_ENEMIES_ELIMINATED" );
 }
 
 
 onLoadoutGiven()
 {
 	// Give player One In The Chamber loadouts
-	self giveOneInTheChamberLoadout();	
+	self giveOneInTheChamberLoadout();
 }
 
 
@@ -245,7 +243,7 @@ giveOneInTheChamberLoadout()
 	// Remove all weapons and perks from the player
 	self thread maps\mp\gametypes\_gameobjects::_disableWeapon();
 	self takeAllWeapons();
-
+	
 	// Make sure the player gets any hardpoint that he/she already had
 	if ( isDefined( self.pers["hardPointItem"] ) ) {
 		self maps\mp\gametypes\_hardpoints::giveHardpointItem( self.pers["hardPointItem"] );
@@ -261,18 +259,18 @@ giveOneInTheChamberLoadout()
 	self.specialty[1] = level.scr_oitc_specialty_slot1;
 	if ( self.specialty[1] != "specialty_null" )
 		self setPerk( self.specialty[1] );
-	
+		
 	self.specialty[2] = level.scr_oitc_specialty_slot2;
 	if ( self.specialty[2] != "specialty_null" )
 		self setPerk( self.specialty[2] );
-	
+		
 	self thread openwarfare\_speedcontrol::setBaseSpeed( getdvarx( "class_specops_movespeed", "float", 1.0, 0.5, 1.5 ) );
-
+	
 	self giveWeapon( level.oneInTheChamberWeapon );
 	self setWeaponAmmoClip( level.oneInTheChamberWeapon, 1 );
 	self setWeaponAmmoStock( level.oneInTheChamberWeapon, 0 );
 	self setSpawnWeapon( level.oneInTheChamberWeapon );
-	self switchToWeapon( level.oneInTheChamberWeapon );	
+	self switchToWeapon( level.oneInTheChamberWeapon );
 	
 	// Enable the new weapon
 	self thread maps\mp\gametypes\_gameobjects::_enableWeapon();

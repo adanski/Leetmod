@@ -22,7 +22,7 @@ onPlayerSpawned()
 		self.speedScale = spawnstruct();
 		self.speedScale.base = 0;
 		self.speedScale.current = -1;
-		self.speedScale.modifiers = [];		
+		self.speedScale.modifiers = [];
 	}
 	
 	// Start the speed controller
@@ -35,7 +35,7 @@ onPlayerDeath()
 	// Reset all the modifiers on player's death
 	modifierKeys = getArrayKeys( self.speedScale.modifiers );
 	for ( key=0; key < modifierKeys.size; key++ ) {
-		self.speedScale.modifiers[modifierKeys[key]] = 0;			
+		self.speedScale.modifiers[modifierKeys[key]] = 0;
 	}
 	
 	// Reset current speed
@@ -48,13 +48,12 @@ speedController()
 	self endon("disconnect");
 	self endon("death");
 	
-	while(1)
-	{
+	while(1) {
 		// Calculate new speed
 		modifierPercents = 0;
 		modifierKeys = getArrayKeys( self.speedScale.modifiers );
 		for ( key=0; key < modifierKeys.size; key++ ) {
-			modifierPercents += self.speedScale.modifiers[modifierKeys[key]];			
+			modifierPercents += self.speedScale.modifiers[modifierKeys[key]];
 		}
 		
 		// Calculate the new speed and make sure it is not negative
@@ -65,26 +64,26 @@ speedController()
 		
 		// Check if we have a different speed
 		if ( newSpeed != self.speedScale.current ) {
-
+		
 			/*/ DEBUG BEGIN //
 			self iprintln( "Speed has changed with a base value of " + self.speedScale.base + " and the following modifiers:" );
 			modifierKeys = getArrayKeys( self.speedScale.modifiers );
 			for ( key=0; key < modifierKeys.size; key++ ) {
 				self iprintln( "Modifier: " + modifierKeys[key] + " --> " + self.speedScale.modifiers[modifierKeys[key]] + "%" );
-			}			
-			self iprintln( "New speed for player is " + newSpeed );			
-			// DEBUG END /*/			
+			}
+			self iprintln( "New speed for player is " + newSpeed );
+			// DEBUG END /*/
 			
 			self.speedScale.current = newSpeed;
 			self setMoveSpeedScale( newSpeed );
 		}
 		
 		self waittill( "speed_changed" );
-	}	
+	}
 }
 
 
-setBaseSpeed( newSpeed ) 
+setBaseSpeed( newSpeed )
 {
 	// Wait until the structure is defined
 	while ( !isDefined( self.speedScale ) || !isDefined( self.speedScale.base ) )
@@ -103,7 +102,7 @@ setModifierSpeed( modifierKey, modifierPercent )
 	// Wait until the structure is defined
 	while ( !isDefined( self.speedScale ) || !isDefined( self.speedScale.modifiers ) )
 		wait (0.05);
-			
+		
 	// Check if the new modifier value is different from the current one
 	if ( !isDefined( self.speedScale.modifiers[ modifierKey ] ) || self.speedScale.modifiers[ modifierKey ] != modifierPercent ) {
 		self.speedScale.modifiers[ modifierKey ] = modifierPercent;

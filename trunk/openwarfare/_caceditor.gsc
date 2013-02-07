@@ -5,7 +5,7 @@ init()
 {
 	game["menu_ow_cac_editor"] = "ow_cac_editor";
 	precacheMenu( game["menu_ow_cac_editor"] );
-  
+	
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -18,113 +18,110 @@ cacResponseHandler()
 {
 	self endon( "disconnect" );
 	
-  self initializeEditor();
+	self initializeEditor();
 	
-  while(1)
-	{
+	while(1) {
 		self waittill( "menuresponse", menu, response );
 		if ( ( menu == "team_marinesopfor" || menu == "class" || menu == "endofgame" ) && response == "ow_cac_editor" )
 			self openMenu( game["menu_ow_cac_editor"] );
-		
-		if ( menu == game["menu_ow_cac_editor"] )
-		{
-			//Restart loop if custom classes aren't unlocked. 
-			//The class can be unlocked in game so we still 
+			
+		if ( menu == game["menu_ow_cac_editor"] ) {
+			//Restart loop if custom classes aren't unlocked.
+			//The class can be unlocked in game so we still
 			//want to give player the ability to edit their class.
-      switch( response )
-      {
-        case "open":
-          self openMenu( game["menu_ow_cac_editor"] );
-          break;	
-        case "cacClassNext":
-          self class( "next" );
-          break;
-        case "cacClassPrev":
-          self class( "prev" );
-          break;
-        case "cacPrimaryNext":
-          self primary( "next" );
-          break;
-        case "cacPrimaryPrev":
-          self primary( "prev" );
-          break;
-        case "cacSecondaryNext":
-          self secondary( "next" );
-          break;
-        case "cacSecondaryPrev":
-          self secondary( "prev" );
-          break;	
-        case "cacPAttachmentNext":
-          self primaryAttachment( "next" );
-          break;
-        case "cacPAttachmentPrev":
-          self primaryAttachment( "prev" );
-          break;	
-        case "cacSAttachmentNext":
-          self secondaryAttachment( "next" );
-          break;
-        case "cacSAttachmentPrev":
-          self secondaryAttachment( "prev" );
-          break;
-        case "cacPerk1Next":
-          self perk1( "next" );
-          break;	
-        case "cacPerk1Prev":
-          self perk1( "prev" );
-          break;	
-        case "cacPerk2Next":
-          self perk2( "next" );
-          break;
-        case "cacPerk2Prev":
-          self perk2( "prev" );
-          break;	
-        case "cacPerk3Next":
-          self perk3( "next" );
-          break;	
-        case "cacPerk3Prev":
-          self perk3( "prev" );
-          break;	
-        case "cacSGrenadeNext":
-          self specialGrenade( "next" );
-          break;
-        case "cacSGrenadePrev":
-          self specialGrenade( "prev" );
-          break;	
-        case "cacCamoNext":
-          self camo( "next" );
-          break;
-        case "cacCamoPrev":
-          self camo( "prev" );
-          break;	
-        case "cacSubmit":
-          self submitUpdate();
-          break;
-        case "cacSubNgo":
-          self submitUpdate();
-          self useSelectedClass();
-          break;
-        default:
-          respTok = strtok( response, "," );
-          if( !isDefined(respTok[1]) )
-            break;
-          switch(respTok[0]) {
-            case "cacClass":
-              self classIdx( int(respTok[1])-1 );
-              break;
-          }
-          break;
-      }
-    }
-  }
+			switch( response ) {
+				case "open":
+					self openMenu( game["menu_ow_cac_editor"] );
+					break;
+				case "cacClassNext":
+					self class( "next" );
+					break;
+				case "cacClassPrev":
+					self class( "prev" );
+					break;
+				case "cacPrimaryNext":
+					self primary( "next" );
+					break;
+				case "cacPrimaryPrev":
+					self primary( "prev" );
+					break;
+				case "cacSecondaryNext":
+					self secondary( "next" );
+					break;
+				case "cacSecondaryPrev":
+					self secondary( "prev" );
+					break;
+				case "cacPAttachmentNext":
+					self primaryAttachment( "next" );
+					break;
+				case "cacPAttachmentPrev":
+					self primaryAttachment( "prev" );
+					break;
+				case "cacSAttachmentNext":
+					self secondaryAttachment( "next" );
+					break;
+				case "cacSAttachmentPrev":
+					self secondaryAttachment( "prev" );
+					break;
+				case "cacPerk1Next":
+					self perk1( "next" );
+					break;
+				case "cacPerk1Prev":
+					self perk1( "prev" );
+					break;
+				case "cacPerk2Next":
+					self perk2( "next" );
+					break;
+				case "cacPerk2Prev":
+					self perk2( "prev" );
+					break;
+				case "cacPerk3Next":
+					self perk3( "next" );
+					break;
+				case "cacPerk3Prev":
+					self perk3( "prev" );
+					break;
+				case "cacSGrenadeNext":
+					self specialGrenade( "next" );
+					break;
+				case "cacSGrenadePrev":
+					self specialGrenade( "prev" );
+					break;
+				case "cacCamoNext":
+					self camo( "next" );
+					break;
+				case "cacCamoPrev":
+					self camo( "prev" );
+					break;
+				case "cacSubmit":
+					self submitUpdate();
+					break;
+				case "cacSubNgo":
+					self submitUpdate();
+					self useSelectedClass();
+					break;
+				default:
+					respTok = strtok( response, "," );
+					if( !isDefined(respTok[1]) )
+						break;
+					switch(respTok[0]) {
+						case "cacClass":
+							self classIdx( int(respTok[1])-1 );
+							break;
+					}
+					break;
+			}
+		}
+	}
 }
 
 
 initializeEditor()
 {
 	//Set up arrays and starting indexes
-  self.classesIndex = 0;
+	self.classesIndex = 0;
 	
-  self.primariesIndex = 0;
+	self.primariesIndex = 0;
 	self.primaries2Index = 0;
 	self.pattachmentsIndex = 0;
 	self.pattachments2Index = 0;
@@ -171,64 +168,54 @@ displayDefaultLoadout()
 	self setClientDvar( "ow_cac_class", self.cacEdit_classes[self.classesIndex].text );
 	
 	//Get current class' stats
-  // self.classesIndex: 0=assault, specops, heavygunner, demolition, sniper
-  // self .stat = 200, 210, ...
-  // def_primary = 3020 for ak47
-  def_primary = self getStat( self.cacEdit_classes[self.classesIndex].stat + 1 );
-  def_pattach = self getStat( self.cacEdit_classes[self.classesIndex].stat + 2 );
-  def_secondary = self getStat( self.cacEdit_classes[self.classesIndex].stat + 3 );
-  def_sattach = self getStat( self.cacEdit_classes[self.classesIndex].stat + 4 );
-  def_perk1 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 5 );
-  def_perk2 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 6 );
-  def_perk3 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 7 );
-  def_sgrenade = self getStat( self.cacEdit_classes[self.classesIndex].stat + 8 );
-  def_camo = self getStat( self.cacEdit_classes[self.classesIndex].stat + 9 );
-  
+	// self.classesIndex: 0=assault, specops, heavygunner, demolition, sniper
+	// self .stat = 200, 210, ...
+	// def_primary = 3020 for ak47
+	def_primary = self getStat( self.cacEdit_classes[self.classesIndex].stat + 1 );
+	def_pattach = self getStat( self.cacEdit_classes[self.classesIndex].stat + 2 );
+	def_secondary = self getStat( self.cacEdit_classes[self.classesIndex].stat + 3 );
+	def_sattach = self getStat( self.cacEdit_classes[self.classesIndex].stat + 4 );
+	def_perk1 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 5 );
+	def_perk2 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 6 );
+	def_perk3 = self getStat( self.cacEdit_classes[self.classesIndex].stat + 7 );
+	def_sgrenade = self getStat( self.cacEdit_classes[self.classesIndex].stat + 8 );
+	def_camo = self getStat( self.cacEdit_classes[self.classesIndex].stat + 9 );
+	
 	//Check if class is using overkill
 	if ( def_perk2 == 166 )
 		self.isUsingOverkill = true;
 	else
 		self.isUsingOverkill = false;
-	
+		
 	//Set default primary index
-	for ( i = 0; i < self.cacEdit_primaries.size; i++ )
-	{
-		if ( self.cacEdit_primaries[i].stat == def_primary )
-		{
+	for ( i = 0; i < self.cacEdit_primaries.size; i++ ) {
+		if ( self.cacEdit_primaries[i].stat == def_primary ) {
 			self.primariesIndex = i;
 			self setClientDvar( "ow_cac_stat_primary", def_primary );
 			break;
 		}
 	}
 	//Set default primary attachment index
-	for ( i = 0; i < self.cacEdit_pattachments.size; i++ )
-	{
-		if ( self.cacEdit_pattachments[i].stat == def_pattach )
-		{
+	for ( i = 0; i < self.cacEdit_pattachments.size; i++ ) {
+		if ( self.cacEdit_pattachments[i].stat == def_pattach ) {
 			self.pattachmentsIndex = i;
 			self setClientDvar( "ow_cac_stat_pattachment", def_pattach );
 			break;
 		}
 	}
 	//Set default secondary index
-	if ( !self.isUsingOverkill )
-	{
-		for ( i = 0; i < self.cacEdit_secondaries.size; i++ )
-		{
-			if ( self.cacEdit_secondaries[i].stat == def_secondary )
-			{
+	if ( !self.isUsingOverkill ) {
+		for ( i = 0; i < self.cacEdit_secondaries.size; i++ ) {
+			if ( self.cacEdit_secondaries[i].stat == def_secondary ) {
 				self.secondariesIndex = i;
 				self setClientDvar( "ow_cac_stat_secondary", def_secondary );
 				break;
 			}
 		}
 	}
-	else
-	{
-		for ( i = 0; i < self.cacEdit_primaries.size; i++ )
-		{
-			if ( self.cacEdit_primaries[i].stat == def_secondary )
-			{
+	else {
+		for ( i = 0; i < self.cacEdit_primaries.size; i++ ) {
+			if ( self.cacEdit_primaries[i].stat == def_secondary ) {
 				self.primaries2Index = i;
 				self setClientDvar( "ow_cac_stat_secondary", def_secondary );
 				break;
@@ -236,81 +223,64 @@ displayDefaultLoadout()
 		}
 	}
 	//Set default secondary attachment index
-	if ( !self.isUsingOverkill )
-	{
-		for ( i = 0; i < self.cacEdit_sattachments.size; i++ )
-		{
-			if ( self.cacEdit_sattachments[i].stat == def_sattach )
-			{
+	if ( !self.isUsingOverkill ) {
+		for ( i = 0; i < self.cacEdit_sattachments.size; i++ ) {
+			if ( self.cacEdit_sattachments[i].stat == def_sattach ) {
 				self.sattachmentsIndex = i;
 				self setClientDvar( "ow_cac_stat_sattachment", def_sattach );
 				break;
 			}
 		}
 	}
-	else
-	{
-		for ( i = 0; i < self.cacEdit_pattachments.size; i++ )
-		{
-			if ( self.cacEdit_pattachments[i].stat == def_sattach )
-			{
+	else {
+		for ( i = 0; i < self.cacEdit_pattachments.size; i++ ) {
+			if ( self.cacEdit_pattachments[i].stat == def_sattach ) {
 				self.pattachments2Index = i;
 				self setClientDvar( "ow_cac_stat_sattachment", def_sattach );
 				break;
 			}
-		}		
+		}
 	}
 	//Set default perk1 index
-	for ( i = 0; i < self.cacEdit_perk1.size; i++ )
-	{
-		if ( self.cacEdit_perk1[i].stat == def_perk1 )
-		{
+	for ( i = 0; i < self.cacEdit_perk1.size; i++ ) {
+		if ( self.cacEdit_perk1[i].stat == def_perk1 ) {
 			self.perk1Index = i;
 			self setClientDvar( "ow_cac_stat_perk1", def_perk1 );
 			break;
 		}
-		else if ( def_perk1 == 190 || def_perk1 == 191 || def_perk1 == 192 || def_perk1 == 193 )
-		{
+		else if ( def_perk1 == 190 || def_perk1 == 191 || def_perk1 == 192 || def_perk1 == 193 ) {
 			self.perk1Index = -1;
 			self setClientDvar( "ow_cac_stat_perk1", def_perk1 );
 			break;
 		}
 	}
 	//Set default perk2 index
-	for ( i = 0; i < self.cacEdit_perk2.size; i++ )
-	{
-		if ( self.cacEdit_perk2[i].stat == def_perk2 )
-		{
+	for ( i = 0; i < self.cacEdit_perk2.size; i++ ) {
+		if ( self.cacEdit_perk2[i].stat == def_perk2 ) {
 			self.perk2Index = i;
 			self setClientDvar( "ow_cac_stat_perk2", def_perk2 );
 			break;
 		}
 	}
 	//Set default perk3 index
-	for ( i = 0; i < self.cacEdit_perk3.size; i++ )
-	{
-		if ( self.cacEdit_perk3[i].stat == def_perk3 )
-		{
+	for ( i = 0; i < self.cacEdit_perk3.size; i++ ) {
+		if ( self.cacEdit_perk3[i].stat == def_perk3 ) {
 			self.perk3Index = i;
 			self setClientDvar( "ow_cac_stat_perk3", def_perk3 );
 			break;
 		}
 	}
 	//Set default special grenade index
-	for ( i = 0; i < self.cacEdit_sgrenades.size; i++ )
-	{
-		if ( self.cacEdit_sgrenades[i].stat == def_sgrenade )
-		{
+	for ( i = 0; i < self.cacEdit_sgrenades.size; i++ ) {
+		if ( self.cacEdit_sgrenades[i].stat == def_sgrenade ) {
 			self.sgrenadesIndex = i;
 			self setClientDvar( "ow_cac_stat_sgrenade", def_sgrenade );
 			break;
 		}
 	}
 	//Set default camo index
-	for ( i = 0; i < self.cacEdit_camos.size; i++ )
-	{
-		if ( self.cacEdit_camos[i].stat == def_camo )
-		{
+	for ( i = 0; i < self.cacEdit_camos.size; i++ ) {
+		if ( self.cacEdit_camos[i].stat == def_camo ) {
 			self.camosIndex = i;
 			self setClientDvar( "ow_cac_stat_camo", def_camo );
 			break;
@@ -320,26 +290,26 @@ displayDefaultLoadout()
 
 class( direction )
 {
-  if ( direction == "next" )
-    self.classesIndex++;
-  else
-    self.classesIndex--;
-  
-  if ( self.classesIndex < 0 )
-    self.classesIndex = self.cacEdit_classes.size - 1;
-  else if ( self.classesIndex >= self.cacEdit_classes.size )
-    self.classesIndex = 0;
-  
+	if ( direction == "next" )
+		self.classesIndex++;
+	else
+		self.classesIndex--;
+		
+	if ( self.classesIndex < 0 )
+		self.classesIndex = self.cacEdit_classes.size - 1;
+	else if ( self.classesIndex >= self.cacEdit_classes.size )
+		self.classesIndex = 0;
+		
 	self displayDefaultLoadout();
 }
 
 classIdx( index )
 {
-  if(index >= 0 && index < self.cacEdit_classes.size)
-    self.classesIndex = index;
-  else
-    self.classesIndex = 0;
-  
+	if(index >= 0 && index < self.cacEdit_classes.size)
+		self.classesIndex = index;
+	else
+		self.classesIndex = 0;
+		
 	self displayDefaultLoadout();
 }
 
@@ -354,24 +324,23 @@ primary( direction )
 	if ( self.primariesIndex < 0 )
 		self.primariesIndex = self.cacEdit_primaries.size - 1;
 	else if ( self.primariesIndex >= self.cacEdit_primaries.size )
-		self.primariesIndex = 0;	
+		self.primariesIndex = 0;
 		
 	weapon_stat = self getStat( self.cacEdit_primaries[self.primariesIndex].stat + 3000 );
-	while ( (weapon_stat < 1 && level.rankedClasses) || ( self.isUsingOverkill && ( self.cacEdit_primaries[self.primariesIndex].stat == self.cacEdit_primaries[self.primaries2Index].stat ) ) )
-	{
+	while ( (weapon_stat < 1 && level.rankedClasses) || ( self.isUsingOverkill && ( self.cacEdit_primaries[self.primariesIndex].stat == self.cacEdit_primaries[self.primaries2Index].stat ) ) ) {
 		if ( direction == "next" )
 			self.primariesIndex++;
 		else
 			self.primariesIndex--;
-		
+			
 		if ( self.primariesIndex < 0 )
 			self.primariesIndex = self.cacEdit_primaries.size - 1;
 		else if ( self.primariesIndex >= self.cacEdit_primaries.size )
 			self.primariesIndex = 0;
-
+			
 		weapon_stat = self getStat( self.cacEdit_primaries[self.primariesIndex].stat + 3000 );
 	}
-
+	
 	//Display new weapon
 	self.pattachmentsIndex = 0;
 	self.camosIndex = 0;
@@ -379,16 +348,16 @@ primary( direction )
 		self setClientDvar( "ow_cac_stat_perk1", 190 );
 	self setClientDvar( "ow_cac_stat_primary", self.cacEdit_primaries[self.primariesIndex].stat );
 	self setClientDvar( "ow_cac_stat_pattachment", self.cacEdit_pattachments[self.pattachmentsIndex].stat );
-	self setClientDvar( "ow_cac_stat_camo", self.cacEdit_camos[self.camosIndex].stat );	
+	self setClientDvar( "ow_cac_stat_camo", self.cacEdit_camos[self.camosIndex].stat );
 }
 
 primaryAttachment( direction )
 {
-  if ( self.cacEdit_primaries[self.primariesIndex].stat == 22) {
-    self.pattachmentsIndex = 0;
-    return;
-  }
-  
+	if ( self.cacEdit_primaries[self.primariesIndex].stat == 22) {
+		self.pattachmentsIndex = 0;
+		return;
+	}
+	
 	if ( direction == "next" )
 		self.pattachmentsIndex++;
 	else
@@ -398,67 +367,62 @@ primaryAttachment( direction )
 		self.pattachmentsIndex = self.cacEdit_pattachments.size - 1;
 	else if ( self.pattachmentsIndex >= self.cacEdit_pattachments.size )
 		self.pattachmentsIndex = 0;
-	
+		
 	//We have to check to make sure the camo is unlocked for this weapon
 	addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 10 ) );
-  addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 4 );
+	addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 4 );
 	weaponStat = self getStat( self.cacEdit_primaries[self.primariesIndex].stat + 3000 );
-  weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primariesIndex].stat, 4 );
-  
-	while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasAttachment(weaponName, addonName) ) )
-	{
+	weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primariesIndex].stat, 4 );
+	
+	while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasAttachment(weaponName, addonName) ) ) {
 		if ( direction == "next" )
 			self.pattachmentsIndex++;
 		else
 			self.pattachmentsIndex--;
-		
+			
 		if ( self.pattachmentsIndex < 0 )
 			self.pattachmentsIndex = self.cacEdit_pattachments.size - 1;
 		else if ( self.pattachmentsIndex >= self.cacEdit_pattachments.size )
 			self.pattachmentsIndex = 0;
-
+			
 		addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 10 ) );
-    addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 4 );
-	}	
+		addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachmentsIndex].stat, 4 );
+	}
 	
 	//Perk 1 Hack
-	if ( self.pattachmentsIndex == 4 || self.pattachmentsIndex == 5 )
-	{
+	if ( self.pattachmentsIndex == 4 || self.pattachmentsIndex == 5 ) {
 		self.perk1Index = -1;
 		self setClientDvar( "ow_cac_stat_perk1", 193 );
 	}
-	else if ( self.pattachmentsIndex != 4 && self.pattachmentsIndex != 5 && self.pattachments2Index != 4 && self.pattachments2Index != 5 )
-	{
+	else if ( self.pattachmentsIndex != 4 && self.pattachmentsIndex != 5 && self.pattachments2Index != 4 && self.pattachments2Index != 5 ) {
 		if ( self.perk1Index == -1 )
 			self setClientDvar( "ow_cac_stat_perk1", 190 );
 	}
 	
 	//Display new attachment
-	self setClientDvar( "ow_cac_stat_pattachment", self.cacEdit_pattachments[self.pattachmentsIndex].stat );		
+	self setClientDvar( "ow_cac_stat_pattachment", self.cacEdit_pattachments[self.pattachmentsIndex].stat );
 }
 
 secondary( direction )
 {
-	if ( !self.isUsingOverkill )
-	{
+	if ( !self.isUsingOverkill ) {
 		if ( direction == "next" )
 			self.secondariesIndex++;
 		else
 			self.secondariesIndex--;
-		
+			
 		if ( self.secondariesIndex < 0 )
 			self.secondariesIndex = self.cacEdit_secondaries.size - 1;
 		else if ( self.secondariesIndex >= self.cacEdit_secondaries.size )
 			self.secondariesIndex = 0;
 			
 		weapon_stat = self getStat( self.cacEdit_secondaries[self.secondariesIndex].stat + 3000 );
-		while ( weapon_stat < 1 && level.rankedClasses )
-		{
+		while ( weapon_stat < 1 && level.rankedClasses ) {
 			if ( direction == "next" )
 				self.secondariesIndex++;
 			else
 				self.secondariesIndex--;
-		
+				
 			if ( self.secondariesIndex < 0 )
 				self.secondariesIndex = self.cacEdit_secondaries.size - 1;
 			else if ( self.secondariesIndex >= self.cacEdit_secondaries.size )
@@ -466,39 +430,37 @@ secondary( direction )
 				
 			weapon_stat = self getStat( self.cacEdit_secondaries[self.secondariesIndex].stat + 3000 );
 		}
-
+		
 		//Display new weapon
 		self.sattachmentsIndex = 0;
 		self setClientDvar( "ow_cac_stat_sattachment", self.cacEdit_sattachments[self.sattachmentsIndex].stat );
 		self setClientDvar( "ow_cac_stat_secondary", self.cacEdit_secondaries[self.secondariesIndex].stat );
 	}
-	else
-	{
+	else {
 		if ( direction == "next" )
 			self.primaries2Index++;
 		else
 			self.primaries2Index--;
-		
+			
 		if ( self.primaries2Index < 0 )
 			self.primaries2Index = self.cacEdit_primaries.size - 1;
 		else if ( self.primaries2Index >= self.cacEdit_primaries.size )
 			self.primaries2Index = 0;
 			
 		weapon_stat = self getStat( self.cacEdit_primaries[self.primaries2Index].stat + 3000 );
-		while ( ( weapon_stat < 1 && level.rankedClasses ) || ( self.cacEdit_primaries[self.primariesIndex].stat == self.cacEdit_primaries[self.primaries2Index].stat ) )
-		{
+		while ( ( weapon_stat < 1 && level.rankedClasses ) || ( self.cacEdit_primaries[self.primariesIndex].stat == self.cacEdit_primaries[self.primaries2Index].stat ) ) {
 			if ( direction == "next" )
 				self.primaries2Index++;
 			else
 				self.primaries2Index--;
-		
+				
 			if ( self.primaries2Index < 0 )
 				self.primaries2Index = self.cacEdit_primaries.size - 1;
 			else if ( self.primaries2Index >= self.cacEdit_primaries.size )
 				self.primaries2Index = 0;
 				
 			weapon_stat = self getStat( self.cacEdit_primaries[self.primaries2Index].stat + 3000 );
-		}	
+		}
 		//Display new weapon
 		self.pattachments2Index = 0;
 		if ( self.perk1Index == -1 && ( self.pattachmentsIndex != 4 && self.pattachmentsIndex != 5 ) )
@@ -510,59 +472,56 @@ secondary( direction )
 
 secondaryAttachment( direction )
 {
-	if ( !self.isUsingOverkill )
-	{
-  		//Desert Eagle Stuff	
+	if ( !self.isUsingOverkill ) {
+		//Desert Eagle Stuff
 		if ( self.secondariesIndex == 3 || self.secondariesIndex == 4 ) {
 			self.sattachmentsIndex = 0;
-      return;
-    }
-      
+			return;
+		}
+		
 		if ( direction == "next" )
 			self.sattachmentsIndex++;
 		else
 			self.sattachmentsIndex--;
-		
+			
 		if ( self.sattachmentsIndex < 0 )
 			self.sattachmentsIndex = self.cacEdit_sattachments.size - 1;
 		else if ( self.sattachmentsIndex >= self.cacEdit_sattachments.size )
 			self.sattachmentsIndex = 0;
 			
 		addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 10 ) );
-    addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 4 );
+		addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 4 );
 		weaponStat = self getStat( self.cacEdit_secondaries[self.secondariesIndex].stat + 3000 );
-    weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_secondaries[self.secondariesIndex].stat, 4 );
-    
-    while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasAttachment(weaponName, addonName) ) )
-		{
+		weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_secondaries[self.secondariesIndex].stat, 4 );
+		
+		while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasAttachment(weaponName, addonName) ) ) {
 			if ( direction == "next" )
 				self.sattachmentsIndex++;
 			else
 				self.sattachmentsIndex--;
-		
+				
 			if ( self.sattachmentsIndex < 0 )
-			self.sattachmentsIndex = self.cacEdit_sattachments.size - 1;
+				self.sattachmentsIndex = self.cacEdit_sattachments.size - 1;
 			else if ( self.sattachmentsIndex >= self.cacEdit_sattachments.size )
 				self.sattachmentsIndex = 0;
 				
 			addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 10 ) );
-      addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 4 );
+			addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_sattachments[self.sattachmentsIndex].stat, 4 );
 		}
 		
 		//Display new attachment
 		self setClientDvar( "ow_cac_stat_sattachment", self.cacEdit_sattachments[self.sattachmentsIndex].stat );
 	}
-	else
-	{
-    if ( self.cacEdit_primaries[self.primaries2Index].stat == 22 ) {
-      self.pattachments2Index = 0;
-      return;
-    }
+	else {
+		if ( self.cacEdit_primaries[self.primaries2Index].stat == 22 ) {
+			self.pattachments2Index = 0;
+			return;
+		}
 		if ( direction == "next" )
 			self.pattachments2Index++;
 		else
 			self.pattachments2Index--;
-		
+			
 		if ( self.pattachments2Index < 0 )
 			self.pattachments2Index = self.cacEdit_pattachments.size - 1;
 		else if ( self.pattachments2Index >= self.cacEdit_pattachments.size )
@@ -570,38 +529,35 @@ secondaryAttachment( direction )
 			
 		//We have to check to make sure the camo is unlocked for this weapon
 		addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 10 ) );
-    addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 4 );
+		addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 4 );
 		weaponStat = self getStat( self.cacEdit_primaries[self.primaries2Index].stat + 3000 );
-    weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primaries2Index].stat, 4 );
-  
-		while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasAttachment(weaponName, addonName) ) )
-		{
+		weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primaries2Index].stat, 4 );
+		
+		while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasAttachment(weaponName, addonName) ) ) {
 			if ( direction == "next" )
 				self.pattachments2Index++;
 			else
 				self.pattachments2Index--;
-		
+				
 			if ( self.pattachments2Index < 0 )
 				self.pattachments2Index = self.cacEdit_pattachments.size - 1;
 			else if ( self.pattachments2Index >= self.cacEdit_pattachments.size )
 				self.pattachments2Index = 0;
 				
 			addonMask = int( tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 10 ) );
-      addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 4 );
-		}	
+			addonName = tableLookup( "mp/attachmenttable.csv", 9, self.cacEdit_pattachments[self.pattachments2Index].stat, 4 );
+		}
 		
 		//Perk 1 Hack
-		if ( self.pattachments2Index == 4 || self.pattachments2Index == 5 )
-		{
+		if ( self.pattachments2Index == 4 || self.pattachments2Index == 5 ) {
 			self.perk1Index = -1;
 			self setClientDvar( "ow_cac_stat_perk1", 193 );
 		}
-		else if ( self.pattachmentsIndex != 4 && self.pattachmentsIndex != 5 && self.pattachments2Index != 4 && self.pattachments2Index != 5 )
-		{
+		else if ( self.pattachmentsIndex != 4 && self.pattachmentsIndex != 5 && self.pattachments2Index != 4 && self.pattachments2Index != 5 ) {
 			if ( self.perk1Index == -1 )
 				self setClientDvar( "ow_cac_stat_perk1", 190 );
 		}
-	
+		
 		//Display new attachment
 		self setClientDvar( "ow_cac_stat_sattachment", self.cacEdit_pattachments[self.pattachments2Index].stat );
 	}
@@ -609,14 +565,14 @@ secondaryAttachment( direction )
 
 perk1( direction )
 {
-  //Weapon Attachment Hack
+	//Weapon Attachment Hack
 	if ( self.pattachmentsIndex == 4 || self.pattachmentsIndex == 5 || self.pattachments2Index == 4 || self.pattachments2Index == 5 )  {
-		self.perk1Index = -1; 
+		self.perk1Index = -1;
 		self setClientDvar( "ow_cac_stat_perk1", 193 );
-    return;
+		return;
 	}
-  
-  if ( direction == "next" )
+	
+	if ( direction == "next" )
 		self.perk1Index++;
 	else
 		self.perk1Index--;
@@ -626,13 +582,12 @@ perk1( direction )
 	else if ( self.perk1Index >= self.cacEdit_perk1.size )
 		self.perk1Index = 0;
 		
-	while ( (self getStat( self.cacEdit_perk1[self.perk1Index].stat ) < 1 && level.rankedClasses) || ( self.sgrenadesIndex == 2 && self.cacEdit_perk1[self.perk1Index].stat == 176 ) )
-	{
+	while ( (self getStat( self.cacEdit_perk1[self.perk1Index].stat ) < 1 && level.rankedClasses) || ( self.sgrenadesIndex == 2 && self.cacEdit_perk1[self.perk1Index].stat == 176 ) ) {
 		if ( direction == "next" )
 			self.perk1Index++;
 		else
 			self.perk1Index--;
-		
+			
 		if ( self.perk1Index < 0 )
 			self.perk1Index = self.cacEdit_perk1.size - 1;
 		else if ( self.perk1Index >= self.cacEdit_perk1.size )
@@ -640,10 +595,9 @@ perk1( direction )
 	}
 	
 	//Display new perk
-	if ( self.perk1Index != -1 )
-	{
-    self setClientDvar( "ow_cac_stat_perk1", self.cacEdit_perk1[self.perk1Index].stat );
-  }
+	if ( self.perk1Index != -1 ) {
+		self setClientDvar( "ow_cac_stat_perk1", self.cacEdit_perk1[self.perk1Index].stat );
+	}
 }
 
 perk2( direction )
@@ -658,42 +612,37 @@ perk2( direction )
 	else if ( self.perk2Index >= self.cacEdit_perk2.size )
 		self.perk2Index = 0;
 		
-	while ( self getStat( self.cacEdit_perk2[self.perk2Index].stat ) < 1 && level.rankedClasses )
-	{
+	while ( self getStat( self.cacEdit_perk2[self.perk2Index].stat ) < 1 && level.rankedClasses ) {
 		if ( direction == "next" )
 			self.perk2Index++;
 		else
 			self.perk2Index--;
-		
+			
 		if ( self.perk2Index < 0 )
 			self.perk2Index = self.cacEdit_perk2.size - 1;
 		else if ( self.perk2Index >= self.cacEdit_perk2.size )
 			self.perk2Index = 0;
 	}
-
+	
 	//Overkill Hack
-	if ( self.cacEdit_perk2[self.perk2Index].stat == 166 )
-	{
+	if ( self.cacEdit_perk2[self.perk2Index].stat == 166 ) {
 		self.isUsingOverkill = true;
-		if ( self.cacEdit_primaries[self.primariesIndex].stat == 25 )
-		{
+		if ( self.cacEdit_primaries[self.primariesIndex].stat == 25 ) {
 			self.primaries2Index = 1; //Ak47
 			self.pattachments2Index = 0;
 			self.sattachmentsIndex = 0;
 			self setClientDvar( "ow_cac_stat_secondary", self.cacEdit_primaries[self.primaries2Index].stat );
 			self setClientDvar( "ow_cac_stat_sattachment", self.cacEdit_pattachments[self.pattachments2Index].stat );
 		}
-		else 
-		{
+		else {
 			self.primaries2Index = 0; //M16
 			self.pattachments2Index = 0;
-			self.sattachmentsIndex = 0;			
+			self.sattachmentsIndex = 0;
 			self setClientDvar( "ow_cac_stat_secondary", self.cacEdit_primaries[self.primaries2Index].stat );
-			self setClientDvar( "ow_cac_stat_sattachment", self.cacEdit_pattachments[self.pattachments2Index].stat );			
+			self setClientDvar( "ow_cac_stat_sattachment", self.cacEdit_pattachments[self.pattachments2Index].stat );
 		}
 	}
-	else if ( self.cacEdit_perk2[self.perk2Index].stat != 166 && self.isUsingOverkill )
-	{
+	else if ( self.cacEdit_perk2[self.perk2Index].stat != 166 && self.isUsingOverkill ) {
 		self.isUsingOverkill = false;
 		self.primaries2Index = 0;
 		self.secondaryIndex = 0;
@@ -703,7 +652,7 @@ perk2( direction )
 	}
 	
 	//Display new perk
-	self setClientDvar( "ow_cac_stat_perk2", self.cacEdit_perk2[self.perk2Index].stat );	
+	self setClientDvar( "ow_cac_stat_perk2", self.cacEdit_perk2[self.perk2Index].stat );
 }
 
 perk3( direction )
@@ -716,23 +665,22 @@ perk3( direction )
 	if ( self.perk3Index < 0 )
 		self.perk3Index = self.cacEdit_perk3.size - 1;
 	else if ( self.perk3Index >= self.cacEdit_perk3.size )
-		self.perk3Index = 0;	
+		self.perk3Index = 0;
 		
-	while ( self getStat( self.cacEdit_perk3[self.perk3Index].stat ) < 1 && level.rankedClasses )
-	{
+	while ( self getStat( self.cacEdit_perk3[self.perk3Index].stat ) < 1 && level.rankedClasses ) {
 		if ( direction == "next" )
 			self.perk3Index++;
 		else
 			self.perk3Index--;
-		
+			
 		if ( self.perk3Index < 0 )
 			self.perk3Index = self.cacEdit_perk3.size - 1;
 		else if ( self.perk3Index >= self.cacEdit_perk3.size )
 			self.perk3Index = 0;
 	}
-
+	
 	//Display new perk
-	self setClientDvar( "ow_cac_stat_perk3", self.cacEdit_perk3[self.perk3Index].stat );	
+	self setClientDvar( "ow_cac_stat_perk3", self.cacEdit_perk3[self.perk3Index].stat );
 }
 
 specialGrenade( direction )
@@ -748,14 +696,13 @@ specialGrenade( direction )
 		self.sgrenadesIndex = 0;
 		
 	//Smoke Hack
-	if ( self.sgrenadesIndex == 2 && ( self.perk1Index != -1 && self.cacEdit_perk1[self.perk1Index].stat == 176 ) )
-	{
+	if ( self.sgrenadesIndex == 2 && ( self.perk1Index != -1 && self.cacEdit_perk1[self.perk1Index].stat == 176 ) ) {
 		self.perk1Index = -1;
 		self setClientDvar( "ow_cac_stat_perk1", 190 );
 	}
 	
 	//Display new grenade
-	self setClientDvar( "ow_cac_stat_sgrenade", self.cacEdit_sgrenades[self.sgrenadesIndex].stat );	
+	self setClientDvar( "ow_cac_stat_sgrenade", self.cacEdit_sgrenades[self.sgrenadesIndex].stat );
 }
 
 camo( direction )
@@ -771,25 +718,24 @@ camo( direction )
 		self.camosIndex = 0;
 		
 	// Is this correct? there is no 11th index in attachmenttable, besides, it refers attachments, not camos
-  // I wonder how this works without problems
-  addonMask = int( tableLookup( "mp/attachmenttable.csv", 11, self.cacEdit_camos[self.camosIndex].stat, 10 ) );
+	// I wonder how this works without problems
+	addonMask = int( tableLookup( "mp/attachmenttable.csv", 11, self.cacEdit_camos[self.camosIndex].stat, 10 ) );
 	weaponStat = self getStat( self.cacEdit_primaries[self.primariesIndex].stat + 3000 );
-  weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primariesIndex].stat, 4 );
-    
-  while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasCamo(weaponName, addonMask) ) )
-	{
+	weaponName = tableLookup( "mp/statsTable.csv", 0, self.cacEdit_primaries[self.primariesIndex].stat, 4 );
+	
+	while( ( level.rankedClasses && (int(weaponStat) & addonMask) == 0 ) || ( !level.rankedClasses && !maps\mp\gametypes\_class::WeaponHasCamo(weaponName, addonMask) ) ) {
 		if ( direction == "next" )
 			self.camosIndex++;
 		else
 			self.camosIndex--;
-		
+			
 		if ( self.camosIndex < 0 )
 			self.camosIndex = self.cacEdit_camos.size - 1;
 		else if ( self.camosIndex >= self.cacEdit_camos.size )
 			self.camosIndex = 0;
 			
 		addonMask = int( tableLookup( "mp/attachmenttable.csv", 11, self.cacEdit_camos[self.camosIndex].stat, 10 ) );
-	}	
+	}
 	
 	//Display new camo
 	self setClientDvar( "ow_cac_stat_camo", self.cacEdit_camos[self.camosIndex].stat );
@@ -798,30 +744,28 @@ camo( direction )
 submitUpdate()
 {
 	class_offset = self.cacEdit_classes[self.classesIndex].stat; //Custom Class
-
+	
 	self setStat( class_offset + 1, self.cacEdit_primaries[self.primariesIndex].stat ); //Primary Weapon
 	self setStat( class_offset + 2, self.cacEdit_pattachments[self.pattachmentsIndex].stat ); //Primary Attachment
-	if ( self.cacEdit_perk2[self.perk2Index].stat != 166 )
-	{
+	if ( self.cacEdit_perk2[self.perk2Index].stat != 166 ) {
 		self setStat( class_offset + 3, self.cacEdit_secondaries[self.secondariesIndex].stat ); //Secondary Weapon
 		self setStat( class_offset + 4, self.cacEdit_sattachments[self.sattachmentsIndex].stat ); //Secondary Attachment
 	}
-	else
-	{
+	else {
 		self setStat( class_offset + 3, self.cacEdit_primaries[self.primaries2Index].stat ); //Secondary Weapon (When Overkill)
 		self setStat( class_offset + 4, self.cacEdit_pattachments[self.pattachments2Index].stat ); //Secondary Attachment (When Overkill)
 	}
 	if ( self.perk1Index != -1 )
-		self setStat( class_offset + 5, self.cacEdit_perk1[self.perk1Index].stat ); //Perk 1 
+		self setStat( class_offset + 5, self.cacEdit_perk1[self.perk1Index].stat ); //Perk 1
 	else if ( self.pattachmentsIndex == 4 || self.pattachments2Index == 4 || self.pattachmentsIndex == 5 || self.pattachments2Index == 5 )
 		self setStat( class_offset + 5, 193 ); //Perk 1
 	else if ( self.sgrenadesIndex == 2 && ( self.perk1Index != -1 && self.cacEdit_perk1[self.perk1Index].stat == 176 ) )
 		self setStat( class_offset + 5, 190 ); //Perk 1
-	
+		
 	self setStat( class_offset + 6, self.cacEdit_perk2[self.perk2Index].stat ); //Perk 2
 	self setStat( class_offset + 7, self.cacEdit_perk3[self.perk3Index].stat ); //Perk 3
 	self setStat( class_offset + 8, self.cacEdit_sgrenades[self.sgrenadesIndex].stat ); //Special Grenade
-	self setStat( class_offset + 9, self.cacEdit_camos[self.camosIndex].stat ); //Camo	
+	self setStat( class_offset + 9, self.cacEdit_camos[self.camosIndex].stat ); //Camo
 	
 	self.cac_initialized = undefined;
 }
@@ -829,32 +773,33 @@ submitUpdate()
 addClasses()
 {
 	//Add classes ( name, class_stat )
-  if( level.rankedClasses ) {
-    self addCACClasses( "customclass1", 200 ); //Custom class 1
-    self addCACClasses( "customclass2", 210 ); //Custom class 2
-    self addCACClasses( "customclass3", 220 ); //Custom class 3
-    self addCACClasses( "customclass4", 230 ); //Custom class 4
-    self addCACClasses( "customclass5", 240 ); //Custom class 5
-    
-    self addCACClasses( "customclass6", 350 ); //Custom class 6
-    self addCACClasses( "customclass7", 360 ); //Custom class 7
-    self addCACClasses( "customclass8", 370 ); //Custom class 8
-    self addCACClasses( "customclass9", 380 ); //Custom class 9
-  } else {
-    // unranked clases (they have storage too)
-    self addCACClasses( "customclass11", 400 ); //Settable class 1
-    self addCACClasses( "customclass12", 410 ); //Settable class 2
-    self addCACClasses( "customclass13", 420 ); //Settable class 3
-    self addCACClasses( "customclass14", 430 ); //Settable class 4
-    self addCACClasses( "customclass15", 440 ); //Settable class 5
-    
-    self addCACClasses( "customclass16", 450 ); //Settable class 6
-    self addCACClasses( "customclass17", 460 ); //Settable class 7
-    self addCACClasses( "customclass18", 470 ); //Settable class 8
-    self addCACClasses( "customclass19", 480 ); //Settable class 9
-  }
+	if( level.rankedClasses ) {
+		self addCACClasses( "customclass1", 200 ); //Custom class 1
+		self addCACClasses( "customclass2", 210 ); //Custom class 2
+		self addCACClasses( "customclass3", 220 ); //Custom class 3
+		self addCACClasses( "customclass4", 230 ); //Custom class 4
+		self addCACClasses( "customclass5", 240 ); //Custom class 5
+		
+		self addCACClasses( "customclass6", 350 ); //Custom class 6
+		self addCACClasses( "customclass7", 360 ); //Custom class 7
+		self addCACClasses( "customclass8", 370 ); //Custom class 8
+		self addCACClasses( "customclass9", 380 ); //Custom class 9
+	}
+	else {
+		// unranked clases (they have storage too)
+		self addCACClasses( "customclass11", 400 ); //Settable class 1
+		self addCACClasses( "customclass12", 410 ); //Settable class 2
+		self addCACClasses( "customclass13", 420 ); //Settable class 3
+		self addCACClasses( "customclass14", 430 ); //Settable class 4
+		self addCACClasses( "customclass15", 440 ); //Settable class 5
+		
+		self addCACClasses( "customclass16", 450 ); //Settable class 6
+		self addCACClasses( "customclass17", 460 ); //Settable class 7
+		self addCACClasses( "customclass18", 470 ); //Settable class 8
+		self addCACClasses( "customclass19", 480 ); //Settable class 9
+	}
 }
-	
+
 
 addPrimaries()
 {
@@ -878,13 +823,13 @@ addPrimaries()
 	if ( level.weap_allow_specops_mp5 )
 		self addCACPrimaries( "smg", 10 ); //MP5
 	if ( level.weap_allow_specops_skorpion )
-    self addCACPrimaries( "smg", 11 ); //Skorpion
+		self addCACPrimaries( "smg", 11 ); //Skorpion
 	if ( level.weap_allow_specops_uzi )
-    self addCACPrimaries( "smg", 12 ); //UZI
+		self addCACPrimaries( "smg", 12 ); //UZI
 	if ( level.weap_allow_specops_ak74u )
-    self addCACPrimaries( "smg", 13 ); //AK74U
+		self addCACPrimaries( "smg", 13 ); //AK74U
 	if ( level.weap_allow_specops_p90 )
-    self addCACPrimaries( "smg", 14 ); //P90
+		self addCACPrimaries( "smg", 14 ); //P90
 	//Heavy Weapons
 	if ( level.weap_allow_heavygunner_saw )
 		self addCACPrimaries( "heavy", 81 ); //SAW
@@ -907,22 +852,22 @@ addPrimaries()
 	if ( level.weap_allow_sniper_remington700 )
 		self addCACPrimaries( "sniper", 64 ); //Remington700
 	if ( level.weap_allow_sniper_barrett )
-		self addCACPrimaries( "sniper", 62 ); //Barrett	
+		self addCACPrimaries( "sniper", 62 ); //Barrett
 }
 
-addPrimaryAttachments() 
+addPrimaryAttachments()
 {
 	//Add Primary Attachments ( attachment_stat )
 	self addCACPrimaryAttachments( 0 ); //None
 	if ( level.attach_allow_silencer )
-    self addCACPrimaryAttachments( 3 ); //Silencer
+		self addCACPrimaryAttachments( 3 ); //Silencer
 	if ( level.attach_allow_reflex )
-    self addCACPrimaryAttachments( 2 ); //Reflex
+		self addCACPrimaryAttachments( 2 ); //Reflex
 	if ( level.attach_allow_acog )
 		self addCACPrimaryAttachments( 1 ); //Acog
 	if ( level.attach_allow_grip )
 		self addCACPrimaryAttachments( 4 );	//Grip
-  if ( level.attach_allow_assault_gl )
+	if ( level.attach_allow_assault_gl )
 		self addCACPrimaryAttachments( 5 ); //GL
 }
 
@@ -934,20 +879,20 @@ addSecondaries()
 	if ( level.weap_allow_usp )
 		self addCACSecondaries( 2 ); //USP
 	if ( level.weap_allow_colt45 )
-		self addCACSecondaries( 1 ); //Colt 45 
+		self addCACSecondaries( 1 ); //Colt 45
 	if ( level.weap_allow_deserteagle )
 		self addCACSecondaries( 3 ); //Desert Eagle
 	if ( level.weap_allow_deserteaglegold )
-		self addCACSecondaries( 4 ); //Gold Desert Eagle	
+		self addCACSecondaries( 4 ); //Gold Desert Eagle
 }
 
 addSecondaryAttachments()
 {
 	//Add Secondary Attachments ( attachment_stat )
 	if( level.attach_allow_pistol_none )
-    self addCACSecondaryAttachments( 0 ); //None
-  if( level.attach_allow_pistol_silencer )
-    self addCACSecondaryAttachments( 3 ); //Silencer
+		self addCACSecondaryAttachments( 0 ); //None
+	if( level.attach_allow_pistol_silencer )
+		self addCACSecondaryAttachments( 3 ); //Silencer
 }
 
 addPerk1()
@@ -955,19 +900,19 @@ addPerk1()
 	//Add perk1 ( perk_stat )
 	//Make sure the perks are allowed before adding them to the list
 	self addCACPerk1( 190 );
-  if ( level.perk_allow_c4_mp )
+	if ( level.perk_allow_c4_mp )
 		self addCACPerk1( 184 ); //C4
-	if ( level.perk_allow_specialty_specialgrenade )	
+	if ( level.perk_allow_specialty_specialgrenade )
 		self addCACPerk1( 176 ); //3x Special
-	if ( level.perk_allow_rpg_mp )	
+	if ( level.perk_allow_rpg_mp )
 		self addCACPerk1( 186 ); //RPG
-	if ( level.perk_allow_claymore_mp )	
+	if ( level.perk_allow_claymore_mp )
 		self addCACPerk1( 185 ); //Claymore
-	if ( level.perk_allow_specialty_fraggrenade )	
+	if ( level.perk_allow_specialty_fraggrenade )
 		self addCACPerk1( 173 ); //3x Frag
-	if ( level.perk_allow_specialty_extraammo )	
+	if ( level.perk_allow_specialty_extraammo )
 		self addCACPerk1( 165 ); //Bandolier
-	if ( level.perk_allow_specialty_detectexplosive )	
+	if ( level.perk_allow_specialty_detectexplosive )
 		self addCACPerk1( 155 ); //Bomb Squad
 }
 
@@ -975,20 +920,20 @@ addPerk2()
 {
 	//Add perk2 ( perk_stat )
 	//Make sure the perks are allowed before adding them to the list
-  self addCACPerk2( 190 );
+	self addCACPerk2( 190 );
 	if ( level.perk_allow_specialty_bulletdamage )
 		self addCACPerk2( 160 ); //Stopping Power
-	if ( level.perk_allow_specialty_armorvest )	
+	if ( level.perk_allow_specialty_armorvest )
 		self addCACPerk2( 167 ); //Juggernaut
-	if ( level.perk_allow_specialty_fastreload )	
+	if ( level.perk_allow_specialty_fastreload )
 		self addCACPerk2( 164 ); //Sleight of Hand
-	if ( level.perk_allow_specialty_rof )	
+	if ( level.perk_allow_specialty_rof )
 		self addCACPerk2( 163 ); //Double Tap
-	if ( level.perk_allow_specialty_twoprimaries )	
+	if ( level.perk_allow_specialty_twoprimaries )
 		self addCACPerk2( 166 ); //Overkill
-	if ( level.perk_allow_specialty_gpsjammer )	
+	if ( level.perk_allow_specialty_gpsjammer )
 		self addCACPerk2( 151 ); //UAV Jammer
-	if ( level.perk_allow_specialty_explosivedamage )	
+	if ( level.perk_allow_specialty_explosivedamage )
 		self addCACPerk2( 156 ); //Sonic Boom
 }
 
@@ -996,7 +941,7 @@ addPerk3()
 {
 	//Add perk3 ( perk_stat )
 	//Make sure the perks are allowed before adding them to the list
-  self addCACPerk3( 190 );
+	self addCACPerk3( 190 );
 	if ( level.perk_allow_specialty_longersprint )
 		self addCACPerk3( 154 ); //Extreme Conditioning
 	if ( level.perk_allow_specialty_bulletaccuracy )
@@ -1011,7 +956,7 @@ addPerk3()
 		self addCACPerk3( 152 ); //Iron Lungs
 	if ( level.perk_allow_specialty_quieter )
 		self addCACPerk3( 153 ); //Dead Silence
-	if ( level.perk_allow_specialty_parabolic )	
+	if ( level.perk_allow_specialty_parabolic )
 		self addCACPerk3( 150 ); //Eaves Drop
 }
 
@@ -1025,7 +970,7 @@ addSGrenades()
 
 addCamos()
 {
-	//Add Camos ( camo_stat ) 
+	//Add Camos ( camo_stat )
 	self addCACCamos( 0 ); //None
 	self addCACCamos( 1 ); //Brockhaurd
 	self addCACCamos( 2 ); //Bushdweller
@@ -1066,10 +1011,10 @@ addCACSecondaries( stat )
 }
 
 addCACSecondaryAttachments( stat )
-{	
-		cacSAttachment = spawnstruct();
-		cacSAttachment.stat = stat;
-		self.cacEdit_sattachments[self.cacEdit_sattachments.size] = cacSAttachment;
+{
+	cacSAttachment = spawnstruct();
+	cacSAttachment.stat = stat;
+	self.cacEdit_sattachments[self.cacEdit_sattachments.size] = cacSAttachment;
 }
 
 addCACPerk1( stat )
@@ -1109,9 +1054,9 @@ addCACCamos( stat )
 
 useSelectedClass()
 {
-  if ( !isDefined( self.pers ) || !isDefined( self.pers["team"] ) || self.pers["team"] == "spectator" )
-    return;
-    
-  selectedClassName = "custom" + (self.classesIndex+1) + ",0";
-  self maps\mp\gametypes\_class::menuClass( selectedClassName );
+	if ( !isDefined( self.pers ) || !isDefined( self.pers["team"] ) || self.pers["team"] == "spectator" )
+		return;
+		
+	selectedClassName = "custom" + (self.classesIndex+1) + ",0";
+	self maps\mp\gametypes\_class::menuClass( selectedClassName );
 }

@@ -1,14 +1,14 @@
 init()
 {
 	// Initialize the arrays to hold the gametype names and stock map names
-  // (This is for AdvancedACP)
+	// (This is for AdvancedACP)
 	initGametypesAndMaps();
-
+	
 	// Do not thread these initializations
 	openwarfare\_eventmanager::eventManagerInit();
 	openwarfare\_maprotationcs::init();
 	openwarfare\_visualmover::init();
-
+	
 	thread openwarfare\_advancedacp::init();
 	//thread openwarfare\_advancedmvs::init();
 	thread openwarfare\_antibunnyhopping::init();
@@ -18,7 +18,7 @@ init()
 	thread openwarfare\_blackscreen::init();
 	thread openwarfare\_bloodsplatters::init();
 	thread openwarfare\_bodyremoval::init();
-	thread openwarfare\_caceditor::init();	
+	thread openwarfare\_caceditor::init();
 	thread openwarfare\_capeditor::init();
 	thread openwarfare\_clanvsall::init();
 	thread openwarfare\_damageeffect::init();
@@ -26,16 +26,16 @@ init()
 	thread openwarfare\_disarmexplosives::init();
 	thread openwarfare\_dogtags::init();
 	thread openwarfare\_dvarmonitor::init();
-	thread openwarfare\_dynamicattachments::init();		
+	thread openwarfare\_dynamicattachments::init();
 	thread openwarfare\_extendedobituaries::init();
-	//thread openwarfare\_firingmode::init();	
-	thread openwarfare\_fitnesscs::init();	
+	//thread openwarfare\_firingmode::init();
+	thread openwarfare\_fitnesscs::init();
 	thread openwarfare\_globalchat::init();
 	thread openwarfare\_guidcs::init();
 	thread openwarfare\_healthsystem::init();
 	thread openwarfare\_hidescores::init();
 	thread openwarfare\_idlemonitor::init();
-	thread openwarfare\_keybinds::init();		
+	thread openwarfare\_keybinds::init();
 	//thread openwarfare\_killingspree::init();
 	thread openwarfare\_limitexplosives::init();
 	thread openwarfare\_livebroadcast::init();
@@ -46,7 +46,7 @@ init()
 	//thread openwarfare\_owbattlechatter::init();
 	//thread openwarfare\_paindeathsounds::init();
 	thread openwarfare\_playerdvars::init();
-	thread openwarfare\_players::init();		
+	thread openwarfare\_players::init();
 	thread openwarfare\_quickactions::init();
 	thread openwarfare\_rangefinder::init();
 	thread openwarfare\_realtimestats::init();
@@ -97,7 +97,7 @@ initGametypesAndMaps()
 	level.supportedGametypes["gr"] = "Greed";
 	level.supportedGametypes["gg"] = "Gun Game";
 	level.supportedGametypes["koth"] = "Headquarters";
-//	level.supportedGametypes["hns"] = "Hide And Seek";	
+//	level.supportedGametypes["hns"] = "Hide And Seek";
 	level.supportedGametypes["oitc"] = "One In The Chamber";
 	level.supportedGametypes["re"] = "Retrieval";
 	level.supportedGametypes["sab"] = "Sabotage";
@@ -118,12 +118,12 @@ initGametypesAndMaps()
 	level.stockMapNames["mp_broadcast"] = "Broadcast";
 	level.stockMapNames["mp_carentan"] = "Chinatown";
 	level.stockMapNames["mp_countdown"] = "Countdown";
-	level.stockMapNames["mp_crash"] = "Crash";		
+	level.stockMapNames["mp_crash"] = "Crash";
 	level.stockMapNames["mp_creek"] = "Creek";
 	level.stockMapNames["mp_crossfire"] = "Crossfire";
 	level.stockMapNames["mp_citystreets"] = "District";
 	level.stockMapNames["mp_farm"] = "Downpour";
-	level.stockMapNames["mp_killhouse"] = "Killhouse";	
+	level.stockMapNames["mp_killhouse"] = "Killhouse";
 	level.stockMapNames["mp_overgrown"] = "Overgrown";
 	level.stockMapNames["mp_pipeline"] = "Pipeline";
 	level.stockMapNames["mp_shipment"] = "Shipment";
@@ -148,7 +148,7 @@ buildListFromArrayKeys( arrayToList, delimiter )
 			newList += delimiter;
 		}
 		newList += arrayKeys[i];
-	}	
-
+	}
+	
 	return newList;
 }

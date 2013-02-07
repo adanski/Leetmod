@@ -86,7 +86,7 @@ init()
 	precacheShader( "score_bar_bg" );
 	precacheShader( "score_bar_allies" );
 	precacheShader( "score_bar_opfor" );
-
+	
 	level.uiParent = spawnstruct();
 	level.uiParent.horzAlign = "left";
 	level.uiParent.vertAlign = "top";
@@ -97,17 +97,16 @@ init()
 	level.uiParent.width = 0;
 	level.uiParent.height = 0;
 	level.uiParent.children = [];
-
+	
 	level.fontHeight = 12;
-
+	
 	level.hud["allies"] = spawnstruct();
 	level.hud["axis"] = spawnstruct();
-
+	
 	// we can, of course, separate out the following constants for splitscreen.
 	// primary progress bars are for things like capturing flags or planting bombs - big, important things that happen as you play a gametype
 	// Check if we need to move the progress bar to the bottom of the screen instead of being in the middle
-	switch ( level.scr_adjust_progress_bars )
-	{
+	switch ( level.scr_adjust_progress_bars ) {
 		case 0:
 			level.primaryProgressBarY = -61; // from center
 			level.primaryProgressBarTextY = -75;
@@ -127,49 +126,46 @@ init()
 			level.secondaryProgressBarTextY = 169;
 			break;
 	}
-	// 
-
+	//
+	
 	level.primaryProgressBarX = 0;
 	level.primaryProgressBarHeight = 9; //28; // this is the height and width of the whole progress bar, including the outline. the part that actually moves is 2 pixels smaller.
 	level.primaryProgressBarWidth = 120;
 	level.primaryProgressBarTextX = 0;
 	level.primaryProgressBarFontSize = 1.4;
-
+	
 	level.secondaryProgressBarX = 0;
 	level.secondaryProgressBarHeight = 5;
 	level.secondaryProgressBarWidth = 150;
 	level.secondaryProgressBarTextX = 0;
 	level.secondaryProgressBarFontSize = 1.4;
-
-
-	if ( level.splitscreen )
-	{
+	
+	
+	if ( level.splitscreen ) {
 		// (x offset avoids overlapping radar on top left screen)
 		level.primaryProgressBarX = 20;
 		level.primaryProgressBarTextX = 20;
-
+		
 		level.primaryProgressBarY = 15;
 		level.primaryProgressBarTextY = 0;
 		level.primaryProgressBarHeight = 2;
 	}
-
+	
 	level.teamProgressBarY = 32; // 205;
 	level.teamProgressBarHeight = 14;
 	level.teamProgressBarWidth = 192;
 	level.teamProgressBarTextY = 8; // 155;
 	level.teamProgressBarFontSize = 1.65;
-
+	
 	if ( getDvar( "ui_score_bar" ) == "" )
 		setDvar( "ui_score_bar", 0 );
-
-	if ( level.splitscreen )
-	{
+		
+	if ( level.splitscreen ) {
 		level.lowerTextYAlign = "BOTTOM";
 		level.lowerTextY = -42;
 		level.lowerTextFontSize = 1.4;
 	}
-	else
-	{
+	else {
 		level.lowerTextYAlign = "CENTER";
 		level.lowerTextY = 70;
 		level.lowerTextFontSize = 2;
@@ -183,7 +179,7 @@ showClientScoreBar( time )
 	self endon ( "showClientScoreBar" );
 	self endon ( "death" );
 	self endon ( "disconnect" );
-
+	
 	self setClientDvar( "ui_score_bar", 1 );
 	wait ( time );
 	self setClientDvar( "ui_score_bar", 0 );
@@ -206,17 +202,15 @@ fontPulse(player)
 	player endon("disconnect");
 	player endon("joined_team");
 	player endon("joined_spectators");
-
+	
 	scaleRange = self.maxFontScale - self.baseFontScale;
-
-	while ( self.fontScale < self.maxFontScale )
-	{
+	
+	while ( self.fontScale < self.maxFontScale ) {
 		self.fontScale = min( self.maxFontScale, self.fontScale + (scaleRange / self.inFrames) );
 		wait 0.05;
 	}
-
-	while ( self.fontScale > self.baseFontScale )
-	{
+	
+	while ( self.fontScale > self.baseFontScale ) {
 		self.fontScale = max( self.baseFontScale, self.fontScale - (scaleRange / self.outFrames) );
 		wait 0.05;
 	}

@@ -8,7 +8,7 @@ init()
 	
 	if ( level.scr_quickactions_enable == 0 )
 		return;
-	
+		
 	// Initialize all the commands that we'll support
 	quickActions = initQuickActions();
 	level.scr_player_forcerespawn = getdvarx( "scr_player_forcerespawn", "int", 0, 0, 1 );
@@ -16,7 +16,7 @@ init()
 	// Make sure at least one quick action is enabled
 	if ( quickActions ) {
 		level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
-	}	
+	}
 }
 
 
@@ -38,11 +38,11 @@ addQuickAction( actionText, actionFunction )
 {
 	// The function without parameters returns if the functionality is enabled
 	actionEnabled = [[actionFunction]]();
-
+	
 	// Add the new quick command to the list
 	if ( actionEnabled ) {
 		level.quickActions[ level.quickActions.size ]["text"] = actionText;
-		level.quickActions[ level.quickActions.size - 1 ]["function"] = actionFunction;	
+		level.quickActions[ level.quickActions.size - 1 ]["function"] = actionFunction;
 	}
 }
 
@@ -82,9 +82,10 @@ quickActions()
 			if ( level.gametype != "sd" || ( !self.isPlanting && !self.isDefusing ) ) {
 				ms = 0;
 				while ( ms < 11 && self useButtonPressed() ) {
-					 ms++; wait (0.05);
+					ms++;
+					wait (0.05);
 				}
-
+				
 				// Releasing the key before half a second count as a tap
 				if ( ms < 11 ) {
 					currentAction++;
@@ -95,21 +96,24 @@ quickActions()
 					
 					// Show the player which command is active now
 					self iprintln( &"OW_QUICKACTION_TEXT", currentAction + 1, level.quickActions.size, level.quickActions[currentAction]["text"] );
-										
-				} else {
+					
+				}
+				else {
 					// Player is holding the use key for more than half a second execute the current command
 					if ( currentAction != -1 ) {
 						functionToCall = level.quickActions[currentAction]["function"];
 						self thread [[functionToCall]]( true );
 						while ( self useButtonPressed() ) wait (0.05);
 						self thread [[functionToCall]]( false );
-					} else {
-						while ( self useButtonPressed() ) wait (0.05);						
-					}					
+					}
+					else {
+						while ( self useButtonPressed() ) wait (0.05);
+					}
 				}
-			}			
-			pressReset = 0;	
-		}	else {
+			}
+			pressReset = 0;
+		}
+		else {
 			pressReset++;
 		}
 		
@@ -118,48 +122,45 @@ quickActions()
 			pressReset = 0;
 			currentAction = -1;
 			self iprintln( &"OW_QUICKACTION_ENDED" );
-		}		
-	}	
+		}
+	}
 }
 
 
 actionBandage( whatToDo )
 {
 	// If what to do is not defined then we return if this functionality is active
-	if ( !isDefined( whatToDo ) )
-	{
-    if ( getDvarInt( "scr_healthsystem_bleeding_enable") != 0 || getDvarInt( "scr_healthsystem_medic_enable") != 0 )
-      return true;
+	if ( !isDefined( whatToDo ) ) {
+		if ( getDvarInt( "scr_healthsystem_bleeding_enable") != 0 || getDvarInt( "scr_healthsystem_medic_enable") != 0 )
+			return true;
 		else
-      return false;
-  } 
-  
-  if ( !isDefined( self.stopBandage ) )
-    self.stopBandage = false;
-    
-    		
-  if ( self.stopBandage )
-  {
-    self.stopBandage = false;
-    
-    if ( isDefined( self.isBandaging ) && self.isBandaging )
-      self thread openwarfare\_healthsystem::bandageSelf();
-    if ( isDefined( self.isBandagingTeammate ) && self.isBandagingTeammate )
-      self thread openwarfare\_healthsystem::medic();
-    else if ( isDefined( self.isHealingTeammate ) && self.isHealingTeammate )
-      self thread openwarfare\_healthsystem::medic();
-    else if ( isDefined( self.isHealing ) && self.isHealing )
-      self thread openwarfare\_healthsystem::medic(); 
-  }
-  else
-  {
-    self.stopBandage = true;
-    
-    if ( isDefined( self.isBleeding ) && self.isBleeding )
-      self thread openwarfare\_healthsystem::bandageSelf();
+			return false;
+	}
+	
+	if ( !isDefined( self.stopBandage ) )
+		self.stopBandage = false;
+		
+		
+	if ( self.stopBandage ) {
+		self.stopBandage = false;
+		
+		if ( isDefined( self.isBandaging ) && self.isBandaging )
+			self thread openwarfare\_healthsystem::bandageSelf();
+		if ( isDefined( self.isBandagingTeammate ) && self.isBandagingTeammate )
+			self thread openwarfare\_healthsystem::medic();
+		else if ( isDefined( self.isHealingTeammate ) && self.isHealingTeammate )
+			self thread openwarfare\_healthsystem::medic();
+		else if ( isDefined( self.isHealing ) && self.isHealing )
+			self thread openwarfare\_healthsystem::medic();
+	}
+	else {
+		self.stopBandage = true;
+		
+		if ( isDefined( self.isBleeding ) && self.isBleeding )
+			self thread openwarfare\_healthsystem::bandageSelf();
 		else
-      self thread openwarfare\_healthsystem::medic();
-  }
+			self thread openwarfare\_healthsystem::medic();
+	}
 }
 
 
@@ -172,7 +173,7 @@ actionUnjam( whatToDo )
 	// We only try to unjam the weapon when whatToDo is set to true
 	if ( whatToDo ) {
 		self thread openwarfare\_weaponjam::unjamWeapon();
-	}		
+	}
 }
 
 
@@ -185,5 +186,5 @@ actionAttachDetach( whatToDo )
 	// We only try to attach/detach the attachment when whatToDo is set to true
 	if ( whatToDo ) {
 		self thread openwarfare\_dynamicattachments::attachDetachAttachment();
-	}		
+	}
 }

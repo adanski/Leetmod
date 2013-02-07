@@ -2,16 +2,15 @@ init()
 {
 	precacheShader("damage_feedback");
 	precacheShader("damage_feedback_j");
-
+	
 	level thread onPlayerConnect();
 }
 
 onPlayerConnect()
 {
-	while(1)
-	{
+	while(1) {
 		level waittill("connected", player);
-
+		
 		player.hud_damagefeedback = newClientHudElem(player);
 		player.hud_damagefeedback.horzAlign = "center";
 		player.hud_damagefeedback.vertAlign = "middle";
@@ -27,23 +26,21 @@ updateDamageFeedback( hitBodyArmor )
 {
 	if ( !isPlayer( self ) )
 		return;
-
+		
 	// If hiticons are totally disabled then don't do anything
 	if ( level.scr_enable_hiticon == 0 )
 		return;
-
+		
 	// If the victim has body armor and feedback for body armor hit is enabled show that shader
-	if ( hitBodyArmor && level.scr_enable_bodyarmor_feedback == 1 )
-	{
+	if ( hitBodyArmor && level.scr_enable_bodyarmor_feedback == 1 ) {
 		self.hud_damagefeedback setShader("damage_feedback_j", 24, 48);
 		self playlocalsound("MP_hit_alert"); // TODO: change sound?
 	}
-	else
-	{
+	else {
 		self.hud_damagefeedback setShader("damage_feedback", 24, 48);
 		self playlocalsound("MP_hit_alert");
 	}
-
+	
 	self.hud_damagefeedback.alpha = 1;
 	self.hud_damagefeedback fadeOverTime(1);
 	self.hud_damagefeedback.alpha = 0;

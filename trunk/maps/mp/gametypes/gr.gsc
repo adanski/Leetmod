@@ -68,11 +68,11 @@ main()
 	setDvar( "scr_score_shot_down_helicopter_gr", "0" );
 	setDvar( "scr_score_standard_kill_gr", "0" );
 	setDvar( "scr_score_vehicle_explosion_kill_gr", "0" );
-
-	// Disable the following modules	
+	
+	// Disable the following modules
 	setDvar( "scr_dogtags_enable_gr", "0" );
 	setDvar( "scr_bodyremoval_enable_gr", "0" );
-
+	
 	level.scr_gr_dogtag_autoremoval_time = getdvarx( "scr_gr_dogtag_autoremoval_time", "int", 60, 0, 300 );
 	level.scr_gr_minimap_mark_red_drops = getdvarx( "scr_gr_minimap_mark_red_drops", "int", 1, 0, 1 );
 	level.scr_gr_base_dogtag_score = getdvarx( "scr_gr_base_dogtag_score", "int", 10, 5, 50 );
@@ -84,24 +84,24 @@ main()
 	for ( i=0; i < level.scr_gr_color_levels.size; i++ ) {
 		level.scr_gr_color_levels[i] = int( level.scr_gr_color_levels[i] );
 	}
-
+	
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
-
+	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 0 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 400, 0, 5000 );
 	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 10, 0, 1440 );
-
-
+	
+	
 	level.teamBased = false;
-
-	level.onPrecacheGameType = ::onPrecacheGameType;	
+	
+	level.onPrecacheGameType = ::onPrecacheGameType;
 	level.onStartGameType = ::onStartGameType;
 	level.onSpawnPlayer = ::onSpawnPlayer;
 	level.onPlayerKilled = ::onPlayerKilled;
-
+	
 	game["dialog"]["gametype"] = gameTypeDialog( "greed" );
 }
 
@@ -118,17 +118,17 @@ onPrecacheGameType()
 {
 	// Initialize an array to keep all the assets we'll be using
 	game[level.gameType] = [];
-
+	
 	game[level.gameType]["drop_zone"] = loadFX( "misc/ui_flagbase_red" );
-
-	precacheShader( "compass_waypoint_extraction_zone" );	
+	
+	precacheShader( "compass_waypoint_extraction_zone" );
 	precacheShader( "waypoint_extraction_zone" );
 	precacheShader( "dogtag" );
 	
 	game[level.gameType]["1"] = loadFX( "greed/ui_pickup_green" );
 	game[level.gameType]["2"] = loadFX( "greed/ui_pickup_yellow" );
 	game[level.gameType]["3"] = loadFX( "greed/ui_pickup_purple" );
-	game[level.gameType]["4"] = loadFX( "greed/ui_pickup_red" );	
+	game[level.gameType]["4"] = loadFX( "greed/ui_pickup_red" );
 	
 	game[level.gameType]["pickup"] = loadfx( "props/crateExp_dust" );
 }
@@ -145,23 +145,21 @@ Show objectives to the player, initialize spawn points, and register score infor
 onStartGameType()
 {
 	setClientNameMode("auto_change");
-
+	
 	maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OW_OBJECTIVES_GR" );
 	maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OW_OBJECTIVES_GR" );
-
-	if ( level.splitscreen )
-	{
+	
+	if ( level.splitscreen ) {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_GR" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_GR" );
 	}
-	else
-	{
+	else {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_GR_SCORE" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_GR_SCORE" );
 	}
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OW_OBJECTIVES_GR_HINT" );
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OW_OBJECTIVES_GR_HINT" );
-
+	
 	level.spawnMins = ( 0, 0, 0 );
 	level.spawnMaxs = ( 0, 0, 0 );
 	maps\mp\gametypes\_spawnlogic::addSpawnPoints( "allies", "mp_dm_spawn" );
@@ -174,11 +172,11 @@ onStartGameType()
 	hqRadios = getentarray( "hq_hardpoint", "targetname" );
 	for ( i=0; i < hqRadios.size; i++ ) {
 		level.hqRadioLocations[i] = hqRadios[i].origin;
-	}	
-		
+	}
+	
 	allowed[0] = "dm";
 	maps\mp\gametypes\_gameobjects::main(allowed);
-
+	
 	level.displayRoundEndText = false;
 	level.QuickMessageToAll = true;
 	
@@ -198,12 +196,12 @@ onSpawnPlayer()
 {
 	self.isDropping = false;
 	self.dogtagsCollected = 0;
-
+	
 	spawnPoints = maps\mp\gametypes\_spawnlogic::getTeamSpawnPoints( self.pers["team"] );
 	spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_DM( spawnPoints );
-
+	
 	assert( isDefined(spawnpoint) );
-
+	
 	if ( !isDefined( self.carryIcon ) ) {
 		self.carryIcon = self createIcon( "dogtag", 50, 50 );
 		self.carryIcon setPoint( "CENTER", "CENTER", 220, 140 );
@@ -212,7 +210,7 @@ onSpawnPlayer()
 		self.carryIcon.sort = -3;
 		self.carryIcon.alpha = 0.75;
 	}
-
+	
 	if ( !isDefined( self.carryAmount ) ) {
 		self.carryAmount = self createFontString( "objective", 1.8 );
 		self.carryAmount.archived = true;
@@ -223,11 +221,11 @@ onSpawnPlayer()
 		self.carryAmount.alpha = 0.75;
 		self.carryAmount.color = ( 1, 1, 0 );
 	}
-
+	
 	self.carryAmount setValue( 0 );
 	self.carryIcon.alpha = 0.75;
 	self.carryAmount.alpha = 0.75;
-
+	
 	self spawn( spawnpoint.origin, spawnpoint.angles );
 	self thread onPlayerBody();
 }
@@ -238,7 +236,7 @@ onSpawnPlayer()
 =============
 greed
 
-Initializes all the map entities to be used (based on Sabotage) 
+Initializes all the map entities to be used (based on Sabotage)
 =============
 */
 greed()
@@ -249,17 +247,18 @@ greed()
 	
 	while ( level.inPrematchPeriod )
 		wait ( 0.05 );
-
+		
 	xWait( 1.0 );
-
+	
 	level.activeDropZones = [];
-
+	
 	timerDisplay = [];
 	timerDisplay = createServerTimer( "objective", 1.4 );
 	timerDisplay setPoint( "TOPRIGHT", "TOPRIGHT", 0, 0 );
 	if ( level.scr_gr_active_drop_zones == 1 ) {
 		timerDisplay.label = &"OW_GR_DROPZONE_RELOCATING_IN";
-	} else {
+	}
+	else {
 		timerDisplay.label = &"OW_GR_DROPZONES_RELOCATING_IN";
 	}
 	timerDisplay.alpha = 0;
@@ -267,13 +266,13 @@ greed()
 	timerDisplay.hideWhenInMenu = true;
 	
 	thread hideTimerDisplayOnGameEnd( timerDisplay );
-
+	
 	while(1) {
 		// Deactive the current active drop zones
 		for ( i=0; i < level.activeDropZones.size; i++ ) {
 			level.activeDropZones[i] removeDropZone();
 		}
-		level.activeDropZones = [];		
+		level.activeDropZones = [];
 		
 		// Pick randomly the new drop zones from the array of HQ locations
 		availableRadioLocations = level.hqRadioLocations;
@@ -290,12 +289,12 @@ greed()
 					tempArray[ tempArray.size ] = availableRadioLocations[j];
 				}
 			}
-			availableRadioLocations = tempArray;			
+			availableRadioLocations = tempArray;
 		}
 		
-		// Play a sound for players so they know the drop zones have re-located		
+		// Play a sound for players so they know the drop zones have re-located
 		playSoundOnPlayers( "mp_suitcase_pickup" );
-	
+		
 		// Do a manual handle of the clock so we can change its color and play a sound for the last 5 seconds
 		timeLeft = level.scr_gr_drop_zones_relocation_time;
 		timerDisplay.color = (1,1,1);
@@ -310,7 +309,7 @@ greed()
 					player = level.players[p];
 					if ( isDefined( player ) ) {
 						player playLocalSound( "ui_mp_suitcasebomb_timer" );
-					}				
+					}
 				}
 			}
 			
@@ -323,10 +322,11 @@ greed()
 				while ( level.inTimeoutPeriod ) wait (0.05);
 				timerDisplay setTimer( timeLeft );
 				timerDisplay.alpha = 1;
-			} else {
+			}
+			else {
 				timeLeft--;
 			}
-		}	
+		}
 	}
 }
 
@@ -366,12 +366,12 @@ removeDropZone()
 	self.objWorld destroy();
 	
 	// Remove the base effect
-  if( isDefined( self.baseEffect ) )
-    self.baseEffect delete();
-	
+	if( isDefined( self.baseEffect ) )
+		self.baseEffect delete();
+		
 	// Remove the trigger
-  if( isDefined( self.trigger ) )
-    self.trigger delete();
+	if( isDefined( self.trigger ) )
+		self.trigger delete();
 }
 
 
@@ -400,7 +400,7 @@ createDropZone( dropZoneCoord )
 	}
 	
 	// Set stuff for world icon
-	dropZone.objWorld = newHudElem();			
+	dropZone.objWorld = newHudElem();
 	origin = dropZoneCoord + (0,0,75);
 	dropZone.objWorld.name = "dropzone_" + dropZone.trigger getEntityNumber();
 	dropZone.objWorld.x = origin[0];
@@ -421,7 +421,7 @@ createDropZone( dropZoneCoord )
 	triggerFx( dropZone.baseEffect );
 	
 	// Start monitoring the trigger
-	dropZone thread onDropZoneUse();	
+	dropZone thread onDropZoneUse();
 	
 	return dropZone;
 }
@@ -451,31 +451,32 @@ onDropZoneUse()
 			// The more dog tags the higher the score per dog tag received
 			dogtagsCollected = player.dogtagsCollected;
 			totalScore = int( player.dogtagsCollected * 1.5 ) * level.scr_gr_base_dogtag_score;
-	
-			// Remove the dog tags from the player and update its HUD 
+			
+			// Remove the dog tags from the player and update its HUD
 			player.dogtagsCollected = 0;
 			player.carryAmount setValue( 0 );
 			
 			// Give the player and the team the score
 			player givePlayerScore( "capture", totalScore );
-	
+			
 			// Play the corresponding sounds and show the message
 			for ( i = 0; i < level.players.size; i++ ) {
 				if ( level.players[i].pers["team"] != "spectator" ) {
 					level.players[i] iprintln( &"OW_DOGTAGS_CAPTURED_BY", player, dogtagsCollected );
 					if ( level.players[i] != player ) {
 						level.players[i] playLocalSound( "mp_obj_captured" );
-					} else {
+					}
+					else {
 						level.players[i] playLocalSound( "mp_enemy_obj_captured" );
 					}
 				}
 			}
-	
+			
 			player logString( dogtagsCollected  + "dog tags captured" );
 			
 			lpselfnum = player getEntityNumber();
 			lpGuid = player getGuid();
-			logPrint("DTC;" + lpGuid + ";" + lpselfnum + ";" + player.name + ";" + dogtagsCollected + "\n");		
+			logPrint("DTC;" + lpGuid + ";" + lpselfnum + ";" + player.name + ";" + dogtagsCollected + "\n");
 			
 			player.isDropping = false;
 		}
@@ -494,16 +495,16 @@ Gives the player the proper score for dropping the dog tags
 givePlayerScore( event, score )
 {
 	self maps\mp\gametypes\_rank::giveRankXP( event, score );
-		
+	
 	self.pers["score"] += score;
 	self maps\mp\gametypes\_persistence::statAdd( "score", (self.pers["score"] - score) );
 	self.score = self.pers["score"];
 	
 	thread maps\mp\gametypes\_globallogic::sendUpdatedDMScores();
-
+	
 	self notify ( "update_playerscore_hud" );
-	self thread maps\mp\gametypes\_globallogic::checkScoreLimit();	
-}	
+	self thread maps\mp\gametypes\_globallogic::checkScoreLimit();
+}
 
 
 
@@ -522,7 +523,7 @@ onPlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHit
 	
 	// Make sure the attacker is not in the same team
 	if ( isPlayer( attacker ) ) {
-
+	
 		// Check if the victim was carrying dog tags
 		if ( self.dogtagsCollected > 0 ) {
 			// Get the distance between the victim and the drop zone - 591 units = 15 meters
@@ -550,9 +551,9 @@ onPlayerBody()
 {
 	self endon("disconnect");
 	level endon("game_ended");
-
+	
 	self waittill("player_body");
-
+	
 	// Save the body in case the player disconnects
 	thisBody = self.body;
 	
@@ -567,13 +568,15 @@ onPlayerBody()
 	effectToUse = game[level.gameType]["1"];
 	if ( dogtagsAmount >= level.scr_gr_color_levels[2] ) {
 		effectToUse = game[level.gameType]["4"];
-	} else if ( dogtagsAmount >= level.scr_gr_color_levels[1] ) {
+	}
+	else if ( dogtagsAmount >= level.scr_gr_color_levels[1] ) {
 		effectToUse = game[level.gameType]["3"];
-	} else if ( dogtagsAmount >= level.scr_gr_color_levels[0] ) {
+	}
+	else if ( dogtagsAmount >= level.scr_gr_color_levels[0] ) {
 		effectToUse = game[level.gameType]["2"];
 	}
 	
-	// Create the special effect 	
+	// Create the special effect
 	colorEffect = spawnPickupFX( thisBody.origin + (0,0,15), effectToUse );
 	
 	// Create pickup trigger
@@ -581,7 +584,7 @@ onPlayerBody()
 	
 	// If this is a red drop mark it on the radar if the option is active
 	if ( dogtagsAmount >= level.scr_gr_color_levels[2] && level.scr_gr_minimap_mark_red_drops ) {
-		thisBody thread showOnMinimap();	
+		thisBody thread showOnMinimap();
 	}
 	
 	// Remove the trigger if the dog tag expire
@@ -591,7 +594,7 @@ onPlayerBody()
 	
 	// Wait for another player to pickup the dogtags
 	thisBody thread removeTriggerOnPickup( dogtagsAmount, dogtagTrigger, colorEffect );
-}	
+}
 
 
 
@@ -611,9 +614,9 @@ showOnMinimap()
 		objective_icon( objCompass, "dogtag" );
 		//objective_onentity( objCompass, self );
 	}
-		
+	
 	// Set stuff for world icon
-	objWorld = newHudElem();			
+	objWorld = newHudElem();
 	origin = self.origin + (0,0,25);
 	objWorld.name = "dogtag_" + self getEntityNumber();
 	objWorld.x = origin[0];
@@ -632,8 +635,8 @@ showOnMinimap()
 	// Stop flashing
 	objWorld notify("stop_flashing_thread");
 	objWorld thread maps\mp\gametypes\_objpoints::stopFlashing();
-
-	// Wait some time to make sure the main loop ends	
+	
+	// Wait some time to make sure the main loop ends
 	wait (0.25);
 	
 	// Delete the objective
@@ -662,19 +665,19 @@ removeTriggerOnTimeout( dogtagTrigger, colorEffect )
 	
 	// Remove the special effect and the trigger
 	dogtagTrigger notify("timed_out");
-  
-	wait (0.05);
-  
-	if( isDefined( dogtagTrigger ) )
-    dogtagTrigger delete();
-  if( isDefined( colorEffect ) )
-    colorEffect delete();	
 	
-	// Remove the body 
+	wait (0.05);
+	
+	if( isDefined( dogtagTrigger ) )
+		dogtagTrigger delete();
+	if( isDefined( colorEffect ) )
+		colorEffect delete();
+		
+	// Remove the body
 	if ( isDefined( self ) ) {
 		playfx( game[level.gameType]["pickup"], self.origin );
 		self delete();
-	}	
+	}
 }
 
 
@@ -698,23 +701,23 @@ removeTriggerOnPickup( dogtagsAmount, dogtagTrigger, colorEffect )
 	
 	// Give player a score of just one for at least picking them up
 	player thread givePlayerScore( "take", dogtagsAmount );
-			
+	
 	// Remove the special effect and the trigger
 	dogtagTrigger notify("picked_up");
-  
+	
 	wait (0.05);
-  
-  if( isDefined( colorEffect ) )
-    colorEffect delete();
-  if( isDefined( dogtagTrigger ) )
-    dogtagTrigger delete();
+	
+	if( isDefined( colorEffect ) )
+		colorEffect delete();
+	if( isDefined( dogtagTrigger ) )
+		dogtagTrigger delete();
 		
-	// Remove the body 
+	// Remove the body
 	if ( isDefined( self ) ) {
 		playfx( game[level.gameType]["pickup"], self.origin );
-		self delete();	
-	}				
-}	
+		self delete();
+	}
+}
 
 
 
@@ -724,7 +727,7 @@ spawnPickupFX
 
 Spawns an special effect in the given coordinates
 =============
-*/	
+*/
 spawnPickupFX( groundpoint, fx )
 {
 	effect = spawnFx( fx, groundpoint, (0,0,1), (1,0,0) );

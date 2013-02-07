@@ -8,7 +8,7 @@ init()
 	// If the variable has not been initialized then we are probably not running a ruleset or the ruleset hasn't set any variable to monitor
 	if ( !isDefined( level.dvarMonitor ) )
 		return;
-
+		
 	level thread dvarMonitor();
 }
 
@@ -17,8 +17,7 @@ dvarMonitor()
 {
 	level endon( "game_ended" );
 	
-	while(1)
-	{
+	while(1) {
 		wait (1);
 		
 		// Check if any variable has been changed since the last loop
@@ -33,9 +32,9 @@ dvarMonitor()
 				
 				level.dvarMonitor[iDvar]["value"] = currentValue;
 				wait (1);
-			}			
-		}		
-	}	
+			}
+		}
+	}
 }
 
 
@@ -43,9 +42,8 @@ playSoundOnEveryone( soundName )
 {
 	level endon( "game_ended" );
 	
-	for ( index = 0; index < level.players.size; index++ )
-	{
+	for ( index = 0; index < level.players.size; index++ ) {
 		player = level.players[index];
 		player playLocalSound( soundName );
-	}	
+	}
 }

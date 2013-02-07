@@ -4,32 +4,31 @@ init()
 {
 	// Load the names of the custom maps
 	customMapNamesList = getdvarlistx( "scr_custom_map_names_", "string", "" );
-
+	
 	// Load the maps into an array
 	level.customMapNames = [];
 	
 	for ( i=0; i < customMapNamesList.size; i++ ) {
 		// Split the maps
 		customMapNames = strtok( customMapNamesList[i], ";" );
-		for ( mapix = 0; mapix < customMapNames.size; mapix++ )
-		{
+		for ( mapix = 0; mapix < customMapNames.size; mapix++ ) {
 			// Split the map file name and the desired map name
 			thisMap = strtok( customMapNames[ mapix ], "=" );
 			// First element is the map file name and second element is the desired map name
 			level.customMapNames[ toLower( thisMap[0] ) ] = thisMap[1];
-		}		
+		}
 	}
-
+	
 	// Get the module's variables
 	level.sv_mapRotationLoadBased = getdvard( "sv_mapRotationLoadBased", "int", 0, 0, 1  );
 	level.sv_mapRotationScramble = getdvard( "sv_mapRotationScramble", "int", 0, 0, 1  );
 	level.scr_mrcs_auto_generate = getdvard( "scr_mrcs_auto_generate", "int", 0, 0, 1  );
-
+	
 	// Make sure this is not a listen server
-  // Why? Shouldn't a listen server use this features?
+	// Why? Shouldn't a listen server use this features?
 	//if ( getDvar("dedicated") == "listen server" )
-		//return;
-		
+	//return;
+	
 	// Clean the map rotation
 	cleanMapRotation( false );
 	
@@ -65,7 +64,8 @@ setRotationCurrent( initCheck )
 	if ( !initCheck && getdvarl( "_mrcs_sv_mapRotationCurrent", "string", "", undefined, undefined, level.sv_mapRotationLoadBased ) != "" ) {
 		setDvar( "sv_mapRotationCurrent", getdvarl( "_mrcs_sv_mapRotationCurrent", "string", "", undefined, undefined, level.sv_mapRotationLoadBased ) );
 		
-	} else {
+	}
+	else {
 		// Check if we need to set a new rotation line
 		if ( initCheck && getDvar( "sv_mapRotationCurrent" ) != "" )
 			return;
@@ -76,13 +76,14 @@ setRotationCurrent( initCheck )
 			cleanMapRotation( false );
 			currentLine = 0;
 			restartRotation = initCheck && (level.sv_mapRotationScramble == 1 || level.scr_mrcs_auto_generate == 1);
-		} else {
+		}
+		else {
 			currentLine = getdvarl( "_mrcs_line", "int", -1, -1, 99, level.sv_mapRotationLoadBased );
 			if ( initCheck ) {
 				currentLine++;
 			}
 		}
-
+		
 		// Get the map rotations
 		mapRotations = getMapRotations();
 		
@@ -95,7 +96,7 @@ setRotationCurrent( initCheck )
 			}
 			currentLine = 0;
 		}
-			
+		
 		// Set the current rotation
 		setDvar( "sv_mapRotationCurrent", mapRotations[currentLine] );
 		setDvarL( "_mrcs_line", currentLine, false );
@@ -119,7 +120,7 @@ cleanMapRotation( forceClean )
 	
 	// Check if we need to scramble the rotation
 	if ( level.sv_mapRotationScramble == 1 || level.scr_mrcs_auto_generate == 1 ) {
-		mgCombinations = scrambleMapRotation( mgCombinations );		
+		mgCombinations = scrambleMapRotation( mgCombinations );
 	}
 	
 	// Initialize an array to keep the new rotations
@@ -133,14 +134,14 @@ cleanMapRotation( forceClean )
 			newMapRotationsLine++;
 			newMapRotations[newMapRotationsLine] = "";
 		}
-
+		
 		// Add a space only if this is not the first thing we add to this line
 		if ( newMapRotations[newMapRotationsLine] != "" ) {
 			newMapRotations[newMapRotationsLine] += " ";
 		}
 		// Add the gametype change
-		newMapRotations[newMapRotationsLine] += "gametype " + mgCombinations[mgc]["gametype"];	
-		newMapRotations[newMapRotationsLine] += " map " + mgCombinations[mgc]["mapname"];				
+		newMapRotations[newMapRotationsLine] += "gametype " + mgCombinations[mgc]["gametype"];
+		newMapRotations[newMapRotationsLine] += " map " + mgCombinations[mgc]["mapname"];
 	}
 	
 	// Set the next map rotation empty
@@ -150,7 +151,7 @@ cleanMapRotation( forceClean )
 	setDvarL( "sv_mapRotation", newMapRotations[0], false );
 	for ( mr=1; mr < newMapRotations.size; mr++ ) {
 		setDvarL( "sv_mapRotation_" + mr, newMapRotations[mr], false );
-	}	
+	}
 	
 	// Map rotation cleaned, reset rotation string and restart the first map
 	setDvar( "sv_mapRotationCurrent", "" );
@@ -172,20 +173,21 @@ scrambleMapRotation( mgCombinations )
 		// Search for the element
 		while ( !isDefined( mgCombinations[ elementPosition ] ) && elementPosition < maxIterations )
 			elementPosition++;
-		
+			
 		// If we reach end of array we'll search from the beginning
 		if ( elementPosition == maxIterations ) {
 			elementPosition = 0;
 			// Search for the element
 			while ( !isDefined( mgCombinations[ elementPosition ] ) && elementPosition < maxIterations )
-				elementPosition++;				
+				elementPosition++;
 		}
 		
 		// Add the new element
 		if ( isDefined( mgCombinations[ elementPosition ] ) ) {
 			newCombinations[ newCombinations.size ] = mgCombinations[ elementPosition ];
 			mgCombinations[ elementPosition ] = undefined;
-		} else {
+		}
+		else {
 			// Why the hell are we here?
 			break;
 		}
@@ -214,7 +216,7 @@ getMapRotations()
 		thisMapRotation = tolower( getdvarl( "sv_mapRotation_" + mr, "string", "", undefined, undefined, level.sv_mapRotationLoadBased ) );
 	}
 	
-	return mapRotations;	
+	return mapRotations;
 }
 
 
@@ -243,7 +245,8 @@ getMapGametypeCombinations(fromCurrentRotation)
 				// Check if we have gametypes defined for this map, if not we'll use the default ones
 				if ( !isDefined( mapGametypes[1] ) ) {
 					mapGametypes[1] = defaultGametypes;
-				} else {
+				}
+				else {
 					// Convert them into array
 					mapGametypes[1] = strtok( mapGametypes[1], "," );
 				}
@@ -254,27 +257,27 @@ getMapGametypeCombinations(fromCurrentRotation)
 					if ( isSubstr( ";"+level.defaultGametypeList+";", ";"+mapGametypes[1][g]+";" ) ) {
 						newElement = mgCombinations.size;
 						mgCombinations[newElement]["gametype"] = mapGametypes[1][g];
-						mgCombinations[newElement]["mapname"] = mapGametypes[0];						
-					}					
-				}				
-			}		
+						mgCombinations[newElement]["mapname"] = mapGametypes[0];
+					}
+				}
+			}
 			
 			// Get the next line
 			mapLine++;
 			mapsToProcess = tolower( getdvarl( "scr_mrcs_auto_maps_" + mapLine, "string", "", undefined, undefined, level.sv_mapRotationLoadBased ) );
 		}
 		
-	} else {
-    if(fromCurrentRotation && getdvar( "sv_mapRotationCurrent" ) != "")
-      mapRotations[0] = tolower( getdvar( "sv_mapRotationCurrent" ) );
-    else
-      mapRotations = getMapRotations();
-	
+	}
+	else {
+		if(fromCurrentRotation && getdvar( "sv_mapRotationCurrent" ) != "")
+			mapRotations[0] = tolower( getdvar( "sv_mapRotationCurrent" ) );
+		else
+			mapRotations = getMapRotations();
+			
 		// Convert map rotations into array with all the map/gametype combinations
 		currentGametype = tolower( getdvard( "g_gametype", "string", "war" ) );
-
-		for ( mr=0; mr < mapRotations.size; mr++ )
-		{
+		
+		for ( mr=0; mr < mapRotations.size; mr++ ) {
 			// Split the line into each element
 			thisMapRotation = strtok( mapRotations[mr], " " );
 			
@@ -284,18 +287,20 @@ getMapGametypeCombinations(fromCurrentRotation)
 				if ( thisMapRotation[e] == "gametype" || thisMapRotation[e] == "map" ) {
 					continue;
 					
-				// Check for valid gametype (we add semicolons to the string to make sure we have a full gametype name)
-				} else if ( isSubstr( ";"+level.defaultGametypeList+";", ";"+thisMapRotation[e]+";" ) ) {
+					// Check for valid gametype (we add semicolons to the string to make sure we have a full gametype name)
+				}
+				else if ( isSubstr( ";"+level.defaultGametypeList+";", ";"+thisMapRotation[e]+";" ) ) {
 					currentGametype = thisMapRotation[e];
 					continue;
 					
-				// Check for map and add it to the new list
-				} else if ( getSubStr( thisMapRotation[e], 0, 3 ) == "mp_" ) {
+					// Check for map and add it to the new list
+				}
+				else if ( getSubStr( thisMapRotation[e], 0, 3 ) == "mp_" ) {
 					newElement = mgCombinations.size;
 					mgCombinations[newElement]["gametype"] = currentGametype;
 					mgCombinations[newElement]["mapname"] = thisMapRotation[e];
-				}			
-			}				
+				}
+			}
 		}
 	}
 	
@@ -312,7 +317,7 @@ getNextMapInRotation()
 	if ( mapRotation == "" ) {
 		mapRotation = getdvarl( "sv_mapRotation", "string", "", undefined, undefined, level.sv_mapRotationLoadBased );
 	}
-
+	
 	// Split the map rotation
 	mapRotation = strtok( mapRotation, " " );
 	mapIdx = 0;
@@ -322,7 +327,7 @@ getNextMapInRotation()
 	}
 	// The next element is the map name
 	mapName = mapRotation[ mapIdx + 1 ];
-
+	
 	// Now go back and search for the prior gametype keyword
 	mapIdx--;
 	while ( mapIdx >= 0 && mapRotation[ mapIdx ] != "gametype" ) {
@@ -330,17 +335,18 @@ getNextMapInRotation()
 	}
 	if ( mapIdx >= 0 ) {
 		gameType = mapRotation[ mapIdx + 1 ];
-	} else {
+	}
+	else {
 		gameType = getdvar( "g_gametype" );
 	}
-
+	
 	// Update the variabels containing the next map in the rotation
 	nextMapInfor = [];
 	nextMapInfor["mapname"] = mapName;
 	nextMapInfor["gametype"] = gameType;
-
+	
 	level.nextMapInfo = nextMapInfor;
-
+	
 	return;
 }
 

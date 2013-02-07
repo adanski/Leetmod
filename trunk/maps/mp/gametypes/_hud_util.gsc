@@ -5,10 +5,10 @@ setParent( element )
 		
 	if ( isDefined( self.parent ) )
 		self.parent removeChild( self );
-
+		
 	self.parent = element;
 	self.parent addChild( self );
-
+	
 	if ( isDefined( self.point ) )
 		self setPoint( self.point, self.relativePoint, self.xOffset, self.yOffset );
 	else
@@ -29,9 +29,8 @@ addChild( element )
 removeChild( element )
 {
 	element.parent = undefined;
-
-	if ( self.children[self.children.size-1] != element )
-	{
+	
+	if ( self.children[self.children.size-1] != element ) {
 		self.children[element.index] = self.children[self.children.size-1];
 		self.children[element.index].index = element.index;
 	}
@@ -45,25 +44,25 @@ setPoint( point, relativePoint, xOffset, yOffset, moveTime )
 {
 	if ( !isDefined( moveTime ) )
 		moveTime = 0;
-
+		
 	element = self getParent();
-
+	
 	if ( moveTime )
 		self moveOverTime( moveTime );
-	
+		
 	if ( !isDefined( xOffset ) )
 		xOffset = 0;
 	self.xOffset = xOffset;
-
+	
 	if ( !isDefined( yOffset ) )
 		yOffset = 0;
 	self.yOffset = yOffset;
-		
+	
 	self.point = point;
-
+	
 	self.alignX = "center";
 	self.alignY = "middle";
-
+	
 	if ( isSubStr( point, "TOP" ) )
 		self.alignY = "top";
 	if ( isSubStr( point, "BOTTOM" ) )
@@ -72,15 +71,15 @@ setPoint( point, relativePoint, xOffset, yOffset, moveTime )
 		self.alignX = "left";
 	if ( isSubStr( point, "RIGHT" ) )
 		self.alignX = "right";
-
+		
 	if ( !isDefined( relativePoint ) )
 		relativePoint = point;
-
+		
 	self.relativePoint = relativePoint;
-
+	
 	relativeX = "center";
 	relativeY = "middle";
-
+	
 	if ( isSubStr( relativePoint, "TOP" ) )
 		relativeY = "top";
 	if ( isSubStr( relativePoint, "BOTTOM" ) )
@@ -89,34 +88,29 @@ setPoint( point, relativePoint, xOffset, yOffset, moveTime )
 		relativeX = "left";
 	if ( isSubStr( relativePoint, "RIGHT" ) )
 		relativeX = "right";
-
-	if ( element == level.uiParent )
-	{
+		
+	if ( element == level.uiParent ) {
 		self.horzAlign = relativeX;
 		self.vertAlign = relativeY;
 	}
-	else
-	{
+	else {
 		self.horzAlign = element.horzAlign;
 		self.vertAlign = element.vertAlign;
 	}
-
-
-	if ( relativeX == element.alignX )
-	{
+	
+	
+	if ( relativeX == element.alignX ) {
 		offsetX = 0;
 		xFactor = 0;
 	}
-	else if ( relativeX == "center" || element.alignX == "center" )
-	{
+	else if ( relativeX == "center" || element.alignX == "center" ) {
 		offsetX = int(element.width / 2);
 		if ( relativeX == "left" || element.alignX == "right" )
 			xFactor = -1;
 		else
-			xFactor = 1;	
+			xFactor = 1;
 	}
-	else
-	{
+	else {
 		offsetX = element.width;
 		if ( relativeX == "left" )
 			xFactor = -1;
@@ -124,22 +118,19 @@ setPoint( point, relativePoint, xOffset, yOffset, moveTime )
 			xFactor = 1;
 	}
 	self.x = element.x + (offsetX * xFactor);
-
-	if ( relativeY == element.alignY )
-	{
+	
+	if ( relativeY == element.alignY ) {
 		offsetY = 0;
 		yFactor = 0;
 	}
-	else if ( relativeY == "middle" || element.alignY == "middle" )
-	{
+	else if ( relativeY == "middle" || element.alignY == "middle" ) {
 		offsetY = int(element.height / 2);
 		if ( relativeY == "top" || element.alignY == "bottom" )
 			yFactor = -1;
 		else
-			yFactor = 1;	
+			yFactor = 1;
 	}
-	else
-	{
+	else {
 		offsetY = element.height;
 		if ( relativeY == "top" )
 			yFactor = -1;
@@ -151,8 +142,7 @@ setPoint( point, relativePoint, xOffset, yOffset, moveTime )
 	self.x += self.xOffset;
 	self.y += self.yOffset;
 	
-	switch ( self.elemType )
-	{
+	switch ( self.elemType ) {
 		case "bar":
 			setPointBar( point, relativePoint, xOffset, yOffset );
 			//self.bar setPoint( point, relativePoint, xOffset, yOffset );
@@ -180,12 +170,12 @@ setPointBar( point, relativePoint, xOffset, yOffset )
 		self.bar.x = self.x - self.width;
 	else
 		self.bar.x = self.x - int(self.width / 2);
-	
+		
 	if ( self.alignY == "top" )
 		self.bar.y = self.y;
 	else if ( self.alignY == "bottom" )
 		self.bar.y = self.y;
-
+		
 	self updateBar( self.bar.frac );
 }
 
@@ -203,23 +193,20 @@ updateBarScale( barFrac, rateOfChange ) // rateOfChange is optional and is in "(
 	
 	if ( !barWidth )
 		barWidth = 1;
-	
+		
 	self.bar.frac = barFrac;
 	self.bar setShader( self.bar.shader, barWidth, self.height );
 	
 	assertEx( barWidth <= self.width, "barWidth <= self.width: " + barWidth + " <= " + self.width + " - barFrac was " + barFrac );
 	
 	//if barWidth is bigger than self.width then we are drawing more than 100%
-	if ( isDefined( rateOfChange ) && barWidth < self.width ) 
-	{
-		if ( rateOfChange > 0 )
-		{
+	if ( isDefined( rateOfChange ) && barWidth < self.width ) {
+		if ( rateOfChange > 0 ) {
 			//printLn( "scaling from: " + barWidth + " to " + self.width + " at " + ((1 - barFrac) / rateOfChange) );
 			assertex( ((1 - barFrac) / rateOfChange) > 0, "barFrac: " + barFrac + "rateOfChange: " + rateOfChange );
 			self.bar scaleOverTime( (1 - barFrac) / rateOfChange, self.width, self.height );
 		}
-		else if ( rateOfChange < 0 )
-		{
+		else if ( rateOfChange < 0 ) {
 			//printLn( "scaling from: " + barWidth + " to " + 0 + " at " + (barFrac / (-1 * rateOfChange)) );
 			assertex(  (barFrac / (-1 * rateOfChange)) > 0, "barFrac: " + barFrac + "rateOfChange: " + rateOfChange );
 			self.bar scaleOverTime( barFrac / (-1 * rateOfChange), 1, self.height );
@@ -255,7 +242,7 @@ createServerFontString( font, fontScale, team )
 		fontElem = newTeamHudElem( team );
 	else
 		fontElem = newHudElem( self );
-	
+		
 	fontElem.elemType = "font";
 	fontElem.font = font;
 	fontElem.fontscale = fontScale;
@@ -273,7 +260,7 @@ createServerFontString( font, fontScale, team )
 }
 
 createServerTimer( font, fontScale, team )
-{	
+{
 	if ( isDefined( team ) )
 		timerElem = newTeamHudElem( team );
 	else
@@ -310,7 +297,7 @@ createIcon( shader, width, height )
 	
 	if ( isDefined( shader ) )
 		iconElem setShader( shader, width, height );
-	
+		
 	return iconElem;
 }
 
@@ -334,7 +321,7 @@ createServerIcon( shader, width, height, team )
 	
 	if ( isDefined( shader ) )
 		iconElem setShader( shader, width, height );
-	
+		
 	return iconElem;
 }
 
@@ -353,12 +340,11 @@ createServerBar( color, width, height, flashFrac, team, selected )
 	barElem.shader = "progress_bar_fill";
 	barElem setShader( "progress_bar_fill", width, height );
 	barElem.hidden = false;
-	if ( isDefined( flashFrac ) )
-	{
+	if ( isDefined( flashFrac ) ) {
 		barElem.flashFrac = flashFrac;
 //		barElem thread flashThread();
 	}
-
+	
 	if ( isDefined( team ) )
 		barElemFrame = newTeamHudElem( team );
 	else
@@ -381,7 +367,7 @@ createServerBar( color, width, height, flashFrac, team, selected )
 	else
 		barElemFrame setShader( "progress_bar_fg", width, height );
 	barElemFrame.hidden = false;
-
+	
 	if ( isDefined( team ) )
 		barElemBG = newTeamHudElem( team );
 	else
@@ -417,12 +403,11 @@ createBar( color, width, height, flashFrac )
 	barElem.shader = "progress_bar_fill";
 	barElem setShader( "progress_bar_fill", width, height );
 	barElem.hidden = false;
-	if ( isDefined( flashFrac ) )
-	{
+	if ( isDefined( flashFrac ) ) {
 		barElem.flashFrac = flashFrac;
 //		barElem thread flashThread();
 	}
-
+	
 	barElemFrame = newClientHudElem( self );
 	barElemFrame.elemType = "icon";
 	barElemFrame.x = 0;
@@ -442,8 +427,7 @@ createBar( color, width, height, flashFrac )
 	
 	barElemBG = newClientHudElem( self );
 	barElemBG.elemType = "bar";
-	if ( !level.splitScreen )
-	{
+	if ( !level.splitScreen ) {
 		barElemBG.x = -2;
 		barElemBG.y = -2;
 	}
@@ -467,8 +451,7 @@ createBar( color, width, height, flashFrac )
 getCurrentFraction()
 {
 	frac = self.bar.frac;
-	if (isdefined(self.bar.rateOfChange))
-	{
+	if (isdefined(self.bar.rateOfChange)) {
 		frac += (getTime() - self.bar.lastUpdateTime) * self.bar.rateOfChange;
 		if (frac > 1) frac = 1;
 		if (frac < 0) frac = 0;
@@ -483,7 +466,7 @@ createPrimaryProgressBar()
 		bar setPoint("TOP", undefined, level.primaryProgressBarX, level.primaryProgressBarY);
 	else
 		bar setPoint("CENTER", undefined, level.primaryProgressBarX, level.primaryProgressBarY);
-
+		
 	return bar;
 }
 createPrimaryProgressBarText()
@@ -493,7 +476,7 @@ createPrimaryProgressBarText()
 		text setPoint("TOP", undefined, level.primaryProgressBarTextX, level.primaryProgressBarTextY);
 	else
 		text setPoint("CENTER", undefined, level.primaryProgressBarTextX, level.primaryProgressBarTextY);
-	
+		
 	text.sort = -1;
 	return text;
 }
@@ -503,7 +486,7 @@ createSecondaryProgressBar()
 {
 	bar = createBar( (1, 1, 1), level.secondaryProgressBarWidth, level.secondaryProgressBarHeight );
 	bar setPoint("BOTTOM", undefined, 0, level.secondaryProgressBarY);
-	
+
 	return bar;
 }
 createSecondaryProgressBarText()
@@ -540,16 +523,15 @@ hideElem()
 		return;
 		
 	self.hidden = true;
-
+	
 	if ( self.alpha != 0 )
 		self.alpha = 0;
-	
-	if ( self.elemType == "bar" || self.elemType == "bar_shader" )
-	{
+		
+	if ( self.elemType == "bar" || self.elemType == "bar_shader" ) {
 		self.bar.hidden = true;
 		if ( self.bar.alpha != 0 )
 			self.bar.alpha = 0;
-
+			
 		self.barFrame.hidden = true;
 		if ( self.barFrame.alpha != 0 )
 			self.barFrame.alpha = 0;
@@ -562,16 +544,15 @@ showElem()
 		return;
 		
 	self.hidden = false;
-
+	
 	if ( self.alpha != 1 )
 		self.alpha = 1;
-	
-	if ( self.elemType == "bar" || self.elemType == "bar_shader" )
-	{
+		
+	if ( self.elemType == "bar" || self.elemType == "bar_shader" ) {
 		self.bar.hidden = false;
 		if ( self.bar.alpha != 1 )
 			self.bar.alpha = 1;
-
+			
 		self.barFrame.hidden = false;
 		if ( self.barFrame.alpha != 1 )
 			self.barFrame.alpha = 1;
@@ -582,16 +563,13 @@ showElem()
 flashThread()
 {
 	self endon ( "death" );
-
+	
 	if ( !self.hidden )
 		self.alpha = 1;
 		
-	while(1)
-	{
-		if ( self.frac >= self.flashFrac )
-		{
-			if ( !self.hidden )
-			{
+	while(1) {
+		if ( self.frac >= self.flashFrac ) {
+			if ( !self.hidden ) {
 				self fadeOverTime(0.3);
 				self.alpha = .2;
 				wait(0.35);
@@ -600,11 +578,10 @@ flashThread()
 			}
 			wait(0.7);
 		}
-		else
-		{
+		else {
 			if ( !self.hidden && self.alpha != 1 )
 				self.alpha = 1;
-
+				
 			wait ( 0.05 );
 		}
 	}
@@ -614,22 +591,20 @@ flashThread()
 destroyElem()
 {
 	tempChildren = [];
-
-	for ( index = 0; index < self.children.size; index++ )
-	{
+	
+	for ( index = 0; index < self.children.size; index++ ) {
 		if ( isDefined( self.children[index] ) )
 			tempChildren[tempChildren.size] = self.children[index];
 	}
-
+	
 	for ( index = 0; index < tempChildren.size; index++ )
 		tempChildren[index] setParent( self getParent() );
 		
-	if ( self.elemType == "bar" || self.elemType == "bar_shader" )
-	{
+	if ( self.elemType == "bar" || self.elemType == "bar_shader" ) {
 		self.bar destroy();
 		self.barFrame destroy();
 	}
-		
+	
 	self destroy();
 }
 
@@ -657,8 +632,7 @@ setSize( width, height )
 
 updateChildren()
 {
-	for ( index = 0; index < self.children.size; index++ )
-	{
+	for ( index = 0; index < self.children.size; index++ ) {
 		child = self.children[index];
 		child setPoint( child.point, child.relativePoint, child.xOffset, child.yOffset );
 	}
@@ -669,20 +643,18 @@ showPerk( index, perk, ypos )
 {
 	if ( level.inReadyUpPeriod )
 		return;
-	
+		
 	// don't want the hud elements when the game is over
 	assert( game["state"] != "postgame" );
 	
-	if ( !isdefined( self.perkicon ) )
-	{
+	if ( !isdefined( self.perkicon ) ) {
 		self.perkicon = [];
 		self.perkname = [];
 	}
 	
 	iconsize = 32;
 	
-	if ( !isdefined( self.perkicon[ index ] ) )
-	{
+	if ( !isdefined( self.perkicon[ index ] ) ) {
 		assert( !isdefined( self.perkname[ index ] ) );
 		
 		xpos = -5;
@@ -690,7 +662,7 @@ showPerk( index, perk, ypos )
 			ypos = 0 - (80 + iconsize * (2 - index));
 		else
 			ypos = 0 - (165 + iconsize * (2 - index));
-		
+			
 		icon = createIcon( "white", iconsize, iconsize );
 		icon setPoint( "BOTTOMRIGHT", undefined, xpos, ypos );
 		icon.archived = false;
@@ -703,7 +675,7 @@ showPerk( index, perk, ypos )
 		text.alignX = "right";
 		text.alignY = "middle";
 		text.foreground = true;
-
+		
 		self.perkicon[ index ] = icon;
 		self.perkname[ index ] = text;
 	}
@@ -711,16 +683,14 @@ showPerk( index, perk, ypos )
 	icon = self.perkicon[ index ];
 	text = self.perkname[ index ];
 	
-	if ( perk == "specialty_null" || perk == "specialty_none" )
-	{
+	if ( perk == "specialty_null" || perk == "specialty_none" ) {
 		if ( isDefined( icon ) )
 			icon.alpha = 0;
 			
 		if ( isDefined( text ) )
 			text.alpha = 0;
 	}
-	else
-	{
+	else {
 		assertex( isDefined( level.perkIcons[perk] ), perk );
 		assertex( isDefined( level.perkNames[perk] ), perk );
 		
@@ -742,16 +712,18 @@ hidePerk( index, fadetime, hideTextOnly )
 		if ( isdefined( fadetime ) ) {
 			if ( !isDefined( hideTextOnly ) || !hideTextOnly )
 				self.perkicon[ index ] fadeOverTime( fadetime );
-		} else {
+		}
+		else {
 			if ( !isDefined( hideTextOnly ) || !hideTextOnly )
 				self.perkicon[ index ].alpha = 0;
-		}			
+		}
 	}
 	
 	if ( isDefined( self.perkname ) && isDefined( self.perkname[ index ] ) ) {
 		if ( isdefined( fadetime ) ) {
 			self.perkname[ index ] fadeOverTime( fadetime );
-		} else {
+		}
+		else {
 			self.perkname[ index ].alpha = 0;
 		}
 	}

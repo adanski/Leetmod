@@ -8,20 +8,20 @@ init()
 	// Get the main module's dvar
 	level.scr_aacp_enable = getdvard( "scr_aacp_enable", "int", 0, 0, 2 );
 	tempGUIDs = getdvarlistx( "scr_aacp_guids_access_", "string", "" );
-  
-  isListenServer = (getDvar("dedicated") == "listen server");
-  
-  if( level.scr_aacp_enable == 0 && isListenServer )
-    level.scr_aacp_enable = isListenServer;
-  
-  if( level.scr_aacp_enable == 0 || ( tempGUIDs.size == 0 && !isListenServer ) ) {
-    level.scr_aacp_enable = 0;
+	
+	isListenServer = (getDvar("dedicated") == "listen server");
+	
+	if( level.scr_aacp_enable == 0 && isListenServer )
+		level.scr_aacp_enable = isListenServer;
+		
+	if( level.scr_aacp_enable == 0 || ( tempGUIDs.size == 0 && !isListenServer ) ) {
+		level.scr_aacp_enable = 0;
 		return;
 	}
 	
 	// Load the rest of the module variables
-	level.scr_aacp_protected_guids = getdvard( "scr_aacp_protected_guids", "string", level.scr_server_overall_admin_guids );	
-		
+	level.scr_aacp_protected_guids = getdvard( "scr_aacp_protected_guids", "string", level.scr_server_overall_admin_guids );
+	
 	// GUIDs access levels
 	level.scr_aacp_guids_access = [];
 	for ( iLine=0; iLine < tempGUIDs.size; iLine++ ) {
@@ -31,19 +31,20 @@ init()
 			guidAccess = strtok( thisLine[iGUID], "=" );
 			if ( isDefined ( guidAccess[1] ) ) {
 				level.scr_aacp_guids_access[ ""+guidAccess[0] ] = guidAccess[1];
-			} else {
+			}
+			else {
 				level.scr_aacp_guids_access[ ""+guidAccess[0] ] = "";
 			}
 		}
 	}
-		
-  // Get the current map/gametypes combinations (outside the conditional if because
-  // its used for another purposes below, so we avoid calculating them twice)
-  level.mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations(false);
-  level.mgCombinationsCurr = openwarfare\_maprotationcs::getMapGametypeCombinations(true);
-  // Check if we should get the maps and gametypes from the current map rotation
-  if ( level.scr_aacp_enable == 2 ) {
-		
+	
+	// Get the current map/gametypes combinations (outside the conditional if because
+	// its used for another purposes below, so we avoid calculating them twice)
+	level.mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations(false);
+	level.mgCombinationsCurr = openwarfare\_maprotationcs::getMapGametypeCombinations(true);
+	// Check if we should get the maps and gametypes from the current map rotation
+	if ( level.scr_aacp_enable == 2 ) {
+	
 		// Distribute the gametype and map names to the corresponding variables
 		level.scr_aacp_maps = [];
 		level.scr_aacp_gametypes = [];
@@ -61,10 +62,11 @@ init()
 			if ( !isDefined( tempObjects[ level.mgCombinations[index]["mapname"] ] ) ) {
 				tempObjects[ level.mgCombinations[index]["mapname"] ] = true;
 				level.scr_aacp_maps[ level.scr_aacp_maps.size ] = level.mgCombinations[index]["mapname"];
-			}			
+			}
 		}
 		
-	} else {
+	}
+	else {
 		// Load maps
 		tempMaps = getdvarlistx( "scr_aacp_maps_", "string", "" );
 		// If we don't have any maps we'll set the stock ones
@@ -78,21 +80,21 @@ init()
 			theseMaps = strtok( toLower( tempMaps[iMapLine] ), ";" );
 			for ( iMap = 0; iMap < theseMaps.size; iMap++ ) {
 				level.scr_aacp_maps[ level.scr_aacp_maps.size ] = theseMaps[iMap];
-			}		
+			}
 		}
-	
+		
 		// Gametypes
 		level.scr_aacp_gametypes = getdvard( "scr_aacp_gametypes", "string", level.defaultGametypeList );
 		level.scr_aacp_gametypes = strtok( level.scr_aacp_gametypes, ";" );
 	}
-  
-  // Load map rotation values and calculate current position
-  level.scr_aacp_maprotationcurrent_index = calculateMapRotationCurrentIndex();
+	
+	// Load map rotation values and calculate current position
+	level.scr_aacp_maprotationcurrent_index = calculateMapRotationCurrentIndex();
 	
 	// Rulesets
 	level.scr_aacp_rulesets = getdvard( "scr_aacp_rulesets", "string", "pub_softcore_all;pub_hardcore_all;pub_tactical_all;pub_softcore_pistols;pub_hardcore_pistols;pub_tactical_pistols;pub_softcore_shotguns;pub_hardcore_shotguns;pub_tactical_shotguns;pub_softcore_snipers;pub_hardcore_snipers;pub_tactical_snipers;match_softcore_all;match_hardcore_all;match_tactical_all;match_softcore_pistols;match_hardcore_pistols;match_tactical_pistols;match_softcore_shotguns;match_hardcore_shotguns;match_tactical_shotguns;match_softcore_snipers;match_hardcore_snipers;match_tactical_snipers" );
 	level.scr_aacp_rulesets = strtok( level.scr_aacp_rulesets, ";" );
-
+	
 	// Custom reasons
 	tempReasons = getdvarlistx( "scr_aacp_custom_reason_", "string", "" );
 	level.scr_aacp_custom_reasons_code = [];
@@ -101,7 +103,7 @@ init()
 	// Add no custom reason option
 	level.scr_aacp_custom_reasons_code[0] = "<No Custom Reason>";
 	level.scr_aacp_custom_reasons_text[0] = "";
-  level.scr_aacp_custom_reasons_code[1] = "Cheats";
+	level.scr_aacp_custom_reasons_code[1] = "Cheats";
 	level.scr_aacp_custom_reasons_text[1] = "Your freedom ends where another's begins. Cheats never!";
 	for ( iLine=0; iLine < tempReasons.size; iLine++ ) {
 		thisLine = strtok( tempReasons[iLine], ";" );
@@ -111,7 +113,7 @@ init()
 		level.scr_aacp_custom_reasons_code[newElement] = thisLine[0];
 		level.scr_aacp_custom_reasons_text[newElement] = thisLine[1];
 	}
-		
+	
 	// Access codes
 	level.scr_aacp_load_map_access_code = toLower( getdvard( "scr_aacp_load_map_access_code", "string", "maps" ) );
 	level.scr_aacp_next_map_access_code = toLower( getdvard( "scr_aacp_next_map_access_code", "string", "maps" ) );
@@ -128,7 +130,7 @@ init()
 	level.scr_aacp_switch_spectator_player_access_code = toLower( getdvard( "scr_aacp_switch_spectator_player_access_code", "string", "players" ) );
 	level.scr_aacp_switch_team_player_access_code = toLower( getdvard( "scr_aacp_switch_team_player_access_code", "string", "players" ) );
 	level.scr_aacp_kill_player_access_code = toLower( getdvard( "scr_aacp_kill_player_access_code", "string", "players" ) );
-
+	
 	level.scr_aacp_redirect_player_access_code = toLower( getdvard( "scr_aacp_redirect_player_access_code", "string", "admin" ) );
 	level.scr_aacp_kick_player_access_code = toLower( getdvard( "scr_aacp_kick_player_access_code", "string", "admin" ) );
 	level.scr_aacp_ban_player_access_code = toLower( getdvard( "scr_aacp_ban_player_access_code", "string", "admin" ) );
@@ -140,14 +142,14 @@ init()
 	level.scr_aacp_sws_show_welcome_screen = getdvarx( "scr_aacp_sws_show_welcome_screen", "int", 0, 0, 1 );
 	
 	level.scr_reservedslots_redirectip = getdvarx( "scr_reservedslots_redirectip", "string", "" );
-
+	
 	level.aacpIconOffset = (0,0,75);
 	level.aacpIconShader = "waypoint_kill";
 	level.aacpIconCompass = "compass_waypoint_target";
 	precacheShader("waypoint_kill");
 	precacheShader("waypoint_cheater_mat1");
 	precacheShader(level.aacpIconCompass);
-		
+	
 	precacheMenu( "advancedacp" );
 	precacheShellShock( "frag_grenade_mp" );
 	
@@ -163,10 +165,10 @@ init()
 addPlayer()
 {
 	// We'll add the player in the first undefined slot we find
-	i = 0; 
-	while ( isDefined( level.aacpPlayers[i] ) ) 
+	i = 0;
+	while ( isDefined( level.aacpPlayers[i] ) )
 		i++;
-	level.aacpPlayers[i] = self;		
+	level.aacpPlayers[i] = self;
 }
 
 
@@ -188,54 +190,56 @@ onPlayerSpawned()
 initAACP()
 {
 	self endon("disconnect");
-
+	
 	// Get the access level from this player
 	playerGUID = ""+self getGUID();
-  playerNum = self getEntityNumber();
-  
+	playerNum = self getEntityNumber();
+	
 	if ( isDefined( level.scr_aacp_guids_access[ playerGUID ] ) ) {
 		self.aacpAccess = level.scr_aacp_guids_access[ playerGUID ];
 		self.aacpActiveCommand = false;
-	} else if ( (getDvar("dedicated") == "listen server") && playerGUID == "" && playerNum == 0 ) {
+	}
+	else if ( (getDvar("dedicated") == "listen server") && playerGUID == "" && playerNum == 0 ) {
 		self.aacpAccess = "maps,players,admin";
-    self.aacpActiveCommand = false;
-	} else
-    self.aacpAccess = "";
-	
+		self.aacpActiveCommand = false;
+	}
+	else
+		self.aacpAccess = "";
+		
 	// If the player has some type of access then set the rest of the variables
 	if ( self.aacpAccess != "" ) {
 		self setClientDvars(
-			"ui_aacp_ldm", ( issubstr( self.aacpAccess, level.scr_aacp_load_map_access_code ) ),
-			"ui_aacp_edm", ( issubstr( self.aacpAccess, level.scr_aacp_end_map_access_code ) ),
-			"ui_aacp_nxm", ( issubstr( self.aacpAccess, level.scr_aacp_next_map_access_code ) ),
-			"ui_aacp_rtm", ( issubstr( self.aacpAccess, level.scr_aacp_restart_map_access_code ) ),
-			"ui_aacp_ftm", ( issubstr( self.aacpAccess, level.scr_aacp_fast_restart_map_access_code ) ),		
-			
-			"ui_aacp_lrs", ( issubstr( self.aacpAccess, level.scr_aacp_load_ruleset_access_code ) )	
-		);		
-		
-		self setClientDvars(	
-			"ui_aacp_rsp", ( issubstr( self.aacpAccess, level.scr_aacp_returnspawn_player_access_code ) ),
-			"ui_aacp_pnt", ( issubstr( self.aacpAccess, level.scr_aacp_pointout_player_access_code ) ),
-			"ui_aacp_sck", ( issubstr( self.aacpAccess, level.scr_aacp_shock_player_access_code ) ),
-			"ui_aacp_exp", ( issubstr( self.aacpAccess, level.scr_aacp_explode_player_access_code ) ),
-			"ui_aacp_sws", ( issubstr( self.aacpAccess, level.scr_aacp_switch_spectator_player_access_code ) ),
-			"ui_aacp_swt", ( issubstr( self.aacpAccess, level.scr_aacp_switch_team_player_access_code ) ),
-			"ui_aacp_kll", ( issubstr( self.aacpAccess, level.scr_aacp_kill_player_access_code ) ),
-			"ui_aacp_red", ( issubstr( self.aacpAccess, level.scr_aacp_redirect_player_access_code ) && level.scr_reservedslots_redirectip != "" ),			
-			"ui_aacp_kck", ( issubstr( self.aacpAccess, level.scr_aacp_kick_player_access_code ) ),
-			"ui_aacp_ban", ( issubstr( self.aacpAccess, level.scr_aacp_ban_player_access_code ) ),
-			
-			"ui_aacp_map", self getMapNameSetAacpPosition(getDvar( "mapname" )),
-			"ui_aacp_gametype", self getGametypeSetAacpPosition(getDvar( "g_gametype" )),
-      "ui_aacp_mridx", level.scr_aacp_maprotationcurrent_index+1,
-      "ui_aacp_mrcurridx", level.scr_aacp_maprotationcurrent_index+1,
-			"ui_aacp_ruleset", self getCurrentRuleset(),
-			"ui_aacp_player", self getFirstPlayer(),
-			"ui_aacp_reason", self getFirstReason()
+		    "ui_aacp_ldm", ( issubstr( self.aacpAccess, level.scr_aacp_load_map_access_code ) ),
+		    "ui_aacp_edm", ( issubstr( self.aacpAccess, level.scr_aacp_end_map_access_code ) ),
+		    "ui_aacp_nxm", ( issubstr( self.aacpAccess, level.scr_aacp_next_map_access_code ) ),
+		    "ui_aacp_rtm", ( issubstr( self.aacpAccess, level.scr_aacp_restart_map_access_code ) ),
+		    "ui_aacp_ftm", ( issubstr( self.aacpAccess, level.scr_aacp_fast_restart_map_access_code ) ),
+		    
+		    "ui_aacp_lrs", ( issubstr( self.aacpAccess, level.scr_aacp_load_ruleset_access_code ) )
 		);
-    
-    self.aacpMapRotationCurrent_index = level.scr_aacp_maprotationcurrent_index;
+		
+		self setClientDvars(
+		    "ui_aacp_rsp", ( issubstr( self.aacpAccess, level.scr_aacp_returnspawn_player_access_code ) ),
+		    "ui_aacp_pnt", ( issubstr( self.aacpAccess, level.scr_aacp_pointout_player_access_code ) ),
+		    "ui_aacp_sck", ( issubstr( self.aacpAccess, level.scr_aacp_shock_player_access_code ) ),
+		    "ui_aacp_exp", ( issubstr( self.aacpAccess, level.scr_aacp_explode_player_access_code ) ),
+		    "ui_aacp_sws", ( issubstr( self.aacpAccess, level.scr_aacp_switch_spectator_player_access_code ) ),
+		    "ui_aacp_swt", ( issubstr( self.aacpAccess, level.scr_aacp_switch_team_player_access_code ) ),
+		    "ui_aacp_kll", ( issubstr( self.aacpAccess, level.scr_aacp_kill_player_access_code ) ),
+		    "ui_aacp_red", ( issubstr( self.aacpAccess, level.scr_aacp_redirect_player_access_code ) && level.scr_reservedslots_redirectip != "" ),
+		    "ui_aacp_kck", ( issubstr( self.aacpAccess, level.scr_aacp_kick_player_access_code ) ),
+		    "ui_aacp_ban", ( issubstr( self.aacpAccess, level.scr_aacp_ban_player_access_code ) ),
+		    
+		    "ui_aacp_map", self getMapNameSetAacpPosition(getDvar( "mapname" )),
+		    "ui_aacp_gametype", self getGametypeSetAacpPosition(getDvar( "g_gametype" )),
+		    "ui_aacp_mridx", level.scr_aacp_maprotationcurrent_index+1,
+		    "ui_aacp_mrcurridx", level.scr_aacp_maprotationcurrent_index+1,
+		    "ui_aacp_ruleset", self getCurrentRuleset(),
+		    "ui_aacp_player", self getFirstPlayer(),
+		    "ui_aacp_reason", self getFirstReason()
+		);
+		
+		self.aacpMapRotationCurrent_index = level.scr_aacp_maprotationcurrent_index;
 		
 		self thread onMenuResponse();
 	}
@@ -258,7 +262,7 @@ getMapNameSetAacpPosition(MapFile)
 	}
 	
 	self.aacpMap = index;
-	return getMapName( MapFile );	
+	return getMapName( MapFile );
 }
 
 
@@ -278,7 +282,7 @@ getGametypeSetAacpPosition(gametype)
 	}
 	
 	self.aacpType = index;
-	return getGameType( gametype );	
+	return getGameType( gametype );
 }
 
 
@@ -291,7 +295,8 @@ getCurrentRuleset()
 		while ( index < level.scr_aacp_rulesets.size && currentRuleset != level.scr_aacp_rulesets[ index ] ) {
 			index++;
 		}
-	} else {
+	}
+	else {
 		index = level.scr_aacp_rulesets.size;
 	}
 	
@@ -300,14 +305,15 @@ getCurrentRuleset()
 		if ( level.scr_aacp_rulesets.size > 0 ) {
 			index = 0;
 			currentRuleset = level.scr_aacp_rulesets[ index ];
-		} else {
+		}
+		else {
 			index = -1;
 			currentRuleset = "";
 		}
 	}
 	
 	self.aacpRuleset = index;
-	return currentRuleset;	
+	return currentRuleset;
 }
 
 
@@ -326,10 +332,11 @@ getFirstPlayer()
 		// In the case all the players are protected
 		self.aacpPlayer = "";
 		return "";
-	} else {
+	}
+	else {
 		// Save player's GUID
 		self.aacpPlayer = ""+level.aacpPlayers[index] getGUID();
-		return level.aacpPlayers[index].name;	
+		return level.aacpPlayers[index].name;
 	}
 }
 
@@ -340,7 +347,7 @@ getFirstReason()
 	currentReason = level.scr_aacp_custom_reasons_code[ index ];
 	
 	self.aacpReason = index;
-	return currentReason;	
+	return currentReason;
 }
 
 
@@ -349,10 +356,11 @@ getPreviousMap()
 	// Check if we are going outside the array
 	if ( self.aacpMap == 0 ) {
 		self.aacpMap = level.scr_aacp_maps.size - 1;
-	} else {
+	}
+	else {
 		self.aacpMap--;
 	}
-	return getMapName( level.scr_aacp_maps[ self.aacpMap ] );	
+	return getMapName( level.scr_aacp_maps[ self.aacpMap ] );
 }
 
 
@@ -361,10 +369,11 @@ getNextMap()
 	// Check if we are going outside the array
 	if ( self.aacpMap == level.scr_aacp_maps.size - 1 ) {
 		self.aacpMap = 0;
-	} else {
+	}
+	else {
 		self.aacpMap++;
 	}
-	return getMapName( level.scr_aacp_maps[ self.aacpMap ] );		
+	return getMapName( level.scr_aacp_maps[ self.aacpMap ] );
 }
 
 
@@ -373,10 +382,11 @@ getPreviousGametype()
 	// Check if we are going outside the array
 	if ( self.aacpType == 0 ) {
 		self.aacpType = level.scr_aacp_gametypes.size - 1;
-	} else {
+	}
+	else {
 		self.aacpType--;
 	}
-	return getGameType( level.scr_aacp_gametypes[ self.aacpType ] );	
+	return getGameType( level.scr_aacp_gametypes[ self.aacpType ] );
 }
 
 
@@ -385,38 +395,41 @@ getNextGametype()
 	// Check if we are going outside the array
 	if ( self.aacpType == level.scr_aacp_gametypes.size - 1 ) {
 		self.aacpType = 0;
-	} else {
+	}
+	else {
 		self.aacpType++;
 	}
-	return getGameType( level.scr_aacp_gametypes[ self.aacpType ] );		
+	return getGameType( level.scr_aacp_gametypes[ self.aacpType ] );
 }
 
 getPreviousRotationMG()
 {
-  if( self.aacpMapRotationCurrent_index <= 0 ) {
+	if( self.aacpMapRotationCurrent_index <= 0 ) {
 		self.aacpMapRotationCurrent_index = level.mgCombinations.size-1;
-	} else {
+	}
+	else {
 		self.aacpMapRotationCurrent_index--;
 	}
-  
-  MapGametype["mapname"] = self getMapNameSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["mapname"]);
-  MapGametype["gametype"] = self getGametypeSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["gametype"]);
-  
-  return MapGametype;
+	
+	MapGametype["mapname"] = self getMapNameSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["mapname"]);
+	MapGametype["gametype"] = self getGametypeSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["gametype"]);
+	
+	return MapGametype;
 }
 
 getNextRotationMG()
 {
-  if( self.aacpMapRotationCurrent_index >= level.mgCombinations.size-1 ) {
+	if( self.aacpMapRotationCurrent_index >= level.mgCombinations.size-1 ) {
 		self.aacpMapRotationCurrent_index = 0;
-	} else {
+	}
+	else {
 		self.aacpMapRotationCurrent_index++;
 	}
-  
-  MapGametype["mapname"] = getMapNameSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["mapname"]);
-  MapGametype["gametype"] = getGametypeSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["gametype"]);
-  
-  return MapGametype;
+	
+	MapGametype["mapname"] = getMapNameSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["mapname"]);
+	MapGametype["gametype"] = getGametypeSetAacpPosition(level.mgCombinations[self.aacpMapRotationCurrent_index]["gametype"]);
+	
+	return MapGametype;
 }
 
 
@@ -427,11 +440,13 @@ getPreviousRuleset()
 		// Check if we are going outside the array
 		if ( self.aacpRuleset == 0 ) {
 			self.aacpRuleset = level.scr_aacp_rulesets.size - 1;
-		} else {
+		}
+		else {
 			self.aacpRuleset--;
 		}
 		return level.scr_aacp_rulesets[ self.aacpRuleset ];
-	} else {
+	}
+	else {
 		return "";
 	}
 }
@@ -440,15 +455,17 @@ getPreviousRuleset()
 getNextRuleset()
 {
 	// Check if we have any rulesets
-	if ( level.scr_aacp_rulesets.size > 0 ) {	
+	if ( level.scr_aacp_rulesets.size > 0 ) {
 		// Check if we are going outside the array
 		if ( self.aacpRuleset == level.scr_aacp_rulesets.size - 1 ) {
 			self.aacpRuleset = 0;
-		} else {
+		}
+		else {
 			self.aacpRuleset++;
 		}
-		return level.scr_aacp_rulesets[ self.aacpRuleset ];		
-	} else {
+		return level.scr_aacp_rulesets[ self.aacpRuleset ];
+	}
+	else {
 		return "";
 	}
 }
@@ -476,15 +493,16 @@ getPreviousPlayer()
 				break;
 			}
 			index--;
-		}		
+		}
 	}
-
+	
 	if ( index < 0 ) {
 		self.aacpPlayer = "";
 		return "";
-	} else {
+	}
+	else {
 		self.aacpPlayer = ""+level.aacpPlayers[index] getGUID();
-		return level.aacpPlayers[index].name;	
+		return level.aacpPlayers[index].name;
 	}
 }
 
@@ -511,15 +529,16 @@ getNextPlayer()
 				break;
 			}
 			index++;
-		}		
+		}
 	}
-
+	
 	if ( index == level.aacpPlayers.size ) {
 		self.aacpPlayer = "";
 		return "";
-	} else {
+	}
+	else {
 		self.aacpPlayer = ""+level.aacpPlayers[index] getGUID();
-		return level.aacpPlayers[index].name;	
+		return level.aacpPlayers[index].name;
 	}
 }
 
@@ -529,10 +548,11 @@ getPreviousReason()
 	// Check if we are going outside the array
 	if ( self.aacpReason == 0 ) {
 		self.aacpReasons = level.scr_aacp_custom_reasons_code.size - 1;
-	} else {
+	}
+	else {
 		self.aacpReason--;
 	}
-	return level.scr_aacp_custom_reasons_code[self.aacpReason];	
+	return level.scr_aacp_custom_reasons_code[self.aacpReason];
 }
 
 
@@ -541,10 +561,11 @@ getNextReason()
 	// Check if we are going outside the array
 	if ( self.aacpReason == level.scr_aacp_custom_reasons_code.size - 1 ) {
 		self.aacpReason = 0;
-	} else {
+	}
+	else {
 		self.aacpReason++;
 	}
-	return level.scr_aacp_custom_reasons_code[self.aacpReason];		
+	return level.scr_aacp_custom_reasons_code[self.aacpReason];
 }
 
 
@@ -554,10 +575,11 @@ getCurrentPlayer( returnPosition )
 	if ( self.aacpPlayer == "" ) {
 		if ( returnPosition ) {
 			return 0;
-		} else {
+		}
+		else {
 			return undefined;
-		}		
-	}	
+		}
+	}
 	
 	// Find the position of the current player
 	index = 0;
@@ -573,17 +595,20 @@ getCurrentPlayer( returnPosition )
 		// Functions are not supopsed to return two different type of values but what the hell
 		if ( returnPosition ) {
 			return 0;
-		} else {
+		}
+		else {
 			return undefined;
 		}
-	} else {
+	}
+	else {
 		// Functions are not supopsed to return two different type of values but what the hell
 		if ( returnPosition ) {
 			return index;
-		} else {
+		}
+		else {
 			return level.aacpPlayers[index];
 		}
-	}	
+	}
 }
 
 
@@ -591,8 +616,7 @@ onMenuResponse()
 {
 	self endon("disconnect");
 	
-	while(1)
-	{
+	while(1) {
 		self waittill( "menuresponse", menuName, menuOption );
 		
 		// Make sure we handle only responses coming from the Advanced ACP menu
@@ -610,41 +634,41 @@ onMenuResponse()
 					
 				case "previoustype":
 					self setClientDvar( "ui_aacp_gametype", self getPreviousGametype() );
-					break;					
-
+					break;
+					
 				case "nexttype":
 					self setClientDvar( "ui_aacp_gametype", self getNextGametype() );
 					break;
 					
-        case "protationmg":
-          MapGametype = self getPreviousRotationMG();
-          self setClientDvars( "ui_aacp_mrcurridx", self.aacpMapRotationCurrent_index+1,
-                               "ui_aacp_map", MapGametype["mapname"],
-                               "ui_aacp_gametype", MapGametype["gametype"]);
-          break;
-          
-        case "nrotationmg":
-          MapGametype = self getNextRotationMG();
-          self setClientDvars( "ui_aacp_mrcurridx", self.aacpMapRotationCurrent_index+1,
-                               "ui_aacp_map", MapGametype["mapname"],
-                               "ui_aacp_gametype", MapGametype["gametype"]);
-          break;
-          
-        case "setmrhere":
-          self eatOutRotation();
-          self setClientDvar("ui_aacp_mridx", level.scr_aacp_maprotationcurrent_index+1);
-          break;
-          
+				case "protationmg":
+					MapGametype = self getPreviousRotationMG();
+					self setClientDvars( "ui_aacp_mrcurridx", self.aacpMapRotationCurrent_index+1,
+					                     "ui_aacp_map", MapGametype["mapname"],
+					                     "ui_aacp_gametype", MapGametype["gametype"]);
+					break;
+					
+				case "nrotationmg":
+					MapGametype = self getNextRotationMG();
+					self setClientDvars( "ui_aacp_mrcurridx", self.aacpMapRotationCurrent_index+1,
+					                     "ui_aacp_map", MapGametype["mapname"],
+					                     "ui_aacp_gametype", MapGametype["gametype"]);
+					break;
+					
+				case "setmrhere":
+					self eatOutRotation();
+					self setClientDvar("ui_aacp_mridx", level.scr_aacp_maprotationcurrent_index+1);
+					break;
+					
 				case "loadmap":
 					// Make sure the map being loaded is not the current one
 					if ( level.scr_aacp_gametypes[ self.aacpType ] != level.gametype || level.scr_aacp_maps[ self.aacpMap ] != level.script ) {
 						self adminActionLog( "LM" );
 						nextRotation = " " + getDvar( "sv_mapRotationCurrent" );
 						setDvar( "sv_mapRotationCurrent", "gametype " + level.scr_aacp_gametypes[ self.aacpType ] + " map " + level.scr_aacp_maps[ self.aacpMap ] + nextRotation );
-						exitLevel( false );					
+						exitLevel( false );
 					}
-					break;		
-
+					break;
+					
 				case "setnext":
 					// Make sure the map being added is not the same as the next map in the rotation
 					if ( level.scr_aacp_gametypes[ self.aacpType ] != level.nextMapInfo["gametype"] || level.scr_aacp_maps[ self.aacpMap ] != level.nextMapInfo["mapname"] ) {
@@ -657,39 +681,41 @@ onMenuResponse()
 							game["amvs_skip_voting"] = true;
 							openwarfare\_maprotationcs::getNextMapInRotation();
 						}
-					} else {
+					}
+					else {
 						// Don't add the new map to the rotation but prevent the map votation anyway
 						game["amvs_skip_voting"] = true;
 					}
-					break;		
-
+					break;
+					
 				case "endmap":
 					self adminActionLog( "EM" );
 					level.forcedEnd = true;
 					if ( level.teamBased && level.gametype != "bel" ) {
 						thread maps\mp\gametypes\_globallogic::endGame( "tie", game["strings"]["round_draw"] );
-					} else {
+					}
+					else {
 						thread maps\mp\gametypes\_globallogic::endGame( undefined, game["strings"]["round_draw"] );
 					}
 					break;
 					
 				case "rotatemap":
 					self adminActionLog( "NM" );
-					exitLevel( false );					
-					break;						
+					exitLevel( false );
+					break;
 					
 				case "restartmap":
 					self adminActionLog( "RM" );
 					nextRotation = " " + getDvar( "sv_mapRotationCurrent" );
 					setDvar( "sv_mapRotationCurrent", "gametype " + level.gametype + " map " + level.script + nextRotation );
-					exitLevel( false );					
-					break;	
+					exitLevel( false );
+					break;
 					
 				case "fastrestartmap":
 					self adminActionLog( "FM" );
 					map_restart( false );
-					break;					
-
+					break;
+					
 				case "previousruleset":
 					self setClientDvar( "ui_aacp_ruleset", self getPreviousRuleset() );
 					break;
@@ -697,7 +723,7 @@ onMenuResponse()
 				case "nextruleset":
 					self setClientDvar( "ui_aacp_ruleset", self getNextRuleset() );
 					break;
-
+					
 				case "loadruleset":
 					// Make sure there's a selected ruleset
 					if ( self.aacpRuleset != -1 ) {
@@ -706,8 +732,8 @@ onMenuResponse()
 						// Set the new ruleset
 						setDvar( "cod_mode", level.scr_aacp_rulesets[ self.aacpRuleset ] );
 					}
-					break;		
-
+					break;
+					
 				case "previousplayer":
 					self setClientDvar( "ui_aacp_player", self getPreviousPlayer() );
 					break;
@@ -715,7 +741,7 @@ onMenuResponse()
 				case "nextplayer":
 					self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 					break;
-
+					
 				case "previousreason":
 					self setClientDvar( "ui_aacp_reason", self getPreviousReason() );
 					break;
@@ -735,11 +761,12 @@ onMenuResponse()
 							player setOrigin( player.spawnOrigin );
 							player setPlayerAngles( player.spawnAngles );
 						}
-					} else {
+					}
+					else {
 						self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 					}
 					break;
-
+					
 				case "pointoutplayer":
 					// Check if this player is still connected and alive
 					player = self getCurrentPlayer( false );
@@ -748,7 +775,8 @@ onMenuResponse()
 							self adminActionLog( "PO", player );
 							self thread pointOutPlayer( player );
 						}
-					} else {
+					}
+					else {
 						self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 					}
 					break;
@@ -761,24 +789,26 @@ onMenuResponse()
 							self adminActionLog( "SP", player );
 							
 							playerKicked = player punishOrWarning( level.scr_aacp_custom_reasons_text[ self.aacpReason ] );
-						
+							
 							if ( !playerKicked ) {
 								// Check if we need to disable the weapons
 								if ( level.scr_aacp_shock_disables_weapons == 1 )
 									player thread maps\mp\gametypes\_gameobjects::_disableWeapon();
-										
+									
 								player shellshock( "frag_grenade_mp", level.scr_aacp_shock_time );
 								
 								// If we disabled the weapons then re-enable them
 								if ( level.scr_aacp_shock_disables_weapons == 1 && isDefined( player ) ) {
 									wait ( level.scr_aacp_shock_time );
-									player thread maps\mp\gametypes\_gameobjects::_enableWeapon();							
+									player thread maps\mp\gametypes\_gameobjects::_enableWeapon();
 								}
-							} else {
+							}
+							else {
 								self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 							}
 						}
-					} else {
+					}
+					else {
 						self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 					}
 					break;
@@ -795,7 +825,7 @@ onMenuResponse()
 								player.switching_teams = true;
 								player.joining_team = "spectator";
 								player.leaving_team = player.pers["team"];
-							
+								
 								// Suicide the player so they can't hit escape
 								player suicidePlayer();
 							}
@@ -805,26 +835,27 @@ onMenuResponse()
 							player.class = undefined;
 							player.pers["weapon"] = undefined;
 							player.pers["savedmodel"] = undefined;
-					
+							
 							player maps\mp\gametypes\_globallogic::updateObjectiveText();
-					
+							
 							player.sessionteam = "spectator";
 							player [[level.spawnSpectator]]();
-					
+							
 							player setclientdvar("g_scriptMainMenu", game["menu_team"]);
-					
+							
 							player notify("joined_spectators");
 							
 							// Check if we should show the welcome screen to this player
 							if ( level.scr_aacp_sws_show_welcome_screen == 1 && level.scr_welcome_enable != 0 ) {
-								player openMenu( game["menu_serverinfo"] );								
-							}							
+								player openMenu( game["menu_serverinfo"] );
+							}
 						}
-					} else {
+					}
+					else {
 						self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 					}
-					break;					
-
+					break;
+					
 				case "switchplayerteam":
 					// Check if this player is still connected
 					player = self getCurrentPlayer( false );
@@ -834,11 +865,12 @@ onMenuResponse()
 							player switchPlayerTeam( level.otherTeam[ player.pers["team"] ], false );
 							player iprintlnbold( &"OW_B3_TEAMSWITCH" );
 						}
-					} else {
+					}
+					else {
 						self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 					}
 					break;
-				
+					
 				case "explodeplayer":
 					// Check if this player is still connected and alive
 					player = self getCurrentPlayer( false );
@@ -848,16 +880,18 @@ onMenuResponse()
 							
 							playerKicked = player punishOrWarning( level.scr_aacp_custom_reasons_text[ self.aacpReason ] );
 							
-							if ( !playerKicked ) {							
+							if ( !playerKicked ) {
 								// Explode the player
 								playfx( level._effect["aacp_explode"], player.origin );
 								player playLocalSound( "exp_suitcase_bomb_main" );
 								player suicidePlayer();
-							} else {
+							}
+							else {
 								self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 							}
 						}
-					} else {
+					}
+					else {
 						self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 					}
 					break;
@@ -872,25 +906,27 @@ onMenuResponse()
 							// Check if we should display a custom message
 							if ( level.scr_aacp_custom_reasons_text[ self.aacpReason ] != "" ) {
 								player iprintlnbold( level.scr_aacp_custom_reasons_text[ self.aacpReason ] );
-							} else {
+							}
+							else {
 								player iprintlnbold( &"OW_B3_PUNISHED" );
 							}
 							player suicidePlayer();
 						}
-					} else {
+					}
+					else {
 						self setClientDvar( "ui_aacp_player", self getNextPlayer() );
 					}
 					break;
-
+					
 				case "redirectplayer":
 					// Check if this player is still connected
 					player = self getCurrentPlayer( false );
 					if ( isDefined( player ) ) {
 						self adminActionLog( "RC", player );
-						player thread openwarfare\_reservedslots::disconnectPlayer( false );						
+						player thread openwarfare\_reservedslots::disconnectPlayer( false );
 					}
 					self setClientDvar( "ui_aacp_player", self getNextPlayer() );
-					break;		
+					break;
 					
 				case "kickplayer":
 					// Check if this player is still connected
@@ -906,27 +942,27 @@ onMenuResponse()
 						kick( player getEntityNumber() );
 					}
 					self setClientDvar( "ui_aacp_player", self getNextPlayer() );
-					break;		
+					break;
 					
 				case "banplayer":
 					// Check if this player is still connected
 					player = self getCurrentPlayer( false );
 					if ( isDefined( player ) ) {
 						self adminActionLog( "BN", player );
-
+						
 						// Check if we should display a custom message or just kick the player directly
 						if ( level.scr_aacp_custom_reasons_text[ self.aacpReason ] != "" ) {
 							player iprintlnbold( level.scr_aacp_custom_reasons_text[ self.aacpReason ] );
 							wait (2.0);
-						}						
+						}
 						ban( player getEntityNumber() );
 					}
 					self setClientDvar( "ui_aacp_player", self getNextPlayer() );
-					break;												
+					break;
 			}
 			
 			self.aacpActiveCommand = false;
-		}		
+		}
 	}
 }
 
@@ -947,16 +983,19 @@ punishOrWarning( customMessage )
 			kick( self getEntityNumber() );
 			return true;
 			
-		} else {
+		}
+		else {
 			if ( customMessage != "" ) {
 				self iprintlnbold( customMessage );
 			}
 			self iprintlnbold( &"OW_AACP_WARNING", self.aacpWarnings, level.scr_aacp_max_warnings );
-		}						
-	} else {
+		}
+	}
+	else {
 		if ( customMessage != "" ) {
 			self iprintlnbold( customMessage );
-		} else {
+		}
+		else {
 			self iprintlnbold( &"OW_B3_PUNISHED" );
 		}
 	}
@@ -967,13 +1006,14 @@ punishOrWarning( customMessage )
 
 pointOutPlayer( player )
 {
-  player endon("death");
+	player endon("death");
 	player endon("disconnect");
 	
 	// Make sure this player is not being point out already
 	if ( isDefined( player.pointOut ) && player.pointOut ) {
 		return;
-	} else {
+	}
+	else {
 		self adminActionLog( "PP", player );
 		player.pointOut = true;
 	}
@@ -988,20 +1028,21 @@ pointOutPlayer( player )
 			objective_team( objCompass, level.otherTeam[ player.pers["team"] ] );
 		}
 	}
-		
+	
 	// Check if only one team should see this
 	if ( level.teamBased ) {
-		objWorld = newTeamHudElem( level.otherTeam[ player.pers["team"] ] );		
-	} else {
-		objWorld = newHudElem();		
+		objWorld = newTeamHudElem( level.otherTeam[ player.pers["team"] ] );
 	}
-  // if Reason == Cheats
-  if( self.aacpReason == 1 ) {
-    level.aacpIconShader = "waypoint_cheater_mat1";
-  }
-  else
-    level.aacpIconShader = "waypoint_kill";
-	
+	else {
+		objWorld = newHudElem();
+	}
+	// if Reason == Cheats
+	if( self.aacpReason == 1 ) {
+		level.aacpIconShader = "waypoint_cheater_mat1";
+	}
+	else
+		level.aacpIconShader = "waypoint_kill";
+		
 	// Set stuff for world icon
 	origin = player.origin + level.aacpIconOffset;
 	objWorld.name = "pointout_" + player getEntityNumber();
@@ -1031,12 +1072,12 @@ deleteObjectiveOnDD( objID, objWorld )
 	// Make sure this player can be pointed out again
 	if ( isDefined( self ) )
 		self.pointOut = false;
-
+		
 	// Stop flashing
 	objWorld notify("stop_flashing_thread");
 	objWorld thread maps\mp\gametypes\_objpoints::stopFlashing();
-
-	// Wait some time to make sure the main loop ends	
+	
+	// Wait some time to make sure the main loop ends
 	wait (0.25);
 	
 	// Delete the objective
@@ -1050,10 +1091,9 @@ deleteObjectiveOnDD( objID, objWorld )
 
 announceTarget( customMessage )
 {
-	for ( index = 0; index < level.players.size; index++ )
-	{
+	for ( index = 0; index < level.players.size; index++ ) {
 		player = level.players[index];
-
+		
 		if ( !isDefined( player.pers["team"] ) || player.pers["team"] == "spectator" )
 			continue;
 			
@@ -1064,14 +1104,15 @@ announceTarget( customMessage )
 			}
 			self iprintlnbold( &"OW_AACP_YOU_TARGETED" );
 			self playLocalSound( "mp_challenge_complete" );
-		} else {
+		}
+		else {
 			// Don't show anything to teammates
 			if ( !level.teamBased || player.pers["team"] != self.pers["team"] ) {
 				player iprintlnbold( &"OW_AACP_PLAYER_TARGETED", self.name );
 				player playLocalSound( "mp_challenge_complete" );
-			}			
-		}		
-	}	
+			}
+		}
+	}
 }
 
 
@@ -1082,30 +1123,37 @@ adminActionLog( adminAction, playerAffected )
 	lpselfname = self.name;
 	lpselfteam = self.pers["team"];
 	lpselfguid = self getGuid();
-
+	
 	// Build the line to log
 	logLine = "AA;" + adminAction + ";" + lpselfguid + ";" + lpselfnum + ";" + lpselfteam + ";" + lpselfname;
 	
 	// Check if we should print the information about the player affected by the action
 	if ( isDefined( playerAffected ) ) {
 		// Get the information from the player and add it to the log
-		lpplayernum = playerAffected getEntityNumber(); if ( !isDefined( lpplayernum ) ) lpplayernum = "";
-		lpplayername = playerAffected.name; if ( !isDefined( lpplayername ) ) lpplayername = "";
-		lpplayerteam = playerAffected.pers["team"]; if ( !isDefined( lpplayerteam ) ) lpplayerteam = "";
-		lpplayerguid = playerAffected getGuid(); if ( !isDefined( lpplayerguid ) ) lpplayerguid = "";
+		lpplayernum = playerAffected getEntityNumber();
+		if ( !isDefined( lpplayernum ) ) lpplayernum = "";
+		lpplayername = playerAffected.name;
+		if ( !isDefined( lpplayername ) ) lpplayername = "";
+		lpplayerteam = playerAffected.pers["team"];
+		if ( !isDefined( lpplayerteam ) ) lpplayerteam = "";
+		lpplayerguid = playerAffected getGuid();
+		if ( !isDefined( lpplayerguid ) ) lpplayerguid = "";
 		
-		logLine += ";" + lpplayerguid + ";" + lpplayernum + ";" + lpplayerteam + ";" + lpplayername;	
-	} else {
+		logLine += ";" + lpplayerguid + ";" + lpplayernum + ";" + lpplayerteam + ";" + lpplayername;
+	}
+	else {
 		// For load map we add the loaded map/gametype information
 		if ( adminAction == "LM" || adminAction == "SN" ) {
 			logLine += ";" + level.scr_aacp_gametypes[ self.aacpType ] + ";" + level.scr_aacp_maps[ self.aacpMap ];
 			
-		// For rulesets we add the ruleset loaded
-		} else if ( adminAction == "RS" ) {
-			logLine += ";" + level.scr_aacp_rulesets[ self.aacpRuleset ];		
-		
-		// For anything else we add the current map/gametype information
-		} else {
+			// For rulesets we add the ruleset loaded
+		}
+		else if ( adminAction == "RS" ) {
+			logLine += ";" + level.scr_aacp_rulesets[ self.aacpRuleset ];
+			
+			// For anything else we add the current map/gametype information
+		}
+		else {
 			logLine += ";" + level.gametype + ";" + level.script;
 		}
 	}
@@ -1116,20 +1164,20 @@ adminActionLog( adminAction, playerAffected )
 
 calculateMapRotationCurrentIndex()
 {
-  for(i=level.mgCombinations.size-1; i>=0; i--) {
-    for(j=level.mgCombinationsCurr.size-1; j>=0; j--) {
-      if( level.mgCombinationsCurr[j] != level.mgCombinations[i] )
-        break;
-      if( j == 0)
-        return i;
-    }
-  }
-  // strange, there was no match between the rotations, return index 0 then
-  return 0;
+	for(i=level.mgCombinations.size-1; i>=0; i--) {
+		for(j=level.mgCombinationsCurr.size-1; j>=0; j--) {
+			if( level.mgCombinationsCurr[j] != level.mgCombinations[i] )
+				break;
+			if( j == 0)
+				return i;
+		}
+	}
+	// strange, there was no match between the rotations, return index 0 then
+	return 0;
 }
 
 eatOutRotation()
 {
-  iprintln("TODO");
-  level.scr_aacp_maprotationcurrent_index = self.aacpMapRotationCurrent_index;
+	iprintln("TODO");
+	level.scr_aacp_maprotationcurrent_index = self.aacpMapRotationCurrent_index;
 }

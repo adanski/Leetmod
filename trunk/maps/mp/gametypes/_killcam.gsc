@@ -13,15 +13,15 @@ init()
 }
 
 killcam(
-	attackerNum, // entity number of the attacker
-	killcamentity, // entity number of the attacker's killer entity aka helicopter or airstrike
-	sWeapon, // killing weapon
-	predelay, // time between player death and beginning of killcam
-	offsetTime, // something to do with how far back in time the killer was seeing the world when he made the kill; latency related, sorta
-	respawn, // will the player be allowed to respawn after the killcam?
-	maxtime, // time remaining until map ends; the killcam will never last longer than this. undefined = no limit
-	perks, // the perks the attacker had at the time of the kill
-	attacker // entity object of attacker
+    attackerNum, // entity number of the attacker
+    killcamentity, // entity number of the attacker's killer entity aka helicopter or airstrike
+    sWeapon, // killing weapon
+    predelay, // time between player death and beginning of killcam
+    offsetTime, // something to do with how far back in time the killer was seeing the world when he made the kill; latency related, sorta
+    respawn, // will the player be allowed to respawn after the killcam?
+    maxtime, // time remaining until map ends; the killcam will never last longer than this. undefined = no limit
+    perks, // the perks the attacker had at the time of the kill
+    attacker // entity object of attacker
 )
 {
 	// monitors killcam and hides HUD elements during killcam session
@@ -36,12 +36,12 @@ killcam(
 		attackerNum = 1;
 	if(attackerNum < 0)
 		return;
-
+		
 	// length from killcam start to killcam end
 	if (getdvar("scr_killcam_time") == "") {
-/*		if (sWeapon == "artillery_mp")
-			camtime = 1.3;
-		else */ if (sWeapon == "frag_grenade_mp" || sWeapon == "frag_grenade_nocook_mp")
+		/*		if (sWeapon == "artillery_mp")
+					camtime = 1.3;
+				else */ if (sWeapon == "frag_grenade_mp" || sWeapon == "frag_grenade_nocook_mp")
 			camtime = 4.5; // show long enough to see grenade thrown
 		else if ( !respawn ) // if we're not going to respawn, we can take more time to watch what happened
 			camtime = 5.0;
@@ -50,7 +50,7 @@ killcam(
 	}
 	else
 		camtime = getdvarfloat("scr_killcam_time");
-
+		
 	if (isdefined(maxtime)) {
 		if (camtime > maxtime)
 			camtime = maxtime;
@@ -77,18 +77,17 @@ killcam(
 	
 	*/
 	
-  if ( level.playingrwk )
-    killcamlength = camtime;
-  else
-    killcamlength = camtime + postdelay;
-	
+	if ( level.playingrwk )
+		killcamlength = camtime;
+	else
+		killcamlength = camtime + postdelay;
+		
 	// don't let the killcam last past the end of the round.
-	if (isdefined(maxtime) && killcamlength > maxtime)
-	{
+	if (isdefined(maxtime) && killcamlength > maxtime) {
 		// first trim postdelay down to a minimum of 1 second.
 		// if that doesn't make it short enough, trim camtime down to a minimum of 1 second.
 		// if that's still not short enough, cancel the killcam.
-
+		
 		if (maxtime - camtime >= 1) {
 			// reduce postdelay so killcam ends at end of match
 			postdelay = maxtime - camtime;
@@ -100,12 +99,12 @@ killcam(
 		}
 		
 		// recalc killcamlength
-    if ( level.playingrwk )
-      killcamlength = camtime;
-    else
-      killcamlength = camtime + postdelay;
+		if ( level.playingrwk )
+			killcamlength = camtime;
+		else
+			killcamlength = camtime + postdelay;
 	}
-
+	
 	killcamoffset = camtime + predelay;
 	
 	self notify ( "begin_killcam", getTime() );
@@ -119,12 +118,12 @@ killcam(
 		self.psoffsettime = offsetTime;
 	else
 		self.psoffsettime = 100;
-
+		
 	// if gametype is SD, we don't want to show the enemy the location of the bomb
-  if( level.gametype == "sd" || level.gametype == "re" )
-    self setClientDvar("waypointOffscreenPointerDistance", 16384);
-  
-  // ignore spectate permissions
+	if( level.gametype == "sd" || level.gametype == "re" )
+		self setClientDvar("waypointOffscreenPointerDistance", 16384);
+		
+	// ignore spectate permissions
 	self allowSpectateTeam("allies", true);
 	self allowSpectateTeam("axis", true);
 	self allowSpectateTeam("freelook", true);
@@ -132,9 +131,8 @@ killcam(
 	
 	// wait till the next server frame to allow code a chance to update archivetime if it needs trimming
 	wait 0.05;
-
-	if ( self.archivetime <= predelay ) // if we're not looking back in time far enough to even see the death, cancel
-	{
+	
+	if ( self.archivetime <= predelay ) { // if we're not looking back in time far enough to even see the death, cancel
 		self.sessionstate = "dead";
 		self.spectatorclient = -1;
 		self.killcamentity = -1;
@@ -145,9 +143,8 @@ killcam(
 	}
 	
 	self.killcam = true;
-
-	if ( !isdefined( self.kc_skiptext ) )
-	{
+	
+	if ( !isdefined( self.kc_skiptext ) ) {
 		self.kc_skiptext = newClientHudElem(self);
 		self.kc_skiptext.archived = false;
 		self.kc_skiptext.x = 0;
@@ -159,34 +156,30 @@ killcam(
 		self.kc_skiptext.font = "objective";
 		self.kc_skiptext.foreground = true;
 		
-		if ( level.splitscreen )
-		{
+		if ( level.splitscreen ) {
 			self.kc_skiptext.y = 34;
 			self.kc_skiptext.fontscale = 1.6;
 		}
-		else
-		{
+		else {
 			self.kc_skiptext.y = 60;
 			self.kc_skiptext.fontscale = 2;
 		}
 	}
 	if ( level.playingrwk ) {
-    self.kc_skiptext.color = (1,0.2,0);
-    self.kc_skiptext.glowColor = (0.7, 0.2, 0.2);
-    self.kc_skiptext.glowAlpha = 1;
+		self.kc_skiptext.color = (1,0.2,0);
+		self.kc_skiptext.glowColor = (0.7, 0.2, 0.2);
+		self.kc_skiptext.glowAlpha = 1;
 		self.kc_skiptext setText("FINAL");
-  }
+	}
 	else if ( respawn )
 		self.kc_skiptext setText(&"PLATFORM_PRESS_TO_RESPAWN");
 	else
 		self.kc_skiptext setText(&"PLATFORM_PRESS_TO_SKIP");
 		
 	self.kc_skiptext.alpha = 1;
-
-	if ( !level.splitscreen )
-	{
-		if ( !isdefined( self.kc_timer ) )
-		{
+	
+	if ( !level.splitscreen ) {
+		if ( !isdefined( self.kc_timer ) ) {
 			self.kc_timer = createFontString( "objective", 2.0 );
 			if ( level.console )
 				self.kc_timer setPoint( "BOTTOM", undefined, 0, -80 );
@@ -213,15 +206,15 @@ killcam(
 		self showPerk( 1, perks[1], -10 );
 		self showPerk( 2, perks[2], -10 );
 	}
-
+	
 	self thread spawnedKillcamCleanup();
 	self thread endedKillcamCleanup();
 	if ( !level.playingrwk )
 		self thread waitSkipKillcamButton();
 	self thread waitKillcamTime();
-
+	
 	self waittill("end_killcam");
-
+	
 	self endKillcam();
 	
 	self setClientDvar("ct_playingrwk", 0);
@@ -237,9 +230,9 @@ waitKillcamTime()
 {
 	self endon("disconnect");
 	self endon("end_killcam");
-
-  wait(self.killcamlength - 0.05);
-  
+	
+	wait(self.killcamlength - 0.05);
+	
 	self notify("end_killcam");
 }
 
@@ -247,13 +240,13 @@ waitSkipKillcamButton()
 {
 	self endon("disconnect");
 	self endon("end_killcam");
-
+	
 	while(self useButtonPressed())
 		wait .05;
-
+		
 	while(!(self useButtonPressed()))
 		wait .05;
-
+		
 	self notify("end_killcam");
 }
 
@@ -263,17 +256,16 @@ endKillcam()
 		self.kc_skiptext.alpha = 0;
 	if(isDefined(self.kc_timer))
 		self.kc_timer.alpha = 0;
-	
-	if ( !level.splitscreen )
-	{
+		
+	if ( !level.splitscreen ) {
 		self hidePerk( 0 );
 		self hidePerk( 1 );
 		self hidePerk( 2 );
 	}
 	self.killcam = undefined;
-  
-  // Restore HUD element positions
-  self setClientDvar("waypointOffscreenPointerDistance", 30);
+	
+	// Restore HUD element positions
+	self setClientDvar("waypointOffscreenPointerDistance", 30);
 	
 	self thread maps\mp\gametypes\_spectating::setSpectatePermissions();
 }
@@ -282,7 +274,7 @@ spawnedKillcamCleanup()
 {
 	self endon("end_killcam");
 	self endon("disconnect");
-
+	
 	self waittill("spawned");
 	self endKillcam();
 }
@@ -292,7 +284,7 @@ spectatorKillcamCleanup( attacker )
 	self endon("end_killcam");
 	self endon("disconnect");
 	attacker endon ( "disconnect" );
-
+	
 	attacker waittill ( "begin_killcam", attackerKcStartTime );
 	waitTime = max( 0, (attackerKcStartTime - self.deathTime) - 50 );
 	wait (waitTime);
@@ -303,7 +295,7 @@ endedKillcamCleanup()
 {
 	self endon("end_killcam");
 	self endon("disconnect");
-
+	
 	level waittill("game_ended");
 	self endKillcam();
 }

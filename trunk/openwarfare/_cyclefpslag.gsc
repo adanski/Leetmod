@@ -13,9 +13,9 @@ cycleFPSLagometer()
 		self.cycleFPS = 0;
 	}
 	
-	// Initialze the variables 
+	// Initialze the variables
 	drawFPS = 0;
-	drawLagometer = 0;	
+	drawLagometer = 0;
 	
 	// Check which values we need to set according to the position in the cycle
 	switch ( self.cycleFPS ) {
@@ -45,6 +45,6 @@ cycleFPSLagometer()
 	                     "cg_drawLagometer", drawLagometer );
 	                     
 	self playLocalSound( "mouse_click" );
-	                     
-	return;	
+	
+	return;
 }

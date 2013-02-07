@@ -59,88 +59,91 @@ main()
 		return;
 		
 	if ( !isdefined( game["switchedsides"] ) )
-		game["switchedsides"] = false;		
-	
+		game["switchedsides"] = false;
+		
 	level.scr_war_forcestartspawns = getdvarx( "scr_war_forcestartspawns", "int", 0, 0, 1 );
-  level.scr_war_lts_enable = getdvarx( "scr_war_lts_enable", "int", 0, 0, 1 );
+	level.scr_war_lts_enable = getdvarx( "scr_war_lts_enable", "int", 0, 0, 1 );
 	
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
-
+	
 	if( !level.scr_war_lts_enable ) {
-    maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
-    maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
-    maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
-    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 750, 0, 5000 );
-    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 12, 0, 1440 );
-  } else {
-  	maps\mp\gametypes\_globallogic::registerNumLivesDvar( "war_lts", 1, 1, 10 );
-    maps\mp\gametypes\_globallogic::registerRoundLimitDvar( "war_lts", 5, 0, 500 );
-    maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( "war_lts", 2, 0, 500 );
-    maps\mp\gametypes\_globallogic::registerScoreLimitDvar( "war_lts", 3, 0, 5000 );
-    maps\mp\gametypes\_globallogic::registerTimeLimitDvar( "war_lts", 5, 0, 1440 );
-  }
-
+		maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
+		maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );
+		maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
+		maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 750, 0, 5000 );
+		maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 12, 0, 1440 );
+	}
+	else {
+		maps\mp\gametypes\_globallogic::registerNumLivesDvar( "war_lts", 1, 1, 10 );
+		maps\mp\gametypes\_globallogic::registerRoundLimitDvar( "war_lts", 5, 0, 500 );
+		maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( "war_lts", 2, 0, 500 );
+		maps\mp\gametypes\_globallogic::registerScoreLimitDvar( "war_lts", 3, 0, 5000 );
+		maps\mp\gametypes\_globallogic::registerTimeLimitDvar( "war_lts", 5, 0, 1440 );
+	}
+	
 	level.teamBased = true;
 	level.onStartGameType = ::onStartGameType;
 	level.onSpawnPlayer = ::onSpawnPlayer;
 	level.onRoundSwitch = ::onRoundSwitch;
-  
-  if( !level.scr_war_lts_enable )
-    game["dialog"]["gametype"] = gameTypeDialog( "team_deathmtch" );
-  else
-    game["dialog"]["gametype"] = gameTypeDialog( "lastteam" );
+	
+	if( !level.scr_war_lts_enable )
+		game["dialog"]["gametype"] = gameTypeDialog( "team_deathmtch" );
+	else
+		game["dialog"]["gametype"] = gameTypeDialog( "lastteam" );
 }
 
 
 onStartGameType()
 {
 	setClientNameMode("auto_change");
-
-  if( !level.scr_war_lts_enable ) {
-    maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OBJECTIVES_WAR" );
-    maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OBJECTIVES_WAR" );
-  } else {
-    maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OW_OBJECTIVES_LTS" );
-    maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OW_OBJECTIVES_LTS" );
-  }
 	
-	if ( level.splitscreen )
-	{
-    if( !level.scr_war_lts_enable ) {
-      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_WAR" );
-      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_WAR" );
-    } else {
-      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_LTS" );
-      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_LTS" );
-    }
+	if( !level.scr_war_lts_enable ) {
+		maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OBJECTIVES_WAR" );
+		maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OBJECTIVES_WAR" );
 	}
-	else
-	{
-    if( !level.scr_war_lts_enable ) {
-      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_WAR_SCORE" );
-      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_WAR_SCORE" );
-    } else {
-      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_LTS_SCORE" );
-      maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_LTS_SCORE" );
-    }
+	else {
+		maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OW_OBJECTIVES_LTS" );
+		maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OW_OBJECTIVES_LTS" );
 	}
-  if( !level.scr_war_lts_enable ) {
-    maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OBJECTIVES_WAR_HINT" );
-    maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OBJECTIVES_WAR_HINT" );
-  } else {
-    maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OW_OBJECTIVES_LTS_HINT" );
-    maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OW_OBJECTIVES_LTS_HINT" );
-  }
-			
+	
+	if ( level.splitscreen ) {
+		if( !level.scr_war_lts_enable ) {
+			maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_WAR" );
+			maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_WAR" );
+		}
+		else {
+			maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_LTS" );
+			maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_LTS" );
+		}
+	}
+	else {
+		if( !level.scr_war_lts_enable ) {
+			maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_WAR_SCORE" );
+			maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_WAR_SCORE" );
+		}
+		else {
+			maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_OBJECTIVES_LTS_SCORE" );
+			maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_OBJECTIVES_LTS_SCORE" );
+		}
+	}
+	if( !level.scr_war_lts_enable ) {
+		maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OBJECTIVES_WAR_HINT" );
+		maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OBJECTIVES_WAR_HINT" );
+	}
+	else {
+		maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OW_OBJECTIVES_LTS_HINT" );
+		maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OW_OBJECTIVES_LTS_HINT" );
+	}
+	
 	level.spawnMins = ( 0, 0, 0 );
-	level.spawnMaxs = ( 0, 0, 0 );	
+	level.spawnMaxs = ( 0, 0, 0 );
 	maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_tdm_spawn_allies_start" );
 	maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_tdm_spawn_axis_start" );
 	maps\mp\gametypes\_spawnlogic::addSpawnPoints( "allies", "mp_tdm_spawn" );
 	maps\mp\gametypes\_spawnlogic::addSpawnPoints( "axis", "mp_tdm_spawn" );
-
+	
 	//level.spawn_axis_start = getentarray( "mp_tdm_spawn_axis_start", "classname" );
 	//level.spawn_allies_start = getentarray( "mp_tdm_spawn_allies_start", "classname" );
 	//logPrint( "MI;" + level.script + ";spawn_allies_start;" + level.spawn_allies_start.size + ";spawn_axis_start;" + level.spawn_axis_start.size + "\n" );
@@ -152,13 +155,12 @@ onStartGameType()
 	
 	if ( getDvarInt( "scr_oldHardpoints" ) > 0 )
 		allowed[1] = "hardpoint";
-	
+		
 	level.displayRoundEndText = false;
 	maps\mp\gametypes\_gameobjects::main(allowed);
 	
 	// elimination style
-	if ( level.scr_war_lts_enable || (level.roundLimit != 1 && level.numLives) )
-	{
+	if ( level.scr_war_lts_enable || (level.roundLimit != 1 && level.numLives) ) {
 		level.overrideTeamScore = true;
 		level.displayRoundEndText = true;
 		level.onDeadEvent = ::onDeadEvent;
@@ -170,31 +172,28 @@ onSpawnPlayer()
 	// Check which spawn points should be used
 	if ( game["switchedsides"] ) {
 		spawnTeam = level.otherTeam[ self.pers["team"] ];
-	} else {
+	}
+	else {
 		spawnTeam =  self.pers["team"];
 	}
 	
 	self.usingObj = undefined;
-
-	if ( level.inGracePeriod || level.scr_war_forcestartspawns )
-	{
+	
+	if ( level.inGracePeriod || level.scr_war_forcestartspawns ) {
 		spawnPoints = getentarray("mp_tdm_spawn_" + spawnTeam + "_start", "classname");
 		
 		if ( !spawnPoints.size )
 			spawnPoints = getentarray("mp_sab_spawn_" + spawnTeam + "_start", "classname");
 			
-		if ( !spawnPoints.size )
-		{
+		if ( !spawnPoints.size ) {
 			spawnPoints = maps\mp\gametypes\_spawnlogic::getTeamSpawnPoints( spawnTeam );
 			spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_NearTeam( spawnPoints );
 		}
-		else
-		{
+		else {
 			spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_Random( spawnPoints );
-		}		
+		}
 	}
-	else
-	{
+	else {
 		spawnPoints = maps\mp\gametypes\_spawnlogic::getTeamSpawnPoints( spawnTeam );
 		spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_NearTeam( spawnPoints );
 	}
@@ -209,7 +208,8 @@ onDeadEvent( team )
 	if ( team != "all" ) {
 		[[level._setTeamScore]]( getOtherTeam(team), [[level._getTeamScore]]( getOtherTeam(team) ) + 1 );
 		thread maps\mp\gametypes\_globallogic::endGame( getOtherTeam(team), game["strings"][team + "_eliminated"] );
-	} else {
+	}
+	else {
 		// We can't determine a winner if everyone died like in S&D so we declare a tie
 		thread maps\mp\gametypes\_globallogic::endGame( "tie", game["strings"]["round_draw"] );
 	}

@@ -5,11 +5,11 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_thirdperson_enable = getdvarx( "scr_thirdperson_enable", "int", 0, 0, 1 );
-
+	
 	// If third person is not enabled then there's nothing else to do here
 	if ( level.scr_thirdperson_enable == 0 )
 		return;
-
+		
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -17,15 +17,15 @@ init()
 onPlayerConnected()
 {
 	self thread addNewEvent( "onPlayerSpawned", ::onPlayerSpawned );
-	self thread addNewEvent( "onPlayerDeath", ::onPlayerDeath );	
+	self thread addNewEvent( "onPlayerDeath", ::onPlayerDeath );
 }
 
 
 onPlayerSpawned()
 {
 	self thread set3rdPersonView();
-
-	// Switch to 1st. person view whenever the player is aiming down the sight		
+	
+	// Switch to 1st. person view whenever the player is aiming down the sight
 	self thread monitorPlayerADS();
 }
 
@@ -39,10 +39,10 @@ onPlayerDeath()
 set3rdPersonView()
 {
 	// Set 3rd. person view
-	self setClientDvars( 
-		"cg_thirdPerson", "1",
-		"cg_thirdPersonAngle", "360",
-		"cg_thirdPersonRange", "72"
+	self setClientDvars(
+	    "cg_thirdPerson", "1",
+	    "cg_thirdPersonAngle", "360",
+	    "cg_thirdPersonRange", "72"
 	);
 }
 
@@ -50,8 +50,8 @@ set3rdPersonView()
 set1stPersonView()
 {
 	// Set 1st. person view
-	self setClientDvar( 
-		"cg_thirdPerson", "0"
+	self setClientDvar(
+	    "cg_thirdPerson", "0"
 	);
 }
 
@@ -61,13 +61,12 @@ monitorPlayerADS()
 	self endon("disconnect");
 	self endon("death");
 	level endon( "game_ended" );
-
+	
 	// Initialize some control values
 	oldAds = 0;
 	firstPersonView = false;
-
-	while(1)
-	{
+	
+	while(1) {
 		wait (0.05);
 		
 		// Check if the player enable/disable ADS
@@ -75,17 +74,18 @@ monitorPlayerADS()
 			oldAds = self playerADS();
 			// Player is enabling ADS
 			if ( !firstPersonView ) {
-				self thread set1stPersonView();	
-				firstPersonView = true;				
+				self thread set1stPersonView();
+				firstPersonView = true;
 			}
 			
-		} else if ( self playerADS() < oldAds ) {
+		}
+		else if ( self playerADS() < oldAds ) {
 			oldAds = self playerADS();
 			// Player is disabling ADS
 			if ( firstPersonView ) {
-				self thread set3rdPersonView();	
+				self thread set3rdPersonView();
 				firstPersonView = false;
 			}
 		}
-	}			
+	}
 }
