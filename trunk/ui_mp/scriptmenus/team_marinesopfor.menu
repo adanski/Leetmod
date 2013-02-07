@@ -34,19 +34,19 @@
 		{
 			//focusFirst;
 			//setfocus "auto_assign";
-      execondvarintvalue sv_running 0 "set tmp_ui_reconnect 1";
+			execondvarintvalue sv_running 0 "set tmp_ui_reconnect 1";
 			exec "setfromdvar ui_hud_hardcore_show_compass ct_hud_hardcore_show_compass";
 			exec "setfromdvar ui_hud_show_inventory ct_hud_show_inventory";
-      exec "setfromdvar ui_hud_show_scores ct_hud_show_scores";
+			exec "setfromdvar ui_hud_show_scores ct_hud_show_scores";
 		}
-
-		#ifndef PC
+		
+#ifndef PC
 		execkeyint BUTTON_START
 		{
 			close self;
 		}
-		#endif
-
+#endif
+		
 		// background overlay
 		itemDef	{
 			style			WINDOW_STYLE_FILLED
@@ -71,51 +71,51 @@
 			visible			1
 			decoration
 		}
-
+		
 		// ------------------ TREE TITLE ------------------
-
+		
 		CHOICE_MENU_TITLE( "@MPUI_CHOOSE_TEAM" )
-
+		
 		// map display ================================================
-		#include "ui_mp/tactical_map.inc";
-
+#include "ui_mp/tactical_map.inc";
+		
 		// ------------------ buttons ---------------------
-		#define BACK_OPEN	;
-		#include "ui_mp/navcontrols.inc"
-
+#define BACK_OPEN	;
+#include "ui_mp/navcontrols.inc"
+		
 		//=========================================================
 		//===================== MENU SELECTION ====================
 		//=========================================================
-		#include "ui_mp/teamiconvivid.inc"
-
+#include "ui_mp/teamiconvivid.inc"
+		
 		// PC widescreen fix
-		#ifdef PC
-			#undef  CHOICE_X_START
-			#define CHOICE_X_START	-320
-
-			#undef	CHOICE_HORIZONTAL_ALIGN
-			#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
-		#endif
-
+#ifdef PC
+#undef  CHOICE_X_START
+#define CHOICE_X_START	-320
+		
+#undef	CHOICE_HORIZONTAL_ALIGN
+#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
+#endif
+		
 		//CHOICE_BUTTON_VIS( itemIndex, textArg, actionArg, visArg )
-		CHOICE_BUTTON_VIS( 1, "@" + dvarString( g_TeamName_Axis ), play "mouse_click"; scriptMenuResponse "axis";, when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_autoassign) == 0 && dvarint(ui_force_allies) == 0 ); )
+		CHOICE_BUTTON_VIS( 1, "@" + dvarString( g_TeamName_Axis ), play "mouse_click"; scriptMenuResponse "axis"; , when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_autoassign) == 0 && dvarint(ui_force_allies) == 0 ); )
 		CHOICE_DBUTTON_VIS( 1, "@" + dvarString( g_TeamName_Axis ), when( ( team( name ) == "TEAM_SPECTATOR" ) && ( dvarint(ui_force_autoassign) == 1 || dvarint(ui_force_allies) == 1 ) ); )
-
+		
 		CHOICE_BUTTON_BG( 2, 1 )
 		CHOICE_HIGHLIGHT( 2, 1 )
-
-		CHOICE_BUTTON_VIS_NOHI( 2, "@" + dvarString( g_TeamName_Allies ), play "mouse_click"; scriptMenuResponse "allies";, when( ( team( name ) == "TEAM_AXIS" || team( name ) == "TEAM_SPECTATOR" || (team(name) == "TEAM_FREE" && TEAM_IS_OPFOR) ) && dvarint(ui_force_autoassign) == 0 && dvarint(ui_force_axis) == 0 ); )
+		
+		CHOICE_BUTTON_VIS_NOHI( 2, "@" + dvarString( g_TeamName_Allies ), play "mouse_click"; scriptMenuResponse "allies"; , when( ( team( name ) == "TEAM_AXIS" || team( name ) == "TEAM_SPECTATOR" || (team(name) == "TEAM_FREE" && TEAM_IS_OPFOR) ) && dvarint(ui_force_autoassign) == 0 && dvarint(ui_force_axis) == 0 ); )
 		CHOICE_DBUTTON_VIS_NOHI( 2, "@" + dvarString( g_TeamName_Allies ), when( ( team( name ) == "TEAM_AXIS" || team( name ) == "TEAM_SPECTATOR" || team(name) == "TEAM_FREE" ) && ( dvarint(ui_force_autoassign) == 1 || dvarint(ui_force_axis) == 1 ) ); )
-
-		CHOICE_BUTTON_VIS_NOHI( 2, "@" + dvarString( g_TeamName_Axis ), play "mouse_click"; scriptMenuResponse "axis";, when( (team( name ) == "TEAM_ALLIES" || (team(name) == "TEAM_FREE" && TEAM_IS_MARINES)) && dvarint(ui_force_autoassign) == 0 && dvarint(ui_force_allies) == 0 ); )
+		
+		CHOICE_BUTTON_VIS_NOHI( 2, "@" + dvarString( g_TeamName_Axis ), play "mouse_click"; scriptMenuResponse "axis"; , when( (team( name ) == "TEAM_ALLIES" || (team(name) == "TEAM_FREE" && TEAM_IS_MARINES)) && dvarint(ui_force_autoassign) == 0 && dvarint(ui_force_allies) == 0 ); )
 		CHOICE_DBUTTON_VIS_NOHI( 2, "@" + dvarString( g_TeamName_Axis ), when( ( team( name ) == "TEAM_ALLIES" || team(name) == "TEAM_FREE" ) && ( dvarint(ui_force_autoassign) == 1 || dvarint(ui_force_allies) == 1 ) ); )
-
-		CHOICE_BUTTON_FOCUS_VIS_NOHI_EX( 3, "@MPUI_AUTOASSIGN", play "mouse_click"; scriptMenuResponse "autoassign";, ;, ;, when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 );, name "auto_assign"; )
-    CHOICE_BUTTON_BG( 3, when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 ); )
-    CHOICE_HIGHLIGHT( 3, when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 ); )
+		
+		CHOICE_BUTTON_FOCUS_VIS_NOHI_EX( 3, "@MPUI_AUTOASSIGN", play "mouse_click"; scriptMenuResponse "autoassign"; , ; , ; , when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 ); , name "auto_assign"; )
+		CHOICE_BUTTON_BG( 3, when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 ); )
+		CHOICE_HIGHLIGHT( 3, when( ( team( name ) == "TEAM_SPECTATOR" ) && dvarint(ui_force_allies) == 0 && dvarint(ui_force_axis) == 0 ); )
 		CHOICE_DBUTTON_VIS_NOHI( 3, "@MPUI_AUTOASSIGN", when( ( ( team( name ) == "TEAM_ALLIES" || team( name ) == "TEAM_AXIS" ) && gametype() == "bel" ) || dvarint(ui_force_allies) == 1 || dvarint(ui_force_axis) == 1 ); )
 		CHOICE_SEPARATOR_VIS( CHOICE_SEP_1, when( !localvarBool( ui_hideBack ) && team( name ) == "TEAM_SPECTATOR" && CLASS_MODE ) )
-
+		
 		CHOICE_BUTTON_FOCUS_VIS_ADV( 4, "@OW_CAC_MENU_ITEM", close self; scriptMenuResponse "ow_cac_editor", exec "set ui_hint_text @MPUI_DESC_CREATE_A_CLASS", CLEARUIHINT, when( CLASS_MODE && !localvarBool( ui_hideBack ) && team( name ) == "TEAM_SPECTATOR" ), CLASS_MODE && !localvarBool( ui_hideBack ) && team( name ) == "TEAM_SPECTATOR" )
 		//CHOICE_BUTTON_FOCUS_VIS_NOHI( 4, "", ;, exec "set ui_hint_text @MPUI_DESC_CREATE_A_CLASS_LOCKED", CLEARUIHINT, when( !localvarBool( ui_hideBack ) && stat( 260 ) < 1  && team( name ) == "TEAM_SPECTATOR" ) )
 		//CHOICE_DBUTTON_VIS( 4, "@OW_CAC_MENU_ITEM", when( !localvarBool( ui_hideBack ) && stat( 260 ) < 1 && team( name ) == "TEAM_SPECTATOR" ) )
@@ -123,41 +123,41 @@
 		
 		CHOICE_BUTTON_BG( 5, 1 )
 		CHOICE_HIGHLIGHT( 5, 1 )
-		CHOICE_BUTTON_VIS_NOHI( 5, "@MPUI_SPECTATOR", play "mouse_click"; scriptMenuResponse "spectator";, when( dvarInt( ui_broadcaster ) != 1 && team( name ) != "TEAM_SPECTATOR" && dvarbool( scr_game_spectatetype ) ); )
-		CHOICE_BUTTON_VIS_NOHI( 5, "@OW_BROADCASTER", play "mouse_click"; scriptMenuResponse "spectator";, when( dvarInt( ui_broadcaster ) == 1 && team( name ) != "TEAM_SPECTATOR" && dvarbool( scr_game_spectatetype ) ); )
-		CHOICE_BUTTON_VIS_NOHI( 5, "@MENU_CONTROLS", close self; open main_controls;, when( team( name ) == "TEAM_SPECTATOR" ) )
-		CHOICE_BUTTON_VIS( 6, "@MENU_OPTIONS", close self; open main_options; execnow "set ui_allow_graphic_change 0";, when( team( name ) == "TEAM_SPECTATOR" ) )
-		CHOICE_BUTTON_VIS( 7, "@OW_PLAYERS_MENU_ITEM", open muteplayer; close self;, when( team( name ) == "TEAM_SPECTATOR" ); )
-    
-    execkeyint 13 { play "mouse_click"; scriptMenuResponse "spectator"; }
-    execkeyint 32 { play "mouse_click"; scriptMenuResponse "autoassign"; }
-    execkey "1" { play "mouse_click"; scriptMenuResponse "allies"; }
-    execkey "2" { play "mouse_click"; scriptMenuResponse "axis"; }
-    execkey "3" { play "mouse_click"; scriptMenuResponse "autoassign"; }
-    execkey "4" { play "mouse_click"; scriptMenuResponse "spectator"; }
-    execkey "5" { play "mouse_click"; open muteplayer; close self; }
-    execkey "a" { play "mouse_click"; scriptMenuResponse "autoassign"; }
-    execkey "c" {
-      play "mouse_click";
-      close self;
-      setdvar tmp_denyUseCAC 0;
-      execNowOnDvarStringValue g_gametype gg "set tmp_denyUseCAC 1";
-      execNowOnDvarStringValue g_gametype oitc "set tmp_denyUseCAC 1";
-      execNowOnDvarStringValue g_gametype ss "set tmp_denyUseCAC 1";
-      scriptMenuRespondOnDvarStringValue tmp_denyUseCAC 0 "ow_cac_editor";
-    }
-    execkey "o" { play "mouse_click"; close self; open main_options; execnow "set ui_allow_graphic_change 0"; }
-    execkey "p" { play "mouse_click"; open muteplayer; close self; }
-    execkey "q" { play "mouse_click"; open popup_leavegame; }
-    execkey "t"
-    {
-      scriptMenuRespondOnDvarStringValue ui_team marines "axis";
-      scriptMenuRespondOnDvarStringValue ui_team opfor "allies";
-    }
-    
-    execkey "s" { play "mouse_click"; uiScript openMenuOnDvar sv_running 1 createserver; }
-    
-    itemDef 
+		CHOICE_BUTTON_VIS_NOHI( 5, "@MPUI_SPECTATOR", play "mouse_click"; scriptMenuResponse "spectator"; , when( dvarInt( ui_broadcaster ) != 1 && team( name ) != "TEAM_SPECTATOR" && dvarbool( scr_game_spectatetype ) ); )
+		CHOICE_BUTTON_VIS_NOHI( 5, "@OW_BROADCASTER", play "mouse_click"; scriptMenuResponse "spectator"; , when( dvarInt( ui_broadcaster ) == 1 && team( name ) != "TEAM_SPECTATOR" && dvarbool( scr_game_spectatetype ) ); )
+		CHOICE_BUTTON_VIS_NOHI( 5, "@MENU_CONTROLS", close self; open main_controls; , when( team( name ) == "TEAM_SPECTATOR" ) )
+		CHOICE_BUTTON_VIS( 6, "@MENU_OPTIONS", close self; open main_options; execnow "set ui_allow_graphic_change 0"; , when( team( name ) == "TEAM_SPECTATOR" ) )
+		CHOICE_BUTTON_VIS( 7, "@OW_PLAYERS_MENU_ITEM", open muteplayer; close self; , when( team( name ) == "TEAM_SPECTATOR" ); )
+		
+		execkeyint 13 { play "mouse_click"; scriptMenuResponse "spectator"; }
+		execkeyint 32 { play "mouse_click"; scriptMenuResponse "autoassign"; }
+		execkey "1" { play "mouse_click"; scriptMenuResponse "allies"; }
+		execkey "2" { play "mouse_click"; scriptMenuResponse "axis"; }
+		execkey "3" { play "mouse_click"; scriptMenuResponse "autoassign"; }
+		execkey "4" { play "mouse_click"; scriptMenuResponse "spectator"; }
+		execkey "5" { play "mouse_click"; open muteplayer; close self; }
+		execkey "a" { play "mouse_click"; scriptMenuResponse "autoassign"; }
+		execkey "c" {
+			play "mouse_click";
+			close self;
+			setdvar tmp_denyUseCAC 0;
+			execNowOnDvarStringValue g_gametype gg "set tmp_denyUseCAC 1";
+			execNowOnDvarStringValue g_gametype oitc "set tmp_denyUseCAC 1";
+			execNowOnDvarStringValue g_gametype ss "set tmp_denyUseCAC 1";
+			scriptMenuRespondOnDvarStringValue tmp_denyUseCAC 0 "ow_cac_editor";
+		}
+		execkey "o" { play "mouse_click"; close self; open main_options; execnow "set ui_allow_graphic_change 0"; }
+		execkey "p" { play "mouse_click"; open muteplayer; close self; }
+		execkey "q" { play "mouse_click"; open popup_leavegame; }
+		execkey "t"
+		{
+			scriptMenuRespondOnDvarStringValue ui_team marines "axis";
+			scriptMenuRespondOnDvarStringValue ui_team opfor "allies";
+		}
+		
+		execkey "s" { play "mouse_click"; uiScript openMenuOnDvar sv_running 1 createserver; }
+		
+		itemDef
 		{
 			name			createserverbutton
 			text			"@OW_MENU_SERVER_CONFIGURATION"
@@ -171,14 +171,14 @@
 			textaligny		18
 			visible			when( dvarbool( sv_running ) )
 			mouseEnter		{ play "mouse_over"; }
-			action 
+			action
 			{
 				play "mouse_click";
-        open createserver;
-			}	
+				open createserver;
+			}
 		}
-    
-    itemDef
+		
+		itemDef
 		{
 			name			leaveSV
 			text			"@OW_MENU_INTEL_ENDGAME"
@@ -192,13 +192,13 @@
 			textaligny		18
 			visible			when( dvarbool( sv_running ) && team( name ) == "TEAM_SPECTATOR" )
 			mouseEnter		{ play "mouse_over"; }
-			action 
+			action
 			{
 				play "mouse_click";
-        open popup_leavegame;
-			}	
+				open popup_leavegame;
+			}
 		}
-    itemDef 
+		itemDef
 		{
 			name			leaveCL
 			text			"@OW_MENU_INTEL_LEAVE"
@@ -212,11 +212,11 @@
 			textaligny		18
 			visible			when( !dvarbool( sv_running ) && team( name ) == "TEAM_SPECTATOR" )
 			mouseEnter		{ play "mouse_over"; }
-			action 
+			action
 			{
 				play "mouse_click";
-        open popup_leavegame;
-			}	
+				open popup_leavegame;
+			}
 		}
 	}
 }

@@ -27,11 +27,11 @@
 		onOpen
 		{
 			setLocalVarBool ui_hideBack 1;
-      
-      //uiScript LoadArenas;
-      //uiScript LoadMods;
-      uiScript LoadDemos;
-      uiScript updateSPMenu;
+			
+			//uiScript LoadArenas;
+			//uiScript LoadMods;
+			uiScript LoadDemos;
+			uiScript updateSPMenu;
 		}
 		onClose
 		{
@@ -39,15 +39,16 @@
 		}
 		onESC
 		{
-			close self; open main_text;
+			close self;
+			open main_text;
 		}
-
+		
 		PREPROC_SHADER_DRAW( -120 0 880 480, 0 0, "white", 0 0 0 0.75, 0, 1, 0 0 0 0 )
-		#include "ui_mp/navcontrols.inc"
-
+#include "ui_mp/navcontrols.inc"
+		
 		CHOICE_MENU_TITLE( "Demos" )
-
-		itemDef 
+		
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -70,9 +71,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click"; }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -95,9 +96,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click"; }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -120,9 +121,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -145,9 +146,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -170,9 +171,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -195,9 +196,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -220,9 +221,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -245,9 +246,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -270,9 +271,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -295,9 +296,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -320,9 +321,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -345,9 +346,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -370,9 +371,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -395,9 +396,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -420,9 +421,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -445,9 +446,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -470,9 +471,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -495,9 +496,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -520,9 +521,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -545,9 +546,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -570,9 +571,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -595,9 +596,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -620,9 +621,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -645,9 +646,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -670,9 +671,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -695,9 +696,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -720,9 +721,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -745,9 +746,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -770,9 +771,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -795,9 +796,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -820,9 +821,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -845,9 +846,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -870,9 +871,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -895,9 +896,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -920,9 +921,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -945,9 +946,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -970,9 +971,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -995,9 +996,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1020,9 +1021,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1045,9 +1046,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1070,9 +1071,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1095,9 +1096,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1120,9 +1121,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1145,9 +1146,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1170,9 +1171,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1195,9 +1196,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1220,9 +1221,9 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
-    itemDef 
+		itemDef
 		{
 			name				demolist
 			rect				-170 64 340 280 HORIZONTAL_ALIGN_CENTER CHOICE_VERTICAL_ALIGN
@@ -1245,7 +1246,7 @@
 			action				{ show accept; }
 			doubleClick			{ play "mouse_click";  }
 			mouseEnter			{ show floater_message }
-			mouseExit			{ hide floater_message } 
+			mouseExit			{ hide floater_message }
 		}
 		CHOICE_BUTTON( 1, "Play",  )
 		//CHOICE_BUTTON_VIS( 2, "@MENU_LAUNCH_WITHOUT_MODS", uiScript ClearMods;, when( dvarString( fs_game ) != "" ); )

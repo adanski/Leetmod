@@ -1,5 +1,5 @@
 #ifdef FILLMENUDVARS
-  #undef FILLMENUDVARS
+#undef FILLMENUDVARS
 #endif
 
 #define FILLMENUDVARS     exec "exec menudvars/armory/l/_def.cfg"\
@@ -21,8 +21,8 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/armory/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/armory/l/war.cfg"
 
-    
-    
+
+
 #define SETA_WEAP_ALLOW_ASSAULT_M16 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_assault_m16_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_assault_m16_bel _null" \
@@ -40,7 +40,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_assault_m16_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_assault_m16_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_assault_m16_war _null"
-  
+
 #define SETA_WEAP_ALLOW_ASSAULT_AK47 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_assault_ak47_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_assault_ak47_bel _null" \
@@ -58,7 +58,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_assault_ak47_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_assault_ak47_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_assault_ak47_war _null"
-  
+
 #define SETA_WEAP_ALLOW_ASSAULT_M4 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_assault_m4_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_assault_m4_bel _null" \
@@ -76,7 +76,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_assault_m4_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_assault_m4_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_assault_m4_war _null"
-  
+
 #define SETA_WEAP_ALLOW_ASSAULT_G3 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_assault_g3_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_assault_g3_bel _null" \
@@ -94,7 +94,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_assault_g3_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_assault_g3_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_assault_g3_war _null"
-  
+
 #define SETA_WEAP_ALLOW_ASSAULT_G36C \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_assault_g36c_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_assault_g36c_bel _null" \
@@ -112,7 +112,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_assault_g36c_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_assault_g36c_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_assault_g36c_war _null"
-  
+
 #define SETA_WEAP_ALLOW_ASSAULT_M14 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_assault_m14_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_assault_m14_bel _null" \
@@ -130,7 +130,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_assault_m14_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_assault_m14_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_assault_m14_war _null"
-  
+
 #define SETA_WEAP_ALLOW_ASSAULT_MP44 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_assault_mp44_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_assault_mp44_bel _null" \
@@ -148,7 +148,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_assault_mp44_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_assault_mp44_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_assault_mp44_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SPECOPS_MP5 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_specops_mp5_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_specops_mp5_bel _null" \
@@ -166,7 +166,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_specops_mp5_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_specops_mp5_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_specops_mp5_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SPECOPS_SKORPION \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_specops_skorpion_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_specops_skorpion_bel _null" \
@@ -184,7 +184,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_specops_skorpion_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_specops_skorpion_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_specops_skorpion_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SPECOPS_UZI \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_specops_uzi_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_specops_uzi_bel _null" \
@@ -202,7 +202,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_specops_uzi_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_specops_uzi_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_specops_uzi_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SPECOPS_AK74U \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_specops_ak74u_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_specops_ak74u_bel _null" \
@@ -220,7 +220,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_specops_ak74u_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_specops_ak74u_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_specops_ak74u_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SPECOPS_P90 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_specops_p90_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_specops_p90_bel _null" \
@@ -238,7 +238,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_specops_p90_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_specops_p90_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_specops_p90_war _null"
-  
+
 #define SETA_WEAP_ALLOW_HEAVYGUNNER_SAW \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_heavygunner_saw_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_heavygunner_saw_bel _null" \
@@ -256,7 +256,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_heavygunner_saw_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_heavygunner_saw_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_heavygunner_saw_war _null"
-  
+
 #define SETA_WEAP_ALLOW_HEAVYGUNNER_RPD \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_heavygunner_rpd_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_heavygunner_rpd_bel _null" \
@@ -274,7 +274,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_heavygunner_rpd_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_heavygunner_rpd_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_heavygunner_rpd_war _null"
-  
+
 #define SETA_WEAP_ALLOW_HEAVYGUNNER_M60E4 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_heavygunner_m60e4_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_heavygunner_m60e4_bel _null" \
@@ -292,7 +292,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_heavygunner_m60e4_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_heavygunner_m60e4_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_heavygunner_m60e4_war _null"
-  
+
 #define SETA_WEAP_ALLOW_DEMOLITIONS_WINCHESTER1200 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_demolitions_winchester1200_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_demolitions_winchester1200_bel _null" \
@@ -310,7 +310,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_demolitions_winchester1200_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_demolitions_winchester1200_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_demolitions_winchester1200_war _null"
-  
+
 #define SETA_WEAP_ALLOW_DEMOLITIONS_M1014 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_demolitions_m1014_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_demolitions_m1014_bel _null" \
@@ -328,7 +328,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_demolitions_m1014_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_demolitions_m1014_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_demolitions_m1014_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SNIPER_M40A3 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_sniper_m40a3_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_sniper_m40a3_bel _null" \
@@ -346,7 +346,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_sniper_m40a3_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_sniper_m40a3_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_sniper_m40a3_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SNIPER_M21 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_sniper_m21_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_sniper_m21_bel _null" \
@@ -364,7 +364,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_sniper_m21_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_sniper_m21_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_sniper_m21_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SNIPER_DRAGUNOV \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_sniper_dragunov_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_sniper_dragunov_bel _null" \
@@ -382,7 +382,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_sniper_dragunov_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_sniper_dragunov_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_sniper_dragunov_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SNIPER_REMINGTON700 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_sniper_remington700_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_sniper_remington700_bel _null" \
@@ -400,7 +400,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_sniper_remington700_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_sniper_remington700_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_sniper_remington700_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SNIPER_BARRETT \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_sniper_barrett_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_sniper_barrett_bel _null" \
@@ -418,7 +418,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_sniper_barrett_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_sniper_barrett_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_sniper_barrett_war _null"
-  
+
 #define SETA_WEAP_ALLOW_BERETTA \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_beretta_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_beretta_bel _null" \
@@ -436,7 +436,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_beretta_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_beretta_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_beretta_war _null"
-  
+
 #define SETA_WEAP_ALLOW_COLT45 \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_colt45_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_colt45_bel _null" \
@@ -454,7 +454,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_colt45_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_colt45_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_colt45_war _null"
-  
+
 #define SETA_WEAP_ALLOW_USP \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_usp_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_usp_bel _null" \
@@ -472,7 +472,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_usp_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_usp_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_usp_war _null"
-  
+
 #define SETA_WEAP_ALLOW_DESERTEAGLE \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_deserteagle_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_deserteagle_bel _null" \
@@ -490,7 +490,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_deserteagle_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_deserteagle_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_deserteagle_war _null"
-  
+
 #define SETA_WEAP_ALLOW_DESERTEAGLEGOLD \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_deserteaglegold_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_deserteaglegold_bel _null" \
@@ -508,7 +508,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_deserteaglegold_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_deserteaglegold_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_deserteaglegold_war _null"
-  
+
 #define SETA_WEAP_ALLOW_FRAG_GRENADE \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_frag_grenade_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_frag_grenade_bel _null" \
@@ -526,7 +526,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_frag_grenade_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_frag_grenade_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_frag_grenade_war _null"
-  
+
 #define SETA_WEAP_ALLOW_CONCUSSION_GRENADE \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_concussion_grenade_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_concussion_grenade_bel _null" \
@@ -544,7 +544,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_concussion_grenade_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_concussion_grenade_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_concussion_grenade_war _null"
-  
+
 #define SETA_WEAP_ALLOW_FLASH_GRENADE \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_flash_grenade_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_flash_grenade_bel _null" \
@@ -562,7 +562,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_flash_grenade_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_flash_grenade_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_flash_grenade_war _null"
-  
+
 #define SETA_WEAP_ALLOW_SMOKE_GRENADE \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_smoke_grenade_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_smoke_grenade_bel _null" \
@@ -580,7 +580,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta weap_allow_smoke_grenade_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta weap_allow_smoke_grenade_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta weap_allow_smoke_grenade_war _null"
-  
+
 #define SETA_SCR_ALLOW_STATIONARY_TURRETS \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_allow_stationary_turrets_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_allow_stationary_turrets_bel _null" \
@@ -598,7 +598,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_allow_stationary_turrets_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_allow_stationary_turrets_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_allow_stationary_turrets_war _null"
-  
+
 #define SETA_WEAP_ALLOW_BINOCULARS \
   execOnDvarStringValue menu_cfg_gt ass "seta weap_allow_binoculars_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta weap_allow_binoculars_bel _null" \
@@ -634,7 +634,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_enable_nightvision_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_enable_nightvision_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_enable_nightvision_war _null"
-  
+
 #define SETA_SCR_MELEE_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_melee_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_melee_enable_bel _null" \
@@ -652,7 +652,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_melee_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_melee_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_melee_enable_war _null"
-  
+
 #define SETA_SCR_MELEE_RANGE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_melee_range_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_melee_range_bel _null" \
@@ -670,7 +670,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_melee_range_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_melee_range_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_melee_range_war _null"
-  
+
 #define SETA_SCR_MELEE_STAB_RANGE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_melee_stab_range_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_melee_stab_range_bel _null" \
@@ -688,7 +688,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_melee_stab_range_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_melee_stab_range_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_melee_stab_range_war _null"
-  
+
 #define SETA_SCR_MELEECHARGEFRICTION \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_meleeChargeFriction_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_meleeChargeFriction_bel _null" \
@@ -705,8 +705,8 @@
   execOnDvarStringValue menu_cfg_gt sd "seta scr_meleeChargeFriction_sd _null" \
   execOnDvarStringValue menu_cfg_gt ss "seta scr_meleeChargeFriction_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_meleeChargeFriction_tgr _null" \
-  execOnDvarStringValue menu_cfg_gt war "seta scr_meleeChargeFriction_war _null"  
-  
+  execOnDvarStringValue menu_cfg_gt war "seta scr_meleeChargeFriction_war _null"
+
 #define SETA_SCR_DYNAMIC_ATTACHMENTS_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_dynamic_attachments_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_dynamic_attachments_enable_bel _null" \
@@ -724,7 +724,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_dynamic_attachments_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_dynamic_attachments_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_dynamic_attachments_enable_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_PISTOL_NONE \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_pistol_none_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_pistol_none_bel _null" \
@@ -742,7 +742,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_pistol_none_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_pistol_none_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_pistol_none_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_ASSAULT_NONE \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_assault_none_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_assault_none_bel _null" \
@@ -760,7 +760,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_assault_none_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_assault_none_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_assault_none_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_SPECOPS_NONE \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_specops_none_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_specops_none_bel _null" \
@@ -778,7 +778,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_specops_none_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_specops_none_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_specops_none_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_HEAVYGUNNER_NONE \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_heavygunner_none_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_heavygunner_none_bel _null" \
@@ -796,7 +796,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_heavygunner_none_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_heavygunner_none_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_heavygunner_none_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_SHOTGUN_NONE \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_shotgun_none_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_shotgun_none_bel _null" \
@@ -814,7 +814,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_shotgun_none_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_shotgun_none_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_shotgun_none_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_SNIPER_NONE \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_sniper_none_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_sniper_none_bel _null" \
@@ -832,7 +832,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_sniper_none_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_sniper_none_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_sniper_none_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_PISTOL_SILENCER \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_pistol_silencer_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_pistol_silencer_bel _null" \
@@ -850,7 +850,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_pistol_silencer_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_pistol_silencer_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_pistol_silencer_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_ASSAULT_SILENCER \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_assault_silencer_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_assault_silencer_bel _null" \
@@ -868,7 +868,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_assault_silencer_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_assault_silencer_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_assault_silencer_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_SPECOPS_SILENCER \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_specops_silencer_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_specops_silencer_bel _null" \
@@ -886,7 +886,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_specops_silencer_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_specops_silencer_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_specops_silencer_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_ASSAULT_REFLEX \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_assault_reflex_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_assault_reflex_bel _null" \
@@ -904,7 +904,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_assault_reflex_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_assault_reflex_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_assault_reflex_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_SPECOPS_REFLEX \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_specops_reflex_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_specops_reflex_bel _null" \
@@ -922,7 +922,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_specops_reflex_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_specops_reflex_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_specops_reflex_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_HEAVYGUNNER_REFLEX \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_heavygunner_reflex_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_heavygunner_reflex_bel _null" \
@@ -940,7 +940,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_heavygunner_reflex_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_heavygunner_reflex_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_heavygunner_reflex_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_SHOTGUN_REFLEX \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_shotgun_reflex_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_shotgun_reflex_bel _null" \
@@ -958,7 +958,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_shotgun_reflex_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_shotgun_reflex_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_shotgun_reflex_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_ASSAULT_ACOG \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_assault_acog_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_assault_acog_bel _null" \
@@ -976,7 +976,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_assault_acog_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_assault_acog_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_assault_acog_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_SPECOPS_ACOG \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_specops_acog_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_specops_acog_bel _null" \
@@ -994,7 +994,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_specops_acog_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_specops_acog_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_specops_acog_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_HEAVYGUNNER_ACOG \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_heavygunner_acog_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_heavygunner_acog_bel _null" \
@@ -1012,7 +1012,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_heavygunner_acog_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_heavygunner_acog_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_heavygunner_acog_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_SNIPER_ACOG \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_sniper_acog_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_sniper_acog_bel _null" \
@@ -1030,7 +1030,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_sniper_acog_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_sniper_acog_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_sniper_acog_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_HEAVYGUNNER_GRIP \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_heavygunner_grip_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_heavygunner_grip_bel _null" \
@@ -1048,7 +1048,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_heavygunner_grip_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_heavygunner_grip_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_heavygunner_grip_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_SHOTGUN_GRIP \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_shotgun_grip_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_shotgun_grip_bel _null" \
@@ -1066,7 +1066,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta attach_allow_shotgun_grip_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta attach_allow_shotgun_grip_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta attach_allow_shotgun_grip_war _null"
-  
+
 #define SETA_ATTACH_ALLOW_ASSAULT_GL \
   execOnDvarStringValue menu_cfg_gt ass "seta attach_allow_assault_gl_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta attach_allow_assault_gl_bel _null" \

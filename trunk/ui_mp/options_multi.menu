@@ -6,7 +6,7 @@
 #include "ui/choices_setup_common.menu"
 
 {
-	menuDef 
+	menuDef
 	{
 		name			"options_multi"
 		fullScreen		0
@@ -31,7 +31,7 @@
 			close options_graphics_defaults;
 			close options_graphics_texture;
 			close options_control_defaults;
-
+			
 			setLocalVarBool ui_hideBack 1;
 		}
 		onClose
@@ -40,12 +40,12 @@
 			exec "setfromdvar name ui_name";
 			//exec "setfromdvar xfire ui_xfire";
 		}
-		onESC 
-		{ 
-			close self;		
+		onESC
+		{
+			close self;
 		}
-
-		#include "ui_mp/leftside_options.inc"
+		
+#include "ui_mp/leftside_options.inc"
 		
 		CHOICE_SECTION_TITLE( 21, "@MENU_MULTIPLAYER_OPTIONS" )
 		
@@ -53,7 +53,7 @@
 		//CHOICE_DVARYESNO( 23, "@MENU_ALLOW_DOWNLOAD", cl_allowdownload, ; )
 		//CHOICE_DVARYESNO( 24, "@MENU_DRAW_HUD", hud_enable, ; )
 		//CHOICE_DVAREDIT( 24, "@MENU_PLAYER_NAME", ui_name, ; )
-		CHOICE_DVAREDIT_VIS( 23, "@MENU_PLAYER_NAME", ui_name, 15, 15, ;, 1 )
+		CHOICE_DVAREDIT_VIS( 23, "@MENU_PLAYER_NAME", ui_name, 15, 15, ; , 1 )
 		//CHOICE_DVAREDIT_VIS( 25, "@OW_MENU_XFIRE", ui_xfire, 15, 15, ;, 1 )
 		CHOICE_SEPARATOR( CHOICE_SEP_1 )
 		CHOICE_BUTTON( 24, "@MENU_ENTER_KEY_CODE", open cdkey_menu; )
@@ -70,7 +70,7 @@
 		CHOICE_DVARFLOATLIST( 33, "@OW_DUP_PACKETS", cl_packetdup, { "0" 0 "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 }, ; )
 		
 		//CHOICE_BACK( "@MENU_BACK", close self )
-
+		
 		CHOICE_KEYBINDHELP
 	}
 }

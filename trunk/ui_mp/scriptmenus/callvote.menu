@@ -14,14 +14,14 @@
 		blurWorld		7.0
 		onEsc 			{close self; open class; }
 		PREPROC_SHADER_DRAW( -120 0 880 480, 0 0, "white", 0 0 0 0.75, 0, 1, 0 0 0 0 )
-
-		#undef BACK_OPEN
-		#define BACK_OPEN exec "wait";
-		#include "ui_mp/navcontrols.inc"
+		
+#undef BACK_OPEN
+#define BACK_OPEN exec "wait";
+#include "ui_mp/navcontrols.inc"
 		CHOICE_MENU_TITLE( "@MPUI_CALLVOTE" )
-		#include "ui_mp/scriptmenus/callvote_buttons.inc"
+#include "ui_mp/scriptmenus/callvote_buttons.inc"
 	}
-
+	
 	menuDef
 	{
 		name 			changemap
@@ -31,18 +31,18 @@
 		blurWorld		7.0
 		onEsc 			{close self; open class; }
 		PREPROC_SHADER_DRAW( -120 0 880 480, 0 0, "white", 0 0 0 0.75, 0, 1, 0 0 0 0 )
-
-		#undef BACK_OPEN
-		#define BACK_OPEN exec "wait";
-		#include "ui_mp/navcontrols.inc"
+		
+#undef BACK_OPEN
+#define BACK_OPEN exec "wait";
+#include "ui_mp/navcontrols.inc"
 		CHOICE_MENU_TITLE( "@MPUI_CALLVOTE" )
-		#include "ui_mp/scriptmenus/callvote_buttons.inc"
-
+#include "ui_mp/scriptmenus/callvote_buttons.inc"
+		
 		CHOICE_SECTION_TITLE( 21, "@MPUI_CHANGE_MAP" )
-		#undef CHOICE_X_START
-		#define CHOICE_X_START		-260
+#undef CHOICE_X_START
+#define CHOICE_X_START		-260
 		CHOICE_BUTTON( 36, "@MPUI_VOTE", close self; uiScript voteMap; )
-
+		
 		itemDef
 		{
 			name			maplist
@@ -71,7 +71,7 @@
 			mouseExit 		{ setitemcolor maplist bordercolor 1 1 1 0.15 }
 		}
 	}
-
+	
 	menuDef
 	{
 		name 			changegametype
@@ -81,18 +81,18 @@
 		blurWorld		7.0
 		onEsc 			{close self; open class;}
 		PREPROC_SHADER_DRAW( -120 0 880 480, 0 0, "white", 0 0 0 0.75, 0, 1, 0 0 0 0 )
-
-		#undef BACK_OPEN
-		#define BACK_OPEN exec "wait";
-		#include "ui_mp/navcontrols.inc"
+		
+#undef BACK_OPEN
+#define BACK_OPEN exec "wait";
+#include "ui_mp/navcontrols.inc"
 		CHOICE_MENU_TITLE( "@MPUI_CALLVOTE" )
-		#include "ui_mp/scriptmenus/callvote_buttons.inc"
-
+#include "ui_mp/scriptmenus/callvote_buttons.inc"
+		
 		CHOICE_SECTION_TITLE( 21, "@MPUI_CHANGE_GAME_TYPEMAP" )
-		#undef CHOICE_X_START
-		#define CHOICE_X_START		-260
+#undef CHOICE_X_START
+#define CHOICE_X_START		-260
 		CHOICE_BUTTON( 36, "@MPUI_VOTE", close self; uiScript voteTypeMap; )
-
+		
 		itemDef
 		{
 			visible			1
@@ -114,7 +114,7 @@
 				play "mouse_over";
 			}
 		}
-
+		
 		itemDef
 		{
 			name			maplist2
@@ -143,8 +143,8 @@
 			mouseExit 		{ setitemcolor maplist2 bordercolor 1 1 1 0.15 }
 		}
 	}
-
-
+	
+	
 	menuDef
 	{
 		name 			kickplayer
@@ -154,18 +154,18 @@
 		blurWorld		7.0
 		onEsc 			{close self; open class;}
 		PREPROC_SHADER_DRAW( -120 0 880 480, 0 0, "white", 0 0 0 0.75, 0, 1, 0 0 0 0 )
-
-		#undef BACK_OPEN
-		#define BACK_OPEN exec "wait";
-		#include "ui_mp/navcontrols.inc"
+		
+#undef BACK_OPEN
+#define BACK_OPEN exec "wait";
+#include "ui_mp/navcontrols.inc"
 		CHOICE_MENU_TITLE( "@MPUI_CALLVOTE" )
-		#include "ui_mp/scriptmenus/callvote_buttons.inc"
-
+#include "ui_mp/scriptmenus/callvote_buttons.inc"
+		
 		CHOICE_SECTION_TITLE( 21, "@MPUI_KICK_PLAYER" )
-		#undef CHOICE_X_START
-		#define CHOICE_X_START		-260
+#undef CHOICE_X_START
+#define CHOICE_X_START		-260
 		CHOICE_BUTTON( 36, "@MPUI_VOTE", close self; uiScript voteTempBan; )
-
+		
 		itemDef
 		{
 			name			maplist
@@ -196,7 +196,7 @@
 	}
 }
 
-	/*
+/*
 #define ORIGIN_CHOICE1		80 84
 #define ORIGIN_CHOICE2		80 108
 #define ORIGIN_CHOICE3		80 132
@@ -207,465 +207,465 @@
 
 {
 */
-	/*
-	menuDef
+/*
+menuDef
+{
+	name			"callvote"
+	rect			0 0 640 480
+	focuscolor		COLOR_FOCUSED
+	style			WINDOW_STYLE_EMPTY
+	blurWorld		6.0
+	onEsc
 	{
-		name			"callvote"
-		rect			0 0 640 480
-		focuscolor		COLOR_FOCUSED
-		style			WINDOW_STYLE_EMPTY
-		blurWorld		6.0
-		onEsc
-		{
-			close callvote;
-		}
+		close callvote;
+	}
 
-		// Gradient
-		itemDef
-		{
-			style			WINDOW_STYLE_SHADER
-			//rect			-107 0 554 480
-			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
-			background		"gradient"
-			visible			1
-			decoration
-		}
+	// Gradient
+	itemDef
+	{
+		style			WINDOW_STYLE_SHADER
+		//rect			-107 0 554 480
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		background		"gradient"
+		visible			1
+		decoration
+	}
 
-		#include "ui/bars.menu"
+	#include "ui/bars.menu"
 
-		itemDef
-		{
-			type			ITEM_TYPE_TEXT
-			visible			1
-			origin			ORIGIN_TITLE
-			forecolor		1 1 1 1
-			text			"@MENU_OPTIONS"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_TITLE
-			decoration
-		}
+	itemDef
+	{
+		type			ITEM_TYPE_TEXT
+		visible			1
+		origin			ORIGIN_TITLE
+		forecolor		1 1 1 1
+		text			"@MENU_OPTIONS"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_TITLE
+		decoration
+	}
 
 // MENU CHOICES
-		execKey "1" { play "mouse_click"; exec "cmd callvote map_restart"; close callvote }
-		execKey "2" { play "mouse_click"; exec "cmd callvote map_rotate"; close callvote }
-		execKey "3" { play "mouse_click"; close callvote; open changemap }
-		execKey "4" { play "mouse_click"; close callvote; open changegametype }
-		execKey "5" { play "mouse_click"; close callvote; open kickplayer }
+	execKey "1" { play "mouse_click"; exec "cmd callvote map_restart"; close callvote }
+	execKey "2" { play "mouse_click"; exec "cmd callvote map_rotate"; close callvote }
+	execKey "3" { play "mouse_click"; close callvote; open changemap }
+	execKey "4" { play "mouse_click"; close callvote; open changegametype }
+	execKey "5" { play "mouse_click"; close callvote; open kickplayer }
 
-		itemDef
-		{
-			name			"button_restartmap"
-			visible			when ( level.allowvote_restartmap == 1 );
-			rect			0 0 128 24
-			origin			ORIGIN_CHOICE1
-			forecolor		COLOR_UNFOCUSED
-			type			ITEM_TYPE_BUTTON
-			text			"@MPUI_1_RESTART_MAP"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textaligny		20
+	itemDef
+	{
+		name			"button_restartmap"
+		visible			when ( level.allowvote_restartmap == 1 );
+		rect			0 0 128 24
+		origin			ORIGIN_CHOICE1
+		forecolor		COLOR_UNFOCUSED
+		type			ITEM_TYPE_BUTTON
+		text			"@MPUI_1_RESTART_MAP"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textaligny		20
 
-			action
-			{
-				play "mouse_click";
-				exec "cmd callvote map_restart";
-				close callvote;
-			}
-			onFocus
-			{
-				play "mouse_over";
-			}
-		}
-
-		itemDef
+		action
 		{
-			name			"button_nextmap"
-			visible			when ( level.allowvote_nextmap == 1 );
-			rect			0 0 128 24
-			origin			ORIGIN_CHOICE2
-			forecolor		COLOR_UNFOCUSED
-			type			ITEM_TYPE_BUTTON
-			text			"@MPUI_2_NEXT_MAP"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textaligny		20
-			action
-			{
-				play "mouse_click";
-				exec "cmd callvote map_rotate";
-				close callvote;
-			}
-			onFocus
-			{
-				play "mouse_over";
-			}
+			play "mouse_click";
+			exec "cmd callvote map_restart";
+			close callvote;
 		}
-		itemDef
+		onFocus
 		{
-			name			"button_changemap"
-			visible			when ( level.allowvote_changemap == 1 );
-			rect			0 0 128 24
-			origin			ORIGIN_CHOICE3
-			forecolor		COLOR_UNFOCUSED
-			type			ITEM_TYPE_BUTTON
-			text			"@MPUI_3_CHANGE_MAP"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textaligny		20
-			action
-			{
-				play "mouse_click";
-				close callvote;
-				open changemap;
-			}
-			onFocus
-			{
-				play "mouse_over";
-			}
-		}
-		itemDef
-		{
-			name			"button_changegametype"
-			visible			when ( level.allowvote_changegametype == 1 );
-			rect			0 0 174 24
-			origin			ORIGIN_CHOICE4
-			forecolor		COLOR_UNFOCUSED
-			type			ITEM_TYPE_BUTTON
-			text			"@MPUI_4_CHANGE_GAME_TYPEMAP"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textaligny		20
-			action
-			{
-				play "mouse_click";
-				close callvote;
-				open changegametype;
-			}
-			onFocus
-			{
-				play "mouse_over";
-			}
-		}
-		itemDef
-		{
-			name			"button_kickplayer"
-			visible			when ( level.allowvote_kickplayer == 1 );
-			rect			0 0 128 24
-			origin			ORIGIN_CHOICE5
-			forecolor		COLOR_UNFOCUSED
-			type			ITEM_TYPE_BUTTON
-			text			"@MPUI_5_KICK_PLAYER"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textaligny		20
-			action
-			{
-				play "mouse_click";
-				close callvote;
-				open kickplayer;
-			}
-			onFocus
-			{
-				play "mouse_over";
-			}
+			play "mouse_over";
 		}
 	}
-	*/
-	/*
-	menuDef
+
+	itemDef
 	{
-		name			"changemap"
-		rect			0 0 640 480
-		focuscolor		COLOR_FOCUSED
-		style			WINDOW_STYLE_EMPTY
-		blurWorld		6.0
-		onEsc
+		name			"button_nextmap"
+		visible			when ( level.allowvote_nextmap == 1 );
+		rect			0 0 128 24
+		origin			ORIGIN_CHOICE2
+		forecolor		COLOR_UNFOCUSED
+		type			ITEM_TYPE_BUTTON
+		text			"@MPUI_2_NEXT_MAP"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textaligny		20
+		action
 		{
-			close changemap;
+			play "mouse_click";
+			exec "cmd callvote map_rotate";
+			close callvote;
 		}
-		// Gradient
-		itemDef
+		onFocus
 		{
-			style			WINDOW_STYLE_SHADER
-			//rect			-107 0 554 480
-			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
-			background		"gradient"
-			visible			1
-			decoration
+			play "mouse_over";
 		}
+	}
+	itemDef
+	{
+		name			"button_changemap"
+		visible			when ( level.allowvote_changemap == 1 );
+		rect			0 0 128 24
+		origin			ORIGIN_CHOICE3
+		forecolor		COLOR_UNFOCUSED
+		type			ITEM_TYPE_BUTTON
+		text			"@MPUI_3_CHANGE_MAP"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textaligny		20
+		action
+		{
+			play "mouse_click";
+			close callvote;
+			open changemap;
+		}
+		onFocus
+		{
+			play "mouse_over";
+		}
+	}
+	itemDef
+	{
+		name			"button_changegametype"
+		visible			when ( level.allowvote_changegametype == 1 );
+		rect			0 0 174 24
+		origin			ORIGIN_CHOICE4
+		forecolor		COLOR_UNFOCUSED
+		type			ITEM_TYPE_BUTTON
+		text			"@MPUI_4_CHANGE_GAME_TYPEMAP"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textaligny		20
+		action
+		{
+			play "mouse_click";
+			close callvote;
+			open changegametype;
+		}
+		onFocus
+		{
+			play "mouse_over";
+		}
+	}
+	itemDef
+	{
+		name			"button_kickplayer"
+		visible			when ( level.allowvote_kickplayer == 1 );
+		rect			0 0 128 24
+		origin			ORIGIN_CHOICE5
+		forecolor		COLOR_UNFOCUSED
+		type			ITEM_TYPE_BUTTON
+		text			"@MPUI_5_KICK_PLAYER"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textaligny		20
+		action
+		{
+			play "mouse_click";
+			close callvote;
+			open kickplayer;
+		}
+		onFocus
+		{
+			play "mouse_over";
+		}
+	}
+}
+*/
+/*
+menuDef
+{
+	name			"changemap"
+	rect			0 0 640 480
+	focuscolor		COLOR_FOCUSED
+	style			WINDOW_STYLE_EMPTY
+	blurWorld		6.0
+	onEsc
+	{
+		close changemap;
+	}
+	// Gradient
+	itemDef
+	{
+		style			WINDOW_STYLE_SHADER
+		//rect			-107 0 554 480
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		background		"gradient"
+		visible			1
+		decoration
+	}
 
-		#include "ui/bars.menu"
+	#include "ui/bars.menu"
 
-		itemDef
-		{
-			type			ITEM_TYPE_TEXT
-			visible			1
-			origin			ORIGIN_TITLE
-			forecolor		1 1 1 1
-			text			"@MPUI_CHANGE_MAP"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_TITLE
-			decoration
-		}
+	itemDef
+	{
+		type			ITEM_TYPE_TEXT
+		visible			1
+		origin			ORIGIN_TITLE
+		forecolor		1 1 1 1
+		text			"@MPUI_CHANGE_MAP"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_TITLE
+		decoration
+	}
 
 // CHANGE MAP
-		itemDef
-		{
-			visible			1
-			rect			0 0 192 270
-			origin			73 80
-			forecolor		COLOR_UNFOCUSED
-			style			WINDOW_STYLE_FILLED
-			outlinecolor	.5 .5 .5 .5
-			type			ITEM_TYPE_LISTBOX
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textfont		UI_FONT_NORMAL
-			textaligny		-1
-			elementtype		LISTBOX_TEXT
-			elementwidth	120
-			elementheight	24
-			feeder			FEEDER_ALLMAPS
-			columns			1 2 190 25
-			mouseEnter
-			{
-				fadein message_arena;
-			}
-			mouseExit
-			{
-				fadeout message_arena;
-			}
-		}
-		itemDef
-		{
-			visible			1
-			rect			0 0 128 24
-			origin			ORIGIN_OK
-			forecolor		COLOR_UNFOCUSED
-			type			ITEM_TYPE_BUTTON
-			text			"@MPUI_OK"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textaligny		20
-			action
-			{
-				play "mouse_click";
-				uiScript voteMap;
-				close changemap;
-			}
-			onFocus
-			{
-				play "mouse_over";
-			}
-		}
-	}*/
-	/*
-	menuDef
+	itemDef
 	{
-		name			"changegametype"
-		rect			0 0 640 480
-		focuscolor		COLOR_FOCUSED
-		style			WINDOW_STYLE_EMPTY
-		blurWorld		6.0
-		onEsc
+		visible			1
+		rect			0 0 192 270
+		origin			73 80
+		forecolor		COLOR_UNFOCUSED
+		style			WINDOW_STYLE_FILLED
+		outlinecolor	.5 .5 .5 .5
+		type			ITEM_TYPE_LISTBOX
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textfont		UI_FONT_NORMAL
+		textaligny		-1
+		elementtype		LISTBOX_TEXT
+		elementwidth	120
+		elementheight	24
+		feeder			FEEDER_ALLMAPS
+		columns			1 2 190 25
+		mouseEnter
 		{
-			close changegametype;
+			fadein message_arena;
 		}
-
-		// Gradient
-		itemDef
+		mouseExit
 		{
-			style			WINDOW_STYLE_SHADER
-			//rect			-107 0 554 480
-			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
-			background		"gradient"
-			visible			1
-			decoration
+			fadeout message_arena;
 		}
-
-		#include "ui/bars.menu"
-
-		itemDef
+	}
+	itemDef
+	{
+		visible			1
+		rect			0 0 128 24
+		origin			ORIGIN_OK
+		forecolor		COLOR_UNFOCUSED
+		type			ITEM_TYPE_BUTTON
+		text			"@MPUI_OK"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textaligny		20
+		action
 		{
-			type			ITEM_TYPE_TEXT
-			visible			1
-			origin			ORIGIN_TITLE
-			forecolor		1 1 1 1
-			text			"@MPUI_CHANGE_GAME_TYPEMAP"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_TITLE
-			decoration
+			play "mouse_click";
+			uiScript voteMap;
+			close changemap;
 		}
+		onFocus
+		{
+			play "mouse_over";
+		}
+	}
+}*/
+/*
+menuDef
+{
+	name			"changegametype"
+	rect			0 0 640 480
+	focuscolor		COLOR_FOCUSED
+	style			WINDOW_STYLE_EMPTY
+	blurWorld		6.0
+	onEsc
+	{
+		close changegametype;
+	}
+
+	// Gradient
+	itemDef
+	{
+		style			WINDOW_STYLE_SHADER
+		//rect			-107 0 554 480
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		background		"gradient"
+		visible			1
+		decoration
+	}
+
+	#include "ui/bars.menu"
+
+	itemDef
+	{
+		type			ITEM_TYPE_TEXT
+		visible			1
+		origin			ORIGIN_TITLE
+		forecolor		1 1 1 1
+		text			"@MPUI_CHANGE_GAME_TYPEMAP"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_TITLE
+		decoration
+	}
 
 // CHANGE GAME TYPE
-		itemDef
+	itemDef
+	{
+		visible			1
+		rect			0 0 128 24
+		origin			ORIGIN_CHOICE1
+		forecolor		COLOR_UNFOCUSED
+		style			WINDOW_STYLE_FILLED
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textaligny		20
+		ownerdraw		UI_NETGAMETYPE
+		action
 		{
-			visible			1
-			rect			0 0 128 24
-			origin			ORIGIN_CHOICE1
-			forecolor		COLOR_UNFOCUSED
-			style			WINDOW_STYLE_FILLED
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textaligny		20
-			ownerdraw		UI_NETGAMETYPE
-			action
-			{
-				play "mouse_click";
-			}
-			onFocus
-			{
-				play "mouse_over";
-			}
+			play "mouse_click";
 		}
-		itemDef
+		onFocus
 		{
-			visible			1
-			rect			0 0 192 222
-			origin			73 128
-			forecolor		COLOR_UNFOCUSED
-			style			WINDOW_STYLE_FILLED
-			outlinecolor	.5 .5 .5 .5
-			type			ITEM_TYPE_LISTBOX
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textfont		UI_FONT_NORMAL
-			textaligny		-1
-			elementtype		LISTBOX_TEXT
-			elementwidth	120
-			elementheight	24
-			feeder			FEEDER_ALLMAPS
-			columns			1 2 190 25
-			mouseEnter
-			{
-				fadein message_arena;
-			}
-			mouseExit
-			{
-				fadeout message_arena;
-			}
-		}
-		itemDef
-		{
-			visible			1
-			rect			0 0 128 24
-			origin			ORIGIN_OK
-			forecolor		COLOR_UNFOCUSED
-			type			ITEM_TYPE_BUTTON
-			text			"@MPUI_OK"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textaligny		20
-			action
-			{
-				play "mouse_click";
-				uiScript voteTypeMap;
-				close changegametype;
-			}
-			onFocus
-			{
-				play "mouse_over";
-			}
+			play "mouse_over";
 		}
 	}
-	*/
-	/*
-	menuDef
+	itemDef
 	{
-		name			"kickplayer"
-		rect			0 0 640 480
-		focuscolor		COLOR_FOCUSED
-		style			WINDOW_STYLE_EMPTY
-		blurWorld		6.0
-		onEsc
+		visible			1
+		rect			0 0 192 222
+		origin			73 128
+		forecolor		COLOR_UNFOCUSED
+		style			WINDOW_STYLE_FILLED
+		outlinecolor	.5 .5 .5 .5
+		type			ITEM_TYPE_LISTBOX
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textfont		UI_FONT_NORMAL
+		textaligny		-1
+		elementtype		LISTBOX_TEXT
+		elementwidth	120
+		elementheight	24
+		feeder			FEEDER_ALLMAPS
+		columns			1 2 190 25
+		mouseEnter
 		{
-			close kickplayer;
+			fadein message_arena;
 		}
-
-		// Gradient
-		itemDef
+		mouseExit
 		{
-			style			WINDOW_STYLE_SHADER
-			//rect			-107 0 554 480
-			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
-			background		"gradient"
-			visible			1
-			decoration
+			fadeout message_arena;
 		}
-
-		#include "ui/bars.menu"
-
-		itemDef
+	}
+	itemDef
+	{
+		visible			1
+		rect			0 0 128 24
+		origin			ORIGIN_OK
+		forecolor		COLOR_UNFOCUSED
+		type			ITEM_TYPE_BUTTON
+		text			"@MPUI_OK"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textaligny		20
+		action
 		{
-			type			ITEM_TYPE_TEXT
-			visible			1
-			origin			ORIGIN_TITLE
-			forecolor		1 1 1 1
-			text			"@MPUI_KICK_PLAYER"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_TITLE
-			decoration
+			play "mouse_click";
+			uiScript voteTypeMap;
+			close changegametype;
 		}
+		onFocus
+		{
+			play "mouse_over";
+		}
+	}
+}
+*/
+/*
+menuDef
+{
+	name			"kickplayer"
+	rect			0 0 640 480
+	focuscolor		COLOR_FOCUSED
+	style			WINDOW_STYLE_EMPTY
+	blurWorld		6.0
+	onEsc
+	{
+		close kickplayer;
+	}
+
+	// Gradient
+	itemDef
+	{
+		style			WINDOW_STYLE_SHADER
+		//rect			-107 0 554 480
+		rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		background		"gradient"
+		visible			1
+		decoration
+	}
+
+	#include "ui/bars.menu"
+
+	itemDef
+	{
+		type			ITEM_TYPE_TEXT
+		visible			1
+		origin			ORIGIN_TITLE
+		forecolor		1 1 1 1
+		text			"@MPUI_KICK_PLAYER"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_TITLE
+		decoration
+	}
 
 // KICK PLAYER
-		itemDef
+	itemDef
+	{
+		visible			1
+		rect			0 0 192 270
+		origin			73 80
+		forecolor		COLOR_UNFOCUSED
+		style			WINDOW_STYLE_FILLED
+		outlinecolor	.5 .5 .5 .5
+		type			ITEM_TYPE_LISTBOX
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textfont		UI_FONT_NORMAL
+		textaligny		-1
+		elementtype		LISTBOX_TEXT
+		elementwidth	120
+		elementheight	24
+		feeder			FEEDER_PLAYER_LIST
+		columns			1 2 190 25
+		mouseEnter
 		{
-			visible			1
-			rect			0 0 192 270
-			origin			73 80
-			forecolor		COLOR_UNFOCUSED
-			style			WINDOW_STYLE_FILLED
-			outlinecolor	.5 .5 .5 .5
-			type			ITEM_TYPE_LISTBOX
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textfont		UI_FONT_NORMAL
-			textaligny		-1
-			elementtype		LISTBOX_TEXT
-			elementwidth	120
-			elementheight	24
-			feeder			FEEDER_PLAYER_LIST
-			columns			1 2 190 25
-			mouseEnter
-			{
-				fadein message_arena
-			}
-			mouseExit
-			{
-				fadeout message_arena
-			}
+			fadein message_arena
 		}
-		itemDef
+		mouseExit
 		{
-			visible			1
-			rect			0 0 128 24
-			origin			ORIGIN_OK
-			forecolor		COLOR_UNFOCUSED
-			type			ITEM_TYPE_BUTTON
-			text			"@MPUI_OK"
-			textfont		UI_FONT_NORMAL
-			textscale		TEXTSIZE_DEFAULT
-			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			textaligny		20
-			action
-			{
-				play "mouse_click";
-				uiScript voteTempBan;
-				close kickplayer;
-			}
-			onFocus
-			{
-				play "mouse_over";
-			}
+			fadeout message_arena
 		}
 	}
+	itemDef
+	{
+		visible			1
+		rect			0 0 128 24
+		origin			ORIGIN_OK
+		forecolor		COLOR_UNFOCUSED
+		type			ITEM_TYPE_BUTTON
+		text			"@MPUI_OK"
+		textfont		UI_FONT_NORMAL
+		textscale		TEXTSIZE_DEFAULT
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		textaligny		20
+		action
+		{
+			play "mouse_click";
+			uiScript voteTempBan;
+			close kickplayer;
+		}
+		onFocus
+		{
+			play "mouse_over";
+		}
+	}
+}
 }
 */

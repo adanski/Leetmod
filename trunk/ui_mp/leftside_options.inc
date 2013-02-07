@@ -36,7 +36,7 @@ CHOICE_BUTTON_VIS( 5, "@MENU_VOICECHAT", LOCAL_CLOSE_ALL open options_voice, whe
 CHOICE_DBUTTON_VIS( 5, "@MENU_VOICECHAT", when( !dvarint( ui_multiplayer ) ); )
 CHOICE_BUTTON( 6, "@MENU_GAME_OPTIONS", LOCAL_CLOSE_ALL open options_game )
 
-CHOICE_BUTTON_VIS( 7, "@MENU_CHEATS_LOWCASE", open menu_special_features; close self;, when( dvarBool( sv_running ) && !dvarBool(ui_multiplayer) && !dvarBool( arcademode ) && !dvarBool( arcademode_full ) ); )
+CHOICE_BUTTON_VIS( 7, "@MENU_CHEATS_LOWCASE", open menu_special_features; close self; , when( dvarBool( sv_running ) && !dvarBool(ui_multiplayer) && !dvarBool( arcademode ) && !dvarBool( arcademode_full ) ); )
 CHOICE_BUTTON_VIS( 7, "@MENU_MULTIPLAYER_OPTIONS", LOCAL_CLOSE_ALL open options_multi, when( dvarint( ui_multiplayer ) ) )
 CHOICE_DBUTTON_VIS( 7, "@MENU_CHEATS_LOWCASE", when( ( !dvarBool( sv_running ) || dvarBool( arcademode ) || dvarBool( arcademode_full ) ) && !dvarBool(ui_multiplayer) ); )
 

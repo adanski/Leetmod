@@ -18,7 +18,7 @@
 		{
 			close self;
 		}
-
+		
 		// background overlay
 		itemDef
 		{
@@ -28,7 +28,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		// gradient_top
 		itemDef
 		{
@@ -38,7 +38,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		// gradient_bottom
 		itemDef
 		{
@@ -48,36 +48,37 @@
 			visible			1
 			decoration
 		}
-
+		
 		// ------------------ TREE TITLE ------------------
-
+		
 		CHOICE_MENU_TITLE( "@OW_AACP_TITLE" )
-
+		
 		// ------------------ buttons ---------------------
 		//#define BACK_OPEN open "class";
-		#define BACK_CLOSE "@MENU_CLOSE";
-		#include "ui_mp/navcontrols.inc"
-
-		// PC widescreen fix
-		#undef	CHOICE_HORIZONTAL_ALIGN
-		#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
-
-		#undef TEXTSIZE_SMALL
-		#define TEXTSIZE_SMALL 0.3
-		#undef TEXTSIZE_MEDIUM
-		#define TEXTSIZE_MEDIUM 0.4		
+#define BACK_CLOSE "@MENU_CLOSE";
+#include "ui_mp/navcontrols.inc"
 		
-		#define TITLES_ORIGIN 52
-		#define POSITION_Y( yOffset ) 		(TITLES_ORIGIN + yOffset)
-
-
+		// PC widescreen fix
+#undef	CHOICE_HORIZONTAL_ALIGN
+#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
+		
+#undef TEXTSIZE_SMALL
+#define TEXTSIZE_SMALL 0.3
+#undef TEXTSIZE_MEDIUM
+#define TEXTSIZE_MEDIUM 0.4
+		
+#define TITLES_ORIGIN 52
+#define POSITION_Y( yOffset ) 		(TITLES_ORIGIN + yOffset)
+		
+		
 		// Sub-titles
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-240 TITLES_ORIGIN 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
+			visible			1	decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-300 TITLES_ORIGIN 300 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -85,15 +86,17 @@
 			background		"line_horizontal"
 			forecolor		OBJECTIVE_COLOR_MARINES
 			visible			1
-			decoration	}
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-300 TITLES_ORIGIN 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			origin			0 12
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
-
+			visible			1	decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -105,9 +108,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			1
-			decoration	
-		}		
-	
+			decoration
+		}
+		
 		// ***
 		
 		itemDef	{
@@ -116,7 +119,8 @@
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
 			visible			1
-			decoration	}
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-300 POSITION_Y(291) 300 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -124,7 +128,8 @@
 			background		"line_horizontal"
 			forecolor		OBJECTIVE_COLOR_MARINES
 			visible			1
-			decoration	}
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-300 POSITION_Y(291) 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -132,8 +137,9 @@
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
 			visible			1
-			decoration	}
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -145,17 +151,18 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			1
-			decoration	
-		}				
-
+			decoration
+		}
+		
 		// ***
-
+		
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			80 TITLES_ORIGIN 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
+			visible			1	decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			10 TITLES_ORIGIN 300 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -163,14 +170,16 @@
 			background		"line_horizontal"
 			forecolor		OBJECTIVE_COLOR_MARINES
 			visible			1
-			decoration	}
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			10 TITLES_ORIGIN 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			origin			0 12
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
+			visible			1	decoration
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -182,8 +191,8 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			1
-			decoration	
-		}				
+			decoration
+		}
 		
 		// Map and gametype
 		itemDef
@@ -197,9 +206,9 @@
 			forecolor		COLOR_TITLE
 			exp					text( dvarstring( ui_aacp_map ) );
 			visible			1
-			decoration	
+			decoration
 		}
-
+		
 		itemDef {
 			name 		"previousmap"
 			type			1
@@ -208,9 +217,9 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor previousmap forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor previousmap forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "previousmap"; }	
+			mouseEnter { play "mouse_over"; setitemcolor previousmap forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor previousmap forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "previousmap"; }
 		}
 		itemDef {
 			name 		"nextmap"
@@ -220,11 +229,11 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor nextmap forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor nextmap forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "nextmap"; }	
+			mouseEnter { play "mouse_over"; setitemcolor nextmap forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nextmap forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nextmap"; }
 		}
-				
+		
 		// Gametype
 		itemDef
 		{
@@ -237,9 +246,9 @@
 			forecolor		COLOR_TITLE
 			exp					text( dvarstring( ui_aacp_gametype ) );
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef {
 			name 		"previoustype"
 			type			1
@@ -248,9 +257,9 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor previoustype forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor previoustype forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "previoustype"; }	
+			mouseEnter { play "mouse_over"; setitemcolor previoustype forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor previoustype forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "previoustype"; }
 		}
 		itemDef {
 			name 		"nexttype"
@@ -260,26 +269,26 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor nexttype forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor nexttype forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "nexttype"; }	
+			mouseEnter { play "mouse_over"; setitemcolor nexttype forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nexttype forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nexttype"; }
 		}
-    
-    // Map rotation		
-    itemDef
+		
+		// Map rotation
+		itemDef
 		{
 			type			ITEM_TYPE_TEXT
 			rect			-280 POSITION_Y(60) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-      text      "@OW_AACP_ROTATION"
+			text      "@OW_AACP_ROTATION"
 			textfont		UI_FONT_NORMAL
 			textscale		TEXTSIZE_DEFAULT
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_TITLE
 			visible			1
-			decoration	
+			decoration
 		}
-    itemDef
+		itemDef
 		{
 			type			ITEM_TYPE_TEXT
 			rect			-230 POSITION_Y(60) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -290,9 +299,9 @@
 			forecolor		COLOR_TITLE
 			exp					text( dvarstring( ui_aacp_mrcurridx ) );
 			visible			when ( dvarint( ui_aacp_mrcurridx ) == dvarint( ui_aacp_mridx ) );
-			decoration	
+			decoration
 		}
-    itemDef
+		itemDef
 		{
 			type			ITEM_TYPE_TEXT
 			rect			-230 POSITION_Y(60) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -303,9 +312,9 @@
 			forecolor		0.4 0.96 0.1 1
 			exp					text( dvarstring( ui_aacp_mrcurridx ) );
 			visible			when ( dvarint( ui_aacp_mrcurridx ) != dvarint( ui_aacp_mridx ) );
-			decoration	
+			decoration
 		}
-    itemDef {
+		itemDef {
 			name 		"protationmg"
 			type			1
 			style			WINDOW_STYLE_SHADER
@@ -313,9 +322,9 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor protationmg forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor protationmg forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "protationmg"; }
+			mouseEnter { play "mouse_over"; setitemcolor protationmg forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor protationmg forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "protationmg"; }
 		}
 		itemDef {
 			name 		"nrotationmg"
@@ -325,11 +334,11 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor nrotationmg forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor nrotationmg forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "nrotationmg"; }
+			mouseEnter { play "mouse_over"; setitemcolor nrotationmg forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nrotationmg forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nrotationmg"; }
 		}
-    itemDef {
+		itemDef {
 			type			1
 			style			WINDOW_STYLE_SHADER
 			rect			-270 POSITION_Y(70) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
@@ -337,7 +346,7 @@
 			forecolor		1.0 0.4 0.0 1
 			visible			when ( dvarint( ui_aacp_mrcurridx ) == dvarint( ui_aacp_mridx ) );
 		}
-    itemDef {
+		itemDef {
 			name 		"setmrhere"
 			type			1
 			style			WINDOW_STYLE_SHADER
@@ -345,28 +354,28 @@
 			background		"setrotationicon"
 			forecolor		0.0 0.6 0.0 1
 			visible			when ( dvarint( ui_aacp_mrcurridx ) != dvarint( ui_aacp_mridx ) );
-		  mouseEnter { play "mouse_over"; setitemcolor setmrhere forecolor COLOR_FOCUSED }
-      mouseExit { setitemcolor setmrhere forecolor 0.0 0.6 0.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "setmrhere"; }
+			mouseEnter { play "mouse_over"; setitemcolor setmrhere forecolor COLOR_FOCUSED }
+			mouseExit { setitemcolor setmrhere forecolor 0.0 0.6 0.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "setmrhere"; }
 		}
-
+		
 		// LOAD MAP
 		itemDef
 		{
 			name      "loadmap"
 			text      "@OW_AACP_MAP_LOAD"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-200 POSITION_Y(112) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_ldm ) );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "loadmap"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "loadmap"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -378,24 +387,24 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_DISABLED
 			visible			when ( !dvarbool( ui_aacp_ldm ) );
-			decoration	
-		}		
+			decoration
+		}
 		itemDef
 		{
 			name      "setnext"
 			text      "@OW_AACP_SET_NEXT"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-200 POSITION_Y(134) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_ldm ) );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "setnext"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "setnext"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -407,33 +416,34 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_DISABLED
 			visible			when ( !dvarbool( ui_aacp_ldm ) );
-			decoration	
-		}				
+			decoration
+		}
 		
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			-220 POSITION_Y(161) 120 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
-
+			visible			1	decoration
+		}
+		
 		// END MAP
 		itemDef
 		{
 			name      "endmap"
 			text      "@OW_AACP_MAP_END"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-200 POSITION_Y(168) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_edm ) );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "endmap"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "endmap"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -445,26 +455,26 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_DISABLED
 			visible			when ( !dvarbool( ui_aacp_edm ) );
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		// NEXT MAP
 		itemDef
 		{
 			name      "rotatemap"
 			text      "@OW_AACP_MAP_NEXT"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-200 POSITION_Y(190) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_nxm ) );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "rotatemap"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "rotatemap"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -476,26 +486,26 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_DISABLED
 			visible			when ( !dvarbool( ui_aacp_nxm ) );
-			decoration	
-		}	
-
+			decoration
+		}
+		
 		// RESTART MAP
 		itemDef
 		{
 			name      "restartmap"
 			text      "@OW_AACP_MAP_RESTART"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-200 POSITION_Y(212) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_rtm ) );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "restartmap"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "restartmap"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -507,26 +517,26 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_DISABLED
 			visible			when ( !dvarbool( ui_aacp_rtm ) );
-			decoration	
-		}	
-
+			decoration
+		}
+		
 		// FAST NEXT MAP
 		itemDef
 		{
 			name      "fastrestartmap"
 			text      "@OW_AACP_MAP_FASTRESTART"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-200 POSITION_Y(234) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_ftm ) );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "fastrestartmap"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "fastrestartmap"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -538,12 +548,12 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_DISABLED
 			visible			when ( !dvarbool( ui_aacp_ftm ) );
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		
 		// RULESET CONTROL PANEL
-
+		
 		// Ruleset name
 		itemDef
 		{
@@ -556,9 +566,9 @@
 			forecolor		COLOR_TITLE
 			exp					text( dvarstring( ui_aacp_ruleset ) );
 			visible			when ( dvarstring( ui_aacp_ruleset ) != "" );
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -570,9 +580,9 @@
 			forecolor		COLOR_TITLE
 			text					"@OW_AACP_NORULESET"
 			visible			when ( dvarstring( ui_aacp_ruleset ) == "" );
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef {
 			name 		"previousruleset"
 			type			1
@@ -581,10 +591,10 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor previousruleset forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor previousruleset forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "previousruleset"; }	
-		}		
+			mouseEnter { play "mouse_over"; setitemcolor previousruleset forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor previousruleset forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "previousruleset"; }
+		}
 		
 		itemDef {
 			name 		"nextruleset"
@@ -594,10 +604,10 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor nextruleset forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor nextruleset forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "nextruleset"; }	
-		}		
+			mouseEnter { play "mouse_over"; setitemcolor nextruleset forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nextruleset forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nextruleset"; }
+		}
 		
 		// LOAD RULESET
 		itemDef
@@ -605,17 +615,17 @@
 			name      "loadruleset"
 			text      "@OW_AACP_RULESET_LOAD"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			-200 POSITION_Y(361) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_lrs ) );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "loadruleset"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "loadruleset"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -627,12 +637,12 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_DISABLED
 			visible			when ( !dvarbool( ui_aacp_lrs ) );
-			decoration	
-		}				
-
-
+			decoration
+		}
+		
+		
 		// PLAYER CONTROL PANEL
-
+		
 		// Player name
 		itemDef
 		{
@@ -645,9 +655,9 @@
 			forecolor		COLOR_TITLE
 			exp					text( dvarstring( ui_aacp_player ) );
 			visible			when ( dvarstring( ui_aacp_player ) != "" );
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -659,8 +669,8 @@
 			forecolor		COLOR_TITLE
 			text					"@OW_AACP_NOPLAYER"
 			visible			when ( dvarstring( ui_aacp_player ) == "" );
-			decoration	
-		}		
+			decoration
+		}
 		
 		itemDef {
 			name 		"previousplayer"
@@ -670,10 +680,10 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor previousplayer forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor previousplayer forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "previousplayer"; }	
-		}		
+			mouseEnter { play "mouse_over"; setitemcolor previousplayer forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor previousplayer forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "previousplayer"; }
+		}
 		
 		itemDef {
 			name 		"nextplayer"
@@ -683,11 +693,11 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor nextplayer forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor nextplayer forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "nextplayer"; }	
-		}		
-
+			mouseEnter { play "mouse_over"; setitemcolor nextplayer forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nextplayer forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nextplayer"; }
+		}
+		
 		// Custom reason
 		itemDef
 		{
@@ -700,9 +710,9 @@
 			forecolor		COLOR_TITLE
 			exp					text( dvarstring( ui_aacp_reason ) );
 			visible			1
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		itemDef {
 			name 		"previousreason"
 			type			1
@@ -711,10 +721,10 @@
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor previousreason forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor previousreason forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "previousreason"; }	
-		}		
+			mouseEnter { play "mouse_over"; setitemcolor previousreason forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor previousreason forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "previousreason"; }
+		}
 		
 		itemDef {
 			name 		"nextreason"
@@ -724,10 +734,10 @@
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
 			visible			1
-		  mouseEnter { play "mouse_over"; setitemcolor nextreason forecolor 0.409 0.801 0.999 1 }
-      mouseExit { setitemcolor nextreason forecolor 1.0 1.0 1.0 1 }
-		  action { play "mouse_click"; scriptMenuResponse "nextreason"; }	
-		}		
+			mouseEnter { play "mouse_over"; setitemcolor nextreason forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nextreason forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nextreason"; }
+		}
 		
 		// RETURN PLAYER TO SPAWN
 		itemDef
@@ -735,17 +745,17 @@
 			name      "returnspawn"
 			text      "@OW_AACP_PLAYER_RETURNSPAWN"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(112) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_rsp ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "returnspawn"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "returnspawn"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -759,31 +769,32 @@
 			visible			when ( !dvarbool( ui_aacp_rsp ) || dvarstring( ui_aacp_player ) == "" );
 			decoration
 		}
-
+		
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			100 POSITION_Y(139) 120 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
-					
+			visible			1	decoration
+		}
+		
 		// POINT OUT PLAYER
 		itemDef
 		{
 			name      "pointoutplayer"
 			text      "@OW_AACP_PLAYER_POINTOUT"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(147) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_pnt ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "pointoutplayer"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "pointoutplayer"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -804,17 +815,17 @@
 			name      "shockplayer"
 			text      "@OW_AACP_PLAYER_SHOCK"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(169) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_sck ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "shockplayer"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "shockplayer"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -828,31 +839,32 @@
 			visible			when ( !dvarbool( ui_aacp_sck ) || dvarstring( ui_aacp_player ) == "" );
 			decoration
 		}
-
+		
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			100 POSITION_Y(196) 120 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
-
+			visible			1	decoration
+		}
+		
 		// SWITH PLAYER TO SPECTATOR
 		itemDef
 		{
 			name      "switchplayerspectator"
 			text      "@OW_AACP_PLAYER_SWITCH_SPECTATOR"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(204) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_sws ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "switchplayerspectator"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "switchplayerspectator"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -866,24 +878,24 @@
 			visible			when ( !dvarbool( ui_aacp_sws ) || dvarstring( ui_aacp_player ) == "" );
 			decoration
 		}
-				
+		
 		// SWITCH PLAYER'S TEAM
 		itemDef
 		{
 			name      "switchplayerteam"
 			text      "@OW_AACP_PLAYER_SWITCH_TEAM"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(226) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_swt ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "switchplayerteam"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "switchplayerteam"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -897,31 +909,32 @@
 			visible			when ( !dvarbool( ui_aacp_swt ) || dvarstring( ui_aacp_player ) == "" );
 			decoration
 		}
-
+		
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			100 POSITION_Y(253) 120 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
-					
+			visible			1	decoration
+		}
+		
 		// EXPLODE PLAYER
 		itemDef
 		{
 			name      "explodeplayer"
 			text      "@OW_AACP_PLAYER_EXPLODE"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(261) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_exp ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "explodeplayer"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "explodeplayer"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -935,24 +948,24 @@
 			visible			when ( !dvarbool( ui_aacp_exp ) || dvarstring( ui_aacp_player ) == "" );
 			decoration
 		}
-				
+		
 		// KILL PLAYER
 		itemDef
 		{
 			name      "killplayer"
 			text      "@OW_AACP_PLAYER_KILL"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(283) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_kll ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "killplayer"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "killplayer"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -966,31 +979,32 @@
 			visible			when ( !dvarbool( ui_aacp_kll ) || dvarstring( ui_aacp_player ) == "" );
 			decoration
 		}
-
+		
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			100 POSITION_Y(310) 120 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
-
+			visible			1	decoration
+		}
+		
 		// REDIRECT PLAYER
 		itemDef
 		{
 			name      "redirectplayer"
 			text      "@OW_AACP_PLAYER_REDIRECT"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(318) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_red ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "redirectplayer"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "redirectplayer"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1004,24 +1018,24 @@
 			visible			when ( !dvarbool( ui_aacp_red ) || dvarstring( ui_aacp_player ) == "" );
 			decoration
 		}
-							
+		
 		// KICK PLAYER
 		itemDef
 		{
 			name      "kickplayer"
 			text      "@OW_AACP_PLAYER_KICK"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(340) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_kck ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "kickplayer"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "kickplayer"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1035,24 +1049,24 @@
 			visible			when ( !dvarbool( ui_aacp_kck ) || dvarstring( ui_aacp_player ) == "" );
 			decoration
 		}
-			
+		
 		// BAN PLAYER
 		itemDef
 		{
 			name      "banplayer"
 			text      "@OW_AACP_PLAYER_BAN"
 			type			1
-		  style			WINDOW_STYLE_FILLED
-		  textstyle		ITEM_TEXTSTYLE_SHADOWED
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
 			rect			120 POSITION_Y(362) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
-		  textAlign		ITEM_ALIGN_MIDDLE_CENTER
-		  textfont		CHOICE_TEXTFONT
-		  textscale		TEXTSIZE_MEDIUM
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
 			forecolor		COLOR_FOCUSED
 			visible			when ( dvarbool( ui_aacp_ban ) && dvarstring( ui_aacp_player ) != "" );
-		  mouseEnter { play "mouse_over"; } 
-		  action { play "mouse_click"; scriptMenuResponse "banplayer"; }	
-		}		
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "banplayer"; }
+		}
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -1064,10 +1078,9 @@
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			forecolor		COLOR_DISABLED
 			visible			when ( !dvarbool( ui_aacp_ban ) || dvarstring( ui_aacp_player ) == "" );
-			decoration	
-		}		
-
+			decoration
+		}
+		
 		//#include "ui/safearea.menu"
 	}
 }
-		

@@ -7,7 +7,7 @@
 #include "ui_mp/custom.inc"
 
 {
-	menuDef 
+	menuDef
 	{
 		name			options_game
 		fullScreen		0
@@ -34,12 +34,12 @@
 			setLocalVarBool ui_hideBack 1;
 			
 			exec "setfromdvar ui_sensitivity sensitivity";
-      
+			
 			execondvarintvalue ct_lm_ver 0 SETA_CUSTOM_VARS_CLASSES1NAME
 			execondvarintvalue ct_lm_ver 0 SETA_CUSTOM_VARS
 			execondvarintvalue ct_hud_show_inventory 1 "seta hud_fade_ammodisplay 0; seta hud_fade_offhand 0";
 			execondvarintvalue ct_hud_show_inventory 2 "seta hud_fade_ammodisplay 0; seta hud_fade_offhand 0";
-
+			
 			uiScript getLanguage;
 		}
 		onClose
@@ -56,37 +56,37 @@
 			execondvarintvalue ct_hud_show_inventory 1 "seta hud_fade_ammodisplay 0; seta hud_fade_offhand 0";
 			execondvarintvalue ct_hud_show_inventory 2 "seta hud_fade_ammodisplay 0; seta hud_fade_offhand 0";
 		}
-		onESC 
-		{ 
+		onESC
+		{
 			close self;
 		}
-
-		#include "ui_mp/leftside_options_wr.inc"
+		
+#include "ui_mp/leftside_options_wr.inc"
 		
 		CHOICE_SECTION_TITLE( 21, "@MENU_GAME_OPTIONS" )
 		
 		CHOICE_DVARYESNO( 22, "@OW_MENU_HIDE_FOG", ct_menu_hide_fog, ; )
-    CHOICE_DVARYESNO( 23, "@MENU_ENABLE_CONSOLE", monkeytoy, ; )
-    CHOICE_DVARYESNO_VIS( 24, "@MENU_FULLSCREEN", r_fullscreen, setLocalVarBool ui_showApply 1;, when( !dvarBool( sv_running ) ) )
-    CHOICE_DVARFLOATLIST( 25, "@OW_MAX_FPS", com_maxfps, { "85" 85 "100" 100 "125" 125 "200" 200 "250" 250 "333" 333 }, ; )
+		CHOICE_DVARYESNO( 23, "@MENU_ENABLE_CONSOLE", monkeytoy, ; )
+		CHOICE_DVARYESNO_VIS( 24, "@MENU_FULLSCREEN", r_fullscreen, setLocalVarBool ui_showApply 1; , when( !dvarBool( sv_running ) ) )
+		CHOICE_DVARFLOATLIST( 25, "@OW_MAX_FPS", com_maxfps, { "85" 85 "100" 100 "125" 125 "200" 200 "250" 250 "333" 333 }, ; )
 		CHOICE_DVARFLOATLIST( 26, "@OW_FIELD_OF_VIEW", cg_fov, { "65" 65 "71.1111" 71.1111 "80" 80 }, ; )
-		CHOICE_DVAREDIT_VIS( 27, "@OW_MOUSE_SENSITIVITY", "ui_sensitivity", 5, 5, ;, 1 )
+		CHOICE_DVAREDIT_VIS( 27, "@OW_MOUSE_SENSITIVITY", "ui_sensitivity", 5, 5, ; , 1 )
 		CHOICE_DVARYESNO( 28, "@MENU_SHOW_BLOOD", cg_blood, ; )
-    
+		
 		CHOICE_SECTION_TITLE( 29, "@OW_HUD_OPTIONS" )
-    
+		
 		CHOICE_DVARYESNO( 30, "@OW_HUD_SHOW_SCORES", ct_hud_show_scores, ; )
 		CHOICE_DVARYESNO( 31, "@OW_HUD_SHOW_COMPASS", ct_hud_hardcore_show_compass, ; )
 		CHOICE_DVARFLOATLIST( 32, "@OW_HUD_SHOW_AMMO", ct_hud_show_inventory, { "No" 0 "Grenades" 1 "Full" 2 }, ; )
 		CHOICE_DVARYESNO( 33, "@OW_HUD_SHOW_MANTLE", cg_drawMantleHint, ; )
-		CHOICE_BUTTON_VIS( 34, "@OW_SCOREBOARD_COMPACT", exec ASO1;setdvar ct_scoreboardNew 0;, when( dvarbool( ct_scoreboardNew ) ); )
-		CHOICE_BUTTON_VIS( 34, "@OW_SCOREBOARD_BIG", exec ASN1;setdvar ct_scoreboardNew 1;, when( !dvarbool( ct_scoreboardNew ) ); )
+		CHOICE_BUTTON_VIS( 34, "@OW_SCOREBOARD_COMPACT", exec ASO1; setdvar ct_scoreboardNew 0; , when( dvarbool( ct_scoreboardNew ) ); )
+		CHOICE_BUTTON_VIS( 34, "@OW_SCOREBOARD_BIG", exec ASN1; setdvar ct_scoreboardNew 1; , when( !dvarbool( ct_scoreboardNew ) ); )
 		CHOICE_DVARSTRINGLIST( 35, "@OW_CHAT_POSITION", ct_chat_position, { "Top"; "top"; "Standard"; "standard"; "Bottom"; "bottom" }, ; )
-		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_HISTORY_ON", exec AHH1;exec AHH2;exec AHH3;exec AHH4;exec AHH5;setdvar ct_conChatHistOnly 0;, when( dvarbool( ct_conChatHistOnly ) ); )
-		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_HISTORY_OFF", exec ASH1;exec ASH2;exec ASH3;exec ASH4;exec ASH5;setdvar monkeytoy 0;setdvar ct_conChatHistOnly 1;, when( !dvarbool( ct_conChatHistOnly ) ); )
+		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_HISTORY_ON", exec AHH1; exec AHH2; exec AHH3; exec AHH4; exec AHH5; setdvar ct_conChatHistOnly 0; , when( dvarbool( ct_conChatHistOnly ) ); )
+		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_HISTORY_OFF", exec ASH1; exec ASH2; exec ASH3; exec ASH4; exec ASH5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 1; , when( !dvarbool( ct_conChatHistOnly ) ); )
 		//CHOICE_BUTTON_VIS( 35, "@OW_POWER_RANK_ME", open popup_rankup, when( !dvarbool( ct_scoreboardNew ) ); )
 		
-    itemDef 
+		itemDef
 		{
 			name			apply
 			text			"@MENU_APPLY"
@@ -100,11 +100,11 @@
 			textaligny		18
 			visible			when( localVarBool( ui_showApply ) && !dvarBool( sv_running ) );
 			mouseEnter		{ play "mouse_over"; }
-			action 
+			action
 			{
 				play "mouse_click";
 				exec "vid_restart";
-			}	
+			}
 		}
 	}
 }

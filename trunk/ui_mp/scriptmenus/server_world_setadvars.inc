@@ -1,5 +1,5 @@
 #ifdef FILLMENUDVARS
-  #undef FILLMENUDVARS
+#undef FILLMENUDVARS
 #endif
 
 #define FILLMENUDVARS     exec "exec menudvars/world/l/_def.cfg"\
@@ -22,9 +22,9 @@
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/world/l/war.cfg"
 
 #ifdef SAVEMENUDVARS
-  #undef SAVEMENUDVARS
+#undef SAVEMENUDVARS
 #endif
-    
+
 #define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def  "exec menudvars/world/s/_def.cfg"\
     execOnDvarStringValue menu_cfg_gt ass "exec menudvars/world/s/ass.cfg"\
     execOnDvarStringValue menu_cfg_gt bel "exec menudvars/world/s/bel.cfg"\
@@ -44,8 +44,8 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/world/s/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/world/s/war.cfg"
 
-    
-    
+
+
 #define SETA_SCR_G_GRAVITY \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_g_gravity_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_g_gravity_bel _null" \
@@ -81,7 +81,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_map_special_fx_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_map_special_fx_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_map_special_fx_enable_war _null"
-  
+
 #define SETA_SCR_MAP_SPECIAL_FX_RAIN \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_map_special_fx_rain_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_map_special_fx_rain_bel _null" \
@@ -99,7 +99,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_map_special_fx_rain_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_map_special_fx_rain_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_map_special_fx_rain_war _null"
-  
+
 #define SETA_SCR_MAP_SPECIAL_FX_PARTICLES \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_map_special_fx_particles_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_map_special_fx_particles_bel _null" \
@@ -135,7 +135,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_map_special_fx_bgsound_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_map_special_fx_bgsound_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_map_special_fx_bgsound_war _null"
-  
+
 #define SETA_SCR_SHOW_FOG \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_show_fog_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_show_fog_bel _null" \
@@ -153,7 +153,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_show_fog_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_show_fog_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_show_fog_war _null"
-  
+
 #define SETA_SCR_DCS_ENABLED \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_dcs_enabled_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_dcs_enabled_bel _null" \
@@ -171,7 +171,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_dcs_enabled_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_dcs_enabled_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_dcs_enabled_war _null"
-  
+
 #define SETA_SCR_DCS_DAY_LENGTH \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_dcs_day_length_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_dcs_day_length_bel _null" \
@@ -189,7 +189,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_dcs_day_length_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_dcs_day_length_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_dcs_day_length_war _null"
-  
+
 #define SETA_SCR_DCS_DUSK_LENGTH \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_dcs_dusk_length_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_dcs_dusk_length_bel _null" \
@@ -207,7 +207,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_dcs_dusk_length_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_dcs_dusk_length_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_dcs_dusk_length_war _null"
-  
+
 #define SETA_SCR_DCS_NIGHT_LENGTH \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_dcs_night_length_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_dcs_night_length_bel _null" \
@@ -225,7 +225,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_dcs_night_length_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_dcs_night_length_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_dcs_night_length_war _null"
-  
+
 #define SETA_SCR_DCS_DAWN_LENGTH \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_dcs_dawn_length_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_dcs_dawn_length_bel _null" \
@@ -243,7 +243,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_dcs_dawn_length_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_dcs_dawn_length_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_dcs_dawn_length_war _null"
-  
+
 #define SETA_SCR_DCS_FIRST_CYCLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_dcs_first_cycle_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_dcs_first_cycle_bel _null" \
@@ -261,7 +261,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_dcs_first_cycle_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_dcs_first_cycle_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_dcs_first_cycle_war _null"
-  
+
 #define SETA_SCR_DCS_SOUNDS_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_dcs_sounds_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_dcs_sounds_enable_bel _null" \
@@ -279,7 +279,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_dcs_sounds_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_dcs_sounds_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_dcs_sounds_enable_war _null"
-  
+
 #define SETA_SCR_DCS_RESET_CYCLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_dcs_reset_cycle_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_dcs_reset_cycle_bel _null" \

@@ -1,5 +1,5 @@
 #ifdef FILLMENUDVARS
-  #undef FILLMENUDVARS
+#undef FILLMENUDVARS
 #endif
 
 #define FILLMENUDVARS     exec "exec menudvars/fairness/l/_def.cfg"\
@@ -21,8 +21,8 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/fairness/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/fairness/l/war.cfg"
 
-    
-    
+
+
 #define SETA_SCR_FORCE_AUTOASSIGN \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_force_autoassign_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_force_autoassign_bel _null" \
@@ -40,7 +40,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_force_autoassign_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_force_autoassign_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_force_autoassign_war _null"
-  
+
 #define SETA_SCR_FORCE_AUTOASSIGN_CLAN_TAGS \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_force_autoassign_clan_tags_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_force_autoassign_clan_tags_bel _null" \
@@ -58,7 +58,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_force_autoassign_clan_tags_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_force_autoassign_clan_tags_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_force_autoassign_clan_tags_war _null"
-  
+
 #define SETA_SCR_SWITCH_TEAMS_AT_HALFTIME \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_switch_teams_at_halftime_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_switch_teams_at_halftime_bel _null" \
@@ -76,7 +76,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_switch_teams_at_halftime_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_switch_teams_at_halftime_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_switch_teams_at_halftime_war _null"
-  
+
 #define SETA_SCR_TEAMBALANCE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_teambalance_bel _null" \
@@ -94,7 +94,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_teambalance_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_teambalance_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_teambalance_war _null"
-  
+
 #define SETA_SCR_TEAMBALANCE_SHOW_MESSAGE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_show_message_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_teambalance_show_message_bel _null" \
@@ -112,7 +112,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_teambalance_show_message_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_teambalance_show_message_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_teambalance_show_message_war _null"
-  
+
 #define SETA_SCR_TEAMBALANCE_CHECK_INTERVAL \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_check_interval_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_teambalance_check_interval_bel _null" \
@@ -130,7 +130,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_teambalance_check_interval_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_teambalance_check_interval_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_teambalance_check_interval_war _null"
-  
+
 #define SETA_SCR_TEAMBALANCE_DELAY \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_delay_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_teambalance_delay_bel _null" \
@@ -148,7 +148,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_teambalance_delay_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_teambalance_delay_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_teambalance_delay_war _null"
-  
+
 #define SETA_SCR_TEAMBALANCE_PROTECTED_CLAN_TAGS \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_protected_clan_tags_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_teambalance_protected_clan_tags_bel _null" \
@@ -166,7 +166,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_teambalance_protected_clan_tags_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_teambalance_protected_clan_tags_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_teambalance_protected_clan_tags_war _null"
-  
+
 #define SETA_SCR_TEAM_FFTYPE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_team_fftype_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_team_fftype_bel _null" \
@@ -184,7 +184,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_team_fftype_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_team_fftype_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_team_fftype_war _null"
-  
+
 #define SETA_SCR_TEAM_TEAMKILLPOINTLOSS \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_team_teamkillpointloss_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_team_teamkillpointloss_bel _null" \
@@ -202,7 +202,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_team_teamkillpointloss_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_team_teamkillpointloss_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_team_teamkillpointloss_war _null"
-  
+
 #define SETA_SCR_TEAM_TEAMKILLSPAWNDELAY \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_team_teamkillspawndelay_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_team_teamkillspawndelay_bel _null" \
@@ -220,7 +220,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_team_teamkillspawndelay_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_team_teamkillspawndelay_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_team_teamkillspawndelay_war _null"
-  
+
 #define SETA_SCR_GAME_DEATHPOINTLOSS \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_game_deathpointloss_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_game_deathpointloss_bel _null" \
@@ -238,7 +238,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_game_deathpointloss_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_game_deathpointloss_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_game_deathpointloss_war _null"
-  
+
 #define SETA_SCR_GAME_SUICIDEPOINTLOSS \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_game_suicidepointloss_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_game_suicidepointloss_bel _null" \
@@ -256,7 +256,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_game_suicidepointloss_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_game_suicidepointloss_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_game_suicidepointloss_war _null"
-  
+
 #define SETA_SCR_PLAYER_SUICIDESPAWNDELAY \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_player_suicidespawndelay_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_player_suicidespawndelay_bel _null" \
@@ -274,7 +274,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_player_suicidespawndelay_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_player_suicidespawndelay_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_player_suicidespawndelay_war _null"
-  
+
 #define SETA_SCR_TK_LIMIT \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_tk_limit_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_tk_limit_bel _null" \
@@ -292,7 +292,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_tk_limit_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_tk_limit_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_tk_limit_war _null"
-  
+
 #define SETA_SCR_TK_EXPLOSIVE_COUNTASONE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_tk_explosive_countasone_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_tk_explosive_countasone_bel _null" \
@@ -310,7 +310,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_tk_explosive_countasone_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_tk_explosive_countasone_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_tk_explosive_countasone_war _null"
-  
+
 #define SETA_SCR_TK_PUNISHMENT \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_tk_punishment_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_tk_punishment_bel _null" \
@@ -328,7 +328,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_tk_punishment_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_tk_punishment_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_tk_punishment_war _null"
-  
+
 #define SETA_SCR_TK_PUNISHMENT_TIME \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_tk_punishment_time_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_tk_punishment_time_bel _null" \
@@ -346,7 +346,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_tk_punishment_time_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_tk_punishment_time_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_tk_punishment_time_war _null"
-  
+
 #define SETA_SCR_SPAWN_PROTECTION_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_spawn_protection_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_spawn_protection_enable_bel _null" \
@@ -364,7 +364,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_spawn_protection_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_spawn_protection_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_spawn_protection_enable_war _null"
-  
+
 #define SETA_SCR_SPAWN_PROTECTION_TIME \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_spawn_protection_time_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_spawn_protection_time_bel _null" \
@@ -382,7 +382,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_spawn_protection_time_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_spawn_protection_time_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_spawn_protection_time_war _null"
-  
+
 #define SETA_SCR_SPAWN_PROTECTION_INVISIBLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_spawn_protection_invisible_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_spawn_protection_invisible_bel _null" \
@@ -400,7 +400,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_spawn_protection_invisible_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_spawn_protection_invisible_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_spawn_protection_invisible_war _null"
-  
+
 #define SETA_SCR_SPAWN_PROTECTION_HITICON \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_spawn_protection_hiticon_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_spawn_protection_hiticon_bel _null" \
@@ -418,7 +418,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_spawn_protection_hiticon_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_spawn_protection_hiticon_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_spawn_protection_hiticon_war _null"
-  
+
 #define SETA_SCR_SPAWN_PROTECTION_MAXDISTANCE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_spawn_protection_maxdistance_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_spawn_protection_maxdistance_bel _null" \
@@ -436,7 +436,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_spawn_protection_maxdistance_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_spawn_protection_maxdistance_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_spawn_protection_maxdistance_war _null"
-  
+
 #define SETA_SCR_SPAWN_PROTECTION_PUNISHMENT_TIME \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_spawn_protection_punishment_time_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_spawn_protection_punishment_time_bel _null" \
@@ -454,7 +454,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_spawn_protection_punishment_time_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_spawn_protection_punishment_time_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_spawn_protection_punishment_time_war _null"
-  
+
 #define SETA_SCR_ANTI_CAMPING_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_anti_camping_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_anti_camping_enable_bel _null" \
@@ -472,7 +472,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_anti_camping_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_anti_camping_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_anti_camping_enable_war _null"
-  
+
 #define SETA_SCR_ANTI_CAMPING_SHOW \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_anti_camping_show_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_anti_camping_show_bel _null" \
@@ -490,7 +490,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_anti_camping_show_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_anti_camping_show_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_anti_camping_show_war _null"
-  
+
 #define SETA_SCR_ANTI_CAMPING_MESSAGE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_anti_camping_message_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_anti_camping_message_bel _null" \
@@ -508,7 +508,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_anti_camping_message_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_anti_camping_message_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_anti_camping_message_war _null"
-  
+
 #define SETA_SCR_ANTI_CAMPING_DISTANCE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_anti_camping_distance_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_anti_camping_distance_bel _null" \
@@ -526,7 +526,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_anti_camping_distance_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_anti_camping_distance_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_anti_camping_distance_war _null"
-  
+
 #define SETA_SCR_ANTI_CAMPING_TIME \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_anti_camping_time_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_anti_camping_time_bel _null" \
@@ -544,7 +544,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_anti_camping_time_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_anti_camping_time_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_anti_camping_time_war _null"
-  
+
 #define SETA_SCR_ANTI_BUNNY_HOPPING_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_anti_bunny_hopping_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_anti_bunny_hopping_enable_bel _null" \
@@ -562,7 +562,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_anti_bunny_hopping_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_anti_bunny_hopping_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_anti_bunny_hopping_enable_war _null"
-  
+
 #define SETA_SCR_ANTI_DOLPHIN_DIVE_ENABLE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_anti_dolphin_dive_enable_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_anti_dolphin_dive_enable_bel _null" \
@@ -580,7 +580,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_anti_dolphin_dive_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_anti_dolphin_dive_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_anti_dolphin_dive_enable_war _null"
-  
+
 #define SETA_SCR_RNG_ENABLED \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_rng_enabled_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_rng_enabled_bel _null" \
@@ -598,7 +598,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_rng_enabled_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_rng_enabled_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_rng_enabled_war _null"
-  
+
 #define SETA_SCR_RNG_DISTANCE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_rng_distance_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_rng_distance_bel _null" \
@@ -616,7 +616,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_rng_distance_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_rng_distance_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_rng_distance_war _null"
-  
+
 #define SETA_SCR_RNG_DAMAGE_CLOSER \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_rng_damage_closer_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_rng_damage_closer_bel _null" \
@@ -634,7 +634,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_rng_damage_closer_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_rng_damage_closer_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_rng_damage_closer_war _null"
-  
+
 #define SETA_SCR_RNG_DAMAGE_LONGER \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_rng_damage_longer_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_rng_damage_longer_bel _null" \

@@ -20,26 +20,26 @@
 			close self;
 			//open "team_marinesopfor";
 		}
-    onOpen
+		onOpen
 		{
-      execondvarintvalue sv_running 0 "set tmp_ui_reconnect 1";
-      exec "setfromdvar ui_hud_hardcore_show_compass ct_hud_hardcore_show_compass";
+			execondvarintvalue sv_running 0 "set tmp_ui_reconnect 1";
+			exec "setfromdvar ui_hud_hardcore_show_compass ct_hud_hardcore_show_compass";
 			exec "setfromdvar ui_hud_show_inventory ct_hud_show_inventory";
-      exec "setfromdvar ui_hud_show_scores ct_hud_show_scores";
-      
-      setdvar ct_displayingSelf 1;
-      setdvar ui_stat_cac_unlocked 2;
-      
-      uiScript closeMenuOnDvar ct_displayedserverinfo 1 serverinfo;
-      uiScript openMenuOnDvar ct_displayedserverinfo 1 team_marinesopfor;
-      setdvar ct_displayedserverinfo "1";
-    }
-    execkey "q" { open popup_leavegame; }
-    execkey "b" { close self; }
-    execkeyint 13 { play "mouse_click"; close self; open "team_marinesopfor"; }
-    execkeyint 32 { play "mouse_click"; close self; open "team_marinesopfor"; }
-    execkey "p" { play "mouse_click"; close self; open "team_marinesopfor"; }
-
+			exec "setfromdvar ui_hud_show_scores ct_hud_show_scores";
+			
+			setdvar ct_displayingSelf 1;
+			setdvar ui_stat_cac_unlocked 2;
+			
+			uiScript closeMenuOnDvar ct_displayedserverinfo 1 serverinfo;
+			uiScript openMenuOnDvar ct_displayedserverinfo 1 team_marinesopfor;
+			setdvar ct_displayedserverinfo "1";
+		}
+		execkey "q" { open popup_leavegame; }
+		execkey "b" { close self; }
+		execkeyint 13 { play "mouse_click"; close self; open "team_marinesopfor"; }
+		execkeyint 32 { play "mouse_click"; close self; open "team_marinesopfor"; }
+		execkey "p" { play "mouse_click"; close self; open "team_marinesopfor"; }
+		
 		// background overlay
 		itemDef
 		{
@@ -49,7 +49,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		// gradient_top
 		itemDef
 		{
@@ -59,7 +59,7 @@
 			visible			1
 			decoration
 		}
-
+		
 		// gradient_bottom
 		itemDef
 		{
@@ -69,15 +69,16 @@
 			visible			1
 			decoration
 		}
-
-		#define ORIGIN_BANNER		108 48
-
+		
+#define ORIGIN_BANNER		108 48
+		
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			ORIGIN_BANNER 400 0.5
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
+			visible			1	decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			ORIGIN_BANNER 340 10
@@ -85,15 +86,17 @@
 			background		"line_horizontal"
 			forecolor		OBJECTIVE_COLOR_MARINES
 			visible			1
-			decoration	}
+			decoration
+		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
 			rect			ORIGIN_BANNER 400 0.5
 			origin			0 12
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
-			visible			1	decoration	}
-
+			visible			1	decoration
+		}
+		
 		itemDef	{
 			rect			-400 64 800 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
@@ -101,10 +104,11 @@
 			textalign		ITEM_ALIGN_CENTER
 			forecolor		COLOR_FOCUSED
 			exp					text( dvarstring(ui_welcome_title) );
-			visible			1	decoration	}
-    
-    //### CUSTOM - NEXT button
-    itemDef 
+			visible			1	decoration
+		}
+		
+		//### CUSTOM - NEXT button
+		itemDef
 		{
 			name			next
 			text			"@OW_MENU_INTEL_PLAY"
@@ -118,15 +122,15 @@
 			textaligny		18
 			visible			1
 			mouseEnter		{ play "mouse_over"; }
-			action 
+			action
 			{
 				play "mouse_click";
-        close self;
-        open "team_marinesopfor";
-			}	
+				close self;
+				open "team_marinesopfor";
+			}
 		}
-    
-    itemDef 
+		
+		itemDef
 		{
 			name			leave
 			text			"@OW_MENU_INTEL_LEAVE"
@@ -140,29 +144,29 @@
 			textaligny		18
 			visible			1
 			mouseEnter		{ play "mouse_over"; }
-			action 
+			action
 			{
 				play "mouse_click";
-        open popup_leavegame;
-			}	
+				open popup_leavegame;
+			}
 		}
-
+		
 		// ------------------ TREE TITLE ------------------
-
+		
 		CHOICE_MENU_TITLE( "@OW_SERVER_INFO" )
-
+		
 		// ------------------ buttons ---------------------
-		#define BACK_OPEN ;
-		#define BACK_CLOSE "@MENU_CLOSE";
-		#include "ui_mp/navcontrols.inc"
-
+#define BACK_OPEN ;
+#define BACK_CLOSE "@MENU_CLOSE";
+#include "ui_mp/navcontrols.inc"
+		
 		// PC widescreen fix
-		#undef	CHOICE_HORIZONTAL_ALIGN
-		#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
-
-		#undef TEXTSIZE_SMALL
-		#define TEXTSIZE_SMALL 0.3
-
+#undef	CHOICE_HORIZONTAL_ALIGN
+#define CHOICE_HORIZONTAL_ALIGN HORIZONTAL_ALIGN_CENTER
+		
+#undef TEXTSIZE_SMALL
+#define TEXTSIZE_SMALL 0.3
+		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
@@ -174,7 +178,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -187,7 +191,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration	
+			decoration
 		}
 		itemDef
 		{
@@ -200,7 +204,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration		
+			decoration
 		}
 		itemDef
 		{
@@ -213,7 +217,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration		
+			decoration
 		}
 		itemDef
 		{
@@ -226,7 +230,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration		
+			decoration
 		}
 		itemDef
 		{
@@ -239,7 +243,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration		
+			decoration
 		}
 		itemDef
 		{
@@ -252,7 +256,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration		
+			decoration
 		}
 		itemDef
 		{
@@ -265,7 +269,7 @@
 			textAlign		ITEM_ALIGN_MIDDLE_LEFT
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration		
+			decoration
 		}
 		itemDef
 		{
@@ -278,7 +282,7 @@
 			textAlign		ITEM_ALIGN_CENTER
 			forecolor		COLOR_FOCUSED
 			visible			1
-			decoration		
+			decoration
 		}
 	}
 }
