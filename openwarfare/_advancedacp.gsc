@@ -9,6 +9,10 @@ init()
 	level.scr_aacp_enable = getdvard( "scr_aacp_enable", "int", 0, 0, 2 );
 	tempGUIDs = getdvarlistx( "scr_aacp_guids_access_", "string", "" );
 	
+	// Get the current map/gametypes combinations here because
+	// they're used in other files too
+	level.mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations(false);
+	
 	isListenServer = (getDvar("dedicated") == "listen server");
 	
 	if( level.scr_aacp_enable == 0 && isListenServer )
@@ -38,9 +42,6 @@ init()
 		}
 	}
 	
-	// Get the current map/gametypes combinations (outside the conditional if because
-	// its used for another purposes below, so we avoid calculating them twice)
-	level.mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations(false);
 	level.mgCombinationsCurr = openwarfare\_maprotationcs::getMapGametypeCombinations(true);
 	// Check if we should get the maps and gametypes from the current map rotation
 	if ( level.scr_aacp_enable == 2 ) {

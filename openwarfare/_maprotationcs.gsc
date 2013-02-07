@@ -75,6 +75,7 @@ setRotationCurrent( initCheck )
 		if ( getdvarl( "_mrcs_line", "int", -1, -1, 99, level.sv_mapRotationLoadBased ) == -1 ) {
 			cleanMapRotation( false );
 			currentLine = 0;
+			//restartRotation = ( true && initCheck );
 			restartRotation = initCheck && (level.sv_mapRotationScramble == 1 || level.scr_mrcs_auto_generate == 1);
 		}
 		else {

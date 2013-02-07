@@ -73,6 +73,7 @@ init()
 	setDvar( "_ModVer", "v1.8beta", true );
 	
 	setDvar( "_modfile", "leetmod.test" );
+	setDvar( "_modver", "18" );
 	
 	// Make a health check of the server
 	level thread openwarfare\_servercheck::init();
