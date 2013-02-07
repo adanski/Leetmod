@@ -13,6 +13,10 @@ init()
 	if ( !isDefined( game["amvs_skip_voting"] ) )
 		game["amvs_skip_voting"] = false;
 		
+	//# Disabled map voting for now because isn't ready for release:
+	// Voting UI was removed from compilation (menu assets were needed), intermission logic was changed...
+	level.scr_amvs_enable = 0;
+	
 	// If the advanced map voting system is not enabled then there's nothing else to do here
 	if ( level.scr_amvs_enable == 0 )
 		//##commented temporarly, while feature is being thinked

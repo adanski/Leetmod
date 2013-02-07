@@ -60,10 +60,10 @@ onServerLoadSet()
 
 setRotationCurrent( initCheck )
 {
+	mrcs_svMRC = getdvarl( "_mrcs_sv_mapRotationCurrent", "string", "", undefined, undefined, level.sv_mapRotationLoadBased );
 	// If this is a change of server load check if we have a saved current rotation
-	if ( !initCheck && getdvarl( "_mrcs_sv_mapRotationCurrent", "string", "", undefined, undefined, level.sv_mapRotationLoadBased ) != "" ) {
-		setDvar( "sv_mapRotationCurrent", getdvarl( "_mrcs_sv_mapRotationCurrent", "string", "", undefined, undefined, level.sv_mapRotationLoadBased ) );
-		
+	if ( !initCheck && mrcs_svMRC != "" ) {
+		setDvar( "sv_mapRotationCurrent", mrcs_svMRC );
 	}
 	else {
 		// Check if we need to set a new rotation line
@@ -71,15 +71,17 @@ setRotationCurrent( initCheck )
 			return;
 			
 		// Check if this is the first time
-		restartRotation = false;
-		if ( getdvarl( "_mrcs_line", "int", -1, -1, 99, level.sv_mapRotationLoadBased ) == -1 ) {
+		advanceOneMap = false;
+		mrcs_Line = getdvarl( "_mrcs_line", "int", -1, -1, 99, level.sv_mapRotationLoadBased );
+		// if server is starting up (booting)
+		if ( mrcs_Line == -1 ) {
 			cleanMapRotation( false );
 			currentLine = 0;
-			//restartRotation = ( true && initCheck );
-			restartRotation = initCheck && (level.sv_mapRotationScramble == 1 || level.scr_mrcs_auto_generate == 1);
+			//restartRotation = initCheck;
+			advanceOneMap = initCheck;
 		}
 		else {
-			currentLine = getdvarl( "_mrcs_line", "int", -1, -1, 99, level.sv_mapRotationLoadBased );
+			currentLine = mrcs_Line;
 			if ( initCheck ) {
 				currentLine++;
 			}
@@ -103,8 +105,8 @@ setRotationCurrent( initCheck )
 		setDvarL( "_mrcs_line", currentLine, false );
 		
 		// Check if we need to restart the map rotation
-		if ( restartRotation ) {
-			exitLevel( false );
+		if ( advanceOneMap && level.sv_mapRotationScramble == 0 && level.scr_mrcs_auto_generate == 0 ) {
+			advanceOneMapInCurrRot();
 		}
 	}
 }
@@ -113,7 +115,8 @@ setRotationCurrent( initCheck )
 cleanMapRotation( forceClean )
 {
 	// Check if we already cleaned the map rotation
-	if ( !forceClean && getdvarl( "_mrcs_cleaned", "int", 0, 0, 1, level.sv_mapRotationLoadBased ) == 1 )
+	// We clean it at server startup because the dvar is unset
+	if ( getdvarl( "_mrcs_cleaned", "int", 0, 0, 1, level.sv_mapRotationLoadBased ) == 1 && !forceClean )
 		return;
 		
 	// Get the combinations
@@ -364,4 +367,32 @@ setDvarL( varName, varValue, printLog )
 	//	logPrint( "MRCS;" + varName + ": \"" + varValue + "\"\n" );
 	//}
 	setDvar( varName, varValue );
+}
+
+advanceOneMapInCurrRot()
+{
+	currentRot = getDvar( "sv_mapRotationCurrent" );
+	
+	upperBound = 64;
+	if( currentRot.size < 64 )
+		upperBound = currentRot.size;
+	
+	firstMGEndingIndex = 0;
+	// starting at 16 because its the minimum number of letters with: 'gametype X map Y'
+	for( i=16; i < upperBound; i++ ) {
+		firstMG = GetSubStr(currentRot, 0, i);
+		if( numberOfSpaces(firstMG) == 4 ) {
+			firstMGEndingIndex = i-1;
+			break;
+		}
+	}
+	
+	if( firstMGEndingIndex != 0 )
+		setDvar( "sv_mapRotationCurrent", GetSubStr(currentRot, firstMGEndingIndex) );
+	
+}
+
+numberOfSpaces(string) {
+	temp = strtok(string, " ");
+	return temp.size-1;
 }
