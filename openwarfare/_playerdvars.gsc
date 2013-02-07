@@ -21,7 +21,6 @@ init()
   
   level.scr_cg_footsteps = getdvarx( "scr_cg_footsteps", "int", 1, 0, 1 );
 	
-	level.scr_bob_prone_fix = getdvarx( "scr_bob_prone_fix", "int", 1, 0, 1 );
 	level.scr_leg_yaw_tolerance = getdvarx( "scr_leg_yaw_tolerance", "int", 60, 0, 180 );
 	level.scr_swing_speed = getdvarx( "scr_swing_speed", "float", 0.4, 0, 1 );
 	
@@ -182,8 +181,6 @@ init()
 		forceClientDvar( "bg_bobAmplitudeSprinting", "0.02 0.014" );
 		forceClientDvar( "bg_bobAmplitudeStanding", "0.007 0.007" );
 	}
-	if( level.scr_bob_prone_fix )
-		forceClientDvar( "bg_bobAmplitudeProne", "1 0.14" );
 	forceClientDvar( "bg_legYawTolerance", level.scr_leg_yaw_tolerance );
 	forceClientDvar( "bg_swingspeed", level.scr_swing_speed );
   

@@ -273,8 +273,8 @@ showCountDownAccessTime(maxTime, passedTime) {
   
   timeDifference = 0;
   while( timeDifference < maxTime ) {
-    self setClientDvar( "cap_time", int( ( maxTime - timeDifference ) / 1000 ) );
     timeDifference = openwarfare\_timer::getTimePassed() - passedTime;
+    self setClientDvar( "cap_time", int( ( maxTime - timeDifference ) / 1000 ) );
     wait 1;
   }
 }

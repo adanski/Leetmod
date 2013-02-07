@@ -1417,6 +1417,8 @@ endGame( winner, endReasonText )
     	openwarfare\_overtime::checkGameState();
     }
 
+    // Setting an auxiliary value here because endReasonText is changed if round or score limits are reached
+    isEndReasonTimeLimitReached = (endReasonText == game["strings"]["time_limit_reached"]);
     if ( (level.roundLimit > 1 || (!level.roundLimit && level.scoreLimit != 1)) && !level.forcedEnd )
     {
 		if ( level.displayRoundEndText )
@@ -1665,11 +1667,9 @@ endGame( winner, endReasonText )
 			if( isDefined(level.players[index].musicTimeWait) && level.players[index].musicTimeWait != 0 )
 					level.players[index] thread playLocalSoundDelay(game["music"]["ct_intermission"][randomTrack], level.players[index].musicTimeWait);
 	
-//XXXXXX
-
 	//Round Winning Kill here!
 	
-	if( level.scr_roundwinningkillcam && endReasonText != game["strings"]["time_limit_reached"] &&
+	if( level.scr_roundwinningkillcam && isEndReasonTimeLimitReached &&
 		( level.gametype == "dm" || level.gametype == "ftag" || level.gametype == "gg" ||
 		level.gametype == "oitc" || level.gametype == "ss" || level.gametype == "war" ||
 		( level.gametype == "sd" && endReasonText != game["strings"]["target_destroyed"] && endReasonText != game["strings"]["bomb_defused"] )
@@ -1709,7 +1709,6 @@ endGame( winner, endReasonText )
 		}
 	}
 	
-//XXXXXX
 	players = level.players;
 	for ( index = 0; index < players.size; index++ )
 	{
@@ -3855,8 +3854,8 @@ Callback_StartGameType()
 		makeDvarServerInfo( "scr_allies", "usmc" );
 		makeDvarServerInfo( "scr_axis", "arab" );
 
-		makeDvarServerInfo( "cg_thirdPersonAngle", 354 );
-		setDvar( "cg_thirdPersonAngle", 354 );
+		makeDvarServerInfo( "cg_thirdPersonAngle", 0 );
+		setDvar( "cg_thirdPersonAngle", 0 );
 
 		game["strings"]["press_to_spawn"] = &"PLATFORM_PRESS_TO_SPAWN";
 		if ( level.teamBased )
@@ -5811,7 +5810,6 @@ Callback_PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDi
 
 	self.deathTime = getTime();
 	
-//XXXXXX
 	perks = getPerks( attacker );
 	
 	if( !isDefined(level.pers_killcam) )
@@ -5822,7 +5820,6 @@ Callback_PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDi
 	level.pers_killcam["psOffsetTime"] = psOffsetTime;
 	level.pers_killcam["perks"] = perks;
 	level.pers_killcam["attacker"] = attacker;
-//XXXXXX
 
 	// let the player watch themselves die
 	wait ( 0.25 );
@@ -6635,7 +6632,6 @@ getMostKilledBy()
 			continue;
 
 		killCount = self.killedBy[killedByName].count;
-		//XXXX TYPO XXXX
 		mostKilledBy = killedByName;
 	}
 
@@ -6678,7 +6674,6 @@ getMostKilledBySpecial()
         continue;
 
 		killCount = self.killedBy[killedByName].count;
-		//XXXX TYPO XXXX
 		mostKilledBy = killedByName;
 	}
   

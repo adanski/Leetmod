@@ -143,11 +143,11 @@ buildListFromArrayKeys( arrayToList, delimiter )
 	newList = "";
 	arrayKeys = getArrayKeys( arrayToList );
 	
-	for ( i = 0; i < arrayKeys.size; i++ ) {
+	for ( i = arrayKeys.size-1; i >= 0; i-- ) {
 		if ( newList != "" ) {
 			newList += delimiter;
 		}
-		newList += arrayKeys[i];		
+		newList += arrayKeys[i];
 	}	
 
 	return newList;
