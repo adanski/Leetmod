@@ -35,6 +35,9 @@
 			//focusFirst;
 			//setfocus "auto_assign";
       execondvarintvalue sv_running 0 "set tmp_ui_reconnect 1";
+			exec "setfromdvar ui_hud_hardcore_show_compass ct_hud_hardcore_show_compass";
+			exec "setfromdvar ui_hud_show_inventory ct_hud_show_inventory";
+      exec "setfromdvar ui_hud_show_scores ct_hud_show_scores";
 		}
 
 		#ifndef PC
