@@ -6,7 +6,7 @@ init()
 	precacheString( &"MP_SECONDPLACE_NAME" );
 	precacheString( &"MP_THIRDPLACE_NAME" );
 	precacheString( &"MP_MATCH_BONUS_IS" );
-
+	
 	game["strings"]["draw"] = &"MP_DRAW";
 	game["strings"]["round_draw"] = &"MP_ROUND_DRAW";
 	game["strings"]["round_win"] = &"MP_ROUND_WIN";
@@ -26,10 +26,9 @@ init()
 
 onPlayerConnect()
 {
-	while(1)
-	{
+	while(1) {
 		level waittill( "connecting", player );
-
+		
 		player thread hintMessageDeathThink();
 		player thread lowerMessageThink();
 		
@@ -51,8 +50,7 @@ hintMessage( hintText )
 
 initNotifyMessage()
 {
-	if ( level.splitscreen )
-	{
+	if ( level.splitscreen ) {
 		titleSize = 2.0;
 		textSize = 1.5;
 		iconSize = 24;
@@ -62,8 +60,7 @@ initNotifyMessage()
 		yOffset = 30;
 		xOffset = 0;
 	}
-	else
-	{
+	else {
 		titleSize = 2.5;
 		textSize = 1.75;
 		iconSize = 30;
@@ -81,7 +78,7 @@ initNotifyMessage()
 	self.notifyTitle.hideWhenInMenu = true;
 	self.notifyTitle.archived = false;
 	self.notifyTitle.alpha = 0;
-
+	
 	self.notifyText = createFontString( font, textSize );
 	self.notifyText setParent( self.notifyTitle );
 	self.notifyText setPoint( point, relativePoint, 0, 0 );
@@ -90,7 +87,7 @@ initNotifyMessage()
 	self.notifyText.hideWhenInMenu = true;
 	self.notifyText.archived = false;
 	self.notifyText.alpha = 0;
-
+	
 	self.notifyText2 = createFontString( font, textSize );
 	self.notifyText2 setParent( self.notifyTitle );
 	self.notifyText2 setPoint( point, relativePoint, 0, 0 );
@@ -99,14 +96,14 @@ initNotifyMessage()
 	self.notifyText2.hideWhenInMenu = true;
 	self.notifyText2.archived = false;
 	self.notifyText2.alpha = 0;
-
+	
 	self.notifyIcon = createIcon( "white", iconSize, iconSize );
 	self.notifyIcon setParent( self.notifyText2 );
 	self.notifyIcon setPoint( point, relativePoint, 0, 0 );
 	self.notifyIcon.hideWhenInMenu = true;
 	self.notifyIcon.archived = false;
 	self.notifyIcon.alpha = 0;
-
+	
 	self.doingNotify = false;
 	self.notifyQueue = [];
 }
@@ -114,10 +111,10 @@ initNotifyMessage()
 oldNotifyMessage( titleText, notifyText, iconName, glowColor, sound, duration )
 {
 	// Check if we can play music
-  //### FIX ### commenting: reason - stupid idea
+	//### FIX ### commenting: reason - stupid idea
 	//if( level.scr_enable_music == 0 )
-		//sound = undefined;
-
+	//sound = undefined;
+	
 	notifyData = spawnstruct();
 	
 	notifyData.titleText = titleText;
@@ -135,8 +132,7 @@ notifyMessage( notifyData )
 	self endon ( "death" );
 	self endon ( "disconnect" );
 	
-	if ( !self.doingNotify )
-	{
+	if ( !self.doingNotify ) {
 		self thread showNotifyMessage( notifyData );
 		return;
 	}
@@ -150,112 +146,102 @@ showNotifyMessage( notifyData )
 	self endon("disconnect");
 	
 	self.doingNotify = true;
-
+	
 	waitRequireVisibility( 0 );
-
+	
 	if ( isDefined( notifyData.duration ) )
 		duration = notifyData.duration;
 	else if ( level.gameEnded )
 		duration = 2.0;
 	else
 		duration = 4.0;
-	
+		
 	self thread resetOnCancel();
-
+	
 	if ( isDefined( notifyData.sound ) )
 		self playLocalSound( notifyData.sound );
-
+		
 	if ( isDefined( notifyData.leaderSound ) )
 		self maps\mp\gametypes\_globallogic::leaderDialogOnPlayer( notifyData.leaderSound );
-	
+		
 	if ( isDefined( notifyData.glowColor ) )
 		glowColor = notifyData.glowColor;
 	else
 		glowColor = (0.3, 0.6, 0.3);
-
+		
 	anchorElem = self.notifyTitle;
-
-	if ( isDefined( notifyData.titleText ) )
-	{
-		if ( level.splitScreen )
-		{
+	
+	if ( isDefined( notifyData.titleText ) ) {
+		if ( level.splitScreen ) {
 			if ( isDefined( notifyData.titleLabel ) )
 				self iPrintLnBold( notifyData.titleLabel, notifyData.titleText );
 			else
 				self iPrintLnBold( notifyData.titleText );
 		}
-		else
-		{
+		else {
 			if ( isDefined( notifyData.titleLabel ) )
 				self.notifyTitle.label = notifyData.titleLabel;
 			else
 				self.notifyTitle.label = &"";
-
+				
 			if ( isDefined( notifyData.titleLabel ) && !isDefined( notifyData.titleIsString ) )
 				self.notifyTitle setValue( notifyData.titleText );
 			else
 				self.notifyTitle setText( notifyData.titleText );
 			self.notifyTitle setPulseFX( 100, int(duration*1000), 1000 );
-			self.notifyTitle.glowColor = glowColor;	
+			self.notifyTitle.glowColor = glowColor;
 			self.notifyTitle.alpha = 1;
 		}
 	}
-
-	if ( isDefined( notifyData.notifyText ) )
-	{
-		if ( level.splitScreen )
-		{
+	
+	if ( isDefined( notifyData.notifyText ) ) {
+		if ( level.splitScreen ) {
 			if ( isDefined( notifyData.textLabel ) )
 				self iPrintLnBold( notifyData.textLabel, notifyData.notifyText );
 			else
 				self iPrintLnBold( notifyData.notifyText );
 		}
-		else
-		{
+		else {
 			if ( isDefined( notifyData.textLabel ) )
 				self.notifyText.label = notifyData.textLabel;
 			else
 				self.notifyText.label = &"";
-	
+				
 			if ( isDefined( notifyData.textLabel ) && !isDefined( notifyData.textIsString ) )
 				self.notifyText setValue( notifyData.notifyText );
 			else
 				self.notifyText setText( notifyData.notifyText );
 			self.notifyText setPulseFX( 100, int(duration*1000), 1000 );
-			self.notifyText.glowColor = glowColor;	
+			self.notifyText.glowColor = glowColor;
 			self.notifyText.alpha = 1;
 			anchorElem = self.notifyText;
 		}
 	}
-
-	if ( isDefined( notifyData.notifyText2 ) )
-	{
-		if ( level.splitScreen )
-		{
+	
+	if ( isDefined( notifyData.notifyText2 ) ) {
+		if ( level.splitScreen ) {
 			if ( isDefined( notifyData.text2Label ) )
 				self iPrintLnBold( notifyData.text2Label, notifyData.notifyText2 );
 			else
 				self iPrintLnBold( notifyData.notifyText2 );
 		}
-		else
-		{
+		else {
 			self.notifyText2 setParent( anchorElem );
 			
 			if ( isDefined( notifyData.text2Label ) )
 				self.notifyText2.label = notifyData.text2Label;
 			else
 				self.notifyText2.label = &"";
-	
+				
 			self.notifyText2 setText( notifyData.notifyText2 );
 			self.notifyText2 setPulseFX( 100, int(duration*1000), 1000 );
-			self.notifyText2.glowColor = glowColor;	
+			self.notifyText2.glowColor = glowColor;
 			self.notifyText2.alpha = 1;
 			anchorElem = self.notifyText2;
 		}
 	}
-
-	if ( isDefined( notifyData.iconName ) && !level.splitScreen )
-	{
+	
+	if ( isDefined( notifyData.iconName ) && !level.splitScreen ) {
 		self.notifyIcon setParent( anchorElem );
 		self.notifyIcon setShader( notifyData.iconName, 60, 60 );
 		self.notifyIcon.alpha = 0;
@@ -263,20 +249,18 @@ showNotifyMessage( notifyData )
 		self.notifyIcon.alpha = 1;
 		
 		waitRequireVisibility( duration );
-
+		
 		self.notifyIcon fadeOverTime( 0.75 );
 		self.notifyIcon.alpha = 0;
 	}
-	else
-	{
+	else {
 		waitRequireVisibility( duration );
 	}
-
+	
 	self notify ( "notifyMessageDone" );
 	self.doingNotify = false;
-
-	if ( self.notifyQueue.size > 0 )
-	{
+	
+	if ( self.notifyQueue.size > 0 ) {
 		nextNotifyData = self.notifyQueue[0];
 		
 		newQueue = [];
@@ -295,9 +279,8 @@ waitRequireVisibility( waitTime )
 	
 	while ( !self canReadText() )
 		wait interval;
-	
-	while ( waitTime > 0 )
-	{
+		
+	while ( waitTime > 0 ) {
 		wait interval;
 		if ( self canReadText() )
 			waitTime -= interval;
@@ -309,7 +292,7 @@ canReadText()
 {
 	if ( self maps\mp\_flashgrenades::isFlashbanged() )
 		return false;
-	
+		
 	return true;
 }
 
@@ -320,7 +303,7 @@ resetOnDeath()
 	self endon ( "disconnect" );
 	level endon ( "game_ended" );
 	self waittill ( "death" );
-
+	
 	resetNotify();
 }
 
@@ -331,7 +314,7 @@ resetOnCancel()
 	self endon ( "resetOnCancel" );
 	self endon ( "notifyMessageDone" );
 	self endon ( "disconnect" );
-
+	
 	level waittill ( "cancel_notify" );
 	
 	resetNotify();
@@ -350,9 +333,8 @@ resetNotify()
 hintMessageDeathThink()
 {
 	self endon ( "disconnect" );
-
-	while(1)
-	{
+	
+	while(1) {
 		self waittill ( "death" );
 		
 		if ( isDefined( self.hintMessage ) )
@@ -372,7 +354,7 @@ lowerMessageThink()
 	timerFontSize = 1.5;
 	if ( level.splitscreen )
 		timerFontSize = 1.4;
-	
+		
 	self.lowerTimer = createFontString( "default", timerFontSize );
 	self.lowerTimer setParent( self.lowerMessage );
 	self.lowerTimer setPoint( "TOP", "BOTTOM", 0, 0 );
@@ -384,42 +366,40 @@ teamOutcomeNotify( winner, isRound, endReasonText )
 {
 	self endon ( "disconnect" );
 	self notify ( "reset_outcome" );
-
+	
 	team = self.pers["team"];
 	if ( !isDefined( team ) || (team != "allies" && team != "axis") )
 		team = "allies";
-
+		
 	// wait for notifies to finish
 	while ( self.doingNotify )
 		wait 0.05;
-
+		
 	self endon ( "reset_outcome" );
 	
-	if ( level.splitscreen )
-	{
+	if ( level.splitscreen ) {
 		titleSize = 2.0;
 		textSize = 1.5;
 		iconSize = 30;
 		spacing = 10;
 		font = "default";
 	}
-	else
-	{
+	else {
 		titleSize = 3.0;
 		textSize = 2.0;
 		iconSize = 70;
 		spacing = 30;
 		font = "objective";
 	}
-
+	
 	duration = 60000;
-
+	
 	outcomeTitle = createFontString( font, titleSize );
 	outcomeTitle setPoint( "TOP", undefined, 0, 30 );
 	outcomeTitle.glowAlpha = 1;
 	outcomeTitle.hideWhenInMenu = false;
 	outcomeTitle.archived = false;
-
+	
 	outcomeText = createFontString( font, 2.0 );
 	outcomeText setParent( outcomeTitle );
 	outcomeText setPoint( "TOP", "BOTTOM", 0, 0 );
@@ -427,40 +407,35 @@ teamOutcomeNotify( winner, isRound, endReasonText )
 	outcomeText.hideWhenInMenu = false;
 	outcomeText.archived = false;
 	
-	if ( winner == "halftime" )
-	{
+	if ( winner == "halftime" ) {
 		outcomeTitle.glowColor = (0.2, 0.3, 0.7);
 		outcomeTitle setText( game["strings"]["halftime"] );
 		outcomeTitle.color = (1, 1, 1);
 		
 		winner = "allies";
 	}
-	else if ( winner == "intermission" )
-	{
+	else if ( winner == "intermission" ) {
 		outcomeTitle.glowColor = (0.2, 0.3, 0.7);
 		outcomeTitle setText( game["strings"]["intermission"] );
 		outcomeTitle.color = (1, 1, 1);
 		
 		winner = "allies";
 	}
-	else if ( winner == "roundend" )
-	{
+	else if ( winner == "roundend" ) {
 		outcomeTitle.glowColor = (0.2, 0.3, 0.7);
 		outcomeTitle setText( game["strings"]["roundend"] );
 		outcomeTitle.color = (1, 1, 1);
 		
 		winner = "allies";
 	}
-	else if ( winner == "overtime" )
-	{
+	else if ( winner == "overtime" ) {
 		outcomeTitle.glowColor = (0.2, 0.3, 0.7);
 		outcomeTitle setText( game["strings"]["overtime"] );
 		outcomeTitle.color = (1, 1, 1);
 		
 		winner = "allies";
 	}
-	else if ( winner == "tie" )
-	{
+	else if ( winner == "tie" ) {
 		outcomeTitle.glowColor = (0.2, 0.3, 0.7);
 		if ( isRound )
 			outcomeTitle setText( game["strings"]["round_draw"] );
@@ -470,8 +445,7 @@ teamOutcomeNotify( winner, isRound, endReasonText )
 		
 		winner = "allies";
 	}
-	else if ( isDefined( self.pers["team"] ) && winner == team )
-	{
+	else if ( isDefined( self.pers["team"] ) && winner == team ) {
 		outcomeTitle.glowColor = (0, 0, 0);
 		if ( isRound )
 			outcomeTitle setText( game["strings"]["round_win"] );
@@ -479,8 +453,7 @@ teamOutcomeNotify( winner, isRound, endReasonText )
 			outcomeTitle setText( game["strings"]["victory"] );
 		outcomeTitle.color = (0.6, 0.9, 0.6);
 	}
-	else
-	{
+	else {
 		outcomeTitle.glowColor = (0, 0, 0);
 		if ( isRound )
 			outcomeTitle setText( game["strings"]["round_loss"] );
@@ -503,7 +476,7 @@ teamOutcomeNotify( winner, isRound, endReasonText )
 	leftIcon.alpha = 0;
 	leftIcon fadeOverTime( 0.5 );
 	leftIcon.alpha = 1;
-
+	
 	rightIcon = createIcon( game["icons"][level.otherTeam[team]], iconSize, iconSize );
 	rightIcon setParent( outcomeText );
 	rightIcon setPoint( "TOP", "BOTTOM", 60, spacing );
@@ -512,7 +485,7 @@ teamOutcomeNotify( winner, isRound, endReasonText )
 	rightIcon.alpha = 0;
 	rightIcon fadeOverTime( 0.5 );
 	rightIcon.alpha = 1;
-
+	
 	leftScore = createFontString( font, titleSize );
 	leftScore setParent( leftIcon );
 	leftScore setPoint( "TOP", "BOTTOM", 0, spacing );
@@ -522,7 +495,7 @@ teamOutcomeNotify( winner, isRound, endReasonText )
 	leftScore.hideWhenInMenu = false;
 	leftScore.archived = false;
 	leftScore setPulseFX( 100, duration, 1000 );
-
+	
 	rightScore = createFontString( font, titleSize );
 	rightScore setParent( rightIcon );
 	rightScore setPoint( "TOP", "BOTTOM", 0, spacing );
@@ -532,10 +505,9 @@ teamOutcomeNotify( winner, isRound, endReasonText )
 	rightScore.hideWhenInMenu = false;
 	rightScore.archived = false;
 	rightScore setPulseFX( 100, duration, 1000 );
-
+	
 	matchBonus = undefined;
-	if ( isDefined( self.matchBonus ) )
-	{
+	if ( isDefined( self.matchBonus ) ) {
 		matchBonus = createFontString( font, 2.0 );
 		matchBonus setParent( outcomeText );
 		matchBonus setPoint( "TOP", "BOTTOM", 0, iconSize + (spacing * 3) + leftScore.height );
@@ -554,15 +526,14 @@ outcomeNotify( winner, endReasonText )
 {
 	self endon ( "disconnect" );
 	self notify ( "reset_outcome" );
-
+	
 	// wait for notifies to finish
 	while ( self.doingNotify )
 		wait 0.05;
-
+		
 	self endon ( "reset_outcome" );
-
-	if ( level.splitscreen )
-	{
+	
+	if ( level.splitscreen ) {
 		titleSize = 2.0;
 		winnerSize = 1.5;
 		otherSize = 1.5;
@@ -570,8 +541,7 @@ outcomeNotify( winner, endReasonText )
 		spacing = 2;
 		font = "default";
 	}
-	else
-	{
+	else {
 		titleSize = 3.0;
 		winnerSize = 2.0;
 		otherSize = 1.5;
@@ -579,32 +549,28 @@ outcomeNotify( winner, endReasonText )
 		spacing = 20;
 		font = "objective";
 	}
-
+	
 	duration = 60000;
-
+	
 	players = level.placement["all"];
 	
 	specialDisplay = ( level.gametype == "gg" || level.gametype == "oitc" || (level.gametype == "dm" && level.scr_dm_lms_enable) );
 	
 	outcomeTitle = createFontString( font, titleSize );
 	outcomeTitle setPoint( "TOP", undefined, 0, spacing );
-	if ( !specialDisplay && isDefined( players[1] ) && players[0].score == players[1].score && players[0].deaths == players[1].deaths && (self == players[0] || self == players[1]) )
-	{
+	if ( !specialDisplay && isDefined( players[1] ) && players[0].score == players[1].score && players[0].deaths == players[1].deaths && (self == players[0] || self == players[1]) ) {
 		outcomeTitle setText( game["strings"]["tie"] );
 		outcomeTitle.glowColor = (0.2, 0.3, 0.7);
 	}
-	else if ( !specialDisplay && isDefined( players[2] ) && players[0].score == players[2].score && players[0].deaths == players[2].deaths && self == players[2] )
-	{
+	else if ( !specialDisplay && isDefined( players[2] ) && players[0].score == players[2].score && players[0].deaths == players[2].deaths && self == players[2] ) {
 		outcomeTitle setText( game["strings"]["tie"] );
 		outcomeTitle.glowColor = (0.2, 0.3, 0.7);
 	}
-	else if ( ( !specialDisplay && isDefined( players[0] ) && self == players[0] ) || ( specialDisplay && isDefined( winner ) && self == winner ) )
-	{
+	else if ( ( !specialDisplay && isDefined( players[0] ) && self == players[0] ) || ( specialDisplay && isDefined( winner ) && self == winner ) ) {
 		outcomeTitle setText( game["strings"]["victory"] );
 		outcomeTitle.glowColor = (0.2, 0.3, 0.7);
 	}
-	else
-	{
+	else {
 		outcomeTitle setText( game["strings"]["defeat"] );
 		outcomeTitle.glowColor = (0.7, 0.3, 0.2);
 	}
@@ -612,9 +578,8 @@ outcomeNotify( winner, endReasonText )
 	outcomeTitle.hideWhenInMenu = false;
 	outcomeTitle.archived = false;
 	outcomeTitle setPulseFX( 100, duration, 1000 );
-
-	if ( !specialDisplay && isDefined( players[0] ) )
-	{
+	
+	if ( !specialDisplay && isDefined( players[0] ) ) {
 		outcomeText = createFontString( font, 2.0 );
 		outcomeText setParent( outcomeTitle );
 		outcomeText setPoint( "TOP", "BOTTOM", 0, 0 );
@@ -623,7 +588,7 @@ outcomeNotify( winner, endReasonText )
 		outcomeText.archived = false;
 		outcomeText.glowColor = (0.2, 0.3, 0.7);
 		outcomeText setText( endReasonText );
-	
+		
 		firstTitle = createFontString( font, winnerSize );
 		firstTitle setParent( outcomeText );
 		firstTitle setPoint( "TOP", "BOTTOM", 0, spacing );
@@ -631,11 +596,12 @@ outcomeNotify( winner, endReasonText )
 		firstTitle.glowAlpha = 1;
 		firstTitle.hideWhenInMenu = false;
 		firstTitle.archived = false;
-
+		
 		firstTitle.label = &"MP_FIRSTPLACE_NAME";
 		firstTitle setPlayerNameString( players[0] );
 		firstTitle setPulseFX( 100, duration, 1000 );
-	} else {
+	}
+	else {
 		firstTitle = createFontString( font, 4.0 );
 		firstTitle setParent( outcomeTitle );
 		firstTitle setPoint( "TOP", "BOTTOM", 0, spacing );
@@ -644,7 +610,7 @@ outcomeNotify( winner, endReasonText )
 		firstTitle.hideWhenInMenu = false;
 		firstTitle.archived = false;
 		firstTitle.label = &"";
-		if ( isDefined( winner ) ) 
+		if ( isDefined( winner ) )
 			firstTitle setPlayerNameString( winner );
 		firstTitle setPulseFX( 100, duration, 1000 );
 		
@@ -655,9 +621,9 @@ outcomeNotify( winner, endReasonText )
 		outcomeText.hideWhenInMenu = false;
 		outcomeText.archived = false;
 		outcomeText.glowColor = (0.2, 0.3, 0.7);
-		outcomeText setText( endReasonText );		
+		outcomeText setText( endReasonText );
 	}
-
+	
 	secondTitle = createFontString( font, otherSize );
 	secondTitle setParent( firstTitle );
 	secondTitle setPoint( "TOP", "BOTTOM", 0, spacing );
@@ -665,8 +631,7 @@ outcomeNotify( winner, endReasonText )
 	secondTitle.glowAlpha = 1;
 	secondTitle.hideWhenInMenu = false;
 	secondTitle.archived = false;
-	if ( !specialDisplay && isDefined( players[1] ) )
-	{
+	if ( !specialDisplay && isDefined( players[1] ) ) {
 		secondTitle.label = &"MP_SECONDPLACE_NAME";
 		secondTitle setPlayerNameString( players[1] );
 		secondTitle setPulseFX( 100, duration, 1000 );
@@ -680,25 +645,23 @@ outcomeNotify( winner, endReasonText )
 	thirdTitle.glowAlpha = 1;
 	thirdTitle.hideWhenInMenu = false;
 	thirdTitle.archived = false;
-	if ( !specialDisplay && isDefined( players[2] ) )
-	{
+	if ( !specialDisplay && isDefined( players[2] ) ) {
 		thirdTitle.label = &"MP_THIRDPLACE_NAME";
 		thirdTitle setPlayerNameString( players[2] );
 		thirdTitle setPulseFX( 100, duration, 1000 );
 	}
-
+	
 	matchBonus = createFontString( font, 2.0 );
 	matchBonus setParent( thirdTitle );
 	matchBonus setPoint( "TOP", "BOTTOM", 0, spacing );
 	matchBonus.glowAlpha = 1;
 	matchBonus.hideWhenInMenu = false;
 	matchBonus.archived = false;
-	if ( isDefined( self.matchBonus ) )
-	{
+	if ( isDefined( self.matchBonus ) ) {
 		matchBonus.label = game["strings"]["match_bonus"];
 		matchBonus setValue( self.matchBonus );
 	}
-
+	
 	self thread updateOutcome( firstTitle, secondTitle, thirdTitle );
 	self thread resetOutcomeNotify( outcomeTitle, outcomeText, firstTitle, secondTitle, thirdTitle, matchBonus );
 }
@@ -727,7 +690,7 @@ resetTeamOutcomeNotify( outcomeTitle, outcomeText, leftIcon, rightIcon, LeftScor
 {
 	self endon ( "disconnect" );
 	self waittill ( "reset_outcome" );
-
+	
 	if ( isDefined( outcomeTitle ) )
 		outcomeTitle destroyElem();
 	if ( isDefined( outcomeText ) )
@@ -750,43 +713,43 @@ updateOutcome( firstTitle, secondTitle, thirdTitle )
 	self endon( "disconnect" );
 	self endon( "reset_outcome" );
 	
-	while( true )
-	{
+	while( true ) {
 		self waittill( "update_outcome" );
-
+		
 		players = level.placement["all"];
-
+		
 		if ( isDefined( firstTitle ) && isDefined( players[0] ) )
 			firstTitle setPlayerNameString( players[0] );
 		else if ( isDefined( firstTitle ) )
 			firstTitle.alpha = 0;
-		
+			
 		if ( isDefined( secondTitle ) && isDefined( players[1] ) )
 			secondTitle setPlayerNameString( players[1] );
 		else if ( isDefined( secondTitle ) )
 			secondTitle.alpha = 0;
-		
+			
 		if ( isDefined( thirdTitle ) && isDefined( players[2] ) )
 			thirdTitle setPlayerNameString( players[2] );
 		else if ( isDefined( thirdTitle ) )
 			thirdTitle.alpha = 0;
-	}	
+	}
 }
 
-showMeleeDisabled() {
-  if( !isDefined(self.meleeDisabled) ) {
-    self.meleeDisabled = createFontString( "objective", 1.8 );
-    self.meleeDisabled setPoint( "CENTER", "CENTER", 0, 50 );
-    self.meleeDisabled.sort = 1001;
-    self.meleeDisabled.foreground = false;
-    self.meleeDisabled.hidewheninmenu = true;
-    self.meleeDisabled.archived = true;
-    self.meleeDisabled maps\mp\gametypes\_hud::fontPulseInit();
-    self.meleeDisabled setText( &"OW_MELEE_DISABLED" );
-    self.meleeDisabled thread maps\mp\gametypes\_hud::fontPulse( level );
-    wait (2.5);
-    // theoretically no need to confirm, but still... guarantees that we aren't destroying a undefined object resulting in scripting errors
-    if( isDefined(self.meleeDisabled) )
-      self.meleeDisabled destroyElem();
-  }
+showMeleeDisabled()
+{
+	if( !isDefined(self.meleeDisabled) ) {
+		self.meleeDisabled = createFontString( "objective", 1.8 );
+		self.meleeDisabled setPoint( "CENTER", "CENTER", 0, 50 );
+		self.meleeDisabled.sort = 1001;
+		self.meleeDisabled.foreground = false;
+		self.meleeDisabled.hidewheninmenu = true;
+		self.meleeDisabled.archived = true;
+		self.meleeDisabled maps\mp\gametypes\_hud::fontPulseInit();
+		self.meleeDisabled setText( &"OW_MELEE_DISABLED" );
+		self.meleeDisabled thread maps\mp\gametypes\_hud::fontPulse( level );
+		wait (2.5);
+		// theoretically no need to confirm, but still... guarantees that we aren't destroying a undefined object resulting in scripting errors
+		if( isDefined(self.meleeDisabled) )
+			self.meleeDisabled destroyElem();
+	}
 }

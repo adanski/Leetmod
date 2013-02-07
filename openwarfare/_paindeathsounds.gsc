@@ -7,12 +7,12 @@ init()
 	level.scr_health_hurt_sound = getdvarx( "scr_health_hurt_sound", "int", 1, 0, 1 );
 	level.scr_health_pain_sound = getdvarx( "scr_health_pain_sound", "int", 0, 0, 10 );
 	level.scr_health_death_sound = getdvarx( "scr_health_death_sound", "int", 0, 0, 1 );
-
+	
 	if ( level.scr_health_hurt_sound == 0 && level.scr_health_pain_sound == 0 && level.scr_health_death_sound == 0 )
 		return;
-
+		
 	level.healthOverlayCutoff = 0.55;
-
+	
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -61,7 +61,7 @@ onPlayerSpawned()
 	// Assign a random number between 1 and 8 (sound aliases for go from 1 to 8).
 	self.myDeathSound = self.myDeathSound + randomIntRange(1, 9);
 	self.myPainSound = self.myPainSound + randomIntRange(1, 9);
-
+	
 	// Initialize the threads that will handle the sound for us
 	self thread playerBreathingSound( self.maxhealth );
 	self thread playerPainSound();
@@ -82,44 +82,45 @@ playerBreathingSound( maxHealth )
 	self endon("disconnect");
 	self endon("death");
 	level endon( "game_ended" );
-
+	
 	// Are pain sounds enabled? If bleeding is enabled then let that routine handle the sounds instead
 	if ( level.scr_health_hurt_sound == 0 || ( level.scr_healthsystem_bleeding_enable && level.scr_healthregen_method == 0 ) )
 		return;
-
+		
 	player = self;
-
+	
 	// We'll use this variable to control which kind of sound we should make
 	healthCap = maxHealth * level.healthOverlayCutoff;
-
+	
 	veryHurt = false;
-
-	while(1)
-	{
+	
+	while(1) {
 		wait (0.05);
-
+		
 		// Player is dead.
 		if ( !isDefined( player ) || player.health <= 0 ) {
 			return;
 		}
-
+		
 		// Player has more than 99% of the health restored... We shouldn't make any more sounds.
 		if ( player.health >= ( maxHealth * 0.99 ) ) {
 			if ( !veryHurt ) {
 				continue;
-			} else {
+			}
+			else {
 				veryHurt = false;
 			}
 		}
-
+		
 		// Check which sound we should play
 		if ( player.health < healthCap ) {
 			playSound = "breathing_hurt";
 			veryHurt = true;
-		} else {
+		}
+		else {
 			playSound = "breathing_better";
 		}
-
+		
 		// Play the sound and wait some standard amount of time between each one
 		if ( level.gametype != "ftag" || !self.freezeTag["frozen"] )
 			player playLocalSound( playSound );
@@ -135,18 +136,17 @@ playerPainSound()
 	self endon("disconnect");
 	self endon("death");
 	level endon( "game_ended" );
-
+	
 	if ( level.scr_health_pain_sound == 0 )
 		return;
-
-	while(1)
-	{
+		
+	while(1) {
 		self waittill("damage_taken", eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
-
+		
 		// Make sure the player was damaged
 		if ( iDamage > 0 ) {
 			playPainSound = randomIntRange(1, level.scr_health_pain_sound + 1 );
-
+			
 			// We only play the sound when the random value is 1
 			if ( playPainSound == 1 ) {
 				self playSound( self.myPainSound );

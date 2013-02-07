@@ -10,7 +10,7 @@ init()
 	if ( level.weap_allow_binoculars == 0 )
 		return;
 		
-	precacheItem( "binoculars_mp" );	
+	precacheItem( "binoculars_mp" );
 	
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
@@ -42,8 +42,7 @@ monitorBinosUtilization()
 	oldWeapon = self getCurrentWeapon();
 	wasBinos = ( oldWeapon == "binoculars_mp" );
 	
-	while(1) 
-	{
+	while(1) {
 		wait (0.05);
 		if ( isDefined( self ) ) {
 			currentWeapon = self getCurrentWeapon();
@@ -51,12 +50,13 @@ monitorBinosUtilization()
 				if ( wasBinos ) {
 					self shiftPlayerView( 3 );
 					wasBinos = false;
-				} else if ( currentWeapon == "binoculars_mp" ) {
+				}
+				else if ( currentWeapon == "binoculars_mp" ) {
 					wasBinos = true;
-				}					
-					
+				}
+				
 				oldWeapon = currentWeapon;
-			}			
-		}	
+			}
+		}
 	}
 }

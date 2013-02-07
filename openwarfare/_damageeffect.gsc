@@ -14,11 +14,11 @@ init()
 	
 	level.scr_de_break_ankle_on_fall = getdvarx( "scr_de_break_ankle_on_fall", "int", 0, 0, 75 );
 	level.scr_de_slowdown_on_leg_hit = getdvarx( "scr_de_slowdown_on_leg_hit", "int", 0, 0, 75 );
-
+	
 	// Make sure we need to still stay here
 	if ( level.scr_de_dropweapon_on_arm_hit == 0 && level.scr_de_falldown_on_leg_hit == 0 && level.scr_de_shiftview_on_damage == 0 && level.scr_de_break_ankle_on_fall == 0 && level.scr_de_slowdown_on_leg_hit == 0 )
 		return;
-
+		
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -37,18 +37,17 @@ onDamageTaken()
 	self endon("disconnect");
 	self endon("death");
 	level endon( "game_ended" );
-
-	while(1)
-	{
+	
+	while(1) {
 		self waittill("damage_taken", eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime );
-
+		
 		// Make sure there was damage done
 		if ( iDamage == 0 )
 			continue;
-
+			
 		// Get the player's current weapon
 		currentWeapon = self getCurrentWeapon();
-
+		
 		// Check if this a damage from a fall
 		if ( sMeansOfDeath == "MOD_FALLING" ) {
 			// Check if we need to slow down the player
@@ -58,12 +57,12 @@ onDamageTaken()
 				self thread maps\mp\gametypes\_gameobjects::_disableSprint();
 				self thread maps\mp\gametypes\_gameobjects::_disableJump();
 				self iprintlnbold( &"OW_DE_BROKEN_ANKLE" );
-			}			
+			}
 			
-		} else{
+		}
+		else {
 			// Check the location of the hit
-			switch( sHitLoc )
-			{
+			switch( sHitLoc ) {
 				case "gun":
 				case "left_hand":
 				case "right_hand":
@@ -76,7 +75,7 @@ onDamageTaken()
 						}
 					}
 					break;
-	
+					
 				case "left_arm_lower":
 				case "right_arm_lower":
 					// Player was hit in the arm. Check if we need to drop the player's weapon.
@@ -88,7 +87,7 @@ onDamageTaken()
 						}
 					}
 					break;
-	
+					
 				case "left_arm_upper":
 				case "right_arm_upper":
 					// Player was hit in the arm. Check if we need to drop the player's weapon.
@@ -100,7 +99,7 @@ onDamageTaken()
 						}
 					}
 					break;
-	
+					
 				case "left_leg_upper":
 				case "right_leg_upper":
 					// Player was hit in the upper legs. Check if we need to slow him down.
@@ -108,7 +107,7 @@ onDamageTaken()
 						self thread openwarfare\_speedcontrol::setModifierSpeed( "_damageeffect_leg", 50 );
 					}
 					break;
-									
+					
 				case "left_leg_lower":
 				case "left_foot":
 				case "right_leg_lower":
@@ -116,7 +115,7 @@ onDamageTaken()
 					// Player was hit in the lower legs. Check if we need to make the player fall to the ground.
 					if ( level.scr_de_falldown_on_leg_hit > 0 ) {
 						randomChance = randomIntRange( 0, 101 );
-						if ( randomChance <= level.scr_de_falldown_chance ) {					
+						if ( randomChance <= level.scr_de_falldown_chance ) {
 							self ExecClientCommand("gocrouch");
 							self ExecClientCommand("goprone");
 							if ( level.scr_de_falldown_on_leg_hit == 2 ) {
@@ -128,7 +127,7 @@ onDamageTaken()
 					}
 					break;
 			}
-
+			
 			// Check if we need to shift the player's view
 			if ( level.scr_de_shiftview_on_damage > 0 &&  iDamage > level.scr_de_shiftview_on_damage ) {
 				self shiftPlayerView( iDamage );

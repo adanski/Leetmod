@@ -1,6 +1,6 @@
 resetServerVariables()
 {
-	// Load all the variables that should be cleaned 
+	// Load all the variables that should be cleaned
 	variableNames = [];
 	variablesReseted = 0;
 	
@@ -48,7 +48,7 @@ resetServerVariables()
 	variableNames[ variableNames.size ] = "scr_allow_thirdperson scr_allow_thirdperson_guids scr_game_spectatetype scr_game_spectatetype_dm scr_game_spectatetype_gg scr_game_spectatetype_spectators scr_game_spectators_guids";
 	
 	// configs/gameplay/visuals.cfg
-	variableNames[ variableNames.size ] = "scr_dcs_dawn_length scr_dcs_day_length scr_dcs_dusk_length scr_dcs_enabled scr_dcs_first_cycle scr_dcs_night_length scr_dcs_reset_cycle scr_dcs_sounds_enable scr_map_special_fx_enable scr_show_fog"; 
+	variableNames[ variableNames.size ] = "scr_dcs_dawn_length scr_dcs_day_length scr_dcs_dusk_length scr_dcs_enabled scr_dcs_first_cycle scr_dcs_night_length scr_dcs_reset_cycle scr_dcs_sounds_enable scr_map_special_fx_enable scr_show_fog";
 	
 	// configs/gameplay/wdm.cfg
 	variableNames[ variableNames.size ] = "scr_wdm_ak47 scr_wdm_ak47_silenced scr_wdm_ak74u scr_wdm_ak74u_silenced scr_wdm_barrels scr_wdm_barrett scr_wdm_beretta scr_wdm_beretta_silenced scr_wdm_c4 scr_wdm_claymore scr_wdm_colt45 scr_wdm_colt45_silenced scr_wdm_deserteagle scr_wdm_deserteaglegold scr_wdm_dragunov scr_wdm_enabled scr_wdm_frag_grenades scr_wdm_g3 scr_wdm_g3_silenced scr_wdm_g36c scr_wdm_g36c_silenced scr_wdm_gl scr_wdm_m1014 scr_wdm_m14 scr_wdm_m14_silenced scr_wdm_m16 scr_wdm_m16_silenced scr_wdm_m21 scr_wdm_m4 scr_wdm_m4_silenced scr_wdm_m40a3 scr_wdm_m60e4 scr_wdm_mp44 scr_wdm_mp5 scr_wdm_mp5_silenced scr_wdm_p90 scr_wdm_p90_silenced scr_wdm_remington700 scr_wdm_rpd scr_wdm_rpg scr_wdm_saw scr_wdm_skorpion scr_wdm_skorpion_silenced scr_wdm_usp scr_wdm_usp_silenced scr_wdm_uzi scr_wdm_uzi_silenced scr_wdm_vehicles scr_wdm_winchester1200";
@@ -72,7 +72,7 @@ resetServerVariables()
 	
 	// configs/gametypes/behindenemylines.cfg
 	variableNames[ variableNames.size ] = "scr_bel_alive_points scr_bel_alive_points_time scr_bel_playerrespawndelay scr_bel_scorelimit scr_bel_showoncompass scr_bel_showoncompass_interval scr_bel_showoncompass_points scr_bel_showoncompass_time scr_bel_teambalanceendofround scr_bel_timelimit scr_bel_waverespawndelay";
-		
+	
 	// configs/gametypes/captureandhold.cfg
 	variableNames[ variableNames.size ] = "scr_ch_chmode scr_ch_holdtime scr_ch_neutraltime scr_ch_numlives scr_ch_ownerspawndelay scr_ch_playerrespawndelay scr_ch_roundlimit scr_ch_roundswitch scr_ch_scoreboard_flag_carrier scr_ch_scorelimit scr_ch_show_flag_carrier scr_ch_show_flag_carrier_distance scr_ch_show_flag_carrier_time scr_ch_suddendeath_show_enemies scr_ch_suddendeath_timelimit scr_ch_teambalanceendofround scr_ch_timelimit scr_ch_waverespawndelay";
 	
@@ -87,22 +87,22 @@ resetServerVariables()
 	
 	// configs/gametypes/freezetag.cfg
 	variableNames[ variableNames.size ] = "scr_ftag_auto_unfreeze_time scr_ftag_forcestartspawns scr_ftag_frozen_freelook scr_ftag_numlives scr_ftag_roundlimit scr_ftag_roundswitch scr_ftag_scorelimit scr_ftag_show_stats scr_ftag_teambalanceendofround scr_ftag_timelimit scr_ftag_unfreeze_beam scr_ftag_unfreeze_maxdistance scr_ftag_unfreeze_melt_iceberg scr_ftag_unfreeze_respawn scr_ftag_unfreeze_score scr_ftag_unfreeze_time";
-
+	
 	// configs/gametypes/greed.cfg
 	variableNames[ variableNames.size ] = "scr_gr_active_drop_zone scr_gr_drop_zones_relocation_time scr_gr_base_dogtag_score scr_gr_minimap_mark_red_drops scr_gr_dogtag_autoremoval_time scr_gr_playerrespawndelay scr_gr_roundlimit scr_gr_scorelimit scr_gr_timelimit";
-
+	
 	// configs/gametypes/gungame.cfg
 	variableNames[ variableNames.size ] = "scr_gg_auto_levelup scr_gg_auto_levelup_time scr_gg_death_penalty scr_gg_explosives_refresh scr_gg_explosives_special scr_gg_extra_explosives scr_gg_handicap_on scr_gg_kills_per_lvl scr_gg_knife_pro scr_gg_knifed_penalty scr_gg_nade_knife_weapon scr_gg_playerrespawndelay scr_gg_refill_on_kill scr_gg_specialty_slot1 scr_gg_specialty_slot2 scr_gg_timelimit scr_gg_weapon_order";
 	
 	// configs/gametypes/headquarters.cfg
 	variableNames[ variableNames.size ] = "scr_koth_autodestroytime scr_koth_capturetime scr_koth_delayPlayer scr_koth_destroytime scr_koth_flash_on_capture scr_koth_flash_on_destroy scr_koth_kothmode scr_koth_numlives scr_koth_playerrespawndelay scr_koth_roundlimit scr_koth_roundswitch scr_koth_scorelimit scr_koth_spawnDelay scr_koth_spawntime scr_koth_teambalanceendofround scr_koth_timelimit scr_koth_waverespawndelay";
-
+	
 	// configs/gametypes/hideandseek.cfg
 	//variableNames[ variableNames.size ] = "scr_hns_hunting_music_time;scr_hns_hunting_music_enable;scr_hns_hidetime;scr_hns_props_speed;scr_hns_props_max_morphs;scr_hns_props_survive_score_time;scr_hns_roundlimit;scr_hns_roundswitch;scr_hns_scorelimit;scr_hns_timelimit;scr_hns_teambalanceendofround";
-
+	
 	// configs/gametypes/oneinthechamber.cfg
 	variableNames[ variableNames.size ] = "scr_oitc_suddendeath_show_enemies;scr_oitc_suddendeath_timelimit;scr_oitc_playerrespawndelay;scr_oitc_roundlimit;scr_oitc_scorelimit;scr_oitc_timelimi;scr_oitc_handgun;scr_oitc_specialty_slot1;scr_oitc_specialty_slot2";
-
+	
 	// configs/gametypes/retrieval.cfg
 	variableNames[ variableNames.size ] = "scr_re_objective_autoresettime scr_re_defenders_show_both scr_re_defenders_spawndelay scr_re_numlives scr_re_objectives_enabled scr_re_one_retrieve scr_re_playerrespawndelay scr_re_roundlimit scr_re_roundswitch scr_re_scoreboard_objective_carrier scr_re_scorelimit scr_re_teambalanceendofround scr_re_timelimit scr_re_waverespawndelay";
 	
@@ -111,13 +111,13 @@ resetServerVariables()
 	
 	// configs/gametypes/searchanddestroy.cfg
 	variableNames[ variableNames.size ] = "scr_sd_allow_defender_explosivedestroy scr_sd_allow_defender_explosivedestroy_sound scr_sd_allow_defender_explosivedestroy_time scr_sd_allow_defender_explosivedestroy_win scr_sd_allow_defender_explosivepickup scr_sd_allow_quickdefuse scr_sd_bomb_notification_enable scr_sd_bombsites_enabled scr_sd_bombtimer scr_sd_bombtimer_modifier scr_sd_bombtimer_show scr_sd_defenders_show_both scr_sd_defusetime scr_sd_defusing_sound scr_sd_multibomb scr_sd_objective_takedamage_counter scr_sd_objective_takedamage_enable scr_sd_objective_takedamage_health scr_sd_objective_takedamage_option scr_sd_planting_sound scr_sd_planttime scr_sd_roundlimit scr_sd_roundswitch scr_sd_scoreboard_bomb_carrier scr_sd_scorelimit scr_sd_sdmode scr_sd_show_briefcase scr_sd_teambalanceendofround scr_sd_timelimit";
-
+	
 	// configs/gametypes/sharpshooter.cfg
 	variableNames[ variableNames.size ] = "scr_ss_playerrespawndelay;scr_ss_roundlimit;scr_ss_scorelimit;scr_ss_timelimit;scr_ss_weapon_switch_time;scr_ss_available_weapons;scr_ss_explosives_special;scr_ss_specialty_slot1;scr_ss_specialty_slot2";
-
+	
 	// configs/gametypes/teamdeathmatch.cfg
 	variableNames[ variableNames.size ] = "scr_war_forcestartspawns scr_war_numlives scr_war_playerrespawndelay scr_war_roundlimit scr_war_roundswitch scr_war_scorelimit scr_war_teambalanceendofround scr_war_timelimit scr_war_waverespawndelay";
-
+	
 	// configs/gametypes/teamgreed.cfg
 	variableNames[ variableNames.size ] = "scr_tgr_base_dogtag_score scr_tgr_minimap_mark_red_drops scr_tgr_dogtag_autoremoval_time scr_tgr_playerrespawndelay scr_tgr_roundlimit scr_tgr_roundswitch scr_tgr_scorelimit scr_tgr_timelimit scr_tgr_waverespawndelay scr_tgr_forcestartspawns scr_tgr_teambalanceendofround";
 	
@@ -159,7 +159,7 @@ resetServerVariables()
 	
 	// configs/server/voting.cfg
 	variableNames[ variableNames.size ] = "scr_allowvote scr_allowvote_changegametype scr_allowvote_changemap scr_allowvote_clan_tags scr_allowvote_kickplayer scr_allowvote_nextmap scr_allowvote_restartmap";
-
+	
 	
 	// Process the array with all the variables
 	for ( line=0; line < variableNames.size; line++ ) {
@@ -167,13 +167,13 @@ resetServerVariables()
 		
 		// Process all the variables in this line
 		for ( var=0; var < thisLineVariables.size; var++ ) {
-			
+		
 			// Check if this variable has been set and reset it if it has
 			if ( getDvar( thisLineVariables[var] ) != "" ) {
 				setDvar( thisLineVariables[var], "" );
 				variablesReseted++;
-			}			
-		}		
+			}
+		}
 	}
 	
 	// Log how many variables we reset to ""

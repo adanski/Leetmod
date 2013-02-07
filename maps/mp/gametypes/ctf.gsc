@@ -55,10 +55,10 @@ main()
 {
 	if(getdvar("mapname") == "mp_background")
 		return;
-
+		
 	if ( !isdefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;
-
+		
 	// Additional variables that we'll be using
 	level.scr_ctf_ctfmode = getdvarx( "scr_ctf_ctfmode", "int", 2, 0, 2  );
 	level.scr_ctf_endround_on_capture = getdvarx( "scr_ctf_endround_on_capture", "int", 1, 0, 1  );
@@ -67,7 +67,7 @@ main()
 	level.scr_ctf_show_flag_carrier = getdvarx( "scr_ctf_show_flag_carrier", "int", 2, 0, 2  );
 	level.scr_ctf_show_flag_carrier_time = getdvarx( "scr_ctf_show_flag_carrier_time", "int", 5, 5, 600 );
 	level.scr_ctf_show_flag_carrier_distance = getdvarx( "scr_ctf_show_flag_carrier_distance", "int", 0, 0, 1000 );
-
+	
 	level.scr_ctf_suddendeath_show_enemies = getdvarx( "scr_ctf_suddendeath_show_enemies", "int", 1, 0, 1 );
 	level.scr_ctf_suddendeath_timelimit = getdvarx( "scr_ctf_suddendeath_timelimit", "int", 180, 0, 600 );
 	
@@ -75,19 +75,19 @@ main()
 	if ( level.scr_ctf_idleflagreturntime == 0 && level.scr_ctf_ctfmode == 1 ) {
 		level.scr_ctf_ctfmode = 0;
 	}
-
+	
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
-
+	
 	// Get the dvars we need for this gametype
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 3, 1, 500 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 2, 0, 5000 );
 	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 8, 0, 1440 );
-
-
+	
+	
 	level.teamBased = true;
 	level.overrideTeamScore = true;
 	level.endGameOnScoreLimit = true;
@@ -98,15 +98,15 @@ main()
 	level.onRoundSwitch = ::onRoundSwitch;
 	level.onSpawnPlayer = ::onSpawnPlayer;
 	level.onStartGameType = ::onStartGameType;
-		
+	
 	if ( level.scr_ctf_endround_on_capture == 1 ) {
 		level.onTimeLimit = ::onTimeLimit;
 	}
 	
 	game["dialog"]["offense_obj"] = "boost";
-	game["dialog"]["defense_obj"] = "boost";	
+	game["dialog"]["defense_obj"] = "boost";
 	game["dialog"]["gametype"] = gameTypeDialog( "captureflag" );
-
+	
 }
 
 
@@ -122,7 +122,7 @@ onPrecacheGameType()
 {
 	// Initialize an array to keep all the assets we'll be using
 	game[level.gameType] = [];
-
+	
 	// Precache team dependent assets for allies
 	if ( game["allies"] == "marines" ) {
 		game[level.gameType]["prop_flag_allies"] = "prop_flag_american";
@@ -132,7 +132,8 @@ onPrecacheGameType()
 		game[level.gameType]["waypoint_flag_allies_x"] = "objpoint_flag_x_american";
 		game[level.gameType]["hud_flag_allies"] = "objpoint_flag_american";
 		game[level.gameType]["flag_base_allies"] = loadFX( "misc/ui_flagbase_silver" );
-	} else {
+	}
+	else {
 		game[level.gameType]["prop_flag_allies"] = "prop_flag_brit";
 		game[level.gameType]["prop_flag_allies_carry"] = "prop_flag_brit_carry";
 		game[level.gameType]["compass_waypoint_flag_allies"] = "objpoint_flag_british";
@@ -149,7 +150,7 @@ onPrecacheGameType()
 	precacheShader( game[level.gameType]["waypoint_flag_allies"] );
 	precacheShader( game[level.gameType]["waypoint_flag_allies_x"] );
 	precacheShader( game[level.gameType]["hud_flag_allies"] );
-
+	
 	// Precache team dependent assets for axis
 	if ( game["axis"] == "russian" ) {
 		game[level.gameType]["prop_flag_axis"] = "prop_flag_russian";
@@ -159,7 +160,8 @@ onPrecacheGameType()
 		game[level.gameType]["waypoint_flag_axis_x"] = "objpoint_flag_x_russian";
 		game[level.gameType]["hud_flag_axis"] = "objpoint_flag_russian";
 		game[level.gameType]["flag_base_axis"] = loadFX( "misc/ui_flagbase_red" );
-	} else {
+	}
+	else {
 		game[level.gameType]["prop_flag_axis"] = "prop_flag_opfor";
 		game[level.gameType]["prop_flag_axis_carry"] = "prop_flag_opfor_carry";
 		game[level.gameType]["compass_waypoint_flag_axis"] = "objpoint_flag_opfor";
@@ -168,7 +170,7 @@ onPrecacheGameType()
 		game[level.gameType]["hud_flag_axis"] = "objpoint_flag_opfor";
 		game[level.gameType]["flag_base_axis"] = loadFX( "misc/ui_flagbase_gold" );
 	}
-
+	
 	// Precache everything (no matter that we precache the same thing more than once, we have it anyway
 	// in case someone decides to use different images)
 	precacheModel( game[level.gameType]["prop_flag_axis"] );
@@ -177,14 +179,14 @@ onPrecacheGameType()
 	precacheShader( game[level.gameType]["waypoint_flag_axis"] );
 	precacheShader( game[level.gameType]["waypoint_flag_axis_x"] );
 	precacheShader( game[level.gameType]["hud_flag_axis"] );
-
+	
 	// Precache other assets that are not team dependent
 	precacheStatusIcon( "hud_status_flag" );
 	precacheShader( "compass_waypoint_target" );
 	precacheShader( "waypoint_kill" );
 	precacheShader( "compass_waypoint_defend" );
 	precacheShader( "waypoint_defend" );
-
+	
 	// Voiceovers
 	game["dialog"]["ourflag"] = "ourflag";
 	game["dialog"]["ourflag_capt"] = "ourflag_capt";
@@ -194,7 +196,7 @@ onPrecacheGameType()
 	game["dialog"]["enemyflag_capt"] = "enemyflag_capt";
 	game["dialog"]["enemyflag_drop"] = "enemyflag_drop";
 	game["dialog"]["enemyflag_return"] = "enemyflag_return";
-
+	
 	// Precache strings - What happened to the 4 missing strings IW? You are making me work here... ;)
 	precacheString( &"MP_ENEMY_FLAG_CAPTURED_BY" );
 	precacheString( &"MP_ENEMY_FLAG_DROPPED_BY" );
@@ -224,17 +226,15 @@ onStartGameType()
 {
 	// Check if this map supports native CTF
 	nativeCTF = isDefined( getEnt( "ctf_trig_allies", "targetname" ) );
-
+	
 	maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OBJECTIVES_CTF" );
 	maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OBJECTIVES_CTF" );
-
-	if ( level.splitscreen )
-	{
+	
+	if ( level.splitscreen ) {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_CTF" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_CTF" );
 	}
-	else
-	{
+	else {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OBJECTIVES_CTF_SCORE" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OBJECTIVES_CTF_SCORE" );
 	}
@@ -242,37 +242,39 @@ onStartGameType()
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OBJECTIVES_CTF_HINT" );
 	
 	setClientNameMode("auto_change");
-
+	
 	// Check if we need to switch sides
 	if ( game["switchedsides"] ) {
 		level.alliesAssets = "axis";
 		level.axisAssets = "allies";
-	} else {
+	}
+	else {
 		level.alliesAssets = "allies";
 		level.axisAssets = "axis";
 	}
-
+	
 	level.spawnMins = ( 0, 0, 0 );
 	level.spawnMaxs = ( 0, 0, 0 );
-
+	
 	// If the map doesn't support CTF natively we'll use the locations of Sabotage assets
 	if ( nativeCTF ) {
 		spawnType = "ctf";
-	} else {
+	}
+	else {
 		spawnType = "sab";
 		// Let's get the trigger origins of the bomb zones before we get rid of all the map assets
 		level.origins["allies"] = getOriginFromBombZone( "sab_bomb_allies" );
 		level.origins["axis"] = getOriginFromBombZone( "sab_bomb_axis" );
 	}
-
+	
 	maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_" + spawnType + "_spawn_allies_start" );
 	maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_" + spawnType + "_spawn_axis_start" );
 	maps\mp\gametypes\_spawnlogic::addSpawnPoints( "allies", "mp_" + spawnType + "_spawn_allies" );
 	maps\mp\gametypes\_spawnlogic::addSpawnPoints( "axis", "mp_" + spawnType + "_spawn_axis" );
-
+	
 	level.mapCenter = maps\mp\gametypes\_spawnlogic::findBoxCenter( level.spawnMins, level.spawnMaxs );
 	setMapCenter( level.mapCenter );
-
+	
 	level.spawn_axis = getentarray( "mp_" + spawnType + "_spawn_" + level.axisAssets, "classname" );
 	level.spawn_allies = getentarray( "mp_" + spawnType + "_spawn_" + level.alliesAssets, "classname" );
 	level.spawn_axis_start = getentarray("mp_" + spawnType + "_spawn_" + level.axisAssets + "_start", "classname" );
@@ -281,10 +283,10 @@ onStartGameType()
 	level.startPos["axis"] = level.spawn_axis_start[0].origin;
 	
 	level.displayRoundEndText = true;
-
+	
 	allowed[0] = "ctf";
 	maps\mp\gametypes\_gameobjects::main(allowed);
-
+	
 	thread captureTheFlag();
 }
 
@@ -304,7 +306,7 @@ getOriginFromBombZone( entityName )
 		trace = playerPhysicsTrace( bombZone.origin + (0,0,20), bombZone.origin - (0,0,2000), false, undefined );
 		return trace;
 	}
-	return;	
+	return;
 }
 
 
@@ -313,22 +315,22 @@ onTimeLimit()
 {
 	if ( level.inOvertime )
 		return;
-    
+		
 	isSomeonePlayingAllies = false;
 	isSomeonePlayingAxis = false;
-  // Cycle through all the players
+	// Cycle through all the players
 	for ( index = 0; index < level.players.size; index++ ) {
 		player = level.players[index];
-
+		
 		if ( player.pers["team"] == "allies" )
-      isSomeonePlayingAllies = true;
-    if ( player.pers["team"] == "axis" )
-      isSomeonePlayingAxis = true;
+			isSomeonePlayingAllies = true;
+		if ( player.pers["team"] == "axis" )
+			isSomeonePlayingAxis = true;
 	}
-  if( isSomeonePlayingAllies && isSomeonePlayingAxis )
-    thread onOvertime();
-  else
-    thread maps\mp\gametypes\_globallogic::endGame( "tie", game["strings"]["tie"] );
+	if( isSomeonePlayingAllies && isSomeonePlayingAxis )
+		thread onOvertime();
+	else
+		thread maps\mp\gametypes\_globallogic::endGame( "tie", game["strings"]["tie"] );
 }
 
 
@@ -336,25 +338,24 @@ onTimeLimit()
 onOvertime()
 {
 	level endon ( "game_ended" );
-
+	
 	level.timeLimitOverride = true;
 	level.inOvertime = true;
-
-	for ( index = 0; index < level.players.size; index++ )
-	{
+	
+	for ( index = 0; index < level.players.size; index++ ) {
 		level.players[index] notify("force_spawn");
 		level.players[index] thread maps\mp\gametypes\_hud_message::oldNotifyMessage( &"MP_SUDDEN_DEATH", &"MP_NO_RESPAWN", undefined, (1, 0, 0), "mp_last_stand" );
-
+		
 		if ( level.scr_ctf_suddendeath_show_enemies == 1 ) {
 			level.players[index] setClientDvars("cg_deadChatWithDead", 1,
-								"cg_deadChatWithTeam", 0,
-								"cg_deadHearTeamLiving", 0,
-								"cg_deadHearAllLiving", 0,
-								"cg_everyoneHearsEveryone", 0,
-								"g_compassShowEnemies", 1 );
+			                                    "cg_deadChatWithTeam", 0,
+			                                    "cg_deadHearTeamLiving", 0,
+			                                    "cg_deadHearAllLiving", 0,
+			                                    "cg_everyoneHearsEveryone", 0,
+			                                    "g_compassShowEnemies", 1 );
 		}
 	}
-
+	
 	if ( level.scr_ctf_suddendeath_timelimit > 0 ) {
 		waitTime = 0;
 		while ( waitTime < level.scr_ctf_suddendeath_timelimit ) {
@@ -363,7 +364,8 @@ onOvertime()
 			wait ( 1.0 );
 		}
 		thread maps\mp\gametypes\_globallogic::endGame( "tie", game["strings"]["tie"] );
-	} else {
+	}
+	else {
 		level.timelimit = 0;
 	}
 }
@@ -398,7 +400,8 @@ onDeadEvent( team )
 	if ( team != "all" ) {
 		[[level._setTeamScore]]( getOtherTeam(team), [[level._getTeamScore]]( getOtherTeam(team) ) + 1 );
 		thread maps\mp\gametypes\_globallogic::endGame( getOtherTeam(team), game["strings"][team + "_eliminated"] );
-	} else {
+	}
+	else {
 		// We can't determine a winner if everyone died like in S&D so we declare a tie
 		thread maps\mp\gametypes\_globallogic::endGame( "tie", game["strings"]["round_draw"] );
 	}
@@ -416,25 +419,23 @@ Determines what spawn points to use and spawns the player
 onSpawnPlayer()
 {
 	self.isFlagCarrier = false;
-
+	
 	spawnteam = self.pers["team"];
-
-	if ( level.useStartSpawns )
-	{
+	
+	if ( level.useStartSpawns ) {
 		if (spawnteam == "axis")
 			spawnpoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_Random(level.spawn_axis_start);
 		else
 			spawnpoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_Random(level.spawn_allies_start);
 	}
-	else
-	{
+	else {
 		if (spawnteam == "axis")
 			spawnpoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_NearTeam(level.spawn_axis);
 		else
 			spawnpoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_NearTeam(level.spawn_allies);
 	}
 	assert( isDefined(spawnpoint) );
-
+	
 	self spawn( spawnpoint.origin, spawnpoint.angles );
 }
 
@@ -445,7 +446,7 @@ onSpawnPlayer()
 captureTheFlag
 
 Initializes all the map entities to be used or creates them (based on Sabotage) in the case
-the native CTF assets are not present. 
+the native CTF assets are not present.
 =============
 */
 captureTheFlag()
@@ -455,7 +456,7 @@ captureTheFlag()
 	level.flags = [];
 	level.zones = [];
 	gametypeAssets = [];
-
+	
 	// Make sure the map has all the assets we need
 	gametypeAssets["allies"] = [];
 	gametypeAssets["allies"]["flag_trigger"] = getEnt( "ctf_trig_" + level.alliesAssets, "targetname" );
@@ -463,7 +464,8 @@ captureTheFlag()
 		// Check if we can manually create the trigger
 		if ( isDefined( level.origins[level.alliesAssets] ) ) {
 			gametypeAssets["allies"]["flag_trigger"] = spawn( "trigger_radius", level.origins[level.alliesAssets], 0, 20, 100 );
-		} else {
+		}
+		else {
 			error( "No ctf_trig_" + level.alliesAssets + " trigger found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -475,7 +477,8 @@ captureTheFlag()
 		// Check if we can manually create the script model
 		if ( isDefined( level.origins[level.alliesAssets] ) ) {
 			gametypeAssets["allies"]["flag"][0] = spawn( "script_model", level.origins[level.alliesAssets] );
-		} else {
+		}
+		else {
 			error( "No ctf_flag_" + level.alliesAssets + " script model found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -486,20 +489,22 @@ captureTheFlag()
 		// Check if we can manually create the trigger
 		if ( isDefined( level.origins[level.alliesAssets] ) ) {
 			gametypeAssets["allies"]["zone_trigger"] = spawn( "trigger_radius", level.origins[level.alliesAssets], 0, 50, 100 );
-		} else {
+		}
+		else {
 			error( "No ctf_zone_" + level.alliesAssets + " trigger found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
 		}
 	}
-
+	
 	gametypeAssets["axis"] = [];
 	gametypeAssets["axis"]["flag_trigger"] = getEnt( "ctf_trig_" + level.axisAssets, "targetname" );
 	if ( !isDefined( gametypeAssets["axis"]["flag_trigger"] ) ) {
 		// Check if we can manually create the trigger
 		if ( isDefined( level.origins[level.axisAssets] ) ) {
 			gametypeAssets["axis"]["flag_trigger"] = spawn( "trigger_radius", level.origins[level.axisAssets], 0, 20, 100 );
-		} else {
+		}
+		else {
 			error( "No ctf_trig_" + level.axisAssets + " trigger found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -511,7 +516,8 @@ captureTheFlag()
 		// Check if we can manually create the script model
 		if ( isDefined( level.origins[level.axisAssets] ) ) {
 			gametypeAssets["axis"]["flag"][0] = spawn( "script_model", level.origins[level.axisAssets] );
-		} else {
+		}
+		else {
 			error( "No ctf_flag_" + level.axisAssets + " script model found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -522,23 +528,24 @@ captureTheFlag()
 		// Check if we can manually create the trigger
 		if ( isDefined( level.origins[level.axisAssets] ) ) {
 			gametypeAssets["axis"]["zone_trigger"] = spawn( "trigger_radius", level.origins[level.axisAssets], 0, 50, 100 );
-		} else {
+		}
+		else {
 			error( "No ctf_zone_" + level.axisAssets + " trigger found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
 		}
 	}
-
+	
 	// Create the flag carry objects
 	gametypeAssets["allies"]["flag"][0] setModel( game[level.gameType]["prop_flag_allies"] );
 	gametypeAssets["axis"]["flag"][0] setModel( game[level.gameType]["prop_flag_axis"] );
 	level.flags["allies"] = createFlagObject( "allies", gametypeAssets["allies"]["flag_trigger"], gametypeAssets["allies"]["flag"] );
 	level.flags["axis"] = createFlagObject( "axis", gametypeAssets["axis"]["flag_trigger"], gametypeAssets["axis"]["flag"] );
-
+	
 	// Create the capture zones
 	level.zones["allies"] = createCaptureZone( "allies", gametypeAssets["allies"]["zone_trigger"] );
 	level.zones["axis"] = createCaptureZone( "axis", gametypeAssets["axis"]["zone_trigger"] );
-
+	
 	// Set the waypoints for the objectives
 	level.flags["allies"] resetObjectiveWaypoints( true );
 	level.flags["axis"] resetObjectiveWaypoints( true );
@@ -552,7 +559,7 @@ captureTheFlag()
 createReturnMessageElems()
 {
 	level.ReturnMessageElems = [];
-
+	
 	level.ReturnMessageElems["allies"]["axis"] = createServerTimer( "objective", 1.4, "allies" );
 	level.ReturnMessageElems["allies"]["axis"] setPoint( "TOPRIGHT", "TOPRIGHT", 0, 15 );
 	level.ReturnMessageElems["allies"]["axis"].label = &"OW_ENEMY_FLAG_RETURNING_IN";
@@ -563,7 +570,7 @@ createReturnMessageElems()
 	level.ReturnMessageElems["allies"]["allies"].label = &"OW_YOUR_FLAG_RETURNING_IN";
 	level.ReturnMessageElems["allies"]["allies"].alpha = 0;
 	level.ReturnMessageElems["allies"]["allies"].archived = false;
-
+	
 	level.ReturnMessageElems["axis"]["allies"] = createServerTimer( "objective", 1.4, "axis" );
 	level.ReturnMessageElems["axis"]["allies"] setPoint( "TOPRIGHT", "TOPRIGHT", 0, 15 );
 	level.ReturnMessageElems["axis"]["allies"].label = &"OW_ENEMY_FLAG_RETURNING_IN";
@@ -623,7 +630,7 @@ createFlagObject( team, trigger, visuals )
 	if ( level.scr_ctf_ctfmode == 1 ) {
 		flagObject.autoResetTime = level.scr_ctf_idleflagreturntime;
 	}
-
+	
 	return flagObject;
 }
 
@@ -644,7 +651,7 @@ createCaptureZone( team, trigger )
 	captureZone maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
 	captureZone maps\mp\gametypes\_gameobjects::setUseTime( 0 );
 	captureZone.onUse = ::onUse;
-
+	
 	// Spawn an special effect at the base of the flag to indicate where it is located
 	traceStart = trigger.origin + (0,0,32);
 	traceEnd = trigger.origin + (0,0,-32);
@@ -652,7 +659,7 @@ createCaptureZone( team, trigger )
 	upangles = vectorToAngles( trace["normal"] );
 	level.flags[team].baseEffect = spawnFx( game[level.gameType]["flag_base_" + team], trace["position"], anglesToForward( upangles ), anglesToRight( upangles ) );
 	triggerFx( level.flags[team].baseEffect );
-
+	
 	return captureZone;
 }
 
@@ -670,89 +677,95 @@ onPickup( player )
 {
 	level notify( self.ownerTeam + "_flag_picked_up", self, player );
 	self notify( "picked_up", player );
-
+	
 	playerTeam = player.pers["team"];
-
+	
 	// If the player is in the same team as the flag then we need to return the flag
 	if ( playerTeam == self.ownerTeam && level.scr_ctf_ctfmode == 0 ) {
 		self flagReturned( player );
 		return;
 	}
-
+	
 	level.useStartSpawns = false;
-
+	
 	// Set this player as the flag carrier, set up the scoreboard status and give the proper score
 	player.isFlagCarrier = true;
 	if ( level.scr_ctf_scoreboard_flag_carrier == 1 ) {
 		player.statusicon = "hud_status_flag";
 	}
-
+	
 	// We only give "take" points when it's taken from the enemy's base
 	if ( playerTeam != self.ownerTeam && self.curOrigin == self.trigger.baseOrigin ) {
 		player thread [[level.onXPEvent]]( "take" );
 		maps\mp\gametypes\_globallogic::givePlayerScore( "take", player );
 	}
-
+	
 	// Play the corresponding sounds for players
 	if ( playerTeam != self.ownerTeam ) {
 		thread printAndSoundOnEveryone( playerTeam, getOtherTeam( playerTeam ), &"MP_ENEMY_FLAG_TAKEN_BY", &"MP_FLAG_TAKEN_BY", "mp_enemy_obj_taken", "mp_obj_taken", player );
 		statusDialog( "enemyflag", playerTeam );
 		statusDialog( "ourflag", getOtherTeam( playerTeam ) );
-	} else {
+	}
+	else {
 		thread printAndSoundOnEveryone( playerTeam, getOtherTeam( playerTeam ), &"OW_FLAG_RECOVERED_BY", &"OW_ENEMY_FLAG_RECOVERED_BY", "mp_obj_taken", "mp_enemy_obj_taken", player );
 	}
-
+	
 	// Attach the flag model to the player and log the event
 	player thread maps\mp\gametypes\_gameobjects::attachUseModel( game[level.gameType]["prop_flag_" + self.ownerTeam + "_carry" ], "J_SpineLower", true );
 	
 	if ( playerTeam != self.ownerTeam ) {
 		player logString( self.ownerTeam + " flag taken" );
-	
+		
 		lpselfnum = player getEntityNumber();
 		lpGuid = player getGuid();
 		logPrint("FT;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");
 		
-	} else {
+	}
+	else {
 		player logString( self.ownerTeam + " flag recovered" );
-	
+		
 		lpselfnum = player getEntityNumber();
 		lpGuid = player getGuid();
-		logPrint("FV;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");		
+		logPrint("FV;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");
 	}
-
+	
 	// Set the new icons to be displayed
 	if ( level.scr_ctf_show_flag_carrier == 0 || level.scr_ctf_show_flag_carrier == 2 ) {
 		// Only friendlies see the flag carrier in the minimap
 		if ( playerTeam != self.ownerTeam ) {
 			self maps\mp\gametypes\_gameobjects::setVisibleTeam( "enemy" );
-		} else {
+		}
+		else {
 			self maps\mp\gametypes\_gameobjects::setVisibleTeam( "friendly" );
 		}
-	} else {
+	}
+	else {
 		// Kill waypoint is always enabled
 		self maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
 		if ( playerTeam != self.ownerTeam ) {
 			self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", "compass_waypoint_target" );
 			self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", "waypoint_kill" );
-		} else {
+		}
+		else {
 			self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
 			self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );
 		}
 	}
-
+	
 	// Check if we need to monitor the player carrying the flag
 	if ( level.scr_ctf_show_flag_carrier ==  2 ) {
 		self thread monitorFlagCarrier( player );
 	}
-
+	
 	if ( playerTeam != self.ownerTeam ) {
 		self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_defend" );
 		self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_defend" );
-	} else {
+	}
+	else {
 		self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", "compass_waypoint_defend" );
 		self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", "waypoint_defend" );
 	}
-
+	
 	// Set a 3D icon to show that the flag is not there anymore
 	self resetObjectiveWaypoints( false );
 }
@@ -807,69 +820,71 @@ Monitors the flag carrier to displays the KILL icon in case the flag carrier is 
 monitorFlagCarrier( flagCarrier )
 {
 	level endon( self.ownerTeam + "_flag_dropped" );
-	level endon( self.ownerTeam + "_flag_captured" );	
-	level endon( self.ownerTeam + "_flag_returned" );	
+	level endon( self.ownerTeam + "_flag_captured" );
+	level endon( self.ownerTeam + "_flag_returned" );
 	flagCarrier endon("disconnect");
-	flagCarrier endon("death");	
-
+	flagCarrier endon("death");
+	
 	playerTeam = flagCarrier.pers["team"];
-
+	
 	// Check if we just have to show the KILL icon after certain time
 	if ( level.scr_ctf_show_flag_carrier_time > 0 && level.scr_ctf_show_flag_carrier_distance == 0 ) {
 		// Wait the time
 		xWait( level.scr_ctf_show_flag_carrier_time );
-
+		
 		// Show the KILL icon
 		flagCarrier playLocalSound( game["voice"][flagCarrier.pers["team"]] + "new_positions" );
 		self maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
 		if ( playerTeam != self.ownerTeam ) {
 			self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", "compass_waypoint_target" );
 			self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", "waypoint_kill" );
-		} else {
-			self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
-			self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );			
 		}
-
+		else {
+			self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
+			self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );
+		}
+		
 		return;
 	}
-
+	
 	// Monitor that the player is moving certain amount of distance in a given time or show him on the radar
 	oldPlayerPosition = flagCarrier.origin;
-	while(1)
-	{
+	while(1) {
 		// Wait for the given time
 		xWait( level.scr_ctf_show_flag_carrier_time );
-
+		
 		// Get the distance and update the current's player position
 		distanceMoved = distance( oldPlayerPosition, flagCarrier.origin );
-
+		
 		// Check if the player has moved enough distance
 		if ( distanceMoved < level.scr_ctf_show_flag_carrier_distance ) {
-
+		
 			// Show the player in the enemies radar for 2 seconds
 			flagCarrier playLocalSound( game["voice"][flagCarrier.pers["team"]] + "new_positions" );
 			self maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
 			if ( playerTeam != self.ownerTeam ) {
 				self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", "compass_waypoint_target" );
 				self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", "waypoint_kill" );
-			} else {
-				self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
-				self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );				
 			}
-
+			else {
+				self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
+				self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );
+			}
+			
 			xWait( 5 );
-
+			
 			// Disable the KILL icon
 			self maps\mp\gametypes\_gameobjects::setVisibleTeam( "friendly" );
-			if ( playerTeam != self.ownerTeam ) {			
+			if ( playerTeam != self.ownerTeam ) {
 				self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", undefined );
 				self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", undefined );
-			} else {
+			}
+			else {
 				self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", undefined );
-				self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", undefined );				
+				self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", undefined );
 			}
 		}
-
+		
 		// Get the player's current position and start waiting again for the next check
 		oldPlayerPosition = flagCarrier.origin;
 	}
@@ -887,40 +902,42 @@ Determines if the owners of the flag can return it by touching it or not and re-
 onDrop( player )
 {
 	level notify( self.ownerTeam + "_flag_dropped", self, player );
-
+	
 	if ( isDefined( player ) ) {
 		// Player is not the flag carrier anymore.
 		if ( isAlive( player ) ) {
 			player thread maps\mp\gametypes\_gameobjects::detachUseModels();
 			player.isFlagCarrier = false;
 		}
-
+		
 		// Play sound and show the proper message
 		thread printAndSoundOnEveryone( self.ownerTeam, getOtherTeam( self.ownerTeam ), &"OW_FLAG_DROPPED_BY", &"MP_ENEMY_FLAG_DROPPED_BY", "mp_war_objective_taken", "mp_war_objective_lost", player );
-
+		
 		// If scoreboard flag carrier is active and the player is alive remove the icon
 		if ( level.scr_ctf_scoreboard_flag_carrier == 1 && isAlive( player ) ) {
 			player.statusicon = "";
 		}
 		player logString( self.ownerTeam + " flag dropped" );
-	} else {
+	}
+	else {
 		thread printAndSoundOnEveryone( self.ownerTeam, getOtherTeam( self.ownerTeam ), &"OW_FLAG_DROPPED", &"OW_ENEMY_FLAG_DROPPED", "mp_war_objective_taken", "mp_war_objective_lost", "" );
 		logString( self.ownerTeam + "flag dropped" );
 	}
 	statusDialog( "ourflag_drop", self.ownerTeam );
 	statusDialog( "enemyflag_drop", getOtherTeam( self.ownerTeam ) );
-
+	
 	// Make the flag visible to everyone
 	self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", game[level.gameType]["compass_waypoint_flag_" + self.ownerTeam ] );
 	self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", game[level.gameType]["waypoint_flag_" + self.ownerTeam ] );
 	self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", game[level.gameType]["compass_waypoint_flag_" + self.ownerTeam ] );
 	self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", game[level.gameType]["waypoint_flag_" + self.ownerTeam ] );
 	self maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
-
+	
 	// Check if the team can return the flag by touching it
 	if ( level.scr_ctf_ctfmode == 0 || level.scr_ctf_ctfmode == 2 ) {
 		self maps\mp\gametypes\_gameobjects::allowCarry( "any" );
-	} else {
+	}
+	else {
 		self thread returnFlagHudElems();
 	}
 }
@@ -938,19 +955,20 @@ onReset( player )
 {
 	level notify( self.ownerTeam + "_flag_returned", self, player );
 	self notify( "returned", player );
-
+	
 	self resetObjectiveWaypoints( true );
-
+	
 	// Play the corresponding sounds for players
 	if ( isDefined( player ) ) {
 		thread printAndSoundOnEveryone( self.ownerTeam, getOtherTeam( self.ownerTeam ), &"MP_FLAG_RETURNED_BY", &"OW_ENEMY_FLAG_RETURNED_BY", "mp_obj_returned", "mp_enemy_obj_returned", player );
 		player logString( self.ownerTeam + " flag returned" );
-
+		
 		lpselfnum = player getEntityNumber();
 		lpGuid = player getGuid();
 		logPrint("FR;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");
-
-	} else {
+		
+	}
+	else {
 		thread printAndSoundOnEveryone( self.ownerTeam, getOtherTeam( self.ownerTeam ), &"MP_FLAG_RETURNED", &"MP_ENEMY_FLAG_RETURNED", "mp_obj_returned", "mp_enemy_obj_returned", "" );
 		logString( self.ownerTeam + " flag returned" );
 	}
@@ -972,7 +990,7 @@ onUse( player )
 {
 	// Check if this player is the flag carrier
 	if ( player.isFlagCarrier ) {
-		playerTeam = player.pers["team"];		
+		playerTeam = player.pers["team"];
 		
 		// Player is returning their flag or capturing the enemy's when theirs is at home
 		if ( playerTeam == player.carryObject.ownerTeam || level.flags[playerTeam].curOrigin == level.flags[playerTeam].trigger.baseOrigin ) {
@@ -981,7 +999,7 @@ onUse( player )
 			if ( level.scr_ctf_scoreboard_flag_carrier == 1 ) {
 				player.statusicon = "";
 			}
-	
+			
 			// Give the player the capture score and the team 1 point
 			if ( playerTeam != player.carryObject.ownerTeam ) {
 				level notify( getOtherTeam( player.pers["team"] ) + "_flag_captured", player.carryObject, player );
@@ -997,10 +1015,10 @@ onUse( player )
 				lpselfnum = player getEntityNumber();
 				lpGuid = player getGuid();
 				logPrint("FC;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");
-					
+				
 				statusDialog( "enemyflag_capt", player.pers["team"] );
 				statusDialog( "ourflag_capt", getOtherTeam( player.pers["team"] ) );
-		
+				
 				// Return the flag to its home
 				player.carryObject thread teamScored();
 				
@@ -1009,9 +1027,10 @@ onUse( player )
 					thread maps\mp\gametypes\_globallogic::endGame( player.pers["team"], game["strings"][player.pers["team"] + "_win_round"] );
 				}
 				
-			} else {
+			}
+			else {
 				// Player just returned their flag to their base
-				player.carryObject flagReturned( player );			
+				player.carryObject flagReturned( player );
 			}
 		}
 	}
@@ -1030,25 +1049,24 @@ teamScored()
 {
 	// Do the same stuff that _gameobjects:returnHome() does but without calling ::onReset
 	self.isResetting = true;
-
+	
 	self notify ( "reset" );
-	for ( index = 0; index < self.visuals.size; index++ )
-	{
+	for ( index = 0; index < self.visuals.size; index++ ) {
 		self.visuals[index].origin = self.visuals[index].baseOrigin;
 		self.visuals[index].angles = self.visuals[index].baseAngles;
 		self.visuals[index] show();
 	}
 	self.trigger.origin = self.trigger.baseOrigin;
-
+	
 	self.curOrigin = self.trigger.origin;
-
+	
 	self maps\mp\gametypes\_gameobjects::clearCarrier();
-
+	
 	self resetObjectiveWaypoints( true );
-
+	
 	maps\mp\gametypes\_gameobjects::updateWorldIcons();
 	maps\mp\gametypes\_gameobjects::updateCompassIcons();
-
+	
 	self.isResetting = false;
 }
 
@@ -1066,10 +1084,10 @@ onPlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHit
 {
 	// Make sure the attacker is not in the same team
 	if ( isPlayer( attacker ) && self.pers["team"] != attacker.pers["team"] ) {
-
+	
 		// Get the distance between the victim and the attacker's flag
 		distanceToEnemyFlag = distance( self.origin, level.flags[attacker.pers["team"]].curOrigin );
-
+		
 		// 197 units = 5 meters
 		if ( distanceToEnemyFlag <= 197 ) {
 			attacker thread [[level.onXPEvent]]( "defend" );
@@ -1094,17 +1112,18 @@ resetObjectiveWaypoints( flagAtHome )
 		// Hide the waypoing showing that the flag is not at home
 		level.zones[self.ownerTeam] maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", undefined );
 		level.zones[self.ownerTeam] maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", undefined );
-
+		
 		// Make the flag visible to everyone
 		self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", game[level.gameType]["compass_waypoint_flag_" + self.ownerTeam ] );
 		self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", game[level.gameType]["waypoint_flag_" + self.ownerTeam ] );
 		self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", game[level.gameType]["compass_waypoint_flag_" + self.ownerTeam ] );
 		self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", game[level.gameType]["waypoint_flag_" + self.ownerTeam ] );
 		self maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
-
+		
 		// Make sure only the enemy can pick up the flag
 		self maps\mp\gametypes\_gameobjects::allowCarry( "enemy" );
-	} else {
+	}
+	else {
 		// Change the waypoints on the capture zone to indicate the flag is missing
 		level.zones[self.ownerTeam] maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", game[level.gameType]["waypoint_flag_" + self.ownerTeam + "_x"] );
 		level.zones[self.ownerTeam] maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", game[level.gameType]["waypoint_flag_" + self.ownerTeam + "_x"] );
@@ -1118,7 +1137,7 @@ statusDialog( dialog, team )
 	time = getTime();
 	if ( getTime() < level.lastStatus[team] + 5000 )
 		return;
-
+		
 	thread delayedLeaderDialog( dialog, team );
 	level.lastStatus[team] = getTime();
 }

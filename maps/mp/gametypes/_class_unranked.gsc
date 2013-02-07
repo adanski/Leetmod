@@ -9,13 +9,13 @@ init()
 	// Load some OpenWarfare variables
 	level.specialty_fraggrenade_ammo_count = getdvarx( "specialty_fraggrenade_ammo_count", "int", 2, 1, 3 );
 	level.specialty_specialgrenade_ammo_count = getdvarx( "specialty_specialgrenade_ammo_count", "int", 2, 1, 3 );
-
+	
 	level.classMap["assault_mp"] = "CLASS_ASSAULT";
 	level.classMap["specops_mp"] = "CLASS_SPECOPS";
 	level.classMap["heavygunner_mp"] = "CLASS_HEAVYGUNNER";
 	level.classMap["demolitions_mp"] = "CLASS_DEMOLITIONS";
 	level.classMap["sniper_mp"] = "CLASS_SNIPER";
-
+	
 	level.classMap["offline_class1_mp"] = "OFFLINE_CLASS1";
 	level.classMap["offline_class2_mp"] = "OFFLINE_CLASS2";
 	level.classMap["offline_class3_mp"] = "OFFLINE_CLASS3";
@@ -26,28 +26,28 @@ init()
 	level.classMap["offline_class8_mp"] = "OFFLINE_CLASS8";
 	level.classMap["offline_class9_mp"] = "OFFLINE_CLASS9";
 	level.classMap["offline_class10_mp"] = "OFFLINE_CLASS10";
-
+	
 	level.classMap["custom1"] = "CLASS_CUSTOM1";
 	level.classMap["custom2"] = "CLASS_CUSTOM2";
 	level.classMap["custom3"] = "CLASS_CUSTOM3";
 	level.classMap["custom4"] = "CLASS_CUSTOM4";
 	level.classMap["custom5"] = "CLASS_CUSTOM5";
-
+	
 	if( level.scr_grenade_allow_cooking )
-    level.weapons["frag"] = "frag_grenade_mp";
-  else
-    level.weapons["frag"] = "frag_grenade_nocook_mp";
-    
+		level.weapons["frag"] = "frag_grenade_mp";
+	else
+		level.weapons["frag"] = "frag_grenade_nocook_mp";
+		
 	level.weapons["smoke"] = "smoke_grenade_mp";
 	level.weapons["flash"] = "flash_grenade_mp";
 	level.weapons["concussion"] = "concussion_grenade_mp";
 	level.weapons["c4"] = "c4_mp";
 	level.weapons["claymore"] = "claymore_mp";
 	level.weapons["rpg"] = "rpg_mp";
-
+	
 	level.perkNames = [];
 	level.perkIcons = [];
-
+	
 	initPerkData( "specialty_parabolic" );
 	initPerkData( "specialty_gpsjammer" );
 	initPerkData( "specialty_holdbreath" );
@@ -69,7 +69,7 @@ init()
 	initPerkData( "c4_mp" );
 	initPerkData( "claymore_mp" );
 	initPerkData( "rpg_mp" );
-
+	
 	// generating weapon type arrays which classifies the weapon as primary (back stow), pistol, or inventory (side pack stow)
 	// using mp/statstable.csv's weapon grouping data ( numbering 0 - 149 )
 	level.primary_weapon_array = [];
@@ -77,38 +77,35 @@ init()
 	level.grenade_array = [];
 	level.inventory_array = [];
 	max_weapon_num = 149;
-	for( i = 0; i < max_weapon_num; i++ )
-	{
+	for( i = 0; i < max_weapon_num; i++ ) {
 		weapon = tableLookup( "mp/statsTable.csv", 0, i, 4 );
 		if ( !isDefined( weapon ) || weapon == "" )
 			continue;
-
+			
 		weapon_type = tableLookup( "mp/statsTable.csv", 0, i, 2 );
 		attachment = tableLookup( "mp/statsTable.csv", 0, i, 8 );
-
+		
 		weapon_class_register( weapon+"_mp", weapon_type );
-
+		
 		if( !isdefined( attachment ) || attachment == "" )
 			continue;
-
+			
 		attachment_tokens = strTok( attachment, " " );
 		if( !isDefined( attachment_tokens ) )
 			continue;
-
-		if( attachment_tokens.size == 0 )
-		{
+			
+		if( attachment_tokens.size == 0 ) {
 			weapon_class_register( weapon+"_"+attachment+"_mp", weapon_type );
 		}
-		else
-		{
+		else {
 			// multiple attachment options
 			for( k = 0; k < attachment_tokens.size; k++ )
 				weapon_class_register( weapon+"_"+attachment_tokens[k]+"_mp", weapon_type );
 		}
 	}
-
+	
 	precacheShader( "waypoint_bombsquad" );
-
+	
 	level thread onPlayerConnecting();
 }
 
@@ -140,9 +137,9 @@ weapon_class_register( weapon, weapon_type )
 getClassChoice( response )
 {
 	tokens = strtok( response, "," );
-
+	
 	assert( isDefined( level.classMap[tokens[0]] ) );
-
+	
 	return ( level.classMap[tokens[0]] );
 }
 
@@ -160,68 +157,78 @@ giveLoadout( team, class )
 {
 	self takeAllWeapons();
 	self setClass( class );
-
+	
 	// initialize specialty array
 	self.specialty = [];
 	self.specialty[0] = self.pers[class]["loadout_perk1"];
 	self.specialty[1] = self.pers[class]["loadout_perk2"];
 	self.specialty[2] = self.pers[class]["loadout_perk3"];
-
+	
 	self maps\mp\gametypes\_class_unranked::register_perks();
-
+	
 	self maps\mp\gametypes\_teams::playerModelForClass( class );
-
+	
 	sidearmWeapon = self.pers[class]["loadout_secondary"];
-
-	if ( sideArmWeapon != "none" )
-	{
+	
+	if ( sideArmWeapon != "none" ) {
 		if ( self.pers[class]["loadout_secondary_attachment"] != "none" )
 			sidearmWeapon = sidearmWeapon + "_" + self.pers[class]["loadout_secondary_attachment"] + "_mp";
 		else
 			sidearmWeapon = sidearmWeapon + "_mp";
-
+			
 		self giveWeapon( sidearmWeapon );
 		if ( self maps\mp\gametypes\_class_unranked::cac_hasSpecialty( "specialty_extraammo" ) )
 			self giveMaxAmmo( sidearmWeapon );
 			
 		self setSpawnWeapon( sidearmWeapon );
 	}
-
+	
 	primaryWeapon = self.pers[class]["loadout_primary"];
-	if ( primaryWeapon != "none" )
-	{
+	if ( primaryWeapon != "none" ) {
 		if ( self.pers[class]["loadout_primary_attachment"] != "none" )
 			primaryWeapon = primaryWeapon + "_" + self.pers[class]["loadout_primary_attachment"] + "_mp";
 		else
 			primaryWeapon = primaryWeapon + "_mp";
-
+			
 		camo_num = 0;
-		switch( self.pers[class]["loadout_camo"] )
-		{
-			case "camo_none":				camo_num = 0;	break;
-			case "camo_brockhaurd":			camo_num = 1;	break;
-			case "camo_bushdweller":		camo_num = 2;	break;
-			case "camo_blackwhitemarpat":	camo_num = 3;	break;
-			case "camo_tigerred":			camo_num = 4;	break;
-			case "camo_stagger":			camo_num = 5;	break;
-			case "camo_gold":				camo_num = 6;	break;
+		switch( self.pers[class]["loadout_camo"] ) {
+			case "camo_none":
+				camo_num = 0;
+				break;
+			case "camo_brockhaurd":
+				camo_num = 1;
+				break;
+			case "camo_bushdweller":
+				camo_num = 2;
+				break;
+			case "camo_blackwhitemarpat":
+				camo_num = 3;
+				break;
+			case "camo_tigerred":
+				camo_num = 4;
+				break;
+			case "camo_stagger":
+				camo_num = 5;
+				break;
+			case "camo_gold":
+				camo_num = 6;
+				break;
 		}
-
+		
 		self giveWeapon( primaryWeapon, camo_num );
 		self.camo_num = camo_num;
-
+		
 		self setSpawnWeapon( primaryWeapon );
-
+		
 		if ( self maps\mp\gametypes\_class_unranked::cac_hasSpecialty( "specialty_extraammo" ) )
 			self giveMaxAmmo( primaryWeapon );
 	}
-
+	
 	if ( level.scr_enable_nightvision )
 		self setActionSlot( 1, "nightvision" );
-
+		
 	// Control amount of ammo for perk1 explosives
-	switch ( self.pers[class]["loadout_perk1"] )
-	{
+	switch ( self.pers[class]["loadout_perk1"] ) {
 		case "claymore_mp":
 			ammoCount = getdvarx( "scr_claymore_ammo_count", "int", 2, 1, 2 );
 			break;
@@ -235,9 +242,8 @@ giveLoadout( team, class )
 			ammoCount = 2;
 			break;
 	}
-
-	switch ( self.pers[class]["loadout_perk1"] )
-	{
+	
+	switch ( self.pers[class]["loadout_perk1"] ) {
 		case "claymore_mp":
 		case "rpg_mp":
 		case "c4_mp":
@@ -251,50 +257,47 @@ giveLoadout( team, class )
 			self setActionSlot( 4, "" );
 			break;
 	}
-
+	
 	// give frag grenade
 	grenadeCount = game["mwf_classes"][class]["pgrenade_count"];
-	if ( maps\mp\gametypes\_modwarfare::isWeaponAllowed( "all", "frag_grenade", "all" ) )
-	{
+	if ( maps\mp\gametypes\_modwarfare::isWeaponAllowed( "all", "frag_grenade", "all" ) ) {
 		if ( self maps\mp\gametypes\_class_unranked::cac_hasSpecialty( "specialty_fraggrenade" ) )
 			grenadeCount += level.specialty_fraggrenade_ammo_count;
-
+			
 		// Give grenades after a dvar specified delay
 		if ( isdefined ( grenadeCount ) && grenadeCount ) {
 			if( level.scr_grenade_allow_cooking )
-        self.primarynade = "frag_grenade_mp";
-      else
-        self.primarynade = "frag_grenade_nocook_mp";
+				self.primarynade = "frag_grenade_mp";
+			else
+				self.primarynade = "frag_grenade_nocook_mp";
+				
+			self.primarynadecount = grenadeCount;
 			
-      self.primarynadecount = grenadeCount;
-			
-      if( level.scr_grenade_allow_cooking )
-        self thread giveNadesAfterDelay( "frag_grenade_mp", grenadeCount, true );
-      else
-        self thread giveNadesAfterDelay( "frag_grenade_nocook_mp", grenadeCount, true );
+			if( level.scr_grenade_allow_cooking )
+				self thread giveNadesAfterDelay( "frag_grenade_mp", grenadeCount, true );
+			else
+				self thread giveNadesAfterDelay( "frag_grenade_nocook_mp", grenadeCount, true );
 		}
 	}
-
+	
 	// give special grenade
 	grenadeCount = game["mwf_classes"][class]["sgrenade_count"];
-	if ( self.pers[class]["loadout_sgrenade"] != "none" )
-	{
+	if ( self.pers[class]["loadout_sgrenade"] != "none" ) {
 		//TODO: dvar grenade count control
 		if ( self maps\mp\gametypes\_class_unranked::cac_hasSpecialty( "specialty_specialgrenade" ) )
 			grenadeCount += level.specialty_specialgrenade_ammo_count;
-
+			
 		if ( self.pers[class]["loadout_sgrenade"] == "flash_grenade" )
 			self setOffhandSecondaryClass("flash");
 		else
 			self setOffhandSecondaryClass("smoke");
-
+			
 		// [0.0.4] Give grenades after a dvar specified delay
 		if ( isdefined ( grenadeCount ) && grenadeCount )
 			self thread giveNadesAfterDelay( self.pers[class]["loadout_sgrenade"] + "_mp", grenadeCount, false );
 	}
-
-	switch ( class )
-	{
+	
+	switch ( class ) {
 		case "assault":
 			self thread openwarfare\_speedcontrol::setBaseSpeed( getdvarx( "class_assault_movespeed", "float", 0.95, 0.5, 1.5 ) );
 			break;
@@ -314,10 +317,10 @@ giveLoadout( team, class )
 			self thread openwarfare\_speedcontrol::setBaseSpeed( 1.0 );
 			break;
 	}
-
+	
 	// cac specialties that require loop threads
 	self maps\mp\gametypes\_class_unranked::cac_selector();
-		
+	
 	[[level.onLoadoutGiven]]();
 }
 
@@ -326,12 +329,10 @@ giveLoadout( team, class )
 // if the clip maxs out, the rest goes into the stock.
 setWeaponAmmoOverall( weaponname, amount )
 {
-	if ( isWeaponClipOnly( weaponname ) )
-	{
+	if ( isWeaponClipOnly( weaponname ) ) {
 		self setWeaponAmmoClip( weaponname, amount );
 	}
-	else
-	{
+	else {
 		self setWeaponAmmoClip( weaponname, amount );
 		diff = amount - self getWeaponAmmoClip( weaponname );
 		assert( diff >= 0 );
@@ -342,10 +343,9 @@ setWeaponAmmoOverall( weaponname, amount )
 
 onPlayerConnecting()
 {
-	while(1)
-	{
+	while(1) {
 		level waittill( "connecting", player );
-
+		
 		if ( !isDefined( player.pers["class"] ) ) {
 			player.pers["class"] = undefined;
 		}
@@ -360,7 +360,7 @@ onPlayerConnecting()
 fadeAway( waitDelay, fadeDelay )
 {
 	wait waitDelay;
-
+	
 	self fadeOverTime( fadeDelay );
 	self.alpha = 0;
 }
@@ -391,16 +391,15 @@ initPerkDvars()
 cac_selector()
 {
 	perks = self.specialty;
-
+	
 	self.detectExplosives = false;
-	for( i=0; i<perks.size; i++ )
-	{
+	for( i=0; i<perks.size; i++ ) {
 		perk = perks[i];
 		// run scripted perk that thread loops
 		if( perk == "specialty_detectexplosive" )
 			self.detectExplosives = true;
 	}
-
+	
 	maps\mp\gametypes\_weapons::setupBombSquad();
 }
 
@@ -408,18 +407,17 @@ register_perks()
 {
 	perks = self.specialty;
 	self clearPerks();
-	for( i=0; i<perks.size; i++ )
-	{
+	for( i=0; i<perks.size; i++ ) {
 		perk = perks[i];
-
+		
 		// TO DO: ask code to register the inventory perks and null perk
 		// not registering inventory and null perks to code
 		if ( perk == "specialty_null" || perk == "specialty_none" || isSubStr( perk, "_mp" ) )
 			continue;
-
+			
 		if ( !getDvarInt( "scr_game_perks" ) )
 			continue;
-
+			
 		self setPerk( perk );
 	}
 }
@@ -435,8 +433,7 @@ cac_get_dvar( dvar, def )
 {
 	if ( getdvar( dvar ) != "" )
 		return getdvarfloat( dvar );
-	else
-	{
+	else {
 		setdvar( dvar, def );
 		return def;
 	}
@@ -448,7 +445,7 @@ cac_hasSpecialty( perk_reference )
 {
 	return_value = self hasPerk( perk_reference );
 	return return_value;
-
+	
 	/*
 	perks = self.specialty;
 	for( i=0; i<perks.size; i++ )
@@ -473,10 +470,10 @@ cac_modified_damage( victim, attacker, damage, meansofdeath )
 		return damage;
 	if( meansofdeath == "" )
 		return damage;
-
+		
 	old_damage = damage;
 	final_damage = damage;
-
+	
 	/* Cases =======================
 	attacker - bullet damage
 		victim - none
@@ -488,75 +485,66 @@ cac_modified_damage( victim, attacker, damage, meansofdeath )
 		victim - none
 		victim - armor
 	===============================*/
-
+	
 	// if attacker has bullet damage then increase bullet damage
-	if( attacker cac_hasSpecialty( "specialty_bulletdamage" ) && isPrimaryDamage( meansofdeath ) )
-	{
+	if( attacker cac_hasSpecialty( "specialty_bulletdamage" ) && isPrimaryDamage( meansofdeath ) ) {
 		// if victim has armor then do not change damage, it is cancelled out, else damage is increased
-
-		if( isdefined( victim ) && isPlayer( victim ) && victim cac_hasSpecialty( "specialty_armorvest" ) )
-		{
+		
+		if( isdefined( victim ) && isPlayer( victim ) && victim cac_hasSpecialty( "specialty_armorvest" ) ) {
 			final_damage = old_damage;
 			/#
 			if ( getdvarint("scr_perkdebug") )
 				println( "Perk/> " + victim.name + "'s armor countered " + attacker.name + "'s increased bullet damage" );
-			#/
+#/
 		}
-		else
-		{
+		else {
 			final_damage = damage*(100+level.cac_bulletdamage_data)/100;
 			/#
 			if ( getdvarint("scr_perkdebug") )
 				println( "Perk/> " + attacker.name + "'s bullet damage did extra damage to " + victim.name );
-			#/
+#/
 		}
 	}
-	else if( attacker cac_hasSpecialty( "specialty_explosivedamage" ) && isExplosiveDamage( meansofdeath ) )
-	{
+	else if( attacker cac_hasSpecialty( "specialty_explosivedamage" ) && isExplosiveDamage( meansofdeath ) ) {
 		// if victim has armor then do not change damage, it is cancelled out, else damage is increased
-
-		if( isdefined( victim ) && isPlayer( victim ) && victim cac_hasSpecialty( "specialty_armorvest" ) )
-		{
+		
+		if( isdefined( victim ) && isPlayer( victim ) && victim cac_hasSpecialty( "specialty_armorvest" ) ) {
 			final_damage = old_damage;
 			/#
 			if ( getdvarint("scr_perkdebug") )
 				println( "Perk/> " + victim.name + "'s armor countered " + attacker.name + "'s increased explosive damage" );
-			#/
+#/
 		}
-		else
-		{
+		else {
 			final_damage = damage*(100+level.cac_explosivedamage_data)/100;
 			/#
 			if ( getdvarint("scr_perkdebug") )
 				println( "Perk/> " + attacker.name + "'s explosive damage did extra damage to " + victim.name );
-			#/
+#/
 		}
 	}
-	else
-	{
+	else {
 		// if attacker has no bullet damage then check if victim has armor
 		// if victim has armor then less damage is taken, else damage unchanged
-
-		if( isdefined( victim ) && isPlayer( victim ) && victim cac_hasSpecialty( "specialty_armorvest" ) )
-		{
+		
+		if( isdefined( victim ) && isPlayer( victim ) && victim cac_hasSpecialty( "specialty_armorvest" ) ) {
 			final_damage = old_damage*(level.cac_armorvest_data/100);
 			/#
 			if ( getdvarint("scr_perkdebug") )
 				println( "Perk/> " + victim.name + "'s armor decreased " + attacker.name + "'s damage" );
-			#/
+#/
 		}
-		else
-		{
+		else {
 			final_damage = old_damage;
 		}
 	}
-
+	
 	// debug
 	/#
 	if ( getdvarint("scr_perkdebug") )
 		println( "Perk/> Damage Factor: " + final_damage/old_damage + " - Pre Damage: " + old_damage + " - Post Damage: " + final_damage );
-	#/
-
+#/
+		
 	// return unchanged damage
 	return int( final_damage );
 }

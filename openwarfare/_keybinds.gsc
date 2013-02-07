@@ -4,10 +4,10 @@
 init()
 {
 	game["menu_clientcmd"] = "clientcmd";
-
+	
 	// OpenWarfare
 	precacheMenu( game["menu_clientcmd"] );
-
+	
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -19,18 +19,15 @@ onPlayerConnected()
 onMenuResponse()
 {
 	self endon("disconnect");
-
-	while(1)
-	{
+	
+	while(1) {
 		self waittill( "menuresponse", menu, response);
-
-		if( menu == "-1" )
-		{
-			switch( response )
-			{
+		
+		if( menu == "-1" ) {
+			switch( response ) {
 				case "specviewmode":
-          // Checking if the client GUID is a subString of the allowed GUIDs can be dangerous
-          // (imagine if the player can set his GUID to just one character)
+					// Checking if the client GUID is a subString of the allowed GUIDs can be dangerous
+					// (imagine if the player can set his GUID to just one character)
 					if ( ( level.scr_allow_thirdperson == 1 || isSubStr( level.scr_allow_thirdperson_guids, self getGuid() ) ) && !isAlive( self ) ) {
 						self maps\mp\gametypes\_globallogic::setThirdPerson( !self.spectatingThirdPerson );
 					}
@@ -39,14 +36,14 @@ onMenuResponse()
 					//if ( level.gametype == "hns" && self.pers["team"] == game["defenders"] ) {
 					//	self thread maps\mp\gametypes\hns::rotateProp(5);
 					//} else {
-						self thread openwarfare\_sniperzoom::zoomIn();
+					self thread openwarfare\_sniperzoom::zoomIn();
 					//}
 					break;
 				case "zoomout":
 					//if ( level.gametype == "hns" && self.pers["team"] == game["defenders"] ) {
 					//	self thread maps\mp\gametypes\hns::rotateProp(-5);
 					//} else {
-						self thread openwarfare\_sniperzoom::zoomOut();
+					self thread openwarfare\_sniperzoom::zoomOut();
 					//}
 					break;
 				case "attachdetach":
@@ -72,7 +69,7 @@ onMenuResponse()
 					if ( isDefined( self.isBleeding ) && self.isBleeding )
 						self thread openwarfare\_healthsystem::bandageSelf();
 					else
-						self thread openwarfare\_healthsystem::medic(); 
+						self thread openwarfare\_healthsystem::medic();
 					break;
 				case "unjam":
 					self thread openwarfare\_weaponjam::unjamWeapon();
@@ -97,10 +94,12 @@ onMenuResponse()
 					if ( level.scr_aacp_enable != 0 ) {
 						if ( isDefined( self.aacpAccess ) && self.aacpAccess != "" ) {
 							self openMenu( "advancedacp" );
-						} else {
+						}
+						else {
 							self iprintln( &"OW_AACP_NOACCESS", self getGUID() );
 						}
-					} else {
+					}
+					else {
 						self iprintln( &"OW_AACP_NOTENABLED" );
 					}
 					break;

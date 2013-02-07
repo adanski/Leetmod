@@ -8,7 +8,7 @@ init()
 	game["menu_class"] = "class";
 	game["menu_changeclass"] = "changeclass_mw";
 	game["menu_changeclass_offline"] = "changeclass_offline";
-
+	
 	game["menu_callvote"] = "callvote";
 	game["menu_muteplayer"] = "muteplayer";
 	precacheMenu(game["menu_callvote"]);
@@ -19,12 +19,12 @@ init()
 	game["menu_eog_summary"] = "popup_summary";
 	game["menu_eog_unlock_page1"] = "popup_unlock_page1";
 	game["menu_eog_unlock_page2"] = "popup_unlock_page2";
-
+	
 	precacheMenu(game["menu_eog_unlock"]);
 	precacheMenu(game["menu_eog_summary"]);
 	precacheMenu(game["menu_eog_unlock_page1"]);
 	precacheMenu(game["menu_eog_unlock_page2"]);
-
+	
 	precacheMenu("scoreboard");
 	precacheMenu(game["menu_team"]);
 	precacheMenu(game["menu_class_allies"]);
@@ -36,23 +36,22 @@ init()
 	precacheMenu(game["menu_changeclass_offline"]);
 	precacheString( &"MP_HOST_ENDED_GAME" );
 	precacheString( &"MP_HOST_ENDGAME_RESPONSE" );
-
+	
 	level thread onPlayerConnect();
 }
 
 onPlayerConnect()
 {
-	while(1)
-	{
+	while(1) {
 		level waittill("connected", player);
-
+		
 		player setClientDvar("ui_3dwaypointtext", "1");
 		player.enable3DWaypoints = true;
 		player setClientDvar("ui_deathicontext", "1");
 		player.enableDeathIcons = true;
 		player.classType = undefined;
 		player.selectedClass = false;
-
+		
 		player thread onMenuResponse();
 	}
 }
@@ -60,118 +59,105 @@ onPlayerConnect()
 onMenuResponse()
 {
 	self endon("disconnect");
-
-	while(1)
-	{
+	
+	while(1) {
 		self waittill("menuresponse", menu, response);
-
-		if ( response == "back" )
-		{
+		
+		if ( response == "back" ) {
 			self closeMenu();
 			self closeInGameMenu();
-			if ( menu == "changeclass" && self.pers["team"] == "allies" )
-			{
+			if ( menu == "changeclass" && self.pers["team"] == "allies" ) {
 				self openMenu( game["menu_changeclass_allies"] );
 			}
-			else if ( menu == "changeclass" && self.pers["team"] == "axis" )
-			{
+			else if ( menu == "changeclass" && self.pers["team"] == "axis" ) {
 				self openMenu( game["menu_changeclass_axis"] );
 			}
 			continue;
 		}
-
+		
 		if ( menu == "changeclass_props" ) {
 			self closeMenu();
 			self closeInGameMenu();
 			//self thread maps\mp\gametypes\hns::choosePropClass( response );
-			continue;			
+			continue;
 		}
-
-		if( getSubStr( response, 0, 7 ) == "loadout" )
-		{
+		
+		if( getSubStr( response, 0, 7 ) == "loadout" ) {
 			self maps\mp\gametypes\_modwarfare::processLoadoutResponse( response );
 			continue;
 		}
-
-		if( response == "changeteam" )
-		{
+		
+		if( response == "changeteam" ) {
 			self closeMenu();
 			self closeInGameMenu();
 			self openMenu(game["menu_team"]);
 		}
-
-		if( response == "changeclass_marines" )
-		{
+		
+		if( response == "changeclass_marines" ) {
 			self closeMenu();
 			self closeInGameMenu();
 			self openMenu( game["menu_changeclass_allies"] );
 			continue;
 		}
-
-		if( response == "changeclass_opfor" )
-		{
+		
+		if( response == "changeclass_opfor" ) {
 			self closeMenu();
 			self closeInGameMenu();
 			self openMenu( game["menu_changeclass_axis"] );
 			continue;
 		}
-
-		if( response == "endgame" )
-		{
+		
+		if( response == "endgame" ) {
 			continue;
 		}
-
-		if( menu == game["menu_team"] )
-		{
-			switch(response)
-			{
-			case "allies":
-				self [[level.allies]]();
-				break;
-
-			case "axis":
-				self [[level.axis]]();
-				break;
-
-			case "autoassign":
-				self [[level.autoassign]]();
-				break;
-
-			case "spectator":
-				self [[level.spectator]]();
-				break;
+		
+		if( menu == game["menu_team"] ) {
+			switch(response) {
+				case "allies":
+					self [[level.allies]]();
+					break;
+					
+				case "axis":
+					self [[level.axis]]();
+					break;
+					
+				case "autoassign":
+					self [[level.autoassign]]();
+					break;
+					
+				case "spectator":
+					self [[level.spectator]]();
+					break;
 			}
 			// [0.0.4] Update class limits when player changes team
 			level maps\mp\gametypes\_modwarfare::updateClassLimits();
-
+			
 		}	// the only responses remain are change class events
-		else if( menu == game["menu_changeclass_allies"] || menu == game["menu_changeclass_axis"] )
-		{
+		else if( menu == game["menu_changeclass_allies"] || menu == game["menu_changeclass_axis"] ) {
 			if ( !self maps\mp\gametypes\_modwarfare::verifyClassChoice( self.pers["team"], response ) )
 				continue;
-
+				
 			self maps\mp\gametypes\_modwarfare::setClassChoice( response );
 			self closeMenu();
 			self closeInGameMenu();
 			
 			if ( level.gametype != "gg" && level.gametype != "ss" && level.gametype != "oitc" ) {
 				self openMenu( game["menu_changeclass"] );
-			} else {
+			}
+			else {
 				self.selectedClass = true;
-				self maps\mp\gametypes\_modwarfare::menuAcceptClass();				
+				self maps\mp\gametypes\_modwarfare::menuAcceptClass();
 			}
 			continue;
 		}
-		else if( menu == game["menu_changeclass"] )
-		{
+		else if( menu == game["menu_changeclass"] ) {
 			self closeMenu();
 			self closeInGameMenu();
-
+			
 			self.selectedClass = true;
 			self maps\mp\gametypes\_modwarfare::menuAcceptClass();
 		}
-		else if ( !level.console )
-		{
+		else if ( !level.console ) {
 			if(menu == game["menu_quickcommands"])
 				maps\mp\gametypes\_quickmessages::quickcommands(response);
 			else if(menu == game["menu_quickstatements"])
@@ -179,6 +165,6 @@ onMenuResponse()
 			else if(menu == game["menu_quickresponses"])
 				maps\mp\gametypes\_quickmessages::quickresponses(response);
 		}
-
+		
 	}
 }

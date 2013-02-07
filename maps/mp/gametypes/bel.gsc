@@ -49,14 +49,14 @@ main()
 {
 	if(getdvar("mapname") == "mp_background")
 		return;
-	
+		
 	level.scr_bel_alive_points = getdvarx( "scr_bel_alive_points", "int", 5, 1, 50 );
 	level.scr_bel_alive_points_time = getdvarx( "scr_bel_alive_points_time", "int", 10, 1, 60 );
 	
 	level.scr_bel_showoncompass = getdvarx( "scr_bel_showoncompass", "int", 1, 0, 2 );
 	level.scr_bel_showoncompass_points = getdvarx( "scr_bel_showoncompass_points", "int", 5, 0, 50 );
 	level.scr_bel_showoncompass_interval = getdvarx( "scr_bel_showoncompass_interval", "float", 30, 1, 60 );
-	level.scr_bel_showoncompass_time = getdvarx( "scr_bel_showoncompass_time", "float", 5, 1, 20 );	
+	level.scr_bel_showoncompass_time = getdvarx( "scr_bel_showoncompass_time", "float", 5, 1, 20 );
 	
 	// Force some server variables
 	setDvar( "scr_teambalance_bel", "0" );
@@ -71,14 +71,14 @@ main()
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
 	level.autoassign = ::menuAutoAssign;
-
+	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 0 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 1, 1 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 0, 0, 0 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 5000 );
 	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 10, 0, 1440 );
-
-
+	
+	
 	level.teamBased = true;
 	level.overrideTeamScore = true;
 	level.spawnPlayer= ::spawnPlayer;
@@ -115,30 +115,28 @@ Show objectives to the player, initialize spawn points, and register score infor
 onStartGameType()
 {
 	setClientNameMode("auto_change");
-
+	
 	maps\mp\gametypes\_globallogic::setObjectiveText( game["attackers"], &"OW_OBJECTIVES_ATTACKERS_BEL" );
 	maps\mp\gametypes\_globallogic::setObjectiveText( game["defenders"], &"OW_OBJECTIVES_DEFENDERS_BEL" );
 	
-	if ( level.splitscreen )
-	{
+	if ( level.splitscreen ) {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["attackers"], &"OW_OBJECTIVES_ATTACKERS_BEL" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["defenders"], &"OW_OBJECTIVES_DEFENDERS_BEL" );
 	}
-	else
-	{
+	else {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["attackers"], &"OW_OBJECTIVES_ATTACKERS_BEL_SCORE" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["defenders"], &"OW_OBJECTIVES_DEFENDERS_BEL_SCORE" );
 	}
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( game["attackers"], &"OW_OBJECTIVES_ATTACKERS_BEL_HINT" );
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( game["defenders"], &"OW_OBJECTIVES_DEFENDERS_BEL_HINT" );
-			
+	
 	level.spawnMins = ( 0, 0, 0 );
-	level.spawnMaxs = ( 0, 0, 0 );	
+	level.spawnMaxs = ( 0, 0, 0 );
 	maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_tdm_spawn_allies_start" );
 	maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_tdm_spawn_axis_start" );
 	maps\mp\gametypes\_spawnlogic::addSpawnPoints( game["attackers"], "mp_tdm_spawn" );
 	maps\mp\gametypes\_spawnlogic::addSpawnPoints( game["defenders"], "mp_tdm_spawn" );
-
+	
 	level.mapCenter = maps\mp\gametypes\_spawnlogic::findBoxCenter( level.spawnMins, level.spawnMaxs );
 	setMapCenter( level.mapCenter );
 	
@@ -146,7 +144,7 @@ onStartGameType()
 	
 	if ( getDvarInt( "scr_oldHardpoints" ) > 0 )
 		allowed[1] = "hardpoint";
-	
+		
 	level.displayRoundEndText = false;
 	maps\mp\gametypes\_gameobjects::main(allowed);
 	
@@ -158,36 +156,36 @@ onStartGameType()
 =============
 balanceTeams
 
-Auto-balances the teams in case players disconnect or switch to spectator 
+Auto-balances the teams in case players disconnect or switch to spectator
 =============
 */
 balanceTeams()
 {
 	level endon("game_ended");
 	
-	while(1)
-	{
+	while(1) {
 		xWait( level.scr_teambalance_delay );
 		
 		// Get the number of defenders allowed
 		allowedDefenders = numberOfAllowedDefenders();
 		autoBalance = true;
-
+		
 		// Move players until the teams are balanced again
 		while ( autoBalance ) {
-			autoBalance = false;	
+			autoBalance = false;
 			totalDefenders = getNumberOfPlayers( game["defenders"] );
 			
 			// Check if we need to move attackers to defenders
 			if ( totalDefenders < allowedDefenders ) {
 				autoBalance = moveRandomPlayer( game["defenders"] );
 				
-			// Check if we need to move defenders to attackers
-			} else if ( totalDefenders > ( allowedDefenders + 1 ) ) {
+				// Check if we need to move defenders to attackers
+			}
+			else if ( totalDefenders > ( allowedDefenders + 1 ) ) {
 				autoBalance = moveRandomPlayer( game["attackers"] );
 			}
 		}
-	}	
+	}
 }
 
 
@@ -201,7 +199,7 @@ Replaces the stock function that handles the auto assign of players to teams
 menuAutoAssign()
 {
 	self maps\mp\gametypes\_globallogic::closeMenus();
-
+	
 	// Get the number of defenders allowed
 	allowedDefenders = numberOfAllowedDefenders();
 	totalDefenders = getNumberOfPlayers( game["defenders"] );
@@ -209,43 +207,45 @@ menuAutoAssign()
 	// Check if we have enough defenders already
 	if ( totalDefenders < allowedDefenders ) {
 		assignment = game["defenders"];
-	} else {
+	}
+	else {
 		assignment = game["attackers"];
 	}
-
+	
 	self.pers["team"] = assignment;
 	self.team = assignment;
 	self.pers["class"] = undefined;
 	self.class = undefined;
 	self.pers["weapon"] = undefined;
 	self.pers["savedmodel"] = undefined;
-
+	
 	self maps\mp\gametypes\_globallogic::updateObjectiveText();
-
+	
 	self.sessionteam = assignment;
-
+	
 	if ( !isAlive( self ) ) {
 		// Check if we should show the player status
 		if ( level.scr_show_player_status == 1 ) {
 			self.statusicon = "hud_status_dead";
-		} else {
+		}
+		else {
 			self.statusicon = "";
 		}
 	}
-
+	
 	lpselfnum = self getEntityNumber();
 	lpselfname = self.name;
 	lpselfteam = self.pers["team"];
 	lpselfguid = self getGuid();
-
+	
 	logPrint( "JT;" + lpselfguid + ";" + lpselfnum + ";" + lpselfteam + ";" + lpselfname + ";" + "\n" );
-
+	
 	self notify("joined_team");
 	self thread maps\mp\gametypes\_globallogic::showPlayerJoinedTeam();
 	self notify("end_respawn");
-
+	
 	self maps\mp\gametypes\_globallogic::beginClassChoice();
-
+	
 	self setclientdvar( "g_scriptMainMenu", game[ "menu_class_" + self.pers["team"] ] );
 }
 
@@ -264,7 +264,7 @@ spawnPlayer()
 		self.team = newTeam;
 		self.pers["savedmodel"] = undefined;
 		self.pers["teamTime"] = 0;
-		self.sessionteam = newTeam;		
+		self.sessionteam = newTeam;
 		
 		// Make sure we don't move twice
 		self.needsMove = false;
@@ -287,26 +287,22 @@ onSpawnPlayer( teamMove )
 {
 	spawnTeam =  self.pers["team"];
 	self.usingObj = undefined;
-
-	if ( level.inGracePeriod )
-	{
+	
+	if ( level.inGracePeriod ) {
 		spawnPoints = getentarray("mp_tdm_spawn_" + spawnTeam + "_start", "classname");
 		
 		if ( !spawnPoints.size )
 			spawnPoints = getentarray("mp_sab_spawn_" + spawnTeam + "_start", "classname");
 			
-		if ( !spawnPoints.size )
-		{
+		if ( !spawnPoints.size ) {
 			spawnPoints = maps\mp\gametypes\_spawnlogic::getTeamSpawnPoints( spawnTeam );
 			spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_NearTeam( spawnPoints );
 		}
-		else
-		{
+		else {
 			spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_Random( spawnPoints );
-		}		
+		}
 	}
-	else
-	{
+	else {
 		spawnPoints = maps\mp\gametypes\_spawnlogic::getTeamSpawnPoints( spawnTeam );
 		spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_NearTeam( spawnPoints );
 	}
@@ -314,14 +310,16 @@ onSpawnPlayer( teamMove )
 	// If it's a team move we just return where the player needs to be moved
 	if ( isDefined( teamMove ) && teamMove ) {
 		return spawnPoint;
-	} else {
+	}
+	else {
 		self spawn( spawnPoint.origin, spawnPoint.angles );
-
+		
 		// Show the player if he is a defender or attacker
 		if ( self.pers["team"] == game["defenders"] ) {
 			textLine = &"OW_BEL_SPAWNED_DEFENDER";
 			glowColor = (0.2, 0.3, 0.7);
-		} else {
+		}
+		else {
 			textLine = &"OW_BEL_SPAWNED_ATTACKER";
 			glowColor = (0.7, 0.2, 0.2);
 		}
@@ -382,7 +380,7 @@ createHudElements()
 	self.hudPointsEarned.color = (1,1,1);
 	self.hudPointsEarned.glowAlpha = 0;
 	self.hudPointsEarned.alpha = 1;
-
+	
 	// Start giving score to the player and refresh the time alive
 	self thread giveSurvivalScore();
 	
@@ -407,22 +405,21 @@ giveSurvivalScore()
 	self endon("stop_survivalscore");
 	level endon("game_ended");
 	
-	while(1)
-	{
+	while(1) {
 		// Wait for the proper amount of time
 		xWait(1);
 		
 		// Make sure there are attackers in the server
 		if ( getNumberOfPlayers( game["attackers"] ) == 0 )
 			continue;
-
+			
 		// Increase the alive time
 		self.hudTimeAlive.myValue++;
-		self.hudTimeAlive setValue(self.hudTimeAlive.myValue);		
+		self.hudTimeAlive setValue(self.hudTimeAlive.myValue);
 		
 		if ( self.hudTimeAlive.myValue % level.scr_bel_alive_points_time != 0 )
 			continue;
-		
+			
 		// Give and check player score
 		self.hudPointsEarned.myValue += level.scr_bel_alive_points;
 		self.hudPointsEarned setValue(self.hudPointsEarned.myValue);
@@ -432,16 +429,16 @@ giveSurvivalScore()
 		
 		score = self.pers["score"];
 		self.pers["score"] += level.scr_bel_alive_points;
-	
+		
 		self maps\mp\gametypes\_rank::giveRankXP( "survival", level.scr_bel_alive_points, true );
 		self maps\mp\gametypes\_persistence::statAdd( "score", ( self.pers["score"] - score ) );
 		self.score = self.pers["score"];
-	
+		
 		thread maps\mp\gametypes\_globallogic::sendUpdatedDMScores();
 		self notify ( "update_playerscore_hud" );
-	
-		self thread maps\mp\gametypes\_globallogic::checkScoreLimit();		
-	}	
+		
+		self thread maps\mp\gametypes\_globallogic::checkScoreLimit();
+	}
 }
 
 
@@ -462,19 +459,19 @@ showOnCompass()
 	// If both type of icons are disabled there's nothing to do here
 	if ( level.scr_hud_show_2dicons == 0 && level.scr_hud_show_3dicons == 0 )
 		return;
-	
-	while(1)
-	{
+		
+	while(1) {
 		// Wait for the proper amount of time
 		xWait( level.scr_bel_showoncompass_interval );
 		
 		// Make sure this player is not being point out already (compatible with the AACP functionality)
 		if ( isDefined( self.pointOut ) && self.pointOut ) {
 			continue;
-		} else {
+		}
+		else {
 			self.pointOut = true;
 		}
-	
+		
 		// Get the next objective ID to use
 		if ( level.scr_hud_show_2dicons == 1 ) {
 			objCompass = maps\mp\gametypes\_gameobjects::getNextObjID();
@@ -487,13 +484,14 @@ showOnCompass()
 				}
 				objective_team( objCompass, level.otherTeam[ self.pers["team"] ] );
 			}
-		} else {
+		}
+		else {
 			objCompass = -1;
 		}
 		
 		// Create 3D icon
 		if ( level.scr_hud_show_3dicons == 1 ) {
-			objWorld = newTeamHudElem( level.otherTeam[ self.pers["team"] ] );		
+			objWorld = newTeamHudElem( level.otherTeam[ self.pers["team"] ] );
 			origin = self.origin + (0,0,75);
 			objWorld.name = "pointout_" + self getEntityNumber();
 			objWorld.x = origin[0];
@@ -508,38 +506,39 @@ showOnCompass()
 			if ( level.scr_bel_showoncompass == 2 ) {
 				objWorld setTargetEnt( self );
 			}
-		} else {
+		}
+		else {
 			objWorld = undefined;
 		}
-					
+		
 		// Start the thread to delete the objective once the player dies, disconnects, or time passes
 		self thread deleteObjectiveOnDDH( objCompass, objWorld );
-	
+		
 		// Check if we need to give score to the player
 		if ( level.scr_bel_showoncompass_points > 0 && getNumberOfPlayers( game["attackers"] ) > 0 ) {
 			score = self.pers["score"];
 			self.pers["score"] += level.scr_bel_showoncompass_points;
-		
+			
 			self maps\mp\gametypes\_rank::giveRankXP( "survival", level.scr_bel_showoncompass_points, true );
 			self maps\mp\gametypes\_persistence::statAdd( "score", ( self.pers["score"] - score ) );
 			self.score = self.pers["score"];
-		
+			
 			thread maps\mp\gametypes\_globallogic::sendUpdatedDMScores();
 			self notify ( "update_playerscore_hud" );
-		
-			self thread maps\mp\gametypes\_globallogic::checkScoreLimit();			
+			
+			self thread maps\mp\gametypes\_globallogic::checkScoreLimit();
 		}
-	
+		
 		// Change the color of the HUD elements to red so the player knows he is being pointed out
 		self.hudTimeAlive.color = (1,0,0);
 		self.hudTimeAlive.glowAlpha = 1;
 		self.hudPointsEarned.color = (1,0,0);
 		self.hudPointsEarned.glowAlpha = 1;
 		self playLocalSound( "mp_obj_taken" );
-	
+		
 		xWait( level.scr_bel_showoncompass_time );
 		self notify( "hide_playeroncompass" );
-	}		
+	}
 }
 
 
@@ -557,7 +556,7 @@ deleteObjectiveOnDDH( objID, objWorld )
 	// Make sure this player can be pointed out again
 	if ( isDefined( self ) )
 		self.pointOut = false;
-
+		
 	// Delete the objective
 	if ( objID != -1 ) {
 		objective_delete( objID );
@@ -567,7 +566,7 @@ deleteObjectiveOnDDH( objID, objWorld )
 	if ( isDefined( objWorld ) ) {
 		objWorld destroy();
 	}
-
+	
 	// Change the HUD elements back to white
 	self.hudTimeAlive.color = (1,1,1);
 	self.hudTimeAlive.glowAlpha = 0;
@@ -595,14 +594,14 @@ onPlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHi
 		
 	// The victim will need to switch
 	self.needsMove = true;
-
+	
 	// If the attacker is a player and is not already switching or switched we'll switch him to defenders. If the attacker already moved we won't
 	// moved the victim as it means the attacker probably got multiple kills at the sametime and it will unbalance the teams.
 	if ( isDefined( attacker ) && isPlayer( attacker ) && attacker.pers["team"] == game["attackers"] ) {
 		if ( !isDefined( attacker.beingMoved ) || !attacker.beingMoved ) {
 			// Move the attacker
-			attacker thread movePlayer( game["defenders"], false );			
-		}		
+			attacker thread movePlayer( game["defenders"], false );
+		}
 	}
 }
 
@@ -634,7 +633,8 @@ moveRandomPlayer( toTeam )
 		randomPlayer = randomInt( sourceTeam.size );
 		sourceTeam[randomPlayer] movePlayer( toTeam, true );
 		return true;
-	} else {
+	}
+	else {
 		return false;
 	}
 }
@@ -653,17 +653,17 @@ movePlayer( newTeam, autoBalance )
 	
 	if ( isDefined( self.beingMoved ) && self.beingMoved )
 		return;
-	
+		
 	if ( self.pers["team"] == newTeam )
 		return;
-	
+		
 	// Make sure this player is not already being switched
 	self.beingMoved = true;
 	playerAlive = isAlive( self );
 	
 	if ( playerAlive ) {
 		self maps\mp\gametypes\_globallogic::closeMenus();
-
+		
 		// Protect and freeze the player during the switch
 		self.spawn_protected = true;
 		self freezeControls( true );
@@ -671,18 +671,19 @@ movePlayer( newTeam, autoBalance )
 		// Give full health and remove previous planted explosives from this player
 		self.health = self.maxhealth;
 		self deleteExplosives();
-
+		
 		// Let the player know he/she is switching to the other team
 		if ( newTeam == game["defenders"] ) {
 			textLine = &"OW_BEL_WILLSPAWN_DEFENDER";
 			glowColor = (0.2, 0.3, 0.7);
-		} else {
+		}
+		else {
 			textLine = &"OW_BEL_WILLSPAWN_ATTACKER";
 			glowColor = (0.7, 0.2, 0.2);
 		}
 		self autoBalanceInformation( textLine, glowColor, autoBalance );
-	}	
-
+	}
+	
 	self.pers["team"] = newTeam;
 	self.team = newTeam;
 	self.pers["savedmodel"] = undefined;
@@ -696,12 +697,12 @@ movePlayer( newTeam, autoBalance )
 	//if ( !level.rankedClasses ) {
 	//	self maps\mp\gametypes\_class_unranked::giveLoadout( self.team, self.class );
 	//} else {
-		self maps\mp\gametypes\_class::giveLoadout( self.team, self.class );
+	self maps\mp\gametypes\_class::giveLoadout( self.team, self.class );
 	//}
-
+	
 	// We indicate the player is not being moved anymore as soon as we switch the team
-	self.beingMoved = false;	
-
+	self.beingMoved = false;
+	
 	if ( playerAlive ) {
 		// Get the new spawn point for this player
 		spawnPoint = self onSpawnPlayer( true );
@@ -714,7 +715,7 @@ movePlayer( newTeam, autoBalance )
 		self thread maps\mp\gametypes\_friendicons::showFriendIcon();
 		
 		// Release the player
-		self freezeControls( false );	
+		self freezeControls( false );
 		self.spawn_protected = false;
 		
 		if ( level.scr_explosives_allow_disarm == 1 )
@@ -722,7 +723,7 @@ movePlayer( newTeam, autoBalance )
 		if ( level.specialty_grenadepulldeath_check_frags == 1 )
 			self thread openwarfare\_martyrdom::onPlayerSpawned();
 		if ( level.scr_spawn_protection_enable == 1 )
-			self thread openwarfare\_spawnprotection::onPlayerSpawned();		
+			self thread openwarfare\_spawnprotection::onPlayerSpawned();
 			
 		// If this player is a defender start giving score points for surviving
 		if ( self.pers["team"] == game["defenders"] && !level.inReadyUpPeriod ) {
@@ -732,16 +733,17 @@ movePlayer( newTeam, autoBalance )
 			if ( level.scr_bel_showoncompass != 0 ) {
 				self thread showOnCompass();
 			}
-		} else {
+		}
+		else {
 			// Stop all the defender's threads
 			self notify( "hide_playeroncompass" );
 			self notify( "stop_showoncompass" );
-			self notify( "stop_survivalscore" );		
+			self notify( "stop_survivalscore" );
 		}
 	}
 	
 	// Notify other modules about the team switch
-	self notify("joined_team");	
+	self notify("joined_team");
 	self thread maps\mp\gametypes\_globallogic::showPlayerJoinedTeam();
 }
 
@@ -757,9 +759,9 @@ autoBalanceInformation( textLine, glowColor, autoBalance )
 {
 	self notify("hide_spawninformation");
 	self endon("disconnect");
-
+	
 	autoBalanceHud = undefined;
-
+	
 	// Create the black screen
 	blackScreenHud = newClientHudElem( self );
 	blackScreenHud.x = 0;
@@ -771,10 +773,10 @@ autoBalanceInformation( textLine, glowColor, autoBalance )
 	blackScreenHud.sort = -5;
 	blackScreenHud.color = (0,0,0);
 	blackScreenHud.archived = true;
-	blackScreenHud setShader( "black", 640, 480 );	
+	blackScreenHud setShader( "black", 640, 480 );
 	blackScreenHud.alpha = 0.5;
 	
-	// Show the message that this is an auto-balance 
+	// Show the message that this is an auto-balance
 	if ( autoBalance ) {
 		autoBalanceHud = createFontString( "objective", 2.0 );
 		autoBalanceHud.archived = true;
@@ -787,10 +789,11 @@ autoBalanceInformation( textLine, glowColor, autoBalance )
 		autoBalanceHud.x = 0;
 		autoBalanceHud.y = 60;
 		autoBalanceHud setText( game["strings"]["autobalance"] );
-	} else {		
+	}
+	else {
 		self playLocalSound( "mp_obj_returned" );
 	}
-
+	
 	// Show the new team information
 	textLineHud = createFontString( "objective", 3.0 );
 	textLineHud.glowAlpha = 1;
@@ -805,23 +808,24 @@ autoBalanceInformation( textLine, glowColor, autoBalance )
 	textLineHud.x = 0;
 	if ( autoBalance ) {
 		textLineHud.y = 85;
-	} else {
+	}
+	else {
 		textLineHud.y = 60;
 	}
 	textLineHud setText( textLine );
 	textLineHud maps\mp\gametypes\_hud::fontPulseInit();
 	textLineHud.maxFontScale = 4.6;
 	textLineHud thread maps\mp\gametypes\_hud::fontPulse( self );
-			
+	
 	xWait(3);
 	
 	// Destroy the elements
 	blackScreenHud destroy();
-		
+	
 	if ( isDefined( autoBalanceHud ) )
 		autoBalanceHud destroy();
 		
-	textLineHud destroy();	
+	textLineHud destroy();
 }
 
 
@@ -835,7 +839,7 @@ Displays the message to the player when he/she spawns
 spawnInformation( textLine, glowColor )
 {
 	self endon("disconnect");
-
+	
 	textLineHud = createFontString( "objective", 3.0 );
 	textLineHud.glowAlpha = 1;
 	textLineHud.glowColor = glowColor;
@@ -852,12 +856,12 @@ spawnInformation( textLine, glowColor )
 	textLineHud maps\mp\gametypes\_hud::fontPulseInit();
 	textLineHud.maxFontScale = 4.6;
 	textLineHud thread maps\mp\gametypes\_hud::fontPulse( self );
-			
+	
 	self thread waitAndSendEvent( 4, "hide_spawninformation" );
 	self waittill( "hide_spawninformation" );
 	
 	// Destroy the elements
-	textLineHud destroy();	
+	textLineHud destroy();
 }
 
 
@@ -878,18 +882,20 @@ getNumberOfPlayers( team )
 			if ( isDefined( level.players[index].beingMoved ) && level.players[index].beingMoved && level.players[index].pers["team"] == level.otherTeam[team] ) {
 				amountOfPlayers++;
 				
-			// Check if this player will already be moved on his next spawn
-			} else if ( isDefined( level.players[index].needsMove ) && level.players[index].needsMove && level.players[index].pers["team"] == level.otherTeam[team] ) { 
+				// Check if this player will already be moved on his next spawn
+			}
+			else if ( isDefined( level.players[index].needsMove ) && level.players[index].needsMove && level.players[index].pers["team"] == level.otherTeam[team] ) {
 				amountOfPlayers++;
 				
-			// Check if this player belongs to the team we are looking for
-			} else if ( level.players[index].pers["team"] == team ) {
+				// Check if this player belongs to the team we are looking for
+			}
+			else if ( level.players[index].pers["team"] == team ) {
 				amountOfPlayers++;
 			}
-		}		
+		}
 	}
 	
-	return amountOfPlayers;	
+	return amountOfPlayers;
 }
 
 
@@ -907,16 +913,17 @@ numberOfAllowedDefenders()
 	for ( index = 0; index < level.players.size; index++ ) {
 		if ( isDefined( level.players[index].pers["team"] ) && ( level.players[index].pers["team"] == "allies" || level.players[index].pers["team"] == "axis" ) ) {
 			totalPlayers++;
-		}		
+		}
 	}
 	
 	// Calculate how many defenders
 	totalPlayers = int( totalPlayers / 3 );
 	if ( totalPlayers == 0 ) {
 		totalPlayers = 1;
-	} else if ( totalPlayers > 16 ) {
+	}
+	else if ( totalPlayers > 16 ) {
 		totalPlayers = 16;
 	}
 	
-	return totalPlayers;	
+	return totalPlayers;
 }

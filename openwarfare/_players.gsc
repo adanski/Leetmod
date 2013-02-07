@@ -6,11 +6,11 @@ init()
 	// Get the main module's dvar
 	level.scr_player_connect_sound_enable = getdvarx( "scr_player_connect_sound_enable", "int", 0, 0, 1 );
 	level.scr_player_disconnect_sound_enable = getdvarx( "scr_player_disconnect_sound_enable", "int", 0, 0, 1 );
-
+	
 	// If both sounds are disabled there's nothing else to do here
 	if ( level.scr_player_connect_sound_enable == 0 && level.scr_player_disconnect_sound_enable == 0 )
 		return;
-	
+		
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -27,7 +27,7 @@ onPlayerConnected()
 				player playLocalSound( "player_connected" );
 			}
 		}
-	}	
+	}
 	
 	if ( level.scr_player_disconnect_sound_enable ) {
 		self thread onPlayerDisconnect();

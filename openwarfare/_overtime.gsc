@@ -10,7 +10,7 @@ init()
 	// If overtime is disabled then there's nothing else to do here
 	if ( level.scr_overtime_enable == 0 )
 		return;
-
+		
 	// Load the rest of the module's variables
 	level.scr_overtime_playerrespawndelay = getdvarx( "scr_overtime_playerrespawndelay", "float", -1, 0, 600 );
 	level.scr_overtime_incrementalspawndelay = getdvarx( "scr_overtime_incrementalspawndelay", "float", 0, 0, 10 );
@@ -33,7 +33,7 @@ registerTimeLimitDvar()
 
 registerNumLivesDvar()
 {
-	level.numLives = getdvarx( "scr_overtime_numlives", "int", 0, 0, 10 );	
+	level.numLives = getdvarx( "scr_overtime_numlives", "int", 0, 0, 10 );
 }
 
 
@@ -41,13 +41,12 @@ monitorTeamScores()
 {
 	level endon("game_ended");
 	
-	while(1)
-	{
+	while(1) {
 		wait (0.05);
 		// If the scores are different it means someone has scored
 		if ( game["teamScores"]["allies"] != game["teamScores"]["axis"] ) {
 			level thread suddenDeathScore();
-		}		
+		}
 	}
 }
 
@@ -60,8 +59,8 @@ checkGameState()
 		
 	// Check if the teams are tied
 	if ( game["teamScores"]["allies"] != game["teamScores"]["axis"] )
-		return;	
-	
+		return;
+		
 	// Check if we have rounds but this was not the last one
 	if ( level.roundLimit && !maps\mp\gametypes\_globallogic::hitRoundLimit() )
 		return;
@@ -70,7 +69,7 @@ checkGameState()
 	players[ "allies" ] = 0;
 	players[ "axis" ] = 0;
 	players[ "spectator" ] = 0;
-
+	
 	for ( index = 0; index < level.players.size; index++ ) {
 		players[ level.players[index].pers["team"] ]++;
 		if ( players[ "allies" ] > 0 && players[ "axis" ] > 0 )
@@ -78,9 +77,9 @@ checkGameState()
 	}
 	if ( players[ "allies" ] == 0 || players[ "axis" ] == 0 )
 		return;
-	
+		
 	// Add one more round
-	game["_overtime"] = true;	
+	game["_overtime"] = true;
 	level.roundLimit++;
 	level notify ( "update_roundlimit" );
 }
@@ -100,23 +99,23 @@ respawnDelay()
 	// Add the increased due to number of deaths
 	respawnDelay += ( level.scr_overtime_incrementalspawndelay * self.overtimeDeaths );
 	
-	return respawnDelay;	
+	return respawnDelay;
 }
 
 
 suddenDeathScore()
 {
 	winner = undefined;
-
+	
 	if ( game["teamScores"]["axis"] > game["teamScores"]["allies"] )
 		winner = "axis";
 	else
 		winner = "allies";
-
+		
 	logString( "overtime, win: " + winner + ", allies: " + game["teamScores"]["allies"] + ", opfor: " + game["teamScores"]["axis"] );
-
+	
 	makeDvarServerInfo( "ui_text_endreason", game["strings"]["round_limit_reached"] );
 	setDvar( "ui_text_endreason", game["strings"]["round_limit_reached"] );
-
+	
 	thread maps\mp\gametypes\_globallogic::endGame( winner, game["strings"]["round_limit_reached"] );
 }

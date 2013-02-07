@@ -5,16 +5,16 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_rng_enabled = getdvarx( "scr_rng_enabled", "int", 0, 0, 2 );
-
+	
 	// If R&G is disabled then there's nothing else to do here
 	if ( level.scr_rng_enabled == 0 )
 		return;
-
+		
 	// Load the rest of the module's dvars
 	level.scr_rng_distance = getdvarx( "scr_rng_distance", "int", 200, 0, 10000 );
 	level.scr_rng_damage_closer = getdvarx( "scr_rng_damage_closer", "float", 50, 0, 100 );
 	level.scr_rng_damage_longer = getdvarx( "scr_rng_damage_longer", "float", 5, 0, 100 );
-
+	
 	return;
 }
 
@@ -27,15 +27,16 @@ rngDamage( eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoi
 		if ( ( maps\mp\gametypes\_weapons::isPrimaryWeapon( sWeapon ) || maps\mp\gametypes\_weapons::isPistol( sWeapon ) ) && ( level.scr_rng_enabled == 1 || weaponClass( sWeapon ) != "spread" ) && sMeansOfDeath != "MOD_MELEE" ) {
 			// Get the distance between the player and the attacker
 			rngDistance = distance( self.origin, eAttacker.origin );
-
-				// Check which damage percentage we need to apply
+			
+			// Check which damage percentage we need to apply
 			if ( rngDistance <= level.scr_rng_distance ) {
 				iDamage = int( iDamage * level.scr_rng_damage_closer / 100 );
-			} else {
+			}
+			else {
 				iDamage = int( iDamage * level.scr_rng_damage_longer / 100 );
 			}
 		}
 	}
-
+	
 	return iDamage;
 }

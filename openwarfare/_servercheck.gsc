@@ -4,16 +4,16 @@ init()
 {
 	// Give some time to the server to populate variables with the referenced IWDs
 	wait( 5.0 );
-  
-  iprintln("Server check disabled while in development.");
-  iprintln("Release: Re-enable it in openwarfare/_servercheck.gsc");
-  development = true;
-  if( development )
-    return;
 	
+	iprintln("Server check disabled while in development.");
+	iprintln("Release: Re-enable it in openwarfare/_servercheck.gsc");
+	development = true;
+	if( development )
+		return;
+		
 	// Check all the .IWDs active in the server
 	checkResult = runCheck();
-
+	
 	// If the check was invalid then we'll let the players know about the problem and
 	// exit the current map
 	if ( checkResult != "passed" ) {
@@ -23,16 +23,16 @@ init()
 			wait( 2.0 );
 		}
 		exitLevel( false );
-	}	
+	}
 }
 
 
 runCheck()
-{	
+{
 	// Check if there's any .IWD file that doesn't belong to the mod
 	iwdFiles = strtok( tolower( getdvar( "sv_referencedIwdNames" ) ), " " );
 	modPath = tolower( getdvar("fs_game") ) + "/";
-  modFile = getdvar("_modfile");
+	modFile = getdvar("_modfile");
 	
 	for ( index = 0; index < iwdFiles.size; index++ ) {
 		if ( isSubStr( iwdFiles[index], modPath ) ) {
@@ -43,5 +43,5 @@ runCheck()
 		}
 	}
 	
-	return "passed";	
+	return "passed";
 }

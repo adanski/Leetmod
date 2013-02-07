@@ -13,7 +13,7 @@
 	------------------
 		Spawnpoints:
 			classname	mp_ass_spawn_attackers_start, mp_ass_spawn_defenders_start
-			All players spawn from these at the beginning of the round. 
+			All players spawn from these at the beginning of the round.
 
 		Spectator spawnpoints:
 			classname	mp_global_intermission
@@ -27,7 +27,7 @@
 		game["attackers"] = "allies";
 		game["defenders"] = "axis";
 			This sets which team is attacking and which team is defending. Defenders need to protect the extraction zone or kill the VIP.
-			
+
 		Note:
 			In the case the map doesn't support the above VIP assets natively this
 			implementation of VIP will try to use the location of the bombsites from
@@ -46,7 +46,7 @@ main()
 {
 	if(getdvar("mapname") == "mp_background")
 		return;
-
+		
 	if ( !isdefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;
 		
@@ -54,7 +54,7 @@ main()
 		game["attackers"] = "allies";
 		game["defenders"] = "axis";
 	}
-
+	
 	// Additional variables that we'll be using
 	level.scr_ass_vip_health = getdvarx( "scr_ass_vip_health", "int", 0, 0, 500 );
 	level.scr_ass_force_vip_handgun = getdvarx( "scr_ass_force_vip_handgun", "string", "" );
@@ -68,15 +68,15 @@ main()
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
-
+	
 	// Get the dvars we need for this gametype
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 1, 1, 1 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 20, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 2, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 10, 0, 5000 );
 	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 3, 0, 1440 );
-
-
+	
+	
 	level.teamBased = true;
 	level.overrideTeamScore = true;
 	level.endGameOnScoreLimit = true;
@@ -87,11 +87,11 @@ main()
 	level.onSpawnPlayer = ::onSpawnPlayer;
 	level.onStartGameType = ::onStartGameType;
 	level.onTimeLimit = ::onTimeLimit;
-
+	
 	game["dialog"]["gametype"] = gameTypeDialog( "ass" );
 	
 	game["strings"]["vip_extracted"] = &"OW_ASSASSINATION_VIP_EXTRACTED";
-	game["strings"]["vip_killed"] = &"OW_ASSASSINATION_VIP_ELIMINATED";	
+	game["strings"]["vip_killed"] = &"OW_ASSASSINATION_VIP_ELIMINATED";
 }
 
 
@@ -106,7 +106,7 @@ onPrecacheGameType()
 {
 	// Initialize an array to keep all the assets we'll be using
 	game[level.gameType] = [];
-
+	
 	// Precache team dependent assets
 	switch ( game[game["attackers"]] ) {
 		case "marines":
@@ -125,7 +125,7 @@ onPrecacheGameType()
 			break;
 	}
 	
-	// Precache some resources needed 
+	// Precache some resources needed
 	precacheStatusIcon( "hud_status_vip" );
 	precacheShader( "icon_vip" );
 	
@@ -136,7 +136,7 @@ onPrecacheGameType()
 	precacheShader( "waypoint_defend" );
 	
 	precacheModel( "body_complete_mp_zakhaev" );
-  precacheModel( "body_complete_mp_price_woodland" );
+	precacheModel( "body_complete_mp_price_woodland" );
 }
 
 
@@ -155,66 +155,67 @@ onStartGameType()
 		game["attackers"] = oldDefenders;
 		game["defenders"] = oldAttackers;
 	}
-
+	
 	// Check if this map supports native Assassination
 	nativeASS = isDefined( getEnt( "ass_extraction_zone", "targetname" ) );
-
+	
 	maps\mp\gametypes\_globallogic::setObjectiveText( game["attackers"], &"OW_ASSASSINATION_ATTACKER" );
 	maps\mp\gametypes\_globallogic::setObjectiveText( game["defenders"], &"OW_ASSASSINATION_DEFENDER" );
-
-	if ( level.splitscreen )
-	{
+	
+	if ( level.splitscreen ) {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["attackers"], &"OW_ASSASSINATION_ATTACKER" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["defenders"], &"OW_ASSASSINATION_DEFENDER" );
 	}
-	else
-	{
+	else {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["attackers"], &"OW_ASSASSINATION_ATTACKER_SCORE" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( game["defenders"], &"OW_ASSASSINATION_DEFENDER_SCORE" );
 	}
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( game["attackers"], &"OW_ASSASSINATION_ATTACKER" );
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( game["defenders"], &"OW_ASSASSINATION_DEFENDER" );
-
+	
 	setClientNameMode("auto_change");
-
+	
 	level.spawnMins = ( 0, 0, 0 );
 	level.spawnMaxs = ( 0, 0, 0 );
-
+	
 	// If the map doesn't support Assassination natively we'll use the location of Sabotage's assets
 	if ( nativeASS ) {
 		maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_ass_spawn_attackers_start" );
-		maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_ass_spawn_defenders_start" );			
-	} else {
+		maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_ass_spawn_defenders_start" );
+	}
+	else {
 		// Let's get the trigger origins of the defender's bombsite before we get rid of all the map assets
 		level.extractionZoneOrigin = getOriginFromBombZone( "sab_bomb_axis" );
 		maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_sab_spawn_allies_start" );
-		maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_sab_spawn_axis_start" );		
+		maps\mp\gametypes\_spawnlogic::placeSpawnPoints( "mp_sab_spawn_axis_start" );
 	}
-
+	
 	level.mapCenter = maps\mp\gametypes\_spawnlogic::findBoxCenter( level.spawnMins, level.spawnMaxs );
 	setMapCenter( level.mapCenter );
-
+	
 	if ( nativeASS ) {
 		level.spawn_attackers_start = getentarray( "mp_ass_spawn_attackers_start", "classname" );
 		level.spawn_defenders_start = getentarray( "mp_ass_spawn_defenders_start", "classname" );
-	} else {
+	}
+	else {
 		level.spawn_attackers_start = getentarray( "mp_sab_spawn_allies_start", "classname" );
-		level.spawn_defenders_start = getentarray( "mp_sab_spawn_axis_start", "classname" );			
+		level.spawn_defenders_start = getentarray( "mp_sab_spawn_axis_start", "classname" );
 	}
 	
 	if ( game["attackers"] == "allies" ) {
 		level.startPos["allies"] = level.spawn_attackers_start[0].origin;
 		level.startPos["axis"] = level.spawn_defenders_start[0].origin;
-	} else {
+	}
+	else {
 		level.startPos["allies"] = level.spawn_defenders_start[0].origin;
 		level.startPos["axis"] = level.spawn_attackers_start[0].origin;
 	}
-
+	
 	level.displayRoundEndText = true;
-
+	
 	allowed[0] = "ass";
 	maps\mp\gametypes\_gameobjects::main(allowed);
-
+	
 	thread veryImportantPerson();
 }
 
@@ -233,7 +234,7 @@ getOriginFromBombZone( entityName )
 		trace = playerPhysicsTrace( bombZone.origin + (0,0,20), bombZone.origin - (0,0,2000), false, undefined );
 		return trace;
 	}
-	return;	
+	return;
 }
 
 
@@ -293,14 +294,15 @@ Determines what spawn points to use and spawns the player
 onSpawnPlayer()
 {
 	self.isVIP = false;
-
+	
 	if ( self.pers["team"] == game["attackers" ] ) {
 		spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_Random( level.spawn_attackers_start );
-	} else {
+	}
+	else {
 		spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_Random( level.spawn_defenders_start );
 	}
 	assert( isDefined(spawnPoint) );
-
+	
 	self spawn( spawnPoint.origin, spawnPoint.angles );
 }
 
@@ -310,7 +312,7 @@ onSpawnPlayer()
 veryImportantPerson
 
 Initializes all the map entities to be used or creates them (based on Sabotage) in the case
-the native ASS assets are not present. 
+the native ASS assets are not present.
 =============
 */
 veryImportantPerson()
@@ -322,7 +324,8 @@ veryImportantPerson()
 		// Check if we can manually create the trigger
 		if ( isDefined( level.extractionZoneOrigin ) ) {
 			gametypeAssets["extractionzone_trigger"] = spawn( "trigger_radius", level.extractionZoneOrigin, 0, 40, 10 );
-		} else {
+		}
+		else {
 			error( "No ass_extraction_zone trigger found in map." );
 			maps\mp\gametypes\_callbacksetup::AbortLevel();
 			return;
@@ -331,11 +334,11 @@ veryImportantPerson()
 	
 	// Create the extraction zone
 	level.extractionZone = createExtractionZone( game["attackers"], gametypeAssets["extractionzone_trigger"] );
-  // Slow process to create FX
-  wait( 0.08 );
-  triggerFx( level.extractionZone.baseEffect );
+	// Slow process to create FX
+	wait( 0.08 );
+	triggerFx( level.extractionZone.baseEffect );
 	
-	// Pick the VIP 
+	// Pick the VIP
 	level thread pickVIP();
 }
 
@@ -362,7 +365,7 @@ createExtractionZone( attackerTeam, zoneTrigger )
 	extractionZone maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_extraction_zone" );
 	extractionZone maps\mp\gametypes\_gameobjects::allowUse( "friendly" );
 	extractionZone.onUse = ::onUse;
-
+	
 	// Spawn an special effect at the base of the extraction zone to indicate where it is located
 	traceStart = zoneTrigger.origin + (0,0,32);
 	traceEnd = zoneTrigger.origin + (0,0,-32);
@@ -392,11 +395,11 @@ onUse( player )
 		player thread [[level.onXPEvent]]( "capture" );
 		maps\mp\gametypes\_globallogic::givePlayerScore( "capture", player );
 		[[level._setTeamScore]]( game["attackers"], [[level._getTeamScore]]( game["attackers"] ) + 1 );
-	
+		
 		lpselfnum = player getEntityNumber();
 		lpGuid = player getGuid();
-		logPrint("EV;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");	
-			
+		logPrint("EV;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");
+		
 		thread maps\mp\gametypes\_globallogic::endGame( game["attackers"], game["strings"]["vip_extracted"] );
 	}
 }
@@ -419,32 +422,35 @@ onPlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHit
 		if ( isPlayer( attacker ) ) {
 			if ( self.pers["team"] != attacker.pers["team"] ) {
 				attacker thread [[level.onXPEvent]]( "capture" );
-				maps\mp\gametypes\_globallogic::givePlayerScore( "capture", attacker );		
-		
+				maps\mp\gametypes\_globallogic::givePlayerScore( "capture", attacker );
+				
 				lpselfnum = attacker getEntityNumber();
 				lpGuid = attacker getGuid();
 				logPrint("KV;" + lpGuid + ";" + lpselfnum + ";" + attacker.name + "\n");
-			} else {
+			}
+			else {
 				lpselfnum = attacker getEntityNumber();
 				lpGuid = attacker getGuid();
 				logPrint("TKV;" + lpGuid + ";" + lpselfnum + ";" + attacker.name + "\n");
 			}
-		}				
+		}
 		
 		[[level._setTeamScore]]( game["defenders"], [[level._getTeamScore]]( game["defenders"] ) + 1 );
 		thread maps\mp\gametypes\_globallogic::endGame( game["defenders"], game["strings"]["vip_killed"] );
-
-	} else if ( self.pers["team"] == game["defenders"] ) {	
+		
+	}
+	else if ( self.pers["team"] == game["defenders"] ) {
 		// Make sure the attacker is not in the same team
 		if ( isPlayer( attacker ) && self.pers["team"] != attacker.pers["team"] ) {
 			// Give double the XP if the killer was the VIP
 			if ( attacker.isVIP ) {
 				attacker thread [[level.onXPEvent]]( "kill" );
-				maps\mp\gametypes\_globallogic::givePlayerScore( "kill", attacker );				
-			} else {	
+				maps\mp\gametypes\_globallogic::givePlayerScore( "kill", attacker );
+			}
+			else {
 				// Get the distance between the victim and the VIP
 				distanceToVIP = distance( self.origin, level.playerVIP.origin );
-		
+				
 				// 197 units = 20 meters
 				if ( distanceToVIP <= 788 ) {
 					attacker thread [[level.onXPEvent]]( "defend" );
@@ -465,23 +471,23 @@ Pick a player from the "attackers" team as the VIP
 */
 pickVIP()
 {
-	// Wait until prematch period is over 
+	// Wait until prematch period is over
 	while ( level.inPrematchPeriod )
 		wait (0.05);
-	
+		
 	// Build an array with all the attacking players that are alive at the end of the prematch period
 	vipCandidates = [];
 	while ( vipCandidates.size == 0 ) {
 		wait (0.05);
-	
-		// Check if we should allow only clan members to be VIP	
+		
+		// Check if we should allow only clan members to be VIP
 		if ( level.scr_ass_vip_clan_tags.size > 0 ) {
 			for ( index = 0; index < level.players.size; index++ ) {
 				player = level.players[index];
 				if ( isDefined( player ) && player.pers["team"] == game["attackers"] && isAlive( player ) && player isPlayerClanMember( level.scr_ass_vip_clan_tags ) ) {
 					vipCandidates[vipCandidates.size] = player;
 				}
-			}			
+			}
 		}
 		
 		// Make sure we don't have clan members already in (if there are no clan members we'll pick another player)
@@ -504,14 +510,14 @@ pickVIP()
 	
 	// Change the model of the VIP
 	level.playerVIP detachHead();
-  
-  if( level.playerVIP.pers["team"] == "allies" )
-      level.playerVIP setModel( "body_complete_mp_price_woodland" );
-  
-  if( level.playerVIP.pers["team"] == "axis" )
-    level.playerVIP setModel( "body_complete_mp_zakhaev" );
-      
-
+	
+	if( level.playerVIP.pers["team"] == "allies" )
+		level.playerVIP setModel( "body_complete_mp_price_woodland" );
+		
+	if( level.playerVIP.pers["team"] == "axis" )
+		level.playerVIP setModel( "body_complete_mp_zakhaev" );
+		
+		
 	// Verify weapons and remove anyone considered invalid
 	level.playerVIP thread removeInvalidWeapons();
 	
@@ -521,7 +527,7 @@ pickVIP()
 	// Start monitoring threads
 	level.playerVIP thread preventInvalidWeaponsPickup();
 	level.playerVIP thread onDisconnetVIP();
-		
+	
 	// Make sure the VIP won't be auto-balanced
 	level.playerVIP.dont_auto_balance = true;
 	
@@ -561,7 +567,7 @@ removeInvalidWeapons()
 	// Check if we need to force a weapon
 	if ( level.scr_ass_force_vip_handgun != "" ) {
 		handGun = level.scr_ass_force_vip_handgun;
-				
+		
 		// Remove all the weapons except grenades and pistols (in case forced weapon is a pistol)
 		for( i = 0; i < weaponsList.size; i++ )	{
 			currentWeapon = weaponsList[i];
@@ -575,7 +581,8 @@ removeInvalidWeapons()
 			self takeWeapon( currentWeapon );
 		}
 		
-	} else {
+	}
+	else {
 		// Remove everything except grenades
 		for( i = 0; i < weaponsList.size; i++ )	{
 			currentWeapon = weaponsList[i];
@@ -584,10 +591,10 @@ removeInvalidWeapons()
 				continue;
 				
 			if ( weaponClass( currentWeapon ) == "pistol" && currentWeapon == "binoculars_mp" )
-				continue;				
+				continue;
 				
 			if ( weaponClass( currentWeapon ) == "pistol" )
-					handGun = currentWeapon;
+				handGun = currentWeapon;
 				
 			self takeWeapon( currentWeapon );
 		}
@@ -595,7 +602,7 @@ removeInvalidWeapons()
 		// Check if the player had no pistol
 		if ( handGun == "" ) {
 			handGun = "deserteaglegold_mp";
-		}		
+		}
 	}
 	
 	// Give maximum amount of ammo for the weapon and switch to it
@@ -615,28 +622,27 @@ Prevents the VIP player from picking up invalid weapons
 */
 preventInvalidWeaponsPickup()
 {
-   self endon("death");
-   self endon("disconnect");
-   
-   while(1)
-   {
-      wait (0.05);
-      currentWeapon = self getCurrentWeapon();
-      
-      // If the current weapon is considered "primary" we'll remove it
-      if ( weaponClass( currentWeapon ) != "pistol" && weaponClass( currentWeapon ) != "grenade" && currentWeapon != level.scr_ass_force_vip_handgun ) {
-      	self dropItem( currentWeapon );
-      	
-      	// Check if the player has a pistol and automatically switch to it
-       	weaponsList = self getWeaponsList();
-				for( i = 0; i < weaponsList.size; i++ )	{
-					if ( weaponClass( weaponsList[i] ) == "pistol" || weaponsList[i] == level.scr_ass_force_vip_handgun ) {
-						self switchToWeapon( weaponsList[i] );
-						break;
-					}
+	self endon("death");
+	self endon("disconnect");
+	
+	while(1) {
+		wait (0.05);
+		currentWeapon = self getCurrentWeapon();
+		
+		// If the current weapon is considered "primary" we'll remove it
+		if ( weaponClass( currentWeapon ) != "pistol" && weaponClass( currentWeapon ) != "grenade" && currentWeapon != level.scr_ass_force_vip_handgun ) {
+			self dropItem( currentWeapon );
+			
+			// Check if the player has a pistol and automatically switch to it
+			weaponsList = self getWeaponsList();
+			for( i = 0; i < weaponsList.size; i++ )	{
+				if ( weaponClass( weaponsList[i] ) == "pistol" || weaponsList[i] == level.scr_ass_force_vip_handgun ) {
+					self switchToWeapon( weaponsList[i] );
+					break;
 				}
-      }   
-   }
+			}
+		}
+	}
 }
 
 
@@ -655,7 +661,7 @@ onDisconnetVIP()
 	// If the VIP disconnectes the game ends
 	self waittill( "disconnect" );
 	[[level._setTeamScore]]( game["defenders"], [[level._getTeamScore]]( game["defenders"] ) + 1 );
-	thread maps\mp\gametypes\_globallogic::endGame( game["defenders"], game["strings"]["vip_killed"] );	
+	thread maps\mp\gametypes\_globallogic::endGame( game["defenders"], game["strings"]["vip_killed"] );
 }
 
 
@@ -677,11 +683,11 @@ defendVIP()
 		objective_onentity( objCompass, self );
 		objective_team( objCompass, game["attackers"] );
 	}
-		
+	
 	// Check if we should show the world icon
 	if ( level.scr_hud_show_3dicons == 1 ) {
-		objWorld = newTeamHudElem( game["attackers"] );		
-			
+		objWorld = newTeamHudElem( game["attackers"] );
+		
 		// Set stuff for world icon
 		origin = self.origin + (0,0,75);
 		objWorld.name = "defend_vip";
@@ -693,7 +699,7 @@ defendVIP()
 		objWorld.isShown = true;
 		objWorld setShader( "waypoint_defend", level.objPointSize, level.objPointSize );
 		objWorld setWayPoint( true, "waypoint_defend" );
-		objWorld setTargetEnt( self );	
+		objWorld setTargetEnt( self );
 	}
 }
 
@@ -711,7 +717,7 @@ detachHead()
 		if ( isSubstr( thisModel, "head_mp_" ) ) {
 			self detach( thisModel, "" );
 			break;
-		}		
+		}
 	}
 	
 	return;

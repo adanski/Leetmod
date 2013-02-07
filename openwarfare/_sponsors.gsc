@@ -8,11 +8,11 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_sponsor_enable = getdvarx( "scr_sponsor_enable", "int", 0, 0, 4 );
-
+	
 	// If sponsors are not enabled then there's nothing else to do here
 	if ( level.scr_sponsor_enable == 0 )
 		return;
-
+		
 	// Get the module's dvars
 	level.scr_sponsor_time = getdvarx( "scr_sponsor_time", "int", 15, 5, 60 );
 	level.scr_sponsor_interval = getdvarx( "scr_sponsor_interval", "int", 30, 5, 120 );
@@ -33,18 +33,20 @@ init()
 		// Check if this one should be a negative shift
 		if ( logoInformation[3] == "right" || logoInformation[3] == "bottom" ) {
 			level.scr_sponsor_logos[iLogo]["shift"] = int(logoInformation[4]) * -1;
-		} else if ( logoInformation[3] == "left" || logoInformation[3] == "top" ) {
+		}
+		else if ( logoInformation[3] == "left" || logoInformation[3] == "top" ) {
 			level.scr_sponsor_logos[iLogo]["shift"] = int(logoInformation[4]);
-		} else {
+		}
+		else {
 			level.scr_sponsor_logos[iLogo]["shift"] = 0;
 		}
 	}
-
+	
 	// Precache shaders
 	for ( iLogo = 0; iLogo < level.scr_sponsor_logos.size; iLogo++ ) {
 		precacheShader( level.scr_sponsor_logos[iLogo]["image"] );
 	}
-
+	
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -64,29 +66,28 @@ onPlayerConnected()
 onPlayerSpawned()
 {
 	self endon("disconnect");
-
-	while(1)
-	{
+	
+	while(1) {
 		self waittill("spawned_player");
-		self thread rotateSponsors();	
-
+		self thread rotateSponsors();
+		
 		// Check if we are supposed to show the sponsors only once
 		if ( level.scr_sponsor_enable == 2 || level.scr_sponsor_enable == 3 )
 			break;
-	}	
+	}
 }
 
 
 onJoinedSpectators()
 {
-	self thread rotateSponsors();	
+	self thread rotateSponsors();
 }
 
 
 rotateSponsors()
 {
 	self endon("disconnect");
-
+	
 	// Check if this thread can run at this point or if it's already running
 	if ( level.scr_sponsor_enable == 1 && !level.inReadyUpPeriod )
 		return;
@@ -100,7 +101,7 @@ rotateSponsors()
 	// Create the HUD element to display the sponsors' logos
 	sponsorLogo = newClientHudElem( self );
 	sponsorLogo.x = 0;
-	sponsorLogo.y = 0;	
+	sponsorLogo.y = 0;
 	sponsorLogo.archived = false;
 	sponsorLogo.hideWhenInMenu = true;
 	sponsorLogo.sort = 1000;
@@ -120,13 +121,13 @@ rotateSponsors()
 				sponsorLogo.alignY = "middle";
 				sponsorLogo.horzAlign = "right";
 				sponsorLogo.vertAlign = "middle";
-				break;	
+				break;
 			case "bottom":
 				sponsorLogo.alignX = "center";
 				sponsorLogo.alignY = "top";
 				sponsorLogo.horzAlign = "center";
 				sponsorLogo.vertAlign = "bottom";
-				break;	
+				break;
 			case "left":
 				sponsorLogo.alignX = "right";
 				sponsorLogo.alignY = "middle";
@@ -137,13 +138,14 @@ rotateSponsors()
 				sponsorLogo.alignX = "center";
 				sponsorLogo.alignY = "middle";
 				sponsorLogo.horzAlign = "center";
-				sponsorLogo.vertAlign = "middle";				
-		}		
+				sponsorLogo.vertAlign = "middle";
+		}
 		
 		// Check if we just show this one
 		if ( level.scr_sponsor_logos[iLogo]["origin"] == "center" ) {
 			sponsorLogo.alpha = 0;
-		} else {
+		}
+		else {
 			sponsorLogo.alpha = 0.9;
 		}
 		
@@ -154,11 +156,13 @@ rotateSponsors()
 		if ( level.scr_sponsor_logos[iLogo]["origin"] == "center" ) {
 			sponsorLogo fadeOverTime(1);
 			sponsorLogo.alpha = 0.9;
-		} else {
+		}
+		else {
 			sponsorLogo moveOverTime(1);
 			if ( level.scr_sponsor_logos[iLogo]["origin"] == "top" || level.scr_sponsor_logos[iLogo]["origin"] == "bottom" ) {
 				sponsorLogo.y = level.scr_sponsor_logos[iLogo]["shift"];
-			} else {
+			}
+			else {
 				sponsorLogo.x = level.scr_sponsor_logos[iLogo]["shift"];
 			}
 		}
@@ -171,17 +175,19 @@ rotateSponsors()
 		// Hide the logo back
 		if ( level.scr_sponsor_logos[iLogo]["origin"] == "center" ) {
 			sponsorLogo fadeOverTime(1);
-			sponsorLogo.alpha = 0;			
-		} else {
+			sponsorLogo.alpha = 0;
+		}
+		else {
 			sponsorLogo moveOverTime(1);
 			if ( level.scr_sponsor_logos[iLogo]["origin"] == "top" || level.scr_sponsor_logos[iLogo]["origin"] == "bottom" ) {
 				sponsorLogo.y = 0;
-			} else {
+			}
+			else {
 				sponsorLogo.x = 0;
 			}
 		}
-
-		// Move to the next logo	
+		
+		// Move to the next logo
 		iLogo++;
 		if ( iLogo == level.scr_sponsor_logos.size ) {
 			if ( level.scr_sponsor_enable == 2 || level.scr_sponsor_enable == 4 ) {
@@ -200,5 +206,5 @@ rotateSponsors()
 	wait (1);
 	sponsorLogo destroy();
 	if ( isDefined( self ) )
-		self.sponsorsActive = false;	
+		self.sponsorsActive = false;
 }

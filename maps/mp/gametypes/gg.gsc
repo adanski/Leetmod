@@ -37,7 +37,7 @@ main()
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
-
+	
 	// Additional variables that we'll be using
 	level.scr_gg_weapon_order = toLower( getdvarx( "scr_gg_weapon_order", "string", "beretta_mp;colt45_mp;usp_mp;deserteagle_mp;winchester1200_mp;m1014_mp;skorpion_mp;uzi_mp;ak74u_mp;mp5_mp;p90_mp;m14_mp;g3_mp;m16_mp;ak47_mp;g36c_mp;m4_mp;rpd_mp;m60e4_mp;frag_grenade_mp:1;knife_mp:1" ) );
 	level.scr_gg_handicap_on = getdvarx( "scr_gg_handicap_on", "int", 2, 0, 2 );
@@ -56,33 +56,33 @@ main()
 	level.scr_gg_refill_on_kill = getdvarx( "scr_gg_refill_on_kill", "int", 1, 0, 1 );
 	level.scr_gg_knife_pro = getdvarx( "scr_gg_knife_pro", "int", 2, 0, 3 );
 	
-	level.scr_gg_auto_levelup = getdvarx( "scr_gg_auto_levelup", "int", 2, 0, 2 );	
-	level.scr_gg_auto_levelup_time = getdvarx( "scr_gg_auto_levelup_time", "float", 75, 30, 300 );	
+	level.scr_gg_auto_levelup = getdvarx( "scr_gg_auto_levelup", "int", 2, 0, 2 );
+	level.scr_gg_auto_levelup_time = getdvarx( "scr_gg_auto_levelup_time", "float", 75, 30, 300 );
 	
 	level.scr_gg_specialty_slot1 = getdvarx( "scr_gg_specialty_slot1", "string", "specialty_null" );
 	if ( !issubstr( "specialty_null;specialty_bulletdamage;specialty_armorvest;specialty_fastreload;specialty_rof;specialty_gpsjammer;specialty_explosivedamage", level.scr_gg_specialty_slot1 ) ) {
 		level.scr_gg_specialty_slot1 = "specialty_null";
 	}
-
+	
 	level.scr_gg_specialty_slot2 = getdvarx( "scr_gg_specialty_slot2", "string", "specialty_null" );
 	if ( !issubstr( "specialty_null;specialty_longersprint;specialty_bulletaccuracy;specialty_bulletpenetration;specialty_holdbreath;specialty_quieter", level.scr_gg_specialty_slot2 ) ) {
 		level.scr_gg_specialty_slot2 = "specialty_null";
 	}
-
+	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 0 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 1, 1 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 0, 0, 0 );
 	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 16, 0, 1440 );
-
+	
 	level.teamBased = false;
-
+	
 	level.onStartGameType = ::onStartGameType;
 	level.onSpawnPlayer = ::onSpawnPlayer;
 	level.onLoadoutGiven = ::onLoadoutGiven;
 	level.onPrecacheGameType = ::onPrecacheGameType;
 	level.onPlayerKilled = ::onPlayerKilled;
 	level.onTimeLimit = ::onTimeLimit;
-
+	
 	game["dialog"]["gametype"] = "gungame";
 	
 	level thread onPlayerConnected();
@@ -91,8 +91,7 @@ main()
 
 onPlayerConnected()
 {
-	while(1)
-	{
+	while(1) {
 		level waittill("connected", player);
 		player thread handiCap();
 	}
@@ -103,7 +102,7 @@ onPrecacheGameType()
 {
 	// Load all the allowed weapons with their respective shaders
 	loadAllowedWeapons();
-
+	
 	// Load the weapons order and their custom kills if it has been defined
 	game["gunGameLevels"] = [];
 	weaponsOrder = strtok( level.scr_gg_weapon_order, ";" );
@@ -119,39 +118,38 @@ onPrecacheGameType()
 			game["gunGameLevels"][ newElement ]["weapon"] = customKills[0];
 			if ( isDefined( customKills[1] ) ) {
 				game["gunGameLevels"][ newElement ]["kills"] = int(customKills[1]);
-			} else {
+			}
+			else {
 				game["gunGameLevels"][ newElement ]["kills"] = level.scr_gg_kills_per_lvl;
 			}
 		}
-				
+		
 		// Make sure we don't load more than 36 elements
 		if ( newElement == 35 ) {
 			break;
 		}
-	}	
+	}
 }
 
 
 onStartGameType()
 {
 	setClientNameMode("auto_change");
-
+	
 	maps\mp\gametypes\_globallogic::setObjectiveText( "allies", &"OW_GUNGAME_OBJECTIVES" );
 	maps\mp\gametypes\_globallogic::setObjectiveText( "axis", &"OW_GUNGAME_OBJECTIVES" );
-
-	if ( level.splitscreen )
-	{
+	
+	if ( level.splitscreen ) {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_GUNGAME_OBJECTIVES" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_GUNGAME_OBJECTIVES" );
 	}
-	else
-	{
+	else {
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "allies", &"OW_GUNGAME_SCORE" );
 		maps\mp\gametypes\_globallogic::setObjectiveScoreText( "axis", &"OW_GUNGAME_SCORE" );
 	}
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( "allies", &"OW_GUNGAME_HINT" );
 	maps\mp\gametypes\_globallogic::setObjectiveHintText( "axis", &"OW_GUNGAME_HINT" );
-
+	
 	level.spawnMins = ( 0, 0, 0 );
 	level.spawnMaxs = ( 0, 0, 0 );
 	maps\mp\gametypes\_spawnlogic::addSpawnPoints( "allies", "mp_dm_spawn" );
@@ -161,7 +159,7 @@ onStartGameType()
 	
 	allowed[0] = "dm";
 	maps\mp\gametypes\_gameobjects::main(allowed);
-
+	
 	level.displayRoundEndText = true;
 	level.QuickMessageToAll = true;
 }
@@ -171,7 +169,7 @@ onSpawnPlayer()
 {
 	spawnPoints = maps\mp\gametypes\_spawnlogic::getTeamSpawnPoints( self.pers["team"] );
 	spawnPoint = maps\mp\gametypes\_spawnlogic::getSpawnpoint_DM( spawnPoints );
-
+	
 	self spawn( spawnPoint.origin, spawnPoint.angles );
 	
 	// Show the player the level weapon, the levels left and the kills left
@@ -190,14 +188,14 @@ onPlayerDeath()
 {
 	self waittill("death");
 	// Remove all the weapons from this player so nothing gets dropped
-	self takeAllWeapons();	
+	self takeAllWeapons();
 }
 
 
 onLoadoutGiven()
 {
 	// Give player GunGame loadouts
-	self giveGunGameLevelLoadout();	
+	self giveGunGameLevelLoadout();
 }
 
 
@@ -206,18 +204,19 @@ onTimeLimit()
 	// Search for the player with the highest level/kills
 	winningPlayer = undefined;
 	for ( i = 0; i < level.players.size; i++ ) {
-		player = level.players[i];		
+		player = level.players[i];
 		if ( isDefined( player ) && isDefined( player.gunGame ) ) {
 			if ( !isDefined( winningPlayer ) || ( winningPlayer.gunGame["level"] < player.gunGame["level"] || ( winningPlayer.gunGame["level"] == player.gunGame["level"] && winningPlayer.gunGame["kills"] < player.gunGame["kills"] ) ) ) {
 				winningPlayer = player;
 			}
-		}				
-	}	
+		}
+	}
 	
 	// Check if we have a winner
 	if ( isDefined( winningPlayer ) ) {
 		logString( "time limit, win: " + winningPlayer.name );
-	} else {
+	}
+	else {
 		logString( "time limit, tie" );
 	}
 	maps\mp\gametypes\_globallogic::endGame( winningPlayer, game["strings"]["time_limit_reached"] );
@@ -231,49 +230,51 @@ handiCap()
 	// Handicap not enabled
 	if ( level.scr_gg_handicap_on == 0 ) {
 		self.gunGame["level"] = 0;
-	
-	// Average handicap
-	} else if ( level.scr_gg_handicap_on == 1 ) {
+		
+		// Average handicap
+	}
+	else if ( level.scr_gg_handicap_on == 1 ) {
 		gunGameLevel = 0;
 		gunGameQty = 0;
 		for ( i = 0; i < level.players.size; i++ ) {
-			player = level.players[i];		
+			player = level.players[i];
 			if ( isDefined( player ) && player != self && isDefined( player.gunGame ) ) {
 				gunGameLevel += player.gunGame["level"];
 				gunGameQty++;
-			}				
+			}
 		}
 		// Make sure we had at least one player
 		if ( gunGameQty > 0 ) {
 			gunGameLevel = int( gunGameLevel / gunGameQty );
 		}
-		self.gunGame["level"] = gunGameLevel;		
-	
-	// Lowest handicap
-	} else if ( level.scr_gg_handicap_on == 2 ) {
+		self.gunGame["level"] = gunGameLevel;
+		
+		// Lowest handicap
+	}
+	else if ( level.scr_gg_handicap_on == 2 ) {
 		lowestGunGameLevel = undefined;
 		for ( i = 0; i < level.players.size; i++ ) {
-			player = level.players[i];		
+			player = level.players[i];
 			if ( isDefined( player ) && player != self && isDefined( player.gunGame ) ) {
 				if ( !isDefined( lowestGunGameLevel ) || player.gunGame["level"] < lowestGunGameLevel ) {
 					lowestGunGameLevel = player.gunGame["level"];
 				}
-			}				
+			}
 		}
 		// Make sure we had at least one player
 		if ( !isDefined( lowestGunGameLevel ) )
 			lowestGunGameLevel = 0;
 			
-		self.gunGame["level"] = lowestGunGameLevel;				
+		self.gunGame["level"] = lowestGunGameLevel;
 	}
 	
 	// Save other values like the kills needed for this level and kills/deaths
 	self setRank( self.gunGame["level"] );
 	self.gunGame["lvl_kills"] = game["gunGameLevels"][ self.gunGame["level"] ]["kills"];
 	self.gunGame["kills"] = 0;
-	self.gunGame["deaths"] = 0;	
-
-		
+	self.gunGame["deaths"] = 0;
+	
+	
 	// Check if auto levelup is enabled
 	if ( level.scr_gg_auto_levelup > 0 ) {
 		self thread autoLevelUp();
@@ -285,10 +286,9 @@ autoLevelUp()
 {
 	self endon("disconnect");
 	
-	while(1)
-	{
+	while(1) {
 		wait (0.05);
-
+		
 		oldLevel = self.gunGame["level"];
 		nextLevelUp = openwarfare\_timer::getTimePassed() + level.scr_gg_auto_levelup_time * 1000;
 		
@@ -300,24 +300,25 @@ autoLevelUp()
 			if ( level.scr_gg_auto_levelup == 1 ) {
 				// Increase player's level by one
 				self thread setGunGameLevel( self.gunGame["level"] + 1 );
-			
-			} else {
+				
+			}
+			else {
 				// Search the lowest player with a higher level than the this player
 				lowestHigherLevel = undefined;
 				for ( i = 0; i < level.players.size; i++ ) {
-					player = level.players[i];		
+					player = level.players[i];
 					if ( isDefined( player ) && player != self && isDefined( player.gunGame ) ) {
 						if ( player.gunGame["level"] > self.gunGame["level"] && ( !isDefined( lowestHigherLevel ) || player.gunGame["level"] < lowestHigherLevel ) ) {
 							lowestHigherLevel = player.gunGame["level"];
 						}
-					}				
+					}
 				}
 				if ( isDefined( lowestHigherLevel ) ) {
 					self thread setGunGameLevel( lowestHigherLevel );
-				}				
+				}
 			}
 		}
-	}	
+	}
 }
 
 
@@ -327,7 +328,7 @@ giveGunGameLevelLoadout()
 	self thread maps\mp\gametypes\_gameobjects::_disableWeapon();
 	self takeAllWeapons();
 	self clearPerks();
-
+	
 	// Make sure the player gets any hardpoint that he/she already had
 	if ( isDefined( self.pers["hardPointItem"] ) ) {
 		self maps\mp\gametypes\_hardpoints::giveHardpointItem( self.pers["hardPointItem"] );
@@ -342,11 +343,11 @@ giveGunGameLevelLoadout()
 	self.specialty[1] = level.scr_gg_specialty_slot1;
 	if ( self.specialty[1] != "specialty_null" )
 		self setPerk( self.specialty[1] );
-	
+		
 	self.specialty[2] = level.scr_gg_specialty_slot2;
 	if ( self.specialty[2] != "specialty_null" )
 		self setPerk( self.specialty[2] );
-	
+		
 	self thread openwarfare\_speedcontrol::setBaseSpeed( getdvarx( "class_specops_movespeed", "float", 1.0, 0.5, 1.5 ) );
 	
 	// Get the weapon that corresponds to this level
@@ -383,31 +384,34 @@ giveGunGameLevelLoadout()
 			if ( nadeType != "none" ) {
 				self giveWeapon( nadeType );
 				self setWeaponAmmoClip( nadeType, 1 );
-			}					
+			}
 		}
-				
+		
 		// Give the grenade/knife corresponding weapon to the player
 		if ( levelWeapon != "c4_mp" && weaponClass( levelWeapon ) != "rocketlauncher" ) {
 			self giveWeapon( level.scr_gg_nade_knife_weapon[0] );
 			if ( !isDefined( level.scr_gg_nade_knife_weapon[1] ) ) {
 				self giveMaxAmmo( level.scr_gg_nade_knife_weapon[0] );
-			} else {
+			}
+			else {
 				self setWeaponAmmoClip( level.scr_gg_nade_knife_weapon[0], int( level.scr_gg_nade_knife_weapon[1] ) );
 				self setWeaponAmmoStock( level.scr_gg_nade_knife_weapon[0], 0 );
 			}
 			self setSpawnWeapon( level.scr_gg_nade_knife_weapon[0] );
 			self switchToWeapon( level.scr_gg_nade_knife_weapon[0] );
-		} else {
-			self setSpawnWeapon( levelWeapon );
-			self switchToWeapon( levelWeapon );			
 		}
-
-	// If it's not the knife or some kind of grenade just give the weapon and max ammo
-	} else {
+		else {
+			self setSpawnWeapon( levelWeapon );
+			self switchToWeapon( levelWeapon );
+		}
+		
+		// If it's not the knife or some kind of grenade just give the weapon and max ammo
+	}
+	else {
 		self giveWeapon( levelWeapon );
 		self giveMaxAmmo( levelWeapon );
 		self setSpawnWeapon( levelWeapon );
-		self switchToWeapon( levelWeapon );	
+		self switchToWeapon( levelWeapon );
 	}
 	
 	// Enable the new weapon
@@ -424,22 +428,25 @@ showGunGameInfo()
 		self.gunGame["level"] = 0;
 		self.gunGame["lvl_kills"] = game["gunGameLevels"][0]["kills"];
 		self.gunGame["kills"] = 0;
-		self.gunGame["deaths"] = 0;			
+		self.gunGame["deaths"] = 0;
 	}
 	
 	// Create the weapon icon
 	if ( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] == "knife_mp" ) {
 		weaponIcon = self createIcon( game["gunGameWeapons"][ game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ], 100, 100 );
 		
-	} else if ( weaponClass( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ) == "pistol" ) {
+	}
+	else if ( weaponClass( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ) == "pistol" ) {
 		weaponIcon = self createIcon( game["gunGameWeapons"][ game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ], 75, 75 );
 		
-	} else if ( weaponClass( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ) == "grenade" ) {
+	}
+	else if ( weaponClass( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ) == "grenade" ) {
 		weaponIcon = self createIcon( game["gunGameWeapons"][ game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ], 100, 100 );
 		
-	} else {
+	}
+	else {
 		weaponIcon = self createIcon( game["gunGameWeapons"][ game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ], 100, 50 );
-	}	
+	}
 	
 	weaponIcon setPoint( "CENTER", "CENTER", 220, 140 );
 	weaponIcon.archived = true;
@@ -457,8 +464,8 @@ showGunGameInfo()
 	levelsLeft.alpha = 0.75;
 	levelsLeft.color = ( 1, 1, 0 );
 	levelsLeft setValue( game["gunGameLevels"].size - 1 - self.gunGame["level"] );
-
-	// Create the deaths left 
+	
+	// Create the deaths left
 	if ( level.scr_gg_death_penalty > 0 ) {
 		deathsLeft = self createFontString( "objective", 1.4 );
 		deathsLeft.archived = true;
@@ -469,11 +476,12 @@ showGunGameInfo()
 		deathsLeft.alpha = 0.75;
 		deathsLeft.color = ( 1, 0, 0 );
 		deathsLeft setValue( level.scr_gg_death_penalty - self.gunGame["deaths"] );
-	} else {
+	}
+	else {
 		deathsLeft = undefined;
 	}
-		
-	// Create the kills left 
+	
+	// Create the kills left
 	killsLeft = self createFontString( "objective", 1.4 );
 	killsLeft.archived = true;
 	killsLeft.hideWhenInMenu = true;
@@ -483,7 +491,7 @@ showGunGameInfo()
 	killsLeft.alpha = 0.75;
 	killsLeft.color = ( 0, 0.5, 0 );
 	killsLeft setValue( self.gunGame["lvl_kills"] - self.gunGame["kills"] );
-
+	
 	oldLevel = self.gunGame["level"];
 	oldKills = self.gunGame["kills"];
 	oldDeaths = self.gunGame["deaths"];
@@ -497,13 +505,16 @@ showGunGameInfo()
 			if ( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] == "knife_mp" ) {
 				weaponIcon setShader( game["gunGameWeapons"][ game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ], 100, 100 );
 				
-			} else if ( weaponClass( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ) == "pistol" ) {
+			}
+			else if ( weaponClass( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ) == "pistol" ) {
 				weaponIcon setShader( game["gunGameWeapons"][ game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ], 75, 75 );
 				
-			} else if ( weaponClass( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ) == "grenade" ) {
+			}
+			else if ( weaponClass( game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ) == "grenade" ) {
 				weaponIcon setShader( game["gunGameWeapons"][ game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ], 100, 100 );
 				
-			} else {
+			}
+			else {
 				weaponIcon setShader( game["gunGameWeapons"][ game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] ], 100, 50 );
 			}
 			levelsLeft setValue( game["gunGameLevels"].size - 1 - self.gunGame["level"] );
@@ -520,7 +531,7 @@ showGunGameInfo()
 		if ( level.scr_gg_death_penalty > 0 && self.gunGame["deaths"] != oldDeaths ) {
 			deathsLeft setValue( level.scr_gg_death_penalty - self.gunGame["deaths"] );
 			oldDeaths = self.gunGame["deaths"];
-		}		
+		}
 	}
 	
 	// Destroy the HUD elements
@@ -537,40 +548,38 @@ showGunGameInfo()
 watchGrenadesUsage()
 {
 	self endon ( "death" );
-	self endon ( "disconnect" );	
-
-	while(1)
-	{
+	self endon ( "disconnect" );
+	
+	while(1) {
 		self waittill ( "grenade_fire", grenade, weapName );
 		// Check if we ran out of grenades and give a player an extra one if this is the level grenade
 		if ( self getAmmoCount( weapName ) == 0 && game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] == weapName ) {
 			self thread giveOneAmmo( weapName );
 		}
-	}	
+	}
 }
 
 
 watchRocketLauncherUsage()
 {
 	self endon ( "death" );
-	self endon ( "disconnect" );	
-
-	while(1)
-	{
+	self endon ( "disconnect" );
+	
+	while(1) {
 		self waittill ( "end_firing" );
 		// Check if we are using the rocket launcher and if we have no more ammo
 		weapName = self getCurrentWeapon();
 		if ( weaponClass( weapName ) == "rocketlauncher" && self getAmmoCount( weapName ) == 0 && game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] == weapName ) {
 			self thread giveOneAmmo( weapName );
 		}
-	}	
+	}
 }
 
 
 giveOneAmmo( weapName )
 {
 	self endon ( "death" );
-	self endon ( "disconnect" );	
+	self endon ( "disconnect" );
 	
 	// Calculate when the grenade should be given
 	timeToGive = openwarfare\_timer::getTimePassed() + level.scr_gg_explosives_refresh * 1000;
@@ -581,7 +590,7 @@ giveOneAmmo( weapName )
 	if ( self getAmmoCount( weapName ) == 0 && game["gunGameLevels"][ self.gunGame["level"] ]["weapon"] == weapName ) {
 		self setWeaponAmmoClip( weapName, 1 );
 		self playLocalSound( "weap_ammo_pickup" );
-	}	
+	}
 }
 
 
@@ -589,29 +598,32 @@ onPlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHi
 {
 	if ( sMeansOfDeath == "MOD_MELEE" )
 		sWeapon = "knife_mp";
-	
+		
 	// Handle attacker stuff first
 	if ( isDefined( attacker ) && isPlayer( attacker ) && self != attacker ) {
 		// Check if the kill was made with the knife and if the attacker should steal the level from the victim
 		if ( sWeapon == "knife_mp" && level.scr_gg_knife_pro == 1 && self.gunGame["level"] > attacker.gunGame["level"] && game["gunGameLevels"][ attacker.gunGame["level"] ]["weapon"] != "knife_mp" ) {
 			attacker thread setGunGameLevel( self.gunGame["level"] );
 			
-		} else if ( sWeapon == "knife_mp" && level.scr_gg_knife_pro == 2 && self.gunGame["level"] >= attacker.gunGame["level"] && game["gunGameLevels"][ attacker.gunGame["level"] ]["weapon"] != "knife_mp" ) {
+		}
+		else if ( sWeapon == "knife_mp" && level.scr_gg_knife_pro == 2 && self.gunGame["level"] >= attacker.gunGame["level"] && game["gunGameLevels"][ attacker.gunGame["level"] ]["weapon"] != "knife_mp" ) {
 			// Make sure the player is not in the last level already
 			if ( attacker.gunGame["level"] < game["gunGameLevels"].size - 1 ) {
-					// Increase player's level by one
-					attacker thread setGunGameLevel( attacker.gunGame["level"] + 1 );
-			}	
-
-		} else if ( sWeapon == "knife_mp" && level.scr_gg_knife_pro == 3 && game["gunGameLevels"][ attacker.gunGame["level"] ]["weapon"] != "knife_mp" ) {
-			// Make sure the player is not in the last level already
-			if ( attacker.gunGame["level"] < game["gunGameLevels"].size - 1 ) {
-					// Increase player's level by one
-					attacker thread setGunGameLevel( attacker.gunGame["level"] + 1 );
-			}			
+				// Increase player's level by one
+				attacker thread setGunGameLevel( attacker.gunGame["level"] + 1 );
+			}
 			
-		// Just add the kill to the attacker
-		} else {
+		}
+		else if ( sWeapon == "knife_mp" && level.scr_gg_knife_pro == 3 && game["gunGameLevels"][ attacker.gunGame["level"] ]["weapon"] != "knife_mp" ) {
+			// Make sure the player is not in the last level already
+			if ( attacker.gunGame["level"] < game["gunGameLevels"].size - 1 ) {
+				// Increase player's level by one
+				attacker thread setGunGameLevel( attacker.gunGame["level"] + 1 );
+			}
+			
+			// Just add the kill to the attacker
+		}
+		else {
 			// Check if the player has changed levels with this kill
 			if ( !attacker addGunGameKill( sWeapon ) ) {
 				// Check what kind of weapon is the player using
@@ -621,18 +633,19 @@ onPlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHi
 						if ( level.scr_gg_extra_explosives == 1 ) {
 							attacker setWeaponAmmoStock( game["gunGameLevels"][ attacker.gunGame["level"] ]["weapon"], attacker getAmmoCount( game["gunGameLevels"][ attacker.gunGame["level"] ]["weapon"] ) + 1 );
 						}
-												
-					} else {
+						
+					}
+					else {
 						// Check if we should refill stock ammo
 						if ( level.scr_gg_refill_on_kill == 1 ) {
 							attacker giveMaxAmmo( game["gunGameLevels"][ attacker.gunGame["level"] ]["weapon"] );
-						}						
-					}					
-				}				
+						}
+					}
+				}
 			}
 		}
 	}
-
+	
 	// Check if we should reduce a level for the victim in case the knife was used
 	if ( level.scr_gg_knifed_penalty == 1 && sWeapon == "knife_mp" ) {
 		self thread setGunGameLevel( self.gunGame["level"] - 1 );
@@ -661,9 +674,10 @@ addGunGameKill( sWeapon )
 		self thread setGunGameLevel( self.gunGame["level"] + 1 );
 		return true;
 		
-	} else {
+	}
+	else {
 		return false;
-	}	
+	}
 }
 
 
@@ -675,38 +689,41 @@ addGunGameDeath()
 	// Check if the player has to go down a level
 	if ( level.scr_gg_death_penalty > 0 && self.gunGame["deaths"] == level.scr_gg_death_penalty ) {
 		self thread setGunGameLevel( self.gunGame["level"] - 1 );
-	}	
+	}
 }
 
 
 setGunGameLevel( newLevel )
 {
 	// Make sure the player's level doesn't go below zero
-	if ( newLevel < 0 ) {	
+	if ( newLevel < 0 ) {
 		self.gunGame["deaths"] = 0;
 		
-	// Do we have a winner?
-	} else if ( newLevel == game["gunGameLevels"].size ) {
+		// Do we have a winner?
+	}
+	else if ( newLevel == game["gunGameLevels"].size ) {
 		self setRank( newLevel );
 		maps\mp\gametypes\_globallogic::endGame( self, &"OW_GUNGAME_WINNER" );
 		
-	// Just change the player to the new level
-	} else {
+		// Just change the player to the new level
+	}
+	else {
 		// Check which kind of sound we should play
 		if ( self.gunGame["level"] < newLevel ) {
 			self playLocalSound( "powerup" );
-		} else {
+		}
+		else {
 			self playLocalSound( "powerdown" );
 		}
-
-		// Assign the new level and reset the auxiliary variables		
+		
+		// Assign the new level and reset the auxiliary variables
 		self setRank( newLevel );
 		self.gunGame["level"] = newLevel;
 		self.gunGame["lvl_kills"] = game["gunGameLevels"][ self.gunGame["level"] ]["kills"];
 		self.gunGame["kills"] = 0;
 		self.gunGame["deaths"] = 0;
 		self thread giveGunGameLevelLoadout();
-	}	
+	}
 }
 
 
@@ -714,98 +731,98 @@ loadAllowedWeapons()
 {
 	// Load all the weapon shaders
 	game["gunGameWeapons"] = [];
-
+	
 	// Handguns
 	game["gunGameWeapons"][ "beretta_mp" ] = "weapon_m9beretta";
-	precacheShader( "weapon_m9beretta" );	
+	precacheShader( "weapon_m9beretta" );
 	
 	game["gunGameWeapons"][ "colt45_mp" ] = "weapon_colt_45";
-	precacheShader( "weapon_colt_45" );	
+	precacheShader( "weapon_colt_45" );
 	
 	game["gunGameWeapons"][ "usp_mp" ] = "weapon_usp_45";
-	precacheShader( "weapon_usp_45" );	
+	precacheShader( "weapon_usp_45" );
 	
 	game["gunGameWeapons"][ "deserteagle_mp" ] = "weapon_desert_eagle";
-	precacheShader( "weapon_desert_eagle" );	
+	precacheShader( "weapon_desert_eagle" );
 	
 	game["gunGameWeapons"][ "deserteaglegold_mp" ] = "weapon_desert_eagle_gold";
-	precacheShader( "weapon_desert_eagle_gold" );					
-
+	precacheShader( "weapon_desert_eagle_gold" );
+	
 	// Assault class weapons
 	game["gunGameWeapons"][ "m16_mp" ] = "weapon_m16a4";
 	precacheShader( "weapon_m16a4" );
-
+	
 	game["gunGameWeapons"][ "ak47_mp" ] = "weapon_ak47";
 	precacheShader( "weapon_ak47" );
-
+	
 	game["gunGameWeapons"][ "m4_mp" ] = "weapon_m4carbine";
 	precacheShader( "weapon_m4carbine" );
-
+	
 	game["gunGameWeapons"][ "g3_mp" ] = "weapon_g3";
 	precacheShader( "weapon_g3" );
-
+	
 	game["gunGameWeapons"][ "g36c_mp" ] = "weapon_g36c";
 	precacheShader( "weapon_g36c" );
-
+	
 	game["gunGameWeapons"][ "m14_mp" ] = "weapon_m14";
 	precacheShader( "weapon_m14" );
-
+	
 	game["gunGameWeapons"][ "mp44_mp" ] = "weapon_mp44";
 	precacheShader( "weapon_mp44" );
-
+	
 	// Special Ops class weapons
 	game["gunGameWeapons"][ "mp5_mp" ] = "weapon_mp5";
 	precacheShader( "weapon_mp5" );
-
+	
 	game["gunGameWeapons"][ "skorpion_mp" ] = "weapon_skorpion";
 	precacheShader( "weapon_skorpion" );
-
+	
 	game["gunGameWeapons"][ "uzi_mp" ] = "weapon_mini_uzi";
 	precacheShader( "weapon_mini_uzi" );
-
+	
 	game["gunGameWeapons"][ "ak74u_mp" ] = "weapon_aks74u";
 	precacheShader( "weapon_aks74u" );
-
+	
 	game["gunGameWeapons"][ "p90_mp" ] = "weapon_p90";
 	precacheShader( "weapon_p90" );
-
-
-	// Demolition class weapons 
+	
+	
+	// Demolition class weapons
 	game["gunGameWeapons"][ "m1014_mp" ] = "weapon_benelli_m4";
 	precacheShader( "weapon_benelli_m4" );
-
+	
 	game["gunGameWeapons"][ "winchester1200_mp" ] = "weapon_winchester1200";
 	precacheShader( "weapon_winchester1200" );
 	
-
+	
 	// Heavy gunner class weapons
 	game["gunGameWeapons"][ "saw_mp" ] = "weapon_m249saw";
 	precacheShader( "weapon_m249saw" );
-
+	
 	game["gunGameWeapons"][ "rpd_mp" ] = "weapon_rpd";
 	precacheShader( "weapon_rpd" );
-
+	
 	game["gunGameWeapons"][ "m60e4_mp" ] = "weapon_m60e4";
 	precacheShader( "weapon_m60e4" );
-
-
+	
+	
 	// Sniper class weapons
 	game["gunGameWeapons"][ "dragunov_mp" ] = "weapon_dragunovsvd";
 	precacheShader( "weapon_dragunovsvd" );
-
+	
 	game["gunGameWeapons"][ "m40a3_mp" ] = "weapon_m40a3";
 	precacheShader( "weapon_m40a3" );
-
+	
 	game["gunGameWeapons"][ "barrett_mp" ] = "weapon_barrett50cal";
 	precacheShader( "weapon_barrett50cal" );
-
+	
 	game["gunGameWeapons"][ "remington700_mp" ] = "weapon_remington700";
 	precacheShader( "weapon_remington700" );
-
+	
 	game["gunGameWeapons"][ "m21_mp" ] = "weapon_m14_scoped";
 	precacheShader( "weapon_m14_scoped" );
-
-
+	
+	
 	// Other
 	game["gunGameWeapons"][ "frag_grenade_mp" ] = "weapon_fraggrenade";
 	precacheShader( "weapon_fraggrenade" );
@@ -814,10 +831,10 @@ loadAllowedWeapons()
 	precacheShader( "weapon_c4" );
 	
 	game["gunGameWeapons"][ "rpg_mp" ] = "weapon_rpg7";
-	precacheShader( "weapon_rpg7" );	
+	precacheShader( "weapon_rpg7" );
 	
 	game["gunGameWeapons"][ "knife_mp" ] = "weapon_knife";
-	precacheShader( "weapon_knife" );	
+	precacheShader( "weapon_knife" );
 	
 	return;
 }

@@ -7,14 +7,14 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_dogtags_enable = getdvarx( "scr_dogtags_enable", "int", 0, 0, 1 );
-
+	
 	// If dog tags are not enabled then there's nothing else to do here
 	if ( level.scr_dogtags_enable == 0 )
 		return;
-
+		
 	// Precache the dogtag shader
 	precacheShader( "dogtag" );
-
+	
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
 }
 
@@ -29,9 +29,9 @@ onPlayerConnected()
 
 onPlayerSpawned()
 {
-	// Initialize some variables and create the HUD elements		
+	// Initialize some variables and create the HUD elements
 	self.checkingBody = false;
-
+	
 	self.dogTags["name"] = createFontString( "default", 1.4 );
 	self.dogTags["name"].alpha = 0;
 	self.dogTags["name"] setPoint( "LEFT", "LEFT", 20, 0 );
@@ -42,9 +42,9 @@ onPlayerSpawned()
 	self.dogTags["image"].alpha = 0;
 	self.dogTags["image"] setPoint( "LEFT", "LEFT", 2, 0 );
 	self.dogTags["image"].hideWhenInMenu = true;
-	self.dogTags["image"].archived = true;		
+	self.dogTags["image"].archived = true;
 	
-	// Remove this player's body 
+	// Remove this player's body
 	if ( isDefined( self.body ) ) {
 		self.body delete();
 		self.body = undefined;
@@ -70,9 +70,8 @@ onPlayerKilled()
 onPlayerBody()
 {
 	self endon("disconnect");
-
-	while(1)
-	{
+	
+	while(1) {
 		self waittill("player_body");
 		self thread dogTagMonitor();
 	}
@@ -82,7 +81,7 @@ onPlayerBody()
 dogTagMonitor()
 {
 	self endon("spawned_player");
-	self endon("disconnect");	
+	self endon("disconnect");
 	level endon( "game_ended" );
 	
 	// Wait until the body is not moving anymore
@@ -92,15 +91,14 @@ dogTagMonitor()
 	self.bodyTrigger = spawn( "trigger_radius", self.body.origin, 0, 32 , 32 );
 	self thread removeTriggerOnDisconnect();
 	
-	while(1)
-	{
+	while(1) {
 		wait (0.05);
 		self.bodyTrigger waittill("trigger", player);
 		if ( !player.checkingBody ) {
 			player.checkingBody = true;
-			player thread monitorCheckDogTag( self );		
+			player thread monitorCheckDogTag( self );
 		}
-	}	
+	}
 }
 
 
@@ -119,7 +117,7 @@ removeTriggerOnDisconnect()
 		body delete();
 		
 	if ( isDefined( bodyTrigger ) )
-		bodyTrigger delete();	
+		bodyTrigger delete();
 }
 
 
@@ -137,8 +135,10 @@ monitorCheckDogTag( deadPlayer )
 		if ( isDefined( self ) && ( self getStance() == "crouch" || self getStance() == "prone" ) ) {
 			// Update the information with the dead player's name and show the HUD elements
 			self.dogTags["name"] setPlayerNameString( deadPlayer );
-			self.dogTags["name"] fadeOverTime(1); self.dogTags["image"] fadeOverTime(1);
-			self.dogTags["name"].alpha = 1;	self.dogTags["image"].alpha = 1;
+			self.dogTags["name"] fadeOverTime(1);
+			self.dogTags["image"] fadeOverTime(1);
+			self.dogTags["name"].alpha = 1;
+			self.dogTags["image"].alpha = 1;
 			
 			// Wait for the body to be removed, player leaving the trigger zone or player is not crouched or proned
 			while ( isDefined( self ) && isDefined( deadPlayer.body ) && self isTouching( deadPlayer.bodyTrigger ) && ( self getStance() == "crouch" || self getStance() == "prone" ) )
@@ -146,10 +146,11 @@ monitorCheckDogTag( deadPlayer )
 				
 			// Hide the HUD elements
 			if ( isDefined( self ) )
-				self.dogTags["name"].alpha = 0;	self.dogTags["image"].alpha = 0;			
-		}		
+				self.dogTags["name"].alpha = 0;
+			self.dogTags["image"].alpha = 0;
+		}
 	}
-
-	// Body is not there or the player is not touching the trigger anymore	
-	self.checkingBody = false;	
+	
+	// Body is not there or the player is not touching the trigger anymore
+	self.checkingBody = false;
 }

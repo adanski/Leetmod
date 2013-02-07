@@ -12,17 +12,17 @@ init()
 	
 	level.scr_server_load_low = getdvard( "scr_server_load_low", "int", 5, 0, 64 );
 	level.scr_server_load_medium = getdvard( "scr_server_load_medium", "int", 11, level.scr_server_load_low, 64 );
-
+	
 	// If both variables are set to "0" we don't do anything else
 	if ( level.scr_server_load_low == 0 && level.scr_server_load_medium == 0 )
 		return;
-
+		
 	// Check if this is the server startup
 	if ( getDvar( "_sl_current" ) == "" ) {
 		level.serverLoad = level.scr_server_load_on_startup;
 		setDvar( "_sl_current", level.scr_server_load_on_startup );
 	}
-
+	
 	level thread onIntermission();
 }
 
@@ -31,13 +31,12 @@ onIntermission()
 {
 	// Wait until the map ends to count for the amount of players
 	level waittill( "intermission" );
-  
+	
 	// Wait until its almost about to rotate (4 seconds left), so we have time to calculate everything
-  wait( level.scr_intermission_time-4 );
+	wait( level.scr_intermission_time-4 );
 	// Count how many players we have in the server
 	players = 0;
-	for ( index = 0; index < level.players.size; index++ )
-	{
+	for ( index = 0; index < level.players.size; index++ ) {
 		if ( isDefined( level.players[index] ) ) {
 			players++;
 		}
@@ -47,10 +46,12 @@ onIntermission()
 	if ( players <= level.scr_server_load_low ) {
 		serverLoad = "low";
 		
-	} else if ( players <= level.scr_server_load_medium ) {
+	}
+	else if ( players <= level.scr_server_load_medium ) {
 		serverLoad = "medium";
 		
-	} else {
+	}
+	else {
 		serverLoad = "high";
 	}
 	

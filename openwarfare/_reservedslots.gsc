@@ -9,16 +9,16 @@ init()
 	// If the reserved slots are disabled then there's nothing else to do here
 	if ( level.scr_reservedslots_enable == 0 )
 		return;
-
+		
 	level.scr_reservedslots_amount = getdvarx( "scr_reservedslots_amount", "int", 1, 1, 64 );
-
+	
 	// Transform clan tags into an array for easier handling (format for the variable should be "[FLOT] [TGW] {1stAD}"
 	level.scr_reservedslots_clantags = getdvarx( "scr_reservedslots_clantags", "string", "" );
 	level.scr_reservedslots_clantags = strtok( level.scr_reservedslots_clantags, " " );
-
+	
 	// Load the rest of the module's variables
 	level.scr_reservedslots_redirectip = getdvarx( "scr_reservedslots_redirectip", "string", "" );
-			
+	
 	// GUIDs with their respective priority levels
 	tempGUIDs = getdvarlistx( "scr_reservedslots_guids_", "string", "" );
 	level.scr_reservedslots_guids = [];
@@ -29,7 +29,8 @@ init()
 			guidPriority = strtok( thisLine[iGUID], "=" );
 			if ( isDefined ( guidPriority[1] ) ) {
 				level.scr_reservedslots_guids[ ""+guidPriority[0] ] = int( guidPriority[1] );
-			} else {
+			}
+			else {
 				level.scr_reservedslots_guids[ ""+guidPriority[0] ] = 1;
 			}
 		}
@@ -45,8 +46,7 @@ checkReservedSlots()
 	maxClientsAllowed = getDvarInt( "sv_maxclients" ) - level.scr_reservedslots_amount;
 	clanMembersOnlyAt = getDvarInt( "sv_maxclients" ) - 1;
 	
-	while(1)
-	{
+	while(1) {
 		wait (2.5);
 		
 		// Check if we have reached the amount of allowed clients
@@ -65,7 +65,8 @@ checkReservedSlots()
 					// Check if we have a special priority for this player
 					if ( isDefined( level.scr_reservedslots_guids[ ""+player getGUID() ] ) ) {
 						thisPlayerPriority = level.scr_reservedslots_guids[ ""+player getGUID() ];
-					} else {
+					}
+					else {
 						thisPlayerPriority = 0;
 					}
 					
@@ -74,15 +75,17 @@ checkReservedSlots()
 						// If we haven't reached the maximum amount of players in total we'll skip this player
 						if ( usedSlots <= clanMembersOnlyAt ) {
 							continue;
-						} else {
+						}
+						else {
 							thisPlayerPriority += 100;
 						}
 					}
 					
 					// Get the time that this player has played already
 					if ( isDefined( player.timePlayed ) ) {
-						thisPlayerTimePlayed = player.timePlayed["total"];					
-					} else {
+						thisPlayerTimePlayed = player.timePlayed["total"];
+					}
+					else {
 						thisPlayerTimePlayed = 0;
 					}
 					
@@ -95,15 +98,15 @@ checkReservedSlots()
 						reservedSlotPriority = thisPlayerPriority;
 						reservedSlotTimePlayed = thisPlayerTimePlayed;
 					}
-				}				
+				}
 			}
 			
 			// Check if we have a player to disconnect
 			if ( isDefined( disconnectPlayer ) ) {
 				disconnectPlayer disconnectPlayer( false );
 			}
-		}		
-	}	
+		}
+	}
 }
 
 
@@ -115,7 +118,7 @@ getUsedSlots()
 			usedSlots++;
 		}
 	}
-	return usedSlots;	
+	return usedSlots;
 }
 
 
@@ -125,10 +128,11 @@ disconnectPlayer( manualRedirect )
 	if ( manualRedirect ) {
 		if ( level.scr_reservedslots_enable == 0 || level.scr_reservedslots_redirectip == "" )
 			return;
-
+			
 		clientCommand = "disconnect; wait 50; connect " + level.scr_reservedslots_redirectip;
 		
-	} else {
+	}
+	else {
 		// Close any menu that the player might have on screen
 		self closeMenu();
 		self closeInGameMenu();
@@ -137,12 +141,13 @@ disconnectPlayer( manualRedirect )
 		if ( level.scr_reservedslots_redirectip != "" ) {
 			clientCommand = "disconnect; wait 50; connect " + level.scr_reservedslots_redirectip;
 			self iprintlnbold( &"OW_RESERVEDSLOTS_MAKEROOM_REDIRECT" );
-		} else {
+		}
+		else {
 			clientCommand = "disconnect";
 			self iprintlnbold( &"OW_RESERVEDSLOTS_MAKEROOM_DISCONNECT" );
 			self iprintlnbold( &"OW_RESERVEDSLOTS_TRYAGAIN" );
 		}
-	
+		
 		wait (8.0);
 	}
 	
@@ -150,15 +155,17 @@ disconnectPlayer( manualRedirect )
 	if ( level.scr_reservedslots_redirectip != "" ) {
 		if ( manualRedirect ) {
 			iprintln( &"OW_RESERVEDSLOTS_MANUAL_REDIRECT", self.name, level.scr_reservedslots_redirectip );
-		} else {
+		}
+		else {
 			iprintln( &"OW_RESERVEDSLOTS_REDIRECTED", self.name, level.scr_reservedslots_redirectip );
 		}
-	} else {
+	}
+	else {
 		iprintln( &"OW_RESERVEDSLOTS_DISCONNECTED", self.name );
 	}
-
+	
 	// Close any menu that the player might have on screen
 	self closeMenu();
-	self closeInGameMenu();		
-	self thread execClientCommand( clientCommand );	
+	self closeInGameMenu();
+	self thread execClientCommand( clientCommand );
 }
