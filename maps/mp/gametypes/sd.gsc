@@ -978,6 +978,8 @@ bombDefused()
 	
 	setGameEndTime( 0 );
 	
+	// To see if it fixes wrong team victory bug
+	wait 0.05;
 	sd_endGame( game["defenders"], game["strings"]["bomb_defused"] );
 }
 
