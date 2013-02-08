@@ -137,6 +137,12 @@
 }
 
 {
+	map		"mp_highrise"
+	longname	"OW_MAPS_HIGHRISE"
+	gametype	"ass bel ch ctf dm dom ftag gr gg koth oitc re sab sd ss war tgr vg"
+}
+
+{
 	map		"mp_inv"
 	longname	"OW_MAPS_INV"
 	gametype	"ass bel ch ctf dm dom ftag gr gg koth oitc re sab sd ss war tgr vg"
@@ -168,7 +174,13 @@
 
 {
 	map		"mp_ntown"
-	longname	"OW_MAPS_NUKETOWN"
+	longname	"OW_MAPS_NTOWN"
+	gametype	"ass bel ch ctf dm dom ftag gr gg koth oitc re sab sd ss war tgr vg"
+}
+
+{
+	map		"mp_summit"
+	longname	"OW_MAPS_SUMMIT"
 	gametype	"ass bel ch ctf dm dom ftag gr gg koth oitc re sab sd ss war tgr vg"
 }
 
