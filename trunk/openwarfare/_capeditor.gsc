@@ -22,6 +22,8 @@ onPlayerConnected()
 		self.pers["spawned_once"] = false;
 		
 	self.isInCAP = false;
+	self setClientDvars("cap_info", "", "cap_enable", "");
+	
 	
 	self thread addNewEvent( "onPlayerSpawned", ::onPlayerSpawned );
 	self thread addNewEvent( "onPlayerKilled", ::onPlayerKilled );
@@ -151,7 +153,7 @@ customizePlayer()
 	maxTime = level.scr_cap_activated * 1000;
 	timeDifference = 0;
 	
-	//#Moved from below
+	//Find current model of player
 	modelIndex = self getCurrentModelIndex();
 	
 	self thread showCountDownAccessTime(maxTime, passedTime);
@@ -161,16 +163,9 @@ customizePlayer()
 			self.cap_protected = true;
 			
 		hudTimer = int( ( maxTime - timeDifference ) / 1000 );
-		//# This sets every x miliseconds a dvar that should only be set every 1 second
-		// commenting for now, fix later
-		//self setClientDvar( "cap_time", hudTimer );
 		
 		timeDifference = openwarfare\_timer::getTimePassed() - passedTime;
 		if ( self useButtonPressed() ) {
-			//Find current model of player
-			//#Moved above
-			//modelIndex = self getCurrentModelIndex();
-			
 			//Detach Head Model (Original snip of script by BionicNipple)
 			count = self getattachsize();
 			for ( index = 0; index < count; index++ ) {
@@ -189,10 +184,6 @@ customizePlayer()
 			modelIndex++;
 			if( modelIndex >= game["cap_" +team+ "_model"]["body_model"].size )
 				modelIndex = 0;
-				
-			iprintln("Size body: ", game["cap_" +team+ "_model"]["body_model"].size);
-			iprintln("Size func: ", game["cap_" +team+ "_model"]["function"].size);
-			iprintln("Model index: ", modelIndex);
 			
 			//Change player model
 			self [[game["cap_" +team+ "_model"]["function"][modelIndex]]]();
