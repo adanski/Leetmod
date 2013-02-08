@@ -90,7 +90,11 @@ init()
 	}
 	
 	// Load map rotation values and calculate current position
-	level.scr_aacp_maprotationcurrent_index = calculateMapRotationCurrentIndex();
+	tmpValue = calculateMapRotationCurrentIndex();
+	if(tmpValue < 0)
+		tmpValue = 0;
+	level.scr_aacp_maprotationstartup_index = tmpValue;
+	level.scr_aacp_maprotationcurrent_index = level.scr_aacp_maprotationstartup_index;
 	
 	// Rulesets
 	level.scr_aacp_rulesets = getdvard( "scr_aacp_rulesets", "string", "pub_softcore_all;pub_hardcore_all;pub_tactical_all;pub_softcore_pistols;pub_hardcore_pistols;pub_tactical_pistols;pub_softcore_shotguns;pub_hardcore_shotguns;pub_tactical_shotguns;pub_softcore_snipers;pub_hardcore_snipers;pub_tactical_snipers;match_softcore_all;match_hardcore_all;match_tactical_all;match_softcore_pistols;match_hardcore_pistols;match_tactical_pistols;match_softcore_shotguns;match_hardcore_shotguns;match_tactical_shotguns;match_softcore_snipers;match_hardcore_snipers;match_tactical_snipers" );
@@ -233,14 +237,14 @@ initAACP()
 		    
 		    "ui_aacp_map", self getMapNameSetAacpPosition(getDvar( "mapname" )),
 		    "ui_aacp_gametype", self getGametypeSetAacpPosition(getDvar( "g_gametype" )),
-		    "ui_aacp_mridx", level.scr_aacp_maprotationcurrent_index+1,
-		    "ui_aacp_mrcurridx", level.scr_aacp_maprotationcurrent_index+1,
+		    "ui_aacp_mridx", level.scr_aacp_maprotationstartup_index+1,
+		    "ui_aacp_mrcurridx", level.scr_aacp_maprotationstartup_index+1,
 		    "ui_aacp_ruleset", self getCurrentRuleset(),
 		    "ui_aacp_player", self getFirstPlayer(),
 		    "ui_aacp_reason", self getFirstReason()
 		);
 		
-		self.aacpMapRotationCurrent_index = level.scr_aacp_maprotationcurrent_index;
+		self.aacpMapRotationCurrent_index = level.scr_aacp_maprotationstartup_index;
 		
 		self thread onMenuResponse();
 	}
@@ -656,8 +660,8 @@ onMenuResponse()
 					break;
 					
 				case "setmrhere":
-					self eatOutRotation();
-					self setClientDvar("ui_aacp_mridx", level.scr_aacp_maprotationcurrent_index+1);
+					if( self generateRotationFromIdx() )
+						self setClientDvar("ui_aacp_mridx", level.scr_aacp_maprotationcurrent_index+1);
 					break;
 					
 				case "loadmap":
@@ -1167,18 +1171,49 @@ calculateMapRotationCurrentIndex()
 {
 	for(i=level.mgCombinations.size-1; i>=0; i--) {
 		for(j=level.mgCombinationsCurr.size-1; j>=0; j--) {
-			if( level.mgCombinationsCurr[j] != level.mgCombinations[i] )
+			outerIndex = i-(level.mgCombinationsCurr.size-1-j);
+			if( !isDefined( level.mgCombinationsCurr[j] ) || !isDefined( level.mgCombinations[outerIndex] ) )
 				break;
-			if( j == 0)
-				return i;
+			if( level.mgCombinationsCurr[j]["gametype"] != level.mgCombinations[outerIndex]["gametype"] || level.mgCombinationsCurr[j]["mapname"] != level.mgCombinations[outerIndex]["mapname"] )
+				break;
+			if( j == 0 )
+				return outerIndex-1;
 		}
 	}
 	// strange, there was no match between the rotations, return index 0 then
 	return 0;
 }
 
-eatOutRotation()
+// guaranteed to work work well only in single line rotations (no sv_mapRotationCurrent_1, _2..., that logic isn't implemented yet)
+generateRotationFromIdx()
 {
-	iprintln("TODO");
+	// Index of the last map in this rotation
+	idxOfLastMapInCurrRot = level.scr_aacp_maprotationstartup_index + level.mgCombinationsCurr.size;
+	
+	currIdx = self.aacpMapRotationCurrent_index;
+	if( currIdx > idxOfLastMapInCurrRot )
+		return false;
+	
+	newCurrRotation = "";
+	for ( mgc=currIdx; mgc <= idxOfLastMapInCurrRot; mgc++ ) {
+		// Make sure we don't overflow the string
+		if ( newCurrRotation.size > 900 )
+			break;
+		
+		// Add a space only if this is not the first thing we add to this line
+		if ( newCurrRotation != "" )
+			newCurrRotation += " ";
+		
+		// Check if we're out of bounds (if there was an error in indexes calculations)
+		if( !isDefined(level.mgCombinations[mgc]) )
+			break;
+		// Add the gametype change
+		newCurrRotation += "gametype " + level.mgCombinations[mgc]["gametype"];
+		newCurrRotation += " map " + level.mgCombinations[mgc]["mapname"];
+	}
+	
+	setDvar( "sv_mapRotationCurrent", newCurrRotation );
 	level.scr_aacp_maprotationcurrent_index = self.aacpMapRotationCurrent_index;
+	
+	return true;
 }
