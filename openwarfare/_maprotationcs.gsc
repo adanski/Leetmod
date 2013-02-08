@@ -104,10 +104,11 @@ setRotationCurrent( initCheck )
 		setDvar( "sv_mapRotationCurrent", mapRotations[currentLine] );
 		setDvarL( "_mrcs_line", currentLine, false );
 		
-		// Check if we need to restart the map rotation
-		if ( advanceOneMap && level.sv_mapRotationScramble == 0 && level.scr_mrcs_auto_generate == 0 ) {
+		// Check if we need to advance one map/gametype in the rotation
+		// This is needed at server startup since in the first position of sv_mapRotationCurrent
+		// is the map that is already running
+		if ( advanceOneMap && level.sv_mapRotationScramble == 0 && level.scr_mrcs_auto_generate == 0 )
 			advanceOneMapInCurrRot();
-		}
 	}
 }
 
@@ -290,15 +291,13 @@ getMapGametypeCombinations(fromCurrentRotation)
 				// Discard "gametype" and "map" keywords
 				if ( thisMapRotation[e] == "gametype" || thisMapRotation[e] == "map" ) {
 					continue;
-					
-					// Check for valid gametype (we add semicolons to the string to make sure we have a full gametype name)
 				}
+				// Check for valid gametype (we add semicolons to the string to make sure we have a full gametype name)
 				else if ( isSubstr( ";"+level.defaultGametypeList+";", ";"+thisMapRotation[e]+";" ) ) {
 					currentGametype = thisMapRotation[e];
 					continue;
-					
-					// Check for map and add it to the new list
 				}
+				// Check for map and add it to the new list
 				else if ( getSubStr( thisMapRotation[e], 0, 3 ) == "mp_" ) {
 					newElement = mgCombinations.size;
 					mgCombinations[newElement]["gametype"] = currentGametype;
