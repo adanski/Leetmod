@@ -18,6 +18,25 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/armory/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/armory/l/war.cfg"
 
+#ifdef SAVEMENUDVARS
+#undef SAVEMENUDVARS
+#endif
+
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/armory/s/_def.cfg"\
+    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/armory/s/ass.cfg"\
+    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/armory/s/bel.cfg"\
+    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/armory/s/ch.cfg"\
+    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/armory/s/ctf.cfg"\
+    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/armory/s/dm.cfg"\
+    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/armory/s/dom.cfg"\
+    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/armory/s/ftag.cfg"\
+    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/armory/s/gr.cfg"\
+    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/armory/s/koth.cfg"\
+    execOnDvarStringValue menu_cfg_gt re "exec menudvars/armory/s/re.cfg"\
+    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/armory/s/sab.cfg"\
+    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/armory/s/sd.cfg"\
+    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/armory/s/tgr.cfg"\
+    execOnDvarStringValue menu_cfg_gt war "exec menudvars/armory/s/war.cfg"
 
 
 #define SETA_WEAP_ALLOW_ASSAULT_M16 \

@@ -20,6 +20,27 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/hardpoints/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/hardpoints/l/war.cfg"
 
+#ifdef SAVEMENUDVARS
+#undef SAVEMENUDVARS
+#endif
+
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/hardpoints/s/_def.cfg"\
+    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/hardpoints/s/ass.cfg"\
+    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/hardpoints/s/bel.cfg"\
+    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/hardpoints/s/ch.cfg"\
+    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/hardpoints/s/ctf.cfg"\
+    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/hardpoints/s/dm.cfg"\
+    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/hardpoints/s/dom.cfg"\
+    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/hardpoints/s/ftag.cfg"\
+    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/hardpoints/s/gg.cfg"\
+    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/hardpoints/s/gr.cfg"\
+    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/hardpoints/s/koth.cfg"\
+    execOnDvarStringValue menu_cfg_gt re "exec menudvars/hardpoints/s/re.cfg"\
+    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/hardpoints/s/sab.cfg"\
+    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/hardpoints/s/sd.cfg"\
+    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/hardpoints/s/ss.cfg"\
+    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/hardpoints/s/tgr.cfg"\
+    execOnDvarStringValue menu_cfg_gt war "exec menudvars/hardpoints/s/war.cfg"
 
 
 #define SETA_SCR_GAME_HARDPOINTS \

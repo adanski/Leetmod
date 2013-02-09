@@ -20,6 +20,28 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/perks/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/perks/l/war.cfg"
 
+#ifdef SAVEMENUDVARS
+#undef SAVEMENUDVARS
+#endif
+
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/perks/s/_def.cfg"\
+    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/perks/s/ass.cfg"\
+    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/perks/s/bel.cfg"\
+    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/perks/s/ch.cfg"\
+    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/perks/s/ctf.cfg"\
+    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/perks/s/dm.cfg"\
+    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/perks/s/dom.cfg"\
+    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/perks/s/ftag.cfg"\
+    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/perks/s/gg.cfg"\
+    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/perks/s/gr.cfg"\
+    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/perks/s/koth.cfg"\
+    execOnDvarStringValue menu_cfg_gt re "exec menudvars/perks/s/re.cfg"\
+    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/perks/s/sab.cfg"\
+    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/perks/s/sd.cfg"\
+    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/perks/s/ss.cfg"\
+    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/perks/s/tgr.cfg"\
+    execOnDvarStringValue menu_cfg_gt war "exec menudvars/perks/s/war.cfg"
+
 
 
 #define SETA_PERK_ALLOW_C4_MP \

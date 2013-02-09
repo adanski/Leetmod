@@ -21,7 +21,28 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/spectate/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/spectate/l/war.cfg"
 
+#ifdef SAVEMENUDVARS
+#undef SAVEMENUDVARS
+#endif
 
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/spectate/s/_def.cfg"\
+    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/spectate/s/ass.cfg"\
+    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/spectate/s/bel.cfg"\
+    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/spectate/s/ch.cfg"\
+    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/spectate/s/ctf.cfg"\
+    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/spectate/s/dm.cfg"\
+    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/spectate/s/dom.cfg"\
+    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/spectate/s/ftag.cfg"\
+    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/spectate/s/gg.cfg"\
+    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/spectate/s/gr.cfg"\
+    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/spectate/s/koth.cfg"\
+    execOnDvarStringValue menu_cfg_gt oitc "exec menudvars/spectate/s/oitc.cfg"\
+    execOnDvarStringValue menu_cfg_gt re "exec menudvars/spectate/s/re.cfg"\
+    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/spectate/s/sab.cfg"\
+    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/spectate/s/sd.cfg"\
+    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/spectate/s/ss.cfg"\
+    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/spectate/s/tgr.cfg"\
+    execOnDvarStringValue menu_cfg_gt war "exec menudvars/spectate/s/war.cfg"
 
 #define SETA_SCR_GAME_SPECTATETYPE \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_game_spectatetype_ass _null" \
@@ -41,6 +62,7 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_game_spectatetype_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_game_spectatetype_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_game_spectatetype_war _null"
+
 
 #define SETA_SCR_GAME_SPECTATETYPE_SPECTATORS \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_game_spectatetype_spectators_ass _null" \

@@ -21,6 +21,28 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/fairness/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/fairness/l/war.cfg"
 
+#ifdef SAVEMENUDVARS
+#undef SAVEMENUDVARS
+#endif
+
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/fairness/s/_def.cfg"\
+    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/fairness/s/ass.cfg"\
+    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/fairness/s/bel.cfg"\
+    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/fairness/s/ch.cfg"\
+    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/fairness/s/ctf.cfg"\
+    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/fairness/s/dm.cfg"\
+    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/fairness/s/dom.cfg"\
+    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/fairness/s/ftag.cfg"\
+    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/fairness/s/gg.cfg"\
+    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/fairness/s/gr.cfg"\
+    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/fairness/s/koth.cfg"\
+    execOnDvarStringValue menu_cfg_gt oitc "exec menudvars/fairness/s/oitc.cfg"\
+    execOnDvarStringValue menu_cfg_gt re "exec menudvars/fairness/s/re.cfg"\
+    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/fairness/s/sab.cfg"\
+    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/fairness/s/sd.cfg"\
+    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/fairness/s/ss.cfg"\
+    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/fairness/s/tgr.cfg"\
+    execOnDvarStringValue menu_cfg_gt war "exec menudvars/fairness/s/war.cfg"
 
 
 #define SETA_SCR_FORCE_AUTOASSIGN \

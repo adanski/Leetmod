@@ -20,6 +20,29 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/weapons/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/weapons/l/war.cfg"
 
+#ifdef SAVEMENUDVARS
+#undef SAVEMENUDVARS
+#endif
+
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/weapons/s/_def.cfg"\
+    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/weapons/s/ass.cfg"\
+    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/weapons/s/bel.cfg"\
+    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/weapons/s/ch.cfg"\
+    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/weapons/s/ctf.cfg"\
+    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/weapons/s/dm.cfg"\
+    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/weapons/s/dom.cfg"\
+    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/weapons/s/ftag.cfg"\
+    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/weapons/s/gg.cfg"\
+    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/weapons/s/gr.cfg"\
+    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/weapons/s/koth.cfg"\
+    execOnDvarStringValue menu_cfg_gt re "exec menudvars/weapons/s/re.cfg"\
+    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/weapons/s/sab.cfg"\
+    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/weapons/s/sd.cfg"\
+    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/weapons/s/ss.cfg"\
+    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/weapons/s/tgr.cfg"\
+    execOnDvarStringValue menu_cfg_gt war "exec menudvars/weapons/s/war.cfg"
+
+
 #define SETA_SCR_GRENADE_ALLOW_COOKING \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_grenade_allow_cooking_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_grenade_allow_cooking_bel _null" \
