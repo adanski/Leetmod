@@ -541,6 +541,9 @@ retrieval()
 			level.objectiveB disableObject();
 		}
 	}
+	
+	level notify( "spawned_objectivefx" );
+	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 
 
@@ -571,6 +574,9 @@ createGoalZone( attackerTeam, zoneTrigger )
 	trace = bulletTrace( traceStart, traceEnd, false, undefined );
 	upangles = vectorToAngles( trace["normal"] );
 	goalZone.baseEffect = spawnFx( game[level.gameType]["extraction_base"], trace["position"], anglesToForward( upangles ), anglesToRight( upangles ) );
+	
+	// Slow process to create FX
+	wait( 0.08 );
 	triggerFx( goalZone.baseEffect );
 	
 	return goalZone;

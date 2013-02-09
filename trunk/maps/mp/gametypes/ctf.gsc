@@ -553,6 +553,8 @@ captureTheFlag()
 	if ( level.scr_ctf_ctfmode == 1 ) {
 		createReturnMessageElems();
 	}
+	level notify( "spawned_objectivefx" );
+	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 
 
@@ -658,6 +660,9 @@ createCaptureZone( team, trigger )
 	trace = bulletTrace( traceStart, traceEnd, false, undefined );
 	upangles = vectorToAngles( trace["normal"] );
 	level.flags[team].baseEffect = spawnFx( game[level.gameType]["flag_base_" + team], trace["position"], anglesToForward( upangles ), anglesToRight( upangles ) );
+	
+	// Slow process to create FX
+	wait( 0.08 );
 	triggerFx( level.flags[team].baseEffect );
 	
 	return captureZone;

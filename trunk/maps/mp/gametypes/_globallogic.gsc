@@ -4103,8 +4103,8 @@ checkRoundSwitch()
 			level.ignoreUpdateClassLimit = false;
 			
 			// If we are running unranked then update the class limits
-			//# TOFIX: reenable this code and use variable level.limitClasses (inexistent at the moment) to use the function bellow
-			//if ( !level.rankedClasses ) {
+			//# TOFIX: reenable this code when proper logic is coded
+			//if ( level.limitClasses ) {
 			//	level thread maps\mp\gametypes\_modwarfare::updateClassLimits();
 			//}
 			

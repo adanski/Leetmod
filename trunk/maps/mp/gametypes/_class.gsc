@@ -50,10 +50,10 @@ init()
 	level.class_axis_sniper_limit = getdvarx( "class_axis_sniper_limit", "int", 64, 0, 64 );
 	
 	// at least one class type must be enabled for onlineClasses, else player can't select anything
-	if ( !level.limitClasses && (level.class_allies_assault_limit + level.class_allies_specops_limit + level.class_allies_heavygunner_limit + level.class_allies_demolitions_limit + level.class_allies_sniper_limit) == 0 )
+	if ( level.limitClasses && (level.class_allies_assault_limit + level.class_allies_specops_limit + level.class_allies_heavygunner_limit + level.class_allies_demolitions_limit + level.class_allies_sniper_limit) == 0 )
 		level.class_allies_assault_limit = 64;
 		
-	if ( !level.limitClasses && (level.class_axis_assault_limit + level.class_axis_specops_limit + level.class_axis_heavygunner_limit + level.class_axis_demolitions_limit + level.class_axis_sniper_limit) == 0 )
+	if ( level.limitClasses && (level.class_axis_assault_limit + level.class_axis_specops_limit + level.class_axis_heavygunner_limit + level.class_axis_demolitions_limit + level.class_axis_sniper_limit) == 0 )
 		level.class_axis_assault_limit = 64;
 		
 	// Fill primary weapon magazine (full ammo). Useful for promod compatibility
@@ -129,18 +129,6 @@ init()
 	level.classMap["demolitions_mp"] = "CLASS_DEMOLITIONS";
 	level.classMap["sniper_mp"] = "CLASS_SNIPER";
 	
-	// Another offline class definition, I would like to see where this crappy code is useful.. only on xbox
-	//level.classMap["offline_class1_mp"] = "OFFLINE_CLASS1";
-	//level.classMap["offline_class2_mp"] = "OFFLINE_CLASS2";
-	//level.classMap["offline_class3_mp"] = "OFFLINE_CLASS3";
-	//level.classMap["offline_class4_mp"] = "OFFLINE_CLASS4";
-	//level.classMap["offline_class5_mp"] = "OFFLINE_CLASS5";
-	//level.classMap["offline_class6_mp"] = "OFFLINE_CLASS6";
-	//level.classMap["offline_class7_mp"] = "OFFLINE_CLASS7";
-	//level.classMap["offline_class8_mp"] = "OFFLINE_CLASS8";
-	//level.classMap["offline_class9_mp"] = "OFFLINE_CLASS9";
-	//level.classMap["offline_class10_mp"] = "OFFLINE_CLASS10";
-	
 	level.classMap["custom1"] = "CLASS_CUSTOM1";
 	level.classMap["custom2"] = "CLASS_CUSTOM2";
 	level.classMap["custom3"] = "CLASS_CUSTOM3";
@@ -173,25 +161,6 @@ init()
 	readDefaultClasses("heavygunner");
 	readDefaultClasses("demolitions");
 	readDefaultClasses("sniper");
-	
-	// default class weapon loadout for offline mode
-	// param( team, class, stat number, inventory string, inventory count )
-	
-	//# Commented because it's unecessary - bug test needed
-	/*
-	offline_class_datatable = "mp/offline_classTable.csv";
-	
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS1", 200 );
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS2", 210 );
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS3", 220 );
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS4", 230 );
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS5", 240 );
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS6", 250 );
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS7", 260 );
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS8", 270 );
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS9", 280 );
-	load_default_loadout( offline_class_datatable, "both", "OFFLINE_CLASS10", 290 );
-	*/
 	
 	load_default_loadout( "", "both", "CLASS_ASSAULT", 0 );			// assault
 	load_default_loadout( "", "both", "CLASS_SPECOPS", 0 );			// spec ops
@@ -1651,7 +1620,7 @@ isClassAvailable()
 //## TO FIX: change to current usage of the class
 	return true;
 	
-	///if( !level.limitClasses )
+	///if( level.limitClasses )
 	///...
 	
 	//return false;

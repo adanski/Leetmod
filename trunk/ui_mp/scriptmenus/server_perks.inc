@@ -101,11 +101,11 @@ menuDef
 	
 	CHOICE_DVARYESNO_VIS( 41, "@OW_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS", menu_specialty_grenadepulldeath_check_frags, SETA_SPECIALTY_GRENADEPULLDEATH_CHECK_FRAGS; , when( dvarBool(menu_perk_allow_specialty_grenadepulldeath) ) )
 	CHOICE_DVARYESNO_VIS( 42, "@OW_SPECIALTY_PISTOLDEATH_CHECK_PISTOL", menu_specialty_pistoldeath_check_pistol, SETA_SPECIALTY_PISTOLDEATH_CHECK_PISTOL; , when( dvarBool(menu_perk_allow_specialty_pistoldeath) ) )
-	CHOICE_DVARYESNO_VIS( 43, "@OW_SCR_CLAYMORE_CHECK_PLANT_DISTANCE", menu_scr_claymore_check_plant_distance, SETA_SCR_CLAYMORE_CHECK_PLANT_DISTANCE; , when( dvarBool(menu_perk_allow_claymore_mp) ) )
+	CHOICE_DVARYESNO_VIS( 43, "@OW_SCR_CLAYMORE_CHECK_PLANT_DISTANCE", menu_scr_claymore_check_plant_distance, SETA_SCR_CLAYMORE_CHECK_PLANT_DISTANCE; , when( dvarBool(menu_perk_allow_claymore_mp) && dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
 	CHOICE_DVARYESNO_VIS( 44, "@OW_SCR_CLAYMORE_ADD_KILL_ONLY_IF_DIRECTED", menu_scr_claymore_add_kill_only_if_directed, SETA_SCR_CLAYMORE_ADD_KILL_ONLY_IF_DIRECTED; , when( dvarBool(menu_perk_allow_claymore_mp) && dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
 	CHOICE_DVAREDIT_NUMERIC_VIS( 45, "@OW_SCR_CLAYMORE_ARM_TIME", menu_scr_claymore_arm_time, 2, SETA_SCR_CLAYMORE_ARM_TIME; , when( dvarBool(menu_perk_allow_claymore_mp) && dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
-	CHOICE_DVARYESNO( 46, "@OW_SCR_EXPLOSIVES_ALLOW_DISARM", menu_scr_explosives_allow_disarm, SETA_SCR_EXPLOSIVES_ALLOW_DISARM; )
-	CHOICE_DVAREDIT_VIS( 47, "@OW_SCR_EXPLOSIVES_DISARM_TIME", menu_scr_explosives_disarm_time, 4, 4, SETA_SCR_EXPLOSIVES_DISARM_TIME, when( dvarBool(menu_scr_explosives_allow_disarm) == 1 && dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVARYESNO_VIS( 46, "@OW_SCR_EXPLOSIVES_ALLOW_DISARM", menu_scr_explosives_allow_disarm, SETA_SCR_EXPLOSIVES_ALLOW_DISARM; , when( dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVAREDIT_VIS( 47, "@OW_SCR_EXPLOSIVES_DISARM_TIME", menu_scr_explosives_disarm_time, 4, 4, SETA_SCR_EXPLOSIVES_DISARM_TIME, when( dvarBool(menu_scr_explosives_allow_disarm) == 1 && dvarString(menu_cfg_gt) != "ss" ) )
 	CHOICE_DVARYESNO_VIS( 48, "@OW_SCR_CLAYMORE_SHOW_HEADICON", menu_scr_claymore_show_headicon, SETA_SCR_CLAYMORE_SHOW_HEADICON; , when( dvarBool(menu_perk_allow_claymore_mp) && dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
 	CHOICE_DVARYESNO_VIS( 49, "@OW_SCR_CLAYMORE_SHOW_LASER_BEAMS", menu_scr_claymore_show_laser_beams, SETA_SCR_CLAYMORE_SHOW_LASER_BEAMS; , when( dvarBool(menu_perk_allow_claymore_mp) && dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
 	CHOICE_DVARYESNO_VIS( 50, "@OW_SCR_SHOW_C4_BLINK_EFFECT", menu_scr_show_c4_blink_effect, SETA_SCR_SHOW_C4_BLINK_EFFECT; , when( dvarBool(menu_perk_allow_c4_mp) ) )
@@ -125,5 +125,5 @@ menuDef
 #undef TEXTSIZE_BUTTON_PC
 #define TEXTSIZE_BUTTON_PC	0.38
 	
-	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS; , 1 )
+	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS; , 1 )
 }

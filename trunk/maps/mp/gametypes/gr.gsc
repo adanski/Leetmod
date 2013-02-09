@@ -68,6 +68,7 @@ main()
 	setDvar( "scr_score_shot_down_helicopter_gr", "0" );
 	setDvar( "scr_score_standard_kill_gr", "0" );
 	setDvar( "scr_score_vehicle_explosion_kill_gr", "0" );
+	// "capture" go to player (score depending on dog-tag amount), "take" goes player, 1 point per dog-tag, "defend" if killed a player that was going to push his dog-tags
 	
 	// Disable the following modules
 	setDvar( "scr_dogtags_enable_gr", "0" );
@@ -456,7 +457,7 @@ onDropZoneUse()
 			player.dogtagsCollected = 0;
 			player.carryAmount setValue( 0 );
 			
-			// Give the player and the team the score
+			// Give the player the score
 			player givePlayerScore( "capture", totalScore );
 			
 			// Play the corresponding sounds and show the message

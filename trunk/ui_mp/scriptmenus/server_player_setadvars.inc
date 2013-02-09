@@ -114,19 +114,14 @@
   execOnDvarStringValue menu_cfg_gt war "seta scr_game_allow_killcam_war _null"
 
 #define SETA_SCR_PLAYER_FORCERESPAWN \
-  execOnDvarStringValue menu_cfg_gt ass "seta scr_player_forcerespawn_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "seta scr_player_forcerespawn_bel _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_player_forcerespawn_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_player_forcerespawn_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_player_forcerespawn_dm _null" \
-  execOnDvarStringValue menu_cfg_gt ftag "seta scr_player_forcerespawn_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_player_forcerespawn_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_player_forcerespawn_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_player_forcerespawn_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_player_forcerespawn_oitc _null" \
-  execOnDvarStringValue menu_cfg_gt re "seta scr_player_forcerespawn_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_player_forcerespawn_sab _null" \
-  execOnDvarStringValue menu_cfg_gt sd "seta scr_player_forcerespawn_sd _null" \
   execOnDvarStringValue menu_cfg_gt ss "seta scr_player_forcerespawn_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_player_forcerespawn_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_player_forcerespawn_war _null"
@@ -141,7 +136,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_quickactions_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_quickactions_enable_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_quickactions_enable_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_quickactions_enable_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_quickactions_enable_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_quickactions_enable_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_quickactions_enable_sd _null" \
@@ -202,24 +196,6 @@
   execOnDvarStringValue menu_cfg_gt ss "seta scr_bob_effect_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "seta scr_bob_effect_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "seta scr_bob_effect_enable_war _null"
-
-#define SETA_SCR_BOB_PRONE_FIX \
-  execOnDvarStringValue menu_cfg_gt ass "seta scr_bob_prone_fix_ass _null" \
-  execOnDvarStringValue menu_cfg_gt bel "seta scr_bob_prone_fix_bel _null" \
-  execOnDvarStringValue menu_cfg_gt ch "seta scr_bob_prone_fix_ch _null" \
-  execOnDvarStringValue menu_cfg_gt ctf "seta scr_bob_prone_fix_ctf _null" \
-  execOnDvarStringValue menu_cfg_gt dm "seta scr_bob_prone_fix_dm _null" \
-  execOnDvarStringValue menu_cfg_gt ftag "seta scr_bob_prone_fix_ftag _null" \
-  execOnDvarStringValue menu_cfg_gt gg "seta scr_bob_prone_fix_gg _null" \
-  execOnDvarStringValue menu_cfg_gt gr "seta scr_bob_prone_fix_gr _null" \
-  execOnDvarStringValue menu_cfg_gt koth "seta scr_bob_prone_fix_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_bob_prone_fix_oitc _null" \
-  execOnDvarStringValue menu_cfg_gt re "seta scr_bob_prone_fix_re _null" \
-  execOnDvarStringValue menu_cfg_gt sab "seta scr_bob_prone_fix_sab _null" \
-  execOnDvarStringValue menu_cfg_gt sd "seta scr_bob_prone_fix_sd _null" \
-  execOnDvarStringValue menu_cfg_gt ss "seta scr_bob_prone_fix_ss _null" \
-  execOnDvarStringValue menu_cfg_gt tgr "seta scr_bob_prone_fix_tgr _null" \
-  execOnDvarStringValue menu_cfg_gt war "seta scr_bob_prone_fix_war _null"
 
 #define SETA_SCR_CG_FOOTSTEPS \
   execOnDvarStringValue menu_cfg_gt ass "seta scr_cg_footsteps_ass _null" \
@@ -321,7 +297,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_de_dropweapon_on_arm_hit_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_de_dropweapon_on_arm_hit_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_de_dropweapon_on_arm_hit_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_de_dropweapon_on_arm_hit_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_de_dropweapon_on_arm_hit_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_de_dropweapon_on_arm_hit_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_de_dropweapon_on_arm_hit_sd _null" \
@@ -339,7 +314,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_de_dropweapon_chance_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_de_dropweapon_chance_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_de_dropweapon_chance_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_de_dropweapon_chance_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_de_dropweapon_chance_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_de_dropweapon_chance_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_de_dropweapon_chance_sd _null" \
@@ -357,7 +331,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_de_falldown_on_leg_hit_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_de_falldown_on_leg_hit_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_de_falldown_on_leg_hit_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_de_falldown_on_leg_hit_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_de_falldown_on_leg_hit_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_de_falldown_on_leg_hit_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_de_falldown_on_leg_hit_sd _null" \
@@ -375,7 +348,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_de_falldown_chance_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_de_falldown_chance_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_de_falldown_chance_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_de_falldown_chance_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_de_falldown_chance_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_de_falldown_chance_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_de_falldown_chance_sd _null" \
@@ -393,7 +365,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_de_shiftview_on_damage_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_de_shiftview_on_damage_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_de_shiftview_on_damage_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_de_shiftview_on_damage_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_de_shiftview_on_damage_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_de_shiftview_on_damage_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_de_shiftview_on_damage_sd _null" \
@@ -411,7 +382,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_de_break_ankle_on_fall_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_de_break_ankle_on_fall_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_de_break_ankle_on_fall_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_de_break_ankle_on_fall_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_de_break_ankle_on_fall_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_de_break_ankle_on_fall_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_de_break_ankle_on_fall_sd _null" \
@@ -429,7 +399,6 @@
   execOnDvarStringValue menu_cfg_gt gg "seta scr_de_slowdown_on_leg_hit_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_de_slowdown_on_leg_hit_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_de_slowdown_on_leg_hit_koth _null" \
-  execOnDvarStringValue menu_cfg_gt oitc "seta scr_de_slowdown_on_leg_hit_oitc _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_de_slowdown_on_leg_hit_re _null" \
   execOnDvarStringValue menu_cfg_gt sab "seta scr_de_slowdown_on_leg_hit_sab _null" \
   execOnDvarStringValue menu_cfg_gt sd "seta scr_de_slowdown_on_leg_hit_sd _null" \

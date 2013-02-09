@@ -74,7 +74,7 @@ main()
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 3, 1, 500 );
 	maps\mp\gametypes\_globallogic::registerRoundSwitchDvar( level.gameType, 1, 0, 500 );
-	if( scr_ch_chmode == 0 )
+	if( level.scr_ch_chmode == 0 )
 		maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 2, 0, 5000 );
 	else
 		maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 275, 0, 5000 );
@@ -496,6 +496,9 @@ captureAndHold()
 		level.timerDisplay["axis"].archived = false;
 		level.timerDisplay["axis"].hideWhenInMenu = true;
 	}
+	
+	level notify( "spawned_objectivefx" );
+	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 
 

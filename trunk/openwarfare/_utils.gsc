@@ -1272,8 +1272,13 @@ switchPlayerTeam( newTeam, halfTimeSwitch )
 
 resetPlayerClassOnTeamSwitch( halfTimeSwitch )
 {
+	// logic not yet implemented (some variables are even undefined, causing scripting errors)
+	developing = 1;
+	if( developing )
+		return false;
+		
 	// If the server has player classes enabled then there's no need to reset
-	if ( level.limitClasses || !isDefined( self.pers["class"] ) )
+	if ( !level.limitClasses || !isDefined( self.pers["class"] ) )
 		return false;
 		
 	// Check non-class dependent limits

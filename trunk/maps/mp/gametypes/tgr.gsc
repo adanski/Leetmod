@@ -59,6 +59,7 @@ main()
 	setDvar( "scr_score_shot_down_helicopter_tgr", "0" );
 	setDvar( "scr_score_standard_kill_tgr", "0" );
 	setDvar( "scr_score_vehicle_explosion_kill_tgr", "0" );
+	// "capture" go to team and player (score depending on dog-tag amount), "take" goes only to player, 1 point per dog-tag, "defend" if killed a player that was going to push his dog-tags
 	
 	// Disable the following modules
 	setDvar( "scr_dogtags_enable_tgr", "0" );
@@ -298,6 +299,9 @@ greed()
 		level.dropZones["allies"] = createDropZone( "allies", level.bombZoneAxis );
 		level.dropZones["axis"] = createDropZone( "axis", level.bombZoneAllies );
 	}
+	
+	level notify( "spawned_objectivefx" );
+	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 
 
@@ -349,7 +353,11 @@ createDropZone( team, dropZoneCoord )
 	trace = bulletTrace( traceStart, traceEnd, false, undefined );
 	upangles = vectorToAngles( trace["normal"] );
 	dropZone.baseEffect = spawnFx( game[level.gameType]["drop_zone_" + team], trace["position"], anglesToForward( upangles ), anglesToRight( upangles ) );
+	
+	// Slow process to create FX
+	wait (0.08);
 	triggerFx( dropZone.baseEffect );
+	
 	
 	return dropZone;
 }

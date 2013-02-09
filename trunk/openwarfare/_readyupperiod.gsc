@@ -414,8 +414,20 @@ createHudElements()
 	return;
 }
 
+
+notifyObjectiveCreated()
+{
+	level endon("readyupperiod_ended");
+	
+	level waittill("readyupperiod_started");
+	
+	level notify( "spawned_objectivefx" );
+}
+
 deactivateMapObjectives()
 {
+	level waittill("spawned_objectivefx");
+	
 	// See which gametype is running and deactivate the corresponding objectives
 	switch ( level.gametype ) {
 		case "ass":
@@ -486,6 +498,8 @@ deactivateMapObjectives()
 			level.dropZones["axis"] maps\mp\gametypes\_gameobjects::allowUse( "none" );
 			break;
 			
+		// TWAR?? where did this gametype come from? this isn't referenced in any other place
+		/*
 		case "twar":
 			// Show all the flags and deactivate the active one
 			for ( idx = 0; idx < level.twarFlags.size; idx++ ) {
@@ -494,6 +508,7 @@ deactivateMapObjectives()
 			}
 			
 			break;
+		*/
 	}
 	
 	return;

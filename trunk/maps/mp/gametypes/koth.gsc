@@ -698,6 +698,9 @@ SetupRadios()
 		radio setUpNearbySpawns();
 	}
 	
+	level notify( "spawned_objectivefx" );
+	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
+	
 	if (maperrors.size > 0) {
 		println("^1------------ Map Errors ------------");
 		for(i = 0; i < maperrors.size; i++)
