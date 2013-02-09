@@ -374,6 +374,8 @@ domFlags()
 		
 		level.domFlags[level.domFlags.size] = domFlag;
 	}
+	level notify( "spawned_objectivefx" );
+	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 	
 	thread updateDomScores();
 	
@@ -560,6 +562,8 @@ resetFlagBaseEffect()
 	fxid = level.flagBaseFXid[ team ];
 	
 	self.baseeffect = spawnFx( fxid, self.baseeffectpos, self.baseeffectforward, self.baseeffectright );
+	// Slow process to create FX
+	wait( 0.08 );
 	triggerFx( self.baseeffect );
 }
 

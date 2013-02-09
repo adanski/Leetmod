@@ -48,13 +48,15 @@ menuDef
 	
 #undef CHOICE_Y_COUNT
 #define CHOICE_Y_COUNT			18
+
+#define TEAMBASED		(dvarString(menu_cfg_gt) != "bel" && dvarString(menu_cfg_gt) != "dm" && dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "gr" && dvarString(menu_cfg_gt) != "oitc" && dvarString(menu_cfg_gt) != "ss")
 	
-	CHOICE_DVARYESNO( 1, "@OW_SCR_SPAWN_PROTECTION_ENABLE", menu_scr_spawn_protection_enable, SETA_SCR_SPAWN_PROTECTION_ENABLE; )
-	CHOICE_DVAREDIT_VIS( 2, "@OW_SCR_SPAWN_PROTECTION_TIME", menu_scr_spawn_protection_time, 4, 4, SETA_SCR_SPAWN_PROTECTION_TIME; , when( dvarBool(menu_scr_spawn_protection_enable) ) )
-	CHOICE_DVARYESNO_VIS( 3, "@OW_SCR_SPAWN_PROTECTION_INVISIBLE", menu_scr_spawn_protection_invisible, SETA_SCR_SPAWN_PROTECTION_INVISIBLE; , when( dvarBool(menu_scr_spawn_protection_enable) ) )
-	CHOICE_DVARYESNO_VIS( 4, "@OW_SCR_SPAWN_PROTECTION_HITICON", menu_scr_spawn_protection_hiticon, SETA_SCR_SPAWN_PROTECTION_HITICON; , when( dvarBool(menu_scr_spawn_protection_enable) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 5, "@OW_SCR_SPAWN_PROTECTION_MAXDISTANCE", menu_scr_spawn_protection_maxdistance, 4, SETA_SCR_SPAWN_PROTECTION_MAXDISTANCE; , when( dvarBool(menu_scr_spawn_protection_enable) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 6, "@OW_SCR_SPAWN_PROTECTION_PUNISHMENT_TIME", menu_scr_spawn_protection_punishment_time, 2, SETA_SCR_SPAWN_PROTECTION_PUNISHMENT_TIME; , when( dvarBool(menu_scr_spawn_protection_enable) ) )
+	CHOICE_DVARYESNO_VIS( 1, "@OW_SCR_SPAWN_PROTECTION_ENABLE", menu_scr_spawn_protection_enable, SETA_SCR_SPAWN_PROTECTION_ENABLE; , when( dvarString(menu_cfg_gt) != "oitc" ) )
+	CHOICE_DVAREDIT_VIS( 2, "@OW_SCR_SPAWN_PROTECTION_TIME", menu_scr_spawn_protection_time, 4, 4, SETA_SCR_SPAWN_PROTECTION_TIME; , when( dvarBool(menu_scr_spawn_protection_enable) && dvarString(menu_cfg_gt) != "oitc" ) )
+	CHOICE_DVARYESNO_VIS( 3, "@OW_SCR_SPAWN_PROTECTION_INVISIBLE", menu_scr_spawn_protection_invisible, SETA_SCR_SPAWN_PROTECTION_INVISIBLE; , when( dvarBool(menu_scr_spawn_protection_enable) && dvarString(menu_cfg_gt) != "oitc" ) )
+	CHOICE_DVARYESNO_VIS( 4, "@OW_SCR_SPAWN_PROTECTION_HITICON", menu_scr_spawn_protection_hiticon, SETA_SCR_SPAWN_PROTECTION_HITICON; , when( dvarBool(menu_scr_spawn_protection_enable) && dvarString(menu_cfg_gt) != "oitc" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 5, "@OW_SCR_SPAWN_PROTECTION_MAXDISTANCE", menu_scr_spawn_protection_maxdistance, 4, SETA_SCR_SPAWN_PROTECTION_MAXDISTANCE; , when( dvarBool(menu_scr_spawn_protection_enable) && dvarString(menu_cfg_gt) != "oitc" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 6, "@OW_SCR_SPAWN_PROTECTION_PUNISHMENT_TIME", menu_scr_spawn_protection_punishment_time, 2, SETA_SCR_SPAWN_PROTECTION_PUNISHMENT_TIME; , when( dvarBool(menu_scr_spawn_protection_enable) && dvarString(menu_cfg_gt) != "oitc" ) )
 	
 	CHOICE_DVARYESNO_VIS( 7, "@OW_SCR_ANTI_CAMPING_ENABLE", menu_scr_anti_camping_enable, SETA_SCR_ANTI_CAMPING_ENABLE; , when( dvarString(menu_cfg_gt) != "ftag" ) )
 	CHOICE_DVARFLOATLIST_VIS( 8, "@OW_SCR_ANTI_CAMPING_SHOW", menu_scr_anti_camping_show, { "Icon" 0 "Message" 1 "Both" 2 }, SETA_SCR_ANTI_CAMPING_SHOW; , when( dvarBool(menu_scr_anti_camping_enable) && dvarString(menu_cfg_gt) != "ftag" ) )
@@ -71,27 +73,27 @@ menuDef
 	CHOICE_DVAREDIT_NUMERIC_VIS( 17, "@OW_SCR_RNG_DAMAGE_LONGER", menu_scr_rng_damage_longer, 3, SETA_SCR_RNG_DAMAGE_LONGER; , when( dvarBool(menu_scr_rng_enabled) ) )
 	
 	
-	CHOICE_DVARFLOATLIST_VIS( 19, "@OW_SCR_FORCE_AUTOASSIGN", menu_scr_force_autoassign, { "Disabled" 0 "Enabled (to everyone)" 1 "Enabled (not members)" 2 }, SETA_SCR_FORCE_AUTOASSIGN; , when( dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVAREDIT_VIS( 20, "@OW_SCR_FORCE_AUTOASSIGN_CLAN_TAGS", menu_scr_force_autoassign_clan_tags, 1000, 80, SETA_SCR_FORCE_AUTOASSIGN_CLAN_TAGS; , when( dvarBool(menu_scr_force_autoassign) && dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVARYESNO_VIS( 21, "@OW_SCR_SWITCH_TEAMS_AT_HALFTIME", menu_scr_switch_teams_at_halftime, SETA_SCR_SWITCH_TEAMS_AT_HALFTIME; , when( dvarString(menu_cfg_gt) != "bel" ) )
+	CHOICE_DVARFLOATLIST_VIS( 19, "@OW_SCR_FORCE_AUTOASSIGN", menu_scr_force_autoassign, { "Disabled" 0 "Enabled (to everyone)" 1 "Enabled (not members)" 2 }, SETA_SCR_FORCE_AUTOASSIGN; , when( TEAMBASED ) )
+	CHOICE_DVAREDIT_VIS( 20, "@OW_SCR_FORCE_AUTOASSIGN_CLAN_TAGS", menu_scr_force_autoassign_clan_tags, 1000, 80, SETA_SCR_FORCE_AUTOASSIGN_CLAN_TAGS; , when( dvarBool(menu_scr_force_autoassign) && TEAMBASED ) )
+	CHOICE_DVARYESNO_VIS( 21, "@OW_SCR_SWITCH_TEAMS_AT_HALFTIME", menu_scr_switch_teams_at_halftime, SETA_SCR_SWITCH_TEAMS_AT_HALFTIME; , when( TEAMBASED ) )
 	
-	CHOICE_DVARFLOATLIST_VIS( 22, "@OW_SCR_TEAMBALANCE", menu_scr_teambalance, { "Disabled" 0 "Enab. (avoid members)" 1 "Enab. (never members)" 2 }, SETA_SCR_TEAMBALANCE; , when( dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVARYESNO_VIS( 23, "@OW_SCR_TEAMBALANCE_SHOW_MESSAGE", menu_scr_teambalance_show_message, SETA_SCR_TEAMBALANCE_SHOW_MESSAGE; , when( dvarBool(menu_scr_teambalance) && dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 24, "@OW_SCR_TEAMBALANCE_CHECK_INTERVAL", menu_scr_teambalance_check_interval, 3, SETA_SCR_TEAMBALANCE_CHECK_INTERVAL; , when( dvarBool(menu_scr_teambalance) && dvarString(menu_cfg_gt) != "bel") )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 25, "@OW_SCR_TEAMBALANCE_DELAY", menu_scr_teambalance_delay, 2, SETA_SCR_TEAMBALANCE_DELAY; , when( dvarBool(menu_scr_teambalance) && dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVAREDIT_VIS( 26, "@OW_SCR_TEAMBALANCE_PROTECTED_CLAN_TAGS", menu_scr_teambalance_protected_clan_tags, 1000, 40, SETA_SCR_TEAMBALANCE_PROTECTED_CLAN_TAGS; , when( dvarInt(menu_scr_teambalance) == 1 && dvarString(menu_cfg_gt) != "bel" ) )
+	CHOICE_DVARFLOATLIST_VIS( 22, "@OW_SCR_TEAMBALANCE", menu_scr_teambalance, { "Disabled" 0 "Enab. (avoid members)" 1 "Enab. (never members)" 2 }, SETA_SCR_TEAMBALANCE; , when( TEAMBASED ) )
+	CHOICE_DVARYESNO_VIS( 23, "@OW_SCR_TEAMBALANCE_SHOW_MESSAGE", menu_scr_teambalance_show_message, SETA_SCR_TEAMBALANCE_SHOW_MESSAGE; , when( dvarBool(menu_scr_teambalance) && TEAMBASED ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 24, "@OW_SCR_TEAMBALANCE_CHECK_INTERVAL", menu_scr_teambalance_check_interval, 3, SETA_SCR_TEAMBALANCE_CHECK_INTERVAL; , when( dvarBool(menu_scr_teambalance) && TEAMBASED) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 25, "@OW_SCR_TEAMBALANCE_DELAY", menu_scr_teambalance_delay, 2, SETA_SCR_TEAMBALANCE_DELAY; , when( dvarBool(menu_scr_teambalance) && TEAMBASED ) )
+	CHOICE_DVAREDIT_VIS( 26, "@OW_SCR_TEAMBALANCE_PROTECTED_CLAN_TAGS", menu_scr_teambalance_protected_clan_tags, 1000, 40, SETA_SCR_TEAMBALANCE_PROTECTED_CLAN_TAGS; , when( dvarInt(menu_scr_teambalance) == 1 && TEAMBASED ) )
 	
-	CHOICE_DVARFLOATLIST_VIS( 27, "@OW_SCR_TEAM_FFTYPE", menu_scr_team_fftype, { "Disabled" 0 "Enabled" 1 "Reflective" 2 "Shared (50%/50%)" 3 }, SETA_SCR_TEAM_FFTYPE; , when( dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVARYESNO_VIS( 28, "@OW_SCR_TEAM_TEAMKILLPOINTLOSS", menu_scr_team_teamkillpointloss, SETA_SCR_TEAM_TEAMKILLPOINTLOSS; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 29, "@OW_SCR_TEAM_TEAMKILLSPAWNDELAY", menu_scr_team_teamkillspawndelay, 2, SETA_SCR_TEAM_TEAMKILLSPAWNDELAY; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && dvarString(menu_cfg_gt) != "bel" ) )
+	CHOICE_DVARFLOATLIST_VIS( 27, "@OW_SCR_TEAM_FFTYPE", menu_scr_team_fftype, { "Disabled" 0 "Enabled" 1 "Reflective" 2 "Shared (50%/50%)" 3 }, SETA_SCR_TEAM_FFTYPE; , when( TEAMBASED ) )
+	CHOICE_DVARYESNO_VIS( 28, "@OW_SCR_TEAM_TEAMKILLPOINTLOSS", menu_scr_team_teamkillpointloss, SETA_SCR_TEAM_TEAMKILLPOINTLOSS; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && TEAMBASED ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 29, "@OW_SCR_TEAM_TEAMKILLSPAWNDELAY", menu_scr_team_teamkillspawndelay, 2, SETA_SCR_TEAM_TEAMKILLSPAWNDELAY; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && TEAMBASED ) )
 	CHOICE_DVARYESNO( 30, "@OW_SCR_GAME_DEATHPOINTLOSS", menu_scr_game_deathpointloss, SETA_SCR_GAME_DEATHPOINTLOSS; )
 	CHOICE_DVARYESNO( 31, "@OW_SCR_GAME_SUICIDEPOINTLOSS", menu_scr_game_suicidepointloss, SETA_SCR_GAME_SUICIDEPOINTLOSS; )
 	CHOICE_DVAREDIT_NUMERIC( 32, "@OW_SCR_PLAYER_SUICIDESPAWNDELAY", menu_scr_player_suicidespawndelay, 2, SETA_SCR_PLAYER_SUICIDESPAWNDELAY; )
 	
-	CHOICE_DVAREDIT_NUMERIC_VIS( 33, "@OW_SCR_TK_LIMIT", menu_scr_tk_limit, 2, SETA_SCR_TK_LIMIT; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVARYESNO_VIS( 34, "@OW_SCR_TK_EXPLOSIVE_COUNTASONE", menu_scr_tk_explosive_countasone, SETA_SCR_TK_EXPLOSIVE_COUNTASONE; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVARFLOATLIST_VIS( 35, "@OW_SCR_TK_PUNISHMENT", menu_scr_tk_punishment, { "Warning message" 0 "Disable player weapons" 1 "Lock player in position" 2 "Kill player on the spot" 3 "Kick player from server" 4 }, SETA_SCR_TK_PUNISHMENT; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 36, "@OW_SCR_TK_PUNISHMENT_TIME", menu_scr_tk_punishment_time, 2, SETA_SCR_TK_PUNISHMENT_TIME; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && dvarString(menu_cfg_gt) != "bel" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 33, "@OW_SCR_TK_LIMIT", menu_scr_tk_limit, 2, SETA_SCR_TK_LIMIT; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && TEAMBASED ) )
+	CHOICE_DVARYESNO_VIS( 34, "@OW_SCR_TK_EXPLOSIVE_COUNTASONE", menu_scr_tk_explosive_countasone, SETA_SCR_TK_EXPLOSIVE_COUNTASONE; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && TEAMBASED ) )
+	CHOICE_DVARFLOATLIST_VIS( 35, "@OW_SCR_TK_PUNISHMENT", menu_scr_tk_punishment, { "Warning message" 0 "Disable player weapons" 1 "Lock player in position" 2 "Kill player on the spot" 3 "Kick player from server" 4 }, SETA_SCR_TK_PUNISHMENT; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && TEAMBASED ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 36, "@OW_SCR_TK_PUNISHMENT_TIME", menu_scr_tk_punishment_time, 2, SETA_SCR_TK_PUNISHMENT_TIME; , when( (dvarInt(menu_scr_team_fftype) == 1 || dvarInt(menu_scr_team_fftype) == 3) && TEAMBASED ) )
 	
 #undef CHOICE_Y_COUNT
 #define CHOICE_Y_COUNT			100

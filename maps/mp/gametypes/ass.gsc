@@ -334,9 +334,9 @@ veryImportantPerson()
 	
 	// Create the extraction zone
 	level.extractionZone = createExtractionZone( game["attackers"], gametypeAssets["extractionzone_trigger"] );
-	// Slow process to create FX
-	wait( 0.08 );
-	triggerFx( level.extractionZone.baseEffect );
+	// Sending this event 2 times because gametype and readyup thread are not synchronized, so they could lose the event
+	level notify( "spawned_objectivefx" );
+	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 	
 	// Pick the VIP
 	level thread pickVIP();
@@ -372,6 +372,10 @@ createExtractionZone( attackerTeam, zoneTrigger )
 	trace = bulletTrace( traceStart, traceEnd, false, undefined );
 	upangles = vectorToAngles( trace["normal"] );
 	extractionZone.baseEffect = spawnFx( game[level.gameType]["extraction_base_effect"], trace["position"], anglesToForward( upangles ), anglesToRight( upangles ) );
+	
+	// Slow process to create FX
+	wait( 0.08 );
+	triggerFx( extractionZone.baseEffect );
 	
 	return extractionZone;
 }

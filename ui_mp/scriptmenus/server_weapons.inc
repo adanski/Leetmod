@@ -56,19 +56,19 @@ menuDef
 	CHOICE_DVARYESNO_VIS( 4, "@OW_SCR_DELETEEXPLOSIVESONSPAWN", menu_scr_deleteexplosivesonspawn, SETA_SCR_DELETEEXPLOSIVESONSPAWN; , 1)
 	CHOICE_DVARYESNO_VIS( 5, "@OW_SCR_DELETEEXPLOSIVESONDEATH", menu_scr_deleteexplosivesondeath, SETA_SCR_DELETEEXPLOSIVESONDEATH; , 1)
 	
-	CHOICE_DVARYESNO_VIS( 6, "@OW_SCR_OBJECTIVE_SAFEZONE_ENABLE", menu_scr_objective_safezone_enable, SETA_SCR_OBJECTIVE_SAFEZONE_ENABLE; , 1)
-	CHOICE_DVAREDIT_NUMERIC_VIS( 7, "@OW_SCR_OBJECTIVE_SAFEZONE_RADIUS", menu_scr_objective_safezone_radius, 3, SETA_SCR_OBJECTIVE_SAFEZONE_RADIUS; , when( dvarBool(menu_scr_objective_safezone_enable) == 1 ) )
+	CHOICE_DVARYESNO_VIS( 6, "@OW_SCR_OBJECTIVE_SAFEZONE_ENABLE", menu_scr_objective_safezone_enable, SETA_SCR_OBJECTIVE_SAFEZONE_ENABLE; , when( dvarString(menu_cfg_gt) == "ctf" || dvarString(menu_cfg_gt) == "dom" && dvarString(menu_cfg_gt) == "koth" || dvarString(menu_cfg_gt) == "sab" || dvarString(menu_cfg_gt) == "sd" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 7, "@OW_SCR_OBJECTIVE_SAFEZONE_RADIUS", menu_scr_objective_safezone_radius, 3, SETA_SCR_OBJECTIVE_SAFEZONE_RADIUS; , when( dvarString(menu_cfg_gt) == "ctf" || dvarString(menu_cfg_gt) == "dom" && dvarString(menu_cfg_gt) == "koth" || dvarString(menu_cfg_gt) == "sab" || dvarString(menu_cfg_gt) == "sd" ) )
 	
-	CHOICE_DVAREDIT_NUMERIC_VIS( 8, "@OW_SCR_DELAY_FRAG_GRENADES", menu_scr_delay_frag_grenades, 2, SETA_SCR_DELAY_FRAG_GRENADES; , 1 )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 9, "@OW_SCR_DELAY_GRENADE_LAUNCHERS", menu_scr_delay_grenade_launchers, 2, SETA_SCR_DELAY_GRENADE_LAUNCHERS; , 1 )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 10, "@OW_SCR_DELAY_SMOKE_GRENADES", menu_scr_delay_smoke_grenades, 2, SETA_SCR_DELAY_SMOKE_GRENADES; , 1 )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 11, "@OW_SCR_DELAY_FLASH_GRENADES", menu_scr_delay_flash_grenades, 2, SETA_SCR_DELAY_FLASH_GRENADES; , 1 )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 12, "@OW_SCR_DELAY_CONCUSSION_GRENADES", menu_scr_delay_concussion_grenades, 2, SETA_SCR_DELAY_CONCUSSION_GRENADES; , 1 )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 13, "@OW_SCR_DELAY_RPGS", menu_scr_delay_rpgs, 2, SETA_SCR_DELAY_RPGS; , 1 )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 14, "@OW_SCR_DELAY_C4S", menu_scr_delay_c4s, 2, SETA_SCR_DELAY_C4S; , 1 )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SCR_DELAY_CLAYMORES", menu_scr_delay_claymores, 2, SETA_SCR_DELAY_CLAYMORES; , 1 )
-	CHOICE_DVARYESNO_VIS( 16, "@OW_SCR_DELAY_ONLY_ROUND_START", menu_scr_delay_only_round_start, SETA_SCR_DELAY_ONLY_ROUND_START; , 1)
-	CHOICE_DVARYESNO_VIS( 17, "@OW_SCR_DELAY_SOUND_ENABLE", menu_scr_delay_sound_enable, SETA_SCR_DELAY_SOUND_ENABLE; , 1)
+	CHOICE_DVAREDIT_NUMERIC_VIS( 8, "@OW_SCR_DELAY_FRAG_GRENADES", menu_scr_delay_frag_grenades, 2, SETA_SCR_DELAY_FRAG_GRENADES; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 9, "@OW_SCR_DELAY_GRENADE_LAUNCHERS", menu_scr_delay_grenade_launchers, 2, SETA_SCR_DELAY_GRENADE_LAUNCHERS; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 10, "@OW_SCR_DELAY_SMOKE_GRENADES", menu_scr_delay_smoke_grenades, 2, SETA_SCR_DELAY_SMOKE_GRENADES; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 11, "@OW_SCR_DELAY_FLASH_GRENADES", menu_scr_delay_flash_grenades, 2, SETA_SCR_DELAY_FLASH_GRENADES; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 12, "@OW_SCR_DELAY_CONCUSSION_GRENADES", menu_scr_delay_concussion_grenades, 2, SETA_SCR_DELAY_CONCUSSION_GRENADES; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 13, "@OW_SCR_DELAY_RPGS", menu_scr_delay_rpgs, 2, SETA_SCR_DELAY_RPGS; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 14, "@OW_SCR_DELAY_C4S", menu_scr_delay_c4s, 2, SETA_SCR_DELAY_C4S; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SCR_DELAY_CLAYMORES", menu_scr_delay_claymores, 2, SETA_SCR_DELAY_CLAYMORES; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ) )
+	CHOICE_DVARYESNO_VIS( 16, "@OW_SCR_DELAY_ONLY_ROUND_START", menu_scr_delay_only_round_start, SETA_SCR_DELAY_ONLY_ROUND_START; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ))
+	CHOICE_DVARYESNO_VIS( 17, "@OW_SCR_DELAY_SOUND_ENABLE", menu_scr_delay_sound_enable, SETA_SCR_DELAY_SOUND_ENABLE; , when( dvarString(menu_cfg_gt) != "gg" && dvarString(menu_cfg_gt) != "ss" ))
 	
 	CHOICE_DVARYESNO_VIS( 18, "@OW_SCR_WEAPONJAMS_ENABLE", menu_scr_weaponjams_enable, SETA_SCR_WEAPONJAMS_ENABLE; , 1 )
 	CHOICE_DVAREDIT_NUMERIC_VIS( 19, "@OW_SCR_WEAPONJAMS_PROBABILITY", menu_scr_weaponjams_probability, 4, SETA_SCR_WEAPONJAMS_PROBABILITY; , when( dvarBool(menu_scr_weaponjams_enable) ) )
@@ -94,5 +94,5 @@ menuDef
 #undef TEXTSIZE_BUTTON_PC
 #define TEXTSIZE_BUTTON_PC	0.38
 	
-	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS; , 1 )
+	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS; , 1 )
 }
