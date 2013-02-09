@@ -643,7 +643,6 @@ bombs()
 			level.bombZones[1] disableObject();
 	}
 // End Settings bombsites
-	level notify( "spawned_objectivefx" );
 	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 

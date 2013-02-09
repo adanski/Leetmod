@@ -334,8 +334,7 @@ veryImportantPerson()
 	
 	// Create the extraction zone
 	level.extractionZone = createExtractionZone( game["attackers"], gametypeAssets["extractionzone_trigger"] );
-	// Sending this event 2 times because gametype and readyup thread are not synchronized, so they could lose the event
-	level notify( "spawned_objectivefx" );
+	
 	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 	
 	// Pick the VIP

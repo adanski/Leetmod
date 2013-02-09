@@ -299,8 +299,6 @@ greed()
 		level.dropZones["allies"] = createDropZone( "allies", level.bombZoneAxis );
 		level.dropZones["axis"] = createDropZone( "axis", level.bombZoneAllies );
 	}
-	
-	level notify( "spawned_objectivefx" );
 	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 

@@ -541,8 +541,6 @@ retrieval()
 			level.objectiveB disableObject();
 		}
 	}
-	
-	level notify( "spawned_objectivefx" );
 	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 

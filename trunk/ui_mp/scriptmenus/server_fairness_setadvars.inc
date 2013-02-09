@@ -27,6 +27,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_force_autoassign_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_force_autoassign_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_force_autoassign_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_force_autoassign_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_force_autoassign_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_force_autoassign_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_force_autoassign_re _null" \
@@ -39,6 +40,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_force_autoassign_clan_tags_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_force_autoassign_clan_tags_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_force_autoassign_clan_tags_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_force_autoassign_clan_tags_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_force_autoassign_clan_tags_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_force_autoassign_clan_tags_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_force_autoassign_clan_tags_re _null" \
@@ -51,6 +53,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_switch_teams_at_halftime_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_switch_teams_at_halftime_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_switch_teams_at_halftime_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_switch_teams_at_halftime_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_switch_teams_at_halftime_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_switch_teams_at_halftime_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_switch_teams_at_halftime_re _null" \
@@ -63,6 +66,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_teambalance_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_teambalance_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_teambalance_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_teambalance_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_teambalance_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_teambalance_re _null" \
@@ -75,6 +79,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_show_message_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_teambalance_show_message_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_teambalance_show_message_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_teambalance_show_message_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_teambalance_show_message_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_teambalance_show_message_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_teambalance_show_message_re _null" \
@@ -87,6 +92,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_check_interval_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_teambalance_check_interval_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_teambalance_check_interval_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_teambalance_check_interval_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_teambalance_check_interval_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_teambalance_check_interval_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_teambalance_check_interval_re _null" \
@@ -99,6 +105,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_delay_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_teambalance_delay_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_teambalance_delay_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_teambalance_delay_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_teambalance_delay_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_teambalance_delay_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_teambalance_delay_re _null" \
@@ -111,6 +118,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_teambalance_protected_clan_tags_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_teambalance_protected_clan_tags_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_teambalance_protected_clan_tags_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_teambalance_protected_clan_tags_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_teambalance_protected_clan_tags_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_teambalance_protected_clan_tags_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_teambalance_protected_clan_tags_re _null" \
@@ -123,6 +131,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_team_fftype_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_team_fftype_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_team_fftype_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_team_fftype_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_team_fftype_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_team_fftype_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_team_fftype_re _null" \
@@ -135,6 +144,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_team_teamkillpointloss_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_team_teamkillpointloss_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_team_teamkillpointloss_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_team_teamkillpointloss_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_team_teamkillpointloss_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_team_teamkillpointloss_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_team_teamkillpointloss_re _null" \
@@ -147,6 +157,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_team_teamkillspawndelay_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_team_teamkillspawndelay_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_team_teamkillspawndelay_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_team_teamkillspawndelay_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_team_teamkillspawndelay_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_team_teamkillspawndelay_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_team_teamkillspawndelay_re _null" \
@@ -161,6 +172,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_game_deathpointloss_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_game_deathpointloss_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_game_deathpointloss_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_game_deathpointloss_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_game_deathpointloss_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_game_deathpointloss_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_game_deathpointloss_gr _null" \
@@ -179,6 +191,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_game_suicidepointloss_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_game_suicidepointloss_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_game_suicidepointloss_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_game_suicidepointloss_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_game_suicidepointloss_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_game_suicidepointloss_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_game_suicidepointloss_gr _null" \
@@ -197,6 +210,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_player_suicidespawndelay_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_player_suicidespawndelay_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_player_suicidespawndelay_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_player_suicidespawndelay_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_player_suicidespawndelay_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_player_suicidespawndelay_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_player_suicidespawndelay_gr _null" \
@@ -213,6 +227,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_tk_limit_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_tk_limit_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_tk_limit_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_tk_limit_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_tk_limit_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_tk_limit_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_tk_limit_re _null" \
@@ -225,6 +240,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_tk_explosive_countasone_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_tk_explosive_countasone_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_tk_explosive_countasone_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_tk_explosive_countasone_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_tk_explosive_countasone_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_tk_explosive_countasone_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_tk_explosive_countasone_re _null" \
@@ -237,6 +253,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_tk_punishment_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_tk_punishment_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_tk_punishment_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_tk_punishment_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_tk_punishment_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_tk_punishment_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_tk_punishment_re _null" \
@@ -249,6 +266,7 @@
   execOnDvarStringValue menu_cfg_gt ass "seta scr_tk_punishment_time_ass _null" \
   execOnDvarStringValue menu_cfg_gt ch "seta scr_tk_punishment_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_tk_punishment_time_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_tk_punishment_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_tk_punishment_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_tk_punishment_time_koth _null" \
   execOnDvarStringValue menu_cfg_gt re "seta scr_tk_punishment_time_re _null" \
@@ -263,6 +281,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_spawn_protection_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_spawn_protection_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_spawn_protection_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_spawn_protection_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_spawn_protection_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_spawn_protection_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_spawn_protection_enable_gr _null" \
@@ -280,6 +299,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_spawn_protection_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_spawn_protection_time_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_spawn_protection_time_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_spawn_protection_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_spawn_protection_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_spawn_protection_time_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_spawn_protection_time_gr _null" \
@@ -297,6 +317,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_spawn_protection_invisible_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_spawn_protection_invisible_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_spawn_protection_invisible_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_spawn_protection_invisible_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_spawn_protection_invisible_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_spawn_protection_invisible_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_spawn_protection_invisible_gr _null" \
@@ -314,6 +335,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_spawn_protection_hiticon_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_spawn_protection_hiticon_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_spawn_protection_hiticon_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_spawn_protection_hiticon_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_spawn_protection_hiticon_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_spawn_protection_hiticon_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_spawn_protection_hiticon_gr _null" \
@@ -331,6 +353,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_spawn_protection_maxdistance_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_spawn_protection_maxdistance_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_spawn_protection_maxdistance_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_spawn_protection_maxdistance_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_spawn_protection_maxdistance_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_spawn_protection_maxdistance_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_spawn_protection_maxdistance_gr _null" \
@@ -348,6 +371,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_spawn_protection_punishment_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_spawn_protection_punishment_time_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_spawn_protection_punishment_time_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_spawn_protection_punishment_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_spawn_protection_punishment_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_spawn_protection_punishment_time_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_spawn_protection_punishment_time_gr _null" \
@@ -365,6 +389,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_anti_camping_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_anti_camping_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_anti_camping_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_anti_camping_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_anti_camping_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_anti_camping_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_anti_camping_enable_gr _null" \
@@ -383,6 +408,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_anti_camping_show_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_anti_camping_show_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_anti_camping_show_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_anti_camping_show_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_anti_camping_show_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_anti_camping_show_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_anti_camping_show_gr _null" \
@@ -401,6 +427,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_anti_camping_message_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_anti_camping_message_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_anti_camping_message_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_anti_camping_message_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_anti_camping_message_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_anti_camping_message_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_anti_camping_message_gr _null" \
@@ -419,6 +446,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_anti_camping_distance_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_anti_camping_distance_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_anti_camping_distance_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_anti_camping_distance_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_anti_camping_distance_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_anti_camping_distance_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_anti_camping_distance_gr _null" \
@@ -437,6 +465,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_anti_camping_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_anti_camping_time_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_anti_camping_time_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_anti_camping_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_anti_camping_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_anti_camping_time_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_anti_camping_time_gr _null" \
@@ -455,6 +484,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_anti_bunny_hopping_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_anti_bunny_hopping_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_anti_bunny_hopping_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_anti_bunny_hopping_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_anti_bunny_hopping_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_anti_bunny_hopping_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_anti_bunny_hopping_enable_gr _null" \
@@ -473,6 +503,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_anti_dolphin_dive_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_anti_dolphin_dive_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_anti_dolphin_dive_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_anti_dolphin_dive_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_anti_dolphin_dive_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_anti_dolphin_dive_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_anti_dolphin_dive_enable_gr _null" \
@@ -491,6 +522,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_rng_enabled_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_rng_enabled_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_rng_enabled_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_rng_enabled_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_rng_enabled_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_rng_enabled_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_rng_enabled_gr _null" \
@@ -509,6 +541,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_rng_distance_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_rng_distance_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_rng_distance_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_rng_distance_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_rng_distance_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_rng_distance_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_rng_distance_gr _null" \
@@ -527,6 +560,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_rng_damage_closer_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_rng_damage_closer_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_rng_damage_closer_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_rng_damage_closer_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_rng_damage_closer_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_rng_damage_closer_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_rng_damage_closer_gr _null" \
@@ -545,6 +579,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_rng_damage_longer_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_rng_damage_longer_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_rng_damage_longer_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_rng_damage_longer_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_rng_damage_longer_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_rng_damage_longer_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_rng_damage_longer_gr _null" \

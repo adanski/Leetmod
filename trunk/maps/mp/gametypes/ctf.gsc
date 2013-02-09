@@ -553,7 +553,6 @@ captureTheFlag()
 	if ( level.scr_ctf_ctfmode == 1 ) {
 		createReturnMessageElems();
 	}
-	level notify( "spawned_objectivefx" );
 	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 

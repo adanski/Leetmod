@@ -28,6 +28,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_c4_mp_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_c4_mp_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_c4_mp_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_c4_mp_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_c4_mp_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_c4_mp_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_c4_mp_koth _null" \
@@ -44,6 +45,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_specialgrenade_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_specialgrenade_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_specialgrenade_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_specialgrenade_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_specialgrenade_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_specialgrenade_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_specialgrenade_koth _null" \
@@ -60,6 +62,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_rpg_mp_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_rpg_mp_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_rpg_mp_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_rpg_mp_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_rpg_mp_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_rpg_mp_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_rpg_mp_koth _null" \
@@ -76,6 +79,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_claymore_mp_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_claymore_mp_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_claymore_mp_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_claymore_mp_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_claymore_mp_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_claymore_mp_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_claymore_mp_koth _null" \
@@ -92,6 +96,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_fraggrenade_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_fraggrenade_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_fraggrenade_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_fraggrenade_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_fraggrenade_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_fraggrenade_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_fraggrenade_koth _null" \
@@ -108,6 +113,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_extraammo_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_extraammo_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_extraammo_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_extraammo_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_extraammo_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_extraammo_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_extraammo_koth _null" \
@@ -124,6 +130,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_detectexplosive_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_detectexplosive_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_detectexplosive_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_detectexplosive_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_detectexplosive_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_detectexplosive_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_detectexplosive_koth _null" \
@@ -140,6 +147,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_bulletdamage_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_bulletdamage_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_bulletdamage_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_bulletdamage_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_bulletdamage_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_bulletdamage_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_bulletdamage_koth _null" \
@@ -156,6 +164,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_armorvest_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_armorvest_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_armorvest_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_armorvest_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_armorvest_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_armorvest_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_armorvest_koth _null" \
@@ -172,6 +181,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_fastreload_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_fastreload_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_fastreload_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_fastreload_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_fastreload_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_fastreload_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_fastreload_koth _null" \
@@ -188,6 +198,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_rof_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_rof_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_rof_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_rof_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_rof_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_rof_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_rof_koth _null" \
@@ -204,6 +215,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_twoprimaries_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_twoprimaries_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_twoprimaries_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_twoprimaries_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_twoprimaries_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_twoprimaries_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_twoprimaries_koth _null" \
@@ -220,6 +232,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_gpsjammer_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_gpsjammer_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_gpsjammer_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_gpsjammer_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_gpsjammer_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_gpsjammer_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_gpsjammer_koth _null" \
@@ -236,6 +249,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_explosivedamage_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_explosivedamage_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_explosivedamage_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_explosivedamage_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_explosivedamage_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_explosivedamage_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_explosivedamage_koth _null" \
@@ -252,6 +266,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_longersprint_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_longersprint_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_longersprint_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_longersprint_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_longersprint_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_longersprint_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_longersprint_koth _null" \
@@ -268,6 +283,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_bulletaccuracy_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_bulletaccuracy_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_bulletaccuracy_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_bulletaccuracy_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_bulletaccuracy_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_bulletaccuracy_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_bulletaccuracy_koth _null" \
@@ -284,6 +300,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_pistoldeath_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_pistoldeath_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_pistoldeath_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_pistoldeath_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_pistoldeath_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_pistoldeath_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_pistoldeath_koth _null" \
@@ -300,6 +317,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_grenadepulldeath_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_grenadepulldeath_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_grenadepulldeath_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_grenadepulldeath_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_grenadepulldeath_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_grenadepulldeath_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_grenadepulldeath_koth _null" \
@@ -316,6 +334,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_bulletpenetration_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_bulletpenetration_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_bulletpenetration_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_bulletpenetration_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_bulletpenetration_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_bulletpenetration_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_bulletpenetration_koth _null" \
@@ -332,6 +351,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_holdbreath_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_holdbreath_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_holdbreath_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_holdbreath_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_holdbreath_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_holdbreath_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_holdbreath_koth _null" \
@@ -348,6 +368,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_quieter_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_quieter_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_quieter_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_quieter_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_quieter_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_quieter_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_quieter_koth _null" \
@@ -364,6 +385,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_allow_specialty_parabolic_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_allow_specialty_parabolic_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_allow_specialty_parabolic_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_allow_specialty_parabolic_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_allow_specialty_parabolic_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_allow_specialty_parabolic_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta perk_allow_specialty_parabolic_koth _null" \
@@ -380,6 +402,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_c4_ammo_count_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_c4_ammo_count_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_c4_ammo_count_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_c4_ammo_count_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_c4_ammo_count_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_c4_ammo_count_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_c4_ammo_count_koth _null" \
@@ -396,6 +419,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_ammo_count_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_ammo_count_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_ammo_count_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_claymore_ammo_count_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_ammo_count_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_ammo_count_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_ammo_count_koth _null" \
@@ -412,6 +436,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_rpg_ammo_count_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_rpg_ammo_count_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_rpg_ammo_count_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_rpg_ammo_count_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_rpg_ammo_count_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_rpg_ammo_count_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_rpg_ammo_count_koth _null" \
@@ -428,6 +453,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta specialty_fraggrenade_ammo_count_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta specialty_fraggrenade_ammo_count_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta specialty_fraggrenade_ammo_count_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta specialty_fraggrenade_ammo_count_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta specialty_fraggrenade_ammo_count_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta specialty_fraggrenade_ammo_count_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta specialty_fraggrenade_ammo_count_koth _null" \
@@ -444,6 +470,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta specialty_specialgrenade_ammo_count_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta specialty_specialgrenade_ammo_count_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta specialty_specialgrenade_ammo_count_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta specialty_specialgrenade_ammo_count_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta specialty_specialgrenade_ammo_count_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta specialty_specialgrenade_ammo_count_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta specialty_specialgrenade_ammo_count_koth _null" \
@@ -460,6 +487,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_armorvest_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_armorvest_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_armorvest_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_armorvest_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_armorvest_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta perk_armorvest_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_armorvest_gr _null" \
@@ -477,6 +505,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_bulletdamage_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_bulletdamage_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_bulletdamage_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_bulletdamage_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_bulletdamage_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta perk_bulletdamage_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_bulletdamage_gr _null" \
@@ -494,6 +523,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta perk_explosivedamage_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta perk_explosivedamage_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta perk_explosivedamage_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta perk_explosivedamage_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta perk_explosivedamage_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta perk_explosivedamage_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta perk_explosivedamage_gr _null" \
@@ -511,6 +541,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_friendly_fire_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_friendly_fire_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_friendly_fire_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_claymore_friendly_fire_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_friendly_fire_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_friendly_fire_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_friendly_fire_koth _null" \
@@ -527,6 +558,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta specialty_grenadepulldeath_check_frags_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta specialty_grenadepulldeath_check_frags_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta specialty_grenadepulldeath_check_frags_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta specialty_grenadepulldeath_check_frags_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta specialty_grenadepulldeath_check_frags_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta specialty_grenadepulldeath_check_frags_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta specialty_grenadepulldeath_check_frags_gr _null" \
@@ -544,6 +576,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta specialty_pistoldeath_check_pistol_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta specialty_pistoldeath_check_pistol_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta specialty_pistoldeath_check_pistol_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta specialty_pistoldeath_check_pistol_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta specialty_pistoldeath_check_pistol_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta specialty_pistoldeath_check_pistol_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta specialty_pistoldeath_check_pistol_gr _null" \
@@ -561,6 +594,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_check_plant_distance_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_check_plant_distance_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_check_plant_distance_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_claymore_check_plant_distance_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_check_plant_distance_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_check_plant_distance_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_check_plant_distance_koth _null" \
@@ -577,6 +611,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_add_kill_only_if_directed_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_add_kill_only_if_directed_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_add_kill_only_if_directed_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_claymore_add_kill_only_if_directed_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_add_kill_only_if_directed_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_add_kill_only_if_directed_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_add_kill_only_if_directed_koth _null" \
@@ -593,6 +628,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_arm_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_arm_time_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_arm_time_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_claymore_arm_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_arm_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_arm_time_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_arm_time_koth _null" \
@@ -609,6 +645,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_explosives_allow_disarm_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_explosives_allow_disarm_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_explosives_allow_disarm_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_explosives_allow_disarm_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_explosives_allow_disarm_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_explosives_allow_disarm_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_explosives_allow_disarm_gr _null" \
@@ -626,6 +663,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_explosives_disarm_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_explosives_disarm_time_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_explosives_disarm_time_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_explosives_disarm_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_explosives_disarm_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_explosives_disarm_time_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_explosives_disarm_time_gr _null" \
@@ -643,6 +681,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_show_headicon_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_show_headicon_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_show_headicon_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_claymore_show_headicon_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_show_headicon_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_show_headicon_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_show_headicon_koth _null" \
@@ -659,6 +698,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_claymore_show_laser_beams_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_claymore_show_laser_beams_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_claymore_show_laser_beams_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_claymore_show_laser_beams_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_claymore_show_laser_beams_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_claymore_show_laser_beams_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_claymore_show_laser_beams_koth _null" \
@@ -675,6 +715,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_show_c4_blink_effect_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_show_c4_blink_effect_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_show_c4_blink_effect_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_show_c4_blink_effect_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_show_c4_blink_effect_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_show_c4_blink_effect_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_show_c4_blink_effect_gr _null" \

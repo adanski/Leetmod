@@ -28,6 +28,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_player_maxhealth_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_player_maxhealth_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_player_maxhealth_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_player_maxhealth_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_player_maxhealth_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_player_maxhealth_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_player_maxhealth_gr _null" \
@@ -45,6 +46,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthregen_method_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthregen_method_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthregen_method_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthregen_method_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthregen_method_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthregen_method_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthregen_method_gr _null" \
@@ -62,6 +64,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_player_healthregentime_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_player_healthregentime_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_player_healthregentime_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_player_healthregentime_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_player_healthregentime_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_player_healthregentime_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_player_healthregentime_gr _null" \
@@ -79,6 +82,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_health_pain_sound_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_health_pain_sound_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_health_pain_sound_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_health_pain_sound_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_health_pain_sound_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_health_pain_sound_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_health_pain_sound_gr _null" \
@@ -96,6 +100,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_health_death_sound_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_health_death_sound_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_health_death_sound_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_health_death_sound_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_health_death_sound_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_health_death_sound_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_health_death_sound_gr _null" \
@@ -113,6 +118,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_health_hurt_sound_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_health_hurt_sound_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_health_hurt_sound_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_health_hurt_sound_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_health_hurt_sound_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_health_hurt_sound_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_health_hurt_sound_gr _null" \
@@ -130,6 +136,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_show_healthbar_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_show_healthbar_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_show_healthbar_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_show_healthbar_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_show_healthbar_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_show_healthbar_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_show_healthbar_gr _null" \
@@ -147,6 +154,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_bleeding_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_bleeding_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_bleeding_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_bleeding_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_bleeding_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_bleeding_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_bleeding_enable_gr _null" \
@@ -164,6 +172,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_bleeding_start_percentage_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_bleeding_start_percentage_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_bleeding_start_percentage_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_bleeding_start_percentage_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_bleeding_start_percentage_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_bleeding_start_percentage_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_bleeding_start_percentage_gr _null" \
@@ -181,6 +190,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_bleeding_icon_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_bleeding_icon_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_bleeding_icon_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_bleeding_icon_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_bleeding_icon_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_bleeding_icon_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_bleeding_icon_gr _null" \
@@ -198,6 +208,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_bandage_start_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_bandage_start_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_bandage_start_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_bandage_start_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_bandage_start_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_bandage_start_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_bandage_start_gr _null" \
@@ -215,6 +226,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_bandage_max_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_bandage_max_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_bandage_max_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_bandage_max_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_bandage_max_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_bandage_max_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_bandage_max_gr _null" \
@@ -232,6 +244,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_bandage_self_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_bandage_self_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_bandage_self_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_bandage_self_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_bandage_self_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_bandage_self_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_bandage_self_gr _null" \
@@ -249,6 +262,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_bandage_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_bandage_time_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_bandage_time_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_bandage_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_bandage_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_bandage_time_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_bandage_time_gr _null" \
@@ -266,6 +280,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_medic_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_medic_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_medic_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_medic_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_medic_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_medic_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_medic_enable_gr _null" \
@@ -283,6 +298,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_medic_bandaging_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_medic_bandaging_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_medic_bandaging_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_medic_bandaging_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_medic_bandaging_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_medic_bandaging_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_medic_bandaging_gr _null" \
@@ -300,6 +316,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_medic_healing_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_medic_healing_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_medic_healing_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_medic_healing_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_medic_healing_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_medic_healing_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_medic_healing_gr _null" \
@@ -317,6 +334,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_medic_healing_self_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_medic_healing_self_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_medic_healing_self_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_medic_healing_self_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_medic_healing_self_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_medic_healing_self_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_medic_healing_self_gr _null" \
@@ -334,6 +352,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_medic_healing_health_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_medic_healing_health_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_medic_healing_health_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_medic_healing_health_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_medic_healing_health_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_medic_healing_health_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_medic_healing_health_gr _null" \
@@ -351,6 +370,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_medic_healing_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_medic_healing_time_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_medic_healing_time_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_medic_healing_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_medic_healing_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_medic_healing_time_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_medic_healing_time_gr _null" \
@@ -368,6 +388,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_medic_take_bandage_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_medic_take_bandage_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_medic_take_bandage_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_medic_take_bandage_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_medic_take_bandage_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_medic_take_bandage_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_medic_take_bandage_gr _null" \
@@ -385,6 +406,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_healing_icon_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_healing_icon_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_healing_icon_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_healing_icon_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_healing_icon_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_healing_icon_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_healing_icon_gr _null" \
@@ -402,6 +424,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_healthpacks_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_healthpacks_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_healthpacks_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_healthpacks_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_healthpacks_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_healthpacks_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_healthpacks_enable_gr _null" \
@@ -419,6 +442,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_healthpacks_timeout_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_healthpacks_timeout_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_healthpacks_timeout_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_healthpacks_timeout_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_healthpacks_timeout_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_healthpacks_timeout_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_healthpacks_timeout_gr _null" \
@@ -436,6 +460,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_healthpacks_health_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_healthpacks_health_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_healthpacks_health_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_healthpacks_health_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_healthpacks_health_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_healthpacks_health_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_healthpacks_health_gr _null" \
@@ -453,6 +478,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_healthsystem_healthpacks_random_health_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_healthsystem_healthpacks_random_health_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_healthsystem_healthpacks_random_health_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_healthsystem_healthpacks_random_health_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_healthsystem_healthpacks_random_health_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_healthsystem_healthpacks_random_health_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_healthsystem_healthpacks_random_health_gr _null" \
@@ -470,6 +496,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_barrel_damage_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_barrel_damage_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_barrel_damage_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_barrel_damage_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_barrel_damage_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_barrel_damage_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_barrel_damage_enable_gr _null" \
@@ -487,6 +514,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_vehicle_damage_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_vehicle_damage_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_vehicle_damage_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_vehicle_damage_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_vehicle_damage_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_vehicle_damage_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_vehicle_damage_enable_gr _null" \

@@ -26,6 +26,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_grenade_allow_cooking_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_grenade_allow_cooking_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_grenade_allow_cooking_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_grenade_allow_cooking_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_grenade_allow_cooking_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_grenade_allow_cooking_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_grenade_allow_cooking_gr _null" \
@@ -43,6 +44,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_bullet_penetration_enabled_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_bullet_penetration_enabled_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_bullet_penetration_enabled_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_bullet_penetration_enabled_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_bullet_penetration_enabled_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_bullet_penetration_enabled_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_bullet_penetration_enabled_gr _null" \
@@ -60,6 +62,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_concussion_grenades_base_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_concussion_grenades_base_time_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_concussion_grenades_base_time_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_concussion_grenades_base_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_concussion_grenades_base_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_concussion_grenades_base_time_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_concussion_grenades_base_time_gr _null" \
@@ -77,6 +80,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_deleteexplosivesonspawn_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_deleteexplosivesonspawn_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_deleteexplosivesonspawn_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_deleteexplosivesonspawn_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_deleteexplosivesonspawn_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_deleteexplosivesonspawn_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_deleteexplosivesonspawn_gr _null" \
@@ -94,6 +98,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_deleteexplosivesondeath_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_deleteexplosivesondeath_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_deleteexplosivesondeath_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_deleteexplosivesondeath_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_deleteexplosivesondeath_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_deleteexplosivesondeath_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_deleteexplosivesondeath_gr _null" \
@@ -125,6 +130,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_frag_grenades_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_frag_grenades_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_frag_grenades_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_frag_grenades_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_frag_grenades_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_frag_grenades_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_frag_grenades_koth _null" \
@@ -140,6 +146,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_grenade_launchers_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_grenade_launchers_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_grenade_launchers_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_grenade_launchers_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_grenade_launchers_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_grenade_launchers_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_grenade_launchers_koth _null" \
@@ -155,6 +162,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_smoke_grenades_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_smoke_grenades_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_smoke_grenades_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_smoke_grenades_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_smoke_grenades_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_smoke_grenades_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_smoke_grenades_koth _null" \
@@ -170,6 +178,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_flash_grenades_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_flash_grenades_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_flash_grenades_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_flash_grenades_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_flash_grenades_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_flash_grenades_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_flash_grenades_koth _null" \
@@ -185,6 +194,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_concussion_grenades_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_concussion_grenades_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_concussion_grenades_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_concussion_grenades_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_concussion_grenades_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_concussion_grenades_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_concussion_grenades_koth _null" \
@@ -200,6 +210,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_rpgs_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_rpgs_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_rpgs_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_rpgs_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_rpgs_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_rpgs_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_rpgs_koth _null" \
@@ -215,6 +226,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_c4s_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_c4s_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_c4s_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_c4s_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_c4s_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_c4s_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_c4s_koth _null" \
@@ -230,6 +242,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_claymores_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_claymores_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_claymores_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_claymores_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_claymores_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_claymores_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_claymores_koth _null" \
@@ -245,6 +258,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_only_round_start_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_only_round_start_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_only_round_start_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_only_round_start_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_only_round_start_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_only_round_start_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_only_round_start_koth _null" \
@@ -260,6 +274,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_delay_sound_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_delay_sound_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_delay_sound_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_delay_sound_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_delay_sound_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_delay_sound_enable_gr _null" \
   execOnDvarStringValue menu_cfg_gt koth "seta scr_delay_sound_enable_koth _null" \
@@ -275,6 +290,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_weaponjams_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_weaponjams_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_weaponjams_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_weaponjams_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_weaponjams_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_weaponjams_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_weaponjams_enable_gr _null" \
@@ -292,6 +308,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_weaponjams_probability_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_weaponjams_probability_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_weaponjams_probability_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_weaponjams_probability_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_weaponjams_probability_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_weaponjams_probability_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_weaponjams_probability_gr _null" \
@@ -309,6 +326,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_weaponjams_gap_time_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_weaponjams_gap_time_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_weaponjams_gap_time_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_weaponjams_gap_time_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_weaponjams_gap_time_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_weaponjams_gap_time_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_weaponjams_gap_time_gr _null" \
@@ -326,6 +344,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_sniperzoom_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_sniperzoom_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_sniperzoom_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_sniperzoom_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_sniperzoom_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_sniperzoom_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_sniperzoom_enable_gr _null" \
@@ -343,6 +362,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_sniperzoom_lower_levels_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_sniperzoom_lower_levels_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_sniperzoom_lower_levels_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_sniperzoom_lower_levels_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_sniperzoom_lower_levels_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_sniperzoom_lower_levels_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_sniperzoom_lower_levels_gr _null" \
@@ -360,6 +380,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_sniperzoom_upper_levels_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_sniperzoom_upper_levels_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_sniperzoom_upper_levels_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_sniperzoom_upper_levels_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_sniperzoom_upper_levels_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_sniperzoom_upper_levels_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_sniperzoom_upper_levels_gr _null" \
@@ -377,6 +398,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_rangefinder_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_rangefinder_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_rangefinder_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_rangefinder_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_rangefinder_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_rangefinder_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_rangefinder_enable_gr _null" \

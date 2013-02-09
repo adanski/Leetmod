@@ -419,6 +419,9 @@ notifyObjectiveCreated()
 {
 	level endon("readyupperiod_ended");
 	
+	// Sending this event 2 times because gametype and readyup thread are not synchronized, so they could lose the event
+	level notify( "spawned_objectivefx" );
+	
 	level waittill("readyupperiod_started");
 	
 	level notify( "spawned_objectivefx" );

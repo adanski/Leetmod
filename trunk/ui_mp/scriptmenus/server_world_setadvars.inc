@@ -52,6 +52,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_g_gravity_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_g_gravity_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_g_gravity_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_g_gravity_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_g_gravity_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_g_gravity_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_g_gravity_gr _null" \
@@ -70,6 +71,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_map_special_fx_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_map_special_fx_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_map_special_fx_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_map_special_fx_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_map_special_fx_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_map_special_fx_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_map_special_fx_enable_gr _null" \
@@ -88,6 +90,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_map_special_fx_rain_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_map_special_fx_rain_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_map_special_fx_rain_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_map_special_fx_rain_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_map_special_fx_rain_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_map_special_fx_rain_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_map_special_fx_rain_gr _null" \
@@ -106,6 +109,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_map_special_fx_particles_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_map_special_fx_particles_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_map_special_fx_particles_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_map_special_fx_particles_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_map_special_fx_particles_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_map_special_fx_particles_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_map_special_fx_particles_gr _null" \
@@ -124,6 +128,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_map_special_fx_bgsound_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_map_special_fx_bgsound_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_map_special_fx_bgsound_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_map_special_fx_bgsound_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_map_special_fx_bgsound_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_map_special_fx_bgsound_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_map_special_fx_bgsound_gr _null" \
@@ -142,6 +147,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_show_fog_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_show_fog_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_show_fog_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_show_fog_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_show_fog_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_show_fog_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_show_fog_gr _null" \
@@ -160,6 +166,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_dcs_enabled_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_dcs_enabled_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_dcs_enabled_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_dcs_enabled_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_dcs_enabled_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_dcs_enabled_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_dcs_enabled_gr _null" \
@@ -178,6 +185,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_dcs_day_length_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_dcs_day_length_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_dcs_day_length_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_dcs_day_length_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_dcs_day_length_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_dcs_day_length_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_dcs_day_length_gr _null" \
@@ -196,6 +204,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_dcs_dusk_length_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_dcs_dusk_length_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_dcs_dusk_length_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_dcs_dusk_length_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_dcs_dusk_length_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_dcs_dusk_length_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_dcs_dusk_length_gr _null" \
@@ -214,6 +223,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_dcs_night_length_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_dcs_night_length_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_dcs_night_length_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_dcs_night_length_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_dcs_night_length_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_dcs_night_length_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_dcs_night_length_gr _null" \
@@ -232,6 +242,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_dcs_dawn_length_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_dcs_dawn_length_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_dcs_dawn_length_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_dcs_dawn_length_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_dcs_dawn_length_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_dcs_dawn_length_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_dcs_dawn_length_gr _null" \
@@ -250,6 +261,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_dcs_first_cycle_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_dcs_first_cycle_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_dcs_first_cycle_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_dcs_first_cycle_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_dcs_first_cycle_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_dcs_first_cycle_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_dcs_first_cycle_gr _null" \
@@ -268,6 +280,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_dcs_sounds_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_dcs_sounds_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_dcs_sounds_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_dcs_sounds_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_dcs_sounds_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_dcs_sounds_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_dcs_sounds_enable_gr _null" \
@@ -286,6 +299,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_dcs_reset_cycle_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_dcs_reset_cycle_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_dcs_reset_cycle_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_dcs_reset_cycle_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_dcs_reset_cycle_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_dcs_reset_cycle_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_dcs_reset_cycle_gr _null" \
