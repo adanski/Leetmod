@@ -11,6 +11,7 @@ menuDef
 	//soundloop		""
 	onOpen
 	{
+		setdvar tmp_menu_savedsess 0;
 		FILLMENUDVARS;
 	}
 	onClose
@@ -49,37 +50,37 @@ menuDef
 #undef CHOICE_Y_COUNT
 #define CHOICE_Y_COUNT			12
 	
-	CHOICE_DVARYESNO( 1, "@OW_SCR_GAME_HARDPOINTS", menu_scr_game_hardpoints, SETA_SCR_GAME_HARDPOINTS; )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 2, "@OW_SCR_HARDPOINT_SHOW_REMINDER", menu_scr_hardpoint_show_reminder, 2, SETA_SCR_HARDPOINT_SHOW_REMINDER; , when( dvarBool(menu_scr_game_hardpoints) ) )
-	CHOICE_DVARYESNO_VIS( 3, "@OW_SCR_REMOVE_HARDPOINT_ON_DEATH", menu_scr_remove_hardpoint_on_death, SETA_SCR_REMOVE_HARDPOINT_ON_DEATH; , when( dvarBool(menu_scr_game_hardpoints) ) )
-	CHOICE_DVARYESNO_VIS( 4, "@OW_SCR_GAME_HARDPOINTS_CYCLE", menu_scr_game_hardpoints_cycle, SETA_SCR_GAME_HARDPOINTS_CYCLE; , when( dvarBool(menu_scr_game_hardpoints) ) )
-	CHOICE_DVARFLOATLIST_VIS( 5, "@OW_SCR_GAME_HARDPOINTS_MODE", menu_scr_game_hardpoints_mode, { "Kill streak" 0 "Total kills amount" 1 }, SETA_SCR_GAME_HARDPOINTS_MODE; , when( dvarBool(menu_scr_game_hardpoints) ) )
-	CHOICE_DVARYESNO_VIS( 6, "@OW_SCR_ANNOUNCE_KILLSTREAK", menu_scr_announce_killstreak, SETA_SCR_ANNOUNCE_KILLSTREAK; , when( dvarBool(menu_scr_game_hardpoints) ) )
+	CHOICE_DVARYESNO( 1, "@OW_SCR_GAME_HARDPOINTS", menu_scr_game_hardpoints, SET_SCR_GAME_HARDPOINTS; )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 2, "@OW_SCR_HARDPOINT_SHOW_REMINDER", menu_scr_hardpoint_show_reminder, 2, SET_SCR_HARDPOINT_SHOW_REMINDER; , when( dvarBool(menu_scr_game_hardpoints) ) )
+	CHOICE_DVARYESNO_VIS( 3, "@OW_SCR_REMOVE_HARDPOINT_ON_DEATH", menu_scr_remove_hardpoint_on_death, SET_SCR_REMOVE_HARDPOINT_ON_DEATH; , when( dvarBool(menu_scr_game_hardpoints) ) )
+	CHOICE_DVARYESNO_VIS( 4, "@OW_SCR_GAME_HARDPOINTS_CYCLE", menu_scr_game_hardpoints_cycle, SET_SCR_GAME_HARDPOINTS_CYCLE; , when( dvarBool(menu_scr_game_hardpoints) ) )
+	CHOICE_DVARFLOATLIST_VIS( 5, "@OW_SCR_GAME_HARDPOINTS_MODE", menu_scr_game_hardpoints_mode, { "Kill streak" 0 "Total kills amount" 1 }, SET_SCR_GAME_HARDPOINTS_MODE; , when( dvarBool(menu_scr_game_hardpoints) ) )
+	CHOICE_DVARYESNO_VIS( 6, "@OW_SCR_ANNOUNCE_KILLSTREAK", menu_scr_announce_killstreak, SET_SCR_ANNOUNCE_KILLSTREAK; , when( dvarBool(menu_scr_game_hardpoints) ) )
 	
-	CHOICE_DVARYESNO_VIS( 7, "@OW_SCR_HARDPOINT_ALLOW_UAV", menu_scr_hardpoint_allow_uav, SETA_SCR_HARDPOINT_ALLOW_UAV; , when( dvarBool(menu_scr_game_hardpoints) ) )
-	CHOICE_DVARYESNO_VIS( 8, "@OW_SCR_GAME_FORCEUAV", menu_scr_game_forceuav, SETA_SCR_GAME_FORCEUAV; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 9, "@OW_SCR_HARDPOINT_UAV_STREAK", menu_scr_hardpoint_uav_streak, 2, SETA_SCR_HARDPOINT_UAV_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 10, "@OW_SCR_UAV_VIEW_TIME", menu_scr_uav_view_time, 3, SETA_SCR_UAV_VIEW_TIME; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
-	CHOICE_DVARYESNO_VIS( 11, "@OW_SCR_ANNOUNCE_ENEMY_UAV_ONLINE", menu_scr_announce_enemy_uav_online, SETA_SCR_ANNOUNCE_ENEMY_UAV_ONLINE; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
-	CHOICE_DVARYESNO_VIS( 12, "@OW_SCR_UAV_SHOW_HARDPOINTS", menu_scr_uav_show_hardpoints, SETA_SCR_UAV_SHOW_HARDPOINTS; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
+	CHOICE_DVARYESNO_VIS( 7, "@OW_SCR_HARDPOINT_ALLOW_UAV", menu_scr_hardpoint_allow_uav, SET_SCR_HARDPOINT_ALLOW_UAV; , when( dvarBool(menu_scr_game_hardpoints) ) )
+	CHOICE_DVARYESNO_VIS( 8, "@OW_SCR_GAME_FORCEUAV", menu_scr_game_forceuav, SET_SCR_GAME_FORCEUAV; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 9, "@OW_SCR_HARDPOINT_UAV_STREAK", menu_scr_hardpoint_uav_streak, 2, SET_SCR_HARDPOINT_UAV_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 10, "@OW_SCR_UAV_VIEW_TIME", menu_scr_uav_view_time, 3, SET_SCR_UAV_VIEW_TIME; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
+	CHOICE_DVARYESNO_VIS( 11, "@OW_SCR_ANNOUNCE_ENEMY_UAV_ONLINE", menu_scr_announce_enemy_uav_online, SET_SCR_ANNOUNCE_ENEMY_UAV_ONLINE; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
+	CHOICE_DVARYESNO_VIS( 12, "@OW_SCR_UAV_SHOW_HARDPOINTS", menu_scr_uav_show_hardpoints, SET_SCR_UAV_SHOW_HARDPOINTS; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_uav) ) )
 	
-	CHOICE_DVARYESNO_VIS( 13, "@OW_SCR_HARDPOINT_ALLOW_AIRSTRIKE", menu_scr_hardpoint_allow_airstrike, SETA_SCR_HARDPOINT_ALLOW_AIRSTRIKE; , when( dvarBool(menu_scr_game_hardpoints) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 14, "@OW_SCR_HARDPOINT_AIRSTRIKE_STREAK", menu_scr_hardpoint_airstrike_streak, 2, SETA_SCR_HARDPOINT_AIRSTRIKE_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SCR_AIRSTRIKE_HARDPOINT_INTERVAL", menu_scr_airstrike_hardpoint_interval, 3, SETA_SCR_AIRSTRIKE_HARDPOINT_INTERVAL; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
-	CHOICE_DVARYESNO_VIS( 16, "@OW_SCR_ANNOUNCE_ENEMY_AIRSTRIKE_INBOUND", menu_scr_announce_enemy_airstrike_inbound, SETA_SCR_ANNOUNCE_ENEMY_AIRSTRIKE_INBOUND; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
-	CHOICE_DVARYESNO_VIS( 17, "@OW_SCR_AIRSTRIKE_ADD_KILLS", menu_scr_airstrike_add_kills, SETA_SCR_AIRSTRIKE_ADD_KILLS; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
-	CHOICE_DVARYESNO_VIS( 18, "@OW_SCR_AIRSTRIKE_KILLS_TOWARD_STREAK", menu_scr_airstrike_kills_toward_streak, SETA_SCR_AIRSTRIKE_KILLS_TOWARD_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 19, "@OW_SCR_AIRSTRIKE_DELAY", menu_scr_airstrike_delay, 2, SETA_SCR_AIRSTRIKE_DELAY; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
+	CHOICE_DVARYESNO_VIS( 13, "@OW_SCR_HARDPOINT_ALLOW_AIRSTRIKE", menu_scr_hardpoint_allow_airstrike, SET_SCR_HARDPOINT_ALLOW_AIRSTRIKE; , when( dvarBool(menu_scr_game_hardpoints) ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 14, "@OW_SCR_HARDPOINT_AIRSTRIKE_STREAK", menu_scr_hardpoint_airstrike_streak, 2, SET_SCR_HARDPOINT_AIRSTRIKE_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SCR_AIRSTRIKE_HARDPOINT_INTERVAL", menu_scr_airstrike_hardpoint_interval, 3, SET_SCR_AIRSTRIKE_HARDPOINT_INTERVAL; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
+	CHOICE_DVARYESNO_VIS( 16, "@OW_SCR_ANNOUNCE_ENEMY_AIRSTRIKE_INBOUND", menu_scr_announce_enemy_airstrike_inbound, SET_SCR_ANNOUNCE_ENEMY_AIRSTRIKE_INBOUND; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
+	CHOICE_DVARYESNO_VIS( 17, "@OW_SCR_AIRSTRIKE_ADD_KILLS", menu_scr_airstrike_add_kills, SET_SCR_AIRSTRIKE_ADD_KILLS; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
+	CHOICE_DVARYESNO_VIS( 18, "@OW_SCR_AIRSTRIKE_KILLS_TOWARD_STREAK", menu_scr_airstrike_kills_toward_streak, SET_SCR_AIRSTRIKE_KILLS_TOWARD_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 19, "@OW_SCR_AIRSTRIKE_DELAY", menu_scr_airstrike_delay, 2, SET_SCR_AIRSTRIKE_DELAY; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_airstrike) ) )
 	
-	CHOICE_DVARYESNO_VIS( 20, "@OW_SCR_HARDPOINT_ALLOW_HELICOPTER", menu_scr_hardpoint_allow_helicopter, SETA_SCR_HARDPOINT_ALLOW_HELICOPTER; , when( dvarBool(menu_scr_game_hardpoints) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 21, "@OW_SCR_HARDPOINT_HELICOPTER_STREAK", menu_scr_hardpoint_helicopter_streak, 2, SETA_SCR_HARDPOINT_HELICOPTER_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 22, "@OW_SCR_HELI_HARDPOINT_INTERVAL", menu_scr_heli_hardpoint_interval, 3, SETA_SCR_HELI_HARDPOINT_INTERVAL; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
-	CHOICE_DVARYESNO_VIS( 23, "@OW_SCR_ANNOUNCE_ENEMY_HELI_INBOUND", menu_scr_announce_enemy_heli_inbound, SETA_SCR_ANNOUNCE_ENEMY_HELI_INBOUND; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
-	CHOICE_DVARYESNO_VIS( 24, "@OW_SCR_HELICOPTER_ADD_KILLS", menu_scr_helicopter_add_kills, SETA_SCR_HELICOPTER_ADD_KILLS; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
-	CHOICE_DVARYESNO_VIS( 25, "@OW_SCR_HELICOPTER_KILLS_TOWARD_STREAK", menu_scr_helicopter_kills_toward_streak, SETA_SCR_HELICOPTER_KILLS_TOWARD_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
-	CHOICE_DVAREDIT_NUMERIC_VIS( 26, "@OW_SCR_HELICOPTER_DELAY", menu_scr_helicopter_delay, 2, SETA_SCR_HELICOPTER_DELAY; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
-	//CHOICE_DVAREDIT_NUMERIC_VIS( 27, "@OW_SCR_HELI_MAXHEALTH", menu_scr_heli_maxhealth, 4, SETA_SCR_HELI_MAXHEALTH;, when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
-	//CHOICE_DVARSLIDER_VIS( 28, "@OW_SCR_HELI_TARGET_RECOGNITION", menu_scr_heli_target_recognition, 0.95, 0, 1, SETA_SCR_HELI_TARGET_RECOGNITION;, when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
+	CHOICE_DVARYESNO_VIS( 20, "@OW_SCR_HARDPOINT_ALLOW_HELICOPTER", menu_scr_hardpoint_allow_helicopter, SET_SCR_HARDPOINT_ALLOW_HELICOPTER; , when( dvarBool(menu_scr_game_hardpoints) ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 21, "@OW_SCR_HARDPOINT_HELICOPTER_STREAK", menu_scr_hardpoint_helicopter_streak, 2, SET_SCR_HARDPOINT_HELICOPTER_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 22, "@OW_SCR_HELI_HARDPOINT_INTERVAL", menu_scr_heli_hardpoint_interval, 3, SET_SCR_HELI_HARDPOINT_INTERVAL; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
+	CHOICE_DVARYESNO_VIS( 23, "@OW_SCR_ANNOUNCE_ENEMY_HELI_INBOUND", menu_scr_announce_enemy_heli_inbound, SET_SCR_ANNOUNCE_ENEMY_HELI_INBOUND; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
+	CHOICE_DVARYESNO_VIS( 24, "@OW_SCR_HELICOPTER_ADD_KILLS", menu_scr_helicopter_add_kills, SET_SCR_HELICOPTER_ADD_KILLS; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
+	CHOICE_DVARYESNO_VIS( 25, "@OW_SCR_HELICOPTER_KILLS_TOWARD_STREAK", menu_scr_helicopter_kills_toward_streak, SET_SCR_HELICOPTER_KILLS_TOWARD_STREAK; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
+	CHOICE_DVAREDIT_NUMERIC_VIS( 26, "@OW_SCR_HELICOPTER_DELAY", menu_scr_helicopter_delay, 2, SET_SCR_HELICOPTER_DELAY; , when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
+	//CHOICE_DVAREDIT_NUMERIC_VIS( 27, "@OW_SCR_HELI_MAXHEALTH", menu_scr_heli_maxhealth, 4, SET_SCR_HELI_MAXHEALTH;, when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
+	//CHOICE_DVARSLIDER_VIS( 28, "@OW_SCR_HELI_TARGET_RECOGNITION", menu_scr_heli_target_recognition, 0.95, 0, 1, SET_SCR_HELI_TARGET_RECOGNITION;, when( dvarBool(menu_scr_game_hardpoints) && dvarBool(menu_scr_hardpoint_allow_helicopter) ) )
 	
 #undef CHOICE_Y_COUNT
 #define CHOICE_Y_COUNT			100
@@ -96,5 +97,5 @@ menuDef
 #undef TEXTSIZE_BUTTON_PC
 #define TEXTSIZE_BUTTON_PC	0.38
 	
-	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, FILLMENUDVARS; , 1 )
+	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, setdvar tmp_menu_savedsess 0;FILLMENUDVARS; , 1 )
 }
