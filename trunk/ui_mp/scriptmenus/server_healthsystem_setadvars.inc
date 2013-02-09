@@ -20,6 +20,27 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/healthsystem/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/healthsystem/l/war.cfg"
 
+#ifdef SAVEMENUDVARS
+#undef SAVEMENUDVARS
+#endif
+
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/healthsystem/s/_def.cfg"\
+    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/healthsystem/s/ass.cfg"\
+    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/healthsystem/s/bel.cfg"\
+    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/healthsystem/s/ch.cfg"\
+    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/healthsystem/s/ctf.cfg"\
+    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/healthsystem/s/dm.cfg"\
+    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/healthsystem/s/dom.cfg"\
+    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/healthsystem/s/ftag.cfg"\
+    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/healthsystem/s/gg.cfg"\
+    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/healthsystem/s/gr.cfg"\
+    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/healthsystem/s/koth.cfg"\
+    execOnDvarStringValue menu_cfg_gt re "exec menudvars/healthsystem/s/re.cfg"\
+    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/healthsystem/s/sab.cfg"\
+    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/healthsystem/s/sd.cfg"\
+    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/healthsystem/s/ss.cfg"\
+    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/healthsystem/s/tgr.cfg"\
+    execOnDvarStringValue menu_cfg_gt war "exec menudvars/healthsystem/s/war.cfg"
 
 
 #define SETA_SCR_PLAYER_MAXHEALTH \

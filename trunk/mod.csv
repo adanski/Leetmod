@@ -343,13 +343,9 @@ menufile,ui_mp/controls_multi.menu
 menufile,ui_mp/hud.menu
 menufile,ui_mp/main.menu
 #menufile,ui_mp/mods.menu
-# commented for 640 menu assets, uncomment later
-     menufile,ui_mp/options_game_pc.menu
-#menufile,ui_mp/options_graphics_pc.menu
-# commented for 640 menu assets, uncomment later
-     menufile,ui_mp/options_multi.menu
-# commented for 640 menu assets, uncomment later
-     menufile,ui_mp/scriptmenus/advancedacp.menu
+menufile,ui_mp/options_game_pc.menu
+menufile,ui_mp/options_multi.menu
+menufile,ui_mp/scriptmenus/advancedacp.menu
 #menufile,ui_mp/scriptmenus/advancedmvs.menu
 #menufile,ui_mp/scriptmenus/callvote.menu
 #menufile,ui_mp/scriptmenus/callvote_buttons.inc
@@ -360,14 +356,12 @@ menufile,ui_mp/scriptmenus/changeclass.menu
 #menufile,ui_mp/scriptmenus/changeclass_props.menu
 menufile,ui_mp/scriptmenus/class.menu
 menufile,ui_mp/scriptmenus/clientcmd.menu
-# commented for 640 menu assets, uncomment later
-   menufile,ui_mp/scriptmenus/createserver.menu
+menufile,ui_mp/scriptmenus/createserver.menu
 menufile,ui_mp/scriptmenus/endofgame.menu
 menufile,ui_mp/scriptmenus/eog_statistics.menu
 menufile,ui_mp/scriptmenus/muteplayer.menu
 menufile,ui_mp/scriptmenus/ow_cac_editor.menu
-# commented for 640 menu assets, uncomment later
-   menufile,ui_mp/scriptmenus/popup_eog.menu
+menufile,ui_mp/scriptmenus/popup_eog.menu
 menufile,ui_mp/scriptmenus/popup_leavegame.menu
 menufile,ui_mp/scriptmenus/scoreboard.menu
 menufile,ui_mp/scriptmenus/serverinfo.menu

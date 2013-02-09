@@ -21,6 +21,28 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/player/l/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/player/l/war.cfg"
 
+#ifdef SAVEMENUDVARS
+#undef SAVEMENUDVARS
+#endif
+
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/player/s/_def.cfg"\
+    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/player/s/ass.cfg"\
+    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/player/s/bel.cfg"\
+    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/player/s/ch.cfg"\
+    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/player/s/ctf.cfg"\
+    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/player/s/dm.cfg"\
+    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/player/s/dom.cfg"\
+    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/player/s/ftag.cfg"\
+    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/player/s/gg.cfg"\
+    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/player/s/gr.cfg"\
+    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/player/s/koth.cfg"\
+    execOnDvarStringValue menu_cfg_gt oitc "exec menudvars/player/s/oitc.cfg"\
+    execOnDvarStringValue menu_cfg_gt re "exec menudvars/player/s/re.cfg"\
+    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/player/s/sab.cfg"\
+    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/player/s/sd.cfg"\
+    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/player/s/ss.cfg"\
+    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/player/s/tgr.cfg"\
+    execOnDvarStringValue menu_cfg_gt war "exec menudvars/player/s/war.cfg"
 
 
 #define SETA_SCR_FALLDAMAGEMINHEIGHT \

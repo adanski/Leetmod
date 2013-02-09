@@ -25,7 +25,7 @@
 #undef SAVEMENUDVARS
 #endif
 
-#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def  "exec menudvars/world/s/_def.cfg"\
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/world/s/_def.cfg"\
     execOnDvarStringValue menu_cfg_gt ass "exec menudvars/world/s/ass.cfg"\
     execOnDvarStringValue menu_cfg_gt bel "exec menudvars/world/s/bel.cfg"\
     execOnDvarStringValue menu_cfg_gt ch "exec menudvars/world/s/ch.cfg"\
@@ -43,7 +43,6 @@
     execOnDvarStringValue menu_cfg_gt ss "exec menudvars/world/s/ss.cfg"\
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/world/s/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/world/s/war.cfg"
-
 
 
 #define SETA_SCR_G_GRAVITY \

@@ -19,6 +19,26 @@
     execOnDvarStringValue menu_cfg_gt ss "exec menudvars/scores/l/ss.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/scores/l/war.cfg"
 
+#ifdef SAVEMENUDVARS
+#undef SAVEMENUDVARS
+#endif
+
+#define SAVEMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/scores/s/_def.cfg"\
+    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/scores/s/ass.cfg"\
+    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/scores/s/bel.cfg"\
+    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/scores/s/ch.cfg"\
+    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/scores/s/ctf.cfg"\
+    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/scores/s/dm.cfg"\
+    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/scores/s/dom.cfg"\
+    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/scores/s/ftag.cfg"\
+    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/scores/s/gg.cfg"\
+    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/scores/s/koth.cfg"\
+    execOnDvarStringValue menu_cfg_gt oitc "exec menudvars/scores/s/oitc.cfg"\
+    execOnDvarStringValue menu_cfg_gt re "exec menudvars/scores/s/re.cfg"\
+    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/scores/s/sab.cfg"\
+    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/scores/s/sd.cfg"\
+    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/scores/s/ss.cfg"\
+    execOnDvarStringValue menu_cfg_gt war "exec menudvars/scores/s/war.cfg"
 
 
 #define SETA_SCR_ENABLE_SCORESYSTEM \
