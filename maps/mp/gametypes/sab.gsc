@@ -412,8 +412,6 @@ sabotage()
 		level.bombZones["allies"] = createBombZone( "allies", getEnt( "sab_bomb_allies", "targetname" ) );
 		level.bombZones["axis"] = createBombZone( "axis", getEnt( "sab_bomb_axis", "targetname" ) );
 	}
-	
-	level notify( "spawned_objectivefx" );
 	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 

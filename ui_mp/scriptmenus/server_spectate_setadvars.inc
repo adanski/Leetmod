@@ -29,6 +29,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_game_spectatetype_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_game_spectatetype_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_game_spectatetype_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_game_spectatetype_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_game_spectatetype_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_game_spectatetype_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_game_spectatetype_gr _null" \
@@ -47,6 +48,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_game_spectatetype_spectators_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_game_spectatetype_spectators_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_game_spectatetype_spectators_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_game_spectatetype_spectators_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_game_spectatetype_spectators_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_game_spectatetype_spectators_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_game_spectatetype_spectators_gr _null" \
@@ -65,6 +67,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_game_spectators_guids_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_game_spectators_guids_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_game_spectators_guids_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_game_spectators_guids_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_game_spectators_guids_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_game_spectators_guids_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_game_spectators_guids_gr _null" \
@@ -83,6 +86,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_allow_thirdperson_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_allow_thirdperson_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_allow_thirdperson_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_allow_thirdperson_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_allow_thirdperson_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_allow_thirdperson_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_allow_thirdperson_gr _null" \
@@ -101,6 +105,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_allow_thirdperson_guids_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_allow_thirdperson_guids_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_allow_thirdperson_guids_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_allow_thirdperson_guids_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_allow_thirdperson_guids_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_allow_thirdperson_guids_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_allow_thirdperson_guids_gr _null" \
@@ -119,6 +124,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_livebroadcast_enable_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_livebroadcast_enable_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_livebroadcast_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_livebroadcast_enable_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_livebroadcast_enable_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_livebroadcast_enable_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_livebroadcast_enable_gr _null" \
@@ -137,6 +143,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_livebroadcast_guids_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_livebroadcast_guids_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_livebroadcast_guids_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_livebroadcast_guids_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_livebroadcast_guids_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_livebroadcast_guids_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_livebroadcast_guids_gr _null" \
@@ -155,6 +162,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_idle_switch_spectator_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_idle_switch_spectator_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_idle_switch_spectator_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_idle_switch_spectator_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_idle_switch_spectator_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_idle_switch_spectator_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_idle_switch_spectator_gr _null" \
@@ -173,6 +181,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_idle_spectator_timeout_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_idle_spectator_timeout_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_idle_spectator_timeout_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_idle_spectator_timeout_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_idle_spectator_timeout_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_idle_spectator_timeout_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_idle_spectator_timeout_gr _null" \
@@ -191,6 +200,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_idle_show_warning_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_idle_show_warning_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_idle_show_warning_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_idle_show_warning_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_idle_show_warning_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_idle_show_warning_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_idle_show_warning_gr _null" \
@@ -209,6 +219,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_idle_protected_tags_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_idle_protected_tags_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_idle_protected_tags_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_idle_protected_tags_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_idle_protected_tags_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_idle_protected_tags_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_idle_protected_tags_gr _null" \
@@ -227,6 +238,7 @@
   execOnDvarStringValue menu_cfg_gt ch "seta scr_idle_protected_guids_ch _null" \
   execOnDvarStringValue menu_cfg_gt ctf "seta scr_idle_protected_guids_ctf _null" \
   execOnDvarStringValue menu_cfg_gt dm "seta scr_idle_protected_guids_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "seta scr_idle_protected_guids_dom _null" \
   execOnDvarStringValue menu_cfg_gt ftag "seta scr_idle_protected_guids_ftag _null" \
   execOnDvarStringValue menu_cfg_gt gg "seta scr_idle_protected_guids_gg _null" \
   execOnDvarStringValue menu_cfg_gt gr "seta scr_idle_protected_guids_gr _null" \

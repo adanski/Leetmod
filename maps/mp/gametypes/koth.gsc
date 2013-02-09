@@ -697,8 +697,6 @@ SetupRadios()
 		
 		radio setUpNearbySpawns();
 	}
-	
-	level notify( "spawned_objectivefx" );
 	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 	
 	if (maperrors.size > 0) {

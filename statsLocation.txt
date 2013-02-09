@@ -1,6 +1,8 @@
 Used by leetmod:
 350-390 new ranked classes
 400-490 new unranked classes
+Free to be set client side:
+270-279 (and 250-269 too, but some are used already by rank features, so be aware)
 
 Note: Listed from here onwards are the stats found on .csv or .gsc files. Assume that there are more, and if you are going to use a stat,
 always round to the nearest hundred or half-hundred. E.g.: perks found from 150-194, assume 195-199 are also used.

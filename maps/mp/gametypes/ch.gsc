@@ -497,7 +497,6 @@ captureAndHold()
 		level.timerDisplay["axis"].hideWhenInMenu = true;
 	}
 	
-	level notify( "spawned_objectivefx" );
 	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 }
 

@@ -374,7 +374,6 @@ domFlags()
 		
 		level.domFlags[level.domFlags.size] = domFlag;
 	}
-	level notify( "spawned_objectivefx" );
 	thread openwarfare\_readyupperiod::notifyObjectiveCreated();
 	
 	thread updateDomScores();
