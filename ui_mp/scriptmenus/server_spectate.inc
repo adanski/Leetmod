@@ -14,6 +14,7 @@ menuDef
 		setdvar tmp_menu_name spe;
 		setdvar tmp_menu_optcount 0;
 		setdvar tmp_menu_savedsess 0;
+		execNow "setfromdvar menu_cfg_gt g_gametype";
 		FILLMENUDVARS;
 	}
 	onClose
