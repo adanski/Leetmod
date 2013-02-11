@@ -1053,7 +1053,7 @@ giveLoadout( team, class )
 		sidearm = level.classSidearm[team][class];
 		
 	self GiveWeapon( sidearm );
-	if ( self cac_hasSpecialty( "specialty_extraammo" ) )
+	if ( self cac_hasSpecialty( "specialty_extraammo" ) || level.fillWeaponMags )
 		self giveMaxAmmo( sidearm );
 		
 	// give primary weapon
@@ -1076,7 +1076,11 @@ giveLoadout( team, class )
 		
 	if ( self cac_hasSpecialty( "specialty_extraammo" ) || level.fillWeaponMags )
 		self giveMaxAmmo( weapon );
-	self setSpawnWeapon( weapon );
+	
+	if( isDefined(self.pers["primaryWeapon"]) && self.pers["primaryWeapon"] != "none" )
+		self setSpawnWeapon( weapon );
+	else
+		self setSpawnWeapon( sidearm );
 	
 	if ( level.scr_enable_nightvision )
 		self SetActionSlot( 1, "nightvision" );

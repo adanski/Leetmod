@@ -57,6 +57,7 @@ main()
 	// Disable killstreaks
 	setDvar( "scr_game_hardpoints_oitc", "0" );
 	setDvar( "scr_spawn_protection_enable_oitc", "0" );
+	setDvar( "scr_melee_enable_oitc", "1" );
 	
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
