@@ -12,10 +12,16 @@ init()
 	if( !isDefined(startupChecked) || startupChecked == "" ) {
 		setdvar("_startupChk", "1");
 		
-		if( getdvar("dedicated") == "listen server" && getdvar("sv_pure") == "1" && rotationHasCustomMaps() ) {
-			iprintln("Map rotation has custom maps, setting sv_pure=0");
-			iprintln("so that it wont crash the server application.");
-			setdvar("sv_pure", "0");
+		if( getdvar("sv_pure") == "1" && rotationHasCustomMaps() ) {
+			if( getdvar("dedicated") == "listen server" ) {
+				iprintln("Map rotation has custom maps, setting sv_pure=0");
+				iprintln("so that it wont crash the server application.");
+				setdvar("sv_pure", "0");
+			}
+			else {
+				iprintln("Map rotation has custom maps, if anyone has crashes");
+				iprintln("or 'file/sum mismatch', try setting sv_pure=0.");
+			}
 		}
 		
 		// If running Leetmod original (no renamed directory) we have to make a few
