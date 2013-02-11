@@ -1,7 +1,7 @@
 #include "ui_mp/menustyle.inc"
 
 #include "ui_mp/scriptmenus/server_armory_setadvars.inc"
-
+{
 menuDef
 {
 	name			"settings_quick_war_@MPUI_RULES_SCORE_LIMIT"
@@ -11,6 +11,8 @@ menuDef
 	//soundloop		""
 	onOpen
 	{
+		setdvar tmp_menu_name arm;
+		setdvar tmp_menu_optcount 0;
 		setdvar tmp_menu_savedsess 0;
 		FILLMENUDVARS;
 	}
@@ -150,7 +152,7 @@ menuDef
 #define CHOICE_Y_START -15
 	
 	CHOICE_DVARYESNO_VIS( 56, "@OW_BINOCULARS", menu_weap_allow_binoculars, SET_WEAP_ALLOW_BINOCULARS; , 1 )
-	CHOICE_DVARYESNO_VIS( 57, "@MENU_NIGHT_VISION", menu_scr_enable_nightvision, SET_SCR_ENABLE_NIGHTVISION; , 1 )
+	//CHOICE_DVARYESNO_VIS( 57, "@MENU_NIGHT_VISION", menu_scr_enable_nightvision, SET_SCR_ENABLE_NIGHTVISION; , 1 )
 	
 #undef CHOICE_Y_COUNT
 #define CHOICE_Y_COUNT			100
@@ -167,27 +169,52 @@ menuDef
 #undef TEXTSIZE_BUTTON_PC
 #define TEXTSIZE_BUTTON_PC	0.38
 	
-	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, setdvar tmp_menu_savedsess 0;FILLMENUDVARS; , 1 )
+	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, setdvar tmp_menu_optcount 0;setdvar tmp_menu_savedsess 0;FILLMENUDVARS; , 1 )
 	
-	itemDef
-	{
-		name			savesettings
-		text			"@OW_CAC_SUBMIT"
-		type			ITEM_TYPE_BUTTON
-		textfont		UI_FONT_NORMAL
+	itemDef {
+		name			save
+		text			"@OW_MENU_SAVE_FOR_SESSION"
+		type			1
 		style			WINDOW_STYLE_FILLED
 		textstyle		ITEM_TEXTSTYLE_SHADOWED
-		rect			180 -26 40 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+		rect			130 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+		textfont		UI_FONT_NORMAL
 		textalign		ITEM_ALIGN_LEFT
 		textscale		TEXTSIZE_SMALL
-		textalignx		0
 		textaligny		18
-		forecolor		TEXTBUTTON_COLOR
 		visible			1
 		mouseEnter		{ play "mouse_over"; }
 		action
 		{
-			play "mouse_click";
+			setdvar tmp_menu_savedsess 1;
+			play "menu_save_changes";
+			SAVEMENUDVARS;
 		}
 	}
+	itemDef {
+		name			storedisk
+		text			"@OW_MENU_STORE_TO_DISK"
+		type			1
+		style			WINDOW_STYLE_FILLED
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		rect			-100 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+		textfont		UI_FONT_NORMAL
+		textalign		ITEM_ALIGN_LEFT
+		textscale		TEXTSIZE_SMALL
+		textaligny		18
+		visible			when( !dvarbool(tmp_menu_savedsess) )
+		mouseEnter		{ play "mouse_over"; }
+		action { setdvar tmp_menu_optcount 1; open auconfirm; }
+	}
+	itemDef {
+		type			1
+		style			WINDOW_STYLE_SHADER
+		rect			-20 -26 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+		background		"checkbox_checked"
+		forecolor		COLOR_FOCUSED
+		visible			when( dvarInt(tmp_menu_optcount) == 61)
+	}
+}
+#include "ui_mp/scriptmenus/storetodisk1.inc"
+#include "ui_mp/scriptmenus/storetodisk2.inc"
 }
