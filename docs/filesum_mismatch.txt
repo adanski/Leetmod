@@ -1,0 +1,4 @@
+It means that sv_iwdreferenceIWDs string is higher than 1024 symbols. 
+
+
+Exactly, it just mean that your mod have too much .IWD files with really big name. So I always advice make 5< iwds to prevent it and use smaller names for it (zzzzzzz_weapons.iwd => weap.iwd, zz_images.iwd => img.iwd, and etc). It doesnt matter for mod to have zz_ prefix, so it's just stupid stereotype.

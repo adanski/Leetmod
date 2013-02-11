@@ -34,6 +34,9 @@
 
 main()
 {
+	// Force some server variables
+	setDvar( "scr_melee_enable_gg", "1" );
+	
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
