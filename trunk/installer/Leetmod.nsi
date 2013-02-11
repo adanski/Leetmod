@@ -5,7 +5,8 @@
 !define APPNAME "Leetmod"
 !define APPVERSION "1.8"
 !define MODFOLDER "leetmod"
-!define MODVERSION "18"
+; # Change for release
+!define MODVERSION ""
 !define COD4TITLE "Call of Duty 4"
 !define COD4TITLEREG "Call of Duty(R) 4"
 !define COD4TITLEREGFULL "${COD4TITLEREG} - Modern Warfare(TM)"
@@ -55,7 +56,6 @@
   !insertmacro MUI_PAGE_LICENSE "LICENSE"
   !define MUI_PAGE_CUSTOMFUNCTION_PRE DirectoryPre
   !insertmacro MUI_PAGE_DIRECTORY
-  !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_INSTFILES
   !insertmacro MUI_PAGE_FINISH
   
@@ -90,7 +90,7 @@ Section "${APPNAME}" Leetmod
   
   SetOutPath "$INSTDIR\mods\${MODFOLDER}${MODVERSION}"
   File ".\..\mod.ff"
-  File ".\..\z_leetmod.iwd"
+  File ".\..\leetmod${MODVERSION}.iwd"
   
   ; Create Shortcuts
   SetShellVarContext all
@@ -110,6 +110,7 @@ Section "${APPNAME}" Leetmod
   WriteRegStr HKLM "Software\${APPREGNAME}" "" $INSTDIR
 
 SectionEnd
+; #This were disabled since we don't pack maps in the installer
 /*
 SubSection "New Maps" MapPack
   Section "Carentan (CoD2)" CoD2Carentan
@@ -213,7 +214,9 @@ FunctionEnd
 
   ;USE A LANGUAGE STRING IF YOU WANT YOUR DESCRIPTIONS TO BE LANGAUGE SPECIFIC
 
-  ;Assign descriptions to sections
+  	; #This were disabled since we don't pack maps in the installer
+	;Assign descriptions to sections
+	/*
   !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
     !insertmacro MUI_DESCRIPTION_TEXT ${Leetmod} "${LMSLOGAN}"
     !insertmacro MUI_DESCRIPTION_TEXT ${MapPack} "New multiplayer maps made by talented community members"
@@ -232,3 +235,4 @@ FunctionEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${CTShipment2} "New map by Carcass26"
     !insertmacro MUI_DESCRIPTION_TEXT ${CTShipment3} "New map by LLLDR|dB99"
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
+	*/
