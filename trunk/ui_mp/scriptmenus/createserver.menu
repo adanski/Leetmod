@@ -25,8 +25,8 @@
 		onOpen
 		{
 			uiScript loadArenas;
-			execondvarintvalue tmp_firstserverconf 1 "setfromdvar g_gametype tmp_currgametype";
-			execondvarintvalue tmp_firstserverconf 0 "exec menudvars/_defcfg/executefiles.cfg; setfromdvar tmp_currgametype g_gametype; setfromdvar menu_cfg_gt g_gametype; set tmp_firstserverconf 1";
+			execNowOnDvarIntValue tmp_firstserverconf 1 "setfromdvar g_gametype tmp_currgametype";
+			execNowOnDvarIntValue tmp_firstserverconf 0 "exec menudvars/_defcfg/executefiles.cfg; setfromdvar tmp_currgametype g_gametype; setfromdvar menu_cfg_gt g_gametype; set tmp_firstserverconf 1";
 		}
 		onClose
 		{
