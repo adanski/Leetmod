@@ -14,6 +14,7 @@ menuDef
 		setdvar tmp_menu_name har;
 		setdvar tmp_menu_optcount 0;
 		setdvar tmp_menu_savedsess 0;
+		setdvar tmp_open_event_d1 0;
 		execNow "setfromdvar menu_cfg_gt g_gametype";
 		FILLMENUDVARS;
 	}
@@ -100,7 +101,18 @@ menuDef
 #undef TEXTSIZE_BUTTON_PC
 #define TEXTSIZE_BUTTON_PC	0.38
 	
-	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, setdvar tmp_menu_optcount 0;setdvar tmp_menu_savedsess 0;FILLMENUDVARS; , 1 )
+	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, setdvar tmp_menu_optcount 0;setdvar tmp_menu_savedsess 0;FILLMENUDVARS;setdvar tmp_open_event_d1 0; , 1 )
+	
+	// hack for cleaning dvars (long script) on menu open
+	itemDef {
+		type			ITEM_TYPE_BUTTON
+		rect			-600 -800 2000 2000 0 0
+		text			""
+		textfont		UI_FONT_NORMAL
+		visible			when( !dvarbool(tmp_open_event_d1) )
+		onfocus { CLEANMENUDVARS;setdvar tmp_open_event_d1 1; }
+		mouseEnter { CLEANMENUDVARS;setdvar tmp_open_event_d1 1; }
+	}
 	
 	itemDef {
 		name			save
