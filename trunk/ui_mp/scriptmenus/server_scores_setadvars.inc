@@ -40,6 +40,43 @@
     execOnDvarStringValue menu_cfg_gt ss "exec menudvars/scores/s/ss.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/scores/s/war.cfg"
 
+#ifdef CLEANMENUDVARS
+#undef CLEANMENUDVARS
+#endif
+
+#define CLEANMENUDVARS execOnDvarStringValue menu_scr_enable_scoresystem _null "setfromdvar menu_scr_enable_scoresystem scr_enable_scoresystem"\
+		execOnDvarStringValue menu_scr_score_tk_affects_teamscore _null "setfromdvar menu_scr_score_tk_affects_teamscore scr_score_tk_affects_teamscore"\
+		execOnDvarStringValue menu_scr_score_standard_kill _null "setfromdvar menu_scr_score_standard_kill scr_score_standard_kill"\
+		execOnDvarStringValue menu_scr_score_headshot_kill _null "setfromdvar menu_scr_score_headshot_kill scr_score_headshot_kill"\
+		execOnDvarStringValue menu_scr_score_melee_kill _null "setfromdvar menu_scr_score_melee_kill scr_score_melee_kill"\
+		execOnDvarStringValue menu_scr_score_grenade_kill _null "setfromdvar menu_scr_score_grenade_kill scr_score_grenade_kill"\
+		execOnDvarStringValue menu_scr_score_c4_kill _null "setfromdvar menu_scr_score_c4_kill scr_score_c4_kill"\
+		execOnDvarStringValue menu_scr_score_claymore_kill _null "setfromdvar menu_scr_score_claymore_kill scr_score_claymore_kill"\
+		execOnDvarStringValue menu_scr_score_rpg_kill _null "setfromdvar menu_scr_score_rpg_kill scr_score_rpg_kill"\
+		execOnDvarStringValue menu_scr_score_grenade_launcher_kill _null "setfromdvar menu_scr_score_grenade_launcher_kill scr_score_grenade_launcher_kill"\
+		execOnDvarStringValue menu_scr_score_airstrike_kill _null "setfromdvar menu_scr_score_airstrike_kill scr_score_airstrike_kill"\
+		execOnDvarStringValue menu_scr_score_helicopter_kill _null "setfromdvar menu_scr_score_helicopter_kill scr_score_helicopter_kill"\
+		execOnDvarStringValue menu_scr_score_vehicle_explosion_kill _null "setfromdvar menu_scr_score_vehicle_explosion_kill scr_score_vehicle_explosion_kill"\
+		execOnDvarStringValue menu_scr_score_barrel_explosion_kill _null "setfromdvar menu_scr_score_barrel_explosion_kill scr_score_barrel_explosion_kill"\
+		execOnDvarStringValue menu_scr_score_assist_kill _null "setfromdvar menu_scr_score_assist_kill scr_score_assist_kill"\
+		execOnDvarStringValue menu_scr_score_assist_25_kill _null "setfromdvar menu_scr_score_assist_25_kill scr_score_assist_25_kill"\
+		execOnDvarStringValue menu_scr_score_assist_50_kill _null "setfromdvar menu_scr_score_assist_50_kill scr_score_assist_50_kill"\
+		execOnDvarStringValue menu_scr_score_assist_75_kill _null "setfromdvar menu_scr_score_assist_75_kill scr_score_assist_75_kill"\
+		execOnDvarStringValue menu_scr_score_player_death _null "setfromdvar menu_scr_score_player_death scr_score_player_death"\
+		execOnDvarStringValue menu_scr_score_player_suicide _null "setfromdvar menu_scr_score_player_suicide scr_score_player_suicide"\
+		execOnDvarStringValue menu_scr_score_player_teamkill _null "setfromdvar menu_scr_score_player_teamkill scr_score_player_teamkill"\
+		execOnDvarStringValue menu_scr_score_hardpoint_used _null "setfromdvar menu_scr_score_hardpoint_used scr_score_hardpoint_used"\
+		execOnDvarStringValue menu_scr_score_shot_down_helicopter _null "setfromdvar menu_scr_score_shot_down_helicopter scr_score_shot_down_helicopter"\
+		execOnDvarStringValue menu_scr_score_capture_objective _null "setfromdvar menu_scr_score_capture_objective scr_score_capture_objective"\
+		execOnDvarStringValue menu_scr_score_take_objective _null "setfromdvar menu_scr_score_take_objective scr_score_take_objective"\
+		execOnDvarStringValue menu_scr_score_return_objective _null "setfromdvar menu_scr_score_return_objective scr_score_return_objective"\
+		execOnDvarStringValue menu_scr_score_defend_objective _null "setfromdvar menu_scr_score_defend_objective scr_score_defend_objective"\
+		execOnDvarStringValue menu_scr_score_holding_objective _null "setfromdvar menu_scr_score_holding_objective scr_score_holding_objective"\
+		execOnDvarStringValue menu_scr_score_kill_objective_carrier _null "setfromdvar menu_scr_score_kill_objective_carrier scr_score_kill_objective_carrier"\
+		execOnDvarStringValue menu_scr_score_assault_objective _null "setfromdvar menu_scr_score_assault_objective scr_score_assault_objective"\
+		execOnDvarStringValue menu_scr_score_plant_bomb _null "setfromdvar menu_scr_score_plant_bomb scr_score_plant_bomb"\
+		execOnDvarStringValue menu_scr_score_defuse_bomb _null "setfromdvar menu_scr_score_defuse_bomb scr_score_defuse_bomb"
+
 
 #define SET_SCR_ENABLE_SCORESYSTEM \
   execOnDvarStringValue menu_cfg_gt ass "set scr_enable_scoresystem_ass _null" \

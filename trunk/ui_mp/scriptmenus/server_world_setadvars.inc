@@ -44,6 +44,25 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/world/s/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/world/s/war.cfg"
 
+#ifdef CLEANMENUDVARS
+#undef CLEANMENUDVARS
+#endif
+
+#define CLEANMENUDVARS execOnDvarStringValue menu_scr_g_gravity _null "setfromdvar menu_scr_g_gravity scr_g_gravity"\
+		execOnDvarStringValue menu_scr_map_special_fx_enable _null "setfromdvar menu_scr_map_special_fx_enable scr_map_special_fx_enable"\
+		execOnDvarStringValue menu_scr_map_special_fx_rain _null "setfromdvar menu_scr_map_special_fx_rain scr_map_special_fx_rain"\
+		execOnDvarStringValue menu_scr_map_special_fx_particles _null "setfromdvar menu_scr_map_special_fx_particles scr_map_special_fx_particles"\
+		execOnDvarStringValue menu_scr_map_special_fx_bgsound _null "setfromdvar menu_scr_map_special_fx_bgsound scr_map_special_fx_bgsound"\
+		execOnDvarStringValue menu_scr_show_fog _null "setfromdvar menu_scr_show_fog scr_show_fog"\
+		execOnDvarStringValue menu_scr_dcs_enabled _null "setfromdvar menu_scr_dcs_enabled scr_dcs_enabled"\
+		execOnDvarStringValue menu_scr_dcs_day_length _null "setfromdvar menu_scr_dcs_day_length scr_dcs_day_length"\
+		execOnDvarStringValue menu_scr_dcs_dusk_length _null "setfromdvar menu_scr_dcs_dusk_length scr_dcs_dusk_length"\
+		execOnDvarStringValue menu_scr_dcs_night_length _null "setfromdvar menu_scr_dcs_night_length scr_dcs_night_length"\
+		execOnDvarStringValue menu_scr_dcs_dawn_length _null "setfromdvar menu_scr_dcs_dawn_length scr_dcs_dawn_length"\
+		execOnDvarStringValue menu_scr_dcs_first_cycle _null "setfromdvar menu_scr_dcs_first_cycle scr_dcs_first_cycle"\
+		execOnDvarStringValue menu_scr_dcs_sounds_enable _null "setfromdvar menu_scr_dcs_sounds_enable scr_dcs_sounds_enable"\
+		execOnDvarStringValue menu_scr_dcs_reset_cycle _null "setfromdvar menu_scr_dcs_reset_cycle scr_dcs_reset_cycle"
+
 
 #define SET_SCR_G_GRAVITY \
   execOnDvarStringValue menu_cfg_gt ass "set scr_g_gravity_ass _null" \

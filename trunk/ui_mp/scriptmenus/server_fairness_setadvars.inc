@@ -44,6 +44,46 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/fairness/s/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/fairness/s/war.cfg"
 
+#ifdef CLEANMENUDVARS
+#undef CLEANMENUDVARS
+#endif
+
+#define CLEANMENUDVARS execOnDvarStringValue menu_scr_force_autoassign _null "setfromdvar menu_scr_force_autoassign scr_force_autoassign"\
+		execOnDvarStringValue menu_scr_force_autoassign_clan_tags _null "setfromdvar menu_scr_force_autoassign_clan_tags scr_force_autoassign_clan_tags"\
+		execOnDvarStringValue menu_scr_switch_teams_at_halftime _null "setfromdvar menu_scr_switch_teams_at_halftime scr_switch_teams_at_halftime"\
+		execOnDvarStringValue menu_scr_teambalance _null "setfromdvar menu_scr_teambalance scr_teambalance"\
+		execOnDvarStringValue menu_scr_teambalance_show_message _null "setfromdvar menu_scr_teambalance_show_message scr_teambalance_show_message"\
+		execOnDvarStringValue menu_scr_teambalance_check_interval _null "setfromdvar menu_scr_teambalance_check_interval scr_teambalance_check_interval"\
+		execOnDvarStringValue menu_scr_teambalance_delay _null "setfromdvar menu_scr_teambalance_delay scr_teambalance_delay"\
+		execOnDvarStringValue menu_scr_teambalance_protected_clan_tags _null "setfromdvar menu_scr_teambalance_protected_clan_tags scr_teambalance_protected_clan_tags"\
+		execOnDvarStringValue menu_scr_team_fftype _null "setfromdvar menu_scr_team_fftype scr_team_fftype"\
+		execOnDvarStringValue menu_scr_team_teamkillpointloss _null "setfromdvar menu_scr_team_teamkillpointloss scr_team_teamkillpointloss"\
+		execOnDvarStringValue menu_scr_team_teamkillspawndelay _null "setfromdvar menu_scr_team_teamkillspawndelay scr_team_teamkillspawndelay"\
+		execOnDvarStringValue menu_scr_game_deathpointloss _null "setfromdvar menu_scr_game_deathpointloss scr_game_deathpointloss"\
+		execOnDvarStringValue menu_scr_game_suicidepointloss _null "setfromdvar menu_scr_game_suicidepointloss scr_game_suicidepointloss"\
+		execOnDvarStringValue menu_scr_player_suicidespawndelay _null "setfromdvar menu_scr_player_suicidespawndelay scr_player_suicidespawndelay"\
+		execOnDvarStringValue menu_scr_tk_limit _null "setfromdvar menu_scr_tk_limit scr_tk_limit"\
+		execOnDvarStringValue menu_scr_tk_explosive_countasone _null "setfromdvar menu_scr_tk_explosive_countasone scr_tk_explosive_countasone"\
+		execOnDvarStringValue menu_scr_tk_punishment _null "setfromdvar menu_scr_tk_punishment scr_tk_punishment"\
+		execOnDvarStringValue menu_scr_tk_punishment_time _null "setfromdvar menu_scr_tk_punishment_time scr_tk_punishment_time"\
+		execOnDvarStringValue menu_scr_spawn_protection_enable _null "setfromdvar menu_scr_spawn_protection_enable scr_spawn_protection_enable"\
+		execOnDvarStringValue menu_scr_spawn_protection_time _null "setfromdvar menu_scr_spawn_protection_time scr_spawn_protection_time"\
+		execOnDvarStringValue menu_scr_spawn_protection_invisible _null "setfromdvar menu_scr_spawn_protection_invisible scr_spawn_protection_invisible"\
+		execOnDvarStringValue menu_scr_spawn_protection_hiticon _null "setfromdvar menu_scr_spawn_protection_hiticon scr_spawn_protection_hiticon"\
+		execOnDvarStringValue menu_scr_spawn_protection_maxdistance _null "setfromdvar menu_scr_spawn_protection_maxdistance scr_spawn_protection_maxdistance"\
+		execOnDvarStringValue menu_scr_spawn_protection_punishment_time _null "setfromdvar menu_scr_spawn_protection_punishment_time scr_spawn_protection_punishment_time"\
+		execOnDvarStringValue menu_scr_anti_camping_enable _null "setfromdvar menu_scr_anti_camping_enable scr_anti_camping_enable"\
+		execOnDvarStringValue menu_scr_anti_camping_show _null "setfromdvar menu_scr_anti_camping_show scr_anti_camping_show"\
+		execOnDvarStringValue menu_scr_anti_camping_message _null "setfromdvar menu_scr_anti_camping_message scr_anti_camping_message"\
+		execOnDvarStringValue menu_scr_anti_camping_distance _null "setfromdvar menu_scr_anti_camping_distance scr_anti_camping_distance"\
+		execOnDvarStringValue menu_scr_anti_camping_time _null "setfromdvar menu_scr_anti_camping_time scr_anti_camping_time"\
+		execOnDvarStringValue menu_scr_anti_bunny_hopping_enable _null "setfromdvar menu_scr_anti_bunny_hopping_enable scr_anti_bunny_hopping_enable"\
+		execOnDvarStringValue menu_scr_anti_dolphin_dive_enable _null "setfromdvar menu_scr_anti_dolphin_dive_enable scr_anti_dolphin_dive_enable"\
+		execOnDvarStringValue menu_scr_rng_enabled _null "setfromdvar menu_scr_rng_enabled scr_rng_enabled"\
+		execOnDvarStringValue menu_scr_rng_distance _null "setfromdvar menu_scr_rng_distance scr_rng_distance"\
+		execOnDvarStringValue menu_scr_rng_damage_closer _null "setfromdvar menu_scr_rng_damage_closer scr_rng_damage_closer"\
+		execOnDvarStringValue menu_scr_rng_damage_longer _null "setfromdvar menu_scr_rng_damage_longer scr_rng_damage_longer"
+
 
 #define SET_SCR_FORCE_AUTOASSIGN \
   execOnDvarStringValue menu_cfg_gt ass "set scr_force_autoassign_ass _null" \

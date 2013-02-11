@@ -44,6 +44,23 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/spectate/s/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/spectate/s/war.cfg"
 
+#ifdef CLEANMENUDVARS
+#undef CLEANMENUDVARS
+#endif
+
+#define CLEANMENUDVARS execOnDvarStringValue menu_scr_game_spectatetype _null "setfromdvar menu_scr_game_spectatetype scr_game_spectatetype"\
+		execOnDvarStringValue menu_scr_game_spectatetype_spectators _null "setfromdvar menu_scr_game_spectatetype_spectators scr_game_spectatetype_spectators"\
+		execOnDvarStringValue menu_scr_game_spectators_guids _null "setfromdvar menu_scr_game_spectators_guids scr_game_spectators_guids"\
+		execOnDvarStringValue menu_scr_allow_thirdperson _null "setfromdvar menu_scr_allow_thirdperson scr_allow_thirdperson"\
+		execOnDvarStringValue menu_scr_allow_thirdperson_guids _null "setfromdvar menu_scr_allow_thirdperson_guids scr_allow_thirdperson_guids"\
+		execOnDvarStringValue menu_scr_livebroadcast_enable _null "setfromdvar menu_scr_livebroadcast_enable scr_livebroadcast_enable"\
+		execOnDvarStringValue menu_scr_livebroadcast_guids _null "setfromdvar menu_scr_livebroadcast_guids scr_livebroadcast_guids"\
+		execOnDvarStringValue menu_scr_idle_switch_spectator _null "setfromdvar menu_scr_idle_switch_spectator scr_idle_switch_spectator"\
+		execOnDvarStringValue menu_scr_idle_spectator_timeout _null "setfromdvar menu_scr_idle_spectator_timeout scr_idle_spectator_timeout"\
+		execOnDvarStringValue menu_scr_idle_show_warning _null "setfromdvar menu_scr_idle_show_warning scr_idle_show_warning"\
+		execOnDvarStringValue menu_scr_idle_protected_tags _null "setfromdvar menu_scr_idle_protected_tags scr_idle_protected_tags"\
+		execOnDvarStringValue menu_scr_idle_protected_guids _null "setfromdvar menu_scr_idle_protected_guids scr_idle_protected_guids"
+
 
 #define SET_SCR_GAME_SPECTATETYPE \
   execOnDvarStringValue menu_cfg_gt ass "set scr_game_spectatetype_ass _null" \

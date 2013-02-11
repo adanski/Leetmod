@@ -12,7 +12,7 @@ init()
 	if( !isDefined(startupChecked) || startupChecked == "" ) {
 		setdvar("_startupChk", "1");
 		
-		if( getdvar("sv_pure") == "1" && rotationHasCustomMaps() ) {
+		if( getdvar("dedicated") == "listen server" && getdvar("sv_pure") == "1" && rotationHasCustomMaps() ) {
 			iprintln("Map rotation has custom maps, setting sv_pure=0");
 			iprintln("so that it wont crash the server application.");
 			setdvar("sv_pure", "0");

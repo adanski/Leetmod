@@ -42,6 +42,35 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/weapons/s/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/weapons/s/war.cfg"
 
+#ifdef CLEANMENUDVARS
+#undef CLEANMENUDVARS
+#endif
+
+#define CLEANMENUDVARS execOnDvarStringValue menu_scr_grenade_allow_cooking _null "setfromdvar menu_scr_grenade_allow_cooking scr_grenade_allow_cooking"\
+		execOnDvarStringValue menu_scr_bullet_penetration_enabled _null "setfromdvar menu_scr_bullet_penetration_enabled scr_bullet_penetration_enabled"\
+		execOnDvarStringValue menu_scr_concussion_grenades_base_time _null "setfromdvar menu_scr_concussion_grenades_base_time scr_concussion_grenades_base_time"\
+		execOnDvarStringValue menu_scr_deleteexplosivesonspawn _null "setfromdvar menu_scr_deleteexplosivesonspawn scr_deleteexplosivesonspawn"\
+		execOnDvarStringValue menu_scr_deleteexplosivesondeath _null "setfromdvar menu_scr_deleteexplosivesondeath scr_deleteexplosivesondeath"\
+		execOnDvarStringValue menu_scr_objective_safezone_enable _null "setfromdvar menu_scr_objective_safezone_enable scr_objective_safezone_enable"\
+		execOnDvarStringValue menu_scr_objective_safezone_radius _null "setfromdvar menu_scr_objective_safezone_radius scr_objective_safezone_radius"\
+		execOnDvarStringValue menu_scr_delay_frag_grenades _null "setfromdvar menu_scr_delay_frag_grenades scr_delay_frag_grenades"\
+		execOnDvarStringValue menu_scr_delay_grenade_launchers _null "setfromdvar menu_scr_delay_grenade_launchers scr_delay_grenade_launchers"\
+		execOnDvarStringValue menu_scr_delay_smoke_grenades _null "setfromdvar menu_scr_delay_smoke_grenades scr_delay_smoke_grenades"\
+		execOnDvarStringValue menu_scr_delay_flash_grenades _null "setfromdvar menu_scr_delay_flash_grenades scr_delay_flash_grenades"\
+		execOnDvarStringValue menu_scr_delay_concussion_grenades _null "setfromdvar menu_scr_delay_concussion_grenades scr_delay_concussion_grenades"\
+		execOnDvarStringValue menu_scr_delay_rpgs _null "setfromdvar menu_scr_delay_rpgs scr_delay_rpgs"\
+		execOnDvarStringValue menu_scr_delay_c4s _null "setfromdvar menu_scr_delay_c4s scr_delay_c4s"\
+		execOnDvarStringValue menu_scr_delay_claymores _null "setfromdvar menu_scr_delay_claymores scr_delay_claymores"\
+		execOnDvarStringValue menu_scr_delay_only_round_start _null "setfromdvar menu_scr_delay_only_round_start scr_delay_only_round_start"\
+		execOnDvarStringValue menu_scr_delay_sound_enable _null "setfromdvar menu_scr_delay_sound_enable scr_delay_sound_enable"\
+		execOnDvarStringValue menu_scr_weaponjams_enable _null "setfromdvar menu_scr_weaponjams_enable scr_weaponjams_enable"\
+		execOnDvarStringValue menu_scr_weaponjams_probability _null "setfromdvar menu_scr_weaponjams_probability scr_weaponjams_probability"\
+		execOnDvarStringValue menu_scr_weaponjams_gap_time _null "setfromdvar menu_scr_weaponjams_gap_time scr_weaponjams_gap_time"\
+		execOnDvarStringValue menu_scr_sniperzoom_enable _null "setfromdvar menu_scr_sniperzoom_enable scr_sniperzoom_enable"\
+		execOnDvarStringValue menu_scr_sniperzoom_lower_levels _null "setfromdvar menu_scr_sniperzoom_lower_levels scr_sniperzoom_lower_levels"\
+		execOnDvarStringValue menu_scr_sniperzoom_upper_levels _null "setfromdvar menu_scr_sniperzoom_upper_levels scr_sniperzoom_upper_levels"\
+		execOnDvarStringValue menu_scr_rangefinder_enable _null "setfromdvar menu_scr_rangefinder_enable scr_rangefinder_enable"
+
 
 #define SET_SCR_GRENADE_ALLOW_COOKING \
   execOnDvarStringValue menu_cfg_gt ass "set scr_grenade_allow_cooking_ass _null" \

@@ -44,6 +44,33 @@
     execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/player/s/tgr.cfg"\
     execOnDvarStringValue menu_cfg_gt war "exec menudvars/player/s/war.cfg"
 
+#ifdef CLEANMENUDVARS
+#undef CLEANMENUDVARS
+#endif
+
+#define CLEANMENUDVARS execOnDvarStringValue menu_scr_fallDamageMinHeight _null "setfromdvar menu_scr_fallDamageMinHeight scr_fallDamageMinHeight"\
+		execOnDvarStringValue menu_scr_fallDamageMaxHeight _null "setfromdvar menu_scr_fallDamageMaxHeight scr_fallDamageMaxHeight"\
+		execOnDvarStringValue menu_scr_jump_height _null "setfromdvar menu_scr_jump_height scr_jump_height"\
+		execOnDvarStringValue menu_scr_jump_slowdown_enable _null "setfromdvar menu_scr_jump_slowdown_enable scr_jump_slowdown_enable"\
+		execOnDvarStringValue menu_scr_game_allow_killcam _null "setfromdvar menu_scr_game_allow_killcam scr_game_allow_killcam"\
+		execOnDvarStringValue menu_scr_player_forcerespawn _null "setfromdvar menu_scr_player_forcerespawn scr_player_forcerespawn"\
+		execOnDvarStringValue menu_scr_quickactions_enable _null "setfromdvar menu_scr_quickactions_enable scr_quickactions_enable"\
+		execOnDvarStringValue menu_scr_thirdperson_enable _null "setfromdvar menu_scr_thirdperson_enable scr_thirdperson_enable"\
+		execOnDvarStringValue menu_scr_player_lean_fix _null "setfromdvar menu_scr_player_lean_fix scr_player_lean_fix"\
+		execOnDvarStringValue menu_scr_bob_effect_enable _null "setfromdvar menu_scr_bob_effect_enable scr_bob_effect_enable"\
+		execOnDvarStringValue menu_scr_cg_footsteps _null "setfromdvar menu_scr_cg_footsteps scr_cg_footsteps"\
+		execOnDvarStringValue menu_scr_cap_enable _null "setfromdvar menu_scr_cap_enable scr_cap_enable"\
+		execOnDvarStringValue menu_scr_cap_time _null "setfromdvar menu_scr_cap_time scr_cap_time"\
+		execOnDvarStringValue menu_scr_cap_time_activated _null "setfromdvar menu_scr_cap_time_activated scr_cap_time_activated"\
+		execOnDvarStringValue menu_scr_cap_firstspawn _null "setfromdvar menu_scr_cap_firstspawn scr_cap_firstspawn"\
+		execOnDvarStringValue menu_scr_de_dropweapon_on_arm_hit _null "setfromdvar menu_scr_de_dropweapon_on_arm_hit scr_de_dropweapon_on_arm_hit"\
+		execOnDvarStringValue menu_scr_de_dropweapon_chance _null "setfromdvar menu_scr_de_dropweapon_chance scr_de_dropweapon_chance"\
+		execOnDvarStringValue menu_scr_de_falldown_on_leg_hit _null "setfromdvar menu_scr_de_falldown_on_leg_hit scr_de_falldown_on_leg_hit"\
+		execOnDvarStringValue menu_scr_de_falldown_chance _null "setfromdvar menu_scr_de_falldown_chance scr_de_falldown_chance"\
+		execOnDvarStringValue menu_scr_de_shiftview_on_damage _null "setfromdvar menu_scr_de_shiftview_on_damage scr_de_shiftview_on_damage"\
+		execOnDvarStringValue menu_scr_de_break_ankle_on_fall _null "setfromdvar menu_scr_de_break_ankle_on_fall scr_de_break_ankle_on_fall"\
+		execOnDvarStringValue menu_scr_de_slowdown_on_leg_hit _null "setfromdvar menu_scr_de_slowdown_on_leg_hit scr_de_slowdown_on_leg_hit"
+
 
 #define SET_SCR_FALLDAMAGEMINHEIGHT \
   execOnDvarStringValue menu_cfg_gt ass "set scr_fallDamageMinHeight_ass _null" \
