@@ -48,24 +48,7 @@
 #undef STOREMENUDVARS
 #endif
 
-#define STOREMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/world/z/_def.cfg"\
-    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/world/z/ass.cfg"\
-    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/world/z/bel.cfg"\
-    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/world/z/ch.cfg"\
-    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/world/z/ctf.cfg"\
-    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/world/z/dm.cfg"\
-    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/world/z/dom.cfg"\
-    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/world/z/ftag.cfg"\
-    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/world/z/gg.cfg"\
-    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/world/z/gr.cfg"\
-    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/world/z/koth.cfg"\
-    execOnDvarStringValue menu_cfg_gt oitc "exec menudvars/world/z/oitc.cfg"\
-    execOnDvarStringValue menu_cfg_gt re "exec menudvars/world/z/re.cfg"\
-    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/world/z/sab.cfg"\
-    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/world/z/sd.cfg"\
-    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/world/z/ss.cfg"\
-    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/world/z/tgr.cfg"\
-    execOnDvarStringValue menu_cfg_gt war "exec menudvars/world/z/war.cfg"
+#define STOREMENUDVARS     SETA_SCR_G_GRAVITY;SETA_SCR_MAP_SPECIAL_FX_ENABLE;SETA_SCR_MAP_SPECIAL_FX_RAIN;SETA_SCR_MAP_SPECIAL_FX_PARTICLES;SETA_SCR_MAP_SPECIAL_FX_BGSOUND;SETA_SCR_SHOW_FOG;SETA_SCR_DCS_ENABLED;SETA_SCR_DCS_DAY_LENGTH;SETA_SCR_DCS_DUSK_LENGTH;SETA_SCR_DCS_NIGHT_LENGTH;SETA_SCR_DCS_DAWN_LENGTH;SETA_SCR_DCS_FIRST_CYCLE;SETA_SCR_DCS_SOUNDS_ENABLE;SETA_SCR_DCS_RESET_CYCLE
 
 
 #define SET_SCR_G_GRAVITY \
@@ -333,3 +316,747 @@
   execOnDvarStringValue menu_cfg_gt ss "set scr_dcs_reset_cycle_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "set scr_dcs_reset_cycle_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "set scr_dcs_reset_cycle_war _null"
+
+
+// SETAS
+#define SETA_SCR_G_GRAVITY \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_g_gravity_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_g_gravity_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_g_gravity_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_g_gravity_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_g_gravity_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_g_gravity_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_g_gravity_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_g_gravity_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_g_gravity_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_g_gravity_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_g_gravity_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_g_gravity_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_g_gravity_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_g_gravity_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_g_gravity_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_g_gravity_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_g_gravity_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_g_gravity_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_g_gravity_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_g_gravity_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_g_gravity_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_g_gravity_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_g_gravity_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_g_gravity_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_g_gravity_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_g_gravity_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_g_gravity_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_g_gravity_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_g_gravity_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_g_gravity_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_g_gravity_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_g_gravity_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_g_gravity_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_g_gravity_war _null"
+
+#define SETA_SCR_MAP_SPECIAL_FX_ENABLE \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_map_special_fx_enable_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_map_special_fx_enable_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_map_special_fx_enable_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_map_special_fx_enable_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_map_special_fx_enable_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_map_special_fx_enable_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_map_special_fx_enable_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_map_special_fx_enable_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_map_special_fx_enable_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_map_special_fx_enable_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_map_special_fx_enable_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_map_special_fx_enable_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_map_special_fx_enable_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_map_special_fx_enable_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_map_special_fx_enable_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_map_special_fx_enable_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_map_special_fx_enable_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_map_special_fx_enable_war _null"
+
+#define SETA_SCR_MAP_SPECIAL_FX_RAIN \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_map_special_fx_rain_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_map_special_fx_rain_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_map_special_fx_rain_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_map_special_fx_rain_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_map_special_fx_rain_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_map_special_fx_rain_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_map_special_fx_rain_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_map_special_fx_rain_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_map_special_fx_rain_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_map_special_fx_rain_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_map_special_fx_rain_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_map_special_fx_rain_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_map_special_fx_rain_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_map_special_fx_rain_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_map_special_fx_rain_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_map_special_fx_rain_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_map_special_fx_rain_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_map_special_fx_rain_war _null"
+
+#define SETA_SCR_MAP_SPECIAL_FX_PARTICLES \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_map_special_fx_particles_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_map_special_fx_particles_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_map_special_fx_particles_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_map_special_fx_particles_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_map_special_fx_particles_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_map_special_fx_particles_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_map_special_fx_particles_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_map_special_fx_particles_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_map_special_fx_particles_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_map_special_fx_particles_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_map_special_fx_particles_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_map_special_fx_particles_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_map_special_fx_particles_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_map_special_fx_particles_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_map_special_fx_particles_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_map_special_fx_particles_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_map_special_fx_particles_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_map_special_fx_particles_war _null"
+
+#define SETA_SCR_MAP_SPECIAL_FX_BGSOUND \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_map_special_fx_bgsound_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_map_special_fx_bgsound_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_map_special_fx_bgsound_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_map_special_fx_bgsound_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_map_special_fx_bgsound_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_map_special_fx_bgsound_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_map_special_fx_bgsound_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_map_special_fx_bgsound_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_map_special_fx_bgsound_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_map_special_fx_bgsound_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_map_special_fx_bgsound_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_map_special_fx_bgsound_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_map_special_fx_bgsound_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_map_special_fx_bgsound_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_map_special_fx_bgsound_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_map_special_fx_bgsound_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_map_special_fx_bgsound_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_map_special_fx_bgsound_war _null"
+
+#define SETA_SCR_SHOW_FOG \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_show_fog_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_show_fog_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_show_fog_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_show_fog_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_show_fog_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_show_fog_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_show_fog_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_show_fog_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_show_fog_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_show_fog_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_show_fog_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_show_fog_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_show_fog_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_show_fog_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_show_fog_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_show_fog_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_show_fog_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_show_fog_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_show_fog_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_show_fog_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_show_fog_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_show_fog_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_show_fog_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_show_fog_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_show_fog_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_show_fog_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_show_fog_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_show_fog_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_show_fog_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_show_fog_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_show_fog_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_show_fog_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_show_fog_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_show_fog_war _null"
+
+#define SETA_SCR_DCS_ENABLED \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_dcs_enabled_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_dcs_enabled_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_dcs_enabled_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_dcs_enabled_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_dcs_enabled_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_dcs_enabled_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_dcs_enabled_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_dcs_enabled_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_dcs_enabled_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_dcs_enabled_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_dcs_enabled_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_dcs_enabled_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_dcs_enabled_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_dcs_enabled_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_dcs_enabled_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_dcs_enabled_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_dcs_enabled_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_dcs_enabled_war _null"
+
+#define SETA_SCR_DCS_DAY_LENGTH \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_dcs_day_length_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_dcs_day_length_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_dcs_day_length_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_dcs_day_length_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_dcs_day_length_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_dcs_day_length_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_dcs_day_length_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_dcs_day_length_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_dcs_day_length_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_dcs_day_length_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_dcs_day_length_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_dcs_day_length_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_dcs_day_length_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_dcs_day_length_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_dcs_day_length_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_dcs_day_length_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_dcs_day_length_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_dcs_day_length_war _null"
+
+#define SETA_SCR_DCS_DUSK_LENGTH \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_dcs_dusk_length_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_dcs_dusk_length_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_dcs_dusk_length_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_dcs_dusk_length_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_dcs_dusk_length_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_dcs_dusk_length_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_dcs_dusk_length_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_dcs_dusk_length_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_dcs_dusk_length_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_dcs_dusk_length_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_dcs_dusk_length_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_dcs_dusk_length_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_dcs_dusk_length_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_dcs_dusk_length_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_dcs_dusk_length_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_dcs_dusk_length_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_dcs_dusk_length_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_dcs_dusk_length_war _null"
+
+#define SETA_SCR_DCS_NIGHT_LENGTH \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_dcs_night_length_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_dcs_night_length_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_dcs_night_length_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_dcs_night_length_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_dcs_night_length_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_dcs_night_length_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_dcs_night_length_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_dcs_night_length_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_dcs_night_length_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_dcs_night_length_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_dcs_night_length_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_dcs_night_length_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_dcs_night_length_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_dcs_night_length_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_dcs_night_length_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_dcs_night_length_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_dcs_night_length_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_dcs_night_length_war _null"
+
+#define SETA_SCR_DCS_DAWN_LENGTH \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_dcs_dawn_length_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_dcs_dawn_length_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_dcs_dawn_length_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_dcs_dawn_length_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_dcs_dawn_length_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_dcs_dawn_length_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_dcs_dawn_length_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_dcs_dawn_length_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_dcs_dawn_length_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_dcs_dawn_length_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_dcs_dawn_length_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_dcs_dawn_length_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_dcs_dawn_length_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_dcs_dawn_length_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_dcs_dawn_length_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_dcs_dawn_length_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_dcs_dawn_length_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_dcs_dawn_length_war _null"
+
+#define SETA_SCR_DCS_FIRST_CYCLE \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_dcs_first_cycle_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_dcs_first_cycle_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_dcs_first_cycle_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_dcs_first_cycle_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_dcs_first_cycle_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_dcs_first_cycle_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_dcs_first_cycle_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_dcs_first_cycle_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_dcs_first_cycle_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_dcs_first_cycle_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_dcs_first_cycle_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_dcs_first_cycle_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_dcs_first_cycle_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_dcs_first_cycle_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_dcs_first_cycle_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_dcs_first_cycle_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_dcs_first_cycle_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_dcs_first_cycle_war _null"
+
+#define SETA_SCR_DCS_SOUNDS_ENABLE \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_dcs_sounds_enable_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_dcs_sounds_enable_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_dcs_sounds_enable_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_dcs_sounds_enable_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_dcs_sounds_enable_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_dcs_sounds_enable_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_dcs_sounds_enable_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_dcs_sounds_enable_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_dcs_sounds_enable_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_dcs_sounds_enable_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_dcs_sounds_enable_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_dcs_sounds_enable_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_dcs_sounds_enable_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_dcs_sounds_enable_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_dcs_sounds_enable_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_dcs_sounds_enable_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_dcs_sounds_enable_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_dcs_sounds_enable_war _null"
+
+#define SETA_SCR_DCS_RESET_CYCLE \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_dcs_reset_cycle_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_dcs_reset_cycle_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_dcs_reset_cycle_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_dcs_reset_cycle_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_dcs_reset_cycle_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_dcs_reset_cycle_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_dcs_reset_cycle_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_dcs_reset_cycle_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_dcs_reset_cycle_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_dcs_reset_cycle_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_dcs_reset_cycle_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_dcs_reset_cycle_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_dcs_reset_cycle_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_dcs_reset_cycle_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_dcs_reset_cycle_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_dcs_reset_cycle_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_dcs_reset_cycle_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_dcs_reset_cycle_war _null"

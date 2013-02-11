@@ -1,5 +1,7 @@
 #include "ui_mp/menustyle.inc"
 
+#include "ui_mp/scriptmenus/server_spectate_setadvars.inc"
+
 menuDef
 {
 	name			"settings_quick_koth_@MPUI_RULES_FRIENDLY_FIRE"
@@ -9,6 +11,8 @@ menuDef
 	//soundloop		""
 	onOpen
 	{
+		setdvar tmp_menu_name spe;
+		setdvar tmp_menu_optcount 0;
 		setdvar tmp_menu_savedsess 0;
 		FILLMENUDVARS;
 	}
@@ -79,6 +83,49 @@ menuDef
 #undef TEXTSIZE_BUTTON_PC
 #define TEXTSIZE_BUTTON_PC	0.38
 	
-	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, 	setdvar tmp_menu_savedsess 0;FILLMENUDVARS; , 1 )
+	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_ONEINTHECHAMBER"; "oitc"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, setdvar tmp_menu_optcount 0;setdvar tmp_menu_savedsess 0;FILLMENUDVARS; , 1 )
 	
+	itemDef {
+		name			save
+		text			"@OW_MENU_SAVE_FOR_SESSION"
+		type			1
+		style			WINDOW_STYLE_FILLED
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		rect			130 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+		textfont		UI_FONT_NORMAL
+		textalign		ITEM_ALIGN_LEFT
+		textscale		TEXTSIZE_SMALL
+		textaligny		18
+		visible			1
+		mouseEnter		{ play "mouse_over"; }
+		action
+		{
+			setdvar tmp_menu_savedsess 1;
+			play "menu_save_changes";
+			SAVEMENUDVARS;
+		}
+	}
+	itemDef {
+		name			storedisk
+		text			"@OW_MENU_STORE_TO_DISK"
+		type			1
+		style			WINDOW_STYLE_FILLED
+		textstyle		ITEM_TEXTSTYLE_SHADOWED
+		rect			-100 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+		textfont		UI_FONT_NORMAL
+		textalign		ITEM_ALIGN_LEFT
+		textscale		TEXTSIZE_SMALL
+		textaligny		18
+		visible			when( !dvarbool(tmp_menu_savedsess) )
+		mouseEnter		{ play "mouse_over"; }
+		action { setdvar tmp_menu_optcount 1; open single_popmenu; }
+	}
+	itemDef {
+		type			1
+		style			WINDOW_STYLE_SHADER
+		rect			-20 -26 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+		background		"checkbox_checked"
+		forecolor		COLOR_FOCUSED
+		visible			when( dvarInt(tmp_menu_optcount) == 14)
+	}
 }

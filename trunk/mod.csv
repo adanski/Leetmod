@@ -184,6 +184,9 @@ material,bandaging
 material,bleeding
 material,camping
 material,clanlogo
+material,checkbox_checked
+material,checkbox_clear
+material,checkbox_over
 material,compass_waypoint_extraction_zone
 material,death_headshot
 material,dogtag

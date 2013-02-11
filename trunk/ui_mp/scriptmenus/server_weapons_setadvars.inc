@@ -46,23 +46,7 @@
 #undef STOREMENUDVARS
 #endif
 
-#define STOREMENUDVARS     execOnDvarStringValue menu_cfg_gt _def "exec menudvars/weapons/z/_def.cfg"\
-    execOnDvarStringValue menu_cfg_gt ass "exec menudvars/weapons/z/ass.cfg"\
-    execOnDvarStringValue menu_cfg_gt bel "exec menudvars/weapons/z/bel.cfg"\
-    execOnDvarStringValue menu_cfg_gt ch "exec menudvars/weapons/z/ch.cfg"\
-    execOnDvarStringValue menu_cfg_gt ctf "exec menudvars/weapons/z/ctf.cfg"\
-    execOnDvarStringValue menu_cfg_gt dm "exec menudvars/weapons/z/dm.cfg"\
-    execOnDvarStringValue menu_cfg_gt dom "exec menudvars/weapons/z/dom.cfg"\
-    execOnDvarStringValue menu_cfg_gt ftag "exec menudvars/weapons/z/ftag.cfg"\
-    execOnDvarStringValue menu_cfg_gt gg "exec menudvars/weapons/z/gg.cfg"\
-    execOnDvarStringValue menu_cfg_gt gr "exec menudvars/weapons/z/gr.cfg"\
-    execOnDvarStringValue menu_cfg_gt koth "exec menudvars/weapons/z/koth.cfg"\
-    execOnDvarStringValue menu_cfg_gt re "exec menudvars/weapons/z/re.cfg"\
-    execOnDvarStringValue menu_cfg_gt sab "exec menudvars/weapons/z/sab.cfg"\
-    execOnDvarStringValue menu_cfg_gt sd "exec menudvars/weapons/z/sd.cfg"\
-    execOnDvarStringValue menu_cfg_gt ss "exec menudvars/weapons/z/ss.cfg"\
-    execOnDvarStringValue menu_cfg_gt tgr "exec menudvars/weapons/z/tgr.cfg"\
-    execOnDvarStringValue menu_cfg_gt war "exec menudvars/weapons/z/war.cfg"
+#define STOREMENUDVARS	SETA_SCR_GRENADE_ALLOW_COOKING;SETA_SCR_BULLET_PENETRATION_ENABLED;SETA_SCR_CONCUSSION_GRENADES_BASE_TIME;SETA_SCR_DELETEEXPLOSIVESONSPAWN;SETA_SCR_DELETEEXPLOSIVESONDEATH;SETA_SCR_OBJECTIVE_SAFEZONE_ENABLE;SETA_SCR_OBJECTIVE_SAFEZONE_RADIUS;SETA_SCR_DELAY_FRAG_GRENADES;SETA_SCR_DELAY_GRENADE_LAUNCHERS;SETA_SCR_DELAY_SMOKE_GRENADES;SETA_SCR_DELAY_FLASH_GRENADES;SETA_SCR_DELAY_CONCUSSION_GRENADES;SETA_SCR_DELAY_RPGS;SETA_SCR_DELAY_C4S;SETA_SCR_DELAY_CLAYMORES;SETA_SCR_DELAY_ONLY_ROUND_START;SETA_SCR_DELAY_SOUND_ENABLE;SETA_SCR_WEAPONJAMS_ENABLE;SETA_SCR_WEAPONJAMS_PROBABILITY;SETA_SCR_WEAPONJAMS_GAP_TIME;SETA_SCR_SNIPERZOOM_ENABLE;SETA_SCR_SNIPERZOOM_LOWER_LEVELS;SETA_SCR_SNIPERZOOM_UPPER_LEVELS;SETA_SCR_RANGEFINDER_ENABLE
 
 
 #define SET_SCR_GRENADE_ALLOW_COOKING \
@@ -454,3 +438,1079 @@
   execOnDvarStringValue menu_cfg_gt ss "set scr_rangefinder_enable_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "set scr_rangefinder_enable_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "set scr_rangefinder_enable_war _null"
+
+
+// Setas
+#define SETA_SCR_GRENADE_ALLOW_COOKING \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_grenade_allow_cooking_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_grenade_allow_cooking_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_grenade_allow_cooking_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_grenade_allow_cooking_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_grenade_allow_cooking_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_grenade_allow_cooking_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_grenade_allow_cooking_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_grenade_allow_cooking_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_grenade_allow_cooking_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_grenade_allow_cooking_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_grenade_allow_cooking_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_grenade_allow_cooking_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_grenade_allow_cooking_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_grenade_allow_cooking_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_grenade_allow_cooking_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_grenade_allow_cooking_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_grenade_allow_cooking_war _null"
+
+#define SETA_SCR_BULLET_PENETRATION_ENABLED \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_bullet_penetration_enabled_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_bullet_penetration_enabled_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_bullet_penetration_enabled_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_bullet_penetration_enabled_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_bullet_penetration_enabled_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_bullet_penetration_enabled_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_bullet_penetration_enabled_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_bullet_penetration_enabled_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_bullet_penetration_enabled_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_bullet_penetration_enabled_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_bullet_penetration_enabled_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_bullet_penetration_enabled_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_bullet_penetration_enabled_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_bullet_penetration_enabled_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_bullet_penetration_enabled_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_bullet_penetration_enabled_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_bullet_penetration_enabled_war _null"
+
+#define SETA_SCR_CONCUSSION_GRENADES_BASE_TIME \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_concussion_grenades_base_time_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_concussion_grenades_base_time_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_concussion_grenades_base_time_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_concussion_grenades_base_time_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_concussion_grenades_base_time_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_concussion_grenades_base_time_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_concussion_grenades_base_time_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_concussion_grenades_base_time_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_concussion_grenades_base_time_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_concussion_grenades_base_time_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_concussion_grenades_base_time_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_concussion_grenades_base_time_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_concussion_grenades_base_time_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_concussion_grenades_base_time_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_concussion_grenades_base_time_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_concussion_grenades_base_time_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_concussion_grenades_base_time_war _null"
+
+#define SETA_SCR_DELETEEXPLOSIVESONSPAWN \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_deleteexplosivesonspawn_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_deleteexplosivesonspawn_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_deleteexplosivesonspawn_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_deleteexplosivesonspawn_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_deleteexplosivesonspawn_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_deleteexplosivesonspawn_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_deleteexplosivesonspawn_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_deleteexplosivesonspawn_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_deleteexplosivesonspawn_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_deleteexplosivesonspawn_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_deleteexplosivesonspawn_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_deleteexplosivesonspawn_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_deleteexplosivesonspawn_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_deleteexplosivesonspawn_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_deleteexplosivesonspawn_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesonspawn_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_deleteexplosivesonspawn_war _null"
+
+#define SETA_SCR_DELETEEXPLOSIVESONDEATH \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_deleteexplosivesondeath_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_deleteexplosivesondeath_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_deleteexplosivesondeath_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_deleteexplosivesondeath_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_deleteexplosivesondeath_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_deleteexplosivesondeath_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_deleteexplosivesondeath_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_deleteexplosivesondeath_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_deleteexplosivesondeath_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_deleteexplosivesondeath_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_deleteexplosivesondeath_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_deleteexplosivesondeath_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_deleteexplosivesondeath_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_deleteexplosivesondeath_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_deleteexplosivesondeath_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_deleteexplosivesondeath_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_deleteexplosivesondeath_war _null"
+
+#define SETA_SCR_OBJECTIVE_SAFEZONE_ENABLE \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_objective_safezone_enable_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_objective_safezone_enable_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_objective_safezone_enable_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_objective_safezone_enable_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_objective_safezone_enable_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_objective_safezone_enable_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_objective_safezone_enable_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_objective_safezone_enable_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_objective_safezone_enable_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_objective_safezone_enable_sd _null"
+
+#define SETA_SCR_OBJECTIVE_SAFEZONE_RADIUS \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_objective_safezone_radius_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_objective_safezone_radius_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_objective_safezone_radius_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_objective_safezone_radius_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_objective_safezone_radius_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_objective_safezone_radius_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_objective_safezone_radius_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_objective_safezone_radius_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_objective_safezone_radius_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_objective_safezone_radius_sd _null"
+
+#define SETA_SCR_DELAY_FRAG_GRENADES \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_frag_grenades_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_frag_grenades_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_frag_grenades_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_frag_grenades_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_frag_grenades_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_frag_grenades_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_frag_grenades_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_frag_grenades_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_frag_grenades_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_frag_grenades_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_frag_grenades_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_frag_grenades_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_frag_grenades_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_frag_grenades_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_frag_grenades_war _null"
+
+#define SETA_SCR_DELAY_GRENADE_LAUNCHERS \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_grenade_launchers_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_grenade_launchers_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_grenade_launchers_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_grenade_launchers_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_grenade_launchers_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_grenade_launchers_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_grenade_launchers_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_grenade_launchers_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_grenade_launchers_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_grenade_launchers_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_grenade_launchers_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_grenade_launchers_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_grenade_launchers_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_grenade_launchers_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_grenade_launchers_war _null"
+
+#define SETA_SCR_DELAY_SMOKE_GRENADES \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_smoke_grenades_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_smoke_grenades_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_smoke_grenades_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_smoke_grenades_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_smoke_grenades_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_smoke_grenades_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_smoke_grenades_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_smoke_grenades_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_smoke_grenades_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_smoke_grenades_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_smoke_grenades_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_smoke_grenades_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_smoke_grenades_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_smoke_grenades_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_smoke_grenades_war _null"
+
+#define SETA_SCR_DELAY_FLASH_GRENADES \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_flash_grenades_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_flash_grenades_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_flash_grenades_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_flash_grenades_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_flash_grenades_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_flash_grenades_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_flash_grenades_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_flash_grenades_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_flash_grenades_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_flash_grenades_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_flash_grenades_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_flash_grenades_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_flash_grenades_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_flash_grenades_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_flash_grenades_war _null"
+
+#define SETA_SCR_DELAY_CONCUSSION_GRENADES \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_concussion_grenades_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_concussion_grenades_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_concussion_grenades_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_concussion_grenades_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_concussion_grenades_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_concussion_grenades_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_concussion_grenades_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_concussion_grenades_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_concussion_grenades_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_concussion_grenades_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_concussion_grenades_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_concussion_grenades_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_concussion_grenades_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_concussion_grenades_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_concussion_grenades_war _null"
+
+#define SETA_SCR_DELAY_RPGS \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_rpgs_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_rpgs_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_rpgs_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_rpgs_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_rpgs_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_rpgs_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_rpgs_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_rpgs_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_rpgs_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_rpgs_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_rpgs_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_rpgs_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_rpgs_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_rpgs_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_rpgs_war _null"
+
+#define SETA_SCR_DELAY_C4S \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_c4s_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_c4s_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_c4s_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_c4s_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_c4s_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_c4s_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_c4s_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_c4s_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_c4s_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_c4s_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_c4s_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_c4s_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_c4s_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_c4s_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_c4s_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_c4s_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_c4s_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_c4s_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_c4s_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_c4s_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_c4s_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_c4s_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_c4s_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_c4s_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_c4s_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_c4s_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_c4s_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_c4s_war _null"
+
+#define SETA_SCR_DELAY_CLAYMORES \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_claymores_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_claymores_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_claymores_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_claymores_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_claymores_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_claymores_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_claymores_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_claymores_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_claymores_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_claymores_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_claymores_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_claymores_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_claymores_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_claymores_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_claymores_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_claymores_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_claymores_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_claymores_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_claymores_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_claymores_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_claymores_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_claymores_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_claymores_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_claymores_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_claymores_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_claymores_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_claymores_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_claymores_war _null"
+
+#define SETA_SCR_DELAY_ONLY_ROUND_START \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_only_round_start_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_only_round_start_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_only_round_start_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_only_round_start_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_only_round_start_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_only_round_start_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_only_round_start_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_only_round_start_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_only_round_start_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_only_round_start_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_only_round_start_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_only_round_start_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_only_round_start_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_only_round_start_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_only_round_start_war _null"
+
+#define SETA_SCR_DELAY_SOUND_ENABLE \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_delay_sound_enable_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_delay_sound_enable_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_delay_sound_enable_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_delay_sound_enable_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_delay_sound_enable_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_delay_sound_enable_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_delay_sound_enable_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_delay_sound_enable_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_delay_sound_enable_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_delay_sound_enable_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_delay_sound_enable_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_delay_sound_enable_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_delay_sound_enable_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_delay_sound_enable_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_delay_sound_enable_war _null"
+
+#define SETA_SCR_WEAPONJAMS_ENABLE \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_weaponjams_enable_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_weaponjams_enable_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_weaponjams_enable_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_weaponjams_enable_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_weaponjams_enable_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_weaponjams_enable_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_weaponjams_enable_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_weaponjams_enable_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_weaponjams_enable_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_weaponjams_enable_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_weaponjams_enable_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_weaponjams_enable_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_weaponjams_enable_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_weaponjams_enable_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_weaponjams_enable_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_weaponjams_enable_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_weaponjams_enable_war _null"
+
+#define SETA_SCR_WEAPONJAMS_PROBABILITY \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_weaponjams_probability_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_weaponjams_probability_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_weaponjams_probability_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_weaponjams_probability_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_weaponjams_probability_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_weaponjams_probability_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_weaponjams_probability_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_weaponjams_probability_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_weaponjams_probability_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_weaponjams_probability_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_weaponjams_probability_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_weaponjams_probability_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_weaponjams_probability_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_weaponjams_probability_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_weaponjams_probability_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_weaponjams_probability_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_weaponjams_probability_war _null"
+
+#define SETA_SCR_WEAPONJAMS_GAP_TIME \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_weaponjams_gap_time_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_weaponjams_gap_time_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_weaponjams_gap_time_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_weaponjams_gap_time_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_weaponjams_gap_time_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_weaponjams_gap_time_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_weaponjams_gap_time_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_weaponjams_gap_time_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_weaponjams_gap_time_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_weaponjams_gap_time_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_weaponjams_gap_time_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_weaponjams_gap_time_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_weaponjams_gap_time_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_weaponjams_gap_time_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_weaponjams_gap_time_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_weaponjams_gap_time_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_weaponjams_gap_time_war _null"
+
+#define SETA_SCR_SNIPERZOOM_ENABLE \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_sniperzoom_enable_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_sniperzoom_enable_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_sniperzoom_enable_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_sniperzoom_enable_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_sniperzoom_enable_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_sniperzoom_enable_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_sniperzoom_enable_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_sniperzoom_enable_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_sniperzoom_enable_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_sniperzoom_enable_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_sniperzoom_enable_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_sniperzoom_enable_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_sniperzoom_enable_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_sniperzoom_enable_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_sniperzoom_enable_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_sniperzoom_enable_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_sniperzoom_enable_war _null"
+
+#define SETA_SCR_SNIPERZOOM_LOWER_LEVELS \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_sniperzoom_lower_levels_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_sniperzoom_lower_levels_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_sniperzoom_lower_levels_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_sniperzoom_lower_levels_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_sniperzoom_lower_levels_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_sniperzoom_lower_levels_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_sniperzoom_lower_levels_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_sniperzoom_lower_levels_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_sniperzoom_lower_levels_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_sniperzoom_lower_levels_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_sniperzoom_lower_levels_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_sniperzoom_lower_levels_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_sniperzoom_lower_levels_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_sniperzoom_lower_levels_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_sniperzoom_lower_levels_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_sniperzoom_lower_levels_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_sniperzoom_lower_levels_war _null"
+
+#define SETA_SCR_SNIPERZOOM_UPPER_LEVELS \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_sniperzoom_upper_levels_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_sniperzoom_upper_levels_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_sniperzoom_upper_levels_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_sniperzoom_upper_levels_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_sniperzoom_upper_levels_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_sniperzoom_upper_levels_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_sniperzoom_upper_levels_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_sniperzoom_upper_levels_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_sniperzoom_upper_levels_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_sniperzoom_upper_levels_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_sniperzoom_upper_levels_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_sniperzoom_upper_levels_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_sniperzoom_upper_levels_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_sniperzoom_upper_levels_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_sniperzoom_upper_levels_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_sniperzoom_upper_levels_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_sniperzoom_upper_levels_war _null"
+
+#define SETA_SCR_RANGEFINDER_ENABLE \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_rangefinder_enable_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_rangefinder_enable_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_rangefinder_enable_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_rangefinder_enable_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_rangefinder_enable_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_rangefinder_enable_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_rangefinder_enable_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_rangefinder_enable_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_rangefinder_enable_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_rangefinder_enable_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_rangefinder_enable_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_rangefinder_enable_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_rangefinder_enable_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_rangefinder_enable_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_rangefinder_enable_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_rangefinder_enable_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_rangefinder_enable_war _null"
