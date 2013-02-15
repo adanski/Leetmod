@@ -1575,7 +1575,7 @@ endGame( winner, endReasonText )
 				
 	//Round Winning Kill here!
 	
-	if( level.scr_roundwinningkillcam && isEndReasonTimeLimitReached &&
+	if( level.scr_roundwinningkillcam && !isEndReasonTimeLimitReached &&
 	    ( level.gametype == "dm" || level.gametype == "ftag" || level.gametype == "gg" ||
 	      level.gametype == "oitc" || level.gametype == "ss" || level.gametype == "war" ||
 	      ( level.gametype == "sd" && endReasonText != game["strings"]["target_destroyed"] && endReasonText != game["strings"]["bomb_defused"] )
