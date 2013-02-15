@@ -370,8 +370,9 @@ menufile,ui_mp/scriptmenus/scoreboard.menu
 menufile,ui_mp/scriptmenus/serverinfo.menu
 menufile,ui_mp/scriptmenus/team_marinesopfor.menu
 
-rawfile,ui_mp/cac_ingame.inc
-rawfile,ui_mp/cac_loadout_ingame.inc
+# disabled because it was from old unranked
+#rawfile,ui_mp/cac_ingame.inc
+#rawfile,ui_mp/cac_loadout_ingame.inc
 rawfile,ui_mp/ow_cac_loadout.inc
 rawfile,ui_mp/tactical_map.inc
 rawfile,ui_mp/teamicon.inc

@@ -56,9 +56,9 @@ controlFragsForMartyrdom()
 		self waittill ( "grenade_fire", grenade, weaponName );
 		
 		// Check if it was a frag grenade
-		if ( weaponName == "frag_grenade_mp" || weaponName == "frag_grenade_nocook_mp" ) {
+		if ( weaponName == level.weapons["frag"] ) {
 			// Check if the player has no more frag grenades left
-			if ( self getAmmoCount( "frag_grenade_mp" ) == 0 || self getAmmoCount( "frag_grenade_nocook_mp" ) == 0 ) {
+			if ( self getAmmoCount( level.weapons["frag"] ) == 0 ) {
 				// Remove the perk from the player
 				self unsetPerk( "specialty_grenadepulldeath" );
 				self.hasFragsForMartyrdom = false;

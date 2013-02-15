@@ -114,14 +114,14 @@ init()
 		level.weaponNames[level.weaponIDs[index]] = index;
 	}
 	
-	// generating weaponlist array
-	level.weaponlist = [];
+	// generating weaponList array
+	level.weaponList = [];
 	assertex( isdefined( level.weaponIDs.size ), "level.weaponIDs is corrupted" );
 	for( i = 0; i < level.weaponIDs.size; i++ ) {
 		if( !isdefined( level.weaponIDs[i] ) || level.weaponIDs[i] == "" )
 			continue;
 			
-		level.weaponlist[level.weaponlist.size] = level.weaponIDs[i];
+		level.weaponList[level.weaponList.size] = level.weaponIDs[i];
 	}
 	
 	// based on weaponList array, precache weapons in list
@@ -477,7 +477,7 @@ watchGrenadePickup( grenadeType )
 		self waittill( "trigger", player );
 		
 		// Check if need to activate martyrdom for this player again
-		if ( (grenadeType == "frag_grenade_mp" || grenadeType == "frag_grenade_nocook_mp") && isDefined( player.hasMartyrdom ) && player.hasMartyrdom && !player.hasFragsForMartyrdom ) {
+		if ( ( grenadeType == level.weapons["frag"] ) && isDefined( player.hasMartyrdom ) && player.hasMartyrdom && !player.hasFragsForMartyrdom ) {
 			player.hasFragsForMartyrdom = true;
 			player setPerk( "specialty_grenadepulldeath" );
 		}
@@ -507,10 +507,7 @@ dropOffhand()
 		return;
 		
 	if ( level.scr_frag_grenades_allowdrop ) {
-		if( level.scr_grenade_allow_cooking )
-			grenadeTypes[grenadeTypes.size] = "frag_grenade_mp";
-		else
-			grenadeTypes[grenadeTypes.size] = "frag_grenade_nocook_mp";
+			grenadeTypes[grenadeTypes.size] = level.weapons["frag"];
 	}
 	if ( level.scr_concussion_grenades_allowdrop ) {
 		grenadeTypes[grenadeTypes.size] = "concussion_grenade_mp";
@@ -561,10 +558,7 @@ getWeaponBasedSmokeGrenadeCount(weapon)
 
 getFragGrenadeCount()
 {
-	if( level.scr_grenade_allow_cooking )
-		grenadetype = "frag_grenade_mp";
-	else
-		grenadetype = "frag_grenade_nocook_mp";
+	grenadetype = level.weapons["frag"];
 		
 	count = self getammocount(grenadetype);
 	return count;
@@ -809,7 +803,7 @@ beginGrenadeTracking()
 	if ( (getTime() - startTime > 1000) )
 		grenade.isCooked = true;
 		
-	if ( weaponName == "frag_grenade_mp" || weaponName == "frag_grenade_nocook_mp" ) {
+	if ( weaponName == level.weapons["frag"] ) {
 		grenade thread maps\mp\gametypes\_shellshock::grenade_earthQuake();
 		grenade.originalOwner = self;
 	}

@@ -695,10 +695,10 @@ LANG_ENGLISH "^7The server admin has switched you to the other team."
 //******************************************************************************
 
 REFERENCE CAP_OPEN 
-LANG_ENGLISH "Hit the ^3[USE] ^7key to open the\n^3Customize-A-Player Interface"
+LANG_ENGLISH "Press the ^3[USE] ^7key to open the\n^3Customize-A-Player Interface"
 
 REFERENCE CAP_CYCLE_AND_CLOSE
-LANG_ENGLISH "Hit the ^3[USE] ^7key to cycle through the models\nHit the ^3[MELEE] ^7key to exit the interface"
+LANG_ENGLISH "Press the ^3[USE] ^7key to cycle through the models\nPress the ^3[MELEE] ^7key to exit the interface"
 
 REFERENCE CAP_INITIALIZING
 LANG_ENGLISH "Opening the ^3Customize-A-Player ^7Interface"
