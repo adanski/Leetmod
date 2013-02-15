@@ -148,6 +148,9 @@ warnModder(invalidIWD)
 
 rotationHasCustomMaps()
 {
+	if( !isStockMap(getDvar("mapname")) )
+		return true;
+	
 	for ( index=0; index < level.mgCombinations.size; index++ ) {
 		if( !isStockMap(level.mgCombinations[index]["mapname"]) )
 			return true;

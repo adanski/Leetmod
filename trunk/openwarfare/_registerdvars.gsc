@@ -154,27 +154,6 @@ init()
 	
 	level.scr_switch_teams_at_halftime = getdvarx( "scr_switch_teams_at_halftime", "int", 0, 0, 1 );
 	
-	// Original comment:
-	// If we are running unranked load some variables that are only loaded in _modwarfare.gsc
-	// End of Original comment /
-	// ### TO FIX ### shouldn't it be negated? ( level.rankedClasses -> !level.rankedClasses )
-	// # I've tested the fix and it brings scripting errors when offline class perk1 is
-	// # extra flash or stun, so, reverting
-	// # 2. Offline and online classes are very similar so we are forcing this code for any type
-	//if ( level.rankedClasses ) {
-	game["loadout_CLASS_ASSAULT_frags"] =	getdvarx( "class_assault_frags", "int", 1, 0, 4 );
-	game["loadout_CLASS_ASSAULT_special"] = getdvarx( "class_assault_special", "int", 1, 0, 4 );
-	game["loadout_CLASS_SPECOPS_frags"] =	getdvarx( "class_specops_frags", "int", 1, 0, 4 );
-	game["loadout_CLASS_SPECOPS_special"] = getdvarx( "class_specops_special", "int", 1, 0, 4 );
-	game["loadout_CLASS_HEAVYGUNNER_frags"] = getdvarx( "class_heavygunner_frags", "int", 1, 0, 4 );
-	game["loadout_CLASS_HEAVYGUNNER_special"] = getdvarx( "class_heavygunner_special", "int", 1, 0, 4 );
-	game["loadout_CLASS_DEMOLITIONS_frags"] = getdvarx( "class_demolitions_frags", "int", 1, 0, 4 );
-	game["loadout_CLASS_DEMOLITIONS_special"] = getdvarx( "class_demolitions_special", "int", 1, 0, 4 );
-	game["loadout_CLASS_SNIPER_frags"] = getdvarx( "class_sniper_frags", "int", 1, 0, 4 );
-	game["loadout_CLASS_SNIPER_special"] = getdvarx( "class_sniper_special", "int", 1, 0, 4 );
-	game["loadout_CLASS_UNKNOWN_frags"] = 0;
-	game["loadout_CLASS_UNKNOWN_special"] = 0;
-	//}
 	/*
 		level.scr_relocate_chat_position = getdvarx( "scr_relocate_chat_position", "int", 0, 0, 2 );
 		if ( level.scr_relocate_chat_position == 1 ) {

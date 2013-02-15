@@ -524,7 +524,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
-			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 && !dvarBool(ct_noperk1) )
+			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 && !dvarBool(tmp_noperk1) )
 			mouseEnter { play "mouse_over"; setitemcolor cacPerk1Prev forecolor 0.409 0.801 0.999 1 }
 			mouseExit { setitemcolor cacPerk1Prev forecolor COLOR_FOCUSED }
 			action { play "mouse_click"; scriptMenuResponse "cacPerk1Prev"; }
@@ -538,7 +538,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_DISABLED
-			visible			when ( dvarInt( ow_cac_stat_perk1 ) == 193 && !dvarBool(ct_noperk1) )
+			visible			when ( dvarInt( ow_cac_stat_perk1 ) == 193 && !dvarBool(tmp_noperk1) )
 		}
 		//CHOICE_CAC_BUTTON( 7, "@MPUI_PERK_1", 1 )
 		//CHOICE_BUTTON_BG_RAW( 7, "gradient_fadein", 0.5 0.15 0 0.5, when( dvarInt( ow_cac_stat_perk1 ) == 190 ); )
@@ -551,7 +551,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
-			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 && !dvarBool(ct_noperk1) )
+			visible			when ( dvarInt( ow_cac_stat_perk1 ) != 193 && !dvarBool(tmp_noperk1) )
 			mouseEnter { play "mouse_over"; setitemcolor cacPerk1Next forecolor 0.409 0.801 0.999 1 }
 			mouseExit { setitemcolor cacPerk1Next forecolor COLOR_FOCUSED }
 			action { play "mouse_click"; scriptMenuResponse "cacPerk1Next"; }
@@ -565,7 +565,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_right"
 			forecolor		COLOR_DISABLED
-			visible			when ( dvarInt( ow_cac_stat_perk1 ) == 193 && !dvarBool(ct_noperk1) )
+			visible			when ( dvarInt( ow_cac_stat_perk1 ) == 193 && !dvarBool(tmp_noperk1) )
 		}
 		
 		//Perk 2
@@ -578,7 +578,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
-			visible			when(  !dvarBool(ct_noperk2) )
+			visible			when(  !dvarBool(tmp_noperk2) )
 			mouseEnter { play "mouse_over"; setitemcolor cacPerk2Prev forecolor 0.409 0.801 0.999 1 }
 			mouseExit { setitemcolor cacPerk2Prev forecolor COLOR_FOCUSED }
 			action { play "mouse_click"; scriptMenuResponse "cacPerk2Prev"; }
@@ -593,7 +593,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
-			visible			when(  !dvarBool(ct_noperk2) )
+			visible			when(  !dvarBool(tmp_noperk2) )
 			mouseEnter { play "mouse_over"; setitemcolor cacPerk2Next forecolor 0.409 0.801 0.999 1 }
 			mouseExit { setitemcolor cacPerk2Next forecolor COLOR_FOCUSED }
 			action { play "mouse_click"; scriptMenuResponse "cacPerk2Next"; }
@@ -609,7 +609,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
-			visible			when(  !dvarBool(ct_noperk3) )
+			visible			when(  !dvarBool(tmp_noperk3) )
 			mouseEnter { play "mouse_over"; setitemcolor cacPerk3Prev forecolor 0.409 0.801 0.999 1 }
 			mouseExit { setitemcolor cacPerk3Prev forecolor COLOR_FOCUSED }
 			action { play "mouse_click"; scriptMenuResponse "cacPerk3Prev"; }
@@ -624,7 +624,7 @@
 			origin			ORIGIN_LOADOUT1
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
-			visible			when(  !dvarBool(ct_noperk3) )
+			visible			when(  !dvarBool(tmp_noperk3) )
 			mouseEnter { play "mouse_over"; setitemcolor cacPerk3Next forecolor 0.409 0.801 0.999 1 }
 			mouseExit { setitemcolor cacPerk3Next forecolor COLOR_FOCUSED }
 			action { play "mouse_click"; scriptMenuResponse "cacPerk3Next"; }

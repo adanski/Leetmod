@@ -295,6 +295,10 @@ LANG_ENGLISH        "Clan Tag"
 REFERENCE           FRAG_1
 LANG_ENGLISH        "Frag / &&1 x 1"
 
+// hack for hiding text when special grenades are disabled
+REFERENCE           FRAG_1_
+LANG_ENGLISH        "Frag x 1"
+
 REFERENCE           FRAG_1_WEAPON_FLASH_GRENADE
 LANG_ENGLISH        "Frag / Flash x 1"
 
@@ -312,6 +316,10 @@ LANG_ENGLISH        "Frag / &&1 x 1"
 
 REFERENCE           FRAG_X_1
 LANG_ENGLISH        "Frag x 1"
+
+// hack for hiding text when special grenades are disabled
+REFERENCE           3X_
+LANG_ENGLISH        "Note: No special grenades set"
 
 REFERENCE           3X_WEAPON_FLASH_GRENADE
 LANG_ENGLISH        "Extra Flash(s)"

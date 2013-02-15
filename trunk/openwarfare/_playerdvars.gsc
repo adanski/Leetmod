@@ -244,9 +244,11 @@ onPlayerConnected()
 	}
 	
 	// these ones come from _class.gsc
-	self setClientDvar("ct_noperk1", level.clientHidePerk1Panel);
-	self setClientDvar("ct_noperk2", level.clientHidePerk2Panel);
-	self setClientDvar("ct_noperk3", level.clientHidePerk3Panel);
+	self setClientDvars("tmp_dfltclasses", level.classes_default_enable,
+											"tmp_custclasses", level.classes_custom_enable,
+											"tmp_noperk1", level.clientHidePerk1Panel,
+											"tmp_noperk2", level.clientHidePerk2Panel,
+											"tmp_noperk3", level.clientHidePerk3Panel);
 	
 	// Just in case something went wrong in _killcam.gsc
 	// We restore this variable again
@@ -279,9 +281,7 @@ setAutoAssign()
 		playerForceAutoAssign = 1;
 	}
 	
-	self setClientDvar(
-	    "ui_force_autoassign", playerForceAutoAssign
-	);
+	self setClientDvar( "ui_force_autoassign", playerForceAutoAssign );
 }
 
 

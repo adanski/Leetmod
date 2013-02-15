@@ -5193,7 +5193,7 @@ Callback_PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDi
 			doKillcam = false;
 			
 			// suicide kill cam only on specific kills
-			if ( ( isSubStr( sWeapon, "cobra" ) || sWeapon == "artillery_mp" || sWeapon == "claymore_mp" || sWeapon == "frag_grenade_mp" || sWeapon == "destructible_car" || sWeapon == "frag_grenade_nocook_mp") && isdefined( eInflictor ) ) {
+			if ( ( isSubStr( sWeapon, "cobra" ) || sWeapon == "artillery_mp" || sWeapon == "claymore_mp" || sWeapon == level.weapons["frag"] || sWeapon == "destructible_car" ) && isdefined( eInflictor ) ) {
 				lpattacknum = attacker getEntityNumber();
 				killcamentity = eInflictor getEntityNumber();
 				doKillcam = true;
@@ -5478,7 +5478,7 @@ Callback_PlayerKilled(eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDi
 	if ( sWeapon == "frag_grenade_short_mp" || sWeapon == "none" )
 		doKillcam = false;
 		
-	if ( ( isSubStr( sWeapon, "cobra" ) || sWeapon == "artillery_mp" || sWeapon == "claymore_mp" || sWeapon == "frag_grenade_mp" || sWeapon == "frag_grenade_nocook_mp" || sWeapon == "destructible_car" ) && isdefined( eInflictor ) ) {
+	if ( ( isSubStr( sWeapon, "cobra" ) || sWeapon == "artillery_mp" || sWeapon == "claymore_mp" || sWeapon == level.weapons["frag"] || sWeapon == "destructible_car" ) && isdefined( eInflictor ) ) {
 		killcamentity = eInflictor getEntityNumber();
 		doKillcam = true;
 	}
@@ -5757,10 +5757,7 @@ Callback_PlayerLastStand( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon,
 		self maps\mp\gametypes\_weapons::dropWeaponForDeath( attacker );
 	}
 	
-	if( level.scr_grenade_allow_cooking )
-		grenadeTypePrimary = "frag_grenade_mp";
-	else
-		grenadeTypePrimary = "frag_grenade_nocook_mp";
+	grenadeTypePrimary = level.weapons["frag"];
 		
 	// check if player has pistol
 	for( i = 0; i < weaponslist.size; i++ ) {
