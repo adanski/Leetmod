@@ -62,6 +62,7 @@ main()
 	// Additional variables that we'll be using
 	level.scr_ctf_ctfmode = getdvarx( "scr_ctf_ctfmode", "int", 2, 0, 2  );
 	level.scr_ctf_endround_on_capture = getdvarx( "scr_ctf_endround_on_capture", "int", 1, 0, 1  );
+	level.scr_ctf_capture_time = getdvarx( "scr_ctf_capture_time", "int", 5, 0, 60  );
 	level.scr_ctf_flag_carrier_can_return = getdvarx( "scr_ctf_flag_carrier_can_return", "int", 1, 0, 1  );
 	level.scr_ctf_scoreboard_flag_carrier = getdvarx( "scr_ctf_scoreboard_flag_carrier", "int", 1, 0, 1 );
 	level.scr_ctf_show_flag_carrier = getdvarx( "scr_ctf_show_flag_carrier", "int", 2, 0, 2  );
@@ -651,8 +652,9 @@ createCaptureZone( team, trigger )
 	captureZone	maps\mp\gametypes\_gameobjects::allowUse( "friendly" );
 	captureZone maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
 	//# TODO: capture the flag after a specific time has passed on the capture zone
-	captureZone maps\mp\gametypes\_gameobjects::setUseTime( 0 );
-	//captureZone maps\mp\gametypes\_gameobjects::setUseText( &"MP_CAPTURING_FLAG" );
+	captureZone maps\mp\gametypes\_gameobjects::setUseTime( level.scr_ctf_capture_time );
+	if( level.scr_ctf_capture_time > 0 )
+		captureZone maps\mp\gametypes\_gameobjects::setUseText( &"MP_CAPTURING_FLAG" );
 	captureZone.onUse = ::onUse;
 	
 	// Spawn an special effect at the base of the flag to indicate where it is located

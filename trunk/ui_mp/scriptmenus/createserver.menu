@@ -90,8 +90,28 @@
 		
 #undef CHOICE_X_START
 #define CHOICE_X_START  -60
+
+#define OPEN_GAMETYPE_PAGE	execNow "setfromdvar settings_config_gametype g_gametype"; \
+	uiScript openMenuOnDvar "settings_config_gametype" ass settings_quick_ctf; \
+	uiScript openMenuOnDvar "settings_config_gametype" bel settings_quick_ctf; \
+	uiScript openMenuOnDvar "settings_config_gametype" ctf settings_quick_ctf; \
+	uiScript openMenuOnDvar "settings_config_gametype" ch settings_quick_ctf; \
+	uiScript openMenuOnDvar "settings_config_gametype" dom settings_quick_dom; \
+	uiScript openMenuOnDvar "settings_config_gametype" dm settings_quick_dom; \
+	uiScript openMenuOnDvar "settings_config_gametype" ftag settings_quick_dom; \
+	uiScript openMenuOnDvar "settings_config_gametype" gr settings_quick_dom; \
+	uiScript openMenuOnDvar "settings_config_gametype" gg settings_quick_dom; \
+	uiScript openMenuOnDvar "settings_config_gametype" koth settings_quick_koth; \
+	uiScript openMenuOnDvar "settings_config_gametype" oitc settings_quick_koth; \
+	uiScript openMenuOnDvar "settings_config_gametype" re settings_quick_koth; \
+	uiScript openMenuOnDvar "settings_config_gametype" sab settings_quick_koth; \
+	uiScript openMenuOnDvar "settings_config_gametype" sd settings_quick_war; \
+	uiScript openMenuOnDvar "settings_config_gametype" ss settings_quick_war; \
+	uiScript openMenuOnDvar "settings_config_gametype" war settings_quick_war; \
+	uiScript openMenuOnDvar "settings_config_gametype" tgr settings_quick_war;
+	
 		
-		CHOICE_BUTTON( 32, "@OW_SERVER_GAMETYPE", exec "set settings_config_gametype ass"; open settings_quick_ctf; )
+		CHOICE_BUTTON( 32, "@OW_SERVER_GAMETYPE", OPEN_GAMETYPE_PAGE )
 		//CHOICE_BUTTON( 12, "@MENU_GAME_TYPE_SETTINGS", open settings_quick_dm; )
 		//CHOICE_BUTTON( 13, "@MENU_RESET_TO_DEFAULT", open reset_gamesettings; )
 		
