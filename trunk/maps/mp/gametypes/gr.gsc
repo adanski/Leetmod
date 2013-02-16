@@ -269,28 +269,40 @@ greed()
 	thread hideTimerDisplayOnGameEnd( timerDisplay );
 	
 	while(1) {
-		// Deactive the current active drop zones
-		for ( i=0; i < level.activeDropZones.size; i++ ) {
+		// Deactive all the current active drop zones
+		for ( i=0; i < level.activeDropZones.size; i++ )
 			level.activeDropZones[i] removeDropZone();
-		}
+		
 		level.activeDropZones = [];
 		
-		// Pick randomly the new drop zones from the array of HQ locations
+		// Every drop zone is picked from the array of HQ locations
 		availableRadioLocations = level.hqRadioLocations;
+		drawedNumbers = [];
+		
 		for ( i=0; i < level.scr_gr_active_drop_zones; i++ ) {
-			randomElement = randomIntRange( 0, availableRadioLocations.size );
+			// fix for randomIntRange getting 0,0 as params
+			if( availableRadioLocations.size > 0 )
+				upperBound = availableRadioLocations.size;
+			else
+				upperBound = 1;
+				
+			// do while
+			while(1) {
+				// Get one random radio
+				randomElement = randomIntRange( 0, upperBound );
+				alreadyDrawn = 0;
+				for( k=0; k < drawedNumbers.size; k++ ) {
+					if(randomElement == drawedNumbers[k] ) {
+						alreadyDrawn = 1;
+						break;
+					}
+				}
+				if( alreadyDrawn == 0 )
+					break;
+			}
+			drawedNumbers[drawedNumbers.size] = randomElement;
 			
 			level.activeDropZones[i] = createDropZone( availableRadioLocations[ randomElement ] );
-			availableRadioLocations[ randomElement ] = undefined;
-			
-			// Clean the array by removing the random picked HQ location
-			tempArray = [];
-			for ( j=0; j < availableRadioLocations.size; j++ ) {
-				if ( isDefined( availableRadioLocations[j] ) ) {
-					tempArray[ tempArray.size ] = availableRadioLocations[j];
-				}
-			}
-			availableRadioLocations = tempArray;
 		}
 		
 		// Play a sound for players so they know the drop zones have re-located
@@ -357,6 +369,8 @@ Removes the drop zone from the map
 */
 removeDropZone()
 {
+	// stop the monitoring thread
+	self notify("dropzone_removed");
 	// Delete the objective
 	if ( self.objCompass != -1 ) {
 		objective_delete( self.objCompass );
@@ -419,6 +433,8 @@ createDropZone( dropZoneCoord )
 	trace = bulletTrace( traceStart, traceEnd, false, undefined );
 	upangles = vectorToAngles( trace["normal"] );
 	dropZone.baseEffect = spawnFx( game[level.gameType]["drop_zone"], trace["position"], anglesToForward( upangles ), anglesToRight( upangles ) );
+	// Slow process to create FX
+	wait( 0.08 );
 	triggerFx( dropZone.baseEffect );
 	
 	// Start monitoring the trigger
@@ -440,6 +456,7 @@ onDropZoneUse()
 {
 	level endon("game_ended");
 	self endon("death");
+	self endon("dropzone_removed");
 	
 	while(1) {
 		self.trigger waittill( "trigger", player );
