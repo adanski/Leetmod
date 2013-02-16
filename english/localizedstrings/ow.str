@@ -1831,6 +1831,9 @@ LANG_ENGLISH "CTF mode"
 REFERENCE CTF_IDLEFLAGRETURNTIME
 LANG_ENGLISH "Idle flag return time"
 
+REFERENCE CTF_CAPTURETIME
+LANG_ENGLISH "Time after capturing both flags to secure them"
+
 REFERENCE CTF_ENDROUND_ON_CAPTURE
 LANG_ENGLISH "End round on capture"
 

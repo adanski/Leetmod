@@ -59,6 +59,26 @@ menuDef
 	
 #include "ui_mp/server_gametype_ass.inc"
 #include "ui_mp/server_gametype_bel.inc"
+
+#undef CHOICE_Y_COUNT
+#define CHOICE_Y_COUNT			17
+	
+#undef	CHOICE_SIZE_X
+#define CHOICE_SIZE_X		250
+	
+#undef CHOICE_X_SPACING
+#define CHOICE_X_SPACING 282
+	
 #include "ui_mp/server_gametype_ctf.inc"
+	
+#undef CHOICE_Y_COUNT
+#define CHOICE_Y_COUNT			20
+	
+#undef	CHOICE_SIZE_X
+#define CHOICE_SIZE_X		250
+	
+#undef CHOICE_X_SPACING
+#define CHOICE_X_SPACING 350
+
 #include "ui_mp/server_gametype_ch.inc"
 }
