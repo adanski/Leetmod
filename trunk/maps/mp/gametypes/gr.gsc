@@ -481,12 +481,10 @@ onDropZoneUse()
 			for ( i = 0; i < level.players.size; i++ ) {
 				if ( level.players[i].pers["team"] != "spectator" ) {
 					level.players[i] iprintln( &"OW_DOGTAGS_CAPTURED_BY", player, dogtagsCollected );
-					if ( level.players[i] != player ) {
-						level.players[i] playLocalSound( "mp_obj_captured" );
-					}
-					else {
+					if ( level.players[i] != player )
 						level.players[i] playLocalSound( "mp_enemy_obj_captured" );
-					}
+					else
+						level.players[i] playLocalSound( "mp_obj_captured" );
 				}
 			}
 			

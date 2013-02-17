@@ -6,27 +6,35 @@
 
 init()
 {
-	if (getdvar("svr_pezbots") == "")			        setdvar("svr_pezbots", 0);
-	if (getdvar("svr_pezbots_axis") == "")			    setdvar("svr_pezbots_axis", 0);
-	if (getdvar("svr_pezbots_allies") == "")			setdvar("svr_pezbots_allies", 0);
-	if (getdvar("svr_pezbots_dewards") == "")			setdvar("svr_pezbots_dewards", 0);
-	if (getdvar("svr_pezbots_drawdebug") == "")		setdvar("svr_pezbots_drawdebug", 0);
-	if (getdvar("svr_pezbots_skill") == "")			setdvar("svr_pezbots_skill", 1.0);
-	if (getdvar("svr_pezbots_mode") == "")				setdvar("svr_pezbots_mode", "normal");
-	if (getdvar("svr_pezbots_WPDrawRange") == "")		setdvar("svr_pezbots_WPDrawRange", 1000);
-	if (getdvar("svr_pezbots_XPCheat") == "")			setdvar("svr_pezbots_XPCheat", 0);
-	if (getdvar("svr_pezbots_grenadepickup") == "")    setdvar("svr_pezbots_grenadepickup", 1);
-	if (getdvar("svr_pezbots_roundCount") == "")      	setdvar("svr_pezbots_roundCount", 2);
-	if (getdvar("svr_pezbots_playstyle") == "")       	setdvar("svr_pezbots_playstyle", 2);
-	if (getdvar("svr_pezbots_useperks") == "")       	setdvar("svr_pezbots_useperks", 1);
-	if (getdvar("svr_pezbots_modelchoice") == "")      setdvar("svr_pezbots_modelchoice", 0);
+	if (getdvar("scr_pezbots_enable") == "")			        setdvar("scr_pezbots_enable", 0);
+	
+	level.scr_pezbots_enable = (getdvar("scr_pezbots_enable") == "1");
+	// Stop pezbot modules if it is disabled
+	if( level.scr_pezbots_enable == 0 )
+		return;
+	
+	// change this to use getdvarx with default values
+	if (getdvar("scr_pezbots") == "")			        setdvar("scr_pezbots", 0);
+	if (getdvar("scr_pezbots_axis") == "")			    setdvar("scr_pezbots_axis", 0);
+	if (getdvar("scr_pezbots_allies") == "")			setdvar("scr_pezbots_allies", 0);
+	if (getdvar("scr_pezbots_dewards") == "")			setdvar("scr_pezbots_dewards", 0);
+	if (getdvar("scr_pezbots_drawdebug") == "")		setdvar("scr_pezbots_drawdebug", 0);
+	if (getdvar("scr_pezbots_skill") == "")			setdvar("scr_pezbots_skill", 1.0);
+	if (getdvar("scr_pezbots_mode") == "")				setdvar("scr_pezbots_mode", "normal");
+	if (getdvar("scr_pezbots_WPDrawRange") == "")		setdvar("scr_pezbots_WPDrawRange", 1000);
+	if (getdvar("scr_pezbots_XPCheat") == "")			setdvar("scr_pezbots_XPCheat", 0);
+	if (getdvar("scr_pezbots_grenadepickup") == "")    setdvar("scr_pezbots_grenadepickup", 1);
+	if (getdvar("scr_pezbots_roundCount") == "")      	setdvar("scr_pezbots_roundCount", 2);
+	if (getdvar("scr_pezbots_playstyle") == "")       	setdvar("scr_pezbots_playstyle", 2);
+	if (getdvar("scr_pezbots_useperks") == "")       	setdvar("scr_pezbots_useperks", 1);
+	if (getdvar("scr_pezbots_modelchoice") == "")      setdvar("scr_pezbots_modelchoice", 0);
 	if (getdvar("g_force_autoassign") == "")           setdvar("g_force_autoassign", 0);
 	
-	level.maxroundCount = getdvarint("svr_pezbots_roundCount", 2, 0, 32, "int");
+	level.maxroundCount = getdvarint("scr_pezbots_roundCount", 2, 0, 32, "int");
 	level.roundCount = getdvarint("tdm_roundCount", 0, 0, 32, "int");
-	level.botbattlechatter = getdvarint("svr_pezbots_chatter", 1, 0, 1, "int");
+	level.botbattlechatter = getdvarint("scr_pezbots_chatter", 1, 0, 1, "int");
 
-	if (getdvar("svr_pezbots_playstyle") == "1")
+	if (getdvar("scr_pezbots_playstyle") == "1")
 	{
 	    level.botCrouchObj = 500;
 		level.botwalkspeed = 6.0;
@@ -39,7 +47,7 @@ init()
 		level.botRunDist = 2000;
 	}
 	
-	setdvar("svr_pezbots_classPicker", 0);
+	setdvar("scr_pezbots_classPicker", 0);
 	
 	setdvar("sv_punkbuster", 0);
 	setdvar("tdm_roundCount", 0);
@@ -51,23 +59,26 @@ init()
 	level.bot_battlechatter = 1;
 	level.minDistToObj = undefined;
 
-    //load waypoints for level
+	// Precache weapons
+	PreCache();
+	
+	//load waypoints for level
 	thread Waypoints\select_map::choose();
 
-    if(getdvar("svr_pezbots_mode") == "dev")
-    { 
-        setdvar("svr_pezbots_drawdebug", 1);
-  	    thread waitPlayer();
-        thread DrawStaticWaypoints();
-    }
-    else
-    {
-  	    thread StartNormal();
-  	    thread XPCheat();
-  	    thread MonitorPlayerMovement();
-  	    thread UpdateSmokeList();
-        thread DrawStaticWaypoints();
-    }	
+	if(getdvar("scr_pezbots_mode") == "dev")
+	{
+			setdvar("scr_pezbots_drawdebug", 1);
+			thread waitPlayer();
+			thread DrawStaticWaypoints();
+	}
+	else
+	{
+			thread StartNormal();
+			thread XPCheat();
+			thread MonitorPlayerMovement();
+			thread UpdateSmokeList();
+			thread DrawStaticWaypoints();
+	}	
 }
 
 ////////////////////////////////////////////////////////////
@@ -81,7 +92,7 @@ waitPlayer()
 		if (!isDefined(level.plr) || !isPlayer(level.plr))
 		{
 			level.plr = player;
-			if(getDvar("svr_pezbots_mode") == "dev")
+			if(getDvar("scr_pezbots_mode") == "dev")
 			{
 			    level.plr thread InitWaypoints();
 				level StartDev();
@@ -187,7 +198,7 @@ MonitorPlayerMovement()
 ////////////////////////////////////////
 CanDebugDraw()
 {
-    if(getdvarInt("svr_pezbots_drawdebug") >= 1)
+    if(getdvarInt("scr_pezbots_drawdebug") >= 1)
         return true;
     else
         return false;
@@ -216,7 +227,8 @@ PreCache()
 	precachestring(&"DEBUG_CHANGE_CLIMB");
 	precachestring(&"DEBUG_CHANGE_KILLZONE");
 	
-	precacheMenu("restart_server");
+	//# menu non-existent: source code was dumped and there were no .menu files
+	//precacheMenu("restart_server");
 }
 
 ////////////////////////////////////////////////////////////
@@ -249,7 +261,8 @@ loadMap(map, type)
 				player closeMenu();
 				player closeInGameMenu();
 				wait 0.1;
-				player openMenu("restart_server");
+				//# Menu doesn't exist
+				//player openMenu("restart_server");
 			}
         }
 		else
@@ -299,7 +312,7 @@ InitTargetables()
     self.targetables = [];
     AddTargetable("j_spine4");
 	
-	if (getdvar("svr_pezbots_mode") != "normal") self thread Developer();
+	if (getdvar("scr_pezbots_mode") != "normal") self thread Developer();
 }
 
 ////////////////////////////////////////////////////////////
@@ -455,9 +468,9 @@ Disconnected()
 ///////////////////////////////////////////////////////////
 KickAllBots()
 {
-	if(getdvar("svr_pezbots_botKickCount") != "")
+	if(getdvar("scr_pezbots_botKickCount") != "")
 	{
-	    if(getdvarint("svr_pezbots_botKickCount") > 0)
+	    if(getdvarint("scr_pezbots_botKickCount") > 0)
 	    {
             return;	  
 	    }
@@ -487,9 +500,9 @@ KickAllBots()
 		}
 	}	
 
-	setDvar("svr_pezbots_botKickCount", botKickCount);
-	setDvar("svr_pezbots_humanPlayerCount", humanPlayerCount);
-    setDvar("svr_pezbots_botKickProcess", 1);
+	setDvar("scr_pezbots_botKickCount", botKickCount);
+	setDvar("scr_pezbots_humanPlayerCount", humanPlayerCount);
+    setDvar("scr_pezbots_botKickProcess", 1);
 }
 
 ////////////////////////////////////////////////////////////
@@ -497,9 +510,9 @@ KickAllBots()
 ///////////////////////////////////////////////////////////
 KickAllAxisBots()
 {
-	if(getdvar("svr_pezbots_botKickCount_axis") != "")
+	if(getdvar("scr_pezbots_botKickCount_axis") != "")
 	{
-	    if(getdvarint("svr_pezbots_botKickCount_axis") > 0)
+	    if(getdvarint("scr_pezbots_botKickCount_axis") > 0)
 	    {
             return;	  
 	    }
@@ -529,9 +542,9 @@ KickAllAxisBots()
 		}
 	}	
 
-	setDvar("svr_pezbots_botKickCount_axis", botKickCountaxis);
-	setDvar("svr_pezbots_humanAxisPlayerCount", humanAxisPlayerCount);
-    setDvar("svr_pezbots_botKickProcess", 1);
+	setDvar("scr_pezbots_botKickCount_axis", botKickCountaxis);
+	setDvar("scr_pezbots_humanAxisPlayerCount", humanAxisPlayerCount);
+    setDvar("scr_pezbots_botKickProcess", 1);
 }
 
 ////////////////////////////////////////////////////////////
@@ -539,9 +552,9 @@ KickAllAxisBots()
 ///////////////////////////////////////////////////////////
 KickAllAlliesBots()
 {
-	if(getdvar("svr_pezbots_botKickCount_allies") != "")
+	if(getdvar("scr_pezbots_botKickCount_allies") != "")
 	{
-	    if(getdvarint("svr_pezbots_botKickCount_allies") > 0)
+	    if(getdvarint("scr_pezbots_botKickCount_allies") > 0)
 	    {
             return;	  
 	    }
@@ -571,9 +584,9 @@ KickAllAlliesBots()
 		}
 	}	
 
-	setDvar("svr_pezbots_botKickCount_allies", botKickCountallies);
-	setDvar("svr_pezbots_humanAlliesPlayerCount", humanAlliesPlayerCount);
-    setDvar("svr_pezbots_botKickProcess", 1);
+	setDvar("scr_pezbots_botKickCount_allies", botKickCountallies);
+	setDvar("scr_pezbots_humanAlliesPlayerCount", humanAlliesPlayerCount);
+    setDvar("scr_pezbots_botKickProcess", 1);
 }
 
 ////////////////////////////////////////////////////////////
@@ -811,45 +824,25 @@ StartDev()
         switch(level.players[0] GetButtonPressed())
         {
             case "AddWaypoint":
-            {
                 AddWaypoint(level.playerPos);
                 break;
-            }
-	  
 	        case "ChangeWaypointType":
-            {
                 ChangeWaypointType(level.playerPos);
 		        level.wpTochange = -1;
                 break;
-            }
-      
             case "DeleteWaypoint":
-            {
                 DeleteWaypoint(level.playerPos);
                 level.wpToLink = -1;
-                break;
-            }
-      
+                break;      
             case "LinkWaypoint":
-            {
                 LinkWaypoint(level.playerPos);
                 break;
-            }
-      
             case "UnlinkWaypoint":
-            {
                 UnLinkWaypoint(level.playerPos);
                 break;
-            }
-      
             case "SaveWaypoints":
-            {
                 SaveStaticWaypoints();
                 break;
-            }
-    
-            default:
-            break;
         }
         wait 0.001;  
     }
@@ -1363,6 +1356,7 @@ SaveStaticWaypoints()
 	}
 	level.saveSpamTimer = gettime();
 
+	logfile_oldval = getDvar("logfile");
 	setDvar("logfile", 1);
 
 	mapname = tolower(getDvar("mapname"));
@@ -1500,7 +1494,7 @@ SaveStaticWaypoints()
 		println(scriptend[i]);
 	}
 
-	setDvar("logfile", 0);
+	setDvar("logfile", logfile_oldval);
   
 	wait 1;
 	iprintlnBold("^0Waypoints Outputted To Console Log In Mod Folder");
@@ -1518,7 +1512,7 @@ XPCheat()
 	
 	for(;;)
 	{
-		if(getdvarInt("svr_pezbots_XPCheat") > 0)
+		if(getdvarInt("scr_pezbots_XPCheat") > 0)
 			break;
 		wait 1;
 	}
@@ -1551,7 +1545,7 @@ XPCheat()
 	    wait 0.05; 
 	}	
 	
-    setdvar("svr_pezbots_XPCheat", 0);
+    setdvar("scr_pezbots_XPCheat", 0);
   
     thread XPCheat();
 }
@@ -1565,12 +1559,12 @@ StartNormal()
     testclients = [];
 	for(;;)
 	{
-		if(getdvarInt("svr_pezbots_axis") > 0 || getdvarInt("svr_pezbots_allies") > 0 || getdvarInt("svr_pezbots") > 0)
+		if(getdvarInt("scr_pezbots_axis") > 0 || getdvarInt("scr_pezbots_allies") > 0 || getdvarInt("scr_pezbots") > 0)
 			break;
 		wait 1;
 	}
 
-	testclients = getdvarInt("svr_pezbots");
+	testclients = getdvarInt("scr_pezbots");
 	
 	if(testclients > 0)
 	{
@@ -1595,7 +1589,7 @@ StartNormal()
 	}
 	else
 	{
-		testclients_axis = getdvarInt("svr_pezbots_axis");
+		testclients_axis = getdvarInt("scr_pezbots_axis");
 		
 		for(i = 0; i < testclients_axis; i++)
 		{
@@ -1616,7 +1610,7 @@ StartNormal()
 			wait randomfloatrange(0.1, 0.3);
 		}
 		
-		testclients_allies = getdvarInt("svr_pezbots_allies");
+		testclients_allies = getdvarInt("scr_pezbots_allies");
 		
 		
 		for(i = 0; i < testclients_allies; i++)
@@ -1639,9 +1633,9 @@ StartNormal()
 		}
 	}
 	
-	setDvar( "svr_pezbots", 0 );
-	setDvar( "svr_pezbots_allies", 0 );
-	setDvar( "svr_pezbots_axis", 0 );
+	setDvar( "scr_pezbots", 0 );
+	setDvar( "scr_pezbots_allies", 0 );
+	setDvar( "scr_pezbots_axis", 0 );
 	thread StartNormal();
 }
 
@@ -1671,105 +1665,24 @@ TestClient(team)
 	self.pers["model_alasad"] = undefined;
 	self.pers["model_farmer"] = undefined;
 	
-    class = "assault_mp";
-    classPicked = getdvarint("svr_pezbots_classPicker");
+	class = "assault_mp";
+	classPicked = getdvarint("scr_pezbots_classPicker");
 	switch(randomInt(5))
 	{
-		case 0:		class = "assault_mp";      break;	
-		case 1:		class = "specops_mp";	    break;
-		case 2:		class = "heavygunner_mp";	break;
-		case 3:		class = "demolitions_mp";	break;
-		case 4:		class = "sniper_mp";       break;
-	}
-
-	if( self.pers["team"] == "allies")
-	{
-	    if (getdvar("scr_modeltype") == "desert")
-	    {
-		    switch(randomInt(5))
-			{
-				case 0:	    model = "model_assault";	break;	
-				case 1:	    model = "model_specops";	break;
-				case 2:		model = "model_recon";	    break;
-				case 3:		model = "model_support";	break;
-				case 4:		model = "model_sniper";	    break;
-			}
-		}
-		if (getdvar("scr_modeltype") == "urban" || getdvar("scr_modeltype") == "woodland")
-	    {
-		    if(getdvar("svr_pezbots_modelchoice") == "1") rnd = 6;
-			else rnd = 5;
-			switch(randomInt(rnd))
-			{
-				case 0:	    model = "model_assault";	break;	
-				case 1:	    model = "model_specops";	break;
-				case 2:		model = "model_recon";	    break;
-				case 3:		model = "model_support";	break;
-				case 4:		model = "model_sniper";	    break;
-				case 5:		model = "model_price";	    break;
-			}
-		}
-	}
-	else
-	{
-	    if (getdvar("scr_modeltype") == "desert")
-	    {
-		    if(getdvar("svr_pezbots_modelchoice") == "1") rnd = 7;
-			else rnd = 5;
-			switch(randomInt(rnd))
-			{
-				case 0:	    model = "model_assault";	break;	
-				case 1:	    model = "model_specops";	break;
-				case 2:		model = "model_recon";	    break;
-				case 3:		model = "model_support";	break;
-				case 4:		model = "model_sniper";	    break;
-				case 5:		model = "model_zakhaev";	break;
-				case 6:		model = "model_alasad";	    break;
-			}
-		}
-		if (getdvar("scr_modeltype") == "urban")
-	    {
-		    if(getdvar("svr_pezbots_modelchoice") == "1") rnd = 8;
-			else rnd = 5;
-			switch(randomInt(rnd))
-			{
-				case 0:	    model = "model_assault";	break;	
-				case 1:	    model = "model_specops";	break;
-				case 2:		model = "model_recon";	    break;
-				case 3:		model = "model_support";	break;
-				case 4:		model = "model_sniper";	    break;
-				case 5:		model = "model_urbansniper";break;
-				case 6:		model = "model_zakhaev";	break;
-				case 7:		model = "model_alasad";	    break;
-			}
-		}
-		if (getdvar("scr_modeltype") == "woodland")
-	    {
-		    if(getdvar("svr_pezbots_modelchoice") == "1") rnd = 10;
-			else rnd = 5;
-			switch(randomInt(rnd))
-			{
-				case 0:	    model = "model_assault";	break;	
-				case 1:	    model = "model_specops";	break;
-				case 2:		model = "model_recon";	    break;
-				case 3:		model = "model_support";	break;
-				case 4:		model = "model_sniper";	    break;
-				case 5:		model = "model_urbansniper";break;
-				case 6:		model = "model_zakhaev";	break;
-				case 7:		model = "model_alasad";	    break;
-				case 8:		model = "model_farmer";	    break;
-			}
-		}
+		case 0:		class = "assault_mp"; model = "model_assault";		break;	
+		case 1:		class = "specops_mp";	model = "model_specops";		break;
+		case 2:		class = "heavygunner_mp"; model = "model_recon";	break;
+		case 3:		class = "demolitions_mp";model = "model_support";	break;
+		case 4:		class = "sniper_mp"; model = "model_sniper";			break;
 	}
 	
 	self.pers[model] = true;
 
 	classPicked++;
 	if(classPicked > 4)
-	{
 	    classPicked = 0;
-	}
-	setdvar("svr_pezbots_classPicker", classPicked);
+			
+	setdvar("scr_pezbots_classPicker", classPicked);
 	
 	println("Picked Class " + class);
 	
@@ -1787,7 +1700,7 @@ TestClient(team)
 	self.pers["rank"] = rank;
 	
 	if(getDvar("scr_game_perks") == "1" )
-	if(getDvar("svr_pezbots_useperks") == "1")
+	if(getDvar("scr_pezbots_useperks") == "1")
 	{
 
 		self setPerk("specialty_bulletdamage");						//Give all bots Stopping Power
@@ -1795,13 +1708,18 @@ TestClient(team)
 		switch(randomint(5))
 		{
 			case 0: self setPerk("specialty_bulletaccuracy"); 		//Steady Aim
+				break;
 			case 1: self setPerk("specialty_armorvest"); 			//Juggernaut
+				break;
 			case 2: self setPerk("specialty_gpsjammer"); 			//UAV Jammer
+				break;
 			case 3: self setPerk("specialty_explosivedamage"); 		//Sonic Boom
+				break;
 			case 4: self setPerk("specialty_bulletpenetration");	//Deep Impact
+				break;
 		}
 	}
-	if (getdvar("svr_pezbots_playstyle") == "2")
+	if (getdvar("scr_pezbots_playstyle") == "2")
 	{
 	    if(randomInt(3) != 0)
 		{
@@ -3291,7 +3209,7 @@ ShootWeapon()
   
   if(isDefined(self.pers["weapon"]))
   {
-    skill = Clamp(0.0, getdvarFloat("svr_pezbots_skill"), 1.0);
+    skill = Clamp(0.0, getdvarFloat("scr_pezbots_skill"), 1.0);
     
 //    self givemaxammo(self.pers["weapon"]);
     
@@ -3528,7 +3446,7 @@ TargetBestEnemy()
 	                        skillBias = 2.0 + ((gettime() - self.fTargetMemory) / 3000) * 10.0;
 	                    }
                     }
-					skill = ((1.0 - Clamp(0.0, getdvarFloat("svr_pezbots_skill"), 1.0)) * 5.0) + skillBias;
+					skill = ((1.0 - Clamp(0.0, getdvarFloat("scr_pezbots_skill"), 1.0)) * 5.0) + skillBias;
 				}
         
 		        //calc direction of nearest target
@@ -4380,7 +4298,7 @@ DrawStaticWaypoints()
   {
     if(CanDebugDraw() && isDefined(level.waypoints) && isDefined(level.waypointCount) && level.waypointCount > 0)
     {
-      wpDrawDistance = getdvarint("svr_pezbots_WPDrawRange");
+      wpDrawDistance = getdvarint("scr_pezbots_WPDrawRange");
     
       for(i = 0; i < level.waypointCount; i++)
       {

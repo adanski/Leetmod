@@ -1113,7 +1113,10 @@ giveLoadout( team, class )
 	}
 	
 	// re-registering perks to code since perks are cleared after respawn in case if players switch classes
-	self register_perks();
+	
+	//PeZBot
+	if( !isDefined(self.pers["isbot"]) )	//PeZBot/
+		self register_perks();
 	
 	// weapon override for round based gametypes
 	// TODO: if they switched to a sidearm, we shouldn't give them that as their primary!
