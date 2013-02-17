@@ -253,11 +253,15 @@ material,waypoint_cheater_mat1
 material,weapon_knife
 
 rawfile,mp/CoD2maps.arena
+rawfile,mp/playeranim.script
+rawfile,mp/playeranimtypes.txt
+
 stringtable,mp/attributesTable.csv
 #stringtable,mp/propsTable.csv
 stringtable,mp/rankIconTable.csv
 stringtable,mp/rankTable.csv
 stringtable,mp/statsTable.csv
+stringtable,mp/PeZBOT_WeaponDefs.csv
 
 rawfile,openwarfare/_advancedacp.gsc
 rawfile,openwarfare/_advancedmvs.gsc
@@ -299,6 +303,7 @@ rawfile,openwarfare/_objoptions.gsc
 rawfile,openwarfare/_overtime.gsc
 #rawfile,openwarfare/_owbattlechatter.gsc
 #rawfile,openwarfare/_paindeathsounds.gsc
+rawfile,openwarfare/_pezbot.gsc
 rawfile,openwarfare/_playerdvars.gsc
 rawfile,openwarfare/_players.gsc
 rawfile,openwarfare/_powerrank.gsc
@@ -450,3 +455,15 @@ weapon,mp/frag_grenade_nocook_mp
 #weapon,mp/ak47_single_mp
 #weapon,mp/m4_single_mp
 #weapon,mp/m16_single_mp
+
+weapon,mp/ak47_mp_pezbot_stand_walk
+weapon,mp/ak47_mp_pezbot_stand_run
+weapon,mp/ak47_mp_pezbot_crouch_walk
+weapon,mp/ak47_mp_pezbot_climb_up
+weapon,mp/frag_mp_pezbot_stand_grenade
+weapon,mp/smoke_mp_pezbot_stand_grenade
+weapon,mp/flash_mp_pezbot_stand_grenade
+weapon,mp/concussion_mp_pezbot_stand_grenade
+weapon,mp/rpg_mp_pezbot_stand_grenade
+#weapon,mp/claymore_mp_pezbot_stand_grenade
+weapon,mp/knife_pezbot_mp

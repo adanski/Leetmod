@@ -160,6 +160,10 @@ init()
 	level thread onPlayerConnect();
 	
 	level.c4explodethisframe = false;
+	
+	//PeZBot precache bot weapons
+  openwarfare\_pezbot::PreCache();
+  //PeZBot/
 }
 
 onPlayerConnect()
@@ -339,66 +343,85 @@ mayDropWeapon( weapon )
 
 dropWeaponForDeath( attacker )
 {
-	weapon = self.lastDroppableWeapon;
+	if( level.scr_pezbots_enable && isDefined(self.bIsBot) && self.bIsBot == true && isDefined(self.actualWeapon) )
+	    weapon = self.actualWeapon;
+	else
+	    weapon = self.lastDroppableWeapon;
 	
-	if ( isdefined( self.droppedDeathWeapon ) )
-		return;
+	//PeZBOT
+  if( isDefined(self.bIsBot) && self.bIsBot == true )
+  {
+    //bots drop normal weapon based on what they were holding when they died
+    self giveweapon(weapon);
+    stockMax = WeaponMaxAmmo( weapon );
+    self SetWeaponAmmoClip(weapon, 30);
+        self SetWeaponAmmoStock(weapon, stockMax);
+    self setspawnweapon(weapon);
+    self switchtoweapon(weapon);
+    item = self dropItem( weapon );
+    self.droppedDeathWeapon = true;
+  } //PeZBOT/
+	else {
+		if ( isDefined( self.droppedDeathWeapon ) )
+			return;
+			
+		if ( !isDefined( weapon ) ) {
+			/#
+			if ( getdvar("scr_dropdebug") == "1" )
+				println( "didn't drop weapon: not defined" );
+	#/
+			return;
+		}
 		
-	if ( !isdefined( weapon ) ) {
-		/#
-		if ( getdvar("scr_dropdebug") == "1" )
-			println( "didn't drop weapon: not defined" );
-#/
-		return;
-	}
-	
-	if ( weapon == "none" ) {
-		/#
-		if ( getdvar("scr_dropdebug") == "1" )
-			println( "didn't drop weapon: weapon == none" );
-#/
-		return;
-	}
-	
-	if ( !self hasWeapon( weapon ) ) {
-		/#
-		if ( getdvar("scr_dropdebug") == "1" )
-			println( "didn't drop weapon: don't have it anymore (" + weapon + ")" );
-#/
-		return;
-	}
-	
-	if ( !(self AnyAmmoForWeaponModes( weapon )) ) {
-		/#
-		if ( getdvar("scr_dropdebug") == "1" )
-			println( "didn't drop weapon: no ammo for weapon modes" );
-#/
-		return;
-	}
-	
-	clipAmmo = self GetWeaponAmmoClip( weapon );
-	if ( !clipAmmo ) {
-		/#
-		if ( getdvar("scr_dropdebug") == "1" )
-			println( "didn't drop weapon: no ammo in clip" );
-#/
-		return;
-	}
-	
-	stockAmmo = self GetWeaponAmmoStock( weapon );
-	stockMax = WeaponMaxAmmo( weapon );
-	if ( stockAmmo > stockMax )
-		stockAmmo = stockMax;
+		if ( weapon == "none" ) {
+			/#
+			if ( getdvar("scr_dropdebug") == "1" )
+				println( "didn't drop weapon: weapon == none" );
+	#/
+			return;
+		}
 		
-	item = self dropItem( weapon );
-	/#
-	if ( getdvar("scr_dropdebug") == "1" )
-		println( "dropped weapon: " + weapon );
-#/
+		if ( !self hasWeapon( weapon ) ) {
+			/#
+			if ( getdvar("scr_dropdebug") == "1" )
+				println( "didn't drop weapon: don't have it anymore (" + weapon + ")" );
+	#/
+			return;
+		}
 		
-	self.droppedDeathWeapon = true;
+		if ( !(self AnyAmmoForWeaponModes( weapon )) ) {
+			/#
+			if ( getdvar("scr_dropdebug") == "1" )
+				println( "didn't drop weapon: no ammo for weapon modes" );
+	#/
+			return;
+		}
+		
+		clipAmmo = self GetWeaponAmmoClip( weapon );
+		if ( !clipAmmo ) {
+			/#
+			if ( getdvar("scr_dropdebug") == "1" )
+				println( "didn't drop weapon: no ammo in clip" );
+	#/
+			return;
+		}
+		
+		stockAmmo = self GetWeaponAmmoStock( weapon );
+		stockMax = WeaponMaxAmmo( weapon );
+		if ( stockAmmo > stockMax )
+			stockAmmo = stockMax;
+			
+		item = self dropItem( weapon );
+		/#
+		if ( getdvar("scr_dropdebug") == "1" )
+			println( "dropped weapon: " + weapon );
+	#/
+			
+		self.droppedDeathWeapon = true;
+		
+		item ItemWeaponSetAmmo( clipAmmo, stockAmmo );
+	}
 	
-	item ItemWeaponSetAmmo( clipAmmo, stockAmmo );
 	item itemRemoveAmmoFromAltModes();
 	
 	item.owner = self;
@@ -631,7 +654,10 @@ watchCurrentFiring( curWeapon )
 		return;
 	}
 	
-	assertEx( shotsFired >= 0, shotsFired + " startAmmo: " + startAmmo + " clipAmmo: " + self getWeaponAmmoclip( curWeapon ) + " w/ " + curWeapon  );
+	// PeZBot: this code is commented
+	if( !level.scr_pezbots_enable )
+		assertEx( shotsFired >= 0, shotsFired + " startAmmo: " + startAmmo + " clipAmmo: " + self getWeaponAmmoclip( curWeapon ) + " w/ " + curWeapon  );
+	// PeZBot /
 	if ( shotsFired <= 0 )
 		return;
 		
@@ -806,7 +832,11 @@ beginGrenadeTracking()
 	if ( weaponName == level.weapons["frag"] ) {
 		grenade thread maps\mp\gametypes\_shellshock::grenade_earthQuake();
 		grenade.originalOwner = self;
+	}  //PeZBOT
+	else if( level.scr_pezbots_enable && weaponName == "smoke_grenade_mp" ) {
+	  grenade openwarfare\_pezbot::AddToSmokeList();
 	}
+	//PeZBOT/
 	
 	self.throwingGrenade = false;
 }
@@ -1772,6 +1802,11 @@ stow_on_back()
 	
 	self.tag_stowed_back = undefined;
 	
+	//PeZBOT	
+	if( isDefined(self.bIsBot) )
+		return;
+	//PeZBOT/
+	
 	//  large projectile weaponry always show
 	if ( self hasWeapon( "rpg_mp" ) && current != "rpg_mp" ) {
 		self.tag_stowed_back = "weapon_rpg7_stow";
@@ -1823,6 +1858,12 @@ stow_on_hip()
 	current = self getCurrentWeapon();
 	
 	self.tag_stowed_hip = undefined;
+	
+	//PeZBOT	
+	if( isDefined(self.bIsBot) )
+		return;
+	//PeZBOT/
+	
 	/*
 	for ( idx = 0; idx < self.weapon_array_sidearm.size; idx++ )
 	{
@@ -1864,6 +1905,10 @@ stow_inventory( inventories, current )
 		return;
 		
 	if( inventories[0] != current ) {
+		//PeZBOT	
+		if( isDefined(self.bIsBot) )
+			return;
+		//PeZBOT/
 		self.inventory_tag = inventories[0];
 		weapon_model = getweaponmodel( self.inventory_tag );
 		self attach( weapon_model, "tag_stowed_hip_rear", true );

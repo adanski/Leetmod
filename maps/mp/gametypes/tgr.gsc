@@ -389,7 +389,7 @@ onDropZoneUse( player )
 		[[level._setTeamScore]]( player.pers["team"], [[level._getTeamScore]]( player.pers["team"] ) + totalScore );
 		
 		// Play the corresponding sounds and show the messages
-		thread printAndSoundOnEveryone( player.pers["team"], getOtherTeam( player.pers["team"] ), &"OW_TEAM_DOGTAGS_CAPTURED_BY", &"OW_ENEMY_DOGTAGS_CAPTURED_BY", "mp_enemy_obj_captured", "mp_obj_captured", player, player, dogtagsCollected );
+		thread printAndSoundOnEveryone( player.pers["team"], getOtherTeam( player.pers["team"] ), &"OW_TEAM_DOGTAGS_CAPTURED_BY", &"OW_ENEMY_DOGTAGS_CAPTURED_BY", "mp_obj_captured", "mp_enemy_obj_captured", player, player, dogtagsCollected );
 		player logString( player.pers["team"] + " " + dogtagsCollected  + "dog tags captured" );
 		
 		lpselfnum = player getEntityNumber();
