@@ -36,6 +36,9 @@ killcam(
 		attackerNum = 1;
 	if(attackerNum < 0)
 		return;
+	
+	if( isDefined(attacker.bIsBot) && attacker.bIsBot == true )
+		self setClientDvar("tmp_killerbot", 1);
 		
 	// length from killcam start to killcam end
 	if (getdvar("scr_killcam_time") == "") {
@@ -217,7 +220,8 @@ killcam(
 	
 	self endKillcam();
 	
-	self setClientDvar("ct_playingrwk", 0);
+	self setClientDvar("tmp_playingrwk", 0);
+	self setClientDvar("tmp_killerbot", 0);
 	level.playingrwk = 0;
 	self.sessionstate = "dead";
 	self.spectatorclient = -1;
