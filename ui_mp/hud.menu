@@ -2478,7 +2478,7 @@
 			rect			0 0 640 88 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 			background		"white"
 			forecolor		.49 .05 .03 0.5
-			visible			when ( !dvarbool(ct_playingrwk) );
+			visible			when ( !dvarbool(tmp_playingrwk) && !dvarbool(tmp_killerbot) );
 			decoration
 		}
 		
@@ -2488,7 +2488,7 @@
 			rect			0 392 640 88 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 			background		"white"
 			forecolor		.49 .05 .03 0.5
-			visible			when ( !dvarbool(ct_playingrwk) );
+			visible			when ( !dvarbool(tmp_playingrwk) && !dvarbool(tmp_killerbot) );
 			decoration
 		}
 		
@@ -2498,7 +2498,7 @@
 			rect			0 0 640 88 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 			background		"white"
 			forecolor		.05 .13 .35 0.5
-			visible			when ( dvarbool(ct_playingrwk) );
+			visible			when ( dvarbool(tmp_playingrwk) );
 			decoration
 		}
 		
@@ -2508,7 +2508,27 @@
 			rect			0 392 640 88 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
 			background		"white"
 			forecolor		.05 .13 .35 0.5
-			visible			when ( dvarbool(ct_playingrwk) );
+			visible			when ( dvarbool(tmp_playingrwk) );
+			decoration
+		}
+		
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 640 88 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			background		"white"
+			forecolor		.4 .4 .4 0.5
+			visible			when ( dvarbool(tmp_killerbot) && !dvarbool(tmp_playingrwk) );
+			decoration
+		}
+		
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 392 640 88 HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+			background		"white"
+			forecolor		.4 .4 .4 0.5
+			visible			when ( dvarbool(tmp_killerbot) && !dvarbool(tmp_playingrwk) );
 			decoration
 		}
 		

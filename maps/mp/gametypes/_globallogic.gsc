@@ -1596,7 +1596,7 @@ endGame( winner, endReasonText )
 			visionSetNaked( getDvar( "mapname" ), 0 );
 			players = getEntArray( "player", "classname" );
 			for( i = 0; i < players.size; i++) {
-				players[i] setClientDvar("ct_playingrwk", 1);
+				players[i] setClientDvar("tmp_playingrwk", 1);
 				players[i] thread maps\mp\gametypes\_killcam::killcam(
 				    level.pers_killcam["lpattacknum"],
 				    level.pers_killcam["killcamentity"],
@@ -4255,7 +4255,8 @@ Callback_PlayerConnect()
 	self setClientDvar( "ui_limit_classes", level.limitClasses );
 	self thread maps\mp\gametypes\_class::openAllClasses();
 	
-	self setClientDvar( "ct_playingrwk", 0 );
+	self setClientDvar( "tmp_playingrwk", 0 );
+	self setClientDvar( "tmp_killerbot", 0 );
 	
 	self initPersStat( "score" );
 	self.score = self.pers["score"];
