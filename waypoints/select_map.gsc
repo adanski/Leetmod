@@ -112,6 +112,34 @@ choose()
 		thread Waypoints\mp_cargoship_waypoints::load_waypoints();
 	}
 	
+	else if(mapname == "mp_compact") {
+		thread Waypoints\mp_compact_waypoints::load_waypoints();
+	}
+	
+	else if(mapname == "mp_ctan") {
+		thread Waypoints\mp_ctan_waypoints::load_waypoints();
+	}
+	
+	else if(mapname == "mp_inv") {
+		thread Waypoints\mp_inv_waypoints::load_waypoints();
+	}
+	
+	else if(mapname == "mp_modern_rust") {
+		thread Waypoints\mp_modern_rust_waypoints::load_waypoints();
+	}
+	
+	else if(mapname == "mp_mw2_term") {
+		thread Waypoints\mp_mw2_term_waypoints::load_waypoints();
+	}
+	
+	else if(mapname == "mp_skidrow") {
+		thread Waypoints\mp_skidrow_waypoints::load_waypoints();
+	}
+	
+	else if(mapname == "mp_summit") {
+		thread Waypoints\mp_summit_waypoints::load_waypoints();
+	}
+	
 // New Maps Before This --------------------------------------------------------------------------------------------------
 
 	else {
