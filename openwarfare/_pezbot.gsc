@@ -1,3 +1,5 @@
+#include openwarfare\_utils;
+
 /////////////////////////////////////////////////////////////
 // PeZBOT, version: 011p
 // Author: PEZZALUCIFER
@@ -6,9 +8,8 @@
 
 init()
 {
-	if (getdvar("scr_pezbots_enable") == "")			        setdvar("scr_pezbots_enable", 0);
+	level.scr_pezbots_enable = getdvarx( "scr_pezbots_enable", "int", 0, 0, 1 );
 	
-	level.scr_pezbots_enable = (getdvar("scr_pezbots_enable") == "1");
 	// Stop pezbot modules if it is disabled
 	if( level.scr_pezbots_enable == 0 )
 		return;
@@ -2735,10 +2736,6 @@ PeZBOTMainLoop()
 				}
 				
 				break;
-				
-				
-				
-				
 		};
 		
 		if(CanDebugDraw()) {
@@ -3406,8 +3403,6 @@ BotGoal_EnterGoal(goal)
 		case "StaticWaypointFollowGoal":
 			self thread BotGoal_StaticWaypointFollowGoal();
 			break;
-			
-			
 	};
 	
 }

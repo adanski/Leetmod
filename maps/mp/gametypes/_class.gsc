@@ -1560,33 +1560,41 @@ getPlayerCustomClass( primaryWeapon )
 
 readDefaultClasses(class)
 {
-	primaryDefault = "m16";
-	secondaryDefault = "beretta";
-	perk1Default = "specialty_specialgrenade";
+	primaryDefault = "ak47";
+	primaryAttach = "none";
+	secondaryDefault = "deserteagle";
+	secondaryAttach = "none";
+	perk1Default = "specialty_fraggrenade";
 	perk2Default = "specialty_explosivedamage";
-	perk3Default = "specialty_quieter";
-	sgrenadeDefault = "concussion_grenade";
+	perk3Default = "specialty_longersprint";
+	sgrenadeDefault = "flash_grenade";
 	
 	switch(class) {
 		case "specops":
 			primaryDefault = "m4";
+			primaryAttach = "reddot";
 			secondaryDefault = "usp";
+			secondaryAttach = "none";
 			perk1Default = "specialty_extraammo";
 			perk2Default = "specialty_rof";
 			perk3Default = "specialty_bulletpenetration";
 			sgrenadeDefault = "flash_grenade";
 			break;
 		case "heavygunner":
-			primaryDefault = "ak47";
-			secondaryDefault = "deserteagle";
+			primaryDefault = "m16";
+			primaryAttach = "silencer";
+			secondaryDefault = "usp";
+			secondaryAttach = "none";
 			perk1Default = "specialty_specialgrenade";
-			perk2Default = "specialty_gpsjammer";
+			perk2Default = "specialty_bulletdamage";
 			perk3Default = "specialty_quieter";
-			sgrenadeDefault = "flash_grenade";
+			sgrenadeDefault = "concussion_grenade";
 			break;
 		case "demolitions":
-			primaryDefault = "mp5";
+			primaryDefault = "winchester1200";
+			primaryAttach = "none";
 			secondaryDefault = "deserteagle";
+			secondaryAttach = "none";
 			perk1Default = "specialty_weapon_c4";
 			perk2Default = "specialty_fastreload";
 			perk3Default = "specialty_longersprint";
@@ -1594,8 +1602,10 @@ readDefaultClasses(class)
 			break;
 		case "sniper":
 			primaryDefault = "m40a3";
+			primaryAttach = "none";
 			secondaryDefault = "usp";
-			perk1Default = "specialty_weapon_claymore";
+			secondaryAttach = "none";
+			perk1Default = "specialty_extraammo";
 			perk2Default = "specialty_bulletdamage";
 			perk3Default = "specialty_bulletpenetration";
 			sgrenadeDefault = "smoke_grenade";
@@ -1643,8 +1653,8 @@ readDefaultClasses(class)
 	else
 		level.class_secondary[class]["axis"] = tmp_class_secondary[class][0];
 		
-	level.class_primary_attachment[class] = getdvarx( "class"+class+"primary_attachment", "string", "none" );
-	level.class_secondary_attachment[class] = getdvarx( "class_"+class+"_secondary_attachment", "string", "none" );
+	level.class_primary_attachment[class] = getdvarx( "class"+class+"primary_attachment", "string", primaryAttach );
+	level.class_secondary_attachment[class] = getdvarx( "class_"+class+"_secondary_attachment", "string", secondaryAttach );
 	
 	// check if perks are enabled
 	perk1FromCfg = getdvarx( "class_"+class+"_perk1", "string", perk1Default );
@@ -1684,7 +1694,7 @@ setDefaultClasses(class)
 			break;
 		case "demolitions":
 			stat = 230;
-			dlfClassName = "Runner";
+			dlfClassName = "Demolition";
 			break;
 		case "sniper":
 			stat = 240;
