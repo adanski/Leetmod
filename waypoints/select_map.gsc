@@ -120,6 +120,14 @@ choose()
 		thread Waypoints\mp_ctan_waypoints::load_waypoints();
 	}
 	
+	else if(mapname == "mp_fav") {
+		thread Waypoints\mp_fav_waypoints::load_waypoints();
+	}
+	
+	else if(mapname == "mp_highrise") {
+		thread Waypoints\mp_highrise_waypoints::load_waypoints();
+	}
+	
 	else if(mapname == "mp_inv") {
 		thread Waypoints\mp_inv_waypoints::load_waypoints();
 	}
@@ -130,6 +138,10 @@ choose()
 	
 	else if(mapname == "mp_mw2_term") {
 		thread Waypoints\mp_mw2_term_waypoints::load_waypoints();
+	}
+	
+	else if(mapname == "mp_sbase") {
+		thread Waypoints\mp_sbase_waypoints::load_waypoints();
 	}
 	
 	else if(mapname == "mp_skidrow") {

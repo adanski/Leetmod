@@ -1362,6 +1362,7 @@ endGame( winner, endReasonText )
 	}
 	
 	// Setting an auxiliary value here because endReasonText is changed if round or score limits are reached
+	isEndReasonForfeit = (endReasonText == game["strings"]["players_forfeited"] || endReasonText == game["strings"]["allies_forfeited"] || endReasonText == game["strings"]["axis_forfeited"]);
 	isEndReasonTimeLimitReached = (endReasonText == game["strings"]["time_limit_reached"]);
 	if ( (level.roundLimit > 1 || (!level.roundLimit && level.scoreLimit != 1)) && !level.forcedEnd ) {
 		if ( level.displayRoundEndText ) {
@@ -1583,7 +1584,7 @@ endGame( winner, endReasonText )
 				
 	//Round Winning Kill here!
 	
-	if( level.scr_roundwinningkillcam && !isEndReasonTimeLimitReached &&
+	if( level.scr_roundwinningkillcam && !isEndReasonTimeLimitReached && !isEndReasonForfeit &&
 	    ( level.gametype == "dm" || level.gametype == "ftag" || level.gametype == "gg" ||
 	      level.gametype == "oitc" || level.gametype == "ss" || level.gametype == "war" ||
 	      ( level.gametype == "sd" && endReasonText != game["strings"]["target_destroyed"] && endReasonText != game["strings"]["bomb_defused"] )

@@ -645,8 +645,36 @@ menuClass( response )
 	assert( !level.oldschool );
 	
 	// this should probably be an assert
-	if(!isDefined(self.pers["team"]) || (self.pers["team"] != "allies" && self.pers["team"] != "axis"))
+	if( !isDefined(self.pers["team"]) || (self.pers["team"] != "allies" && self.pers["team"] != "axis") )
 		return;
+		
+	tokens = strtok( response, "," );
+	
+	// by default assume that no default class was selected
+	dfltClassSelectedIdx = 0;
+	switch( tokens[0] ) {
+		case "assault_mp":
+			dfltClassSelectedIdx = 1;
+			break;
+		case "specops_mp":
+			dfltClassSelectedIdx = 2;
+			break;
+		case "heavygunner_mp":
+			dfltClassSelectedIdx = 3;
+			break;
+		case "demolitions_mp":
+			dfltClassSelectedIdx = 4;
+			break;
+		case "sniper_mp":
+			dfltClassSelectedIdx = 5;
+			break;
+		default:
+			if( isSubstr( tokens[0], "custom" ) && !level.classes_custom_enable )
+				return;
+	}
+	if( dfltClassSelectedIdx > level.classes_default_enable )
+		return;
+	
 		
 	class = self getClassChoice( response );
 	primary = self getWeaponChoice( response );
@@ -1653,7 +1681,7 @@ readDefaultClasses(class)
 	else
 		level.class_secondary[class]["axis"] = tmp_class_secondary[class][0];
 		
-	level.class_primary_attachment[class] = getdvarx( "class"+class+"primary_attachment", "string", primaryAttach );
+	level.class_primary_attachment[class] = getdvarx( "class_"+class+"_primary_attachment", "string", primaryAttach );
 	level.class_secondary_attachment[class] = getdvarx( "class_"+class+"_secondary_attachment", "string", secondaryAttach );
 	
 	// check if perks are enabled
