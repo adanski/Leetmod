@@ -4,6 +4,7 @@
 #ifndef SETA_CUSTOM_VARS_CLASSES1NAME
 #define SETA_CUSTOM_VARS_CLASSES1NAME "seta customclass6 Ranked_Class_6; seta customclass7 Ranked_Class_7; seta customclass8 Ranked_Class_8; seta customclass9 Ranked_Class_9; seta customclass11 Editable_Class_A; seta customclass12 Editable_Class_B; seta customclass13 Editable_Class_C; seta customclass14 Editable_Class_D; seta customclass15 Editable_Class_E; seta customclass16 Editable_Class_F; seta customclass17 Editable_Class_G; seta customclass18 Editable_Class_G; seta customclass19 Editable_Class_H"
 #endif
+
 #ifndef ASH1
 #define ASH1 "set con_outputWindowColor 0.1 0.2 1 0.2"
 #endif

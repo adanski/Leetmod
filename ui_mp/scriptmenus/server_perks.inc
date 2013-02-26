@@ -14,9 +14,9 @@ menuDef
 		setdvar tmp_menu_name per;
 		setdvar tmp_menu_optcount 0;
 		setdvar tmp_menu_savedsess 0;
-		setdvar tmp_open_event_d1 0;
-		setdvar tmp_open_event_d2 0;
-		execNow "setfromdvar menu_cfg_gt g_gametype";
+		setdvar tmp_open_event_d1 1;
+		setdvar tmp_open_event_d2 1;
+		execNow "set menu_cfg_gt _def";
 		FILLMENUDVARS;
 	}
 	onClose
@@ -131,7 +131,7 @@ menuDef
 #undef TEXTSIZE_BUTTON_PC
 #define TEXTSIZE_BUTTON_PC	0.38
 	
-	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "Default value when not specifically defined"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, setdvar tmp_menu_optcount 0;setdvar tmp_menu_savedsess 0;FILLMENUDVARS;setdvar tmp_open_event_d1 0;setdvar tmp_open_event_d2 0; , 1 )
+	CHOICE_DVARSTRINGLIST_VIS( 100, "@OW_MENU_CONFIGURE_TO_GAMETYPE", menu_cfg_gt, { "@OW_MENU_CFG_FOR_DEF_GT"; "_def"; "@OW_ASSASSINATION"; "ass"; "@OW_BEHIND_ENEMY_LINES"; "bel"; "@OW_CAPTURE_AND_HOLD"; "ch"; "@MPUI_CAPTURE_THE_FLAG"; "ctf"; "@MPUI_DOMINATION"; "dom"; "@MPUI_DEATHMATCH"; "dm"; "@OW_FREEZETAG"; "ftag"; "@OW_GREED"; "gr"; "@OW_GUNGAME"; "gg"; "@MPUI_HEADQUARTERS"; "koth"; "@OW_RETRIEVAL"; "re"; "@MPUI_SABOTAGE"; "sab"; "@MPUI_SEARCH_AND_DESTROY_CLASSIC"; "sd"; "@OW_SHARPSHOOTER"; "ss"; "@MPUI_WAR"; "war"; "@OW_TEAM_GREED"; "tgr"; }, setdvar tmp_menu_optcount 0;setdvar tmp_menu_savedsess 0;FILLMENUDVARS;setdvar tmp_open_event_d1 1;setdvar tmp_open_event_d2 1; , 1 )
 	
 	// hack for cleaning dvars (long script) on menu open
 	itemDef {
@@ -139,9 +139,9 @@ menuDef
 		rect			-600 -800 2000 2000 0 0
 		text			""
 		textfont		UI_FONT_NORMAL
-		visible			when( !dvarbool(tmp_open_event_d1) )
-		onfocus { CLEANMENUDVARS1;setdvar tmp_open_event_d1 1; }
-		mouseEnter { CLEANMENUDVARS1;setdvar tmp_open_event_d1 1; }
+		visible			when( dvarbool(tmp_open_event_d1) )
+		onfocus { CLEANMENUDVARS1;setdvar tmp_open_event_d1 0; }
+		mouseEnter { CLEANMENUDVARS1;setdvar tmp_open_event_d1 0; }
 	}
 	
 	// Part 2 (script action is really long on this menu)
@@ -150,9 +150,9 @@ menuDef
 		rect			-600 -800 2000 2000 0 0
 		text			""
 		textfont		UI_FONT_NORMAL
-		visible			when( !dvarbool(tmp_open_event_d2) )
-		onfocus { CLEANMENUDVARS2;setdvar tmp_open_event_d2 1; }
-		mouseEnter { CLEANMENUDVARS2;setdvar tmp_open_event_d2 1; }
+		visible			when( dvarbool(tmp_open_event_d2) )
+		onfocus { CLEANMENUDVARS2;setdvar tmp_open_event_d2 0; }
+		mouseEnter { CLEANMENUDVARS2;setdvar tmp_open_event_d2 0; }
 	}
 	
 	itemDef {

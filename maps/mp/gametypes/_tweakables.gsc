@@ -321,7 +321,7 @@ init()
 	registerTweakable( "team", 			"teamkillspawndelay", 	"scr_team_teamkillspawndelay", 		0 );
 	
 //	registerTweakable( "player", 		"respawndelay", 		"scr_player_respawndelay", 			0 ); //*
-	registerTweakable( "player", 		"maxhealth", 			"scr_player_maxhealth", 			100 ); //*
+	registerTweakable( "player", 		"maxhealth", 			"scr_player_maxhealth", 			50 ); //*
 	registerTweakable( "player", 		"healthregentime", 		"scr_player_healthregentime", 		5 ); //*
 	registerTweakable( "player", 		"forcerespawn", 		"scr_player_forcerespawn", 			0 ); //*
 	

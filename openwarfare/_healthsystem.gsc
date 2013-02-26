@@ -56,13 +56,13 @@ init()
 	level.scr_healthsystem_medic_bandaging = getdvarx( "scr_healthsystem_medic_bandaging", "int", 1, 0, 1 );
 	level.scr_healthsystem_medic_healing_self = getdvarx( "scr_healthsystem_medic_healing_self", "int", 1, 0, 1 );
 	level.scr_healthsystem_medic_healing_time = getdvarx( "scr_healthsystem_medic_healing_time", "int", 3, 2, 10 );
-	level.scr_healthsystem_medic_healing_health = getdvarx( "scr_healthsystem_medic_healing_health", "int", 25, 1, getDvarInt( "scr_player_maxhealth" ) );
+	level.scr_healthsystem_medic_healing_health = getdvarx( "scr_healthsystem_medic_healing_health", "int", 25, 1, level.maxhealth );
 	level.scr_healthsystem_medic_take_bandage = getdvarx( "scr_healthsystem_medic_take_bandage", "int", 0, 0, 1 );
 	
 	//=======
 	// Health Pack Specific Dvars
 	//=======
-	level.scr_healthsystem_healthpacks_health = getdvarx( "scr_healthsystem_healthpacks_health", "int", 25, 1, getDvarInt( "scr_player_maxhealth" ) );
+	level.scr_healthsystem_healthpacks_health = getdvarx( "scr_healthsystem_healthpacks_health", "int", 25, 1, level.maxhealth );
 	level.scr_healthsystem_healthpacks_random_health = getdvarx( "scr_healthsystem_healthpacks_random_health", "int", 0, 0, 1 );
 	level.scr_healthsystem_healthpacks_timeout = getdvarx( "scr_healthsystem_healthpacks_timeout", "float", 60, 30, 300 );
 	

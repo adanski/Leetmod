@@ -55,12 +55,10 @@ init()
 	level.scr_show_player_assignment = getdvarx( "scr_show_player_assignment", "int", 0, 0, 1 );
 	
 	// Get the amount of health we'll be using for players
-	if ( level.hardcoreMode )
-		level.maxhealth = getdvarx( "scr_player_maxhealth", "int", 30, 1, 500 );
-	else if ( level.oldschool )
+	if ( level.oldschool )
 		level.maxhealth = getdvarx( "scr_player_maxhealth", "int", 200, 1, 500 );
 	else
-		level.maxhealth = getdvarx( "scr_player_maxhealth", "int", 100, 1, 500 );
+		level.maxhealth = getdvarx( "scr_player_maxhealth", "int", 50, 1, 500 );
 		
 	// Reset certain values no matter what the setting in the server
 	setDvar( "sv_fps", "20" );

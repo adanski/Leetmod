@@ -13,5 +13,5 @@ init()
 
 	// Load ruleset example
 	// rulesets\<rulesetdir>\rulesets::init();
-	// rulesets\leetmod\rulesets::init();
+	rulesets\leetmod\rulesets::init();
 }

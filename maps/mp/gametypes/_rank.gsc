@@ -1374,11 +1374,14 @@ getRank()
 
 getRankForXp( xpVal )
 {
-	//#if ( !level.rankedMatch && level.scr_server_rank_type != 2 ) {
-	if ( level.scr_enable_virtual_ranks ) {
-		rankId = openwarfare\_virtualranks::getRankForName( self );
-		return rankId;
-	}
+	// Disabled code, virtual ranks feature is going to be removed because:
+	// It's useless now that we've separated ranks,
+	// Script memory is needed (Hunk_user out of memory)
+	
+	//if ( level.scr_enable_virtual_ranks ) {
+	//	rankId = openwarfare\_virtualranks::getRankForName( self );
+	//	return rankId;
+	//}
 	
 	rankId = 0;
 	rankName = level.rankTable[rankId][1];
