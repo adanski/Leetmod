@@ -9,7 +9,7 @@ init()
 	// Get module's dvars
 	// General dvars
 	level.scr_game_forceuav = getdvarx( "scr_game_forceuav", "int", 0, 0, 1 );
-	level.scr_game_hardpoints = getdvarx( "scr_game_hardpoints", "int", 1, 0, 1 );
+	level.scr_game_hardpoints = getdvarx( "scr_game_hardpoints", "int", 0, 0, 1 );
 	level.scr_remove_hardpoint_on_death = getdvarx( "scr_remove_hardpoint_on_death", "int", 0, 0, 1 );
 	level.scr_game_hardpoints_cycle = getdvarx( "scr_game_hardpoints_cycle", "int", 0, 0, 1 );
 	level.scr_game_hardpoints_mode = getdvarx( "scr_game_hardpoints_mode", "int", 0, 0, 1 );
@@ -36,7 +36,7 @@ init()
 	level.scr_airstrike_delay = getdvarx( "scr_airstrike_delay", "int", 0, 0, 30 );
 	
 	// Helicopter related dvars
-	level.scr_hardpoint_allow_helicopter = getdvarx( "scr_hardpoint_allow_helicopter", "int", 1, 0, 1 );
+	level.scr_hardpoint_allow_helicopter = getdvarx( "scr_hardpoint_allow_helicopter", "int", 0, 0, 1 );
 	level.scr_hardpoint_helicopter_streak = getdvarx( "scr_hardpoint_helicopter_streak", "int", 7, 1, 50 );
 	level.scr_heli_hardpoint_interval = getdvarx( "scr_heli_hardpoint_interval", "float", 0, 0, 600 );
 	level.scr_announce_enemy_heli_inbound = getdvarx( "scr_announce_enemy_heli_inbound", "int", 1, 0, 1 );

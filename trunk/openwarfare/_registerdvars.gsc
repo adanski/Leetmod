@@ -107,7 +107,7 @@ init()
 	
 	// Red blips when enemies fire non-silenced weapons
 	// Default depends on hardcore mode
-	ui_minimap_show_enemies_firing  = getdvarx( "scr_minimap_show_enemies_firing", "int", (getDvarInt("scr_hardcore")==0), 0, 1);
+	ui_minimap_show_enemies_firing  = getdvarx( "scr_minimap_show_enemies_firing", "int", (level.hardcoreMode == 0), 0, 1);
 	
 	setdvar( "ui_minimap_show_enemies_firing", ui_minimap_show_enemies_firing );
 	makeDvarServerInfo( "ui_minimap_show_enemies_firing" );

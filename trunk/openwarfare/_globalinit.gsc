@@ -71,7 +71,8 @@ init()
 	thread openwarfare\_timeout::init();
 	thread openwarfare\_timer::init();
 	thread openwarfare\_tkmonitor::init();
-	thread openwarfare\_virtualranks::init();
+	// Feature removed
+	//thread openwarfare\_virtualranks::init();
 	thread openwarfare\_weapondamagemodifier::init();
 	thread openwarfare\_weaponjam::init();
 	thread openwarfare\_weaponlocationmodifier::init();

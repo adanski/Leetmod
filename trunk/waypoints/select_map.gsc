@@ -32,12 +32,16 @@ choose()
 	
 // New Maps After This ---------------------------------------------------------------------------------------------------
 
+	//# some map waypoint calls were commented because
+	//# hunk memory usage pops in (too much scripting code)
+	// bog, crash snow, modern rust, killhouse
+
 	else if(mapname == "mp_bloc") {
 		thread Waypoints\mp_bloc_waypoints::load_waypoints();
 	}
 	
 	else if(mapname == "mp_bog") {
-		thread Waypoints\mp_bog_waypoints::load_waypoints();
+		//#thread Waypoints\mp_bog_waypoints::load_waypoints();
 	}
 	
 	else if(mapname == "mp_countdown") {
@@ -53,7 +57,7 @@ choose()
 	}
 	
 	else if(mapname == "mp_crash_snow") {
-		thread Waypoints\mp_crash_snow_waypoints::load_waypoints();
+		//#thread Waypoints\mp_crash_snow_waypoints::load_waypoints();
 	}
 	
 	else if(mapname == "mp_crossfire") {
@@ -101,7 +105,7 @@ choose()
 	}
 	
 	else if(mapname == "mp_killhouse") {
-		thread Waypoints\mp_killhouse_waypoints::load_waypoints();
+		//#thread Waypoints\mp_killhouse_waypoints::load_waypoints();
 	}
 	
 	else if(mapname == "mp_carentan") {
@@ -133,7 +137,7 @@ choose()
 	}
 	
 	else if(mapname == "mp_modern_rust") {
-		thread Waypoints\mp_modern_rust_waypoints::load_waypoints();
+		//#thread Waypoints\mp_modern_rust_waypoints::load_waypoints();
 	}
 	
 	else if(mapname == "mp_mw2_term") {

@@ -191,7 +191,9 @@ PreCache()
 	precacheItem("ak47_mp_pezbot_stand_walk");
 	precacheItem("ak47_mp_pezbot_stand_run");
 	precacheItem("ak47_mp_pezbot_crouch_walk");
-	precacheItem("ak47_mp_pezbot_climb_up");
+	//# Commented because there were too many weapon assets, and pezbot mixed animations with weapons too, so we
+	// needed to disable the ak47 weapon for climbing
+	//precacheItem("ak47_mp_pezbot_climb_up");
 	precacheItem("frag_mp_pezbot_stand_grenade");
 	precacheItem("smoke_mp_pezbot_stand_grenade");
 	precacheItem("concussion_mp_pezbot_stand_grenade");
@@ -4177,7 +4179,9 @@ BotClimb(_vMoveTarget, _fMoveSpeed)
 		destOrg = self.origin + (0.0, 0.0, height);
 		moveTime = distance(self.origin, destOrg)/100;
 		
-		self SetAnim(self.weaponPrefix, "climb", "up");
+		//# Commented because there were too many weapon assets, and pezbot mixed animations with weapons too, so we
+		// needed to disable the ak47 weapon for climbing
+		//self SetAnim(self.weaponPrefix, "climb", "up");
 		self.attachmentMover moveto(self.vMoveTarget.origin, moveTime, 0, 0);
 		wait moveTime;
 		self.attachmentMover unlink();
