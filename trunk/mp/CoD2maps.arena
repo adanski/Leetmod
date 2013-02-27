@@ -233,6 +233,12 @@
 }
 
 {
+	map		"mp_sps_muelles"
+	longname	"OW_MAPS_SPS_MUELLES"
+	gametype	"bel war vg"
+}
+
+{
 	map		"mp_old_town"
 	longname	"OW_MAPS_OLD_TOWN"
 	gametype	"dm bel war vg"
