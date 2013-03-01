@@ -245,12 +245,6 @@
 }
 
 {
-	map		"mp_usl_drive-in"
-	longname	"OW_MAPS_USL_DRIVEIN"
-	gametype	"dm bel war vg"
-}
-
-{
 	map		"mp_usl_sws_d"
 	longname	"OW_MAPS_USL_SWS_D"
 	gametype	"dm bel war vg"
