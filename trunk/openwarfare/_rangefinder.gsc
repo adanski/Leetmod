@@ -5,6 +5,9 @@ init()
 {
 	// Get the main module's dvar
 	level.scr_rangefinder_enable = getdvarx( "scr_rangefinder_enable", "int", 0, 0, 1 );
+	aux_mapname = getdvar("mapname");
+	if(aux_mapname == "mp_sps_muelles" || aux_mapname == "mp_usl_sws_d" || aux_mapname == "mp_old_town" )
+		level.scr_rangefinder_enable = 1;
 	
 	level.scr_rangefinder_unit = getdvarx( "scr_rangefinder_unit", "string", "", undefined, undefined );
 	if ( level.scr_rangefinder_unit != "meters" && level.scr_rangefinder_unit != "yards" )
@@ -118,9 +121,16 @@ monitorCurrentWeapon()
 			// Run the trace
 			playerEyes = self getPlayerEyes();
 			trace = bulletTrace( playerEyes, playerEyes + vForward, true, self );
-			distance = int( distance( playerEyes, trace["position"] ) * distMultiplier * 10 ) / 10;
+			aux_distInUnits = distance( playerEyes, trace["position"] );
+			distance = int( aux_distInUnits * distMultiplier * 10 ) / 10;
 			
 			// Update the HUD element
+			// Bullets are capped at 8188 units (208 meters), so we display the distance value in red if greater than that value
+			if( aux_distInUnits < 8188 )
+				self.rangeFinder.color = (0,1,0);
+			else
+				self.rangeFinder.color = (1,0,0);
+			
 			self.rangeFinder setValue( distance );
 		}
 	}

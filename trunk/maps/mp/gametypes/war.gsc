@@ -55,13 +55,17 @@ Allied players spawn away from enemies and near their team at one of these posit
 
 main()
 {
-	if(getdvar("mapname") == "mp_background")
+	aux_mapname = getdvar("mapname");
+	if(aux_mapname == "mp_background")
 		return;
 		
 	if ( !isdefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;
-		
+	
 	level.scr_war_forcestartspawns = getdvarx( "scr_war_forcestartspawns", "int", 0, 0, 1 );
+	if(aux_mapname == "mp_sps_muelles" || aux_mapname == "mp_usl_sws_d" || aux_mapname == "mp_old_town" )
+		level.scr_war_forcestartspawns = 1;
+	
 	level.scr_war_lts_enable = getdvarx( "scr_war_lts_enable", "int", 0, 0, 1 );
 	
 	maps\mp\gametypes\_globallogic::init();
