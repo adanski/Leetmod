@@ -18,6 +18,7 @@ init()
 		return;
 		
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
+	level thread onGameEndRemoveHUD();
 }
 
 
@@ -73,7 +74,7 @@ monitorCurrentWeapon()
 	self endon("death");
 	level endon( "game_ended" );
 	
-	// Get the current weapon (at this point the player should have the default sniper zoom value
+	// Get the current weapon (at this point the player should have the default sniper zoom value)
 	oldWeapon = self getCurrentWeapon();
 	oldAds = 0;
 	updateRangeFinder = false;
@@ -133,5 +134,16 @@ monitorCurrentWeapon()
 			
 			self.rangeFinder setValue( distance );
 		}
+	}
+}
+
+onGameEndRemoveHUD()
+{
+	level waittill( "game_ended" );
+	
+	// Destroy the HUD element
+	for ( i = 0; i < level.players.size; i++ ) {
+		if( isDefined(level.players[i].rangeFinder) )
+			level.players[i].rangeFinder destroy();
 	}
 }
