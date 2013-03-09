@@ -46,7 +46,9 @@
 #undef CLEANMENUDVARS
 #endif
 
-#define CLEANMENUDVARS execOnDvarStringValue menu_scr_grenade_allow_cooking _null "setfromdvar menu_scr_grenade_allow_cooking scr_grenade_allow_cooking"\
+#define CLEANMENUDVARS execOnDvarStringValue menu_scr_ranked_classes_enable _null "setfromdvar menu_scr_ranked_classes_enable scr_ranked_classes_enable"\
+		execOnDvarStringValue menu_scr_grenade_allow_cooking _null "setfromdvar menu_scr_grenade_allow_cooking scr_grenade_allow_cooking"\
+		execOnDvarStringValue menu_scr_weapon_fillmags _null "setfromdvar menu_scr_weapon_fillmags scr_weapon_fillmags"\
 		execOnDvarStringValue menu_scr_bullet_penetration_enabled _null "setfromdvar menu_scr_bullet_penetration_enabled scr_bullet_penetration_enabled"\
 		execOnDvarStringValue menu_scr_concussion_grenades_base_time _null "setfromdvar menu_scr_concussion_grenades_base_time scr_concussion_grenades_base_time"\
 		execOnDvarStringValue menu_scr_deleteexplosivesonspawn _null "setfromdvar menu_scr_deleteexplosivesonspawn scr_deleteexplosivesonspawn"\
@@ -72,6 +74,22 @@
 		execOnDvarStringValue menu_scr_rangefinder_enable _null "setfromdvar menu_scr_rangefinder_enable scr_rangefinder_enable"
 
 
+#define SET_SCR_RANKED_CLASSES_ENABLE \
+  execOnDvarStringValue menu_cfg_gt ass "set scr_ranked_classes_enable_ass _null" \
+  execOnDvarStringValue menu_cfg_gt bel "set scr_ranked_classes_enable_bel _null" \
+  execOnDvarStringValue menu_cfg_gt ch "set scr_ranked_classes_enable_ch _null" \
+  execOnDvarStringValue menu_cfg_gt ctf "set scr_ranked_classes_enable_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dm "set scr_ranked_classes_enable_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "set scr_ranked_classes_enable_dom _null" \
+  execOnDvarStringValue menu_cfg_gt ftag "set scr_ranked_classes_enable_ftag _null" \
+  execOnDvarStringValue menu_cfg_gt gr "set scr_ranked_classes_enable_gr _null" \
+  execOnDvarStringValue menu_cfg_gt koth "set scr_ranked_classes_enable_koth _null" \
+  execOnDvarStringValue menu_cfg_gt re "set scr_ranked_classes_enable_re _null" \
+  execOnDvarStringValue menu_cfg_gt sab "set scr_ranked_classes_enable_sab _null" \
+  execOnDvarStringValue menu_cfg_gt sd "set scr_ranked_classes_enable_sd _null" \
+  execOnDvarStringValue menu_cfg_gt tgr "set scr_ranked_classes_enable_tgr _null" \
+  execOnDvarStringValue menu_cfg_gt war "set scr_ranked_classes_enable_war _null"
+
 #define SET_SCR_GRENADE_ALLOW_COOKING \
   execOnDvarStringValue menu_cfg_gt ass "set scr_grenade_allow_cooking_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "set scr_grenade_allow_cooking_bel _null" \
@@ -89,6 +107,24 @@
   execOnDvarStringValue menu_cfg_gt ss "set scr_grenade_allow_cooking_ss _null" \
   execOnDvarStringValue menu_cfg_gt tgr "set scr_grenade_allow_cooking_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "set scr_grenade_allow_cooking_war _null"
+
+#define SET_SCR_WEAPON_FILLMAGS \
+  execOnDvarStringValue menu_cfg_gt ass "set scr_weapon_fillmags_ass _null" \
+  execOnDvarStringValue menu_cfg_gt bel "set scr_weapon_fillmags_bel _null" \
+  execOnDvarStringValue menu_cfg_gt ch "set scr_weapon_fillmags_ch _null" \
+  execOnDvarStringValue menu_cfg_gt ctf "set scr_weapon_fillmags_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dm "set scr_weapon_fillmags_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "set scr_weapon_fillmags_dom _null" \
+  execOnDvarStringValue menu_cfg_gt ftag "set scr_weapon_fillmags_ftag _null" \
+  execOnDvarStringValue menu_cfg_gt gg "set scr_weapon_fillmags_gg _null" \
+  execOnDvarStringValue menu_cfg_gt gr "set scr_weapon_fillmags_gr _null" \
+  execOnDvarStringValue menu_cfg_gt koth "set scr_weapon_fillmags_koth _null" \
+  execOnDvarStringValue menu_cfg_gt re "set scr_weapon_fillmags_re _null" \
+  execOnDvarStringValue menu_cfg_gt sab "set scr_weapon_fillmags_sab _null" \
+  execOnDvarStringValue menu_cfg_gt sd "set scr_weapon_fillmags_sd _null" \
+  execOnDvarStringValue menu_cfg_gt ss "set scr_weapon_fillmags_ss _null" \
+  execOnDvarStringValue menu_cfg_gt tgr "set scr_weapon_fillmags_tgr _null" \
+  execOnDvarStringValue menu_cfg_gt war "set scr_weapon_fillmags_war _null"
 
 #define SET_SCR_BULLET_PENETRATION_ENABLED \
   execOnDvarStringValue menu_cfg_gt ass "set scr_bullet_penetration_enabled_ass _null" \
@@ -464,6 +500,50 @@
 
 
 // Setas
+#define SETA_SCR_RANKED_CLASSES_ENABLE \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_ranked_classes_enable_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_ranked_classes_enable_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_ranked_classes_enable_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_ranked_classes_enable_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_ranked_classes_enable_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_ranked_classes_enable_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_ranked_classes_enable_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_ranked_classes_enable_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_ranked_classes_enable_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_ranked_classes_enable_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_ranked_classes_enable_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_ranked_classes_enable_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_ranked_classes_enable_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_ranked_classes_enable_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_ranked_classes_enable_war _null"
+
 #define SETA_SCR_GRENADE_ALLOW_COOKING \
   execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
   execNowOnDvarStringValue scr_grenade_allow_cooking_ass _null "toggle tmp_gt_ass 0 1 2" \
@@ -513,6 +593,56 @@
   execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
   execNowOnDvarStringValue scr_grenade_allow_cooking_war _null "toggle tmp_gt_war 0 1 2" \
   execNowOnDvarStringValue tmp_gt_war 2 "seta scr_grenade_allow_cooking_war _null"
+
+#define SETA_SCR_WEAPON_FILLMAGS \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_weapon_fillmags_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_weapon_fillmags_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_weapon_fillmags_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_weapon_fillmags_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_weapon_fillmags_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_weapon_fillmags_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_weapon_fillmags_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_weapon_fillmags_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_weapon_fillmags_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_weapon_fillmags_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_weapon_fillmags_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_weapon_fillmags_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_weapon_fillmags_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_weapon_fillmags_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_weapon_fillmags_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_weapon_fillmags_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_weapon_fillmags_war _null"
 
 #define SETA_SCR_BULLET_PENETRATION_ENABLED \
   execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \

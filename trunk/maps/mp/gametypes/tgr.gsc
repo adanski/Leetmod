@@ -68,11 +68,10 @@ main()
 	if ( !isdefined( game["switchedsides"] ) )
 		game["switchedsides"] = false;
 		
-	level.scr_tgr_dogtag_autoremoval_time = getdvarx( "scr_tgr_dogtag_autoremoval_time", "int", 60, 0, 300 );
-	level.scr_tgr_minimap_mark_red_drops = getdvarx( "scr_tgr_minimap_mark_red_drops", "int", 1, 0, 1 );
 	level.scr_tgr_forcestartspawns = getdvarx( "scr_tgr_forcestartspawns", "int", 0, 0, 1 );
 	level.scr_tgr_base_dogtag_score = getdvarx( "scr_tgr_base_dogtag_score", "int", 10, 5, 50 );
-	
+	level.scr_tgr_minimap_mark_red_drops = getdvarx( "scr_tgr_minimap_mark_red_drops", "int", 1, 0, 1 );
+	level.scr_tgr_dogtag_autoremoval_time = getdvarx( "scr_tgr_dogtag_autoremoval_time", "int", 60, 0, 300 );
 	level.scr_tgr_color_levels = getdvarx( "scr_tgr_color_levels", "string", "2;5;10" );
 	level.scr_tgr_color_levels = strtok( level.scr_tgr_color_levels, ";" );
 	for ( i=0; i < level.scr_tgr_color_levels.size; i++ ) {

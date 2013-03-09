@@ -47,13 +47,13 @@ main()
 	precacheString( &"MP_WAITING_FOR_HQ" );
 	
 	// Auxiliary variables
-	level.hqAutoDestroyTime = getdvarx( "scr_koth_autodestroytime", "int", 120, 0, 300 );
-	level.hqSpawnTime = getdvarx( "scr_koth_spawntime", "int", 15, 0, 300 );
 	level.kothMode = getdvarx( "scr_koth_kothmode", "int", 1, 0, 1 );
-	level.captureTime = getdvarx( "scr_koth_captureTime", "int", 35, 0, 300 );
-	level.destroyTime = getdvarx( "scr_koth_destroyTime", "int", 15, 0, 300 );
+	level.hqAutoDestroyTime = getdvarx( "scr_koth_autodestroytime", "int", 120, 0, 300 );
+	level.captureTime = getdvarx( "scr_koth_captureTime", "int", 10, 0, 300 );
 	level.delayPlayer = getdvarx( "scr_koth_delayPlayer", "int", 1, 0, 1 );
+	level.destroyTime = getdvarx( "scr_koth_destroyTime", "int", 10, 0, 300 );
 	level.spawnDelay = getdvarx( "scr_koth_spawnDelay", "int", level.hqAutoDestroyTime, 0, 300);
+	level.hqSpawnTime = getdvarx( "scr_koth_spawntime", "int", 15, 0, 300 );
 	
 	level.iconoffset = (0,0,32);
 	

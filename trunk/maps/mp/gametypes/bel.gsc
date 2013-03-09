@@ -52,7 +52,6 @@ main()
 		
 	level.scr_bel_alive_points = getdvarx( "scr_bel_alive_points", "int", 5, 1, 50 );
 	level.scr_bel_alive_points_time = getdvarx( "scr_bel_alive_points_time", "int", 10, 1, 60 );
-	
 	level.scr_bel_showoncompass = getdvarx( "scr_bel_showoncompass", "int", 1, 0, 2 );
 	level.scr_bel_showoncompass_points = getdvarx( "scr_bel_showoncompass_points", "int", 5, 0, 50 );
 	level.scr_bel_showoncompass_interval = getdvarx( "scr_bel_showoncompass_interval", "float", 30, 1, 60 );

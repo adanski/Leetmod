@@ -64,13 +64,13 @@ main()
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
 	
 	// Additional variables that we'll be using
-	level.scr_oitc_handgun = toLower( getdvarx( "scr_oitc_handgun", "string", "beretta_mp;colt45_mp;usp_mp;deserteagle_mp" ) );
-	level.scr_oitc_handgun = strtok( level.scr_oitc_handgun, ";" );
 	
-	level.scr_oitc_timelimit_for_math = getdvarx( "scr_oitc_timelimit", "float", 1.75, 0, 1440 );
+	level.scr_oitc_timelimit = getdvarx( "scr_oitc_timelimit", "float", 1.75, 0, 1440 );
 	level.scr_oitc_suddendeath_show_enemies = getdvarx( "scr_oitc_suddendeath_show_enemies", "int", 1, 0, 1 );
 	level.scr_oitc_suddendeath_timelimit = getdvarx( "scr_oitc_suddendeath_timelimit", "int", 45, 0, 600 );
 	
+	level.scr_oitc_handgun = toLower( getdvarx( "scr_oitc_handgun", "string", "beretta_mp;colt45_mp;usp_mp;deserteagle_mp" ) );
+	level.scr_oitc_handgun = strtok( level.scr_oitc_handgun, ";" );
 	level.scr_oitc_specialty_slot1 = getdvarx( "scr_oitc_specialty_slot1", "string", "specialty_null" );
 	if ( !issubstr( "specialty_null;specialty_bulletdamage;specialty_fastreload;specialty_rof", level.scr_oitc_specialty_slot1 ) ) {
 		level.scr_oitc_specialty_slot1 = "specialty_null";
@@ -84,7 +84,7 @@ main()
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 3, 3, 3 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 10, 0, 500 );
 	maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 3, 0, 5000 );
-	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, level.scr_oitc_timelimit_for_math, 0, 1440 );
+	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, level.scr_oitc_timelimit, 0, 1440 );
 	
 	level.teamBased = false;
 	
@@ -153,7 +153,7 @@ onTimeLimit()
 				}
 			}
 			//setGameEndTime( getTime() + ( level.scr_oitc_suddendeath_timelimit * 1000 ) );
-			level.timelimit = level.scr_oitc_timelimit_for_math + level.scr_oitc_suddendeath_timelimit/60;
+			level.timelimit = level.scr_oitc_timelimit + level.scr_oitc_suddendeath_timelimit/60;
 			
 			/*waitTime = 0;
 			while ( waitTime < level.scr_oitc_suddendeath_timelimit ) {

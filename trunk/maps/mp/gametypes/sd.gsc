@@ -97,20 +97,21 @@ main()
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
 	
-	level.scr_sd_sdmode = getdvarx( "scr_sd_sdmode", "int", 0, 0, 1  );
-	level.scr_sd_scoreboard_bomb_carrier = getdvarx( "scr_sd_scoreboard_bomb_carrier", "int", 0, 0, 1 );
-	level.scr_sd_bomb_notification_enable = getdvarx( "scr_sd_bomb_notification_enable", "int", 1, 0, 1 );
-	level.scr_sd_planting_sound = getdvarx( "scr_sd_planting_sound", "int", 0, 0, 1 );
-	level.scr_sd_defusing_sound = getdvarx( "scr_sd_defusing_sound", "int", 1, 0, 1 );
-	level.scr_sd_show_briefcase = getdvarx( "scr_sd_show_briefcase", "int", 1, 0, 1 );
-	level.scr_sd_bombsites_enabled = getdvarx( "scr_sd_bombsites_enabled", "int", 0, 0, 4 );
-	level.scr_sd_bombtimer_show = getdvarx( "scr_sd_bombtimer_show", "int", 1, 0, 1 );
-	level.scr_sd_defenders_show_both = getdvarx( "scr_sd_defenders_show_both", "int", 0, 0, 1 );
-	
-	level.scr_sd_teamdeadspectate_tp = getdvarx( "scr_sd_teamdeadspectate_tp", "int", 0, 0, 1 );
-	
 	// Player switching team fix for not having to wait for next round to respawn
 	setDvar( "scr_sd_playerrespawndelay", "1" );
+	
+	level.scr_sd_sdmode = getdvarx( "scr_sd_sdmode", "int", 0, 0, 1  );
+	level.scr_sd_bombsites_enabled = getdvarx( "scr_sd_bombsites_enabled", "int", 0, 0, 4 );
+	level.scr_sd_defenders_show_both = getdvarx( "scr_sd_defenders_show_both", "int", 0, 0, 1 );
+	level.scr_sd_bomb_notification_enable = getdvarx( "scr_sd_bomb_notification_enable", "int", 1, 0, 1 );
+	
+	level.scr_sd_bombtimer_show = getdvarx( "scr_sd_bombtimer_show", "int", 1, 0, 1 );
+	level.scr_sd_planting_sound = getdvarx( "scr_sd_planting_sound", "int", 0, 0, 1 );
+	level.scr_sd_defusing_sound = getdvarx( "scr_sd_defusing_sound", "int", 1, 0, 1 );
+	level.scr_sd_scoreboard_bomb_carrier = getdvarx( "scr_sd_scoreboard_bomb_carrier", "int", 0, 0, 1 );
+	level.scr_sd_show_briefcase = getdvarx( "scr_sd_show_briefcase", "int", 1, 0, 1 );
+	level.scr_sd_teamdeadspectate_tp = getdvarx( "scr_sd_teamdeadspectate_tp", "int", 0, 0, 1 );
+	
 	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 1, 1, 1 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 20, 0, 500 );
@@ -504,8 +505,8 @@ giveLastAttackerWarning()
 updateGametypeDvars()
 {
 	level.plantTime = getdvarx( "scr_sd_planttime", "float", 5, 0, 20 );
-	level.defuseTime = getdvarx( "scr_sd_defusetime", "float", 8, 0, 20 );
-	level.bombTimer = getdvarx( "scr_sd_bombtimer", "float", 60, 1, 300 );
+	level.defuseTime = getdvarx( "scr_sd_defusetime", "float", 7, 0, 20 );
+	level.bombTimer = getdvarx( "scr_sd_bombtimer", "float", 45, 1, 300 );
 	level.multiBomb = getdvarx( "scr_sd_multibomb", "int", 0, 0, 1 );
 	
 	// Calculate the bomb timer with the random modifier
@@ -653,8 +654,8 @@ onBeginUse( player )
 			player playSound( "mp_bomb_defuse" );
 		player.isDefusing = true;
 		
-//		if ( level.scr_sd_allow_quickdefuse )
-// 	      player thread openwarfare\_objoptions::quickDefuse();
+		if ( level.scr_sd_allow_quickdefuse )
+ 	      player thread openwarfare\_objoptions::quickDefuse();
 
 		if ( isDefined( level.sdBombModel ) )
 			level.sdBombModel hide();

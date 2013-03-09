@@ -2730,7 +2730,10 @@ REFERENCE SCR_CAP_TIME_ACTIVATED
 LANG_ENGLISH "CAP usage max time"
 
 REFERENCE SCR_CAP_FIRSTSPAWN
-LANG_ENGLISH CAP enabled just on first spawn"
+LANG_ENGLISH "CAP enabled just on first spawn"
+
+REFERENCE SCR_CAP_ALLOW_OTHERMODELS
+LANG_ENGLISH "CAP has other 3D player models"
 
 REFERENCE SCR_DE_DROPWEAPON_ON_ARM_HIT
 LANG_ENGLISH "Drop weapon when hit"
@@ -2796,8 +2799,14 @@ LANG_ENGLISH "Dynamic attachments"
 // ui_mp/server_weapons.inc
 //******************************************************************************
 
+REFERENCE SCR_RANKED_CLASSES_ENABLE
+LANG_ENGLISH "Player can access any weapon"
+
 REFERENCE SCR_GRENADE_ALLOW_COOKING
 LANG_ENGLISH "Grenade cooking"
+
+REFERENCE SCR_WEAPON_FILLMAGS
+LANG_ENGLISH "More weapon's ammo at spawn"
 
 REFERENCE SCR_BULLET_PENETRATION_ENABLED
 LANG_ENGLISH "Bullet penetration"

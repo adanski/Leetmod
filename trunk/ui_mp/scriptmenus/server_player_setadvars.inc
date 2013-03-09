@@ -63,6 +63,7 @@
 		execOnDvarStringValue menu_scr_cap_time _null "setfromdvar menu_scr_cap_time scr_cap_time"\
 		execOnDvarStringValue menu_scr_cap_time_activated _null "setfromdvar menu_scr_cap_time_activated scr_cap_time_activated"\
 		execOnDvarStringValue menu_scr_cap_firstspawn _null "setfromdvar menu_scr_cap_firstspawn scr_cap_firstspawn"\
+		execOnDvarStringValue menu_scr_cap_allow_othermodels _null "setfromdvar menu_scr_cap_allow_othermodels scr_cap_allow_othermodels"\
 		execOnDvarStringValue menu_scr_de_dropweapon_on_arm_hit _null "setfromdvar menu_scr_de_dropweapon_on_arm_hit scr_de_dropweapon_on_arm_hit"\
 		execOnDvarStringValue menu_scr_de_dropweapon_chance _null "setfromdvar menu_scr_de_dropweapon_chance scr_de_dropweapon_chance"\
 		execOnDvarStringValue menu_scr_de_falldown_on_leg_hit _null "setfromdvar menu_scr_de_falldown_on_leg_hit scr_de_falldown_on_leg_hit"\
@@ -351,6 +352,25 @@
   execOnDvarStringValue menu_cfg_gt tgr "set scr_cap_firstspawn_tgr _null" \
   execOnDvarStringValue menu_cfg_gt war "set scr_cap_firstspawn_war _null"
 
+#define SET_SCR_CAP_ALLOW_OTHERMODELS \
+	execOnDvarStringValue menu_cfg_gt ass "set scr_cap_allow_othermodels_ass _null" \
+  execOnDvarStringValue menu_cfg_gt bel "set scr_cap_allow_othermodels_bel _null" \
+  execOnDvarStringValue menu_cfg_gt ch "set scr_cap_allow_othermodels_ch _null" \
+  execOnDvarStringValue menu_cfg_gt ctf "set scr_cap_allow_othermodels_ctf _null" \
+  execOnDvarStringValue menu_cfg_gt dm "set scr_cap_allow_othermodels_dm _null" \
+  execOnDvarStringValue menu_cfg_gt dom "set scr_cap_allow_othermodels_dom _null" \
+  execOnDvarStringValue menu_cfg_gt ftag "set scr_cap_allow_othermodels_ftag _null" \
+  execOnDvarStringValue menu_cfg_gt gg "set scr_cap_allow_othermodels_gg _null" \
+  execOnDvarStringValue menu_cfg_gt gr "set scr_cap_allow_othermodels_gr _null" \
+  execOnDvarStringValue menu_cfg_gt koth "set scr_cap_allow_othermodels_koth _null" \
+  execOnDvarStringValue menu_cfg_gt oitc "set scr_cap_allow_othermodels_oitc _null" \
+  execOnDvarStringValue menu_cfg_gt re "set scr_cap_allow_othermodels_re _null" \
+  execOnDvarStringValue menu_cfg_gt sab "set scr_cap_allow_othermodels_sab _null" \
+  execOnDvarStringValue menu_cfg_gt sd "set scr_cap_allow_othermodels_sd _null" \
+  execOnDvarStringValue menu_cfg_gt ss "set scr_cap_allow_othermodels_ss _null" \
+  execOnDvarStringValue menu_cfg_gt tgr "set scr_cap_allow_othermodels_tgr _null" \
+  execOnDvarStringValue menu_cfg_gt war "set scr_cap_allow_othermodels_war _null"
+	
 #define SET_SCR_DE_DROPWEAPON_ON_ARM_HIT \
   execOnDvarStringValue menu_cfg_gt ass "set scr_de_dropweapon_on_arm_hit_ass _null" \
   execOnDvarStringValue menu_cfg_gt bel "set scr_de_dropweapon_on_arm_hit_bel _null" \
@@ -1255,6 +1275,59 @@
   execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
   execNowOnDvarStringValue scr_cap_firstspawn_war _null "toggle tmp_gt_war 0 1 2" \
   execNowOnDvarStringValue tmp_gt_war 2 "seta scr_cap_firstspawn_war _null"
+	
+#define SETA_SCR_CAP_ALLOW_OTHERMODELS \
+  execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_ass _null "toggle tmp_gt_ass 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ass 2 "seta scr_cap_allow_othermodels_ass _null" \
+  execNowOnDvarStringValue menu_cfg_gt bel "set tmp_gt_bel 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_bel _null "toggle tmp_gt_bel 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_bel 2 "seta scr_cap_allow_othermodels_bel _null" \
+  execNowOnDvarStringValue menu_cfg_gt ch "set tmp_gt_ch 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_ch _null "toggle tmp_gt_ch 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ch 2 "seta scr_cap_allow_othermodels_ch _null" \
+  execNowOnDvarStringValue menu_cfg_gt ctf "set tmp_gt_ctf 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_ctf _null "toggle tmp_gt_ctf 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ctf 2 "seta scr_cap_allow_othermodels_ctf _null" \
+  execNowOnDvarStringValue menu_cfg_gt dm "set tmp_gt_dm 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_dm _null "toggle tmp_gt_dm 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dm 2 "seta scr_cap_allow_othermodels_dm _null" \
+  execNowOnDvarStringValue menu_cfg_gt dom "set tmp_gt_dom 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_dom _null "toggle tmp_gt_dom 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_dom 2 "seta scr_cap_allow_othermodels_dom _null" \
+  execNowOnDvarStringValue menu_cfg_gt ftag "set tmp_gt_ftag 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_ftag _null "toggle tmp_gt_ftag 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ftag 2 "seta scr_cap_allow_othermodels_ftag _null" \
+  execNowOnDvarStringValue menu_cfg_gt gg "set tmp_gt_gg 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_gg _null "toggle tmp_gt_gg 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gg 2 "seta scr_cap_allow_othermodels_gg _null" \
+  execNowOnDvarStringValue menu_cfg_gt gr "set tmp_gt_gr 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_gr _null "toggle tmp_gt_gr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_gr 2 "seta scr_cap_allow_othermodels_gr _null" \
+  execNowOnDvarStringValue menu_cfg_gt koth "set tmp_gt_koth 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_koth _null "toggle tmp_gt_koth 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_koth 2 "seta scr_cap_allow_othermodels_koth _null" \
+  execNowOnDvarStringValue menu_cfg_gt oitc "set tmp_gt_oitc 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_oitc _null "toggle tmp_gt_oitc 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_oitc 2 "seta scr_cap_allow_othermodels_oitc _null" \
+  execNowOnDvarStringValue menu_cfg_gt re "set tmp_gt_re 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_re _null "toggle tmp_gt_re 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_re 2 "seta scr_cap_allow_othermodels_re _null" \
+  execNowOnDvarStringValue menu_cfg_gt sab "set tmp_gt_sab 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_sab _null "toggle tmp_gt_sab 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sab 2 "seta scr_cap_allow_othermodels_sab _null" \
+  execNowOnDvarStringValue menu_cfg_gt sd "set tmp_gt_sd 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_sd _null "toggle tmp_gt_sd 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_sd 2 "seta scr_cap_allow_othermodels_sd _null" \
+  execNowOnDvarStringValue menu_cfg_gt ss "set tmp_gt_ss 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_ss _null "toggle tmp_gt_ss 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_ss 2 "seta scr_cap_allow_othermodels_ss _null" \
+  execNowOnDvarStringValue menu_cfg_gt tgr "set tmp_gt_tgr 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_tgr _null "toggle tmp_gt_tgr 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_tgr 2 "seta scr_cap_allow_othermodels_tgr _null" \
+  execNowOnDvarStringValue menu_cfg_gt war "set tmp_gt_war 1" \
+  execNowOnDvarStringValue scr_cap_allow_othermodels_war _null "toggle tmp_gt_war 0 1 2" \
+  execNowOnDvarStringValue tmp_gt_war 2 "seta scr_cap_allow_othermodels_war _null"
 
 #define SETA_SCR_DE_DROPWEAPON_ON_ARM_HIT \
   execNowOnDvarStringValue menu_cfg_gt ass "set tmp_gt_ass 1" \

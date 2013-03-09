@@ -148,6 +148,8 @@ echo    4. "The Company Hub" weapons by Buster.
 echo.
 echo    0. Back
 echo.
+REM OVERRIDE WEAPONS TO COMPILE ALWAYS WITH NO GUN SWAY (THIS IS FOR NOT WASTING TIME AT COMPILATION)
+goto WEAPONS_FIXES_NOGUNSWAY
 set /p zow_option=:
 set zow_option=%zow_option:~0,1%
 if "%zow_option%"=="1" goto WEAPONS_FIXES
