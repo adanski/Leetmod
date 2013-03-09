@@ -32,14 +32,14 @@ main()
 	level.overrideTeamScore = true;
 	
 	// Syntax is getdvarx( dvarname, dvartype, dvardefault, minValue, maxValue )
+	level.scr_sab_suddendeath_show_enemies = getdvarx( "scr_sab_suddendeath_show_enemies", "int", 1, 0, 1 );
+	level.scr_sab_suddendeath_timelimit = getdvarx( "scr_sab_suddendeath_timelimit", "int", 180, 0, 600 );
+	level.scr_sab_planting_sound = getdvarx( "scr_sab_planting_sound", "int", 0, 0, 1 );
+	level.scr_sab_show_briefcase = getdvarx( "scr_sab_show_briefcase", "int", 1, 0, 1 );
+	level.scr_sab_scoreboard_bomb_carrier = getdvarx( "scr_sab_scoreboard_bomb_carrier", "int", 1, 0, 1 );
 	level.scr_sab_show_bomb_carrier = getdvarx( "scr_sab_show_bomb_carrier", "int", 2, 0, 2  );
 	level.scr_sab_show_bomb_carrier_time = getdvarx( "scr_sab_show_bomb_carrier_time", "int", 9, 5, 600 );
 	level.scr_sab_show_bomb_carrier_distance = getdvarx( "scr_sab_show_bomb_carrier_distance", "int", 750, 0, 1000 );
-	level.scr_sab_scoreboard_bomb_carrier = getdvarx( "scr_sab_scoreboard_bomb_carrier", "int", 1, 0, 1 );
-	level.scr_sab_suddendeath_show_enemies = getdvarx( "scr_sab_suddendeath_show_enemies", "int", 1, 0, 1 );
-	level.scr_sab_suddendeath_timelimit = getdvarx( "scr_sab_suddendeath_timelimit", "int", 180, 0, 600 );
-	level.scr_sab_show_briefcase = getdvarx( "scr_sab_show_briefcase", "int", 1, 0, 1 );
-	level.scr_sab_planting_sound = getdvarx( "scr_sab_planting_sound", "int", 0, 0, 1 );
 	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 10 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 3, 0, 500 );
@@ -354,9 +354,9 @@ onSpawnPlayer()
 
 updateGametypeDvars()
 {
-	level.plantTime = getdvarx( "scr_sab_planttime", "float", 5, 0, 20 );
-	level.defuseTime = getdvarx( "scr_sab_defusetime", "float", 8, 0, 20 );
-	level.bombTimer = getdvarx( "scr_sab_bombtimer", "float", 60, 1, 300 );
+	level.bombTimer = getdvarx( "scr_sab_bombtimer", "float", 35, 1, 300 );
+	level.plantTime = getdvarx( "scr_sab_planttime", "float", 6, 0, 20 );
+	level.defuseTime = getdvarx( "scr_sab_defusetime", "float", 6, 0, 20 );
 	level.hotPotato = getdvarx( "scr_sab_hotpotato", "int", 1, 0, 1 );
 }
 

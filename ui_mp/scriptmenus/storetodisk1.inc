@@ -1802,7 +1802,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_FALLDAMAGEMINHEIGHT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_FALLDAMAGEMINHEIGHT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1811,7 +1811,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_FALLDAMAGEMAXHEIGHT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_FALLDAMAGEMAXHEIGHT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1820,7 +1820,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_JUMP_HEIGHT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_JUMP_HEIGHT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1829,7 +1829,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_JUMP_SLOWDOWN_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_JUMP_SLOWDOWN_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1838,7 +1838,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_GAME_ALLOW_KILLCAM; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_GAME_ALLOW_KILLCAM; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1847,7 +1847,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_PLAYER_FORCERESPAWN; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_PLAYER_FORCERESPAWN; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1856,7 +1856,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_QUICKACTIONS_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_QUICKACTIONS_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1865,7 +1865,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_THIRDPERSON_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_THIRDPERSON_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1874,7 +1874,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_PLAYER_LEAN_FIX; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_PLAYER_LEAN_FIX; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1883,7 +1883,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_BOB_EFFECT_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_BOB_EFFECT_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1892,7 +1892,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_CG_FOOTSTEPS; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_CG_FOOTSTEPS; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1901,7 +1901,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_CAP_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_CAP_ENABLE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1910,7 +1910,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_CAP_TIME; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_CAP_TIME; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1919,7 +1919,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_CAP_TIME_ACTIVATED; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_CAP_TIME_ACTIVATED; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1928,7 +1928,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_CAP_FIRSTSPAWN; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_CAP_FIRSTSPAWN; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1937,7 +1937,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_DE_DROPWEAPON_ON_ARM_HIT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_CAP_ALLOW_OTHERMODELS; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1946,7 +1946,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_DE_DROPWEAPON_CHANCE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_DE_DROPWEAPON_ON_ARM_HIT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1955,7 +1955,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_DE_FALLDOWN_ON_LEG_HIT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_DE_DROPWEAPON_CHANCE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1964,7 +1964,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_DE_FALLDOWN_CHANCE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_DE_FALLDOWN_ON_LEG_HIT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1973,7 +1973,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_DE_SHIFTVIEW_ON_DAMAGE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_DE_FALLDOWN_CHANCE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1982,7 +1982,7 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_DE_BREAK_ANKLE_ON_FALL; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_DE_SHIFTVIEW_ON_DAMAGE; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1991,7 +1991,16 @@ menuDef
 		background		"checkbox_clear"
 		forecolor		COLOR_FOCUSED
 		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
-		mouseEnter { SETA_SCR_DE_SLOWDOWN_ON_LEG_HIT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23" }
+		mouseEnter { SETA_SCR_DE_BREAK_ANKLE_ON_FALL; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
+	}
+	itemDef {
+		type			1
+		style			WINDOW_STYLE_SHADER
+		rect			-20 -26 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+		background		"checkbox_clear"
+		forecolor		COLOR_FOCUSED
+		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) < 23 && dvarBool(tmp_menu_optcount) )
+		mouseEnter { SETA_SCR_DE_SLOWDOWN_ON_LEG_HIT; execNow "toggle tmp_menu_optcount 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24" }
 	}
 	itemDef {
 		type			1
@@ -1999,8 +2008,8 @@ menuDef
 		rect			-20 -26 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
 		background		"checkbox_over"
 		forecolor		COLOR_FOCUSED
-		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) == 23)
-		mouseExit	{	SAVEMENUDVARS; play "menu_save_changes"; setdvar tmp_menu_optcount 24; close self; }
+		visible			when( dvarString(tmp_menu_name) == "pla" && dvarInt(tmp_menu_optcount) == 24)
+		mouseExit	{	SAVEMENUDVARS; play "menu_save_changes"; setdvar tmp_menu_optcount 25; close self; }
 	}
 	// ----- SCORES -----
 	itemDef {

@@ -39,22 +39,20 @@ main()
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
 	
 	// Additional variables that we'll be using
-	level.scr_ss_available_weapons = toLower( getdvarx( "scr_ss_available_weapons", "string", "ak47_mp;ak74u_mp;g3_mp;g36c_mp;m4_mp;m14_mp;m16_mp;m60e4_mp;m1014_mp;mp5_mp;mp44_mp;p90_mp;rpd_mp;saw_mp;skorpion_mp;uzi_mp;winchester1200_mp" ) );
 	level.scr_ss_available_weapons = strtok( level.scr_ss_available_weapons, ";" );
 	
 	level.scr_ss_weapon_switch_time = getdvarx( "scr_ss_weapon_switch_time", "int", 45, 30, 300 );
-	level.scr_ss_explosives_special = getdvarx( "scr_ss_explosives_special", "int", 0, 0, 3 );
-	level.scr_ss_shotguns_tp = getdvarx( "scr_ss_shotguns_tp", "int", 0, 0, 1 );
-	
+	level.scr_ss_available_weapons = toLower( getdvarx( "scr_ss_available_weapons", "string", "ak47_mp;ak74u_mp;g3_mp;g36c_mp;m4_mp;m14_mp;m16_mp;m1014_mp;mp5_mp;mp44_mp;remington700_mp;m40a3_mp;skorpion_mp;uzi_mp;winchester1200_mp" ) );
+	level.scr_ss_explosives_special = getdvarx( "scr_ss_explosives_special", "int", 0, 0, 3 );	
 	level.scr_ss_specialty_slot1 = getdvarx( "scr_ss_specialty_slot1", "string", "specialty_fastreload" );
 	if ( !issubstr( "specialty_null;specialty_bulletdamage;specialty_armorvest;specialty_fastreload;specialty_rof;specialty_gpsjammer;specialty_explosivedamage", level.scr_ss_specialty_slot1 ) ) {
 		level.scr_ss_specialty_slot1 = "specialty_fastreload";
 	}
-	
 	level.scr_ss_specialty_slot2 = getdvarx( "scr_ss_specialty_slot2", "string", "specialty_longersprint" );
 	if ( !issubstr( "specialty_null;specialty_longersprint;specialty_bulletaccuracy;specialty_bulletpenetration;specialty_holdbreath;specialty_quieter", level.scr_ss_specialty_slot2 ) ) {
 		level.scr_ss_specialty_slot2 = "specialty_longersprint";
 	}
+	level.scr_ss_shotguns_tp = getdvarx( "scr_ss_shotguns_tp", "int", 1, 0, 1 );
 	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 0, 0, 0 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 1, 0, 500 );

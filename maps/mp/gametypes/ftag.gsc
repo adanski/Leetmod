@@ -43,15 +43,15 @@ main()
 	
 	// Additional variables that we'll be using
 	level.scr_ftag_forcestartspawns = getdvarx( "scr_ftag_forcestartspawns", "int", 0, 0, 1 );
+	level.scr_ftag_frozen_freelook = getdvarx( "scr_ftag_frozen_freelook", "int", 1, 0, 1 );
+	level.scr_ftag_unfreeze_score = getdvarx( "scr_ftag_unfreeze_score", "int", 1, 1, 50 );
 	level.scr_ftag_unfreeze_time = getdvarx( "scr_ftag_unfreeze_time", "float", 10, 1, 60 );
-	level.scr_ftag_auto_unfreeze_time = getdvarx( "scr_ftag_auto_unfreeze_time", "float", 60, 0, 600 );
+	level.scr_ftag_auto_unfreeze_time = getdvarx( "scr_ftag_auto_unfreeze_time", "float", 90, 0, 600 );
 	level.scr_ftag_unfreeze_maxdistance = getdvarx( "scr_ftag_unfreeze_maxdistance", "int", 500, 0, 100000 );
 	level.scr_ftag_unfreeze_beam = getdvarx( "scr_ftag_unfreeze_beam", "int", 1, 0, 1 );
 	level.scr_ftag_unfreeze_respawn = getdvarx( "scr_ftag_unfreeze_respawn", "int", 0, 0, 1 );
-	level.scr_ftag_frozen_freelook = getdvarx( "scr_ftag_frozen_freelook", "int", 1, 0, 1 );
-	level.scr_ftag_show_stats = getdvarx( "scr_ftag_show_stats", "int", 1, 0, 1 );
-	level.scr_ftag_unfreeze_score = getdvarx( "scr_ftag_unfreeze_score", "int", 1, 1, 50 );
 	level.scr_ftag_unfreeze_melt_iceberg = getdvarx( "scr_ftag_unfreeze_melt_iceberg", "int", 1, 0, 1 );
+	level.scr_ftag_show_stats = getdvarx( "scr_ftag_show_stats", "int", 1, 0, 1 );
 	
 	// Force some server variables
 	setDvar( "scr_ftag_playerrespawndelay", "-1" );

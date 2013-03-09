@@ -56,11 +56,10 @@ main()
 	}
 	
 	// Additional variables that we'll be using
+	level.scr_ass_extracting_time = getdvarx( "scr_ass_extracting_time", "float", 3, 0, 60 );	
+	level.scr_ass_scoreboard_vip = getdvarx( "scr_ass_scoreboard_vip", "int", 1, 0, 1 );
 	level.scr_ass_vip_health = getdvarx( "scr_ass_vip_health", "int", 0, 0, 500 );
 	level.scr_ass_force_vip_handgun = getdvarx( "scr_ass_force_vip_handgun", "string", "" );
-	level.scr_ass_extracting_time = getdvarx( "scr_ass_extracting_time", "float", 3, 0, 60 );
-	
-	level.scr_ass_scoreboard_vip = getdvarx( "scr_ass_scoreboard_vip", "int", 0, 0, 1 );
 	level.scr_ass_vip_clan_tags = getdvarx( "scr_ass_vip_clan_tags", "string", "" );
 	level.scr_ass_vip_clan_tags = strtok( level.scr_ass_vip_clan_tags, " " );
 	

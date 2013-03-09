@@ -61,13 +61,12 @@ main()
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();
 	maps\mp\gametypes\_globallogic::SetupCallbacks();
 	
-	level.scr_re_scoreboard_objective_carrier = getdvarx( "scr_re_scoreboard_objective_carrier", "int", 0, 0, 1  );
-	level.scr_re_one_retrieve = getdvarx( "scr_re_one_retrieve", "int", 0, 0, 1  );
 	level.scr_re_objectives_enabled = getdvarx( "scr_re_objectives_enabled", "int", 0, 0, 4 );
-	level.scr_re_defenders_show_both = getdvarx( "scr_re_defenders_show_both", "int", 0, 0, 1 );
-	
-	level.scr_re_defenders_spawndelay = getdvarx( "scr_re_defenders_spawndelay", "int", 0, 0, 60 );
+	level.scr_re_defenders_show_both = getdvarx( "scr_re_defenders_show_both", "int", 1, 0, 1 );
+	level.scr_re_scoreboard_objective_carrier = getdvarx( "scr_re_scoreboard_objective_carrier", "int", 0, 0, 1  );
+	level.scr_re_one_retrieve = getdvarx( "scr_re_one_retrieve", "int", 0, 0, 1  );	
 	level.scr_re_objective_autoresettime = getdvarx( "scr_re_objective_autoresettime", "float", 0, 0, 120 );
+	level.scr_re_defenders_spawndelay = getdvarx( "scr_re_defenders_spawndelay", "int", 0, 0, 60 );
 	
 	maps\mp\gametypes\_globallogic::registerNumLivesDvar( level.gameType, 1, 0, 10 );
 	maps\mp\gametypes\_globallogic::registerRoundLimitDvar( level.gameType, 10, 0, 500 );

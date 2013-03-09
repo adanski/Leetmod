@@ -74,17 +74,17 @@ main()
 	setDvar( "scr_dogtags_enable_gr", "0" );
 	setDvar( "scr_bodyremoval_enable_gr", "0" );
 	
-	level.scr_gr_dogtag_autoremoval_time = getdvarx( "scr_gr_dogtag_autoremoval_time", "int", 60, 0, 300 );
-	level.scr_gr_minimap_mark_red_drops = getdvarx( "scr_gr_minimap_mark_red_drops", "int", 1, 0, 1 );
-	level.scr_gr_base_dogtag_score = getdvarx( "scr_gr_base_dogtag_score", "int", 10, 5, 50 );
-	level.scr_gr_drop_zones_relocation_time = getdvarx( "scr_gr_drop_zones_relocation_time", "int", 60, 45, 300 );
 	level.scr_gr_active_drop_zones = getdvarx( "scr_gr_active_drop_zones", "int", 2, 1, 3 );
-	
+	level.scr_gr_drop_zones_relocation_time = getdvarx( "scr_gr_drop_zones_relocation_time", "int", 60, 45, 300 );
+	level.scr_gr_base_dogtag_score = getdvarx( "scr_gr_base_dogtag_score", "int", 10, 5, 50 );
+	level.scr_gr_minimap_mark_red_drops = getdvarx( "scr_gr_minimap_mark_red_drops", "int", 1, 0, 1 );
+	level.scr_gr_dogtag_autoremoval_time = getdvarx( "scr_gr_dogtag_autoremoval_time", "int", 60, 0, 300 );	
 	level.scr_gr_color_levels = getdvarx( "scr_gr_color_levels", "string", "2;5;10" );
 	level.scr_gr_color_levels = strtok( level.scr_gr_color_levels, ";" );
 	for ( i=0; i < level.scr_gr_color_levels.size; i++ ) {
 		level.scr_gr_color_levels[i] = int( level.scr_gr_color_levels[i] );
 	}
+	
 	
 	maps\mp\gametypes\_globallogic::init();
 	maps\mp\gametypes\_callbacksetup::SetupCallbacks();

@@ -22,7 +22,7 @@ init()
 		rulesets\leagues::init();
 	*/
 	
-	// Initialize the rule sets
+	// Initialize the rulesets
 	if ( level.cod_mode != "" ) {
 		// Check if we have a rule for this league and gametype first
 		if ( isDefined( level.matchRules[ level.cod_mode ] ) ) {
@@ -3429,6 +3429,7 @@ TimeUntilSpawn( includeTeamkillDelay )
 				case "oitc":
 					respawnDelay = getdvarx( "scr_" + level.gameType + "_playerrespawndelay", "float", 5, -1, 300 );
 					break;
+				case "bel":
 				case "ss":
 				case "tgr":
 					respawnDelay = getdvarx( "scr_" + level.gameType + "_playerrespawndelay", "float", 3.5, -1, 300 );
