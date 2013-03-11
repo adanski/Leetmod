@@ -37,10 +37,7 @@ rulesetMonitor()
 				wait 3;
 				nextRotation = " " + getDvar( "sv_mapRotationCurrent" );
 				setdvar( "sv_mapRotationCurrent", "gametype " + level.gametype + " map " + level.script + nextRotation );
-				//# For now, we don't reset server variables to default values because:
-				//# 1. They were changed
-				//# 2. There are many new dvars that aren't on the variables to reset array
-				//openwarfare\_resetvariables::resetGameplayVariables();
+				openwarfare\_resetvariables::resetGameplayVariables();
 				exitLevel( false );
 				return;
 			}
@@ -50,7 +47,7 @@ rulesetMonitor()
 			wait 3;
 			nextRotation = " " + getDvar( "sv_mapRotationCurrent" );
 			setdvar( "sv_mapRotationCurrent", "gametype " + level.gametype + " map " + level.script + nextRotation );
-			//openwarfare\_resetvariables::resetGameplayVariables();
+			openwarfare\_resetvariables::resetGameplayVariables();
 			exitLevel( false );
 			return;
 		}
