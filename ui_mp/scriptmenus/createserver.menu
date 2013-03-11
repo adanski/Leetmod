@@ -78,6 +78,7 @@
 #undef CHOICE_X_START
 #define CHOICE_X_START  -30
 		
+		CHOICE_DVARYESNO( 16, "@OW_MENU_SCR_PEZBOTS_ENABLE", scr_pezbots_enable, ; )
 		CHOICE_DVAREDIT_VIS( 17, "@OW_SERVER_MAP_ROTATION", "sv_mapRotation", 1000, 80, ; , 1 )
 		
 #undef CHOICE_X_START
@@ -112,7 +113,7 @@
 	uiScript openMenuOnDvar "settings_config_gametype" tgr settings_quick_war;
 	
 		
-		CHOICE_BUTTON( 32, "@OW_SERVER_GAMETYPE", OPEN_GAMETYPE_PAGE )
+		CHOICE_BUTTON( 31, "@OW_SERVER_GAMETYPE", OPEN_GAMETYPE_PAGE )
 		//CHOICE_BUTTON( 12, "@MENU_GAME_TYPE_SETTINGS", open settings_quick_dm; )
 		//CHOICE_BUTTON( 13, "@MENU_RESET_TO_DEFAULT", open reset_gamesettings; )
 		

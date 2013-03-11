@@ -60,7 +60,7 @@ resetGameplayVariables()
 	variableNames[ variableNames.size ] = "scr_fraggrenade_ammo_count scr_specialgrenade_ammo_count scr_grenade_allow_cooking scr_weapon_fillmags scr_bullet_penetration_enabled scr_concussion_grenades_base_time scr_delay_frag_grenades scr_delay_grenade_launchers scr_delay_smoke_grenades scr_delay_flash_grenades scr_delay_concussion_grenades scr_delay_rpgs scr_delay_c4s scr_delay_claymores scr_delay_only_round_start scr_delay_sound_enable scr_fire_tracer_chance_firstp scr_fire_tracer_chance_others cg_tracerlength scr_objective_safezone_enable scr_objective_safezone_radius scr_deleteexplosivesonspawn scr_deleteexplosivesondeath scr_weaponjams_enable scr_weaponjams_probability scr_weaponjams_gap_time scr_sniperzoom_enable scr_sniperzoom_lower_levels scr_sniperzoom_upper_levels scr_rangefinder_enable scr_rangefinder_unit";
 	
 	// configs/gameplay/wlm.cfg
-	"scr_wlm_enabled scr_wlm_upper_arm scr_wlm_lower_arm scr_wlm_hand scr_wlm_upper_leg scr_wlm_lower_leg scr_wlm_foot scr_wlm_head scr_wlm_neck scr_wlm_upper_torso scr_wlm_lower_torso";
+	variableNames[ variableNames.size ] = "scr_wlm_enabled scr_wlm_upper_arm scr_wlm_lower_arm scr_wlm_hand scr_wlm_upper_leg scr_wlm_lower_leg scr_wlm_foot scr_wlm_head scr_wlm_neck scr_wlm_upper_torso scr_wlm_lower_torso";
 	
 	// configs/gameplay/world.cfg
 	variableNames[ variableNames.size ] = "scr_g_gravity scr_map_special_fx_enable scr_map_special_fx_rain scr_map_special_fx_particles scr_map_special_fx_bgsound scr_show_fog scr_dcs_enabled scr_dcs_day_length scr_dcs_dusk_length scr_dcs_night_length scr_dcs_dawn_length scr_dcs_first_cycle scr_dcs_sounds_enable scr_dcs_reset_cycle";
@@ -162,6 +162,9 @@ resetGameplayVariables()
 resetGametypeVariables()
 {
 	// ----------------------- GAMETYPES ------------------------------------
+		// Load all the variables that should be cleaned
+	variableNames = [];
+	variablesReseted = 0;
 	
 	// configs/gametypes/assassination.cfg
 	variableNames[ variableNames.size ] = "scr_ass_timelimit scr_ass_scorelimit scr_ass_roundlimit scr_ass_roundswitch scr_ass_teambalanceendofround scr_ass_extracting_time scr_ass_scoreboard_vip scr_ass_vip_health scr_ass_force_vip_handgun scr_ass_vip_clan_tags";

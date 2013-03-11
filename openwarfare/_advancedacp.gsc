@@ -97,7 +97,7 @@ init()
 	level.scr_aacp_maprotationcurrent_index = level.scr_aacp_maprotationstartup_index;
 	
 	// Rulesets
-	level.scr_aacp_rulesets = getdvard( "scr_aacp_rulesets", "string", "pub_softcore_all;pub_hardcore_all;pub_tactical_all;pub_softcore_pistols;pub_hardcore_pistols;pub_tactical_pistols;pub_softcore_shotguns;pub_hardcore_shotguns;pub_tactical_shotguns;pub_softcore_snipers;pub_hardcore_snipers;pub_tactical_snipers;match_softcore_all;match_hardcore_all;match_tactical_all;match_softcore_pistols;match_hardcore_pistols;match_tactical_pistols;match_softcore_shotguns;match_hardcore_shotguns;match_tactical_shotguns;match_softcore_snipers;match_hardcore_snipers;match_tactical_snipers" );
+	level.scr_aacp_rulesets = getdvard( "scr_aacp_rulesets", "string", "arm_boltaction;arm_sniper;arm_shotgun;arm_pistol;arm_promod;arm_leetmod;arm_all;prk_none;prk_leetmod;prk_some;prk_all;srv_match;srv_public;pfl_promod;pfl_leetmod" );
 	level.scr_aacp_rulesets = strtok( level.scr_aacp_rulesets, ";" );
 	
 	// Custom reasons
