@@ -3,10 +3,10 @@
 
 setRuleset()
 {
-	setDvar( "scr_league_ruleset", "OW Hardcore All Weapons" );
-
-	rulesets\leetmod\armory\leetmod::init();
+	rulesets\leetmod\armory\leetmod::setRuleset();
 	init();
+	
+	setDvar( "scr_league_ruleset", "Armory All Weapons" );
 }
 
 init()

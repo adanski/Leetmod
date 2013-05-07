@@ -3,10 +3,10 @@
 
 setRuleset()
 {
-	setDvar( "scr_league_ruleset", "OW Hardcore All Weapons" );
-
-	rulesets\leetmod\armory\sniper::init();
+	rulesets\leetmod\armory\sniper::setRuleset();
 	init();
+	
+	setDvar( "scr_league_ruleset", "Armory BoltAction" );
 }
 
 init()

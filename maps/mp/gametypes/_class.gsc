@@ -21,16 +21,16 @@ init()
 		level.classes_default_enable = 5;
 	
 	// Load allowed perks
-	level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 1, 0, 1 );
+	level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 0, 0, 1 );
 	level.perk_allow_specialty_specialgrenade = getdvarx( "perk_allow_specialty_specialgrenade", "int", 1, 0, 1 );
-	level.perk_allow_rpg_mp = getdvarx( "perk_allow_rpg_mp", "int", 1, 0, 1 );
-	level.perk_allow_claymore_mp = getdvarx( "perk_allow_claymore_mp", "int", 1, 0, 1 );
+	level.perk_allow_rpg_mp = getdvarx( "perk_allow_rpg_mp", "int", 0, 0, 1 );
+	level.perk_allow_claymore_mp = getdvarx( "perk_allow_claymore_mp", "int", 0, 0, 1 );
 	level.perk_allow_specialty_fraggrenade = getdvarx( "perk_allow_specialty_fraggrenade", "int", 1, 0, 1 );
 	level.perk_allow_specialty_extraammo = getdvarx( "perk_allow_specialty_extraammo", "int", 1, 0, 1 );
 	level.perk_allow_specialty_detectexplosive = getdvarx( "perk_allow_specialty_detectexplosive", "int", 1, 0, 1 );
 	
 	level.perk_allow_specialty_bulletdamage = getdvarx( "perk_allow_specialty_bulletdamage", "int", 1, 0, 1 );
-	level.perk_allow_specialty_armorvest = getdvarx( "perk_allow_specialty_armorvest", "int", 1, 0, 1 );
+	level.perk_allow_specialty_armorvest = getdvarx( "perk_allow_specialty_armorvest", "int", 0, 0, 1 );
 	level.perk_allow_specialty_fastreload = getdvarx( "perk_allow_specialty_fastreload", "int", 1, 0, 1 );
 	level.perk_allow_specialty_rof = getdvarx( "perk_allow_specialty_rof", "int", 1, 0, 1 );
 	level.perk_allow_specialty_twoprimaries = getdvarx( "perk_allow_specialty_twoprimaries", "int", 1, 0, 1 );
@@ -39,8 +39,8 @@ init()
 	
 	level.perk_allow_specialty_longersprint = getdvarx( "perk_allow_specialty_longersprint", "int", 1, 0, 1 );
 	level.perk_allow_specialty_bulletaccuracy = getdvarx( "perk_allow_specialty_bulletaccuracy", "int", 1, 0, 1 );
-	level.perk_allow_specialty_pistoldeath = getdvarx( "perk_allow_specialty_pistoldeath", "int", 1, 0, 1 );
-	level.perk_allow_specialty_grenadepulldeath = getdvarx( "perk_allow_specialty_grenadepulldeath", "int", 1, 0, 1 );
+	level.perk_allow_specialty_pistoldeath = getdvarx( "perk_allow_specialty_pistoldeath", "int", 0, 0, 1 );
+	level.perk_allow_specialty_grenadepulldeath = getdvarx( "perk_allow_specialty_grenadepulldeath", "int", 0, 0, 1 );
 	level.perk_allow_specialty_bulletpenetration = getdvarx( "perk_allow_specialty_bulletpenetration", "int", 1, 0, 1 );
 	level.perk_allow_specialty_holdbreath = getdvarx( "perk_allow_specialty_holdbreath", "int", 1, 0, 1 );
 	level.perk_allow_specialty_quieter = getdvarx( "perk_allow_specialty_quieter", "int", 1, 0, 1 );
@@ -84,9 +84,9 @@ init()
 	level.weap_allow_specops_uzi = getdvarx( "weap_allow_specops_uzi", "int", 1, 0, 1 );
 	level.weap_allow_specops_ak74u = getdvarx( "weap_allow_specops_ak74u", "int", 1, 0, 1 );
 	level.weap_allow_specops_p90 = getdvarx( "weap_allow_specops_p90", "int", 1, 0, 1 );
-	level.weap_allow_heavygunner_saw = getdvarx( "weap_allow_heavygunner_saw", "int", 1, 0, 1 );
-	level.weap_allow_heavygunner_rpd = getdvarx( "weap_allow_heavygunner_rpd", "int", 1, 0, 1 );
-	level.weap_allow_heavygunner_m60e4 = getdvarx( "weap_allow_heavygunner_m60e4", "int", 1, 0, 1 );
+	level.weap_allow_heavygunner_saw = getdvarx( "weap_allow_heavygunner_saw", "int", 0, 0, 1 );
+	level.weap_allow_heavygunner_rpd = getdvarx( "weap_allow_heavygunner_rpd", "int", 0, 0, 1 );
+	level.weap_allow_heavygunner_m60e4 = getdvarx( "weap_allow_heavygunner_m60e4", "int", 0, 0, 1 );
 	level.weap_allow_demolitions_winchester1200 = getdvarx( "weap_allow_demolitions_winchester1200", "int", 1, 0, 1 );
 	level.weap_allow_demolitions_m1014 = getdvarx( "weap_allow_demolitions_m1014", "int", 1, 0, 1 );
 	level.weap_allow_sniper_m40a3 = getdvarx( "weap_allow_sniper_m40a3", "int", 1, 0, 1 );
@@ -112,28 +112,28 @@ init()
 	level.attach_allow_reflex = getdvarx( "attach_allow_reflex", "int", 1, 0, 1 );
 	level.attach_allow_acog = getdvarx( "attach_allow_acog", "int", 1, 0, 1 );
 	level.attach_allow_grip = getdvarx( "attach_allow_grip", "int", 1, 0, 1 );
-	level.attach_allow_assault_gl = getdvarx( "attach_allow_assault_gl", "int", 1, 0, 1 );
+	level.attach_allow_assault_gl = getdvarx( "attach_allow_assault_gl", "int", 0, 0, 1 );
 	
 	level.attach_allow_pistol_none = getdvarx( "attach_allow_pistol_none", "int", 1, 0, 1);
 	level.attach_allow_pistol_silencer = getdvarx( "attach_allow_pistol_silencer", "int", 1, 0, 1 );
 	
 	if( level.perk_allow_c4_mp )
-		level.scr_c4_ammo_count = getdvarx( "scr_c4_ammo_count", "int", 2, 1, 2 );
+		level.scr_c4_ammo_count = getdvarx( "scr_c4_ammo_count", "int", 1, 1, 2 );
 	else
 		level.scr_c4_ammo_count = 0;
 	if( level.perk_allow_claymore_mp )
-		level.scr_claymore_ammo_count = getdvarx( "scr_claymore_ammo_count", "int", 2, 1, 2 );
+		level.scr_claymore_ammo_count = getdvarx( "scr_claymore_ammo_count", "int", 1, 1, 2 );
 	else
 		level.scr_claymore_ammo_count = 0;
 	if( level.perk_allow_rpg_mp )
-		level.scr_rpg_ammo_count = getdvarx( "scr_rpg_ammo_count", "int", 2, 1, 3 );
+		level.scr_rpg_ammo_count = getdvarx( "scr_rpg_ammo_count", "int", 1, 1, 3 );
 	else
 		level.scr_rpg_ammo_count = 0;
 	
 	if( level.weap_allow_frag_grenade ) {
 		level.scr_fraggrenade_ammo_count = getdvarx( "scr_fraggrenade_ammo_count", "int", 1, 0, 4 );
 		if( level.perk_allow_specialty_fraggrenade )
-			level.specialty_fraggrenade_ammo_count = getdvarx( "specialty_fraggrenade_ammo_count", "int", 2, 1, 4 );
+			level.specialty_fraggrenade_ammo_count = getdvarx( "specialty_fraggrenade_ammo_count", "int", 1, 1, 4 );
 		else
 			level.specialty_fraggrenade_ammo_count = 0;
 	} else {
@@ -147,7 +147,7 @@ init()
 		level.scr_specialgrenade_ammo_count = 0;
 	
 	if( level.perk_allow_specialty_specialgrenade )
-		level.specialty_specialgrenade_ammo_count = getdvarx( "specialty_specialgrenade_ammo_count", "int", 2, 1, 4 );
+		level.specialty_specialgrenade_ammo_count = getdvarx( "specialty_specialgrenade_ammo_count", "int", 1, 1, 4 );
 	else
 		level.specialty_specialgrenade_ammo_count = 0;
 	
@@ -1169,6 +1169,7 @@ giveLoadout( team, class )
 	
 	//# check primary weapon availability
 	
+	
 	// give primary weapon
 	primaryWeapon = weapon;
 	
@@ -1600,7 +1601,7 @@ readDefaultClasses(class)
 	switch(class) {
 		case "specops":
 			primaryDefault = "m4";
-			primaryAttach = "reddot";
+			primaryAttach = "reflex";
 			secondaryDefault = "usp";
 			secondaryAttach = "none";
 			perk1Default = "specialty_extraammo";

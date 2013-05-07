@@ -13,15 +13,16 @@ init()
 	level.scr_server_load_low = getdvard( "scr_server_load_low", "int", 5, 0, 64 );
 	level.scr_server_load_medium = getdvard( "scr_server_load_medium", "int", 11, level.scr_server_load_low, 64 );
 	
+	// Check if this is the server startup
+	if ( getDvar( "_sl_current" ) == "" || !isDefined(level.serverLoad) ) {
+		level.serverLoad = level.scr_server_load_on_startup;
+		setDvar( "_sl_current", level.scr_server_load_on_startup );
+	}
+	
 	// If both variables are set to "0" we don't do anything else
 	if ( level.scr_server_load_low == 0 && level.scr_server_load_medium == 0 )
 		return;
 		
-	// Check if this is the server startup
-	if ( getDvar( "_sl_current" ) == "" ) {
-		level.serverLoad = level.scr_server_load_on_startup;
-		setDvar( "_sl_current", level.scr_server_load_on_startup );
-	}
 	
 	level thread onIntermission();
 }

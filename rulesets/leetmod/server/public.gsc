@@ -3,14 +3,13 @@
 
 setRuleset()
 {
-	setDvar( "scr_league_ruleset", "OW Hardcore All Weapons" );
-
 	init();
+
+	setDvar( "scr_league_ruleset", "Server Public" );
 }
 
 init()
 {
-	setDvar( "perk_allow_c4_mp", "1" );
 	setDvar( "scr_show_player_assignment", "" );
 	//setDvar( "scr_amvs_enable", "" );
 	setDvar( "scr_idle_switch_spectator", "" );

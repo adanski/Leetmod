@@ -2172,6 +2172,26 @@ PeZBOTMainLoop()
 	self.flankSide = (randomIntRange(0,2) - 0.1) * 2.0;
 	self.iShouldCrouch = randomIntRange(0,2);
 	
+	// fixes bots teleporting (although I've never experienced it) as stated
+	// by ATB on http://www.moddb.com/mods/pezbot comments page 1 of 240
+	if (getdvar("scr_pezbots_playstyle") == "2") {
+		if(randomInt(3) != 0) {
+			self.botCrouchObj = 500;
+			self.botwalkspeed = 6.0;
+			self.botRunDist = 600;
+		}
+		else {
+			self.botCrouchObj = 1200;
+			self.botwalkspeed = 5.5;
+			self.botRunDist = 2000;
+		}
+	}
+	else {
+		self.botCrouchObj = level.botCrouchObj;
+		self.botwalkspeed = level.botwalkspeed;
+		self.botRunDist = level.botRunDist;
+	}
+	
 	self.state = "combat";
 	self.stance = "stand";
 	self SetAnim(self.weaponPrefix, self.stance, "walk");

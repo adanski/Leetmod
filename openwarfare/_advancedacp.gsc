@@ -9,10 +9,6 @@ init()
 	level.scr_aacp_enable = getdvard( "scr_aacp_enable", "int", 0, 0, 2 );
 	tempGUIDs = getdvarlistx( "scr_aacp_guids_access_", "string", "" );
 	
-	// Get the current map/gametypes combinations here because
-	// they're used in other files too
-	level.mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations(false);
-	
 	isListenServer = (getDvar("dedicated") == "listen server");
 	
 	if( level.scr_aacp_enable == 0 && isListenServer )
@@ -42,7 +38,6 @@ init()
 		}
 	}
 	
-	level.mgCombinationsCurr = openwarfare\_maprotationcs::getMapGametypeCombinations(true);
 	// Check if we should get the maps and gametypes from the current map rotation
 	if ( level.scr_aacp_enable == 2 ) {
 	
@@ -90,15 +85,35 @@ init()
 	}
 	
 	// Load map rotation values and calculate current position
-	tmpValue = calculateMapRotationCurrentIndex();
-	if(tmpValue < 0)
-		tmpValue = 0;
-	level.scr_aacp_maprotationstartup_index = tmpValue;
+	//tmpValue = calculateMapRotationCurrentIndex();
+	level.scr_aacp_maprotationstartup_index = level.maprotation_index;
+	if(level.scr_aacp_maprotationstartup_index < 0)
+		level.scr_aacp_maprotationstartup_index = 0;
+	
+	level.scr_aacp_maprotationstartup_index = level.maprotation_index;
 	level.scr_aacp_maprotationcurrent_index = level.scr_aacp_maprotationstartup_index;
 	
 	// Rulesets
-	level.scr_aacp_rulesets = getdvard( "scr_aacp_rulesets", "string", "arm_boltaction;arm_sniper;arm_shotgun;arm_pistol;arm_promod;arm_leetmod;arm_all;prk_none;prk_leetmod;prk_some;prk_all;srv_match;srv_public;pfl_promod;pfl_leetmod" );
-	level.scr_aacp_rulesets = strtok( level.scr_aacp_rulesets, ";" );
+	//level.scr_aacp_rulesets = getdvard( "scr_aacp_rulesets", "string", "pfl_promod;pfl_leetmod" );
+	//level.scr_aacp_rulesets = strtok( level.scr_aacp_rulesets, ";" );
+	// Rules
+	level.scr_aacp_rules = [];
+
+	level.scr_aacp_rules["pfl"] = getdvard( "scr_aacp_rulesets", "string", "pfl_leetmod;pfl_promod" );
+	level.scr_aacp_rules["pfl"] = strtok( level.scr_aacp_rules["pfl"], ";" );
+	level.scr_aacp_rules["pfl"] = insertBeforeFirstArrayElem(level.scr_aacp_rules["pfl"], "");
+	
+	level.scr_aacp_rules["arm"] = getdvard( "scr_aacp_rules_arm", "string", "arm_boltaction;arm_sniper;arm_shotgun;arm_pistol;arm_promod;arm_leetmod;arm_all" );
+	level.scr_aacp_rules["arm"] = strtok( level.scr_aacp_rules["arm"], ";" );
+	level.scr_aacp_rules["arm"] = insertBeforeFirstArrayElem(level.scr_aacp_rules["arm"], "");
+	
+	level.scr_aacp_rules["prk"] = getdvard( "scr_aacp_rules_prk", "string", "prk_none;prk_leetmod;prk_some;prk_all" );
+	level.scr_aacp_rules["prk"] = strtok( level.scr_aacp_rules["prk"], ";" );
+	level.scr_aacp_rules["prk"] = insertBeforeFirstArrayElem(level.scr_aacp_rules["prk"], "");
+	
+	level.scr_aacp_rules["svr"] = getdvard( "scr_aacp_rules_svr", "string", "svr_match;svr_public" );
+	level.scr_aacp_rules["svr"] = strtok( level.scr_aacp_rules["svr"], ";" );
+	level.scr_aacp_rules["svr"] = insertBeforeFirstArrayElem(level.scr_aacp_rules["svr"], "");
 	
 	// Custom reasons
 	tempReasons = getdvarlistx( "scr_aacp_custom_reason_", "string", "" );
@@ -205,7 +220,7 @@ initAACP()
 		self.aacpActiveCommand = false;
 	}
 	else if ( (getDvar("dedicated") == "listen server") && playerGUID == "" && playerNum == 0 ) {
-		self.aacpAccess = "maps,players,admin";
+		self.aacpAccess = "maps,players,admin,rulesets";
 		self.aacpActiveCommand = false;
 	}
 	else
@@ -239,9 +254,21 @@ initAACP()
 		    "ui_aacp_gametype", self getGametypeSetAacpPosition(getDvar( "g_gametype" )),
 		    "ui_aacp_mridx", level.scr_aacp_maprotationstartup_index+1,
 		    "ui_aacp_mrcurridx", level.scr_aacp_maprotationstartup_index+1,
-		    "ui_aacp_ruleset", self getCurrentRuleset(),
 		    "ui_aacp_player", self getFirstPlayer(),
 		    "ui_aacp_reason", self getFirstReason()
+		);
+		
+		self.aacpRule = [];
+		self.aacpRule["pfl"] = -1;
+		self.aacpRule["arm"] = -1;
+		self.aacpRule["prk"] = -1;
+		self.aacpRule["svr"] = -1;
+		
+		self setClientDvars(
+				"ui_aacp_ruleset", self getCurrentRule("pfl"),
+				"ui_aacp_rule_arm", self getCurrentRule("arm"),
+				"ui_aacp_rule_prk", self getCurrentRule("prk"),
+				"ui_aacp_rule_svr", self getCurrentRule("svr")
 		);
 		
 		self.aacpMapRotationCurrent_index = level.scr_aacp_maprotationstartup_index;
@@ -290,7 +317,7 @@ getGametypeSetAacpPosition(gametype)
 	return getGameType( gametype );
 }
 
-
+/*
 getCurrentRuleset()
 {
 	// If there's no active ruleset then there's no need to search for it
@@ -318,6 +345,36 @@ getCurrentRuleset()
 	}
 	
 	self.aacpRuleset = index;
+	return currentRuleset;
+}
+*/
+getCurrentRule(type)
+{
+	// If there's no active ruleset then there's no need to search for it
+	currentRuleset = level.ruleset[type];
+	if ( currentRuleset != "" ) {
+		index = 0;
+		while ( index < level.scr_aacp_rules[type].size && currentRuleset != level.scr_aacp_rules[type][ index ] ) {
+			index++;
+		}
+	}
+	else {
+		index = level.scr_aacp_rules[type].size;
+	}
+	
+	// If we can't find the ruleset then we just return the first element in the array if there's one
+	if ( index == level.scr_aacp_rules[type].size ) {
+		/*if ( level.scr_aacp_rules[type].size > 0 ) {
+			index = 0;
+			currentRuleset = level.scr_aacp_rules[type][ index ];
+		}
+		else {*/
+			index = 0;
+			currentRuleset = "";
+		/*}*/
+	}
+	
+	self.aacpRule[type] = index;
 	return currentRuleset;
 }
 
@@ -437,7 +494,7 @@ getNextRotationMG()
 	return MapGametype;
 }
 
-
+/*
 getPreviousRuleset()
 {
 	// Check if we have any rulesets
@@ -469,6 +526,43 @@ getNextRuleset()
 			self.aacpRuleset++;
 		}
 		return level.scr_aacp_rulesets[ self.aacpRuleset ];
+	}
+	else {
+		return "";
+	}
+}
+*/
+getPreviousRule(type)
+{
+	// Check if we have any rulesets
+	if ( level.scr_aacp_rules[type].size > 0 ) {
+		// Check if we are going outside the array
+		if ( self.aacpRule[type] == 0 ) {
+			self.aacpRule[type] = level.scr_aacp_rules[type].size - 1;
+		}
+		else {
+			self.aacpRule[type]--;
+		}
+		return level.scr_aacp_rules[type][ self.aacpRule[type] ];
+	}
+	else {
+		return "";
+	}
+}
+
+
+getNextRule(type)
+{
+	// Check if we have any rulesets
+	if ( level.scr_aacp_rules[type].size > 0 ) {
+		// Check if we are going outside the array
+		if ( self.aacpRule[type] == level.scr_aacp_rules[type].size - 1 ) {
+			self.aacpRule[type] = 0;
+		}
+		else {
+			self.aacpRule[type]++;
+		}
+		return level.scr_aacp_rules[type][ self.aacpRule[type] ];
 	}
 	else {
 		return "";
@@ -721,22 +815,69 @@ onMenuResponse()
 					map_restart( false );
 					break;
 					
-				case "previousruleset":
-					self setClientDvar( "ui_aacp_ruleset", self getPreviousRuleset() );
+				case "previousruleset_pfl":
+					self setClientDvar( "ui_aacp_ruleset", self getPreviousRule("pfl") );
+					break;
+				case "nextruleset_pfl":
+					self setClientDvar( "ui_aacp_ruleset", self getNextRule("pfl") );
 					break;
 					
-				case "nextruleset":
-					self setClientDvar( "ui_aacp_ruleset", self getNextRuleset() );
+				case "previousrule_arm":
+					self setClientDvar( "ui_aacp_rule_arm", self getPreviousRule("arm") );
+					break;
+				case "nextrule_arm":
+					self setClientDvar( "ui_aacp_rule_arm", self getNextRule("arm") );
+					break;
+					
+				case "previousrule_prk":
+					self setClientDvar( "ui_aacp_rule_prk", self getPreviousRule("prk") );
+					break;
+				case "nextrule_prk":
+					self setClientDvar( "ui_aacp_rule_prk", self getNextRule("prk") );
+					break;
+					
+				case "previousrule_svr":
+					self setClientDvar( "ui_aacp_rule_svr", self getPreviousRule("svr") );
+					break;
+				case "nextrule_svr":
+					self setClientDvar( "ui_aacp_rule_svr", self getNextRule("svr") );
 					break;
 					
 				case "loadruleset":
 					// Make sure there's a selected ruleset
-					if ( self.aacpRuleset != -1 ) {
+					if ( self.aacpRule["pfl"] != -1 ) {
 						self adminActionLog( "RS" );
 						
 						// Set the new ruleset
-						setDvar( "cod_mode", level.scr_aacp_rulesets[ self.aacpRuleset ] );
+						level.ruleset["pfl"] = level.scr_aacp_rules["pfl"][ self.aacpRule["pfl"] ];
+						level.cod_mode = openwarfare\_rsmonitor::generateRulesetText(level.ruleset);
+						setDvar( "scr_ruleset_forced", 1);
+						//setDvar( "cod_mode", openwarfare\_rsmonitor::generateRulesetText( level.ruleset ) );
 					}
+					break;
+				case "loadrules":
+					// Make sure there's a selected ruleset
+					if ( self.aacpRule["arm"] != -1 ) {
+						level.ruleset["arm"] = level.scr_aacp_rules["arm"][ self.aacpRule["arm"] ];
+					}
+					if ( self.aacpRule["prk"] != -1 ) {
+						level.ruleset["prk"] = level.scr_aacp_rules["prk"][ self.aacpRule["prk"] ];
+					}
+					if ( self.aacpRule["svr"] != -1 ) {
+						level.ruleset["svr"] = level.scr_aacp_rules["svr"][ self.aacpRule["svr"] ];
+					}
+					level.cod_mode = openwarfare\_rsmonitor::generateRulesetText(level.ruleset);
+					//setDvar( "cod_mode", openwarfare\_rsmonitor::generateRulesetText( level.ruleset ) );
+					setDvar( "scr_ruleset_forced", 1);
+					self adminActionLog( "RS" );
+					break;
+					
+				case "resetgameplay":
+					openwarfare\_resetvariables::resetGameplayVariables();
+					break;
+				
+				case "resetgametype":
+					openwarfare\_resetvariables::resetGametypeVariables();
 					break;
 					
 				case "previousplayer":
@@ -1153,8 +1294,8 @@ adminActionLog( adminAction, playerAffected )
 			
 			// For rulesets we add the ruleset loaded
 		}
-		else if ( adminAction == "RS" ) {
-			logLine += ";" + level.scr_aacp_rulesets[ self.aacpRuleset ];
+		else if ( adminAction == "RS" ) { //#EDIT!!
+			//#logLine += ";" + level.scr_aacp_rulesets[ self.aacpRuleset ];
 			
 			// For anything else we add the current map/gametype information
 		}
@@ -1165,23 +1306,6 @@ adminActionLog( adminAction, playerAffected )
 	
 	// Send the line to the server log
 	logPrint( logLine + "\n" );
-}
-
-calculateMapRotationCurrentIndex()
-{
-	for(i=level.mgCombinations.size-1; i>=0; i--) {
-		for(j=level.mgCombinationsCurr.size-1; j>=0; j--) {
-			outerIndex = i-(level.mgCombinationsCurr.size-1-j);
-			if( !isDefined( level.mgCombinationsCurr[j] ) || !isDefined( level.mgCombinations[outerIndex] ) )
-				break;
-			if( level.mgCombinationsCurr[j]["gametype"] != level.mgCombinations[outerIndex]["gametype"] || level.mgCombinationsCurr[j]["mapname"] != level.mgCombinations[outerIndex]["mapname"] )
-				break;
-			if( j == 0 )
-				return outerIndex-1;
-		}
-	}
-	// strange, there was no match between the rotations, return index 0 then
-	return 0;
 }
 
 // guaranteed to work work well only in single line rotations (no sv_mapRotationCurrent_1, _2..., that logic isn't implemented yet)

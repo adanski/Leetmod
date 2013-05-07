@@ -1,0 +1,40 @@
+Completing some objective or making an action gives the player a score.
+Here's a list of actions that give score and in which gametype, according to .gsc code.
+
+all types disabled for (except scr_score_defend_objective_gr):
+	gr, tgr
+
+capture / defend:
+	ass
+	ch
+	ctf
+	dom
+	koth
+	re
+	
+take:
+	ch
+	ctf
+	re
+	
+return:
+	ctf
+	
+holding:
+	ch
+	
+killcarrier:
+	ch
+	re
+	
+assault:
+	dom
+	koth
+	
+plant:
+	sab
+	sd
+	
+defuse:
+	sab
+	sd

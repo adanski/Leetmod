@@ -3,10 +3,10 @@
 
 setRuleset()
 {
-	setDvar( "scr_league_ruleset", "OW Hardcore All Weapons" );
-
-	rulesets\leetmod\perks\some::init();
+	rulesets\leetmod\perks\some::setRuleset();
 	init();
+	
+	setDvar( "scr_league_ruleset", "Perks All" );
 }
 
 init()

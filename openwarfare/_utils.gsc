@@ -250,6 +250,12 @@ createTimer( font, fontScale )
 
 addLeagueRuleset( leagueName, gameType, functionPointer )
 {
+	if( !isDefined(level.matchRules) )
+		level.matchRules = [];
+		
+	if( !isDefined(level.matchRules[leagueName] ) )
+		level.matchRules[leagueName] = [];
+		
 	level.matchRules[ leagueName ][ gameType ] = functionPointer;
 	
 	return;
@@ -1410,4 +1416,17 @@ getLastAlivePlayer()
 	}
 	
 	return winner;
+}
+
+insertBeforeFirstArrayElem(array, elem)
+{
+	if( !isDefined(array) )
+		return undefined;
+		
+	for( i = array.size; i > 0; i--)
+		array[i] = array[i-1];
+		
+	array[0] = elem;
+	
+	return array;
 }

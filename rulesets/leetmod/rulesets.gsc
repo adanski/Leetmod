@@ -2,6 +2,8 @@
 
 init()
 {
+	// Documentation: addLeagueRuleset( leagueName, gameType, functionPointer )	{	level.matchRules[ leagueName ][ gameType ] = functionPointer;	}
+	
 	// Armory rulesets
 	addLeagueRuleset( "arm_all", "all", rulesets\leetmod\armory\all::setRuleset );
 	addLeagueRuleset( "arm_boltaction", "all", rulesets\leetmod\armory\boltaction::setRuleset );
@@ -18,8 +20,8 @@ init()
 	addLeagueRuleset( "prk_none", "all", rulesets\leetmod\perks\none::setRuleset );
 	
 	// Server rulesets
-	addLeagueRuleset( "srv_public", "all", rulesets\leetmod\server\public::setRuleset );
-	addLeagueRuleset( "srv_match", "all", rulesets\leetmod\server\match::setRuleset );
+	addLeagueRuleset( "svr_public", "all", rulesets\leetmod\server\public::setRuleset );
+	addLeagueRuleset( "svr_match", "all", rulesets\leetmod\server\match::setRuleset );
 	
 	// Full profiles
 	addLeagueRuleset( "pfl_leetmod", "all", rulesets\leetmod\profile\leetmod::setRuleset );
