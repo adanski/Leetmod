@@ -96,7 +96,7 @@ itemDef
 	forecolor 1 1 1 1
 	visible when( dvarbool(ui_about_show) );
 }
-/*
+
 itemDef
 {
 	text "@OW_ABOUT_ITEM_BOTS"
@@ -112,7 +112,7 @@ itemDef
 	forecolor 1 1 1 1
 	visible when( dvarbool(ui_about_show) );
 }
-*/
+
 itemDef
 {
 	text "@OW_ABOUT_ITEM_VERSION"

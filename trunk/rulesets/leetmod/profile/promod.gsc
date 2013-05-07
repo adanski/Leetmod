@@ -3,11 +3,11 @@
 
 setRuleset()
 {
-	setDvar( "scr_league_ruleset", "OW Hardcore All Weapons" );
-
 	rulesets\leetmod\armory\promod::init();
 	rulesets\leetmod\perks\none::init();
 	init();
+
+	setDvar( "scr_league_ruleset", "Profile Promod" );
 }
 
 init()

@@ -3,9 +3,9 @@
 
 setRuleset()
 {
-	setDvar( "scr_league_ruleset", "OW Hardcore All Weapons" );
-
 	init();
+
+	setDvar( "scr_league_ruleset", "Server Match" );
 }
 
 init()

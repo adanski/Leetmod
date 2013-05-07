@@ -117,6 +117,66 @@
 		//CHOICE_BUTTON( 12, "@MENU_GAME_TYPE_SETTINGS", open settings_quick_dm; )
 		//CHOICE_BUTTON( 13, "@MENU_RESET_TO_DEFAULT", open reset_gamesettings; )
 		
+// Small icons for opening the window of pre-defined rules
+#include "ui_mp/rules_arm.inc"
+#include "ui_mp/rules_prk.inc"
+#include "ui_mp/rules_pfl.inc"
+
+		itemDef {
+			name 		armrules
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 18 18 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			origin			150 204
+			background		"mod_header"
+			forecolor		1 1 1 1
+			visible			1
+			mouseEnter { play "mouse_over"; setitemcolor armrules forecolor 0.9 0.6 0.4 1 }
+			mouseExit { setitemcolor armrules forecolor 1 1 1 1 }
+			action
+			{
+				play "mouse_click";
+				setdvar tmp_showrules_arm 1;
+			}
+		}
+		
+		itemDef {
+			name 		prkrules
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 18 18 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
+			origin			150 226
+			background		"mod_header"
+			forecolor		1 1 1 1
+			visible			1
+			mouseEnter { play "mouse_over"; setitemcolor prkrules forecolor 0.9 0.6 0.4 1 }
+			mouseExit { setitemcolor prkrules forecolor 1 1 1 1 }
+			action
+			{
+				play "mouse_click";
+				setdvar tmp_showrules_prk 1;
+			}
+		}
+		
+		
+		itemDef {
+			name 		pflrules
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 18 18 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			origin			-188 455
+			background		"mod_header"
+			forecolor		1 1 1 1
+			visible			1
+			mouseEnter { play "mouse_over"; setitemcolor pflrules forecolor 0.9 0.6 0.4 1 }
+			mouseExit { setitemcolor pflrules forecolor 1 1 1 1 }
+			action
+			{
+				play "mouse_click";
+				setdvar tmp_showrules_pfl 1;
+			}
+		}
+		
 #define LOCAL_RULES_ACTION\
 				uiScript openMenuOnDvar "ui_netGametypeName" war "settings_quick_war";\
 				uiScript openMenuOnDvar "ui_netGametypeName" sd "settings_quick_sd";\

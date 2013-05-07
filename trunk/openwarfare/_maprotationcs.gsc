@@ -19,10 +19,8 @@ init()
 		}
 	}
 	
-	// Get the module's variables
-	level.sv_mapRotationLoadBased = getdvard( "sv_mapRotationLoadBased", "int", 0, 0, 1  );
+	// Get the module's variables (see beginning of init() function in _globallogic.gsc for level.sv_mapRotationLoadBased)
 	level.sv_mapRotationScramble = getdvard( "sv_mapRotationScramble", "int", 0, 0, 1  );
-	level.scr_mrcs_auto_generate = getdvard( "scr_mrcs_auto_generate", "int", 0, 0, 1  );
 	
 	// Make sure this is not a listen server
 	// Why? Shouldn't a listen server use this features?
@@ -366,6 +364,23 @@ setDvarL( varName, varValue, printLog )
 	//	logPrint( "MRCS;" + varName + ": \"" + varValue + "\"\n" );
 	//}
 	setDvar( varName, varValue );
+}
+
+calculateMapRotationCurrentIndex()
+{
+	for(i=level.mgCombinations.size-1; i>=0; i--) {
+		for(j=level.mgCombinationsCurr.size-1; j>=0; j--) {
+			outerIndex = i-(level.mgCombinationsCurr.size-1-j);
+			if( !isDefined( level.mgCombinationsCurr[j] ) || !isDefined( level.mgCombinations[outerIndex] ) )
+				break;
+			if( level.mgCombinationsCurr[j]["gametype"] != level.mgCombinations[outerIndex]["gametype"] || level.mgCombinationsCurr[j]["mapname"] != level.mgCombinations[outerIndex]["mapname"] )
+				break;
+			if( j == 0 )
+				return outerIndex-1;
+		}
+	}
+	// strange, there was no match between the rotations, return index -1 then
+	return -1;
 }
 
 advanceOneMapInCurrRot()

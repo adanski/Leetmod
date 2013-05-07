@@ -2,7 +2,8 @@ init()
 {
 	// Initialize the arrays to hold the gametype names and stock map names
 	// (This is for AdvancedACP)
-	initGametypesAndMaps();
+	// Commented; It is called on globallogic now
+	// initGametypesAndMaps();
 	
 	// Do not thread these initializations
 	openwarfare\_eventmanager::eventManagerInit();

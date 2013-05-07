@@ -3,10 +3,10 @@
 
 setRuleset()
 {
-	setDvar( "scr_league_ruleset", "OW Hardcore All Weapons" );
-
 	rulesets\leetmod\armory\common_strip::init();
 	init();
+	
+	setDvar( "scr_league_ruleset", "Armory Shotgun" );
 }
 
 init()

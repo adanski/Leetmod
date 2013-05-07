@@ -18,7 +18,6 @@ init()
 		return;
 		
 	level thread addNewEvent( "onPlayerConnected", ::onPlayerConnected );
-	level thread onGameEndRemoveHUD();
 }
 
 
@@ -134,16 +133,12 @@ monitorCurrentWeapon()
 			
 			self.rangeFinder setValue( distance );
 		}
-	}
-}
-
-onGameEndRemoveHUD()
-{
-	level waittill( "game_ended" );
-	
-	// Destroy the HUD element
-	for ( i = 0; i < level.players.size; i++ ) {
-		if( isDefined(level.players[i].rangeFinder) )
-			level.players[i].rangeFinder destroy();
+		
+		if( game["state"] == "postgame" ) {
+			// Destroy the HUD element
+			if( isDefined(self.rangeFinder) )
+				self.rangeFinder destroy();
+			return;
+		}
 	}
 }

@@ -10,37 +10,120 @@ init()
 	openwarfare\_serverload::init();
 	
 	// Check if we need to load a rule
-	level.cod_mode = getdvarx( "cod_mode", "string", "" );
 	level.script = toLower( getDvar( "mapname" ) );
 	level.gametype = toLower( getDvar( "g_gametype" ) );
 	
-	// Load the rulesets
+	// needed for the following logic
+	openwarfare\_globalinit::initGametypesAndMaps();
 	
-	//#commented while rulesets aren't established yet (neither present in .iwd)
-	/*rulesets\openwarfare\rulesets::init();
-	if ( getDvar("dedicated") != "listen server" )
-		rulesets\leagues::init();
-	*/
+	level.sv_mapRotationLoadBased = getdvard( "sv_mapRotationLoadBased", "int", 0, 0, 1 );
+	level.scr_mrcs_auto_generate = getdvard( "scr_mrcs_auto_generate", "int", 0, 0, 1  );
+		
+	// Fill map structure with rotation and find current index
+	level.mgCombinations = openwarfare\_maprotationcs::getMapGametypeCombinations(false);
+	level.mgCombinationsCurr = openwarfare\_maprotationcs::getMapGametypeCombinations(true);
 	
-	// Initialize the rulesets
-	if ( level.cod_mode != "" ) {
-		// Check if we have a rule for this league and gametype first
-		if ( isDefined( level.matchRules[ level.cod_mode ] ) ) {
-			if ( isDefined( level.matchRules[ level.cod_mode ][ level.gametype ] ) ) {
-				[[ level.matchRules[ level.cod_mode ][ level.gametype ] ]]();
-				logPrint( "RSM;Ruleset " + level.cod_mode + " loaded.\n" );
-				
+	level.maprotation_index = openwarfare\_maprotationcs::calculateMapRotationCurrentIndex();
+	
+	rulesets\leagues::init();
+	level.ruleset = openwarfare\_rsmonitor::parseRules(getdvard( "cod_mode", "string", "", undefined, undefined ));
+	level.cod_mode = openwarfare\_rsmonitor::generateRulesetText(level.ruleset);
+	
+	// check if a change of ruleset was forced (by aacp)
+	tmp_ruleset_forced = getdvard( "scr_ruleset_forced", "int", 0, 0, 1  );
+	// reset forced value to 0 again
+	setDvar( "scr_ruleset_forced", "0" );
+	
+	if( tmp_ruleset_forced ) {
+		level.ruleset = openwarfare\_rsmonitor::parseRules(getdvard( "cod_mode_curr", "string", "", undefined, undefined ));
+		level.cod_mode = openwarfare\_rsmonitor::generateRulesetText(level.ruleset);
+	}
+	
+	// if not forced, check if there is a corresponding ruleset for this current rotation we have
+	// to check if the current map+gametype matches the one in rotation, because a map can be manually
+	// changed and level.maprotation_index would point anyways to an index on rotation
+	rotationIndex_WithMGCheck = -1;
+	if( isDefined(level.mgCombinations[level.maprotation_index])
+		&& level.gametype == level.mgCombinations[level.maprotation_index]["gametype"]
+		&& level.script == level.mgCombinations[level.maprotation_index]["mapname"]
+	)
+		rotationIndex_WithMGCheck = level.maprotation_index;
+	
+	// if we have a matching rotation map+gametype of a ruleset
+	// and a ruleset was not forced (throught aacp)
+		setDvar("debug_idx", rotationIndex_WithMGCheck);
+	if( rotationIndex_WithMGCheck != -1 && !tmp_ruleset_forced ) {
+		level.mapRotation_rules = getdvard( "sv_mapRotation_rules", "string", "" );
+		rulesToLoad = openwarfare\_rsmonitor::getMGRules(rotationIndex_WithMGCheck);
+		// verify rules
+		//  - here
+		if( rulesToLoad != "" ) {
+			level.ruleset = openwarfare\_rsmonitor::parseRules(rulesToLoad);
+			level.cod_mode = openwarfare\_rsmonitor::generateRulesetText(level.ruleset);
+		}
+	}
+	
+	// Modified from the matching map+gametype ruleset or not, we load it
+		
+	// Check if we have a rule for this league and gametype first
+	if ( isDefined( level.matchRules ) && isDefined( level.ruleset ) ) {	// implies (level.cod_mode == "") too
+		// if all specified rules exist
+		if ( openwarfare\_rsmonitor::checkRuleExists( level.ruleset["pfl"] )
+			&& openwarfare\_rsmonitor::checkRuleExists( level.ruleset["arm"] )
+			&& openwarfare\_rsmonitor::checkRuleExists( level.ruleset["prk"] )
+			&& openwarfare\_rsmonitor::checkRuleExists( level.ruleset["svr"] )
+		) {
+			// if rule exist for given gametype
+			if( level.ruleset["pfl"] != "" ) {
+				if ( isDefined( level.matchRules[ level.ruleset["pfl"] ][ level.gametype ] ) ) {
+					[[ level.matchRules[ level.ruleset["pfl"] ][ level.gametype ] ]]();
+					logPrint( "RSM;Ruleset " + level.ruleset["pfl"] + " loaded.\n" );
+				}	// or for all gametypes
+				else if ( isDefined( level.matchRules[ level.ruleset["pfl"] ]["all"] ) ) {
+					[[ level.matchRules[ level.ruleset["pfl"] ][ "all" ] ]]();
+					logPrint( "RSM;Ruleset " + level.ruleset["pfl"] + " loaded.\n" );
+				}
 			}
-			else if ( isDefined( level.matchRules[ level.cod_mode ]["all"] ) ) {
-				[[ level.matchRules[ level.cod_mode ][ "all" ] ]]();
-				logPrint( "RSM;Ruleset " + level.cod_mode + " loaded.\n" );
-				
+			
+			if( level.ruleset["arm"] != "" ) {
+				if ( isDefined( level.matchRules[ level.ruleset["arm"] ][ level.gametype ] ) ) {
+					[[ level.matchRules[ level.ruleset["arm"] ][ level.gametype ] ]]();
+					logPrint( "RSM;Ruleset " + level.ruleset["arm"] + " loaded.\n" );
+				}
+				else if ( isDefined( level.matchRules[ level.ruleset["arm"] ]["all"] ) ) {
+					[[ level.matchRules[ level.ruleset["arm"] ][ "all" ] ]]();
+					logPrint( "RSM;Ruleset " + level.ruleset["arm"] + " loaded.\n" );
+				}
 			}
-			else {
+			
+			if( level.ruleset["prk"] != "" ) {
+				if ( isDefined( level.matchRules[ level.ruleset["prk"] ][ level.gametype ] ) ) {
+					[[ level.matchRules[ level.ruleset["prk"] ][ level.gametype ] ]]();
+					logPrint( "RSM;Ruleset " + level.ruleset["prk"] + " loaded.\n" );
+				}
+				else if ( isDefined( level.matchRules[ level.ruleset["prk"] ]["all"] ) ) {
+					[[ level.matchRules[ level.ruleset["prk"] ][ "all" ] ]]();
+					logPrint( "RSM;Ruleset " + level.ruleset["prk"] + " loaded.\n" );
+				}
+			}
+			
+			if( level.ruleset["svr"] != "" ) {
+				if ( isDefined( level.matchRules[ level.ruleset["svr"] ][ level.gametype ] ) ) {
+					[[ level.matchRules[ level.ruleset["svr"] ][ level.gametype ] ]]();
+					logPrint( "RSM;Ruleset " + level.ruleset["svr"] + " loaded.\n" );
+				}
+				else if ( isDefined( level.matchRules[ level.ruleset["svr"] ]["all"] ) ) {
+					[[ level.matchRules[ level.ruleset["svr"] ][ "all" ] ]]();
+					logPrint( "RSM;Ruleset " + level.ruleset["svr"] + " loaded.\n" );
+				}
+			}
+			
+			/*
+			if( invalidRule ) {
 				// Rule is not valid or doesn't support the current gametype
-				setDvar( "cod_mode", "" );
-				level.cod_mode = "";
+				// do nothing fow now, problems?
 			}
+			*/
 		}
 	}
 	
@@ -59,7 +142,10 @@ init()
 		level.maxhealth = getdvarx( "scr_player_maxhealth", "int", 200, 1, 500 );
 	else
 		level.maxhealth = getdvarx( "scr_player_maxhealth", "int", 50, 1, 500 );
-		
+	
+	setDvar("scr_hardcore", level.hardcoreMode);
+	setDvar("scr_team_fftype", getdvarx( "scr_team_fftype", "int", 0, 0, 3 ));
+	
 	// Reset certain values no matter what the setting in the server
 	setDvar( "sv_fps", "20" );
 	setDvar( "ui_hud_obituaries", "1" );
@@ -1698,7 +1784,10 @@ endGame( winner, endReasonText )
 	if( level.scr_pezbots_enable ) {
 		openwarfare\_pezbot::KickAllAlliesBots();
 		openwarfare\_pezbot::KickAllAxisBots();
-		openwarfare\_pezbot::endmap();
+		// This line doesn't make sense, why another logic for ending the map ?
+		// and also, endmap calls loadMap(map, type), and parameters map,type aren't used..
+		// strange functions
+		//openwarfare\_pezbot::endmap();
 	}
 	
 	players = level.players;

@@ -115,7 +115,7 @@
 		
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
-			rect			-240 POSITION_Y(291) 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-240 POSITION_Y(271) 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
 			visible			1
@@ -123,7 +123,7 @@
 		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
-			rect			-300 POSITION_Y(291) 300 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-300 POSITION_Y(271) 300 10 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			origin			30 1
 			background		"line_horizontal"
 			forecolor		OBJECTIVE_COLOR_MARINES
@@ -132,7 +132,7 @@
 		}
 		itemDef	{
 			style			WINDOW_STYLE_SHADER
-			rect			-300 POSITION_Y(291) 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-300 POSITION_Y(271) 240 0.5 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			origin			0 12
 			background		"line_horizontal"
 			forecolor		1 1 1 0.85
@@ -143,7 +143,7 @@
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
-			rect			-160 POSITION_Y(291) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-160 POSITION_Y(271) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			text      "@OW_AACP_RULESET_CONTROL"
 			textfont		UI_FONT_NORMAL
 			textscale		TEXTSIZE_TITLE
@@ -554,11 +554,11 @@
 		
 		// RULESET CONTROL PANEL
 		
-		// Ruleset name
+		// Profile (full ruleset) name
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
-			rect			-160 POSITION_Y(329) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-265 POSITION_Y(324) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			textfont		UI_FONT_NORMAL
 			textscale		TEXTSIZE_DEFAULT
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
@@ -568,11 +568,10 @@
 			visible			when ( dvarstring( ui_aacp_ruleset ) != "" );
 			decoration
 		}
-		
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
-			rect			-160 POSITION_Y(329) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-265 POSITION_Y(324) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			textfont		UI_FONT_NORMAL
 			textscale		TEXTSIZE_DEFAULT
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
@@ -582,31 +581,189 @@
 			visible			when ( dvarstring( ui_aacp_ruleset ) == "" );
 			decoration
 		}
-		
+		// Arrows
 		itemDef {
-			name 		"previousruleset"
+			name 		"previousruleset_pfl"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-177 POSITION_Y(339) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-275 POSITION_Y(329) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"ui_arrow_left"
 			forecolor		COLOR_FOCUSED
-			visible			1
-			mouseEnter { play "mouse_over"; setitemcolor previousruleset forecolor 0.409 0.801 0.999 1 }
-			mouseExit { setitemcolor previousruleset forecolor 1.0 1.0 1.0 1 }
-			action { play "mouse_click"; scriptMenuResponse "previousruleset"; }
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; setitemcolor previousruleset_pfl forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor previousruleset_pfl forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "previousruleset_pfl"; }
 		}
 		
 		itemDef {
-			name 		"nextruleset"
+			name 		"nextruleset_pfl"
 			type			1
 			style			WINDOW_STYLE_SHADER
-			rect			-159 POSITION_Y(339) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-262 POSITION_Y(329) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			background		"ui_arrow_right"
 			forecolor		COLOR_FOCUSED
-			visible			1
-			mouseEnter { play "mouse_over"; setitemcolor nextruleset forecolor 0.409 0.801 0.999 1 }
-			mouseExit { setitemcolor nextruleset forecolor 1.0 1.0 1.0 1 }
-			action { play "mouse_click"; scriptMenuResponse "nextruleset"; }
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; setitemcolor nextruleset_pfl forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nextruleset_pfl forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nextruleset_pfl"; }
+		}
+		
+		// Rule - Armory
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-160 POSITION_Y(309) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_TITLE
+			exp					text( dvarstring( ui_aacp_rule_arm ) );
+			visible			when ( dvarstring( ui_aacp_rule_arm ) != "" );
+			decoration
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-160 POSITION_Y(309) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_TITLE
+			text					"@OW_AACP_NORULE"
+			visible			when ( dvarstring( ui_aacp_rule_arm ) == "" );
+			decoration
+		}
+		// Arrows
+		itemDef {
+			name 		"previousrule_arm"
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-82 POSITION_Y(301) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"ui_arrow_left"
+			forecolor		COLOR_FOCUSED
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; setitemcolor previousrule_arm forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor previousrule_arm forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "previousrule_arm"; }
+		}
+		itemDef {
+			name 		"nextrule_arm"
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-64 POSITION_Y(301) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"ui_arrow_right"
+			forecolor		COLOR_FOCUSED
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; setitemcolor nextrule_arm forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nextrule_arm forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nextrule_arm"; }
+		}
+		
+		// Rule - Perks
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-160 POSITION_Y(324) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_TITLE
+			exp					text( dvarstring( ui_aacp_rule_prk ) );
+			visible			when ( dvarstring( ui_aacp_rule_prk ) != "" );
+			decoration
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-160 POSITION_Y(324) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_TITLE
+			text					"@OW_AACP_NORULE"
+			visible			when ( dvarstring( ui_aacp_rule_prk ) == "" );
+			decoration
+		}
+		// Arrows
+		itemDef {
+			name 		"previousrule_prk"
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-82 POSITION_Y(317) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"ui_arrow_left"
+			forecolor		COLOR_FOCUSED
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; setitemcolor previousrule_prk forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor previousrule_prk forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "previousrule_prk"; }
+		}
+		itemDef {
+			name 		"nextrule_prk"
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-64 POSITION_Y(317) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"ui_arrow_right"
+			forecolor		COLOR_FOCUSED
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; setitemcolor nextrule_prk forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nextrule_prk forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nextrule_prk"; }
+		}
+		// Rule - Server
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-160 POSITION_Y(339) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_TITLE
+			exp					text( dvarstring( ui_aacp_rule_svr ) );
+			visible			when ( dvarstring( ui_aacp_rule_svr ) != "" );
+			decoration
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-160 POSITION_Y(339) 0 0 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textfont		UI_FONT_NORMAL
+			textscale		TEXTSIZE_DEFAULT
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_TITLE
+			text					"@OW_AACP_NORULE"
+			visible			when ( dvarstring( ui_aacp_rule_svr ) == "" );
+			decoration
+		}
+		// Arrows
+		itemDef {
+			name 		"previousrule_svr"
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-82 POSITION_Y(334) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"ui_arrow_left"
+			forecolor		COLOR_FOCUSED
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; setitemcolor previousrule_svr forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor previousrule_svr forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "previousrule_svr"; }
+		}
+		itemDef {
+			name 		"nextrule_svr"
+			type			1
+			style			WINDOW_STYLE_SHADER
+			rect			-64 POSITION_Y(334) 16 16 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			background		"ui_arrow_right"
+			forecolor		COLOR_FOCUSED
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; setitemcolor nextrule_svr forecolor 0.409 0.801 0.999 1 }
+			mouseExit { setitemcolor nextrule_svr forecolor 1.0 1.0 1.0 1 }
+			action { play "mouse_click"; scriptMenuResponse "nextrule_svr"; }
 		}
 		
 		// LOAD RULESET
@@ -617,7 +774,7 @@
 			type			1
 			style			WINDOW_STYLE_FILLED
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
-			rect			-200 POSITION_Y(361) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-310 POSITION_Y(349) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			textAlign		ITEM_ALIGN_MIDDLE_CENTER
 			textfont		CHOICE_TEXTFONT
 			textscale		TEXTSIZE_MEDIUM
@@ -629,8 +786,101 @@
 		itemDef
 		{
 			type			ITEM_TYPE_TEXT
-			rect			-200 POSITION_Y(361) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			rect			-310 POSITION_Y(349) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
 			text      "@OW_AACP_RULESET_LOAD"
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_DISABLED
+			visible			when ( !dvarbool( ui_aacp_lrs ) );
+			decoration
+		}
+
+		// LOAD RULES
+		itemDef
+		{
+			name      "loadrules"
+			text      "@OW_AACP_RULES_LOAD"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			-200 POSITION_Y(349) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
+			forecolor		COLOR_FOCUSED
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "loadrules"; }
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-200 POSITION_Y(349) 80 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			text      "@OW_AACP_RULES_LOAD"
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_DISABLED
+			visible			when ( !dvarbool( ui_aacp_lrs ) );
+			decoration
+		}
+		
+		// RESET ALL GAMEPLAY VARIABLES
+		itemDef
+		{
+			name      "resetgameplay"
+			text      "@OW_AACP_RESET_GAMEPLAY_VARS"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			-290 POSITION_Y(374) 130 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
+			forecolor		COLOR_FOCUSED
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "resetgameplay"; }
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-290 POSITION_Y(374) 130 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			text      "@OW_AACP_RESET_GAMEPLAY_VARS"
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			forecolor		COLOR_DISABLED
+			visible			when ( !dvarbool( ui_aacp_lrs ) );
+			decoration
+		}
+
+		// RESET ALL GAMETYPE VARIABLES
+		itemDef
+		{
+			name      "resetgametype"
+			text      "@OW_AACP_RESET_GAMETYPE_VARS"
+			type			1
+			style			WINDOW_STYLE_FILLED
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			rect			-150 POSITION_Y(374) 140 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			textAlign		ITEM_ALIGN_MIDDLE_CENTER
+			textfont		CHOICE_TEXTFONT
+			textscale		TEXTSIZE_MEDIUM
+			forecolor		COLOR_FOCUSED
+			visible			when ( dvarbool( ui_aacp_lrs ) );
+			mouseEnter { play "mouse_over"; }
+			action { play "mouse_click"; scriptMenuResponse "resetgametype"; }
+		}
+		itemDef
+		{
+			type			ITEM_TYPE_TEXT
+			rect			-150 POSITION_Y(374) 140 15 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_TOP
+			text      "@OW_AACP_RESET_GAMETYPE_VARS"
 			textfont		CHOICE_TEXTFONT
 			textscale		TEXTSIZE_MEDIUM
 			textstyle		ITEM_TEXTSTYLE_SHADOWED
