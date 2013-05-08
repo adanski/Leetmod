@@ -162,7 +162,8 @@ init()
 	level.c4explodethisframe = false;
 	
 	//PeZBot precache bot weapons
-  openwarfare\_pezbot::PreCache();
+  // Already called in _pezbot::init()
+	//openwarfare\_pezbot::PreCache();
   //PeZBot/
 }
 
