@@ -1,0 +1,40 @@
+http://wiki.modsrepository.com/index.php/Call_of_Duty_4:_Adding_weapon_assets_without_loading_subassets
+
+Call of Duty 4: Adding weapon assets without loading subassets
+
+Explanation 
+
+It might be confusing at first, but once you understand it, you´ll know when to use it. Basically, this method allows you to add new weapon assets using the command: 
+weapon,mp/name_of_weapon_mp
+
+without loading the subassets related to it. What is a subasset? An asset linked to another asset. When you load a new weapon file, some files are "listed" too such as xmodels. It is ok if you are adding a totally new weapon, with xmodels that have not been listed to the mod.csv before. But imagine that you are working on "firing modes". Imagine that you are trying to have 3 firing modes for m16. You have to create three new weapon files and add them to the mod.csv, but by that way, you are adding all the xmodels related to M16 too. So If you use a calculator you´ll understand that it is not a good idea becasue you´ll be adding the xmodels three times. And that is not necessary at all as the xmodels are stock assets that have been loaded before. 
+
+
+ Steps to follow 
+
+1. First of all, I recommend you to create a new folder in your mod folder. I usually call it "add_me". 
+
+2. Once you have your weapon assets, do not add them to the weapons/mp folder, but to add_me. 
+
+3. Find a stock weapon file and open it with notepad. Delete the text until it looks like this: 
+
+
+WEAPONFILE\displayName\WEAPON_M40A3\modeName\\playerAnimType\sniper\altWeapon\\AIOverlayDescription\\weaponType\bullet\weaponClass\rifle\penetrateType\large\impactType\bullet_large\inventoryType\primary\fireType\Single Shot\
+
+
+ Or you can delete everything in the weapon file and paste the code above there. Don´t worry about displayName, you are not using that. 
+
+4. Save it using the same name that your real weapon file has. To make this tutorial easier to follow, we´ll call the real weapon file "the real file" and "fake file" will be the one you have just created. 
+
+5. Place the fake file in your weapons,mp folder. 
+
+6. Modify the mod.csv with the line weapon,mp/your_weapon_name. 
+
+7. Compile. 
+
+8. Now the trick comes: The mod.ff has a weaponfile, the fake file. That file hasn´t got an information but the necessary to be accepted as a weapon file. No subassets are included. A weapon file can be modified via the iwd file. So, go to your "add_me" folder, copy your real file and move it to weapons/mp inside your IWD. Now, the game will replace the file inside the mod.ff with the one in the IWD. As the real file uses subassets that are stock or already added, you won´t get errors with missing assets. 
+
+
+ Note 
+
+This method is not a way to avoid 128 weapon assets limit. If you find a mistake or the tutorial is not clear enough, let me know. (xfire:gamehunt3r)

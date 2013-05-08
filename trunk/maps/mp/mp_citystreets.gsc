@@ -19,5 +19,6 @@ main()
 
 	setdvar("compassmaxrange","2000");
 
-	maps\mp\_explosive_barrels::main();
+	// Already called in _globallogic.gsc
+	//maps\mp\_explosive_barrels::main();
 }

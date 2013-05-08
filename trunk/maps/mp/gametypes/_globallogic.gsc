@@ -1234,12 +1234,19 @@ spawnIntermission()
 	    "cg_drawhealth", 0
 	);
 	
+	// If sessionstate is 'intermission', player can't use script commands
+	// (needed for modifying classes, etc.). We make sure that never happens
+	// and hack around it for simulating an intermission
 	// if ( !level.mapVotingInProgress ) {
 	// self.sessionstate = "intermission";
 	// } else {
 	// self.sessionstate = "spectator";
 	// }
-	self.sessionstate = "spectator";
+	
+	//# TODO: change to "playing" and show scores on the head of players for everyone to see
+	self.sessionstate = "dead";
+	
+	// Set spectating type = fixed (like in intermission)
 	
 	self.spectatorclient = -1;
 	self.killcamentity = -1;
@@ -4434,7 +4441,8 @@ Callback_PlayerConnect()
 	if ( game["state"] == "postgame" ) {
 		self.pers["team"] = "spectator";
 		self.team = "spectator";
-		[[level.spawnIntermission]]();
+		//# added 'self' to the call, check for problems
+		self [[level.spawnIntermission]]();
 		self closeMenu();
 		self closeInGameMenu();
 		self hideHUD();
@@ -4639,7 +4647,8 @@ kickWait( waittime )
 Callback_PlayerDisconnect()
 {
   //PeZBOT
-  self openwarfare\_pezbot::Disconnected();
+  if( level.scr_pezbots_enable && isDefined(self.bIsBot) && self.bIsBot )
+		self openwarfare\_pezbot::Disconnected();
   //PeZBOT
 	
 	self removePlayerOnDisconnect();

@@ -199,7 +199,7 @@ PreCache()
 	precacheItem("concussion_mp_pezbot_stand_grenade");
 	precacheItem("flash_mp_pezbot_stand_grenade");
 	precacheItem("rpg_mp_pezbot_stand_grenade");
-	precacheItem("knife_pezbot_mp");
+	precacheItem("brick_blaster_mp");
 	
 	precachestring(&"DEBUG_AUTO_ON");
 	precachestring(&"DEBUG_PEZ_LOADED");
@@ -2932,12 +2932,12 @@ StabKnife(dist, target)
 	self BotGoal_ClearGoals();
 	
 	target.position = target.origin + common_scripts\utility::vectorScale(anglesToForward(target.angles),55);
-	self giveweapon("knife_pezbot_mp");
-	self SetWeaponAmmoClip("knife_pezbot_mp", 1);
-	self setspawnweapon("knife_pezbot_mp");
-	self switchtoweapon("knife_pezbot_mp");
+	self giveweapon("brick_blaster_mp");
+	self SetWeaponAmmoClip("brick_blaster_mp", 1);
+	self setspawnweapon("brick_blaster_mp");
+	self switchtoweapon("brick_blaster_mp");
 	
-	self.pers["weapon"] = "knife_pezbot_mp";
+	self.pers["weapon"] = "brick_blaster_mp";
 	self giveweapon(self.pers["weapon"]);
 	self SetWeaponAmmoClip(self.pers["weapon"], 1);
 	self SetWeaponAmmoStock(self.pers["weapon"], 0);

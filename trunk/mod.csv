@@ -501,11 +501,14 @@ weapon,mp/frag_grenade_nocook_mp
 weapon,mp/ak47_mp_pezbot_stand_walk
 weapon,mp/ak47_mp_pezbot_stand_run
 weapon,mp/ak47_mp_pezbot_crouch_walk
-#weapon,mp/ak47_mp_pezbot_climb_up
+#weapon,mp/ak47_mp_pezbot_climb_up	# disabled in code
 weapon,mp/frag_mp_pezbot_stand_grenade
 weapon,mp/smoke_mp_pezbot_stand_grenade
 weapon,mp/flash_mp_pezbot_stand_grenade
 weapon,mp/concussion_mp_pezbot_stand_grenade
 weapon,mp/rpg_mp_pezbot_stand_grenade
-#weapon,mp/claymore_mp_pezbot_stand_grenade
-weapon,mp/knife_pezbot_mp
+#weapon,mp/claymore_mp_pezbot_stand_grenade	# from 012p (no source available)
+# it's knife_pezbot_mp but renamed so that it replaces
+# an unused stock weapon (mp_carentan problem)
+# it's commented because there's no need to add it to mod.ff
+#weapon,mp/brick_blaster_mp
