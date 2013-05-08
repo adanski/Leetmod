@@ -175,13 +175,12 @@ echo    Adding weapons...
 echo    Adding pezbot weapons...
 7za a -r -tzip leetmod.iwd weapons\mp\ak47_mp_pezbot_climb_up > NUL
 7za a -r -tzip leetmod.iwd weapons\mp\ak47_mp_pezbot_crouch_walk > NUL
-7za a -r -tzip leetmod.iwd weapons\mp\ak47_mp_pezbot_mantle_up > NUL
 7za a -r -tzip leetmod.iwd weapons\mp\ak47_mp_pezbot_stand_run > NUL
 7za a -r -tzip leetmod.iwd weapons\mp\ak47_mp_pezbot_stand_walk > NUL
 7za a -r -tzip leetmod.iwd weapons\mp\concussion_mp_pezbot_stand_grenade > NUL
 7za a -r -tzip leetmod.iwd weapons\mp\flash_mp_pezbot_stand_grenade > NUL
 7za a -r -tzip leetmod.iwd weapons\mp\frag_mp_pezbot_stand_grenade > NUL
-7za a -r -tzip leetmod.iwd weapons\mp\knife_pezbot_mp > NUL
+7za a -r -tzip leetmod.iwd weapons\mp\brick_blaster_mp > NUL
 7za a -r -tzip leetmod.iwd weapons\mp\rpg_mp_pezbot_stand_grenade > NUL
 7za a -r -tzip leetmod.iwd weapons\mp\smoke_mp_pezbot_stand_grenade > NUL
 echo    Adding pezbot waypoints code...
@@ -270,7 +269,7 @@ xcopy soundaliases ..\..\raw\soundaliases /SYI > NUL
 xcopy ui_mp ..\..\raw\ui_mp /SYI > NUL
 xcopy vision ..\..\raw\vision /SYI > NUL
 xcopy weapons\fixes+nogunsway ..\..\raw\weapons\mp /SYI > NUL
-xcopy weapons\PeZBotweapons ..\..\raw\weapons\mp /SYI > NUL
+xcopy weapons\PeZBotweapons_128wa_fix ..\..\raw\weapons\mp /SYI > NUL
 xcopy xanim ..\..\raw\xanim /SYI > NUL
 xcopy xmodel ..\..\raw\xmodel /SYI > NUL
 xcopy xmodelparts ..\..\raw\xmodelparts /SYI > NUL
