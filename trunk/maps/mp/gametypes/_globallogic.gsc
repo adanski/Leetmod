@@ -156,7 +156,7 @@ init()
 	setDvar( "_Mod", "Leetmod", true );
 	setDvar( "_ModVer", "v1.8beta", true );
 	
-	setDvar( "_modfile", "leetmod.test" );
+	setDvar( "_modfile", "leetmod18" );
 	
 	// Make a health check of the server
 	level thread openwarfare\_servercheck::init();
@@ -3527,7 +3527,7 @@ TimeUntilSpawn( includeTeamkillDelay )
 		}
 		
 		if ( level.hardcoreMode && !isDefined( result ) && !respawnDelay )
-			respawnDelay = 10.0;
+			respawnDelay = 2.0;
 			
 		if ( includeTeamkillDelay && self.teamKillPunish )
 			respawnDelay += TeamKillDelay();

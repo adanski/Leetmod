@@ -520,8 +520,8 @@ updateCarryObjectOrigin()
 			
 			//wait ( 0.05 );
 		}
-		//# Passed wait to here, so if going by the true block of the 'if', it also waits
-		//# Test for problems
+		//# Passed wait to here, so if going by the true block of the 'if',
+		// it also waits, test it for problems
 		wait ( 0.05 );
 	}
 }

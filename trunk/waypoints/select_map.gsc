@@ -34,7 +34,7 @@ choose()
 
 	//# some map waypoint calls were commented because
 	//# hunk memory usage pops in (too much scripting code)
-	// bog, crash snow, modern rust, killhouse, shipment
+	// bog, crash snow, modern rust, killhouse, shipment, mp_sbase
 
 	else if(mapname == "mp_bloc") {
 		thread Waypoints\mp_bloc_waypoints::load_waypoints();
@@ -145,7 +145,7 @@ choose()
 	}
 	
 	else if(mapname == "mp_sbase") {
-		thread Waypoints\mp_sbase_waypoints::load_waypoints();
+		//thread Waypoints\mp_sbase_waypoints::load_waypoints();
 	}
 	
 	else if(mapname == "mp_skidrow") {

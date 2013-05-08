@@ -37,7 +37,7 @@ init()
 			if ( invalidIWDFile != "" )
 				setdvar("_invalidIWD", invalidIWDFile);
 		}
-		else if(renamed != "_renameOK") {
+		else if( renamed != "_renameOK" ) {
 			setdvar("_invalidIWD", "rename: "+renamed);
 		}
 	}
@@ -57,8 +57,8 @@ init()
 
 has3rdPartyIWDs()
 {
-//#fix on release
-/*
+	//#uncomment on release
+	///*
 	// Check if there's any .IWD file that doesn't belong to the mod
 	iwdFiles = strtok( tolower( getdvar( "sv_referencedIwdNames" ) ), " " );
 	// should be 'mods/leetmodVERSION'
@@ -73,23 +73,28 @@ has3rdPartyIWDs()
 			}
 		}
 	}
-*/
+	//*/
 	return "";
 }
 
+//#magicvalue
+// How to view 'magic value':
+// Start a dedicated server, then look at what sum in
+// the dvar sv_iwds matches the 'leetmod.iwd' in the dvar
+// sv_iwdnames
 isModTouched()
 {
-	//# overrided for now
-	/*
+	//#uncomment on release, recalculate magic value
+	///*
 	iwdNames = strtok( getdvar( "sv_iwdnames" ), " " );
 	iwdSums = strtok( getdvar( "sv_iwds" ), " " );
 	modFile = getdvar("_modfile");
 	
 	for(i=0; i < iwdNames.size; i++) {
-		if( iwdNames[i] == modFile && iwdSums[i] != "#magicvalue" )
+		if( iwdNames[i] == modFile && iwdSums[i] != "90846660" )
 				return true;
 	}
-	*/
+	//*/
 	
 	return false;
 }

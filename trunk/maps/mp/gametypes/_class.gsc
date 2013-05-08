@@ -1206,6 +1206,7 @@ giveLoadout( team, class )
 		secondaryWeapon = level.classItem[team][class]["type"];
 		
 	//# check if inventory is available
+	
 	if ( secondaryWeapon != "" ) {
 		self GiveWeapon( secondaryWeapon );
 		
@@ -1221,14 +1222,16 @@ giveLoadout( team, class )
 		self thread giveActionSlot3AfterDelay( "altMode" );
 		self SetActionSlot( 4, "" );
 	}
+	
 	//# check grenade availability (primary)
+	
 	if( classSelectedIsCustom )
 		grenadeTypePrimary = self.custom_class[class_num]["grenades"];
 	else
 		grenadeTypePrimary = level.classGrenades[class]["primary"]["type"];
 	if ( grenadeTypePrimary != "" ) {
 		self.primarynade = grenadeTypePrimary;
-		//# also remove grenadeCount dependence: its given based on the perk used or nor, and dvars that define how much to give
+		
 		if( classSelectedIsCustom )
 			grenadeCount = self.custom_class[class_num]["grenades_count"];
 		else
@@ -1240,8 +1243,9 @@ giveLoadout( team, class )
 			self thread giveNadesAfterDelay( grenadeTypePrimary, grenadeCount, true );
 		}
 	}
+	
 	//# check grenade availability (secondary)
-	//# also remove grenadeCount dependence: its given based on the perk used or nor, and dvars that define how much to give
+	
 	// give special grenade
 	if( classSelectedIsCustom )
 		grenadeTypeSecondary = self.custom_class[class_num]["specialgrenades"];
@@ -1746,7 +1750,7 @@ setDefaultClasses(class)
 
 isClassAvailable()
 {
-//## TO FIX: change to current usage of the class
+//## TODO: change to current usage of the class
 	return true;
 	
 	///if( level.limitClasses )
