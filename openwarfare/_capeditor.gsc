@@ -8,8 +8,6 @@ init()
 	level.scr_cap_activated = getdvarx( "scr_cap_time_activated", "float", 15.0, 5.0, 30.0 );
 	level.scr_cap_firstspawn = getdvarx( "scr_cap_firstspawn", "int", 1, 0, 1 );
 	
-	//# TODO: Allow in "assassination" gametype too, but not if player is VIP
-	// For now and because of it's not yet implemented, it is disabled for "ass"
 	if ( !level.scr_cap_enable )
 		return;
 		

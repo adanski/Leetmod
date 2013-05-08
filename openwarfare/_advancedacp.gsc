@@ -1295,7 +1295,7 @@ adminActionLog( adminAction, playerAffected )
 			// For rulesets we add the ruleset loaded
 		}
 		else if ( adminAction == "RS" ) { //#EDIT!!
-			//#logLine += ";" + level.scr_aacp_rulesets[ self.aacpRuleset ];
+			logLine += ";" + level.cod_mode;
 			
 			// For anything else we add the current map/gametype information
 		}

@@ -650,7 +650,6 @@ createCaptureZone( team, trigger )
 	captureZone = maps\mp\gametypes\_gameobjects::createUseObject( team, trigger, undefined, (0,0,100) );
 	captureZone	maps\mp\gametypes\_gameobjects::allowUse( "friendly" );
 	captureZone maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
-	//# TODO: capture the flag after a specific time has passed on the capture zone
 	captureZone maps\mp\gametypes\_gameobjects::setUseTime( level.scr_ctf_capture_time );
 	if( level.scr_ctf_capture_time > 0 )
 		captureZone maps\mp\gametypes\_gameobjects::setUseText( &"MP_CAPTURING_FLAG" );
