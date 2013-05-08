@@ -18,7 +18,9 @@ init()
 	level.scr_teambalance_protected_clan_tags = strtok( level.scr_teambalance_protected_clan_tags, " " );
 	// also set on _capeditor.gsc, but setting here first because this file is called threaded, so that file could
 	// be executed before thit one
-	level.scr_cap_allow_othermodels = getdvarx( "scr_cap_allow_othermodels", "int", 0, 0, 3 );
+	//level.scr_cap_allow_othermodels = getdvarx( "scr_cap_allow_othermodels", "int", 0, 0, 3 );
+	// Removed this feature for now, since mp_citystreets hits 1000 xmodels limit with the needed xmodels added to the mod.ff
+	level.scr_cap_allow_othermodels = 0;
 	
 	switch(game["allies"]) {
 		case "marines":
