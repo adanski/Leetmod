@@ -435,9 +435,9 @@ sound,misc,,all_mp
 xanim,viewmodel_binoculars_idle
 
 # adding all player xmodels so that you can use them in every map
-# if xmodel limit is reached, remove them
-# For now they're commented so that mod.ff compilation is faster
-# Uncomment for release
+# xmodel limit is reached at mp_citystreets :(
+# They're commented too so that mod.ff compilation is faster
+# Uncomment for release when this problem is solved (I think it is impossible, but..)
 #xmodel,body_mp_sas_urban_sniper
 #xmodel,viewhands_black_kit
 #xmodel,body_mp_sas_urban_support
