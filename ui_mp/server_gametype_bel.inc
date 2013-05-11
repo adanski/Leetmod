@@ -17,3 +17,25 @@ CHOICE_DVAREDIT_NUMERIC_VIS( 8, "@OW_SCR_BEL_SHOWONCOMPASS_POINTS", scr_bel_show
 
 CHOICE_DVAREDIT_NUMERIC_VIS( 9, "@OW_SCR_BEL_SHOWONCOMPASS_INTERVAL", scr_bel_showoncompass_interval, 2, ; , when(G_GAMETYPE_BEL) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 10, "@OW_SCR_BEL_SHOWONCOMPASS_TIME", scr_bel_showoncompass_time, 2, ; , when(G_GAMETYPE_BEL) )
+
+itemDef
+{
+	name			resetbel
+	text			"@OW_RESET_GT_TO_DEFAULT"
+	type			1
+	style			WINDOW_STYLE_FILLED
+	forecolor		TEXTBUTTON_COLOR
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+	textfont		UI_FONT_NORMAL
+	textalign		ITEM_ALIGN_LEFT
+	textscale		TEXTSIZE_SMALL
+	textaligny		18
+	visible				when(G_GAMETYPE_BEL)
+	mouseEnter		{ play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec menudvars/_defcfg/gametypes/behindenemylines.cfg";
+	}
+}

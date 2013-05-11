@@ -209,6 +209,12 @@
 }
 
 {
+	map		"mp_arkona"
+	longname	"OW_MAPS_ARKONA"
+	gametype	"ass bel ch ctf dm dom ftag gr gg koth oitc re sab sd ss war tgr vg"
+}
+
+{
 	map		"mp_garena"
 	longname	"OW_MAPS_GARENA"
 	gametype	"ass bel ch ctf dm dom ftag gr gg koth oitc re sab sd ss war tgr vg"

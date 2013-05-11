@@ -41,3 +41,25 @@ CHOICE_DVARYESNO_VIS( 29, "@OW_SHOW_BRIEFCASE_MODEL", scr_sd_show_briefcase, ; ,
 CHOICE_DVARYESNO_VIS( 30, "@OW_SHOW_SCOREBOARD_BOMBER", scr_sd_scoreboard_bomb_carrier, ; , when(G_GAMETYPE_SD) )
 
 CHOICE_DVARYESNO_VIS( 31, "@OW_SD_HQ_TEAM_DEAD_SPECTATE_3RD_P", scr_sd_teamdeadspectate_tp, ; , when(G_GAMETYPE_SD) )
+
+itemDef
+{
+	name			resetsd
+	text			"@OW_RESET_GT_TO_DEFAULT"
+	type			1
+	style			WINDOW_STYLE_FILLED
+	forecolor		TEXTBUTTON_COLOR
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+	textfont		UI_FONT_NORMAL
+	textalign		ITEM_ALIGN_LEFT
+	textscale		TEXTSIZE_SMALL
+	textaligny		18
+	visible				when(G_GAMETYPE_SD)
+	mouseEnter		{ play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec menudvars/_defcfg/gametypes/searchanddestroy.cfg";
+	}
+}

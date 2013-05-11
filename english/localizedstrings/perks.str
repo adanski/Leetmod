@@ -53,7 +53,7 @@ REFERENCE           JUGGERNAUT
 LANG_ENGLISH        "Juggernaut"
 
 REFERENCE           FRAG_X_3
-LANG_ENGLISH        "Frags +"
+LANG_ENGLISH        "Frag Grenades +"
 
 REFERENCE           SPECIAL_GRENADES_X_3
 LANG_ENGLISH        "Special Grenades +"
@@ -322,13 +322,13 @@ REFERENCE           3X_
 LANG_ENGLISH        "Note: No special grenades set"
 
 REFERENCE           3X_WEAPON_FLASH_GRENADE
-LANG_ENGLISH        "Extra Flash(s)"
+LANG_ENGLISH        "Flash Grenades +"
 
 REFERENCE           3X_WEAPON_SMOKE_GRENADE
-LANG_ENGLISH        "Extra Smoke(s)"
+LANG_ENGLISH        "Smoke Grenades +"
 
 REFERENCE           3X_WEAPON_STUN_GRENADE
-LANG_ENGLISH        "Extra Stun(s)"
+LANG_ENGLISH        "Stun Grenades +"
 
 REFERENCE           UNLOCKED_AT_MAJOR_I_LV35
 LANG_ENGLISH        "Unlocked at Major I (Lv35)."

@@ -18,3 +18,25 @@ CHOICE_DVARSTRINGLIST_VIS( 9, "@OW_PERK_SLOT1", scr_ss_specialty_slot1, { "None"
 CHOICE_DVARSTRINGLIST_VIS( 10, "@OW_PERK_SLOT2", scr_ss_specialty_slot2, { "None" specialty_null "@PERKS_EXTREME_CONDITIONING" specialty_longersprint "@PERKS_STEADY_AIM" perk_allow_specialty_bulletaccuracy "@PERKS_LAST_STAND" perk_allow_specialty_pistoldeath "@PERKS_MARTYRDOM" perk_allow_specialty_grenadepulldeath "@PERKS_DEEP_IMPACT" perk_allow_specialty_bulletpenetration "@PERKS_IRON_LUNGS" perk_allow_specialty_holdbreath "@PERKS_DEAD_SILENCE" perk_allow_specialty_quieter }, ; , when(G_GAMETYPE_SS) )
 
 CHOICE_DVARYESNO_VIS( 11, "@OW_SS_SHOTGUN_3RD_P", scr_ss_shotguns_tp, ; , when(G_GAMETYPE_SS) )
+
+itemDef
+{
+	name			resetss
+	text			"@OW_RESET_GT_TO_DEFAULT"
+	type			1
+	style			WINDOW_STYLE_FILLED
+	forecolor		TEXTBUTTON_COLOR
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+	textfont		UI_FONT_NORMAL
+	textalign		ITEM_ALIGN_LEFT
+	textscale		TEXTSIZE_SMALL
+	textaligny		18
+	visible				when(G_GAMETYPE_SS)
+	mouseEnter		{ play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec menudvars/_defcfg/gametypes/sharpshooter.cfg";
+	}
+}

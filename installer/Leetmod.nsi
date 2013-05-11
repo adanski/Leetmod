@@ -6,7 +6,7 @@
 !define APPVERSION "1.8"
 !define MODFOLDER "leetmod"
 ; # Change for release
-!define MODVERSION ""
+!define MODVERSION "18"
 !define COD4TITLE "Call of Duty 4"
 !define COD4TITLEREG "Call of Duty(R) 4"
 !define COD4TITLEREGFULL "${COD4TITLEREG} - Modern Warfare(TM)"
@@ -91,6 +91,9 @@ Section "${APPNAME}" Leetmod
   SetOutPath "$INSTDIR\mods\${MODFOLDER}${MODVERSION}"
   File ".\..\mod.ff"
   File ".\..\leetmod${MODVERSION}.iwd"
+  File ".\..\leetmod.cfg"
+  SetOutPath "$INSTDIR\mods\${MODFOLDER}${MODVERSION}\configs"
+	File /r ".\..\configs"
   
   ; Create Shortcuts
   SetShellVarContext all

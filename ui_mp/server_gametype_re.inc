@@ -18,4 +18,26 @@ CHOICE_DVARYESNO_VIS( 11, "@OW_SCR_RE_DEFENDERS_SHOW_BOTH", scr_re_defenders_sho
 CHOICE_DVARYESNO_VIS( 12, "@OW_SCR_RE_SCOREBOARD_OBJECTIVE_CARRIER", scr_re_scoreboard_objective_carrier, ; , when(G_GAMETYPE_RE) )
 CHOICE_DVARYESNO_VIS( 13, "@OW_SCR_RE_ONE_RETRIEVE", scr_re_one_retrieve, ; , when(G_GAMETYPE_RE) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 14, "@OW_SCR_RE_OBJECTIVE_AUTORESETTIME", scr_re_objective_autoresettime, 3, ; , when(G_GAMETYPE_RE) )
-CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SCR_RE_DEFENDERS_SPAWNDELAY", scr_re_defenders_spawndelay, 3, ; , when(G_GAMETYPE_RE) )
+//CHOICE_DVAREDIT_NUMERIC_VIS( 15, "@OW_SCR_RE_DEFENDERS_SPAWNDELAY", scr_re_defenders_spawndelay, 3, ; , when(G_GAMETYPE_RE) )
+
+itemDef
+{
+	name			resetre
+	text			"@OW_RESET_GT_TO_DEFAULT"
+	type			1
+	style			WINDOW_STYLE_FILLED
+	forecolor		TEXTBUTTON_COLOR
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+	textfont		UI_FONT_NORMAL
+	textalign		ITEM_ALIGN_LEFT
+	textscale		TEXTSIZE_SMALL
+	textaligny		18
+	visible				when(G_GAMETYPE_RE)
+	mouseEnter		{ play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec menudvars/_defcfg/gametypes/retrieval.cfg";
+	}
+}

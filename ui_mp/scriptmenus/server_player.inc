@@ -71,7 +71,7 @@ menuDef
 	CHOICE_DVAREDIT_VIS( 13, "@OW_SCR_CAP_TIME", menu_scr_cap_time, 4, 4, SET_SCR_CAP_TIME; , when( dvarBool(menu_scr_cap_enable) ) )
 	CHOICE_DVAREDIT_VIS( 14, "@OW_SCR_CAP_TIME_ACTIVATED", menu_scr_cap_time_activated, 4, 4, SET_SCR_CAP_TIME_ACTIVATED; , when( dvarBool(menu_scr_cap_enable) ) )
 	CHOICE_DVARYESNO_VIS( 15, "@OW_SCR_CAP_FIRSTSPAWN", menu_scr_cap_firstspawn, SET_SCR_CAP_FIRSTSPAWN; , when( dvarBool(menu_scr_cap_enable) ) )
-	CHOICE_DVARFLOATLIST_VIS( 16, "@OW_SCR_CAP_ALLOW_OTHERMODELS", menu_scr_cap_allow_othermodels, { "Disabled" 0 "Enabled (Free-based gametypes only)" 1 "Enabled (Team-based gametypes only)" 2 "Enabled (All gametypes)" 3 }, SET_SCR_CAP_ALLOW_OTHERMODELS;, when( dvarBool(menu_scr_cap_enable) ) )
+	//CHOICE_DVARFLOATLIST_VIS( 16, "@OW_SCR_CAP_ALLOW_OTHERMODELS", menu_scr_cap_allow_othermodels, { "Disabled" 0 "Enabled (Free-based gametypes only)" 1 "Enabled (Team-based gametypes only)" 2 "Enabled (All gametypes)" 3 }, SET_SCR_CAP_ALLOW_OTHERMODELS;, when( dvarBool(menu_scr_cap_enable) ) )
 	
 	CHOICE_DVARFLOATLIST_VIS( 17, "@OW_SCR_DE_DROPWEAPON_ON_ARM_HIT", menu_scr_de_dropweapon_on_arm_hit, { "Disabled" 0 "On hands" 1 "On hands/lower arms" 2 "On hands/lower/upper arms" 3 }, SET_SCR_DE_DROPWEAPON_ON_ARM_HIT; , when( dvarString(menu_cfg_gt) != "oitc" ) )
 	CHOICE_DVAREDIT_NUMERIC_VIS( 18, "@OW_SCR_DE_DROPWEAPON_CHANCE", menu_scr_de_dropweapon_chance, 3, SET_SCR_DE_DROPWEAPON_CHANCE; , when( dvarBool(menu_scr_de_dropweapon_on_arm_hit) && dvarString(menu_cfg_gt) != "oitc" ) )

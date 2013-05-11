@@ -14,3 +14,25 @@ CHOICE_DVAREDIT_NUMERIC_VIS( 7, "@OW_GR_DROP_ZONES_RELOCATION_TIME", scr_gr_drop
 CHOICE_DVAREDIT_NUMERIC_VIS( 8, "@OW_GR_BASE_DOGTAG_SCORE", scr_gr_base_dogtag_score, 4, ; , when(G_GAMETYPE_GR) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 9, "@OW_GR_DOGTAG_AUTOREMOVAL_TIME", scr_gr_dogtag_autoremoval_time, 4, ; , when(G_GAMETYPE_GR) )
 CHOICE_DVARYESNO_VIS( 10, "@OW_GR_MINIMAP_MARK_RED_DROPS", scr_gr_minimap_mark_red_drops, ; , when(G_GAMETYPE_GR) )
+
+itemDef
+{
+	name			resetgr
+	text			"@OW_RESET_GT_TO_DEFAULT"
+	type			1
+	style			WINDOW_STYLE_FILLED
+	forecolor		TEXTBUTTON_COLOR
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+	textfont		UI_FONT_NORMAL
+	textalign		ITEM_ALIGN_LEFT
+	textscale		TEXTSIZE_SMALL
+	textaligny		18
+	visible				when(G_GAMETYPE_GR)
+	mouseEnter		{ play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec menudvars/_defcfg/gametypes/greed.cfg";
+	}
+}

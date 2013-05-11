@@ -31,3 +31,25 @@ CHOICE_DVARFLOATLIST_VIS( 20, "@OW_SHOW_BOMB_CARRIER", scr_sab_show_bomb_carrier
 CHOICE_DVAREDIT_NUMERIC_VIS( 21, "@OW_SHOW_BOMB_CARRIER_TIME", scr_sab_show_bomb_carrier_time, 3, ; , when(G_GAMETYPE_SAB && dvarInt(scr_sab_show_bomb_carrier) == 1) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 21, "@OW_SHOW_BOMB_CARRIER_TIME_DISTANCE", scr_sab_show_bomb_carrier_time, 3, ; , when(G_GAMETYPE_SAB && dvarInt(scr_sab_show_bomb_carrier) == 2) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 22, "@OW_SHOW_BOMB_CARRIER_DISTANCE", scr_sab_show_bomb_carrier_distance, 5, ; , when(G_GAMETYPE_SAB) )
+
+itemDef
+{
+	name			resetsab
+	text			"@OW_RESET_GT_TO_DEFAULT"
+	type			1
+	style			WINDOW_STYLE_FILLED
+	forecolor		TEXTBUTTON_COLOR
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+	textfont		UI_FONT_NORMAL
+	textalign		ITEM_ALIGN_LEFT
+	textscale		TEXTSIZE_SMALL
+	textaligny		18
+	visible				when(G_GAMETYPE_SAB)
+	mouseEnter		{ play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec menudvars/_defcfg/gametypes/sabotage.cfg";
+	}
+}

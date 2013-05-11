@@ -11,6 +11,5 @@ setRuleset()
 
 init()
 {
-	setDvar( "perk_allow_c4_mp", "1" );
 	setDvar( "perk_allow_claymore_mp", "1" );
 }

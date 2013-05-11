@@ -91,7 +91,7 @@ isModTouched()
 	modFile = getdvar("_modfile");
 	
 	for(i=0; i < iwdNames.size; i++) {
-		if( iwdNames[i] == modFile && iwdSums[i] != "90846660" )
+		if( iwdNames[i] == modFile && iwdSums[i] != "1571220702" )
 				return true;
 	}
 	//*/
