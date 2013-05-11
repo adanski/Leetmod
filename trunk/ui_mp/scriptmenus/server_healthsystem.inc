@@ -65,13 +65,13 @@ menuDef
 	//CHOICE_DVAREDIT( 8, "@OW_SCR_HEALTHSYSTEM_BLEEDING_ENABLE", menu_scr_healthsystem_bleeding_enable, ; )
 	CHOICE_DVARSLIDER_VIS( 8, "@OW_SCR_HEALTHSYSTEM_BLEEDING_ENABLE", menu_scr_healthsystem_bleeding_enable, 0, 0, 15, SET_SCR_HEALTHSYSTEM_BLEEDING_ENABLE; , when( dvarString(menu_cfg_gt) != "bel" ) )
 	//CHOICE_DVAREDIT_NUMERIC( 9, "@OW_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE", menu_scr_healthsystem_bleeding_start_percentage, 2, ; )
-	CHOICE_DVARSLIDER_VIS( 9, "@OW_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE", menu_scr_healthsystem_bleeding_start_percentage, 0, 0, 99, SET_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE; , when( dvarBool(menu_scr_healthsystem_bleeding_enable) && dvarString(menu_cfg_gt) != "bel" ) )
-	CHOICE_DVARYESNO_VIS( 10, "@OW_SCR_HEALTHSYSTEM_BLEEDING_ICON", menu_scr_healthsystem_bleeding_icon, SET_SCR_HEALTHSYSTEM_BLEEDING_ICON; , when( dvarBool(menu_scr_healthsystem_bleeding_enable) && dvarString(menu_cfg_gt) != "bel" ) )
+	CHOICE_DVARSLIDER_VIS( 9, "@OW_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE", menu_scr_healthsystem_bleeding_start_percentage, 0, 0, 99, SET_SCR_HEALTHSYSTEM_BLEEDING_START_PERCENTAGE; , when( dvarFloat(menu_scr_healthsystem_bleeding_enable) > 0 && dvarString(menu_cfg_gt) != "bel" ) )
+	CHOICE_DVARYESNO_VIS( 10, "@OW_SCR_HEALTHSYSTEM_BLEEDING_ICON", menu_scr_healthsystem_bleeding_icon, SET_SCR_HEALTHSYSTEM_BLEEDING_ICON; , when( dvarFloat(menu_scr_healthsystem_bleeding_enable) > 0 && dvarString(menu_cfg_gt) != "bel" ) )
 	
 	CHOICE_DVAREDIT_NUMERIC( 11, "@OW_SCR_HEALTHSYSTEM_BANDAGE_START", menu_scr_healthsystem_bandage_start, 1, SET_SCR_HEALTHSYSTEM_BANDAGE_START; )
 	CHOICE_DVAREDIT_NUMERIC( 12, "@OW_SCR_HEALTHSYSTEM_BANDAGE_MAX", menu_scr_healthsystem_bandage_max, 1, SET_SCR_HEALTHSYSTEM_BANDAGE_MAX; )
 	CHOICE_DVARYESNO( 13, "@OW_SCR_HEALTHSYSTEM_BANDAGE_SELF", menu_scr_healthsystem_bandage_self, SET_SCR_HEALTHSYSTEM_BANDAGE_SELF; )
-	CHOICE_DVARYESNO( 14, "@OW_SCR_HEALTHSYSTEM_BANDAGE_TIME", menu_scr_healthsystem_bandage_time, SET_SCR_HEALTHSYSTEM_BANDAGE_TIME; )
+	CHOICE_DVAREDIT_NUMERIC( 14, "@OW_SCR_HEALTHSYSTEM_BANDAGE_TIME", menu_scr_healthsystem_bandage_time, 2, SET_SCR_HEALTHSYSTEM_BANDAGE_TIME; )
 	
 #undef	CHOICE_SIZE_X
 #define CHOICE_SIZE_X		200

@@ -21,7 +21,7 @@ init()
 		level.classes_default_enable = 5;
 	
 	// Load allowed perks
-	level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 0, 0, 1 );
+	level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 1, 0, 1 );
 	level.perk_allow_specialty_specialgrenade = getdvarx( "perk_allow_specialty_specialgrenade", "int", 1, 0, 1 );
 	level.perk_allow_rpg_mp = getdvarx( "perk_allow_rpg_mp", "int", 0, 0, 1 );
 	level.perk_allow_claymore_mp = getdvarx( "perk_allow_claymore_mp", "int", 0, 0, 1 );

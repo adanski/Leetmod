@@ -21,3 +21,25 @@ CHOICE_DVARYESNO_VIS( 14, "@OW_FTAG_UNFREEZE_BEAM", scr_ftag_unfreeze_beam, ; , 
 CHOICE_DVARYESNO_VIS( 15, "@OW_FTAG_UNFREEZE_MELT_ICEBERG", scr_ftag_unfreeze_melt_iceberg, ; , when(G_GAMETYPE_FTAG) )
 CHOICE_DVARYESNO_VIS( 16, "@OW_FTAG_UNFREEZE_RESPAWN", scr_ftag_unfreeze_respawn, ; , when(G_GAMETYPE_FTAG) )
 CHOICE_DVARYESNO_VIS( 17, "@OW_FTAG_SHOW_STATS", scr_ftag_show_stats, ; , when(G_GAMETYPE_FTAG) )
+
+itemDef
+{
+	name			resetftag
+	text			"@OW_RESET_GT_TO_DEFAULT"
+	type			1
+	style			WINDOW_STYLE_FILLED
+	forecolor		TEXTBUTTON_COLOR
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+	textfont		UI_FONT_NORMAL
+	textalign		ITEM_ALIGN_LEFT
+	textscale		TEXTSIZE_SMALL
+	textaligny		18
+	visible				when(G_GAMETYPE_FTAG)
+	mouseEnter		{ play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec menudvars/_defcfg/gametypes/freezetag.cfg";
+	}
+}

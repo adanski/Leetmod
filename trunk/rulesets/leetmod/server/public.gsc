@@ -28,8 +28,6 @@ init()
 	setDvar( "scr_match_strategy_getready_time", "" );
 	setDvar( "scr_timeouts_perteam", "" );
 	setDvar( "scr_timeouts_length", "" );
-	setDvar( "scr_timeouts_guids", "" );
-	setDvar( "scr_timeouts_tags", "" );
 	setDvar( "scr_tk_limit", "" );
 	setDvar( "scr_ranked_classes_enable", "" );
 	setDvar( "scr_force_autoassign", "" );

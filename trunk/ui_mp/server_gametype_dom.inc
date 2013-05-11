@@ -17,3 +17,25 @@ CHOICE_DVARYESNO_VIS( 10, "@OW_FLASH_ON_CAPTURE", scr_dom_flash_on_capture, ; , 
 CHOICE_DVARYESNO_VIS( 11, "@OW_ANNOUNCE_ON_CAPTURE", scr_dom_announce_on_capture, ; , when(G_GAMETYPE_DOM) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 12, "@OW_DOM_GIVE_BONUS_AFTER", scr_dom_secured_all_bonus_time, 2, ; , when(G_GAMETYPE_DOM) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 13, "@OW_DOM_FLAG_CAPTURE_TIME", scr_dom_flag_capture_time, 2, ; , when(G_GAMETYPE_DOM) )
+
+itemDef
+{
+	name			resetdom
+	text			"@OW_RESET_GT_TO_DEFAULT"
+	type			1
+	style			WINDOW_STYLE_FILLED
+	forecolor		TEXTBUTTON_COLOR
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+	textfont		UI_FONT_NORMAL
+	textalign		ITEM_ALIGN_LEFT
+	textscale		TEXTSIZE_SMALL
+	textaligny		18
+	visible				when(G_GAMETYPE_DOM)
+	mouseEnter		{ play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec menudvars/_defcfg/gametypes/domination.cfg";
+	}
+}

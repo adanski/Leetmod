@@ -2139,6 +2139,9 @@ LANG_ENGLISH "BO Nuketown"
 REFERENCE MAPS_SUMMIT
 LANG_ENGLISH "BO Summit"
 
+REFERENCE MAPS_ARKONA
+LANG_ENGLISH "MW3 Bootleg"
+
 REFERENCE MAPS_GARENA
 LANG_ENGLISH "Garena"
 
@@ -2812,7 +2815,7 @@ LANG_ENGLISH "Dynamic attachments"
 //******************************************************************************
 
 REFERENCE SCR_RANKED_CLASSES_ENABLE
-LANG_ENGLISH "Player can access any weapon"
+LANG_ENGLISH "All weapons access indep. of rank"
 
 REFERENCE SCR_GRENADE_ALLOW_COOKING
 LANG_ENGLISH "Grenade cooking"
@@ -2914,6 +2917,9 @@ LANG_ENGLISH "Reconnect to last server"
 
 REFERENCE MENU_CFG_FOR_DEF_GT
 LANG_ENGLISH "All (if not specifically defined)"
+
+REFERENCE RESET_GT_TO_DEFAULT
+LANG_ENGLISH "Reset gametype to default"
 
 REFERENCE MENU_SAVE_FOR_SESSION
 LANG_ENGLISH "Save for this session"

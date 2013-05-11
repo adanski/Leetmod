@@ -5,7 +5,7 @@ itemDef
 {
 	//name acwindow
 	group grpControlbutton
-	rect (RULES_PFL_X+0) (RULES_PFL_Y+2) 115 75
+	rect (RULES_PFL_X+0) (RULES_PFL_Y+2) 115 90
 	type			1
 	style WINDOW_STYLE_FILLED
 	border 1
@@ -48,11 +48,33 @@ itemDef
 
 itemDef
 {
+	name "my_configs"
+	text "My /configs"
+	type			1
+	style WINDOW_STYLE_FILLED
+	rect (RULES_PFL_X+30) (RULES_PFL_Y+30) 38 10
+	textstyle 3
+	textscale .25
+	textfont UI_FONT_NORMAL
+	textalign ITEM_ALIGN_LEFT
+	textaligny 10
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	visible when( dvarbool(tmp_showrules_pfl) );
+	mouseEnter { play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec leetmod.cfg"
+		setdvar tmp_showrules_pfl 0;
+	}
+}
+itemDef
+{
 	name "pfl_leetmod"
 	text "Leetmod"
 	type			1
 	style WINDOW_STYLE_FILLED
-	rect (RULES_PFL_X+30) (RULES_PFL_Y+30) 36 10
+	rect (RULES_PFL_X+30) (RULES_PFL_Y+45) 36 10
 	textstyle 3
 	textscale .25
 	textfont UI_FONT_NORMAL
@@ -74,7 +96,7 @@ itemDef
 	text "Promod"
 	type			1
 	style WINDOW_STYLE_FILLED
-	rect (RULES_PFL_X+30) (RULES_PFL_Y+45) 34 10
+	rect (RULES_PFL_X+30) (RULES_PFL_Y+60) 34 10
 	textstyle 3
 	textscale .25
 	textfont UI_FONT_NORMAL
@@ -97,7 +119,7 @@ itemDef
 	text "Back"
 	type			1
 	style WINDOW_STYLE_FILLED
-	rect (RULES_PFL_X+8) (RULES_PFL_Y+65) 22 10
+	rect (RULES_PFL_X+8) (RULES_PFL_Y+80) 22 10
 	textstyle 3
 	textscale .25
 	textfont UI_FONT_NORMAL

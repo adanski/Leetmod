@@ -126,10 +126,6 @@ init()
 	
 	level.scr_grenade_allow_cooking = getdvarx( "scr_grenade_allow_cooking", "int", 1, 0, 1 );
 	
-	level.perk_allow_c4_mp = getdvarx( "perk_allow_c4_mp", "int", 1, 0, 1 );
-	level.perk_allow_rpg_mp = getdvarx( "perk_allow_rpg_mp", "int", 1, 0, 1 );
-	level.perk_allow_claymore_mp = getdvarx( "perk_allow_claymore_mp", "int", 1, 0, 1 );
-	
 	// Delay grenades and GL at the start of the round
 	level.scr_delay_only_round_start = getdvarx( "scr_delay_only_round_start", "int", 1, 0, 1 );
 	level.scr_delay_sound_enable = getdvarx( "scr_delay_sound_enable", "int", 1, 0, 1 );

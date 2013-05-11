@@ -17,3 +17,25 @@ CHOICE_DVARSTRINGLIST_VIS( 8, "@OW_PERK_SLOT2", scr_oitc_specialty_slot2, { "Non
 
 CHOICE_DVARYESNO_VIS( 9, "@OW_SUDDEN_SHOW_ENEMIES", scr_oitc_suddendeath_show_enemies, ; , when(G_GAMETYPE_OITC) )
 CHOICE_DVAREDIT_NUMERIC_VIS( 10, "@OW_SUDDEN_TIMELIMIT", scr_oitc_suddendeath_timelimit, 3, ; , when(G_GAMETYPE_OITC) )
+
+itemDef
+{
+	name			resetoitc
+	text			"@OW_RESET_GT_TO_DEFAULT"
+	type			1
+	style			WINDOW_STYLE_FILLED
+	forecolor		TEXTBUTTON_COLOR
+	textstyle		ITEM_TEXTSTYLE_SHADOWED
+	rect			-150 -26 100 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+	textfont		UI_FONT_NORMAL
+	textalign		ITEM_ALIGN_LEFT
+	textscale		TEXTSIZE_SMALL
+	textaligny		18
+	visible				when(G_GAMETYPE_OITC)
+	mouseEnter		{ play "mouse_over"; }
+	action
+	{
+		play "mouse_click";
+		exec "exec menudvars/_defcfg/gametypes/oneinthechamber.cfg";
+	}
+}
