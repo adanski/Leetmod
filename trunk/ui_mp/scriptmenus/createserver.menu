@@ -78,7 +78,7 @@
 #undef CHOICE_X_START
 #define CHOICE_X_START  -30
 		
-		CHOICE_DVARYESNO( 16, "@OW_MENU_SCR_PEZBOTS_ENABLE", scr_pezbots_enable, ; )
+		CHOICE_DVARYESNO_VIS( 16, "@OW_MENU_SCR_PEZBOTS_ENABLE", scr_pezbots_enable, ;, when( !dvarBool(sv_punkbuster) ) )
 		CHOICE_DVAREDIT_VIS( 17, "@OW_SERVER_MAP_ROTATION", "sv_mapRotation", 1000, 80, ; , 1 )
 		
 #undef CHOICE_X_START
