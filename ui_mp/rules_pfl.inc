@@ -64,7 +64,7 @@ itemDef
 	action
 	{
 		play "mouse_click";
-		exec "exec leetmod.cfg"
+		exec "exec configs/executefiles.cfg"
 		setdvar tmp_showrules_pfl 0;
 	}
 }
