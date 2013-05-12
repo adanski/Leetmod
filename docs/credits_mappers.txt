@@ -1,0 +1,171 @@
+Carentan
+http://www.codutility.com/vb/downloads.php?do=file&id=1181
+Seven A.K.A. SevenSniff
+
+Favela
+http://www.codutility.com/vb/downloads.php?do=file&id=1598
+miregrobar
+
+Highrise
+http://www.codutility.com/vb/downloads.php?do=file&id=1516
+miregrobar
+
+Invasion
+http://www.codutility.com/vb/downloads.php?do=file&id=1632
+miregrobar
+
+Modern Rust
+http://www.codutility.com/vb/downloads.php?do=file&id=1537
+Coverop
+
+Salvage
+http://www.codutility.com/vb/downloads.php?do=file&id=1652
+DaWizz
+
+SPS Scrapyard
+http://www.codutility.com/vb/downloads.php?do=file&id=1662
+SPS Team - PanzerMan, Dugynight
+
+Skidrow
+http://www.codutility.com/vb/downloads.php?do=file&id=1647
+WarMachine
+
+Storm
+http://www.codutility.com/vb/downloads.php?do=file&id=1736
+DaWizz
+
+Sub Base
+http://www.codutility.com/vb/downloads.php?do=file&id=1547
+miregrobar
+
+MW2 Terminal
+http://www.codutility.com/vb/downloads.php?do=file&id=1675
+K6Grimm, BU|D-ToX
+
+Hanoi
+http://www.codutility.com/vb/downloads.php?do=file&id=1698
+Gunner
+
+ColdAir Nuke Town
+http://www.codutility.com/vb/downloads.php?do=file&id=1707
+ColdAir
+
+Summit
+http://www.codutility.com/vb/downloads.php?do=file&id=4652
+K6Grimm, BU|D-ToX
+
+Arkona
+http://www.codutility.com/vb/downloads.php?do=file&id=4702
+NEUSATZ (Miregrobar)
+
+Garena
+http://www.codutility.com/vb/downloads.php?do=file&id=1188
+|RASTA|RoKo_859
+
+SC Hangar
+http://www.codutility.com/vb/downloads.php?do=file&id=1502
+miregrobar
+
+Shipment2
+http://www.codutility.com/vb/downloads.php?do=file&id=1030
+Carcass26
+
+Shipment 3
+http://cod4.gamebanana.com/maps/147209
+LLLDR|dB99
+
+SPS Muelles
+http://www.codutility.com/vb/downloads.php?do=file&id=725
+=//SPS//=Gasofa
+
+SPS Old Town
+http://www.codutility.com/vb/downloads.php?do=file&id=764
+=//SPS//=BlindSniper
+
+USL SniperWarf Square
+http://www.codutility.com/vb/downloads.php?do=file&id=855
+*[USL]* Thompson Gunner aka Gunner
+
+SPS S Town
+http://www.codutility.com/vb/downloads.php?do=file&id=717
+=//SPS//=Gasofa
+
+
+
+MoHAA Southern France
+http://www.codutility.com/vb/downloads.php?do=file&id=1585
+Sparks
+
+MoH Stalingrad
+http://www.codutility.com/vb/downloads.php?do=file&id=967
+Unknown
+
+
+
+SPS The Old Place
+http://www.codutility.com/vb/downloads.php?do=file&id=772
+=//SPS//=PanzerMan
+Very 'patterny', dull
+
+SPS Dehibat
+http://www.codutility.com/vb/downloads.php?do=file&id=797
+=//SPS//= Panzerman
+A little big, test
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+USL Drive-in
+http://www.codutility.com/vb/downloads.php?do=file&id=877
+*[USL]* Thompson Gunner aka Gunner
+Cool map, it's dark but maybe fun for NV, removed because map name contains a dash (-), so we can't set the dvars that spawn players oposite
+
+MHZ Village
+http://www.codutility.com/vb/downloads.php?do=file&id=841
+*MHZ* 45King
+THIS MAP HAS SPAWN ISSUES
+
+Thunderville Snipers
+http://www.codutility.com/vb/downloads.php?do=file&id=800
+Sparks
+THIS MAP IS NOT VERY GOOD AS A SNIPER MAP
+
+Karachi
+http://www.codutility.com/vb/downloads.php?do=file&id=1604
+WeZZi
+THIS MAP REPLACES CRASH LOADSCREEN AND HAS 128 WEAPON LIMIT ASSET ERRORS
+
+SPS El Aiun new
+http://www.codutility.com/vb/downloads.php?do=file&id=1177
+Very big (>208m)
+
+SPS Rock Island
+http://www.codutility.com/vb/downloads.php?do=file&id=833
+128 weapon limit, very big (>208m)
+
+SPS War
+http://www.codutility.com/vb/downloads.php?do=file&id=830
+128 weapon limit, very big (>208m)
+
+SPS Substation
+http://www.codutility.com/vb/downloads.php?do=file&id=795
+128 weapon limit, right size, not very nice map
+
+SPS Black Hawk Down
+http://www.codutility.com/vb/downloads.php?do=file&id=785
+=//SPS//= Dugynight
+128 weapon limit, cool sized, cool buildings but the map isn't, as well as the mirroring division (invisible wall) 
+
+SPS Carguero
+http://www.codutility.com/vb/downloads.php?do=file&id=766
+=//SPS//=Gasofa
+Very low framerate when Rain = on, Cargueros present on SPS Muelles
+
+SPS Hip Hop Arena
+http://www.codutility.com/vb/downloads.php?do=file&id=755
+=//SPS//= PanzerMan
+Model FX problem (shouldn't the fixed _team.gsc correct the problem?)
+
+SPS The Capitol
+http://www.codutility.com/vb/downloads.php?do=file&id=796
+=//SPS//= Dugynight
+128 weapon limit, cool sized, map a little 'dull' but ok
