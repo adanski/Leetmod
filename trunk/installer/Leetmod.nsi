@@ -15,7 +15,7 @@
 
 
 !define MUI_FINISHPAGE_RUN "$INSTDIR\iw3mp.exe"
-!define MUI_FINISHPAGE_RUN_PARAMETERS "+set fs_game mods/${MODFOLDER}${MODVERSION}"
+!define MUI_FINISHPAGE_RUN_PARAMETERS "+set fs_game mods/${MODFOLDER}${MODVERSION} +exec leetmod.cfg"
 !define MUI_FINISHPAGE_LINK "Visit Leetmod's website and see all the new features"
 !define MUI_FINISHPAGE_LINK_LOCATION "http://www.leetmod.pt.am"
 
@@ -92,8 +92,8 @@ Section "${APPNAME}" Leetmod
   File ".\..\mod.ff"
   File ".\..\leetmod${MODVERSION}.iwd"
   File ".\..\leetmod.cfg"
-  SetOutPath "$INSTDIR\mods\${MODFOLDER}${MODVERSION}\configs"
-	File /r ".\..\configs"
+	SetOutPath "$INSTDIR\mods\${MODFOLDER}${MODVERSION}\configs"
+	File /r ".\..\configs\*.*"
   
   ; Create Shortcuts
   SetShellVarContext all
@@ -104,9 +104,9 @@ Section "${APPNAME}" Leetmod
     createDirectory "$SMGAMEFOLDER"
   ExistsStartMenu:
   createShortCut "$SMGAMEFOLDER\${COD4TITLEREG} - ${APPNAME}.lnk" "$INSTDIR\iw3mp.exe" \
-    "+set fs_game mods/${MODFOLDER}${MODVERSION}" "" "" "" "ALT|CONTROL|SHIFT|L" "${LMSLOGAN}"
+    "+set fs_game mods/${MODFOLDER}${MODVERSION} +exec leetmod.cfg" "" "" "" "ALT|CONTROL|SHIFT|L" "${LMSLOGAN}"
   createShortCut "$DESKTOP\${COD4TITLEREG} - ${APPNAME}.lnk" "$INSTDIR\iw3mp.exe" \
-    "+set fs_game mods/${MODFOLDER}${MODVERSION}" "" "" "" "ALT|CONTROL|SHIFT|L" "${LMSLOGAN}"
+    "+set fs_game mods/${MODFOLDER}${MODVERSION} +exec leetmod.cfg" "" "" "" "ALT|CONTROL|SHIFT|L" "${LMSLOGAN}"
   StrCpy $SHORTCUTTOMOD "$SMGAMEFOLDER\${COD4TITLEREG} - ${APPNAME}.lnk"
   
   ;Store installation folder
