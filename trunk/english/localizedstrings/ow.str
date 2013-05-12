@@ -2815,7 +2815,7 @@ LANG_ENGLISH "Dynamic attachments"
 //******************************************************************************
 
 REFERENCE SCR_RANKED_CLASSES_ENABLE
-LANG_ENGLISH "All weapons access indep. of rank"
+LANG_ENGLISH "Lock weapons by player rank"
 
 REFERENCE SCR_GRENADE_ALLOW_COOKING
 LANG_ENGLISH "Grenade cooking"

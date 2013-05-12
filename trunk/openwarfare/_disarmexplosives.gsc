@@ -7,7 +7,7 @@
 init()
 {
 	// Get the main module's dvar
-	level.scr_explosives_allow_disarm = getdvarx( "scr_explosives_allow_disarm", "int", 0, 0, 1 );
+	level.scr_explosives_allow_disarm = getdvarx( "scr_explosives_allow_disarm", "int", 1, 0, 1 );
 	
 	// If disarm explosives is not enabled then there's nothing else to do here
 	if ( level.scr_explosives_allow_disarm == 0 )
