@@ -94,6 +94,8 @@ Section "${APPNAME}" Leetmod
   File ".\..\leetmod.cfg"
 	SetOutPath "$INSTDIR\mods\${MODFOLDER}${MODVERSION}\configs"
 	File /r ".\..\configs\*.*"
+	SetOutPath "$INSTDIR\mods\${MODFOLDER}${MODVERSION}\pb"
+	File /r ".\..\pb\*.*"
   
   ; Create Shortcuts
   SetShellVarContext all
