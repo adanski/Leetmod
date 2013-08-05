@@ -28,6 +28,7 @@
 			execNowOnDvarIntValue tmp_firstserverconf 1 "setfromdvar g_gametype tmp_currgametype";
 			execNowOnDvarIntValue tmp_firstserverconf 0 "setfromdvar tmp_currgametype g_gametype; setfromdvar menu_cfg_gt g_gametype; set tmp_firstserverconf 1";
 			execNowOnDvarIntValue ct_def_cfg_saved 0 "exec menudvars/_defcfg/executefiles.cfg; seta ct_def_cfg_saved 1";
+			execNowOnDvarIntValue sv_punkbuster 1 "set scr_pezbots_enable 0";
 		}
 		onClose
 		{
@@ -49,7 +50,7 @@
 		CHOICE_DVAREDIT_NUMERIC( 4, "@MENU_MAXIMUM_PLAYERS", sv_maxclients, 3, ; )
 		//CHOICE_DVAREDIT_NUMERIC( 5, "@MENU_MINIMUM_PING", sv_minping, 4, ; )
 		//CHOICE_DVAREDIT_NUMERIC( 6, "@MENU_MAXIMUM_PING", sv_maxping, 4, ; )		//CHOICE_DVAREDIT_NUMERIC( 8, "@MENU_MAXIMUM_RATE", sv_maxrate, 8, ; )
-		CHOICE_DVARYESNO( 5, "@MPUI_PUNKBUSTERWITHCOLONANDTWOSPACES", sv_punkbuster, ; )
+		CHOICE_DVARYESNO( 5, "@MPUI_PUNKBUSTERWITHCOLONANDTWOSPACES", sv_punkbuster, execNowOnDvarIntValue sv_punkbuster 1 "set scr_pezbots_enable 0"; )
 		CHOICE_DVAREDIT_VIS( 6, "@MENU_PASSWORD1", g_password, 12, 12, ; , 1 )	//CHOICE_DVARYESNO( 10, "@MENU_FRIENDLY_INDICATORS", scr_drawfriend, ; )
 		
 #undef	CHOICE_SIZE_X
@@ -78,7 +79,7 @@
 #undef CHOICE_X_START
 #define CHOICE_X_START  -30
 		
-		CHOICE_DVARYESNO_VIS( 16, "@OW_MENU_SCR_PEZBOTS_ENABLE", scr_pezbots_enable, ;, when( !dvarBool(sv_punkbuster) ) )
+		CHOICE_DVARYESNO_VIS( 16, "@OW_MENU_SCR_PEZBOTS_ENABLE", scr_pezbots_enable, setdvar sv_punkbuster 0;, 1 )
 		CHOICE_DVAREDIT_VIS( 17, "@OW_SERVER_MAP_ROTATION", "sv_mapRotation", 1000, 80, ; , 1 )
 		
 #undef CHOICE_X_START

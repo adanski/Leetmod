@@ -3,10 +3,10 @@
 ;Written by Joost Verburg
 
 !define APPNAME "Leetmod"
-!define APPVERSION "1.8"
+!define APPVERSION "1.9"
 !define MODFOLDER "leetmod"
 ; # Change for release
-!define MODVERSION "18"
+!define MODVERSION "19"
 !define COD4TITLE "Call of Duty 4"
 !define COD4TITLEREG "Call of Duty(R) 4"
 !define COD4TITLEREGFULL "${COD4TITLEREG} - Modern Warfare(TM)"

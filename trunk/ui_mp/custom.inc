@@ -21,6 +21,14 @@
 #define ASH5 "con_hidechannel *; con_showchannel client"
 #endif
 
+#ifndef ASO5
+#define ASO5 "con_hidechannel *; con_showchannel obituary"
+#endif
+
+#ifndef ASHO5
+#define ASHO5 "con_hidechannel *; con_showchannel client obituary"
+#endif
+
 #ifndef AHH1
 #define AHH1 "set con_outputWindowColor 0.35 0.35 0.3 0.75"
 #endif

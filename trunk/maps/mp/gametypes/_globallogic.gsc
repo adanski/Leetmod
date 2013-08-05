@@ -154,9 +154,9 @@ init()
 	
 	// Set mod name and version
 	setDvar( "_Mod", "Leetmod", true );
-	setDvar( "_ModVer", "v1.8beta", true );
+	setDvar( "_ModVer", "v1.9", true );
 	
-	setDvar( "_modfile", "leetmod18" );
+	setDvar( "_modfile", "leetmod19" );
 	
 	// Make a health check of the server
 	level thread openwarfare\_servercheck::init();

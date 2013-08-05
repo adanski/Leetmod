@@ -1,4 +1,4 @@
-#define LEETMOD_VERSION "1.8"
+#define LEETMOD_VERSION "1.9"
 
 #include "ui/menudef.h"
 #include "ui_mp/common_macro.inc"

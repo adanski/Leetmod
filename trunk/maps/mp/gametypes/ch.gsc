@@ -58,7 +58,7 @@ main()
 	level.scr_ch_neutraltime = getdvarx( "scr_ch_neutraltime", "int", 15, 5, 59 );
 	level.scr_ch_ownerspawndelay = getdvarx( "scr_ch_ownerspawndelay", "int", 0, 0, 60 );
 	
-	level.scr_ch_suddendeath_show_enemies = getdvarx( "scr_ch_suddendeath_show_enemies", "int", 0, 0, 1 );
+	level.scr_ch_suddendeath_show_enemies = getdvarx( "scr_ch_suddendeath_show_enemies", "int", 1, 0, 1 );
 	level.scr_ch_suddendeath_timelimit = getdvarx( "scr_ch_suddendeath_timelimit", "int", 180, 0, 600 );
 	level.scr_ch_scoreboard_flag_carrier = getdvarx( "scr_ch_scoreboard_flag_carrier", "int", 1, 0, 1 );
 	level.scr_ch_show_flag_carrier = getdvarx( "scr_ch_show_flag_carrier", "int", 2, 0, 2  );
