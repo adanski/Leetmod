@@ -221,8 +221,10 @@ PREPROC_TEXT_DRAW_ALIGNED_EXP( ORIGIN_MAP_FRAME MAP_WIDTH 0 RIGHTITEM_ALIGN VERT
 			CHOICE_SCRIPTS_ALL( 41, actionArg, onFocusArg, leaveFocusArg ) \
 		}
 		
-BUTTON_SCR_PEZBOT_AXIS( "@OW_SCR_PEZBOTS_AXIS",  execNow "toggle scr_pezbots_axis 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"; , when( dvarbool( sv_running ) && dvarbool(scr_pezbots_enable) ) )
-BUTTON_SCR_PEZBOT_ALLIES( "@OW_SCR_PEZBOTS_ALLIES",  execNow "toggle scr_pezbots_allies 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"; , when( dvarbool( sv_running ) && dvarbool(scr_pezbots_enable) ) )
+#define STOCK_GAMEMODE (gametype() == "dm" || gametype() == "war" || gametype() == "dom" || gametype() == "koth" || gametype() == "sab" || gametype() == "sd")
+
+BUTTON_SCR_PEZBOT_AXIS( "@OW_SCR_PEZBOTS_AXIS",  execNow "toggle scr_pezbots_axis 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"; , when( dvarbool( sv_running ) && dvarbool(scr_pezbots_enable) && STOCK_GAMEMODE ) )
+BUTTON_SCR_PEZBOT_ALLIES( "@OW_SCR_PEZBOTS_ALLIES",  execNow "toggle scr_pezbots_allies 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"; , when( dvarbool( sv_running ) && dvarbool(scr_pezbots_enable) && STOCK_GAMEMODE ) )
 
 // Pezbot options /
 

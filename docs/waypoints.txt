@@ -1,0 +1,4 @@
+Waypoints available but disabled (due to COD engine code limit - hunk_userAlloc):
+bog, crash snow, modern rust, killhouse, shipment, mp_sbase
+No waypoints available:
+MW2 Storm, BO Hanoi, BO NukeTown, MW3 Bootleg, Garena, Hangar, Shipment 2, Shipment 3, SvS Muelles, SvS Old Town, SvS SniperWarf Square
