@@ -653,6 +653,7 @@ createCaptureZone( team, trigger )
 	captureZone maps\mp\gametypes\_gameobjects::setUseTime( level.scr_ctf_capture_time );
 	if( level.scr_ctf_capture_time > 0 )
 		captureZone maps\mp\gametypes\_gameobjects::setUseText( &"MP_CAPTURING_FLAG" );
+	
 	captureZone.onUse = ::onUse;
 	
 	// Spawn an special effect at the base of the flag to indicate where it is located

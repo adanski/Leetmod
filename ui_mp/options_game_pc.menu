@@ -37,6 +37,7 @@
 			
 			execondvarintvalue ct_lm_ver 0 SETA_CUSTOM_VARS_CLASSES1NAME
 			execondvarintvalue ct_lm_ver 0 SETA_CUSTOM_VARS
+			execondvarintvalue ct_lm_ver 18 SETA_CUSTOM_VARS19
 			execondvarintvalue ct_hud_show_inventory 1 "seta hud_fade_ammodisplay 0; seta hud_fade_offhand 0";
 			execondvarintvalue ct_hud_show_inventory 2 "seta hud_fade_ammodisplay 0; seta hud_fade_offhand 0";
 			
@@ -82,11 +83,15 @@
 		CHOICE_DVARYESNO( 33, "@OW_HUD_SHOW_MANTLE", cg_drawMantleHint, ; )
 		CHOICE_BUTTON_VIS( 34, "@OW_SCOREBOARD_COMPACT", exec ASO1; setdvar ct_scoreboardNew 0; , when( dvarbool( ct_scoreboardNew ) ); )
 		CHOICE_BUTTON_VIS( 34, "@OW_SCOREBOARD_BIG", exec ASN1; setdvar ct_scoreboardNew 1; , when( !dvarbool( ct_scoreboardNew ) ); )
-		CHOICE_DVARSTRINGLIST( 35, "@OW_CHAT_POSITION", ct_chat_position, { "Top"; "top"; "Standard"; "standard"; "Bottom"; "bottom" }, ; )
-		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_DISPL_DEFAULT", exec ASH1; exec ASH2; exec ASH3; exec ASH4; exec ASH5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 1; , when( dvarInt( ct_conChatHistOnly ) == 0 ); )
-		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_DISPL_CHAT", exec ASH1; exec ASH2; exec ASH3; exec ASH4; exec ASO5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 2; , when( dvarInt( ct_conChatHistOnly ) == 1 ); )
-		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_DISPL_OBIT", exec ASH1; exec ASH2; exec ASH3; exec ASH4; exec ASHO5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 3; , when( dvarInt( ct_conChatHistOnly ) == 2 ); )
-		CHOICE_BUTTON_VIS( 36, "@OW_CONSOLE_DISPL_CHAT_N_OBIT", exec AHH1; exec AHH2; exec AHH3; exec AHH4; exec AHH5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 0; , when( dvarInt( ct_conChatHistOnly ) == 3 ); )
+		CHOICE_BUTTON_VIS( 35, "@OW_WAYPOINT_DEFAULT", exec "seta waypointIconHeight 18;seta waypointIconWidth 18"; setdvar ct_waypointsize 1; , when( dvarInt( ct_waypointsize ) == 0 ); )
+		CHOICE_BUTTON_VIS( 35, "@OW_WAYPOINT_SMALL", exec "seta waypointIconHeight 10;seta waypointIconWidth 10"; setdvar ct_waypointsize 2; , when( dvarInt( ct_waypointsize ) == 1 ); )
+		CHOICE_BUTTON_VIS( 35, "@OW_WAYPOINT_TINY", exec "seta waypointIconHeight 1;seta waypointIconWidth 1"; setdvar ct_waypointsize 3; , when( dvarInt( ct_waypointsize ) == 2 ); )
+		CHOICE_BUTTON_VIS( 35, "@OW_WAYPOINT_HIDDEN", exec "seta waypointIconHeight 36;seta waypointIconWidth 36"; setdvar ct_waypointsize 0; , when( dvarInt( ct_waypointsize ) == 3 ); )
+		CHOICE_DVARSTRINGLIST( 36, "@OW_CHAT_POSITION", ct_chat_position, { "Top"; "top"; "Standard"; "standard"; "Bottom"; "bottom" }, ; )
+		CHOICE_BUTTON_VIS( 37, "@OW_CONSOLE_DISPL_DEFAULT", exec ASH1; exec ASH2; exec ASH3; exec ASH4; exec ASH5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 1; , when( dvarInt( ct_conChatHistOnly ) == 0 ); )
+		CHOICE_BUTTON_VIS( 37, "@OW_CONSOLE_DISPL_CHAT", exec ASH1; exec ASH2; exec ASH3; exec ASH4; exec ASO5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 2; , when( dvarInt( ct_conChatHistOnly ) == 1 ); )
+		CHOICE_BUTTON_VIS( 37, "@OW_CONSOLE_DISPL_OBIT", exec ASH1; exec ASH2; exec ASH3; exec ASH4; exec ASHO5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 3; , when( dvarInt( ct_conChatHistOnly ) == 2 ); )
+		CHOICE_BUTTON_VIS( 37, "@OW_CONSOLE_DISPL_CHAT_N_OBIT", exec AHH1; exec AHH2; exec AHH3; exec AHH4; exec AHH5; setdvar monkeytoy 0; setdvar ct_conChatHistOnly 0; , when( dvarInt( ct_conChatHistOnly ) == 3 ); )
 		//CHOICE_BUTTON_VIS( 35, "@OW_POWER_RANK_ME", open popup_rankup, when( !dvarbool( ct_scoreboardNew ) ); )
 		
 		itemDef

@@ -1036,7 +1036,8 @@ useObjectProxThink()
 	self thread proxTriggerThink();
 	
 	while ( true ) {
-		if ( self.useTime && self.curProgress >= self.useTime ) {
+		if ( self.useTime && self.curProgress >= self.useTime ||
+		( level.gametype == "ctf" && isDefined(self.claimPlayer) && isPlayer( self.claimPlayer ) && isDefined(self.claimPlayer.carryObject) && self.claimPlayer.carryObject == level.flags[self.claimPlayer.pers["team"]] ) ) {
 			self.curProgress = 0;
 			
 			creditPlayer = getEarliestClaimPlayer();
@@ -1102,6 +1103,11 @@ proxTriggerThink()
 			continue;
 			
 		if ( level.gametype == "ass" && isPlayer( player ) && !player.isVIP )
+			continue;
+		
+		if ( level.gametype == "ctf" && isPlayer( player ) &&
+			(!isDefined(player.carryObject) || ( isDefined(player.carryObject) && player.carryObject != level.flags[player.pers["team"]] &&
+			level.flags[player.pers["team"]].curOrigin != level.flags[player.pers["team"]].trigger.baseOrigin ) ) )
 			continue;
 			
 		if ( self canInteractWith( player.pers["team"] ) && self.claimTeam == "none" ) {
