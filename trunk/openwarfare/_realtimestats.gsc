@@ -24,10 +24,12 @@ init()
 	if ( level.scr_realtime_stats_unit == "meters" ) {
 		level.mUnit = " m";
 		level.mPSUnit = " m/s";
+		level.unitMultiplier = 0.0254;
 	}
 	else {
 		level.mUnit = " yd";
 		level.mPSUnit = " yd/s";
+		level.unitMultiplier = 0.0278;
 	}
 	
 	// Check if we should show the end of game statistics
@@ -139,6 +141,9 @@ onGameEnded()
 			
 			player checkStatItem( player.pers["stats"]["misc"]["distance"], "distance" );
 			
+			playerAvgSpdConverted = int( player.pers["stats"]["misc"]["avgspeed"] * level.unitMultiplier * 100 ) / 100;
+			playerAvgSpdNoSnprConverted = int( player.pers["stats"]["misc"]["avgspeednosniper"] * level.unitMultiplier * 100 ) / 100;
+			
 			// unlikely to happen, but if avgspeed is greater than avgspeednosniper, we want to use that value
 			if( player.pers["stats"]["misc"]["avgspeed"] > player.pers["stats"]["misc"]["avgspeednosniper"] )
 				playerBestAvgSpeed = player.pers["stats"]["misc"]["avgspeed"];
@@ -146,17 +151,11 @@ onGameEnded()
 				playerBestAvgSpeed = player.pers["stats"]["misc"]["avgspeednosniper"];
 				
 			// Correct avgspeed display value to represent the one used in the statistics calculation
-			if ( level.scr_realtime_stats_unit == "meters" )
-				if( level.scr_realtime_stats_remove_sniping_time )
-					playerStatsAvgSpeedConverted = int( playerBestAvgSpeed * 0.0254 * 100 ) / 100;
-				else
-					playerStatsAvgSpeedConverted = int( player.pers["stats"]["misc"]["avgspeed"] * 0.0254 * 100 ) / 100;
-			else if( level.scr_realtime_stats_remove_sniping_time )
-				playerStatsAvgSpeedConverted = int( playerBestAvgSpeed * 0.0278 * 100 ) / 100;
-			else
-				playerStatsAvgSpeedConverted = int( player.pers["stats"]["misc"]["avgspeed"] * 0.0278 * 100 ) / 100;
 				
-			player setClientDvar( "ps_asx", playerStatsAvgSpeedConverted + level.mPSUnit);
+			if( level.scr_realtime_stats_remove_sniping_time && isDefined(player.pers["stats"]["misc"]["secsalivesniper"]) && player.pers["stats"]["misc"]["secsalivesniper"] > 30 )
+				player setClientDvar( "ps_asx", playerAvgSpdConverted + "|" + playerAvgSpdNoSnprConverted + level.mPSUnit);
+			else
+				player setClientDvar( "ps_asx", playerAvgSpdConverted + level.mPSUnit);
 			
 			// Calculate the fastest player
 			if( level.scr_realtime_stats_remove_sniping_time )
@@ -173,7 +172,7 @@ onGameEnded()
 						player checkMinStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeedw" );
 				} // if bellow implies gotOneGood == true
 				else if( (!level.scr_realtime_stats_remove_sniping_time && player.pers["stats"]["misc"]["secsalive"] > 60)
-				         || (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60 ) {
+				         || (level.scr_realtime_stats_remove_sniping_time && (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60 ) ) {
 					// I think this can be commented since if we get here, gotOneGood is already true
 					// gotOneGood = 1;
 					if( level.scr_realtime_stats_remove_sniping_time )
@@ -181,8 +180,11 @@ onGameEnded()
 					else
 						player checkMinStatItem( player.pers["stats"]["misc"]["avgspeed"], "avgspeedw" );
 				}
-				if( !gotOneGood && (!level.scr_realtime_stats_remove_sniping_time && player.pers["stats"]["misc"]["secsalive"] > 60)
-				    || (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60 ) {
+				if( !gotOneGood && (
+					(!level.scr_realtime_stats_remove_sniping_time && player.pers["stats"]["misc"]["secsalive"] > 60)
+				    || (level.scr_realtime_stats_remove_sniping_time && (player.pers["stats"]["misc"]["secsalive"]-player.pers["stats"]["misc"]["secsalivesniper"]) > 60)
+								   )
+				   ) {
 					gotOneGood = 1;
 					level.eogBest["avgspeedw"]["name"] = player.name;
 					if( level.scr_realtime_stats_remove_sniping_time )
@@ -194,16 +196,9 @@ onGameEnded()
 		}
 	}
 	
-	if ( level.scr_realtime_stats_unit == "meters" ) {
-		level.eogBest["distance"]["value"] = int( level.eogBest["distance"]["value"] * 0.0254 * 10 ) / 10;
-		level.eogBest["avgspeed"]["value"] = int( level.eogBest["avgspeed"]["value"] * 0.0254 * 100 ) / 100;
-		level.eogBest["avgspeedw"]["value"] = int( level.eogBest["avgspeedw"]["value"] * 0.0254 * 100 ) / 100;
-	}
-	else {
-		level.eogBest["distance"]["value"] = int( level.eogBest["distance"]["value"] * 0.0278 * 10 ) / 10;
-		level.eogBest["avgspeed"]["value"] = int( level.eogBest["avgspeed"]["value"] * 0.0278 * 100 ) / 100;
-		level.eogBest["avgspeedw"]["value"] = int( level.eogBest["avgspeedw"]["value"] * 0.0278 * 100 ) / 100;
-	}
+	level.eogBest["distance"]["value"] = int( level.eogBest["distance"]["value"] * level.unitMultiplier * 10 ) / 10;
+	level.eogBest["avgspeed"]["value"] = int( level.eogBest["avgspeed"]["value"] * level.unitMultiplier * 100 ) / 100;
+	level.eogBest["avgspeedw"]["value"] = int( level.eogBest["avgspeedw"]["value"] * level.unitMultiplier * 100 ) / 100;
 	
 	// Send the data to each player
 	for ( index = 0; index < level.players.size; index++ ) {
@@ -237,6 +232,7 @@ onGameEnded()
 			player setClientDvars(
 			    "ps_n", player.name,
 			    "gs_pg", 1,
+			    "gs_rst", level.scr_realtime_stats_remove_sniping_time,
 			    "gs_an", level.eogBest["accuracy"]["name"],
 			    "gs_a", level.eogBest["accuracy"]["value"],
 			    "gs_kn", level.eogBest["kills"]["name"],
@@ -457,12 +453,7 @@ onPlayerSpawned()
 				
 			oldValue = self.pers["stats"]["misc"]["distance"];
 			//oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
-			if ( level.scr_realtime_stats_unit == "meters" ) {
-				travelledDistance = int( oldValue * 0.0254 * 10 ) / 10;
-			}
-			else {
-				travelledDistance = int( oldValue * 0.0278 * 10 ) / 10;
-			}
+			travelledDistance = int( oldValue * level.unitMultiplier * 10 ) / 10;
 			self setClientDvar( "ps_dt", travelledDistance + level.mUnit );
 			self setClientDvar( "ps_as", int( (travelledDistance/(self.pers["stats"]["misc"]["secsalive"]+1))*100) / 100 + level.mPSUnit );
 			self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/(self.pers["stats"]["misc"]["secsalive"]+1))*100 ) / 100;
@@ -472,12 +463,7 @@ onPlayerSpawned()
 	// Update one more time once the player dies
 	oldValue = self.pers["stats"]["misc"]["distance"];
 	//oldValueSniper = self.pers["stats"]["misc"]["distancesniper"];
-	if ( level.scr_realtime_stats_unit == "meters" ) {
-		travelledDistance = int( oldValue * 0.0254 * 10 ) / 10;
-	}
-	else {
-		travelledDistance = int( oldValue * 0.0278 * 10 ) / 10;
-	}
+	travelledDistance = int( oldValue * level.unitMultiplier * 10 ) / 10;
 	self.pers["stats"]["misc"]["avgspeed"] = int( (self.pers["stats"]["misc"]["distance"]/(self.pers["stats"]["misc"]["secsalive"]+1))*100 ) / 100;
 	self.pers["stats"]["misc"]["avgspeednosniper"] = int( ((self.pers["stats"]["misc"]["distance"]-self.pers["stats"]["misc"]["distancesniper"])/(self.pers["stats"]["misc"]["secsalive"]-self.pers["stats"]["misc"]["secsalivesniper"]+1))*100 ) / 100;
 	self setClientDvar( "ps_dt", travelledDistance + level.mUnit );
@@ -591,12 +577,7 @@ onPlayerKilled()
 							case "smg":
 							case "spread":
 								// Check in which unit are we measuring
-								if ( level.scr_realtime_stats_unit == "meters" ) {
-									shotDistance = int( fDistance * 0.0254 * 10 ) / 10;
-								}
-								else {
-									shotDistance = int( fDistance * 0.0278 * 10 ) / 10;
-								}
+								shotDistance = int( fDistance * level.unitMultiplier * 10 ) / 10;
 								if ( shotDistance > attacker.pers["stats"]["kills"]["longest"] ) {
 									attacker.pers["stats"]["kills"]["longest"] = shotDistance;
 								}

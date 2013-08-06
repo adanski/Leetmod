@@ -78,7 +78,7 @@ main()
 	if( level.scr_ch_chmode == 0 )
 		maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 2, 0, 5000 );
 	else
-		maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 275, 0, 5000 );
+		maps\mp\gametypes\_globallogic::registerScoreLimitDvar( level.gameType, 250, 0, 5000 );
 	maps\mp\gametypes\_globallogic::registerTimeLimitDvar( level.gameType, 10, 0, 1440 );
 	
 	
@@ -624,6 +624,7 @@ monitorFlagCarrier( flagCarrier )
 {
 	level endon( "flag_dropped" );
 	level endon( "flag_hold" );
+	level endon("game_ended");
 	flagCarrier endon("disconnect");
 	flagCarrier endon("death");
 	
@@ -746,6 +747,7 @@ Monitors the time the flag has been hold
 monitorFlagHoldTime( player )
 {
 	level endon( "flag_dropped" );
+	level endon("game_ended");
 	player endon( "disconnect" );
 	player endon( "death" );
 	
@@ -877,6 +879,7 @@ Monitors how long the flag has been sitting with no owner after being dropped
 monitorFlagNeutralTime()
 {
 	level endon( "flag_picked_up" );
+	level endon("game_ended");
 	ownerTeam = level.flag.ownerTeam;
 	
 	// Calculate when the flag should turn to neutral and wait

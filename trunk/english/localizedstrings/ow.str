@@ -1492,6 +1492,18 @@ LANG_ENGLISH "Scoreboard: ^2Compact"
 REFERENCE SCOREBOARD_BIG
 LANG_ENGLISH "Scoreboard: ^1Big"
 
+REFERENCE WAYPOINT_DEFAULT
+LANG_ENGLISH "Objective icons: ^1Default"
+
+REFERENCE WAYPOINT_SMALL
+LANG_ENGLISH "Objective icons: ^2Small"
+
+REFERENCE WAYPOINT_TINY
+LANG_ENGLISH "Objective icons: ^2Tiny"
+
+REFERENCE WAYPOINT_HIDDEN
+LANG_ENGLISH "Objective icons: ^2Hidden"
+
 //******************************************************************************
 // ui_mp/options_multi.menu
 //******************************************************************************
@@ -1545,6 +1557,9 @@ LANG_ENGLISH "^5www.Leetmod.pt.am"
 
 REFERENCE EOG_AVG_SPEED
 LANG_ENGLISH "Average Speed"
+
+REFERENCE EOG_AVG_SPEED_WO_SNIPER
+LANG_ENGLISH "Avg Speed|w/o Sniper"
 
 REFERENCE EOG_AVG_SPEED_WORSE
 LANG_ENGLISH "Most camper:"
