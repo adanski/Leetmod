@@ -19,10 +19,23 @@
 !define MUI_FINISHPAGE_LINK "Visit Leetmod's website and see all the new features"
 !define MUI_FINISHPAGE_LINK_LOCATION "http://www.leetmod.pt.am"
 
+Var /GLOBAL LMINSTVER
+Var /GLOBAL LMMODVER
+Var /GLOBAL UPDATECONFIGS
+
 ;--------------------------------
 ;Include Modern UI
 
   !include "MUI2.nsh"
+
+;Include String Functions
+
+  !include "StrFunc.nsh"
+	${StrRep}
+
+;Include Custom Functions
+
+  !include "otherFuncs.nsh"
 
 ;--------------------------------
 ;General
@@ -55,6 +68,7 @@
 
   !insertmacro MUI_PAGE_LICENSE "LICENSE"
   !define MUI_PAGE_CUSTOMFUNCTION_PRE DirectoryPre
+  !define MUI_PAGE_CUSTOMFUNCTION_LEAVE DirectoryLeave
   !insertmacro MUI_PAGE_DIRECTORY
   !insertmacro MUI_PAGE_INSTFILES
   !insertmacro MUI_PAGE_FINISH
@@ -96,7 +110,18 @@ Section "${APPNAME}" Leetmod
 	File /r ".\..\configs\*.*"
 	SetOutPath "$INSTDIR\mods\${MODFOLDER}${MODVERSION}\pb"
 	File /r ".\..\pb\*.*"
-  
+	
+	; Update configs
+	StrCmp $UPDATECONFIGS "1" 0 EndUpdateConfigs
+		CopyFiles /SILENT "$INSTDIR\mods\${MODFOLDER}$LMMODVER\configs\*.*" "$INSTDIR\mods\${MODFOLDER}${MODVERSION}\configs\"
+		StrCmp $LMINSTVER "1.8" 0 UpdateFrom19
+			!include "update_configs_1.8-1.9.nsh"
+		UpdateFrom19:
+		;StrCmp $LMINSTVER "1.9" 0 UpdateFrom20
+			;!include "update_configs_1.9-2.0.nsh"
+		;UpdateFrom20:
+	
+	EndUpdateConfigs:
   ; Create Shortcuts
   SetShellVarContext all
   SetOutPath "$INSTDIR"
@@ -113,6 +138,7 @@ Section "${APPNAME}" Leetmod
   
   ;Store installation folder
   WriteRegStr HKLM "Software\${APPREGNAME}" "" $INSTDIR
+  WriteRegStr HKLM "Software\${APPREGNAME}" "Version" ${APPVERSION}
 
 SectionEnd
 ; #This were disabled since we don't pack maps in the installer
@@ -193,7 +219,7 @@ FunctionEnd
 Function DirectoryPre
   Var /GLOBAL COD4PATCH
 
-  ; read the APP version from the registry
+  ; read the COD4 patch version from the registry
   ReadRegStr $COD4PATCH HKLM "SOFTWARE\Activision\Call of Duty 4" Version
  
   ; Check for APP installation existence
@@ -212,6 +238,40 @@ Function DirectoryPre
     Please point to where it is installed."
   NoAbortInst:
   
+FunctionEnd
+
+Function DirectoryLeave
+	; read the Leetmod version from the registry
+  ReadRegStr $LMINSTVER HKLM "Software\${APPREGNAME}" Version
+  StrCmp $LMINSTVER "" 0 LMVersionProcessed	; If no version was found  (still, 1.8 could be installed)
+    ReadRegStr $LMINSTVER HKLM "Software\${APPREGNAME}" ""		; If Leetmod 1.8 is installed, this is valid
+		StrCmp $LMINSTVER "" NoConfigsFound
+			StrCpy $LMINSTVER "1.8"
+  LMVersionProcessed:
+	; Remove the dot from version
+	${StrRep} $LMMODVER $LMINSTVER "." ""
+	; If it is a reinstallation, skip configs copy
+	StrCmp $LMINSTVER ${APPVERSION} IsReinstallation
+	; Check for Leetmod older version configs folder
+	IfFileExists "$INSTDIR\mods\${MODFOLDER}$LMMODVER\configs\*.*" 0 NoConfigsFound
+	  ; Ask if user wants to update existing configs or install new ones
+		MessageBox MB_YESNO|MB_ICONQUESTION "Older Leetmod $LMINSTVER installation found. Do you want to copy over its 'configs' folder \
+		  to this ${APPVERSION} installation? (They will also be updated with the new changes)" IDNO NoConfigsFound
+			;Copy configs and update them
+			StrCpy $UPDATECONFIGS "1"
+			Goto EndProcessed
+  
+	IsReinstallation:
+	; Ask if user wants to reinstall Leetmod
+	MessageBox MB_YESNO|MB_ICONQUESTION "Leetmod $LMINSTVER is already installed. Do you want to reinstall it?" IDYES NoConfigsFound
+		Quit
+	
+	NoConfigsFound:
+	StrCpy $UPDATECONFIGS "0"
+	Goto EndProcessed
+	
+	EndProcessed:
+	
 FunctionEnd
 
 ;--------------------------------
