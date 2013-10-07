@@ -16,7 +16,10 @@
 
 !define MUI_FINISHPAGE_RUN "$INSTDIR\iw3mp.exe"
 !define MUI_FINISHPAGE_RUN_PARAMETERS "+set fs_game mods/${MODFOLDER}${MODVERSION} +exec leetmod.cfg"
+!define MUI_FINISHPAGE_SHOWREADME "http://www.lnp.comyr.com/?q=newmaps"
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "Open Leetmod's website to download the new maps"
 !define MUI_FINISHPAGE_LINK "Visit Leetmod's website and see all the new features"
+#!define MUI_FINISHPAGE_LINK "Go to Leetmod's website to download the new maps"
 !define MUI_FINISHPAGE_LINK_LOCATION "http://www.leetmod.pt.am"
 
 Var /GLOBAL LMINSTVER
