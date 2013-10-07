@@ -736,7 +736,7 @@ onPickup( player )
 		logPrint("FV;" + lpGuid + ";" + lpselfnum + ";" + player.name + "\n");
 	}
 	
-	// Set the new icons to be displayed
+	// Check if we should show the KILL icon to the enemies
 	if ( level.scr_ctf_show_flag_carrier == 0 || level.scr_ctf_show_flag_carrier == 2 ) {
 		// Only friendlies see the flag carrier in the minimap
 		if ( playerTeam != self.ownerTeam ) {
@@ -747,15 +747,19 @@ onPickup( player )
 		}
 	}
 	else {
-		// Kill waypoint is always enabled
+		// Everyone sees the flag carrier
 		self maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
+		// Flag stolen: Flag-team players see the flag carrier as target
 		if ( playerTeam != self.ownerTeam ) {
 			self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", "compass_waypoint_target" );
 			self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", "waypoint_kill" );
-		}
+		} // If team has its own flag, enemies see as target
 		else {
-			self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
-			self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );
+			// It's not working correctly, when it is enabled, enemies see KILL with constant refresh rate
+			//self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
+			//self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );
+			self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", undefined );
+			self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", undefined );
 		}
 	}
 	
@@ -764,6 +768,7 @@ onPickup( player )
 		self thread monitorFlagCarrier( player );
 	}
 	
+	// Always show defend sign to own team, if flag stolen or returned
 	if ( playerTeam != self.ownerTeam ) {
 		self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_defend" );
 		self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_defend" );
@@ -842,10 +847,11 @@ monitorFlagCarrier( flagCarrier )
 		// Show the KILL icon
 		flagCarrier playLocalSound( game["voice"][flagCarrier.pers["team"]] + "new_positions" );
 		self maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
+		// Flag stolen: Flag-team players see the flag carrier as target
 		if ( playerTeam != self.ownerTeam ) {
 			self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", "compass_waypoint_target" );
 			self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", "waypoint_kill" );
-		}
+		} // If team has its own flag, enemies see as target
 		else {
 			self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
 			self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );
@@ -869,13 +875,17 @@ monitorFlagCarrier( flagCarrier )
 			// Show the player in the enemies radar for 2 seconds
 			flagCarrier playLocalSound( game["voice"][flagCarrier.pers["team"]] + "new_positions" );
 			self maps\mp\gametypes\_gameobjects::setVisibleTeam( "any" );
+			// Flag stolen: Flag-team players see the flag carrier as target
 			if ( playerTeam != self.ownerTeam ) {
 				self maps\mp\gametypes\_gameobjects::set2DIcon( "friendly", "compass_waypoint_target" );
 				self maps\mp\gametypes\_gameobjects::set3DIcon( "friendly", "waypoint_kill" );
-			}
+			} // If team has its own flag, enemies see as target
 			else {
-				self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
-				self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );
+				// It's not working correctly, when it is enabled, enemies see KILL with constant refresh rate
+				//self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", "compass_waypoint_target" );
+				//self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", "waypoint_kill" );
+				self maps\mp\gametypes\_gameobjects::set2DIcon( "enemy", undefined );
+				self maps\mp\gametypes\_gameobjects::set3DIcon( "enemy", undefined );
 			}
 			
 			xWait( 5 );
